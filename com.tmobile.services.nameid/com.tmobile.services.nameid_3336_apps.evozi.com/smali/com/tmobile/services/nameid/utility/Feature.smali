@@ -1,0 +1,206 @@
+.class public abstract enum Lcom/tmobile/services/nameid/utility/Feature;
+.super Ljava/lang/Enum;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Enum<",
+        "Lcom/tmobile/services/nameid/utility/Feature;",
+        ">;"
+    }
+.end annotation
+
+
+# static fields
+.field private static final synthetic $VALUES:[Lcom/tmobile/services/nameid/utility/Feature;
+
+.field public static final enum CATEGORY_BLOCK:Lcom/tmobile/services/nameid/utility/Feature;
+
+.field private static final LOG_TAG:Ljava/lang/String; = "Feature#"
+
+.field public static final enum NOTIFICATION_HANDLERS:Lcom/tmobile/services/nameid/utility/Feature;
+
+.field public static final enum NUMBER_LOOKUP:Lcom/tmobile/services/nameid/utility/Feature;
+
+.field public static final enum PHONE_NUMBER_BLOCK:Lcom/tmobile/services/nameid/utility/Feature;
+
+.field public static final enum PNB_MESSAGING:Lcom/tmobile/services/nameid/utility/Feature;
+
+
+# instance fields
+.field private value:I
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 8
+
+    .line 1
+    new-instance v0, Lcom/tmobile/services/nameid/utility/Feature$1;
+
+    const-string v1, "PHONE_NUMBER_BLOCK"
+
+    const/4 v2, 0x0
+
+    invoke-direct {v0, v1, v2, v2}, Lcom/tmobile/services/nameid/utility/Feature$1;-><init>(Ljava/lang/String;II)V
+
+    sput-object v0, Lcom/tmobile/services/nameid/utility/Feature;->PHONE_NUMBER_BLOCK:Lcom/tmobile/services/nameid/utility/Feature;
+
+    .line 2
+    new-instance v0, Lcom/tmobile/services/nameid/utility/Feature$2;
+
+    const-string v1, "CATEGORY_BLOCK"
+
+    const/4 v3, 0x1
+
+    invoke-direct {v0, v1, v3, v3}, Lcom/tmobile/services/nameid/utility/Feature$2;-><init>(Ljava/lang/String;II)V
+
+    sput-object v0, Lcom/tmobile/services/nameid/utility/Feature;->CATEGORY_BLOCK:Lcom/tmobile/services/nameid/utility/Feature;
+
+    .line 3
+    new-instance v0, Lcom/tmobile/services/nameid/utility/Feature$3;
+
+    const-string v1, "NOTIFICATION_HANDLERS"
+
+    const/4 v4, 0x2
+
+    invoke-direct {v0, v1, v4, v4}, Lcom/tmobile/services/nameid/utility/Feature$3;-><init>(Ljava/lang/String;II)V
+
+    sput-object v0, Lcom/tmobile/services/nameid/utility/Feature;->NOTIFICATION_HANDLERS:Lcom/tmobile/services/nameid/utility/Feature;
+
+    .line 4
+    new-instance v0, Lcom/tmobile/services/nameid/utility/Feature$4;
+
+    const-string v1, "NUMBER_LOOKUP"
+
+    const/4 v5, 0x3
+
+    invoke-direct {v0, v1, v5, v5}, Lcom/tmobile/services/nameid/utility/Feature$4;-><init>(Ljava/lang/String;II)V
+
+    sput-object v0, Lcom/tmobile/services/nameid/utility/Feature;->NUMBER_LOOKUP:Lcom/tmobile/services/nameid/utility/Feature;
+
+    .line 5
+    new-instance v0, Lcom/tmobile/services/nameid/utility/Feature$5;
+
+    const-string v1, "PNB_MESSAGING"
+
+    const/4 v6, 0x4
+
+    invoke-direct {v0, v1, v6, v6}, Lcom/tmobile/services/nameid/utility/Feature$5;-><init>(Ljava/lang/String;II)V
+
+    sput-object v0, Lcom/tmobile/services/nameid/utility/Feature;->PNB_MESSAGING:Lcom/tmobile/services/nameid/utility/Feature;
+
+    const/4 v1, 0x5
+
+    new-array v1, v1, [Lcom/tmobile/services/nameid/utility/Feature;
+
+    .line 6
+    sget-object v7, Lcom/tmobile/services/nameid/utility/Feature;->PHONE_NUMBER_BLOCK:Lcom/tmobile/services/nameid/utility/Feature;
+
+    aput-object v7, v1, v2
+
+    sget-object v2, Lcom/tmobile/services/nameid/utility/Feature;->CATEGORY_BLOCK:Lcom/tmobile/services/nameid/utility/Feature;
+
+    aput-object v2, v1, v3
+
+    sget-object v2, Lcom/tmobile/services/nameid/utility/Feature;->NOTIFICATION_HANDLERS:Lcom/tmobile/services/nameid/utility/Feature;
+
+    aput-object v2, v1, v4
+
+    sget-object v2, Lcom/tmobile/services/nameid/utility/Feature;->NUMBER_LOOKUP:Lcom/tmobile/services/nameid/utility/Feature;
+
+    aput-object v2, v1, v5
+
+    aput-object v0, v1, v6
+
+    sput-object v1, Lcom/tmobile/services/nameid/utility/Feature;->$VALUES:[Lcom/tmobile/services/nameid/utility/Feature;
+
+    return-void
+.end method
+
+.method private constructor <init>(Ljava/lang/String;II)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)V"
+        }
+    .end annotation
+
+    .line 2
+    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+
+    .line 3
+    iput p3, p0, Lcom/tmobile/services/nameid/utility/Feature;->value:I
+
+    return-void
+.end method
+
+.method synthetic constructor <init>(Ljava/lang/String;IILcom/tmobile/services/nameid/utility/Feature$1;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2, p3}, Lcom/tmobile/services/nameid/utility/Feature;-><init>(Ljava/lang/String;II)V
+
+    return-void
+.end method
+
+.method public static valueOf(Ljava/lang/String;)Lcom/tmobile/services/nameid/utility/Feature;
+    .locals 1
+
+    .line 1
+    const-class v0, Lcom/tmobile/services/nameid/utility/Feature;
+
+    invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+
+    move-result-object p0
+
+    check-cast p0, Lcom/tmobile/services/nameid/utility/Feature;
+
+    return-object p0
+.end method
+
+.method public static values()[Lcom/tmobile/services/nameid/utility/Feature;
+    .locals 1
+
+    .line 1
+    sget-object v0, Lcom/tmobile/services/nameid/utility/Feature;->$VALUES:[Lcom/tmobile/services/nameid/utility/Feature;
+
+    invoke-virtual {v0}, [Lcom/tmobile/services/nameid/utility/Feature;->clone()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, [Lcom/tmobile/services/nameid/utility/Feature;
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public getValue()I
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lcom/tmobile/services/nameid/utility/Feature;->value:I
+
+    return v0
+.end method
+
+.method public isOwned()Z
+    .locals 1
+
+    .line 1
+    invoke-static {}, Lcom/tmobile/services/nameid/utility/SubscriptionHelper;->c()Lcom/tmobile/services/nameid/utility/SubscriptionHelper$State;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Lcom/tmobile/services/nameid/utility/Feature;->isOwned(Lcom/tmobile/services/nameid/utility/SubscriptionHelper$State;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public abstract isOwned(Lcom/tmobile/services/nameid/utility/SubscriptionHelper$State;)Z
+.end method

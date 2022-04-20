@@ -1,0 +1,6 @@
+.class public interface abstract Lc/d/e/q/n0;
+.super Ljava/lang/Object;
+.source "MessagesProto.java"
+
+# interfaces
+.implements Lc/d/h/o0;

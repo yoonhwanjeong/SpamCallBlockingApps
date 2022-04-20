@@ -2,6 +2,8 @@
 
 https://play.google.com/store/apps/details?id=com.tmobile.services.nameid
 
+Installations: 10.000.000+
+
 # Static analysis
 
 ## Requested permissions
