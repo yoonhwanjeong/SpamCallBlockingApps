@@ -45,5 +45,7 @@ NOT CALLED in initial tests, but is probably useful:
 ## Phone numbers tested ##
 | Number        | How it is handled        |
 | ------------- | ------------------------ |
+| (650) 555-1212| produces a name and location of caller |
 | 605-367-1378  | produces a warning       |
 | 0611945863112 | produces "suspected spam"|
+| 201-200-0014  | falgged but also identified caller ID |
