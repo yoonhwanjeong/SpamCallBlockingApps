@@ -20,7 +20,7 @@ for apk_name in os.listdir():
                 data = r.read()
 
             # parsed_data.append(BeautifulSoup(data, "xml").find_all("package"))
-            print(BeautifulSoup(data, "xml").find_all("package")[1].get("name"))
+            # print(BeautifulSoup(data, "xml").find_all("package")[1].get("name"))
 
             packages = BeautifulSoup(data, "xml").find_all("package")
 
@@ -44,4 +44,9 @@ for apk_name in os.listdir():
                 package_dicts.append({ package: class_dicts })
 
             parsed_data.append(package_dicts)
-        print(parsed_data)
+
+        for data in parsed_data:
+            for package in data:
+                for key in package.keys():
+                    print(key)
+                print("\n")
