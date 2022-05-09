@@ -64,3 +64,16 @@ After generating the similarity report (`reports/com.webascender.callerid.common
     * gets the process's name? and some application info
 ----
   * `g/f/a/b/i/v/a`
+    * has some logging functions (calls to `android/util/Log` and `java/lang/String`) - the only difference
+    * also a function with with calls to `java/lang/StringBuilder` that builds a string (and returns it) that starts with "TransportRuntime"
+  * `g/g/b/a/g/a/c`
+    * "\$this\$isFraudOrSpam"
+    * `report_call_flagged_identified`  returns 0x1 - most likely considers it `SPAM` (but could also be `FRAUD`) ?
+    * `report_call_not_blocked`			returns 0x0 (meaning it is not fraud or spam)
+    * invokes `kotlin/w/c/k` which seems to decide whether the call is spam/fraud
+    * no `kotlin/w/c/k` package in the index of the report ?
+  * `g/g/b/b/c/e`
+    * "\$this\$toCallerId"
+    * makes calls to some functions in `g/g/b/b/e/a/b`
+      * `g/g/b/b/e/a/b`
+        * found `RoomCallerId(entityType, phoneNumber, reputationLevel, displayName, displayLocation, displayImageUrl, attributionImage, attributionUrl, attributionName, profileTag, displayLineType, entityExpiredTimeMillis, sourceType, lastAccessTimeMillis, reputationCategoryId, categoryName, displayCategoryName, lineTypeId, displayDetail, displayDescription, languageTag, displayBackgroundUrldisplayBackgroundAssetType)` in a `toString()` method
