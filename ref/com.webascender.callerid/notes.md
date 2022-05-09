@@ -49,3 +49,18 @@ NOT CALLED in initial tests, but is probably useful:
 | 605-367-1378  | produces a warning       |
 | 0611945863112 | produces "suspected spam"|
 | 201-200-0014  | falgged but also identified caller ID |
+
+After generating the similarity report (`reports/com.webascender.callerid.common`) the differences in the classes need to be manually inspected:
+  * `androidx/work/impl/background/systemjob/a$a`:
+    * This decompiled smali file includes references to `androidx/work/n` which seems to contain an enum containing the following options: CONNECTED, METERED, NOT_REQUIRED, NOT_ROAMING, UNMETERED
+    * It seems this is connected to the type of cellular network that the device is connected to? probably irrelevant
+  * `androidx/work/impl/n/g`
+    * some constructor in this file is invoked with a string object
+  * `androidx/work/impl/utils/c`
+    * invokes a constructor of some class called `WorkDatabase`
+    * looks like some android scheduler library that takes into account user preference?
+  * `androidx/work/impl/utils/f` : probable class name `ProcessUtils`
+    * again some scheduling logic/process management
+    * gets the process's name? and some application info
+----
+  * `g/f/a/b/i/v/a`
