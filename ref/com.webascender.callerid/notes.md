@@ -77,3 +77,29 @@ After generating the similarity report (`reports/com.webascender.callerid.common
     * makes calls to some functions in `g/g/b/b/e/a/b`
       * `g/g/b/b/e/a/b`
         * found `RoomCallerId(entityType, phoneNumber, reputationLevel, displayName, displayLocation, displayImageUrl, attributionImage, attributionUrl, attributionName, profileTag, displayLineType, entityExpiredTimeMillis, sourceType, lastAccessTimeMillis, reputationCategoryId, categoryName, displayCategoryName, lineTypeId, displayDetail, displayDescription, languageTag, displayBackgroundUrldisplayBackgroundAssetType)` in a `toString()` method
+    * only 2 difference between the two `e.smali` files are:
+		1. a method call from `kotlin/c0/m` that takes two strings returns a 0 in `report_call_flagged_identified`, which makes it loop (it's probably a for loop as there is a variable being incremented)
+		2. the same method call from `kotlin/c0/m` that again takes two strings and returns a 0 in `report_call_flagged_identified`. which makes it loop
+----
+  * `com/google/android/gms/common/internal/p`
+    * both `report_call_flagged_identified` and `report_call_suspected_spam` execute method `b(java/lang/Object)`, which internally calls `java/util/Arrays.hashCode(java/lang/Object)` with the parameter passed to `b()` as an argument
+    * method `a(java/lang/Object, java/lang/Object)` is only executed by `report_call_flagged_identified` and looks like an `equals` method and returns 1 because the addresses of the two objects passed as parameters are equal.
+    * references `com/google/android/gms/common/internal/p$a` in the beginning, which reveals a `java/util/List<java/lang/String>` type, so `p.smali` probably contains `List<String>`'s `hashCode()` and `equals()` methods
+  * `com/google/i18n/phonenumbers/NumberParseException$a`
+    * only `report_call_suspected_spam` enumerates over a string and makes a call to a method, containing the following exceptions: INVALID_COUNTRY_CODE, NOT_A_NUMBER, TOO_SHORT_AFTER_IDD, TOO_SHORT_NSN, TOO_LONG.
+    * it seems this package initializes an enum of the `NumberParseException` type as the annotation of the class is `Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/NumberParseException$a>`
+  * `com/google/i18n/phonenumbers/NumberParseException`: i18n is Internationalization library
+    * difference is that `report_call_suspected_spam` calls the constructor and `a()`, which probably constructs the `Enum<NumberParseException>` and returns it. 
+    * the constructor expects two parameters and saves them as private variables: `Enum<NumberParseException>` and `String`.
+  * `com/google/i18n/phonenumbers/r/c`
+    * the constructor initializes hash maps mapping object to object (only called in `report_call_suspected_spam`)
+    * has these strings: zh_TW, zh_Hant, zh_HK, zh_MO which are locale variants of Chinese
+    * another method called in `report_call_suspected_spam` is `readExternal(Ljava/io/ObjectInput)`. It looks like it iterates over the parameter and calls `Ljava/io/ObjectInput.readInt()` (probably for UTF bound checks) and then calls `Ljava/io/ObjectInput.readUTF()` and adds the return variable to a set.
+  * `com/google/i18n/phonenumbers/r/f`
+    * nothing called in `report_call_flagged_identified`
+    * signature: `Ljava/util/Map<Ljava/lang/String, Lcom/google/i18n/phonenumbers/r/d>`
+    * `com/google/i18n/phonenumbers/r/d` : maybe some phone number parsing library
+    * "config", "ko", "ja", "zh", "en"
+    * this class opens "config" as an input stream (then closes the stream)
+  ----
+  * `com/hiya/common/phone/java/b$a`
