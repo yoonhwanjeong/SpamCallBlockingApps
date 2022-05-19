@@ -103,3 +103,42 @@ After generating the similarity report (`reports/com.webascender.callerid.common
     * this class opens "config" as an input stream (then closes the stream)
   ----
   * `com/hiya/common/phone/java/b$a`
+    * 100% executed by `report_call_flagged_identified` and 0% executed by `report_call_suspected_spam`
+    * `com/google/i18n/phonenumbers/h$c->values()`
+      * FIXED_LINE, FIXED_LINE_OR_MOBILE, MOBILE, PAGER, PERSONAL_NUMBER, PREMIUM_RATE, SHARED_COST, TOLL_FREE, UAN, UNKNOWN, VOICEMAIL, VOIP
+      * `i18n` - internationalization library (changing app lanuguages based on specified Android language; adapting the app to different regions), but also apparently differentiates betweem phone numbers types
+  * `com/hiya/common/phone/java/b`
+    * switch statement that only `report_call_flagged_identified` executes and returns `FIXED_OR_MOBILE`
+  * `com/hiya/common/phone/java/PhoneNormalizer$Failure`
+    * `report_call_suspected_spam` returns a PhoneNormalizer exception
+  * `com/hiya/common/phone/parser/c$c`
+    * return an exception for `report_call_suspected_spam`
+  * `com/hiya/common/phone/parser/PhoneParser$a`
+    * phone parser class (toString returns "FormattedResult(%s, %s, %s)")
+    * the only thing executed is the constructor in `report_call_flagged_identified`; initializer a PhoneParser object and 2 strings
+  * `com/hiya/common/phone/parser/PhoneParser$Failure`
+    * return an exception for `report_call_suspected_spam`
+  ----
+  * `com/hiya/stingray/manager/h2$b`
+    * 100% executed by `report_call_flagged_identified` and 0% executed by `report_call_suspected_spam`
+    * `Lcom/hiya/stingray/t/z0;->values()[Lcom/hiya/stingray/t/z0;`
+      * which is an enum with the values: OK, UNCERTAIN, SPAM, FRAUD
+    * probably stores enum values in global variables in this object; not really sure what this class actually achieves yet
+    * iterates/try-catches through: SPAM(Lcom/hiya/stingray/t/z0), FRAUD(Lcom/hiya/stingray/t/z0), NEUTRAL, SPAM(Lcom/hiya/stingray/q/c/h/a), FRAUD(Lcom/hiya/stingray/q/c/h/a), AUTO_BLOCK_PASS, AUTO_BLOCK_BLOCK, BLOCKED_STARTS_WITH, BLOCKED_BLACK_LIST, BLOCKED_AUTO_SPAM, BLOCKED_AUTO_FRAUD, BLOCKED_AUTO_PRIVATE, BLOCKED_CALL_SCREENER, ADD_BLACKLIST, REMOVE_BLACKLIST
+      * stored in 4 different global variables: a, b, c, d
+  * `com/hiya/stingray/manager/m3$e`
+    * only executed in `report_call_flagged_identified`
+    * constructor initializes a `Lcom/hiya/stingray/manager/m3` object
+      * obfuscated, but has hardcoded strings "databaseProvider", "phoneSendEventMapper", "devAnalyticsManager" and calls to a kotlin library
+      * "Completable.create { emi\u2026)\n            }\n        }"
+      * "phoneSendEvent", "Completable.create { emi\u2026 }.andThen(limitEvents())"
+    * then, in a(), a class is initialized (class has no strings and a bunch of getters and setters; 12 global variables)
+    * calls a class with "dbInitializer" in its constructor
+      * "Can\'t migrate to Realm schema version 11"  -> MongoDB Realm Android SDK ?
+      * probably the remote connection is to a Realm DB?
+      * returns a `Lio/realm/y;` object; probably a connection to the Realm db
+      * constructs a RealmQuery (`Lio/realm/RealmQuery;`)
+        * how to get the actual query? is it a parameter?
+      * invokes an `onComplete()` method (`Li/c/b0/b/f;->onComplete()V`)
+        * `Lio/realm/y;->A1(Ljava/lang/Class;)Lio/realm/RealmQuery;`
+      * not executed but interesting: "Realm is not available to limit PhoneEvents"; in order to be executed the RealmQuery is compared to 0x7d0, and if it is greater, the code with the string will be executed (throwing an IllegalStateException)
