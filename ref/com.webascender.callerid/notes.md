@@ -132,7 +132,7 @@ After generating the similarity report (`reports/com.webascender.callerid.common
       * obfuscated, but has hardcoded strings "databaseProvider", "phoneSendEventMapper", "devAnalyticsManager" and calls to a kotlin library
       * "Completable.create { emi\u2026)\n            }\n        }"
       * "phoneSendEvent", "Completable.create { emi\u2026 }.andThen(limitEvents())"
-    * then, in a(), a class is initialized (class has no strings and a bunch of getters and setters; 12 global variables)
+    * then, in a(), a `com/hiya/stingray/q/c/i/e` class is initialized
     * calls a class with "dbInitializer" in its constructor
       * "Can\'t migrate to Realm schema version 11"  -> MongoDB Realm Android SDK ?
       * probably the remote connection is to a Realm DB?
@@ -142,3 +142,70 @@ After generating the similarity report (`reports/com.webascender.callerid.common
       * invokes an `onComplete()` method (`Li/c/b0/b/f;->onComplete()V`)
         * `Lio/realm/y;->A1(Ljava/lang/Class;)Lio/realm/RealmQuery;`
       * not executed but interesting: "Realm is not available to limit PhoneEvents"; in order to be executed the RealmQuery is compared to 0x7d0, and if it is greater, the code with the string will be executed (throwing an IllegalStateException)
+  * `com/hiya/stingray/q/c/i/e`
+    * implements `io/realm/w0`
+    * method from `io/realm/f0` is called (return variable used in as an if statement condition) and an instance of `io/realm/internal/m` is created
+      * TODO what are these three internal libraries ???
+    * class has no explicit strings and a bunch of getters and setters;
+    * 12 global variables: 7 Strings, 1 Integer, 3 Booleans, 1 J
+    * TODO what is J ?
+    * this class is probably some Realm data store class
+      * MAYBE an interface for a table in the database ?
+  * `com/hiya/stingray/manager/m3$h$a`
+    * saves a PhoneEvent to the Realm DB (`report_call_flagged_identified`)
+    * Realm is "scalable alternative to SQLite"
+    * `m3$h.smali` reference; "Realm is not available to save PhoneEvent" -> condition not executed, so it probably was successful
+    * "databaseProvider", "phoneSendEventMapper", "devAnalyticsManager" in `m.smali`;
+    * also `com/hiya/stingray/q/b/v`, `com/hiya/stingray/t/i1/o0`, `com/hiya/stingray/manager/l2` might be interesting
+  * `com/hiya/stingray/q/b/v`
+    * "dbInitializer"
+    * references `com/hiya/stingray/q/b/w` -> some class type with `android/content/Context` global constant; sets up some context and probably migrates to Realm schema version 11
+  * `com/hiya/stingray/t/i1/o0`
+    * constructor (executed in both reports)
+      * give a string and a `com/hiya/stingray/q/b/x` object to the constructor
+      * "iso", "hashingCountryListProvider"
+      * and `kotlin/w/c/k;->g(Object, String)` calls
+      * save the string and `q/b/x` object type parameters to global variables
+    * two final methods: most of `a()` is executed by `report_call_flagged_identified`; `b()` is not executed in either report
+    * `a(com/hiya/stingray/t/g1/a) -> com/hiya/stingray/q/c/i/e`
+      * "phoneSendEvent" probably the method that is called from `kotlin/w/c/k`
+      * then initializes a `q/c/i/e` object and calls its constructor
+    * TODO check where this `kotlin/*` obfucated library comes from !!!
+    * TODO
+  * `com/hiya/stingray/t/g1/a`
+    * annotation `dalvik/annotation/MemberClasses` with a value = `com/hiya/stingray/t/g1/a$b`
+      * TODO annotation ??? also dalvik ???
+    * 12 global variables (1 J, 1 I, 2 Z, 2 Strings, 2 different stingray.util classes, 1 obfuscated stingray class, 3 different obfucated classes) with a lot of getters and setters once again
+    * has 2 constructors: with (`com/hiya/stingray/t/g1/a$b`) and (`com/hiya/stingray/t/g1/a$b`, `com/hiya/stingray/t/g1/a$a`) parameters
+      * the constructor with the 1 parameter is considerably large:
+        * TODO analyse
+    * from a `toString()` method:
+      * "time: ",
+      * "phone: ",
+      * "isContact: ",
+      * "direction: ",
+      * "termination: ",
+      * "profileTag: ",
+      * "phoneWithMeta: ",
+      * "userDisposition: ",
+      * "duration: ",
+      * "clientDisposition: ",
+      * "eventType: ",
+      * "isBlackListed: "
+    * (even the `toString` was called in `report_call_flagged_identified`)
+    * TODO
+  * `com/hiya/stingray/t/g1/a$b`
+    * has the same 12 global variables as `t/g1/a`
+    * 2 constructors: 1 takes no parameters and just calls the constructor of Object; the other takes a `com/hiya/stingray/t/g1/a$a` object as a parameter and just calls the `com/hiya/stingray/t/g1/a$b` default constructor (the one that takes no parameters) without using the parameter
+  * `com/hiya/stingray/t/g1/a$a`
+    * annotation `dalvik/annotation/EnclosingClass` with a value = `com/hiya/stingray/t/g1/a`
+    * another annotation of type `dalvik/annotation/InnerClass` that has name = null and accessFlags = 0x1008
+      * TODO accessFlags ???
+  * `com/hiya/stingray/q/b/x`
+    * TODO
+  * `com/hiya/stingray/manager/l2`
+    * TODO
+  * `com/hiya/stingray/manager/m3$i`
+    * initializes a `com/hiya/stingray/manager/m3` object in the constuctor (`report_call_flagged_identified`)
+  * `com/hiya/stingray/manager/m3`
+    * TODO
