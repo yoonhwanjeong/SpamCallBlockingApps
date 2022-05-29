@@ -291,6 +291,53 @@ After generating the similarity report (`reports/com.webascender.callerid.common
       * "clientDisposition: "
       * "eventType: "
       * "isBlackListed: "
+  ----
+  * `g/g/a/a/i/k/a`
+    * an Enum only executed in `report_call_flagged_identified`
+    * global variables:
+      * synthetic $VALUES:[Lg/g/a/a/i/k/a;
+      * enum AUTOVM_INTL:Lg/g/a/a/i/k/a;
+      * enum AUTOVM_PRIVATE:Lg/g/a/a/i/k/a;
+      * enum AUTOVM_REP:Lg/g/a/a/i/k/a;
+      * enum AUTOVM_UNKNOWN:Lg/g/a/a/i/k/a;
+      * enum OK:Lg/g/a/a/i/k/a;
+  * `g/g/a/a/i/k/f`
+    * an Enum only executed in `report_call_flagged_identified`
+    * global variables:
+      * synthetic $VALUES:[Lg/g/a/a/i/k/f;
+      * enum BLACKLISTED:Lg/g/a/a/i/k/f;
+      * enum NONE:Lg/g/a/a/i/k/f;
+      * enum WHITELISTED:Lg/g/a/a/i/k/f;
+  * `g/g/c/a/b/a/a`
+    * an Enum only executed in `report_call_flagged_identified`
+    * global variables:
+      * synthetic $VALUES:[Lg/g/c/a/b/a/a;
+      * enum FIXED:Lg/g/c/a/b/a/a;
+      * enum FIXED_OR_MOBILE:Lg/g/c/a/b/a/a;
+      * enum MOBILE:Lg/g/c/a/b/a/a;
+      * enum OTHER:Lg/g/c/a/b/a/a;
+      * enum PREMIUM:Lg/g/c/a/b/a/a;
+      * enum TOLL_FREE:Lg/g/c/a/b/a/a;
+      * enum UNKNOWN:Lg/g/c/a/b/a/a;
+      * enum VOIP:Lg/g/c/a/b/a/a;
+    * however this Enum also has an `id() -> String` method, that calls Enum.name(), converts it to lower case and returns it
+  ----
+  * `com/google/android/gms/common/internal/p`
+    * `a(Object, Object)` is an equals method (executed only in `report_call_flagged_identified`)
+    * `b([ Object ])` is a hashCode method executed in both `report_call_flagged_identified` and `report_call_warning`
+    * Google Mobile Services Library that contains utility classes for Google Play services
+  * `g/f/a/b/i/v/a`
+    * `b(String, String, [Object])` and `d(String) -> String` are executed in both `report_call_flagged_identified` and `report_call_warning`, while `a(String, String, Object)` is only executed in `report_call_warning`
+    * `d(String)` basically prepends "TransportRuntime." to the given parameter and returns the result
+    * for `b(String, String, [Object])` the second and third parameters are used as a format string, and then the first parameter prepended with "TransportRuntime." is logged by `android/util/Log`
+    * `a` is also logging like `b` but for a single format object instead of an array 
+  * `g/f/a/b/i/x/j/z`
+    * 100% executed in `report_call_flagged_identified`; 0% in `report_call_warning`
+    * it has a constructor, a getter, and an `apply` function
+    * `apply(Object) -> Object`
+      * `android/database/Cursor`
+      * `g/f/a/b/i/x/j/b0.C(android/database/Cursor) -> java/lang/Long`
+      * `g/f/a/b/i/x/j/b0` is interesting; it is some SQLiteDatabase interface; `C()` just gets some `long` from the given cursor
 
 ## Appendix ##
 Useful respurces:
