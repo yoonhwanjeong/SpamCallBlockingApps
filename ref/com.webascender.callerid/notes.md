@@ -43,6 +43,7 @@ NOT CALLED in initial tests, but is probably useful:
   - StingRay is a cellular phone surveillance device
 
 ## Phone numbers tested ##
+## TODO include screenshots ##
 | Number        | How it is handled        |
 | ------------- | ------------------------ |
 | (650) 555-1212| produces a name and location of caller |
@@ -129,9 +130,6 @@ After generating the similarity report (`reports/com.webascender.callerid.common
   * `com/hiya/stingray/manager/m3$e`
     * only executed in `report_call_flagged_identified`
     * constructor initializes a `Lcom/hiya/stingray/manager/m3` object
-      * obfuscated, but has hardcoded strings "databaseProvider", "phoneSendEventMapper", "devAnalyticsManager" and calls to a kotlin library
-      * "Completable.create { emi\u2026)\n            }\n        }"
-      * "phoneSendEvent", "Completable.create { emi\u2026 }.andThen(limitEvents())"
     * then, in a(), a `com/hiya/stingray/q/c/i/e` class is initialized
     * calls a class with "dbInitializer" in its constructor
       * "Can\'t migrate to Realm schema version 11"  -> MongoDB Realm Android SDK ?
@@ -148,7 +146,7 @@ After generating the similarity report (`reports/com.webascender.callerid.common
       * TODO what are these three internal libraries ???
     * class has no explicit strings and a bunch of getters and setters;
     * 12 global variables: 7 Strings, 1 Integer, 3 Booleans, 1 J
-    * TODO what is J ?
+      * J means `long` datatype
     * this class is probably some Realm data store class
       * MAYBE an interface for a table in the database ?
   * `com/hiya/stingray/manager/m3$h$a`
@@ -170,15 +168,20 @@ After generating the similarity report (`reports/com.webascender.callerid.common
     * `a(com/hiya/stingray/t/g1/a) -> com/hiya/stingray/q/c/i/e`
       * "phoneSendEvent" probably the method that is called from `kotlin/w/c/k`
       * then initializes a `q/c/i/e` object and calls its constructor
-    * TODO check where this `kotlin/*` obfucated library comes from !!!
-    * TODO
+      * it appears that the method gets values from `t/g1/a` and puts them in `q/c/i/e`
+    * TODO check where this `kotlin/*` obfuscated library comes from !!!
+    * `b(com/hiya/stingray/q/c/i/e) -> com/hiya/stingray/t/g1/a`
+      * "realmPhoneSendEvent" (again probably a method name)
+      * "(this as java.lang.String).toUpperCase(locale)", "null cannot be cast to non-null type java.lang.String", "Locale.ROOT"
+      * "PhoneSendEvent.newBuilder().build()"
   * `com/hiya/stingray/t/g1/a`
     * annotation `dalvik/annotation/MemberClasses` with a value = `com/hiya/stingray/t/g1/a$b`
-      * TODO annotation ??? also dalvik ???
+      * probably a java @ annotation
+      * dalvik is binary bytecode
     * 12 global variables (1 J, 1 I, 2 Z, 2 Strings, 2 different stingray.util classes, 1 obfuscated stingray class, 3 different obfucated classes) with a lot of getters and setters once again
+      * I is `int`; Z is `boolean`
     * has 2 constructors: with (`com/hiya/stingray/t/g1/a$b`) and (`com/hiya/stingray/t/g1/a$b`, `com/hiya/stingray/t/g1/a$a`) parameters
-      * the constructor with the 1 parameter is considerably large:
-        * TODO analyse
+      * the constructor with the 1 parameter is considerably large: it probably copies the object variables from the `t/g1/a$b` parameter to `t/g1/a`
     * from a `toString()` method:
       * "time: ",
       * "phone: ",
@@ -193,19 +196,104 @@ After generating the similarity report (`reports/com.webascender.callerid.common
       * "eventType: ",
       * "isBlackListed: "
     * (even the `toString` was called in `report_call_flagged_identified`)
-    * TODO
+    * `m() -> com/hiya/stingray/t/g1/a$b` is interesting; it invokes a `t/g1/a$b` object and calls it constructor with `0x0` as a parameter and then returns the instance of the `a$b` object
   * `com/hiya/stingray/t/g1/a$b`
     * has the same 12 global variables as `t/g1/a`
     * 2 constructors: 1 takes no parameters and just calls the constructor of Object; the other takes a `com/hiya/stingray/t/g1/a$a` object as a parameter and just calls the `com/hiya/stingray/t/g1/a$b` default constructor (the one that takes no parameters) without using the parameter
   * `com/hiya/stingray/t/g1/a$a`
     * annotation `dalvik/annotation/EnclosingClass` with a value = `com/hiya/stingray/t/g1/a`
     * another annotation of type `dalvik/annotation/InnerClass` that has name = null and accessFlags = 0x1008
-      * TODO accessFlags ???
+      * accessFlags probably = ACC_SYNTHETIC | ACC_STATIC (https://github.com/bonifaido/dexmaker/blob/master/dx/src/main/java/com/android/dx/rop/code/AccessFlags.java)
   * `com/hiya/stingray/q/b/x`
-    * TODO
+    * "hashingCountriesDao"
+      * DAOs - data access objects: "Room persistence library (used to store the app's data) requires defining daos to interact with stored data" (https://developer.android.com/training/data-storage/room/accessing-data)
+    * only constructor is called in both reports
+    * `a()` references `g/g/c/a/a/a/c` and returns a `Collection` (probably creates an `ImmutableSet` as it is referenced in hard-coded strings)
   * `com/hiya/stingray/manager/l2`
-    * TODO
+    * only the 2 constructors called in both reports
+      * "context"
+      * "appSettingsManager"
+      * sets the global variables to the 2 constructor parameters (`Context` and `com/hiya/stingray/manager/i1`)
+    * `b()`: "Super calls with default arguments not supported in this target, function: **failedToFindEvent**"
+    * `a()`: "eventDestination", "destination", "throwable.javaClass.name", **"Failed to Find Phone Event"**
+      * TODO `p2` not initialized ?
+    * `c()`: "throwable", **"Failed to Save Phone Event"**
+      * gets results from `kotlin/s/b0.c(Lkotlin/l) -> Ljava/util/Map`
+    * `d()`: "throwable", **"Failed to Send Phone Events"**
+      * gets results from `kotlin/s/b0.c(Lkotlin/l) -> Ljava/util/Map` as well
+    * `e()`
+      * @Signature: 	"(", "java/lang/String;", "java/util/Map<", "java/lang/String;", "java/lang/String;", ">)"
+      * "eventName", "attributes"; iterates through the attributes; puts the keys and values (Strings) of a map to an `android/os/Bundle`
+      * "app version", "11.0.1-8647"; also puts that in the `android/os/Bundle`
+      * **"context.resources.configuration.locale", java/util/Locale;->getDisplayCountry()**
+      * `android/os/Build$VERSION;->SDK_INT`, "os"
+      * `android/os/Build;->MODEL`, "device"
+      * `com/hiya/stingray/util/d0;->b(Landroid/content/Context;)`, "no"
+      * `com/google/common/base/j;->f(Ljava/lang/Object;)`, "carrier"
+      * `com/google/common/base/j;->f(Ljava/lang/Object;)`, "radio"
+      * `com/google/firebase/analytics/FirebaseAnalytics;->a(Ljava/lang/String;Landroid/os/Bundle;)` the String parameter is from `eventName`; the Bundle is a bundle with all data collected from this method
+    * so probably some PhoneEvent DAO manager ?
   * `com/hiya/stingray/manager/m3$i`
     * initializes a `com/hiya/stingray/manager/m3` object in the constuctor (`report_call_flagged_identified`)
   * `com/hiya/stingray/manager/m3`
-    * TODO
+    * obfuscated, but has hardcoded strings "databaseProvider", "phoneSendEventMapper", "devAnalyticsManager" and calls to a kotlin library
+    * "Completable.create { emi\u2026)\n            }\n        }"
+    * "phoneSendEvent", "Completable.create { emi\u2026 }.andThen(limitEvents())"
+    * `k(com/hiya/stingray/t/g1/a) -> i/c/b0/b/e` is interesting, and is only executed in `report_call_flagged_identified`
+      * "phoneSendEvent" is probably a method that is executed (the same kotlin pattern)
+      * saving a "phone event" with Realm ?
+      * TODO what is i/c/b0/b/e ?
+      * so this method creates some Completables, but the actual things to be completed come from `i/c/b0/b/e;->d(Li/c/b0/b/i;)Li/c/b0/b/e` I think
+  * `g/g/c/a/a/a/c`
+    * library that pattern matches country codes
+
+  * `com/hiya/stingray/q/c/g/a`
+    * 0% executed in `report_call_suspected_spam`; 78% in `report_call_flagged_identified`
+    * probably an Enum type; global variables:
+      * $VALUES:[Lcom/hiya/stingray/q/c/g/a;
+      * enum BLOCK_EVENT:Lcom/hiya/stingray/q/c/g/a;
+      * enum PHONE_CALL:Lcom/hiya/stingray/q/c/g/a;
+      * enum TEXT_MESSAGE:Lcom/hiya/stingray/q/c/g/a;
+      * type:Ljava/lang/String; (probably what type of enum it is? "BLOCK_EVENT", "PHONE_CALL", etc.)
+    * `PHONE_CALL`: "EventProfileCallEvent"
+    * `TEXT_MESSAGE`: "EventProfileTextEvent"
+    * `BLOCK_EVENT`: "EventProfileBlockEvent"
+    * initialize each enum type (map it to an integer), and put all enum values in $VALUES
+
+  * `com/hiya/stingray/q/c/h/a`
+    * 0% executed in `report_call_suspected_spam`; 89% in **`report_call_flagged_identified`**
+    * again an Enum; global variables:
+      * synthetic $VALUES:[Lcom/hiya/stingray/q/c/h/a;
+      * enum **FRAUD**:Lcom/hiya/stingray/q/c/h/a;
+      * enum **NEUTRAL**:Lcom/hiya/stingray/q/c/h/a;
+      * enum **SPAM**:Lcom/hiya/stingray/q/c/h/a;
+    * also an @Signature annotation: `Ljava/lang/Enum<Lcom/hiya/stingray/q/c/h/a;>`
+  * `com/hiya/stingray/q/c/h/b`
+    * again 0% executed in `report_call_suspected_spam`; 86% in `report_call_flagged_identified`
+    * again an Enum with global vars:
+      * synthetic $VALUES:[Lcom/hiya/stingray/q/c/h/b;
+      * enum ADD_BLACKLIST:Lcom/hiya/stingray/q/c/h/b;
+      * enum REMOVE_BLACKLIST:Lcom/hiya/stingray/q/c/h/b;
+  * `com/hiya/stingray/t/g1/a`
+    * 3-4% executed in `report_call_suspected_spam` (only `m()` that calls the constructor of `a$b`); 98% in `report_call_flagged_identified`
+    * `a$b` is some internal class that has many global variables; its constructor basically just creates an Object
+    * the constructor calls `a$b`'s getters, performs null checks whenever Objects are returned, and sets the returned variables as global variables
+    * many getters and setters, and a `toString()` method that reveals what the variables are:
+      * "time: "
+      * "phone: "
+      * "isContact: "
+      * "direction: "
+      * "termination: "
+      * "profileTag: "
+      * "phoneWithMeta: "
+      * "userDisposition: "
+      * "duration: "
+      * "clientDisposition: "
+      * "eventType: "
+      * "isBlackListed: "
+
+## Appendix ##
+Useful respurces:
+  * https://source.android.com/devices/tech/dalvik/dex-format
+  * http://pallergabor.uw.hu/androidblog/dalvik_opcodes.html
+  * https://blog.katastros.com/a?ID=00500-8ef6673a-811e-487b-99fa-6026d33dd877
