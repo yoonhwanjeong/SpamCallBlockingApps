@@ -51,7 +51,7 @@ NOT CALLED in initial tests, but is probably useful:
 | 0611945863112 | produces "suspected spam"|
 | 201-200-0014  | falgged but also identified caller ID |
 
-After generating the similarity report (`reports/com.webascender.callerid.common`) the differences in the classes need to be manually inspected:
+After generating the report (`reports/com.webascender.callerid.diff`) the differences in the classes need to be manually inspected:
   * `androidx/work/impl/background/systemjob/a$a`:
     * This decompiled smali file includes references to `androidx/work/n` which seems to contain an enum containing the following options: CONNECTED, METERED, NOT_REQUIRED, NOT_ROAMING, UNMETERED
     * It seems this is connected to the type of cellular network that the device is connected to? probably irrelevant
@@ -68,16 +68,22 @@ After generating the similarity report (`reports/com.webascender.callerid.common
     * has some logging functions (calls to `android/util/Log` and `java/lang/String`) - the only difference
     * also a function with with calls to `java/lang/StringBuilder` that builds a string (and returns it) that starts with "TransportRuntime"
   * `g/g/b/a/g/a/c`
-    * "\$this\$isFraudOrSpam"
+    * "\$this\$isFraudOrSpam" called from the parameter of type `g/g/b/c/q`
     * `report_call_flagged_identified`  returns 0x1 - most likely considers it `SPAM` (but could also be `FRAUD`) ?
     * `report_call_not_blocked`			returns 0x0 (meaning it is not fraud or spam)
     * invokes `kotlin/w/c/k` which seems to decide whether the call is spam/fraud
     * no `kotlin/w/c/k` package in the index of the report ?
+    * basically this function receives an Enum as a parameter and determines whether it is `SPAM` or `FRAUD`
+    * it is more interesting that the function is called in:
+      * `com/hiya/client/callerid/ui/incallui/c`
+      * `com/hiya/stingray/l`
+      * `g/g/b/a/g/a/b`
+    * `g.g.b.c.f->v()` seems to actually return whether something is `FRAUD` or `SPAM`, so where is `g/g/b/c/f`'s constructor called? TODO search for `g/g/b/c/h;->`
   * `g/g/b/b/c/e`
     * "\$this\$toCallerId"
     * makes calls to some functions in `g/g/b/b/e/a/b`
       * `g/g/b/b/e/a/b`
-        * found `RoomCallerId(entityType, phoneNumber, reputationLevel, displayName, displayLocation, displayImageUrl, attributionImage, attributionUrl, attributionName, profileTag, displayLineType, entityExpiredTimeMillis, sourceType, lastAccessTimeMillis, reputationCategoryId, categoryName, displayCategoryName, lineTypeId, displayDetail, displayDescription, languageTag, displayBackgroundUrldisplayBackgroundAssetType)` in a `toString()` method
+        * found `RoomCallerId(entityType, phoneNumber, reputationLevel, displayName, displayLocation, displayImageUrl, attributionImage, attributionUrl, attributionName, profileTag, displayLineType, entityExpiredTimeMillis, sourceType, lastAccessTimeMillis, reputationCategoryId, categoryName, displayCategoryName, lineTypeId, displayDetail, displayDescription, languageTag, displayBackgroundUrl, displayBackgroundAssetType)` in a `toString()` method
     * only 2 difference between the two `e.smali` files are:
 		1. a method call from `kotlin/c0/m` that takes two strings returns a 0 in `report_call_flagged_identified`, which makes it loop (it's probably a for loop as there is a variable being incremented)
 		2. the same method call from `kotlin/c0/m` that again takes two strings and returns a 0 in `report_call_flagged_identified`. which makes it loop
@@ -107,7 +113,7 @@ After generating the similarity report (`reports/com.webascender.callerid.common
     * 100% executed by `report_call_flagged_identified` and 0% executed by `report_call_suspected_spam`
     * `com/google/i18n/phonenumbers/h$c->values()`
       * FIXED_LINE, FIXED_LINE_OR_MOBILE, MOBILE, PAGER, PERSONAL_NUMBER, PREMIUM_RATE, SHARED_COST, TOLL_FREE, UAN, UNKNOWN, VOICEMAIL, VOIP
-      * `i18n` - internationalization library (changing app lanuguages based on specified Android language; adapting the app to different regions), but also apparently differentiates betweem phone numbers types
+      * `i18n` - internationalization library (changing app lanuguages based on specified Android language; adapting the app to different regions), but also apparently differentiates between phone numbers types
   * `com/hiya/common/phone/java/b`
     * switch statement that only `report_call_flagged_identified` executes and returns `FIXED_OR_MOBILE`
   * `com/hiya/common/phone/java/PhoneNormalizer$Failure`
