@@ -78,7 +78,47 @@ After generating the report (`reports/com.webascender.callerid.diff`) the differ
       * `com/hiya/client/callerid/ui/incallui/c`
       * `com/hiya/stingray/l`
       * `g/g/b/a/g/a/b`
-    * `g.g.b.c.f->v()` seems to actually return whether something is `FRAUD` or `SPAM`, so where is `g/g/b/c/f`'s constructor called? TODO search for `g/g/b/c/h;->`
+    * `g.g.b.c.f->v()` seems to actually return whether something is `FRAUD` or `SPAM`, `g/g/b/c/f`'s constructor is called:
+      * `com/hiya/client/callerid/ui/overlay/g/e`: probably deals with displaying a phone number; "formattedPhone", "rawPhone", "contact", ViewUtil
+      * `com/hiya/stingray/e`: Found some variable names that probably reveal the names of some objects:
+        | Probable Class Name | Library |
+        | -------- | ---------------- |
+        | Context | android/content/Context |
+        | BlockManagerLazy | com/hiya/stingray/manager/w1 |
+        | DeviceUserInfoManager | com/hiya/stingray/manager/o2 |
+        | CallScreenerHelperLazy | com/hiya/stingray/service/a/b |
+        | RxEventBus | com/hiya/stingray/util/a0 |
+        | ContactManager | com/hiya/stingray/manager/y1 |
+      * `g/g/b/a/g/a/b`
+      * `g/g/b/a/g/a/i/a`: gets the caller id of a parameter, then calls some `g/g/b/c/f` getters
+        * `g()` here is really interesting although it is not called in any of the reports; it references `g/g/a/a/i/p/c;->getReputationLevel()` and then decides whether the call is SPAM or FRAUD. apparently there are different FRAUD enums
+      * `g/g/b/a/j/f`, `g/g/b/a/j/k`, `g/g/b/a/j/o`: they appear to be initializing DAOs
+      * `g/g/b/b/c/e`: `this.toCallerId()` in `a()`; may be useful to see what calls this
+        * `a()` iterates through `g/g/b/c/q;->values()` and compares each enum values's `name()` to a variable taken from `g/g/b/b/e/a/b;->x()`
+        * `g/g/b/b/e/a/b;->x()`: `RoomCallerId`'s getter for `reputationLevel`; `RoomCallerId` is probably a DAO
+        * `g/g/b/b/e/a/b` is initialized in `g/g/b/b/a/e` and `g/g/b/b/c/b`
+          * `p()` in `g.g.b.b.a.e` builds a `SELECT * FROM caller_ids` string and then gives the SQL query string to `androidx/room/m;->c()` (double check that ???), where it gets values from a `Map` in the global variable `n`. The values in the map are added in `g()`, where they are taken from a parameter (at index `androidx/room/m;->l`)
+          * `androidx/room/m;->g()` is called in:
+            * `androidx/work/impl/n/c`
+            * `androidx/work/impl/n/f`
+            * `androidx/work/impl/n/i`
+            * `androidx/work/impl/n/l`
+            * `androidx/work/impl/n/r`
+            * `androidx/work/impl/n/u`
+            * `g/g/b/b/a/c`
+            * `g/g/b/b/a/e`
+            * `g/g/b/b/a/g`
+            * `g/g/b/b/a/i`
+            * `g/g/b/b/a/k`
+            * they all look like internal db calls
+      * "reputationLevel"'s getter is `g/g/b/c/f;->v()`, and the global variable name is `g/g/b/c/f;->h`; only the constructor sets h
+      * `g/g/b/c/o` is probably `ProfileIconType` (possible values: BUSINESS, WARN, PERSON, STOP, PREMIUM, NONE)
+      * `g/g/b/c/q` is probably `ReputationLevel` (or something like that); its possible values are: OK, UNCERTAIN, SPAM, FRAUD
+  * `HttpURLConnection` calls would be interesting to analyse, but there are simply too many calls in too many obfuscated places and they are mostly google or android libraries; these are probably interesting, as they contain "URL":
+    * `g/f/a/d/a/a/b`: pings https://pagead2.googlesyndication.com/pagead/gen_204?id=gmob-apps ; 0% of the instructions are executed
+    * `g/f/c/a/f0/s0`, `u0`, `v0`, `x0$c`: many references to Google Protocol Buffers
+    * `g/g/a/a/i/o/b$b`: global variables names: attributionDTO, displayCategory, displayImageString, displayLocation, displayMessage, displayName, entityType, localizedLineType, profileTag, reputationLevel; but only getters and setters, and 0% are executed
+    * `g/g/a/a/k/j`: interesting, performs some `m/z$a;->request()`s, and may throw a `HiyaExcessiveAuthRequestsException` so probably some hiya internal http requests
   * `g/g/b/b/c/e`
     * "\$this\$toCallerId"
     * makes calls to some functions in `g/g/b/b/e/a/b`
