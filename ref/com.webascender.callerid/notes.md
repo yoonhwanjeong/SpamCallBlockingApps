@@ -119,6 +119,24 @@ After generating the report (`reports/com.webascender.callerid.diff`) the differ
     * `g/f/c/a/f0/s0`, `u0`, `v0`, `x0$c`: many references to Google Protocol Buffers
     * `g/g/a/a/i/o/b$b`: global variables names: attributionDTO, displayCategory, displayImageString, displayLocation, displayMessage, displayName, entityType, localizedLineType, profileTag, reputationLevel; but only getters and setters, and 0% are executed
     * `g/g/a/a/k/j`: interesting, performs some `m/z$a;->request()`s, and may throw a `HiyaExcessiveAuthRequestsException` so probably some hiya internal http requests
+  * grepping `json` produces some interesting results
+    * references to a `Hiya_Services.json` file
+    * the application uses Zipkin for reporting
+    * `com/hiya/stingray/manager/u3`: managing payed subscriptions; uses `revenuecat/purchases`
+    * `g/g/a/a/g/h` contains HTTP GET and POST request annotations:
+      * GET request to `hash/hashCountries`
+      * POST requests to: `auth/token`, `phone_numbers/feedback`, `phone_numbers/events`
+    * `g/g/a/a/i/p/c` is probably EventProfile object, because `g/g/a/a/g/i/a` annotates a POST request to `phone_numbers/eventProfile` and expects a json response of `g/g/a/a/i/p/c`
+    * `g/g/a/a/k/e` builds some json objects and (probably) saves them to some `jarvis_log` in `Downloads` (but only the constructor is executed)
+    * `g/g/a/b/j1/e` is really really interesting:
+      * only the 2 constructors are called, but the other methods contain interesting cryptographic information although they were not called in any of the produced reports
+      * the default constructor (no parameters given) creates and saves as global variables 2 `java/util/Date` objects: to one of them a `0x0` is passed (so `1970-01-01T00:00:00.000Z`), but to the other `0x23d19d43c00` (which would be `2048-01-01T00:00:00.000Z`) is passed (probably when the certificates in the other functions will expire)
+      * the other constructor receives 4 parameters and extracts/gets from them the variables with these names respectively: "userInfoProvider", "productInfoProvider", "idProvider", "measurable"
+      * `d()` receives a `java/security/PrivateKey` and `ava/security/cert/Certificate` as parameters and uses them together with `com/nimbusds/jose` to generate a JWS token; could be interesting to check where `d()` is called (`rgrep "g/g/a/b/j1/e->d("`)
+      * `e()` gets an RSA instance from `java/security/KeyPairGenerator` AndroidKeyStore and generates a `KeyGenParameterSpec` (then does the same for SHA-512 and PKCS1) (it generates keys pairs for the 3 cryptographic standards)
+      * `f()` builds a GSON object with the following fields: createdAt, productName, installationId, deviceId, accountUserId, userPhoneNumber; and then converts it to a string
+      * `i()` then has hardcoded RSA `PKCS8EncodedKeySpec` string, and a X509 (public) key. This is Hiya's public key, and the method generates a private key from it, as there is an error string "Failed to generate private key based on the Hiya key." if an exception occurs
+      * `k()` base64 decodes `6bef0890a22741259d0d28035810f5cc` and its second parameter and apparently xors them together
   * `g/g/b/b/c/e`
     * "\$this\$toCallerId"
     * makes calls to some functions in `g/g/b/b/e/a/b`
@@ -127,6 +145,22 @@ After generating the report (`reports/com.webascender.callerid.diff`) the differ
     * only 2 difference between the two `e.smali` files are:
 		1. a method call from `kotlin/c0/m` that takes two strings returns a 0 in `report_call_flagged_identified`, which makes it loop (it's probably a for loop as there is a variable being incremented)
 		2. the same method call from `kotlin/c0/m` that again takes two strings and returns a 0 in `report_call_flagged_identified`. which makes it loop
+  * grepping for `g/g/b/b/e/a/b` found:
+    * `RoomCallerId`
+    * `g/g/b/b/a/e$a`: "INSERT OR REPLACE INTO `caller_ids` (`_id`,`entity_type`,`phone_number`..." in `g/g/b/b/a/e$a->d()`
+    * `g/g/b/b/a/e`: selects the caller_ids from the room db
+    * `g/g/b/b/c/e`: converts a `RoomCallerId` object to a `CallerId` object
+    * `g/g/b/b/d/c`: iterates through sets given as parameters and references `com/hiya/client/database/db/HiyaRoomDb` to get `phone`, `phoneNumbers`, and `callerId`s
+  * grepping for `sql` found:
+    * as expected the reports contain mostly references to sqlite, some `java.sql` classes, like "Timestamp", "Date", "Time"
+    * `com/hiya/client/repost/db/a` opens an "Elixir.db" and creates a table called `stored_requests` with `type`, `body`, and `retry_count` fields; and `com/hiya/client/repost/db/a` has the relevant select, update, insert, and delete queries; this is interesting as it might indicate some http requests are being built and stored in this database (although note this is not executed in any of the reports)
+    * `com/hiya/stingray/q/b/a0$a` reads some sql selection query strings and requires permissions to read SMSs
+    * **`com/hiya/stingray/q/b/k`** **uses the call logs from the internal database; probably uses them to flag caller ids with certain call patterns that could indicate they are spam**; could be useful to see where this class is called. Also, each around 42% of this class is executed in each of the 4 reports
+    * `f/t/a/g/a` compiles and executes sql statements; could be useful to check where it is called and which sql statements are executed
+    * `f/t/a/g/b` enable write ahead logging for the sqlite db
+    * **`g/f/a/b/i/x/j/b0` operates on a `SQLiteEventStore` db object (the name of the table is `events` so it probably saves the phone calls and uses the previous call data to detect spam callers; the more interesting db table variable names are "context_id", "transport_name", "timestamp_ms", "uptime_ms", "payload_encoding", "code", "num_attempts" *especially*, "inline", "payload", "events")**; inserts get the values to insert from the parameters, updates get data from a iterator that is passed as a parameter; also insert is executed in each report
+    * `g/f/a/b/i/x/j/h0` creates/alters/drops the following tables: "events", "event_metadata", "transport_contexts", "event_payloads"; the sql modifiers are not executed in any of the reports
+    * `g/f/a/b/i/x/j/s` gets writeable sql database; may be useful to check what calls its `a()` method (it is executed)
 ----
   * `com/google/android/gms/common/internal/p`
     * both `report_call_flagged_identified` and `report_call_suspected_spam` execute method `b(java/lang/Object)`, which internally calls `java/util/Arrays.hashCode(java/lang/Object)` with the parameter passed to `b()` as an argument
@@ -390,3 +424,5 @@ Useful respurces:
   * https://source.android.com/devices/tech/dalvik/dex-format
   * http://pallergabor.uw.hu/androidblog/dalvik_opcodes.html
   * https://blog.katastros.com/a?ID=00500-8ef6673a-811e-487b-99fa-6026d33dd877
+
+NOTE: what I did not take into account into the beginning: the google/android internal libraries should be ignored as they are mostly (if not always) irrelevant
