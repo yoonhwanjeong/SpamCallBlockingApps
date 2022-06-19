@@ -14,7 +14,7 @@ differences = {}
 # iterate through all application directories
 for apk_name in os.listdir():
     if os.path.isdir(apk_name):
-        print("apk: ", apk_name)
+        print("Analysing apk: ", apk_name)
         reports = []
         reports_names = []
         differences[apk_name] = []
@@ -75,3 +75,4 @@ for apk, diffs in differences.items():
     print("Differences in analysed application", apk + ":")
     for difference in diffs:
         print("Found a difference in the class", difference["classes"][0].get("name"), "for reports", difference["report_0"], "and", difference["report_i"])
+    print("\n")
