@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.measurement.internal</a></li>
+        <li><i class="ico ico-class"></i> d4.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class final Lcom/google/android/gms/measurement/internal/d4;
+.super Ljava/lang/Object;
+.source "SourceFile"
+.implements Ljava/lang/Runnable;
+
+
+.field final synthetic f:Lcom/google/android/gms/internal/measurement/t3;
+.field final synthetic g:Landroid/content/ServiceConnection;
+.field final synthetic h:Lcom/google/android/gms/measurement/internal/e4;
+
+
+.method constructor <init>(Lcom/google/android/gms/measurement/internal/e4;Lcom/google/android/gms/internal/measurement/t3;Landroid/content/ServiceConnection;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/measurement/internal/d4;->h:Lcom/google/android/gms/measurement/internal/e4;</span>
+<span class="">	iput-object p2, p0, Lcom/google/android/gms/measurement/internal/d4;->f:Lcom/google/android/gms/internal/measurement/t3;</span>
+<span class="">	iput-object p3, p0, Lcom/google/android/gms/measurement/internal/d4;->g:Landroid/content/ServiceConnection;</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public final run()V
+<span class="">	.locals 14</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/measurement/internal/d4;->h:Lcom/google/android/gms/measurement/internal/e4;</span>
+<span class="">	iget-object v1, v0, Lcom/google/android/gms/measurement/internal/e4;->b:Lcom/google/android/gms/measurement/internal/g4;</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/measurement/internal/e4;->a(Lcom/google/android/gms/measurement/internal/e4;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v2, p0, Lcom/google/android/gms/measurement/internal/d4;->f:Lcom/google/android/gms/internal/measurement/t3;</span>
+<span class="">	iget-object v3, p0, Lcom/google/android/gms/measurement/internal/d4;->g:Landroid/content/ServiceConnection;</span>
+<span class="">	iget-object v4, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v4}, Lcom/google/android/gms/measurement/internal/r4;->e()Lcom/google/android/gms/measurement/internal/o4;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v4}, Lcom/google/android/gms/measurement/internal/l5;->h()V</span>
+<span class="">	new-instance v4, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v4}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	const-string v5, "package_name"</span>
+<span class="">	invoke-virtual {v4, v5, v0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-interface {v2, v4}, Lcom/google/android/gms/internal/measurement/t3;->N0(Landroid/os/Bundle;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	iget-object v2, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/android/gms/measurement/internal/r4;->c()Lcom/google/android/gms/measurement/internal/n3;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/android/gms/measurement/internal/n3;->o()Lcom/google/android/gms/measurement/internal/l3;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v4, "Install Referrer Service returned a null response"</span>
+<span class="">	invoke-virtual {v2, v4}, Lcom/google/android/gms/measurement/internal/l3;->a(Ljava/lang/String;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception v2</span>
+<span class="">	iget-object v4, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v4}, Lcom/google/android/gms/measurement/internal/r4;->c()Lcom/google/android/gms/measurement/internal/n3;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v4}, Lcom/google/android/gms/measurement/internal/n3;->o()Lcom/google/android/gms/measurement/internal/l3;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v5, "Exception occurred while retrieving the Install Referrer"</span>
+<span class="">	invoke-virtual {v4, v5, v2}, Lcom/google/android/gms/measurement/internal/l3;->b(Ljava/lang/String;Ljava/lang/Object;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	move-object v2, v0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v4, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v4}, Lcom/google/android/gms/measurement/internal/r4;->e()Lcom/google/android/gms/measurement/internal/o4;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v4}, Lcom/google/android/gms/measurement/internal/l5;->h()V</span>
+<span class="">	if-nez v2, :cond_1</span>
+<span class="">	goto/16 :goto_3</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v4, "install_begin_timestamp_seconds"</span>
+<span class="">	const-wide/16 v5, 0x0</span>
+<span class="">	invoke-virtual {v2, v4, v5, v6}, Landroid/os/Bundle;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v7</span>
+<span class="">	const-wide/16 v9, 0x3e8</span>
+<span class="">	mul-long v7, v7, v9</span>
+<span class="">	cmp-long v4, v7, v5</span>
+<span class="">	if-nez v4, :cond_2</span>
+<span class="">	iget-object v0, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/r4;->c()Lcom/google/android/gms/measurement/internal/n3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/n3;->r()Lcom/google/android/gms/measurement/internal/l3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "Service response is missing Install Referrer install timestamp"</span>
+<span class="">	invoke-virtual {v0, v2}, Lcom/google/android/gms/measurement/internal/l3;->a(Ljava/lang/String;)V</span>
+<span class="">	goto/16 :goto_3</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string v4, "install_referrer"</span>
+<span class="">	invoke-virtual {v2, v4}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	if-eqz v4, :cond_a</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/String;->isEmpty()Z</span>
+<span class="">	move-result v11</span>
+<span class="">	if-eqz v11, :cond_3</span>
+<span class="">	goto/16 :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	iget-object v11, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v11}, Lcom/google/android/gms/measurement/internal/r4;->c()Lcom/google/android/gms/measurement/internal/n3;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-virtual {v11}, Lcom/google/android/gms/measurement/internal/n3;->w()Lcom/google/android/gms/measurement/internal/l3;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	const-string v12, "InstallReferrer API result"</span>
+<span class="">	invoke-virtual {v11, v12, v4}, Lcom/google/android/gms/measurement/internal/l3;->b(Ljava/lang/String;Ljava/lang/Object;)V</span>
+<span class="">	iget-object v11, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v11}, Lcom/google/android/gms/measurement/internal/r4;->G()Lcom/google/android/gms/measurement/internal/t9;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	const-string v12, "?"</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v13</span>
+<span class="">	if-eqz v13, :cond_4</span>
+<span class="">	invoke-virtual {v12, v4}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_4</span>
+<span class="">	new-instance v4, Ljava/lang/String;</span>
+<span class="">	invoke-direct {v4, v12}, Ljava/lang/String;-><init>(Ljava/lang/String;)V</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-static {v4}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v11, v4}, Lcom/google/android/gms/measurement/internal/t9;->j0(Landroid/net/Uri;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	if-nez v4, :cond_5</span>
+<span class="">	iget-object v0, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/r4;->c()Lcom/google/android/gms/measurement/internal/n3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/n3;->o()Lcom/google/android/gms/measurement/internal/l3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "No campaign params defined in Install Referrer result"</span>
+<span class="">	invoke-virtual {v0, v2}, Lcom/google/android/gms/measurement/internal/l3;->a(Ljava/lang/String;)V</span>
+<span class="">	goto/16 :goto_3</span>
+<span class="">	:cond_5</span>
+<span class="">	const-string v11, "medium"</span>
+<span class="">	invoke-virtual {v4, v11}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	if-eqz v11, :cond_7</span>
+<span class="">	const-string v12, "(not set)"</span>
+<span class="">	invoke-virtual {v12, v11}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z</span>
+<span class="">	move-result v12</span>
+<span class="">	if-nez v12, :cond_7</span>
+<span class="">	const-string v12, "organic"</span>
+<span class="">	invoke-virtual {v12, v11}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z</span>
+<span class="">	move-result v11</span>
+<span class="">	if-nez v11, :cond_7</span>
+<span class="">	const-string v11, "referrer_click_timestamp_seconds"</span>
+<span class="">	invoke-virtual {v2, v11, v5, v6}, Landroid/os/Bundle;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v11</span>
+<span class="">	mul-long v11, v11, v9</span>
+<span class="">	cmp-long v2, v11, v5</span>
+<span class="">	if-nez v2, :cond_6</span>
+<span class="">	iget-object v0, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/r4;->c()Lcom/google/android/gms/measurement/internal/n3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/n3;->o()Lcom/google/android/gms/measurement/internal/l3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "Install Referrer is missing click timestamp for ad campaign"</span>
+<span class="">	invoke-virtual {v0, v2}, Lcom/google/android/gms/measurement/internal/l3;->a(Ljava/lang/String;)V</span>
+<span class="">	goto/16 :goto_3</span>
+<span class="">	:cond_6</span>
+<span class="">	const-string v2, "click_timestamp"</span>
+<span class="">	invoke-virtual {v4, v2, v11, v12}, Landroid/os/Bundle;->putLong(Ljava/lang/String;J)V</span>
+<span class="">	:cond_7</span>
+<span class="">	iget-object v2, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/android/gms/measurement/internal/r4;->A()Lcom/google/android/gms/measurement/internal/c4;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	iget-object v2, v2, Lcom/google/android/gms/measurement/internal/c4;->k:Lcom/google/android/gms/measurement/internal/z3;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/android/gms/measurement/internal/z3;->a()J</span>
+<span class="">	move-result-wide v5</span>
+<span class="">	cmp-long v2, v7, v5</span>
+<span class="">	if-nez v2, :cond_8</span>
+<span class="">	iget-object v0, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/r4;->c()Lcom/google/android/gms/measurement/internal/n3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/n3;->w()Lcom/google/android/gms/measurement/internal/l3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "Install Referrer campaign has already been logged"</span>
+<span class="">	invoke-virtual {v0, v2}, Lcom/google/android/gms/measurement/internal/l3;->a(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_8</span>
+<span class="">	invoke-static {}, Lcom/google/android/gms/internal/measurement/ka;->a()Z</span>
+<span class="">	iget-object v2, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/android/gms/measurement/internal/r4;->z()Lcom/google/android/gms/measurement/internal/f;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	sget-object v5, Lcom/google/android/gms/measurement/internal/a3;->s0:Lcom/google/android/gms/measurement/internal/z2;</span>
+<span class="">	invoke-virtual {v2, v0, v5}, Lcom/google/android/gms/measurement/internal/f;->w(Ljava/lang/String;Lcom/google/android/gms/measurement/internal/z2;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_9</span>
+<span class="">	iget-object v0, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/r4;->k()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_b</span>
+<span class="">	:cond_9</span>
+<span class="">	iget-object v0, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/r4;->A()Lcom/google/android/gms/measurement/internal/c4;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v0, v0, Lcom/google/android/gms/measurement/internal/c4;->k:Lcom/google/android/gms/measurement/internal/z3;</span>
+<span class="">	invoke-virtual {v0, v7, v8}, Lcom/google/android/gms/measurement/internal/z3;->b(J)V</span>
+<span class="">	iget-object v0, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/r4;->c()Lcom/google/android/gms/measurement/internal/n3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/n3;->w()Lcom/google/android/gms/measurement/internal/l3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "Logging Install Referrer campaign from sdk with "</span>
+<span class="">	const-string v5, "referrer API"</span>
+<span class="">	invoke-virtual {v0, v2, v5}, Lcom/google/android/gms/measurement/internal/l3;->b(Ljava/lang/String;Ljava/lang/Object;)V</span>
+<span class="">	const-string v0, "_cis"</span>
+<span class="">	invoke-virtual {v4, v0, v5}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/r4;->F()Lcom/google/android/gms/measurement/internal/u6;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "auto"</span>
+<span class="">	const-string v5, "_cmp"</span>
+<span class="">	invoke-virtual {v0, v2, v5, v4}, Lcom/google/android/gms/measurement/internal/u6;->X(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_a</span>
+<span class="">	iget-object v0, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/r4;->c()Lcom/google/android/gms/measurement/internal/n3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/n3;->o()Lcom/google/android/gms/measurement/internal/l3;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "No referrer defined in Install Referrer response"</span>
+<span class="">	invoke-virtual {v0, v2}, Lcom/google/android/gms/measurement/internal/l3;->a(Ljava/lang/String;)V</span>
+<span class="">	:goto_3</span>
+<span class="">	:cond_b</span>
+<span class="">	invoke-static {}, Lcom/google/android/gms/common/stats/a;->b()Lcom/google/android/gms/common/stats/a;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, v1, Lcom/google/android/gms/measurement/internal/g4;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/android/gms/measurement/internal/r4;->b()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1, v3}, Lcom/google/android/gms/common/stats/a;->c(Landroid/content/Context;Landroid/content/ServiceConnection;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

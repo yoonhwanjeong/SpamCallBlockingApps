@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.savedstate</a></li>
+        <li><i class="ico ico-class"></i> b.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Landroidx/savedstate/b;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private final a:Landroidx/savedstate/c;
+.field private final b:Landroidx/savedstate/SavedStateRegistry;
+
+
+.method private constructor <init>(Landroidx/savedstate/c;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroidx/savedstate/b;->a:Landroidx/savedstate/c;</span>
+<span class="">	new-instance p1, Landroidx/savedstate/SavedStateRegistry;</span>
+<span class="">	invoke-direct {p1}, Landroidx/savedstate/SavedStateRegistry;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroidx/savedstate/b;->b:Landroidx/savedstate/SavedStateRegistry;</span>
+.end method
+
+.method public static a(Landroidx/savedstate/c;)Landroidx/savedstate/b;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/savedstate/b;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/savedstate/b;-><init>(Landroidx/savedstate/c;)V</span>
+.end method
+
+.method public b()Landroidx/savedstate/SavedStateRegistry;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/savedstate/b;->b:Landroidx/savedstate/SavedStateRegistry;</span>
+.end method
+
+.method public c(Landroid/os/Bundle;)V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Landroidx/savedstate/b;->a:Landroidx/savedstate/c;</span>
+<span class="">	invoke-interface {v0}, Landroidx/lifecycle/n;->getLifecycle()Landroidx/lifecycle/h;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroidx/lifecycle/h;->b()Landroidx/lifecycle/h$c;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	sget-object v2, Landroidx/lifecycle/h$c;->INITIALIZED:Landroidx/lifecycle/h$c;</span>
+<span class="">	if-ne v1, v2, :cond_0</span>
+<span class="">	new-instance v1, Landroidx/savedstate/Recreator;</span>
+<span class="">	iget-object v2, p0, Landroidx/savedstate/b;->a:Landroidx/savedstate/c;</span>
+<span class="">	invoke-direct {v1, v2}, Landroidx/savedstate/Recreator;-><init>(Landroidx/savedstate/c;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/lifecycle/h;->a(Landroidx/lifecycle/m;)V</span>
+<span class="">	iget-object v1, p0, Landroidx/savedstate/b;->b:Landroidx/savedstate/SavedStateRegistry;</span>
+<span class="">	invoke-virtual {v1, v0, p1}, Landroidx/savedstate/SavedStateRegistry;->b(Landroidx/lifecycle/h;Landroid/os/Bundle;)V</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, "Restarter must be created only during owner\'s initialization stage"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public d(Landroid/os/Bundle;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/savedstate/b;->b:Landroidx/savedstate/SavedStateRegistry;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/savedstate/SavedStateRegistry;->c(Landroid/os/Bundle;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

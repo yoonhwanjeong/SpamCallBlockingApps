@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.common.stats</a></li>
+        <li><i class="ico ico-class"></i> ConnectionTracker.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/android/gms/common/stats/ConnectionTracker;
+.super Ljava/lang/Object;
+.source "com.google.android.gms:play-services-basement@@18.0.0"
+
+
+.field private static final zzb:Ljava/lang/Object;
+.field private static volatile zzc:Lcom/google/android/gms/common/stats/ConnectionTracker;
+.annotation runtime Ljavax/annotation/Nullable;
+.end annotation
+.end field
+.field public zza:Ljava/util/concurrent/ConcurrentHashMap;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/concurrent/ConcurrentHashMap<",
+"Landroid/content/ServiceConnection;",
+"Landroid/content/ServiceConnection;",
+">;"
+}
+.end annotation
+.end field
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Ljava/lang/Object;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	sput-object v0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzb:Ljava/lang/Object;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private constructor &lt;init&gt;()V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zza:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static getInstance()Lcom/google/android/gms/common/stats/ConnectionTracker;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	sget-object v0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzc:Lcom/google/android/gms/common/stats/ConnectionTracker;</span>
+<span class="cov">	if-nez v0, :cond_1</span>
+<span class="cov">	sget-object v0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzb:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	sget-object v1, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzc:Lcom/google/android/gms/common/stats/ConnectionTracker;</span>
+<span class="cov">	if-nez v1, :cond_0</span>
+<span class="cov">	new-instance v1, Lcom/google/android/gms/common/stats/ConnectionTracker;</span>
+<span class="cov">	invoke-direct {v1}, Lcom/google/android/gms/common/stats/ConnectionTracker;-><init>()V</span>
+<span class="cov">	sput-object v1, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzc:Lcom/google/android/gms/common/stats/ConnectionTracker;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw v1</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	sget-object v0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzc:Lcom/google/android/gms/common/stats/ConnectionTracker;</span>
+<span class="cov">	invoke-static {v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method private static zzb(Landroid/content/Context;Landroid/content/ServiceConnection;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	:try_start_0</span>
+<span class="cov">	invoke-virtual {p0, p1}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	.catch Ljava/lang/IllegalStateException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	.catch Ljava/util/NoSuchElementException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="cov">	:catch_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private final zzc(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Landroid/content/ServiceConnection;IZLjava/util/concurrent/Executor;)Z</span>
+<span class="">	.locals 3</span>
+<span class="">	.param p7    # Ljava/util/concurrent/Executor;</span>
+<span class="">	.annotation runtime Ljavax/annotation/Nullable;</span>
+<span class="">	.end annotation</span>
+<span class="">	.end param</span>
+
+<span class="exec">	invoke-virtual {p3}, Landroid/content/Intent;->getComponent()Landroid/content/ComponentName;</span>
+<span class="cov">	move-result-object p6</span>
+<span class="cov">	const-string v0, "ConnectionTracker"</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	if-nez p6, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p6}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object p6</span>
+<span class="">	const-string v2, "com.google.android.gms"</span>
+<span class="">	invoke-virtual {v2, p6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/common/wrappers/Wrappers;->packageManager(Landroid/content/Context;)Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2, p6, v1}, Lcom/google/android/gms/common/wrappers/PackageManagerWrapper;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;</span>
+<span class="">	move-result-object p6</span>
+<span class="">	iget p6, p6, Landroid/content/pm/ApplicationInfo;->flags:I</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	const/high16 v2, 0x200000</span>
+<span class="">	and-int/2addr p6, v2</span>
+<span class="">	if-eqz p6, :cond_1</span>
+<span class="">	const-string p1, "Attempted to bind to a service in a STOPPED package."</span>
+<span class="">	invoke-static {v0, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	nop</span>
+<span class="">	:catch_0</span>
+<span class="exec">	invoke-static {p4}, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzd(Landroid/content/ServiceConnection;)Z</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	move-result p6</span>
+<span class="cov">	if-eqz p6, :cond_4</span>
+<span class="cov">	iget-object p6, p0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zza:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="exec">	invoke-virtual {p6, p4, p4}, Ljava/util/concurrent/ConcurrentHashMap;->putIfAbsent(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object p6</span>
+<span class="cov">	check-cast p6, Landroid/content/ServiceConnection;</span>
+<span class="">	if-eqz p6, :cond_2</span>
+<span class="">	if-eq p4, p6, :cond_2</span>
+<span class="">	const/4 p6, 0x3</span>
+<span class="">	new-array p6, p6, [Ljava/lang/Object;</span>
+<span class="">	aput-object p4, p6, v1</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	aput-object p2, p6, v2</span>
+<span class="">	const/4 p2, 0x2</span>
+<span class="">	invoke-virtual {p3}, Landroid/content/Intent;->getAction()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	aput-object v2, p6, p2</span>
+<span class="">	const-string p2, "Duplicate binding with the same ServiceConnection: %s, %s, %s."</span>
+<span class="">	invoke-static {p2, p6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-static {v0, p2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="exec">	invoke-static {p1, p3, p4, p5, p7}, Lcom/google/android/gms/common/stats/ConnectionTracker;->zze(Landroid/content/Context;Landroid/content/Intent;Landroid/content/ServiceConnection;ILjava/util/concurrent/Executor;)Z</span>
+<span class="cov">	:try_start_1</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	move-result p1</span>
+<span class="cov">	if-eqz p1, :cond_3</span>
+<span class="cov">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zza:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {p1, p4, p4}, Ljava/util/concurrent/ConcurrentHashMap;->remove(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-exception p1</span>
+<span class="">	iget-object p2, p0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zza:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {p2, p4, p4}, Ljava/util/concurrent/ConcurrentHashMap;->remove(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	throw p1</span>
+<span class="">	invoke-static {p1, p3, p4, p5, p7}, Lcom/google/android/gms/common/stats/ConnectionTracker;->zze(Landroid/content/Context;Landroid/content/Intent;Landroid/content/ServiceConnection;ILjava/util/concurrent/Executor;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	:cond_4</span>
+<span class="exec">	return p1</span>
+<span class="cov">	:goto_1</span>
+.end method
+
+<span class="cov">.method private static zzd(Landroid/content/ServiceConnection;)Z</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	instance-of p0, p0, Lcom/google/android/gms/common/internal/zzs;</span>
+<span class="cov">	if-nez p0, :cond_0</span>
+<span class="cov">	const/4 p0, 0x1</span>
+<span class="exec">	return p0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p0, 0x0</span>
+.end method
+
+<span class="cov">.method private static final zze(Landroid/content/Context;Landroid/content/Intent;Landroid/content/ServiceConnection;ILjava/util/concurrent/Executor;)Z</span>
+<span class="">	.locals 1</span>
+<span class="">	.param p4    # Ljava/util/concurrent/Executor;</span>
+<span class="">	.annotation runtime Ljavax/annotation/Nullable;</span>
+<span class="">	.end annotation</span>
+<span class="">	.end param</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastQ()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	if-eqz p4, :cond_0</span>
+<span class="">	invoke-virtual {p0, p1, p3, p4, p2}, Landroid/content/Context;->bindService(Landroid/content/Intent;ILjava/util/concurrent/Executor;Landroid/content/ServiceConnection;)Z</span>
+<span class="">	move-result p0</span>
+<span class="exec">	invoke-virtual {p0, p1, p2, p3}, Landroid/content/Context;->bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result p0</span>
+<span class="exec">	return p0</span>
+.end method
+
+<span class="cov">.method public bindService(Landroid/content/Context;Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z</span>
+<span class="">	.locals 9</span>
+
+<span class="exec">	invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	const/4 v7, 0x1</span>
+<span class="cov">	const/4 v8, 0x0</span>
+<span class="cov">	move-object v1, p0</span>
+<span class="cov">	move-object v2, p1</span>
+<span class="cov">	move-object v4, p2</span>
+<span class="cov">	move-object v5, p3</span>
+<span class="cov">	move v6, p4</span>
+<span class="exec">	invoke-direct/range {v1 .. v8}, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzc(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Landroid/content/ServiceConnection;IZLjava/util/concurrent/Executor;)Z</span>
+<span class="cov">	move-result p1</span>
+<span class="exec">	return p1</span>
+.end method
+
+<span class="cov">.method public unbindService(Landroid/content/Context;Landroid/content/ServiceConnection;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-static {p2}, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzd(Landroid/content/ServiceConnection;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zza:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="exec">	invoke-virtual {v0, p2}, Ljava/util/concurrent/ConcurrentHashMap;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zza:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="exec">	invoke-virtual {v0, p2}, Ljava/util/concurrent/ConcurrentHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Landroid/content/ServiceConnection;</span>
+<span class="cov">	invoke-static {p1, v0}, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzb(Landroid/content/Context;Landroid/content/ServiceConnection;)V</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	iget-object p1, p0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zza:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="cov">	invoke-virtual {p1, p2}, Ljava/util/concurrent/ConcurrentHashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="exec">	return-void</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/stats/ConnectionTracker;->zza:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/util/concurrent/ConcurrentHashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p1, p2}, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzb(Landroid/content/Context;Landroid/content/ServiceConnection;)V</span>
+.end method
+
+.method public unbindServiceSafe(Landroid/content/Context;Landroid/content/ServiceConnection;)V
+<span class="">	.locals 0</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Lcom/google/android/gms/common/stats/ConnectionTracker;->unbindService(Landroid/content/Context;Landroid/content/ServiceConnection;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:catch_0</span>
+.end method
+
+.method public final zza(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Landroid/content/ServiceConnection;ILjava/util/concurrent/Executor;)Z
+<span class="">	.locals 8</span>
+<span class="">	.param p6    # Ljava/util/concurrent/Executor;</span>
+<span class="">	.annotation runtime Ljavax/annotation/Nullable;</span>
+<span class="">	.end annotation</span>
+<span class="">	.end param</span>
+
+<span class="">	const/4 v6, 0x1</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	move-object v1, p1</span>
+<span class="">	move-object v2, p2</span>
+<span class="">	move-object v3, p3</span>
+<span class="">	move-object v4, p4</span>
+<span class="">	move v5, p5</span>
+<span class="">	move-object v7, p6</span>
+<span class="">	invoke-direct/range {v0 .. v7}, Lcom/google/android/gms/common/stats/ConnectionTracker;->zzc(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Landroid/content/ServiceConnection;IZLjava/util/concurrent/Executor;)Z</span>
+<span class="">	move-result p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,1391 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.share.internal</a></li>
+        <li><i class="ico ico-class"></i> ShareInternalUtility.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/share/internal/ShareInternalUtility;
+.super Ljava/lang/Object;
+.source "ShareInternalUtility.java"
+
+
+.field public static final MY_PHOTOS:Ljava/lang/String; = "me/photos"
+.field private static final MY_STAGING_RESOURCES:Ljava/lang/String; = "me/staging_resources"
+.field private static final STAGING_PARAM:Ljava/lang/String; = "file"
+
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method static synthetic access$000(Ljava/util/UUID;Lcom/facebook/share/model/ShareMedia;)Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->getAttachment(Ljava/util/UUID;Lcom/facebook/share/model/ShareMedia;)Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method private static getAppCallFromActivityResult(IILandroid/content/Intent;)Lcom/facebook/internal/AppCall;
+<span class="">	.locals 2</span>
+
+<span class="">	const-class p1, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-static {p2}, Lcom/facebook/internal/NativeProtocol;->getCallIdFromIntent(Landroid/content/Intent;)Ljava/util/UUID;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object p2</span>
+<span class="">	if-nez p2, :cond_1</span>
+<span class="">	invoke-static {p2, p0}, Lcom/facebook/internal/AppCall;->finishPendingCall(Ljava/util/UUID;I)Lcom/facebook/internal/AppCall;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:cond_1</span>
+<span class="">	move-exception p0</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method private static getAttachment(Ljava/util/UUID;Landroid/net/Uri;Landroid/graphics/Bitmap;)Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p0, p2}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->createAttachment(Ljava/util/UUID;Landroid/graphics/Bitmap;)Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object v2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->createAttachment(Ljava/util/UUID;Landroid/net/Uri;)Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private static getAttachment(Ljava/util/UUID;Lcom/facebook/share/model/ShareMedia;)Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	instance-of v1, p1, Lcom/facebook/share/model/SharePhoto;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	check-cast p1, Lcom/facebook/share/model/SharePhoto;</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/share/model/SharePhoto;->getBitmap()Landroid/graphics/Bitmap;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/share/model/SharePhoto;->getImageUrl()Landroid/net/Uri;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	instance-of v1, p1, Lcom/facebook/share/model/ShareVideo;</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	check-cast p1, Lcom/facebook/share/model/ShareVideo;</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/share/model/ShareVideo;->getLocalUrl()Landroid/net/Uri;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	move-object v1, v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-object p1, v2</span>
+<span class="">	:cond_2</span>
+<span class="">	move-object v1, p1</span>
+<span class="">	invoke-static {p0, p1, v1}, Lcom/facebook/share/internal/ShareInternalUtility;->getAttachment(Ljava/util/UUID;Landroid/net/Uri;Landroid/graphics/Bitmap;)Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static getBackgroundAssetMediaInfo(Lcom/facebook/share/model/ShareStoryContent;Ljava/util/UUID;)Landroid/os/Bundle;
+<span class="">	.locals 4</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-eqz p0, :cond_2</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareStoryContent;->getBackgroundAsset()Lcom/facebook/share/model/ShareMedia;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareStoryContent;->getBackgroundAsset()Lcom/facebook/share/model/ShareMedia;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {v1, p0}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	new-instance p0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v3, Lcom/facebook/share/internal/ShareInternalUtility$11;</span>
+<span class="">	invoke-direct {v3, p1, p0}, Lcom/facebook/share/internal/ShareInternalUtility$11;-><init>(Ljava/util/UUID;Ljava/util/List;)V</span>
+<span class="">	invoke-static {v1, v3}, Lcom/facebook/internal/Utility;->map(Ljava/util/List;Lcom/facebook/internal/Utility$Mapper;)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->addAttachments(Ljava/util/Collection;)V</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	invoke-interface {p1, p0}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Landroid/os/Bundle;</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public static getFieldNameAndNamespaceFromFullName(Ljava/lang/String;)Landroid/util/Pair;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")",</span>
+<span class="">	"Landroid/util/Pair<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const/16 v1, 0x3a</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0, v1}, Ljava/lang/String;->indexOf(I)I</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v3, -0x1</span>
+<span class="">	if-eq v1, v3, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v3</span>
+<span class="">	add-int/lit8 v4, v1, 0x1</span>
+<span class="">	if-le v3, v4, :cond_1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-virtual {p0, v3, v1}, Ljava/lang/String;->substring(II)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p0, v4}, Ljava/lang/String;->substring(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-object v1, v2</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance v3, Landroid/util/Pair;</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-direct {v3, v1, p0}, Landroid/util/Pair;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static getMediaInfos(Lcom/facebook/share/model/ShareMediaContent;Ljava/util/UUID;)Ljava/util/List;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/share/model/ShareMediaContent;",</span>
+<span class="">	"Ljava/util/UUID;",</span>
+<span class="">	")",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroid/os/Bundle;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-eqz p0, :cond_2</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareMediaContent;->getMedia()Ljava/util/List;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-nez p0, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v3, Lcom/facebook/share/internal/ShareInternalUtility$6;</span>
+<span class="">	invoke-direct {v3, p1, v1}, Lcom/facebook/share/internal/ShareInternalUtility$6;-><init>(Ljava/util/UUID;Ljava/util/List;)V</span>
+<span class="">	invoke-static {p0, v3}, Lcom/facebook/internal/Utility;->map(Ljava/util/List;Lcom/facebook/internal/Utility$Mapper;)Ljava/util/List;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->addAttachments(Ljava/util/Collection;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public static getMostSpecificObjectType(Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/widget/LikeView$ObjectType;)Lcom/facebook/share/widget/LikeView$ObjectType;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-ne p0, p1, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/widget/LikeView$ObjectType;->UNKNOWN:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	if-ne p0, v1, :cond_2</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v0, Lcom/facebook/share/widget/LikeView$ObjectType;->UNKNOWN:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	if-ne p1, v0, :cond_3</span>
+<span class="">	move-exception p0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_3</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static getNativeDialogCompletionGesture(Landroid/os/Bundle;)Ljava/lang/String;
+<span class="">	.locals 4</span>
+
+<span class="">	const-string v0, "completionGesture"</span>
+<span class="">	const-class v1, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "com.facebook.platform.extra.COMPLETION_GESTURE"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	invoke-static {p0, v1}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static getPhotoUrls(Lcom/facebook/share/model/SharePhotoContent;Ljava/util/UUID;)Ljava/util/List;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/share/model/SharePhotoContent;",</span>
+<span class="">	"Ljava/util/UUID;",</span>
+<span class="">	")",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-eqz p0, :cond_2</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/SharePhotoContent;->getPhotos()Ljava/util/List;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-nez p0, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/ShareInternalUtility$4;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v1, p1}, Lcom/facebook/share/internal/ShareInternalUtility$4;-><init>(Ljava/util/UUID;)V</span>
+<span class="">	invoke-static {p0, v1}, Lcom/facebook/internal/Utility;->map(Ljava/util/List;Lcom/facebook/internal/Utility$Mapper;)Ljava/util/List;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	new-instance p1, Lcom/facebook/share/internal/ShareInternalUtility$5;</span>
+<span class="">	invoke-direct {p1}, Lcom/facebook/share/internal/ShareInternalUtility$5;-><init>()V</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/internal/Utility;->map(Ljava/util/List;Lcom/facebook/internal/Utility$Mapper;)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->addAttachments(Ljava/util/Collection;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public static getShareDialogPostId(Landroid/os/Bundle;)Ljava/lang/String;
+<span class="">	.locals 5</span>
+
+<span class="">	const-string v0, "com.facebook.platform.extra.POST_ID"</span>
+<span class="">	const-string v1, "postId"</span>
+<span class="">	const-class v2, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v2}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	invoke-virtual {p0, v1}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	invoke-virtual {p0, v1}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "post_id"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:cond_2</span>
+<span class="">	move-exception p0</span>
+<span class="">	invoke-static {p0, v2}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static getShareResultProcessor(Lcom/facebook/FacebookCallback;)Lcom/facebook/share/internal/ResultProcessor;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/facebook/share/internal/ResultProcessor;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/ShareInternalUtility$1;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-direct {v1, p0, p0}, Lcom/facebook/share/internal/ShareInternalUtility$1;-><init>(Lcom/facebook/FacebookCallback;Lcom/facebook/FacebookCallback;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static getStickerUrl(Lcom/facebook/share/model/ShareStoryContent;Ljava/util/UUID;)Landroid/os/Bundle;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-eqz p0, :cond_2</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareStoryContent;->getStickerAsset()Lcom/facebook/share/model/SharePhoto;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareStoryContent;->getStickerAsset()Lcom/facebook/share/model/SharePhoto;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {v1, p0}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	new-instance p0, Lcom/facebook/share/internal/ShareInternalUtility$9;</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/share/internal/ShareInternalUtility$9;-><init>(Ljava/util/UUID;)V</span>
+<span class="">	invoke-static {v1, p0}, Lcom/facebook/internal/Utility;->map(Ljava/util/List;Lcom/facebook/internal/Utility$Mapper;)Ljava/util/List;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	new-instance p1, Lcom/facebook/share/internal/ShareInternalUtility$10;</span>
+<span class="">	invoke-direct {p1}, Lcom/facebook/share/internal/ShareInternalUtility$10;-><init>()V</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/internal/Utility;->map(Ljava/util/List;Lcom/facebook/internal/Utility$Mapper;)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->addAttachments(Ljava/util/Collection;)V</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	invoke-interface {p1, p0}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Landroid/os/Bundle;</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public static getTextureUrlBundle(Lcom/facebook/share/model/ShareCameraEffectContent;Ljava/util/UUID;)Landroid/os/Bundle;
+<span class="">	.locals 8</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-eqz p0, :cond_3</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareCameraEffectContent;->getTextures()Lcom/facebook/share/model/CameraEffectTextures;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-nez p0, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	new-instance v1, Landroid/os/Bundle;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v1}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	new-instance v3, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/CameraEffectTextures;->keySet()Ljava/util/Set;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-interface {v4}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_2</span>
+<span class="">	invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	check-cast v5, Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p0, v5}, Lcom/facebook/share/model/CameraEffectTextures;->getTextureUri(Ljava/lang/String;)Landroid/net/Uri;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual {p0, v5}, Lcom/facebook/share/model/CameraEffectTextures;->getTextureBitmap(Ljava/lang/String;)Landroid/graphics/Bitmap;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	invoke-static {p1, v6, v7}, Lcom/facebook/share/internal/ShareInternalUtility;->getAttachment(Ljava/util/UUID;Landroid/net/Uri;Landroid/graphics/Bitmap;)Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-interface {v3, v6}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-virtual {v6}, Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;->getAttachmentUrl()Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual {v1, v5, v6}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-static {v3}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->addAttachments(Ljava/util/Collection;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method public static getUriExtension(Landroid/net/Uri;)Ljava/lang/String;
+<span class="">	.locals 4</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-nez p0, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroid/net/Uri;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/16 v1, 0x2e</span>
+<span class="">	invoke-virtual {p0, v1}, Ljava/lang/String;->lastIndexOf(I)I</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v3, -0x1</span>
+<span class="">	if-ne v1, v3, :cond_2</span>
+<span class="">	invoke-virtual {p0, v1}, Ljava/lang/String;->substring(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static getVideoUrl(Lcom/facebook/share/model/ShareVideoContent;Ljava/util/UUID;)Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-eqz p0, :cond_2</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareVideoContent;->getVideo()Lcom/facebook/share/model/ShareVideo;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareVideoContent;->getVideo()Lcom/facebook/share/model/ShareVideo;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareVideo;->getLocalUrl()Landroid/net/Uri;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p1, p0}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->createAttachment(Ljava/util/UUID;Landroid/net/Uri;)Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	new-instance p1, Ljava/util/ArrayList;</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-direct {p1, v1}, Ljava/util/ArrayList;-><init>(I)V</span>
+<span class="">	invoke-virtual {p1, p0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->addAttachments(Ljava/util/Collection;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/internal/NativeAppCallAttachmentStore$Attachment;->getAttachmentUrl()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public static handleActivityResult(IILandroid/content/Intent;Lcom/facebook/share/internal/ResultProcessor;)Z
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-static {p0, p1, p2}, Lcom/facebook/share/internal/ShareInternalUtility;->getAppCallFromActivityResult(IILandroid/content/Intent;)Lcom/facebook/internal/AppCall;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-nez p0, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/internal/AppCall;->getCallId()Ljava/util/UUID;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->cleanupAttachmentsForCall(Ljava/util/UUID;)V</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	if-nez p3, :cond_2</span>
+<span class="">	invoke-static {p2}, Lcom/facebook/internal/NativeProtocol;->getErrorDataFromResultIntent(Landroid/content/Intent;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/internal/NativeProtocol;->getExceptionFromErrorData(Landroid/os/Bundle;)Lcom/facebook/FacebookException;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_4</span>
+<span class="">	instance-of p2, v1, Lcom/facebook/FacebookOperationCanceledException;</span>
+<span class="">	if-eqz p2, :cond_3</span>
+<span class="">	invoke-virtual {p3, p0}, Lcom/facebook/share/internal/ResultProcessor;->onCancel(Lcom/facebook/internal/AppCall;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-virtual {p3, p0, v1}, Lcom/facebook/share/internal/ResultProcessor;->onError(Lcom/facebook/internal/AppCall;Lcom/facebook/FacebookException;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-static {p2}, Lcom/facebook/internal/NativeProtocol;->getSuccessResultsFromIntent(Landroid/content/Intent;)Landroid/os/Bundle;</span>
+<span class="">	:cond_3</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p3, p0, p2}, Lcom/facebook/share/internal/ResultProcessor;->onSuccess(Lcom/facebook/internal/AppCall;Landroid/os/Bundle;)V</span>
+<span class="">	:cond_4</span>
+<span class="">	move-exception p0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static invokeCallbackWithError(Lcom/facebook/FacebookCallback;Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->invokeOnErrorCallback(Lcom/facebook/FacebookCallback;Ljava/lang/String;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static invokeCallbackWithException(Lcom/facebook/FacebookCallback;Ljava/lang/Exception;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;",</span>
+<span class="">	"Ljava/lang/Exception;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	instance-of v1, p1, Lcom/facebook/FacebookException;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	check-cast p1, Lcom/facebook/FacebookException;</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->invokeOnErrorCallback(Lcom/facebook/FacebookCallback;Lcom/facebook/FacebookException;)V</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v2, "Error preparing share content: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Exception;->getLocalizedMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->invokeCallbackWithError(Lcom/facebook/FacebookCallback;Ljava/lang/String;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static invokeCallbackWithResults(Lcom/facebook/FacebookCallback;Ljava/lang/String;Lcom/facebook/GraphResponse;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Lcom/facebook/GraphResponse;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Lcom/facebook/GraphResponse;->getError()Lcom/facebook/FacebookRequestError;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/facebook/FacebookRequestError;->getErrorMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	const-string p1, "Unexpected error sharing."</span>
+<span class="">	invoke-static {p0, p2, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->invokeOnErrorCallback(Lcom/facebook/FacebookCallback;Lcom/facebook/GraphResponse;Ljava/lang/String;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->invokeOnSuccessCallback(Lcom/facebook/FacebookCallback;Ljava/lang/String;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	move-exception p0</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method static invokeOnCancelCallback(Lcom/facebook/FacebookCallback;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const-string v1, "cancelled"</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-static {v1, v2}, Lcom/facebook/share/internal/ShareInternalUtility;->logShareResult(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	invoke-interface {p0}, Lcom/facebook/FacebookCallback;->onCancel()V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method static invokeOnErrorCallback(Lcom/facebook/FacebookCallback;Lcom/facebook/FacebookException;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lcom/facebook/FacebookException;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const-string v1, "error"</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/FacebookException;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v1, v2}, Lcom/facebook/share/internal/ShareInternalUtility;->logShareResult(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	invoke-interface {p0, p1}, Lcom/facebook/FacebookCallback;->onError(Lcom/facebook/FacebookException;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method static invokeOnErrorCallback(Lcom/facebook/FacebookCallback;Lcom/facebook/GraphResponse;Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lcom/facebook/GraphResponse;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const-string v1, "error"</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {v1, p2}, Lcom/facebook/share/internal/ShareInternalUtility;->logShareResult(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	new-instance v1, Lcom/facebook/FacebookGraphResponseException;</span>
+<span class="">	invoke-direct {v1, p1, p2}, Lcom/facebook/FacebookGraphResponseException;-><init>(Lcom/facebook/GraphResponse;Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p0, v1}, Lcom/facebook/FacebookCallback;->onError(Lcom/facebook/FacebookException;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method static invokeOnErrorCallback(Lcom/facebook/FacebookCallback;Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const-string v1, "error"</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {v1, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->logShareResult(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	new-instance v1, Lcom/facebook/FacebookException;</span>
+<span class="">	invoke-direct {v1, p1}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p0, v1}, Lcom/facebook/FacebookCallback;->onError(Lcom/facebook/FacebookException;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method static invokeOnSuccessCallback(Lcom/facebook/FacebookCallback;Ljava/lang/String;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const-string v1, "succeeded"</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-static {v1, v2}, Lcom/facebook/share/internal/ShareInternalUtility;->logShareResult(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	new-instance v1, Lcom/facebook/share/Sharer$Result;</span>
+<span class="">	invoke-direct {v1, p1}, Lcom/facebook/share/Sharer$Result;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p0, v1}, Lcom/facebook/FacebookCallback;->onSuccess(Ljava/lang/Object;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method private static logShareResult(Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 4</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	new-instance v2, Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+<span class="">	invoke-direct {v2, v1}, Lcom/facebook/appevents/InternalAppEventsLogger;-><init>(Landroid/content/Context;)V</span>
+<span class="">	new-instance v1, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v1}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	const-string v3, "fb_share_dialog_outcome"</span>
+<span class="">	invoke-virtual {v1, v3, p0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	const-string p0, "error_message"</span>
+<span class="">	invoke-virtual {v1, p0, p1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string p0, "fb_share_dialog_result"</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v2, p0, v1}, Lcom/facebook/appevents/InternalAppEventsLogger;->logEventImplicitly(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static newUploadStagingResourceWithImageRequest(Lcom/facebook/AccessToken;Landroid/graphics/Bitmap;Lcom/facebook/GraphRequest$Callback;)Lcom/facebook/GraphRequest;
+<span class="">	.locals 9</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	new-instance v6, Landroid/os/Bundle;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-direct {v6, v1}, Landroid/os/Bundle;-><init>(I)V</span>
+<span class="">	const-string v1, "file"</span>
+<span class="">	invoke-virtual {v6, v1, p1}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V</span>
+<span class="">	new-instance p1, Lcom/facebook/GraphRequest;</span>
+<span class="">	const-string v5, "me/staging_resources"</span>
+<span class="">	sget-object v7, Lcom/facebook/HttpMethod;->POST:Lcom/facebook/HttpMethod;</span>
+<span class="">	move-object v3, p1</span>
+<span class="">	move-object v4, p0</span>
+<span class="">	move-object v8, p2</span>
+<span class="">	invoke-direct/range {v3 .. v8}, Lcom/facebook/GraphRequest;-><init>(Lcom/facebook/AccessToken;Ljava/lang/String;Landroid/os/Bundle;Lcom/facebook/HttpMethod;Lcom/facebook/GraphRequest$Callback;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static newUploadStagingResourceWithImageRequest(Lcom/facebook/AccessToken;Landroid/net/Uri;Lcom/facebook/GraphRequest$Callback;)Lcom/facebook/GraphRequest;
+<span class="">	.locals 10</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/FileNotFoundException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/internal/Utility;->isFileUri(Landroid/net/Uri;)Z</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	new-instance v1, Ljava/io/File;</span>
+<span class="">	invoke-virtual {p1}, Landroid/net/Uri;->getPath()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {v1, p1}, Ljava/io/File;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p0, v1, p2}, Lcom/facebook/share/internal/ShareInternalUtility;->newUploadStagingResourceWithImageRequest(Lcom/facebook/AccessToken;Ljava/io/File;Lcom/facebook/GraphRequest$Callback;)Lcom/facebook/GraphRequest;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/internal/Utility;->isContentUri(Landroid/net/Uri;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	new-instance v1, Lcom/facebook/GraphRequest$ParcelableResourceWithMimeType;</span>
+<span class="">	const-string v3, "image/png"</span>
+<span class="">	invoke-direct {v1, p1, v3}, Lcom/facebook/GraphRequest$ParcelableResourceWithMimeType;-><init>(Landroid/os/Parcelable;Ljava/lang/String;)V</span>
+<span class="">	new-instance v7, Landroid/os/Bundle;</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	invoke-direct {v7, p1}, Landroid/os/Bundle;-><init>(I)V</span>
+<span class="">	const-string p1, "file"</span>
+<span class="">	invoke-virtual {v7, p1, v1}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V</span>
+<span class="">	new-instance p1, Lcom/facebook/GraphRequest;</span>
+<span class="">	const-string v6, "me/staging_resources"</span>
+<span class="">	sget-object v8, Lcom/facebook/HttpMethod;->POST:Lcom/facebook/HttpMethod;</span>
+<span class="">	move-object v4, p1</span>
+<span class="">	move-object v5, p0</span>
+<span class="">	move-object v9, p2</span>
+<span class="">	invoke-direct/range {v4 .. v9}, Lcom/facebook/GraphRequest;-><init>(Lcom/facebook/AccessToken;Ljava/lang/String;Landroid/os/Bundle;Lcom/facebook/HttpMethod;Lcom/facebook/GraphRequest$Callback;)V</span>
+<span class="">	new-instance p0, Lcom/facebook/FacebookException;</span>
+<span class="">	const-string p1, "The image Uri must be either a file:// or content:// Uri"</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	throw p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static newUploadStagingResourceWithImageRequest(Lcom/facebook/AccessToken;Ljava/io/File;Lcom/facebook/GraphRequest$Callback;)Lcom/facebook/GraphRequest;
+<span class="">	.locals 10</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/FileNotFoundException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const/high16 v1, 0x10000000</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p1, v1}, Landroid/os/ParcelFileDescriptor;->open(Ljava/io/File;I)Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance v1, Lcom/facebook/GraphRequest$ParcelableResourceWithMimeType;</span>
+<span class="">	const-string v3, "image/png"</span>
+<span class="">	invoke-direct {v1, p1, v3}, Lcom/facebook/GraphRequest$ParcelableResourceWithMimeType;-><init>(Landroid/os/Parcelable;Ljava/lang/String;)V</span>
+<span class="">	new-instance v7, Landroid/os/Bundle;</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	invoke-direct {v7, p1}, Landroid/os/Bundle;-><init>(I)V</span>
+<span class="">	const-string p1, "file"</span>
+<span class="">	invoke-virtual {v7, p1, v1}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V</span>
+<span class="">	new-instance p1, Lcom/facebook/GraphRequest;</span>
+<span class="">	const-string v6, "me/staging_resources"</span>
+<span class="">	sget-object v8, Lcom/facebook/HttpMethod;->POST:Lcom/facebook/HttpMethod;</span>
+<span class="">	move-object v4, p1</span>
+<span class="">	move-object v5, p0</span>
+<span class="">	move-object v9, p2</span>
+<span class="">	invoke-direct/range {v4 .. v9}, Lcom/facebook/GraphRequest;-><init>(Lcom/facebook/AccessToken;Ljava/lang/String;Landroid/os/Bundle;Lcom/facebook/HttpMethod;Lcom/facebook/GraphRequest$Callback;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static registerSharerCallback(ILcom/facebook/CallbackManager;Lcom/facebook/FacebookCallback;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(I",</span>
+<span class="">	"Lcom/facebook/CallbackManager;",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	instance-of v1, p1, Lcom/facebook/internal/CallbackManagerImpl;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	check-cast p1, Lcom/facebook/internal/CallbackManagerImpl;</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/ShareInternalUtility$3;</span>
+<span class="">	invoke-direct {v1, p0, p2}, Lcom/facebook/share/internal/ShareInternalUtility$3;-><init>(ILcom/facebook/FacebookCallback;)V</span>
+<span class="">	invoke-virtual {p1, p0, v1}, Lcom/facebook/internal/CallbackManagerImpl;->registerCallback(ILcom/facebook/internal/CallbackManagerImpl$Callback;)V</span>
+<span class="">	new-instance p0, Lcom/facebook/FacebookException;</span>
+<span class="">	const-string p1, "Unexpected CallbackManager, please use the provided Factory."</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static registerStaticShareCallback(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/ShareInternalUtility$2;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-direct {v1, p0}, Lcom/facebook/share/internal/ShareInternalUtility$2;-><init>(I)V</span>
+<span class="">	invoke-static {p0, v1}, Lcom/facebook/internal/CallbackManagerImpl;->registerStaticCallback(ILcom/facebook/internal/CallbackManagerImpl$Callback;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static removeNamespacesFromOGJsonArray(Lorg/json/JSONArray;Z)Lorg/json/JSONArray;
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Lorg/json/JSONException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	new-instance v1, Lorg/json/JSONArray;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v1}, Lorg/json/JSONArray;-><init>()V</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-virtual {p0}, Lorg/json/JSONArray;->length()I</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result v4</span>
+<span class="">	if-ge v3, v4, :cond_3</span>
+<span class="">	invoke-virtual {p0, v3}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	instance-of v5, v4, Lorg/json/JSONArray;</span>
+<span class="">	if-eqz v5, :cond_1</span>
+<span class="">	check-cast v4, Lorg/json/JSONArray;</span>
+<span class="">	invoke-static {v4, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->removeNamespacesFromOGJsonArray(Lorg/json/JSONArray;Z)Lorg/json/JSONArray;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	goto :goto_1</span>
+<span class="">	instance-of v5, v4, Lorg/json/JSONObject;</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz v5, :cond_2</span>
+<span class="">	check-cast v4, Lorg/json/JSONObject;</span>
+<span class="">	invoke-static {v4, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->removeNamespacesFromOGJsonObject(Lorg/json/JSONObject;Z)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v1, v4}, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static removeNamespacesFromOGJsonObject(Lorg/json/JSONObject;Z)Lorg/json/JSONObject;
+<span class="">	.locals 11</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-nez p0, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v1, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v1}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance v3, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v3}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Lorg/json/JSONObject;->names()Lorg/json/JSONArray;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	invoke-virtual {v4}, Lorg/json/JSONArray;->length()I</span>
+<span class="">	move-result v6</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v5, v6, :cond_9</span>
+<span class="">	invoke-virtual {v4, v5}, Lorg/json/JSONArray;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual {p0, v6}, Lorg/json/JSONObject;->get(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	instance-of v8, v7, Lorg/json/JSONObject;</span>
+<span class="">	const/4 v9, 0x1</span>
+<span class="">	if-eqz v8, :cond_2</span>
+<span class="">	check-cast v7, Lorg/json/JSONObject;</span>
+<span class="">	invoke-static {v7, v9}, Lcom/facebook/share/internal/ShareInternalUtility;->removeNamespacesFromOGJsonObject(Lorg/json/JSONObject;Z)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	goto :goto_1</span>
+<span class="">	instance-of v8, v7, Lorg/json/JSONArray;</span>
+<span class="">	if-eqz v8, :cond_3</span>
+<span class="">	:cond_2</span>
+<span class="">	check-cast v7, Lorg/json/JSONArray;</span>
+<span class="">	invoke-static {v7, v9}, Lcom/facebook/share/internal/ShareInternalUtility;->removeNamespacesFromOGJsonArray(Lorg/json/JSONArray;Z)Lorg/json/JSONArray;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	invoke-static {v6}, Lcom/facebook/share/internal/ShareInternalUtility;->getFieldNameAndNamespaceFromFullName(Ljava/lang/String;)Landroid/util/Pair;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	iget-object v9, v8, Landroid/util/Pair;->first:Ljava/lang/Object;</span>
+<span class="">	check-cast v9, Ljava/lang/String;</span>
+<span class="">	iget-object v8, v8, Landroid/util/Pair;->second:Ljava/lang/Object;</span>
+<span class="">	check-cast v8, Ljava/lang/String;</span>
+<span class="">	if-eqz p1, :cond_7</span>
+<span class="">	if-eqz v9, :cond_4</span>
+<span class="">	const-string v10, "fbsdk"</span>
+<span class="">	invoke-virtual {v9, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v10</span>
+<span class="">	if-eqz v10, :cond_4</span>
+<span class="">	invoke-virtual {v1, v6, v7}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	goto :goto_3</span>
+<span class="">	if-eqz v9, :cond_6</span>
+<span class="">	const-string v6, "og"</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {v9, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-eqz v6, :cond_5</span>
+<span class="">	goto :goto_2</span>
+<span class="">	invoke-virtual {v3, v8, v7}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-virtual {v1, v8, v7}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_6</span>
+<span class="">	if-eqz v9, :cond_8</span>
+<span class="">	const-string v10, "fb"</span>
+<span class="">	:cond_7</span>
+<span class="">	invoke-virtual {v9, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v9</span>
+<span class="">	if-eqz v9, :cond_8</span>
+<span class="">	invoke-virtual {v1, v6, v7}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	goto :goto_3</span>
+<span class="">	invoke-virtual {v1, v8, v7}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	add-int/lit8 v5, v5, 0x1</span>
+<span class="">	:cond_8</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:goto_3</span>
+<span class="">	invoke-virtual {v3}, Lorg/json/JSONObject;->length()I</span>
+<span class="">	move-result p0</span>
+<span class="">	:cond_9</span>
+<span class="">	if-lez p0, :cond_a</span>
+<span class="">	const-string p0, "data"</span>
+<span class="">	invoke-virtual {v1, p0, v3}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	move-exception p0</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_a</span>
+<span class="">	new-instance p0, Lcom/facebook/FacebookException;</span>
+<span class="">	:catchall_0</span>
+<span class="">	const-string p1, "Failed to create json object from share content"</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	:try_start_1</span>
+<span class="">	:catch_0</span>
+<span class="">	throw p0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	:goto_4</span>
+.end method
+
+.method public static toJSONObjectForCall(Ljava/util/UUID;Lcom/facebook/share/model/ShareOpenGraphContent;)Lorg/json/JSONObject;
+<span class="">	.locals 7</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Lorg/json/JSONException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "tags"</span>
+<span class="">	const-string v1, "place"</span>
+<span class="">	const-class v2, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v2}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/share/model/ShareOpenGraphContent;->getAction()Lcom/facebook/share/model/ShareOpenGraphAction;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v3</span>
+<span class="">	new-instance v5, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v5}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v6, Lcom/facebook/share/internal/ShareInternalUtility$7;</span>
+<span class="">	invoke-direct {v6, p0, v5}, Lcom/facebook/share/internal/ShareInternalUtility$7;-><init>(Ljava/util/UUID;Ljava/util/ArrayList;)V</span>
+<span class="">	invoke-static {v3, v6}, Lcom/facebook/share/internal/OpenGraphJSONUtility;->toJSONObject(Lcom/facebook/share/model/ShareOpenGraphAction;Lcom/facebook/share/internal/OpenGraphJSONUtility$PhotoJSONProcessor;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {v5}, Lcom/facebook/internal/NativeAppCallAttachmentStore;->addAttachments(Ljava/util/Collection;)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/share/model/ShareOpenGraphContent;->getPlaceId()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	invoke-virtual {p0, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {v3}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/share/model/ShareOpenGraphContent;->getPlaceId()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {p0, v1, v3}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/share/model/ShareOpenGraphContent;->getPeopleIds()Ljava/util/List;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_4</span>
+<span class="">	invoke-virtual {p0, v0}, Lorg/json/JSONObject;->optJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_2</span>
+<span class="">	new-instance v1, Ljava/util/HashSet;</span>
+<span class="">	invoke-direct {v1}, Ljava/util/HashSet;-><init>()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/internal/Utility;->jsonArrayToSet(Lorg/json/JSONArray;)Ljava/util/Set;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/share/model/ShareOpenGraphContent;->getPeopleIds()Ljava/util/List;</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	:goto_1</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_3</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/String;</span>
+<span class="">	invoke-interface {v1, v3}, Ljava/util/Set;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_1</span>
+<span class="">	new-instance p1, Lorg/json/JSONArray;</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-direct {p1, v1}, Lorg/json/JSONArray;-><init>(Ljava/util/Collection;)V</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-static {p0, v2}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static toJSONObjectForWeb(Lcom/facebook/share/model/ShareOpenGraphContent;)Lorg/json/JSONObject;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Lorg/json/JSONException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/ShareInternalUtility;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareOpenGraphContent;->getAction()Lcom/facebook/share/model/ShareOpenGraphAction;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/ShareInternalUtility$8;</span>
+<span class="">	invoke-direct {v1}, Lcom/facebook/share/internal/ShareInternalUtility$8;-><init>()V</span>
+<span class="">	invoke-static {p0, v1}, Lcom/facebook/share/internal/OpenGraphJSONUtility;->toJSONObject(Lcom/facebook/share/model/ShareOpenGraphAction;Lcom/facebook/share/internal/OpenGraphJSONUtility$PhotoJSONProcessor;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

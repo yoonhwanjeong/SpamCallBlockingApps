@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.appsflyer</a></li>
+        <li><i class="ico ico-class"></i> AFDeepLinkManager.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/appsflyer/AFDeepLinkManager;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field public static instance:Lcom/appsflyer/AFDeepLinkManager;
+.field public static trampolineUri:Landroid/net/Uri;
+.field public static ı:[Ljava/lang/String;
+.field static final ǃ:I
+.field static ɩ:[Ljava/lang/String;
+.field static volatile Ι:Z
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 3</span>
+
+<span class="">	sget-object v0, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	const-wide/16 v1, 0x2</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Ljava/util/concurrent/TimeUnit;->toMillis(J)J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	long-to-int v1, v0</span>
+<span class="">	sput v1, Lcom/appsflyer/AFDeepLinkManager;->ǃ:I</span>
+.end method
+
+.method private constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public static getInstance()Lcom/appsflyer/AFDeepLinkManager;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/appsflyer/AFDeepLinkManager;->instance:Lcom/appsflyer/AFDeepLinkManager;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-instance v0, Lcom/appsflyer/AFDeepLinkManager;</span>
+<span class="">	invoke-direct {v0}, Lcom/appsflyer/AFDeepLinkManager;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/appsflyer/AFDeepLinkManager;->instance:Lcom/appsflyer/AFDeepLinkManager;</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v0, Lcom/appsflyer/AFDeepLinkManager;->instance:Lcom/appsflyer/AFDeepLinkManager;</span>
+.end method
+
+.method static ı(Landroid/content/Context;Ljava/util/Map;Landroid/net/Uri;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">;",</span>
+<span class="">	"Landroid/net/Uri;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p2}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFDeepLinkManager;->ι(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	sput-boolean v0, Lcom/appsflyer/AFDeepLinkManager;->Ι:Z</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AFExecutor;->getInstance()Lcom/appsflyer/AFExecutor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, v0, Lcom/appsflyer/AFExecutor;->ι:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	iget-object v1, v0, Lcom/appsflyer/AFExecutor;->ı:Ljava/util/concurrent/ThreadFactory;</span>
+<span class="">	invoke-static {v1}, Ljava/util/concurrent/Executors;->newSingleThreadScheduledExecutor(Ljava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iput-object v1, v0, Lcom/appsflyer/AFExecutor;->ι:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, v0, Lcom/appsflyer/AFExecutor;->ι:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	new-instance v1, Lcom/appsflyer/AFDeepLinkManager$2;</span>
+<span class="">	invoke-direct {v1, p2, p1, p0}, Lcom/appsflyer/AFDeepLinkManager$2;-><init>(Landroid/net/Uri;Ljava/util/Map;Landroid/content/Context;)V</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/concurrent/ScheduledExecutorService;->execute(Ljava/lang/Runnable;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->getInstance()Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p0, p1, p2}, Lcom/appsflyer/AppsFlyerLibCore;->handleDeepLinkCallback(Landroid/content/Context;Ljava/util/Map;Landroid/net/Uri;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	sput-object p0, Lcom/appsflyer/AFDeepLinkManager;->trampolineUri:Landroid/net/Uri;</span>
+.end method
+
+.method static synthetic ı(Ljava/lang/String;)Z
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0}, Lcom/appsflyer/AFDeepLinkManager;->ι(Ljava/lang/String;)Z</span>
+<span class="">	move-result p0</span>
+.end method
+
+.method private static ι(Ljava/lang/String;)Z
+<span class="">	.locals 3</span>
+
+<span class="">	sget-object v0, Lcom/appsflyer/AFDeepLinkManager;->ɩ:[Ljava/lang/String;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-string v0, "af_tranid="</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v2, "Validate ESP URLs :"</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v0, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	sget-object v2, Lcom/appsflyer/AFDeepLinkManager;->ɩ:[Ljava/lang/String;</span>
+<span class="">	invoke-static {v2}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afRDLog(Ljava/lang/String;)V</span>
+<span class="">	sget-object v0, Lcom/appsflyer/AFDeepLinkManager;->ɩ:[Ljava/lang/String;</span>
+<span class="">	invoke-static {v0}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v2, Ljava/net/URL;</span>
+<span class="">	invoke-direct {v2, p0}, Ljava/net/URL;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v2}, Ljava/net/URL;->getHost()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {v0, p0}, Ljava/util/List;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/net/MalformedURLException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:catch_0</span>
+.end method
+
+.method protected collectIntentsFromActivities(Landroid/content/Intent;)V
+<span class="">	.locals 2</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getAction()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "android.intent.action.VIEW"</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getData()Landroid/net/Uri;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getData()Landroid/net/Uri;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v1, Lcom/appsflyer/AFDeepLinkManager;->trampolineUri:Landroid/net/Uri;</span>
+<span class="">	if-eq v0, v1, :cond_1</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getData()Landroid/net/Uri;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sput-object p1, Lcom/appsflyer/AFDeepLinkManager;->trampolineUri:Landroid/net/Uri;</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method final ɩ(Landroid/content/Intent;Landroid/content/Context;Ljava/util/Map;)V
+<span class="">	.locals 7</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Intent;",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "android.intent.action.VIEW"</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getAction()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v0, v2}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getData()Landroid/net/Uri;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object v2, v1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->getInstance()Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iget-object v3, v3, Lcom/appsflyer/AppsFlyerLibCore;->pluginDeeplinkIntent:Landroid/content/Intent;</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	invoke-virtual {v3}, Landroid/content/Intent;->getAction()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v0, v4}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {v3}, Landroid/content/Intent;->getData()Landroid/net/Uri;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v0, " w/af_consumed"</span>
+<span class="">	const-string v4, "af_consumed"</span>
+<span class="">	if-eqz v2, :cond_3</span>
+<span class="">	invoke-virtual {p1, v4}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_2</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {p1, v4, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;</span>
+<span class="">	invoke-static {p2, p3, v2}, Lcom/appsflyer/AFDeepLinkManager;->ı(Landroid/content/Context;Ljava/util/Map;Landroid/net/Uri;)V</span>
+<span class="">	new-instance p1, Ljava/lang/StringBuilder;</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string p2, "skipping re-use of previously consumed deep link: "</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	sget-object p1, Lcom/appsflyer/AFDeepLinkManager;->trampolineUri:Landroid/net/Uri;</span>
+<span class="">	if-eqz p1, :cond_4</span>
+<span class="">	:cond_3</span>
+<span class="">	new-instance p1, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v0, "using trampoline Intent fallback with URI: "</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	sget-object v0, Lcom/appsflyer/AFDeepLinkManager;->trampolineUri:Landroid/net/Uri;</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	sget-object p1, Lcom/appsflyer/AFDeepLinkManager;->trampolineUri:Landroid/net/Uri;</span>
+<span class="">	invoke-static {p2, p3, p1}, Lcom/appsflyer/AFDeepLinkManager;->ı(Landroid/content/Context;Ljava/util/Map;Landroid/net/Uri;)V</span>
+<span class="">	if-eqz v1, :cond_6</span>
+<span class="">	invoke-virtual {v3, v4}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	:cond_4</span>
+<span class="">	if-nez p1, :cond_5</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v5</span>
+<span class="">	invoke-virtual {v3, v4, v5, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;</span>
+<span class="">	new-instance p1, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v0, "using Plugin Intent fallback with URI: "</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p2, p3, v1}, Lcom/appsflyer/AFDeepLinkManager;->ı(Landroid/content/Context;Ljava/util/Map;Landroid/net/Uri;)V</span>
+<span class="">	new-instance p1, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p2, "skipping re-use of previously consumed plugin deep link: "</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	:cond_5</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	const-string p1, "No deep link detected"</span>
+<span class="">	invoke-static {p1}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	:cond_6</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

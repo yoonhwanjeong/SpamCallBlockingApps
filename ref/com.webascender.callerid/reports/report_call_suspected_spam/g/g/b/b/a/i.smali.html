@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">g.g.b.b.a</a></li>
+        <li><i class="ico ico-class"></i> i.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lg/g/b/b/a/i;
+.super Ljava/lang/Object;
+.source "SourceFile"
+.implements Lg/g/b/b/a/h;
+
+
+.field private final a:Landroidx/room/j;
+.field private final b:Landroidx/room/c;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Landroidx/room/c<",
+"Lg/g/b/b/e/a/d;",
+">;"
+}
+.end annotation
+.end field
+
+
+.method public constructor <init>(Landroidx/room/j;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lg/g/b/b/a/i;->a:Landroidx/room/j;</span>
+<span class="">	new-instance v0, Lg/g/b/b/a/i$a;</span>
+<span class="">	invoke-direct {v0, p0, p1}, Lg/g/b/b/a/i$a;-><init>(Lg/g/b/b/a/i;Landroidx/room/j;)V</span>
+<span class="">	iput-object v0, p0, Lg/g/b/b/a/i;->b:Landroidx/room/c;</span>
+<span class="">	new-instance v0, Lg/g/b/b/a/i$b;</span>
+<span class="">	invoke-direct {v0, p0, p1}, Lg/g/b/b/a/i$b;-><init>(Lg/g/b/b/a/i;Landroidx/room/j;)V</span>
+.end method
+
+.method public bridge synthetic d(Ljava/lang/Object;)J
+<span class="">	.locals 2</span>
+
+<span class="">	check-cast p1, Lg/g/b/b/e/a/d;</span>
+<span class="">	invoke-virtual {p0, p1}, Lg/g/b/b/a/i;->s(Lg/g/b/b/e/a/d;)J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public j(Ljava/lang/String;)Lg/g/b/b/e/a/d;
+<span class="">	.locals 30</span>
+
+<span class="">	move-object/from16 v1, p0</span>
+<span class="">	move-object/from16 v0, p1</span>
+<span class="">	const-string v2, "SELECT * FROM postevent_data WHERE phone_number = ? ORDER BY timestamp desc"</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	invoke-static {v2, v3}, Landroidx/room/m;->c(Ljava/lang/String;I)Landroidx/room/m;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-virtual {v2, v3}, Landroidx/room/m;->M0(I)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v2, v3, v0}, Landroidx/room/m;->x(ILjava/lang/String;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	iget-object v0, v1, Lg/g/b/b/a/i;->a:Landroidx/room/j;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/room/j;->b()V</span>
+<span class="">	iget-object v0, v1, Lg/g/b/b/a/i;->a:Landroidx/room/j;</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	invoke-static {v0, v2, v4, v5}, Landroidx/room/s/c;->b(Landroidx/room/j;Lf/t/a/e;ZLandroid/os/CancellationSignal;)Landroid/database/Cursor;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v0, "_id"</span>
+<span class="">	invoke-static {v6, v0}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v0</span>
+<span class="">	const-string v7, "type"</span>
+<span class="">	invoke-static {v6, v7}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v7</span>
+<span class="">	const-string v8, "direction"</span>
+<span class="">	invoke-static {v6, v8}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v8</span>
+<span class="">	const-string v9, "phone_number"</span>
+<span class="">	invoke-static {v6, v9}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v9</span>
+<span class="">	const-string v10, "country_hint"</span>
+<span class="">	invoke-static {v6, v10}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v10</span>
+<span class="">	const-string v11, "duration"</span>
+<span class="">	invoke-static {v6, v11}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v11</span>
+<span class="">	const-string v12, "is_missed"</span>
+<span class="">	invoke-static {v6, v12}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v12</span>
+<span class="">	const-string v13, "is_blocked"</span>
+<span class="">	invoke-static {v6, v13}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v13</span>
+<span class="">	const-string v14, "is_contact"</span>
+<span class="">	invoke-static {v6, v14}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v14</span>
+<span class="">	const-string v15, "timestamp"</span>
+<span class="">	invoke-static {v6, v15}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v15</span>
+<span class="">	const-string v3, "profile_tag"</span>
+<span class="">	invoke-static {v6, v3}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v3</span>
+<span class="">	const-string v4, "block_reason"</span>
+<span class="">	invoke-static {v6, v4}, Landroidx/room/s/b;->b(Landroid/database/Cursor;Ljava/lang/String;)I</span>
+<span class="">	move-result v4</span>
+<span class="">	invoke-interface {v6}, Landroid/database/Cursor;->moveToFirst()Z</span>
+<span class="">	move-result v16</span>
+<span class="">	if-eqz v16, :cond_4</span>
+<span class="">	invoke-interface {v6, v7}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v18</span>
+<span class="">	invoke-interface {v6, v8}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v19</span>
+<span class="">	invoke-interface {v6, v9}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v20</span>
+<span class="">	invoke-interface {v6, v10}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v21</span>
+<span class="">	invoke-interface {v6, v11}, Landroid/database/Cursor;->getInt(I)I</span>
+<span class="">	move-result v22</span>
+<span class="">	invoke-interface {v6, v12}, Landroid/database/Cursor;->getInt(I)I</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_1</span>
+<span class="">	const/16 v23, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const/16 v23, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-interface {v6, v13}, Landroid/database/Cursor;->getInt(I)I</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_2</span>
+<span class="">	const/16 v24, 0x1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	const/16 v24, 0x0</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-interface {v6, v14}, Landroid/database/Cursor;->getInt(I)I</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_3</span>
+<span class="">	const/16 v25, 0x1</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_3</span>
+<span class="">	const/16 v25, 0x0</span>
+<span class="">	:goto_3</span>
+<span class="">	invoke-interface {v6, v15}, Landroid/database/Cursor;->getLong(I)J</span>
+<span class="">	move-result-wide v26</span>
+<span class="">	invoke-interface {v6, v3}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v28</span>
+<span class="">	invoke-interface {v6, v4}, Landroid/database/Cursor;->getInt(I)I</span>
+<span class="">	move-result v29</span>
+<span class="">	new-instance v5, Lg/g/b/b/e/a/d;</span>
+<span class="">	move-object/from16 v17, v5</span>
+<span class="">	invoke-direct/range {v17 .. v29}, Lg/g/b/b/e/a/d;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZZZJLjava/lang/String;I)V</span>
+<span class="">	invoke-interface {v6, v0}, Landroid/database/Cursor;->getInt(I)I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {v5, v0}, Lg/g/b/b/e/a/d;->m(I)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-interface {v6}, Landroid/database/Cursor;->close()V</span>
+<span class="">	invoke-virtual {v2}, Landroidx/room/m;->g()V</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-interface {v6}, Landroid/database/Cursor;->close()V</span>
+<span class="">	invoke-virtual {v2}, Landroidx/room/m;->g()V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public s(Lg/g/b/b/e/a/d;)J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lg/g/b/b/a/i;->a:Landroidx/room/j;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/room/j;->b()V</span>
+<span class="">	iget-object v0, p0, Lg/g/b/b/a/i;->a:Landroidx/room/j;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/room/j;->c()V</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lg/g/b/b/a/i;->b:Landroidx/room/c;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/room/c;->j(Ljava/lang/Object;)J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	iget-object p1, p0, Lg/g/b/b/a/i;->a:Landroidx/room/j;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/room/j;->r()V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	iget-object p1, p0, Lg/g/b/b/a/i;->a:Landroidx/room/j;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/room/j;->g()V</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	iget-object v0, p0, Lg/g/b/b/a/i;->a:Landroidx/room/j;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/room/j;->g()V</span>
+<span class="">	throw p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

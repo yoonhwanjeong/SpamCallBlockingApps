@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.android.installreferrer.api</a></li>
+        <li><i class="ico ico-class"></i> InstallReferrerClientImpl.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Lcom/android/installreferrer/api/InstallReferrerClientImpl;
+.super Lcom/android/installreferrer/api/InstallReferrerClient;
+.source "InstallReferrerClientImpl.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/android/installreferrer/api/InstallReferrerClientImpl$InstallReferrerServiceConnection;,
+Lcom/android/installreferrer/api/InstallReferrerClientImpl$ClientState;
+}
+.end annotation
+
+.field private static final PLAY_STORE_MIN_APP_VER:I = 0x4d17ab4
+.field private static final SERVICE_ACTION_NAME:Ljava/lang/String; = "com.google.android.finsky.BIND_GET_INSTALL_REFERRER_SERVICE"
+.field private static final SERVICE_NAME:Ljava/lang/String; = "com.google.android.finsky.externalreferrer.GetInstallReferrerService"
+.field private static final SERVICE_PACKAGE_NAME:Ljava/lang/String; = "com.android.vending"
+.field private static final TAG:Ljava/lang/String; = "InstallReferrerClient"
+.field private final mApplicationContext:Landroid/content/Context;
+.field private mClientState:I
+.field private mService:Lcom/google/android/finsky/externalreferrer/IGetInstallReferrerService;
+.field private mServiceConnection:Landroid/content/ServiceConnection;
+
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/android/installreferrer/api/InstallReferrerClient;-><init>()V</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	iput v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mClientState:I</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	iput-object p1, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mApplicationContext:Landroid/content/Context;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method static synthetic access$102(Lcom/android/installreferrer/api/InstallReferrerClientImpl;Lcom/google/android/finsky/externalreferrer/IGetInstallReferrerService;)Lcom/google/android/finsky/externalreferrer/IGetInstallReferrerService;
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mService:Lcom/google/android/finsky/externalreferrer/IGetInstallReferrerService;</span>
+.end method
+
+.method static synthetic access$202(Lcom/android/installreferrer/api/InstallReferrerClientImpl;I)I
+<span class="">	.locals 0</span>
+
+<span class="">	iput p1, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mClientState:I</span>
+.end method
+
+<span class="cov">.method private isPlayStoreCompatible()Z</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mApplicationContext:Landroid/content/Context;</span>
+<span class="exec">	invoke-virtual {v0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	const-string v2, "com.android.vending"</span>
+<span class="cov">	const/16 v3, 0x80</span>
+<span class="exec">	invoke-virtual {v0, v2, v3}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	iget v0, v0, Landroid/content/pm/PackageInfo;->versionCode:I</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="cov">	const v2, 0x4d17ab4</span>
+<span class="cov">	if-lt v0, v2, :cond_0</span>
+<span class="cov">	const/4 v1, 0x1</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	:catch_0</span>
+<span class="exec">	return v1</span>
+.end method
+
+.method public endConnection()V
+<span class="">	.locals 3</span>
+
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	iput v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mClientState:I</span>
+<span class="">	iget-object v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mServiceConnection:Landroid/content/ServiceConnection;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-string v0, "InstallReferrerClient"</span>
+<span class="">	const-string v2, "Unbinding from service."</span>
+<span class="">	invoke-static {v0, v2}, Lcom/android/installreferrer/commons/InstallReferrerCommons;->logVerbose(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mApplicationContext:Landroid/content/Context;</span>
+<span class="">	iget-object v2, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mServiceConnection:Landroid/content/ServiceConnection;</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/content/Context;->unbindService(Landroid/content/ServiceConnection;)V</span>
+<span class="">	iput-object v1, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mServiceConnection:Landroid/content/ServiceConnection;</span>
+<span class="">	:cond_0</span>
+<span class="">	iput-object v1, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mService:Lcom/google/android/finsky/externalreferrer/IGetInstallReferrerService;</span>
+.end method
+
+.method public getInstallReferrer()Lcom/android/installreferrer/api/ReferrerDetails;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/RemoteException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->isReady()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	new-instance v0, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v0}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	iget-object v1, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mApplicationContext:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "package_name"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v1, Lcom/android/installreferrer/api/ReferrerDetails;</span>
+<span class="">	iget-object v2, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mService:Lcom/google/android/finsky/externalreferrer/IGetInstallReferrerService;</span>
+<span class="">	invoke-interface {v2, v0}, Lcom/google/android/finsky/externalreferrer/IGetInstallReferrerService;->getInstallReferrer(Landroid/os/Bundle;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {v1, v0}, Lcom/android/installreferrer/api/ReferrerDetails;-><init>(Landroid/os/Bundle;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_0</span>
+<span class="">	const-string v1, "InstallReferrerClient"</span>
+<span class="">	const-string v2, "RemoteException getting install referrer information"</span>
+<span class="">	invoke-static {v1, v2}, Lcom/android/installreferrer/commons/InstallReferrerCommons;->logWarn(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	iput v1, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mClientState:I</span>
+<span class="">	throw v0</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v1, "Service not connected. Please start a connection before using the service."</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+<span class="cov">.method public isReady()Z</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mClientState:I</span>
+<span class="cov">	const/4 v1, 0x2</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mService:Lcom/google/android/finsky/externalreferrer/IGetInstallReferrerService;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mServiceConnection:Landroid/content/ServiceConnection;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return v0</span>
+.end method
+
+<span class="cov">.method public startConnection(Lcom/android/installreferrer/api/InstallReferrerStateListener;)V</span>
+<span class="">	.locals 8</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->isReady()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	const-string v2, "InstallReferrerClient"</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-string v0, "Service connection is valid. No need to re-initialize."</span>
+<span class="">	invoke-static {v2, v0}, Lcom/android/installreferrer/commons/InstallReferrerCommons;->logVerbose(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p1, v1}, Lcom/android/installreferrer/api/InstallReferrerStateListener;->onInstallReferrerSetupFinished(I)V</span>
+<span class="cov">	iget v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mClientState:I</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	const/4 v3, 0x3</span>
+<span class="cov">	const/4 v4, 0x1</span>
+<span class="">	if-ne v0, v4, :cond_1</span>
+<span class="">	const-string v0, "Client is already in the process of connecting to the service."</span>
+<span class="">	invoke-static {v2, v0}, Lcom/android/installreferrer/commons/InstallReferrerCommons;->logWarn(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p1, v3}, Lcom/android/installreferrer/api/InstallReferrerStateListener;->onInstallReferrerSetupFinished(I)V</span>
+<span class="">	if-ne v0, v3, :cond_2</span>
+<span class="">	const-string v0, "Client was already closed and can\'t be reused. Please create another instance."</span>
+<span class="cov">	:cond_1</span>
+<span class="">	invoke-static {v2, v0}, Lcom/android/installreferrer/commons/InstallReferrerCommons;->logWarn(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p1, v3}, Lcom/android/installreferrer/api/InstallReferrerStateListener;->onInstallReferrerSetupFinished(I)V</span>
+<span class="cov">	const-string v0, "Starting install referrer service setup."</span>
+<span class="cov">	invoke-static {v2, v0}, Lcom/android/installreferrer/commons/InstallReferrerCommons;->logVerbose(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	new-instance v0, Lcom/android/installreferrer/api/InstallReferrerClientImpl$InstallReferrerServiceConnection;</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	const/4 v3, 0x0</span>
+<span class="cov">	invoke-direct {v0, p0, p1, v3}, Lcom/android/installreferrer/api/InstallReferrerClientImpl$InstallReferrerServiceConnection;-><init>(Lcom/android/installreferrer/api/InstallReferrerClientImpl;Lcom/android/installreferrer/api/InstallReferrerStateListener;Lcom/android/installreferrer/api/InstallReferrerClientImpl$1;)V</span>
+<span class="cov">	iput-object v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mServiceConnection:Landroid/content/ServiceConnection;</span>
+<span class="cov">	new-instance v0, Landroid/content/Intent;</span>
+<span class="cov">	const-string v3, "com.google.android.finsky.BIND_GET_INSTALL_REFERRER_SERVICE"</span>
+<span class="cov">	invoke-direct {v0, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V</span>
+<span class="cov">	new-instance v3, Landroid/content/ComponentName;</span>
+<span class="cov">	const-string v5, "com.android.vending"</span>
+<span class="cov">	const-string v6, "com.google.android.finsky.externalreferrer.GetInstallReferrerService"</span>
+<span class="cov">	invoke-direct {v3, v5, v6}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-virtual {v0, v3}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;</span>
+<span class="cov">	iget-object v3, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mApplicationContext:Landroid/content/Context;</span>
+<span class="exec">	invoke-virtual {v3}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="exec">	invoke-virtual {v3, v0, v1}, Landroid/content/pm/PackageManager;->queryIntentServices(Landroid/content/Intent;I)Ljava/util/List;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	const/4 v6, 0x2</span>
+<span class="cov">	if-eqz v3, :cond_5</span>
+<span class="exec">	invoke-interface {v3}, Ljava/util/List;->isEmpty()Z</span>
+<span class="cov">	move-result v7</span>
+<span class="cov">	if-nez v7, :cond_5</span>
+<span class="exec">	invoke-interface {v3, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, Landroid/content/pm/ResolveInfo;</span>
+<span class="cov">	iget-object v7, v3, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;</span>
+<span class="cov">	if-eqz v7, :cond_5</span>
+<span class="cov">	iget-object v7, v3, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;</span>
+<span class="cov">	iget-object v7, v7, Landroid/content/pm/ServiceInfo;->packageName:Ljava/lang/String;</span>
+<span class="cov">	iget-object v3, v3, Landroid/content/pm/ResolveInfo;->serviceInfo:Landroid/content/pm/ServiceInfo;</span>
+<span class="cov">	iget-object v3, v3, Landroid/content/pm/ServiceInfo;->name:Ljava/lang/String;</span>
+<span class="exec">	invoke-virtual {v5, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v5</span>
+<span class="cov">	if-eqz v5, :cond_4</span>
+<span class="cov">	if-eqz v3, :cond_4</span>
+<span class="exec">	invoke-direct {p0}, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->isPlayStoreCompatible()Z</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	if-eqz v3, :cond_4</span>
+<span class="cov">	new-instance v3, Landroid/content/Intent;</span>
+<span class="cov">	invoke-direct {v3, v0}, Landroid/content/Intent;-><init>(Landroid/content/Intent;)V</span>
+<span class="cov">	iget-object v0, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mApplicationContext:Landroid/content/Context;</span>
+<span class="cov">	iget-object v5, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mServiceConnection:Landroid/content/ServiceConnection;</span>
+<span class="">	invoke-virtual {v0, v3, v5, v4}, Landroid/content/Context;->bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	const-string p1, "Service was bonded successfully."</span>
+<span class="">	invoke-static {v2, p1}, Lcom/android/installreferrer/commons/InstallReferrerCommons;->logVerbose(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "Connection to service is blocked."</span>
+<span class="">	invoke-static {v2, v0}, Lcom/android/installreferrer/commons/InstallReferrerCommons;->logWarn(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iput v1, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mClientState:I</span>
+<span class="">	invoke-interface {p1, v4}, Lcom/android/installreferrer/api/InstallReferrerStateListener;->onInstallReferrerSetupFinished(I)V</span>
+<span class="">	:cond_3</span>
+<span class="">	const-string v0, "Play Store missing or incompatible. Version 8.3.73 or later required."</span>
+<span class="">	invoke-static {v2, v0}, Lcom/android/installreferrer/commons/InstallReferrerCommons;->logWarn(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iput v1, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mClientState:I</span>
+<span class="">	invoke-interface {p1, v6}, Lcom/android/installreferrer/api/InstallReferrerStateListener;->onInstallReferrerSetupFinished(I)V</span>
+<span class="">	iput v1, p0, Lcom/android/installreferrer/api/InstallReferrerClientImpl;->mClientState:I</span>
+<span class="">	:cond_4</span>
+<span class="">	const-string v0, "Install Referrer service unavailable on device."</span>
+<span class="">	invoke-static {v2, v0}, Lcom/android/installreferrer/commons/InstallReferrerCommons;->logVerbose(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p1, v6}, Lcom/android/installreferrer/api/InstallReferrerStateListener;->onInstallReferrerSetupFinished(I)V</span>
+<span class="">	:cond_5</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

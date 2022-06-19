@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.messaging</a></li>
+        <li><i class="ico ico-class"></i> b0.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Lcom/google/firebase/messaging/b0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private static final i:J
+.field private final a:Lcom/google/firebase/iid/FirebaseInstanceId;
+.field private final b:Landroid/content/Context;
+.field private final c:Lcom/google/firebase/iid/r;
+.field private final d:Lcom/google/firebase/iid/o;
+.field private final e:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Ljava/util/ArrayDeque<",
+"Lcom/google/android/gms/tasks/h<",
+"Ljava/lang/Void;",
+">;>;>;"
+}
+.end annotation
+.end field
+.field private final f:Ljava/util/concurrent/ScheduledExecutorService;
+.field private g:Z
+.field private final h:Lcom/google/firebase/messaging/z;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	sget-object v0, Ljava/util/concurrent/TimeUnit;->HOURS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="cov">	const-wide/16 v1, 0x8</span>
+<span class="exec">	invoke-virtual {v0, v1, v2}, Ljava/util/concurrent/TimeUnit;->toSeconds(J)J</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="cov">	sput-wide v0, Lcom/google/firebase/messaging/b0;->i:J</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private constructor &lt;init&gt;(Lcom/google/firebase/iid/FirebaseInstanceId;Lcom/google/firebase/iid/r;Lcom/google/firebase/messaging/z;Lcom/google/firebase/iid/o;Landroid/content/Context;Ljava/util/concurrent/ScheduledExecutorService;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	new-instance v0, Lf/e/a;</span>
+<span class="cov">	invoke-direct {v0}, Lf/e/a;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/firebase/messaging/b0;->e:Ljava/util/Map;</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	iput-boolean v0, p0, Lcom/google/firebase/messaging/b0;->g:Z</span>
+<span class="cov">	iput-object p1, p0, Lcom/google/firebase/messaging/b0;->a:Lcom/google/firebase/iid/FirebaseInstanceId;</span>
+<span class="cov">	iput-object p2, p0, Lcom/google/firebase/messaging/b0;->c:Lcom/google/firebase/iid/r;</span>
+<span class="cov">	iput-object p3, p0, Lcom/google/firebase/messaging/b0;->h:Lcom/google/firebase/messaging/z;</span>
+<span class="cov">	iput-object p4, p0, Lcom/google/firebase/messaging/b0;->d:Lcom/google/firebase/iid/o;</span>
+<span class="cov">	iput-object p5, p0, Lcom/google/firebase/messaging/b0;->b:Landroid/content/Context;</span>
+<span class="cov">	iput-object p6, p0, Lcom/google/firebase/messaging/b0;->f:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private static a(Lcom/google/android/gms/tasks/g;)Ljava/lang/Object;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<T:",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">(",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"TT;>;)TT;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v0, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	const-wide/16 v1, 0x1e</span>
+<span class="">	invoke-static {p0, v1, v2, v0}, Lcom/google/android/gms/tasks/j;->b(Lcom/google/android/gms/tasks/g;JLjava/util/concurrent/TimeUnit;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/util/concurrent/ExecutionException; {:try_start_0 .. :try_end_0} :catch_2</span>
+<span class="">	.catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_1</span>
+<span class="">	.catch Ljava/util/concurrent/TimeoutException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catch_1</span>
+<span class="">	new-instance v0, Ljava/io/IOException;</span>
+<span class="">	:goto_0</span>
+<span class="">	const-string v1, "SERVICE_NOT_AVAILABLE"</span>
+<span class="">	invoke-direct {v0, v1, p0}, Ljava/io/IOException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	throw v0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catch_2</span>
+<span class="">	invoke-virtual {p0}, Ljava/util/concurrent/ExecutionException;->getCause()Ljava/lang/Throwable;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v1, v0, Ljava/io/IOException;</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	instance-of v1, v0, Ljava/lang/RuntimeException;</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	check-cast v0, Ljava/lang/RuntimeException;</span>
+<span class="">	throw v0</span>
+<span class="">	new-instance v0, Ljava/io/IOException;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v0, p0}, Ljava/io/IOException;-><init>(Ljava/lang/Throwable;)V</span>
+<span class="">	throw v0</span>
+<span class="">	check-cast v0, Ljava/io/IOException;</span>
+<span class="">	:cond_1</span>
+<span class="">	throw v0</span>
+.end method
+
+.method private b(Ljava/lang/String;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/messaging/b0;->a:Lcom/google/firebase/iid/FirebaseInstanceId;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/iid/FirebaseInstanceId;->j()Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/firebase/messaging/b0;->a(Lcom/google/android/gms/tasks/g;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/google/firebase/iid/p;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/messaging/b0;->d:Lcom/google/firebase/iid/o;</span>
+<span class="">	invoke-interface {v0}, Lcom/google/firebase/iid/p;->getId()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v0}, Lcom/google/firebase/iid/p;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1, v2, v0, p1}, Lcom/google/firebase/iid/o;->j(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/messaging/b0;->a(Lcom/google/android/gms/tasks/g;)Ljava/lang/Object;</span>
+.end method
+
+.method private c(Ljava/lang/String;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/messaging/b0;->a:Lcom/google/firebase/iid/FirebaseInstanceId;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/iid/FirebaseInstanceId;->j()Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/firebase/messaging/b0;->a(Lcom/google/android/gms/tasks/g;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/google/firebase/iid/p;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/messaging/b0;->d:Lcom/google/firebase/iid/o;</span>
+<span class="">	invoke-interface {v0}, Lcom/google/firebase/iid/p;->getId()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v0}, Lcom/google/firebase/iid/p;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1, v2, v0, p1}, Lcom/google/firebase/iid/o;->k(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/messaging/b0;->a(Lcom/google/android/gms/tasks/g;)Ljava/lang/Object;</span>
+.end method
+
+<span class="cov">.method static d(Lcom/google/firebase/c;Lcom/google/firebase/iid/FirebaseInstanceId;Lcom/google/firebase/iid/r;Lcom/google/firebase/m/b;Lcom/google/firebase/m/b;Lcom/google/firebase/installations/g;Landroid/content/Context;Ljava/util/concurrent/ScheduledExecutorService;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	.locals 7</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/c;",</span>
+<span class="">	"Lcom/google/firebase/iid/FirebaseInstanceId;",</span>
+<span class="">	"Lcom/google/firebase/iid/r;",</span>
+<span class="">	"Lcom/google/firebase/m/b<",</span>
+<span class="">	"Lcom/google/firebase/o/i;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lcom/google/firebase/m/b<",</span>
+<span class="">	"Lcom/google/firebase/l/f;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lcom/google/firebase/installations/g;",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Ljava/util/concurrent/ScheduledExecutorService;",</span>
+<span class="">	")",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Lcom/google/firebase/messaging/b0;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	new-instance v6, Lcom/google/firebase/iid/o;</span>
+<span class="cov">	move-object v0, v6</span>
+<span class="cov">	move-object v1, p0</span>
+<span class="cov">	move-object v2, p2</span>
+<span class="cov">	move-object v3, p3</span>
+<span class="cov">	move-object v4, p4</span>
+<span class="cov">	move-object v5, p5</span>
+<span class="cov">	invoke-direct/range {v0 .. v5}, Lcom/google/firebase/iid/o;-><init>(Lcom/google/firebase/c;Lcom/google/firebase/iid/r;Lcom/google/firebase/m/b;Lcom/google/firebase/m/b;Lcom/google/firebase/installations/g;)V</span>
+<span class="exec">	invoke-static {p1, p2, v6, p6, p7}, Lcom/google/firebase/messaging/b0;->e(Lcom/google/firebase/iid/FirebaseInstanceId;Lcom/google/firebase/iid/r;Lcom/google/firebase/iid/o;Landroid/content/Context;Ljava/util/concurrent/ScheduledExecutorService;)Lcom/google/android/gms/tasks/g;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method static e(Lcom/google/firebase/iid/FirebaseInstanceId;Lcom/google/firebase/iid/r;Lcom/google/firebase/iid/o;Landroid/content/Context;Ljava/util/concurrent/ScheduledExecutorService;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	.locals 7</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/iid/FirebaseInstanceId;",</span>
+<span class="">	"Lcom/google/firebase/iid/r;",</span>
+<span class="">	"Lcom/google/firebase/iid/o;",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Ljava/util/concurrent/ScheduledExecutorService;",</span>
+<span class="">	")",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Lcom/google/firebase/messaging/b0;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	new-instance v6, Lcom/google/firebase/messaging/a0;</span>
+<span class="cov">	move-object v0, v6</span>
+<span class="cov">	move-object v1, p3</span>
+<span class="cov">	move-object v2, p4</span>
+<span class="cov">	move-object v3, p0</span>
+<span class="cov">	move-object v4, p1</span>
+<span class="cov">	move-object v5, p2</span>
+<span class="cov">	invoke-direct/range {v0 .. v5}, Lcom/google/firebase/messaging/a0;-><init>(Landroid/content/Context;Ljava/util/concurrent/ScheduledExecutorService;Lcom/google/firebase/iid/FirebaseInstanceId;Lcom/google/firebase/iid/r;Lcom/google/firebase/iid/o;)V</span>
+<span class="exec">	invoke-static {p4, v6}, Lcom/google/android/gms/tasks/j;->c(Ljava/util/concurrent/Executor;Ljava/util/concurrent/Callable;)Lcom/google/android/gms/tasks/g;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+.method static g()Z
+<span class="">	.locals 6</span>
+
+<span class="">	const-string v0, "FirebaseMessaging"</span>
+<span class="">	const/4 v1, 0x3</span>
+<span class="">	invoke-static {v0, v1}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x1</span>
+<span class="">	if-nez v2, :cond_1</span>
+<span class="">	sget v2, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v5, 0x17</span>
+<span class="">	if-ne v2, v5, :cond_2</span>
+<span class="">	invoke-static {v0, v1}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+<span class="cov">.method static final synthetic i(Landroid/content/Context;Ljava/util/concurrent/ScheduledExecutorService;Lcom/google/firebase/iid/FirebaseInstanceId;Lcom/google/firebase/iid/r;Lcom/google/firebase/iid/o;)Lcom/google/firebase/messaging/b0;</span>
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/lang/Exception;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-static {p0, p1}, Lcom/google/firebase/messaging/z;->a(Landroid/content/Context;Ljava/util/concurrent/Executor;)Lcom/google/firebase/messaging/z;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	new-instance v7, Lcom/google/firebase/messaging/b0;</span>
+<span class="cov">	move-object v0, v7</span>
+<span class="cov">	move-object v1, p2</span>
+<span class="cov">	move-object v2, p3</span>
+<span class="cov">	move-object v4, p4</span>
+<span class="cov">	move-object v5, p0</span>
+<span class="cov">	move-object v6, p1</span>
+<span class="cov">	invoke-direct/range {v0 .. v6}, Lcom/google/firebase/messaging/b0;-><init>(Lcom/google/firebase/iid/FirebaseInstanceId;Lcom/google/firebase/iid/r;Lcom/google/firebase/messaging/z;Lcom/google/firebase/iid/o;Landroid/content/Context;Ljava/util/concurrent/ScheduledExecutorService;)V</span>
+<span class="exec">	return-object v7</span>
+.end method
+
+.method private j(Lcom/google/firebase/messaging/y;)V
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/messaging/b0;->e:Ljava/util/Map;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/messaging/y;->e()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/messaging/b0;->e:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v1, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/messaging/b0;->e:Ljava/util/Map;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/util/ArrayDeque;</span>
+<span class="">	invoke-virtual {v1}, Ljava/util/ArrayDeque;->poll()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Lcom/google/android/gms/tasks/h;</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-virtual {v2, v3}, Lcom/google/android/gms/tasks/h;->c(Ljava/lang/Object;)V</span>
+<span class="">	invoke-virtual {v1}, Ljava/util/ArrayDeque;->isEmpty()Z</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/messaging/b0;->e:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v1, p1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:cond_2</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+.end method
+
+.method private n()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/firebase/messaging/b0;->h()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	invoke-virtual {p0, v0, v1}, Lcom/google/firebase/messaging/b0;->q(J)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+<span class="cov">.method  f()Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/messaging/b0;->h:Lcom/google/firebase/messaging/z;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/messaging/z;->b()Lcom/google/firebase/messaging/y;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return v0</span>
+.end method
+
+.method declared-synchronized h()Z
+<span class="">	.locals 1</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-boolean v0, p0, Lcom/google/firebase/messaging/b0;->g:Z</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw v0</span>
+.end method
+
+.method  k(Lcom/google/firebase/messaging/y;)Z
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "FirebaseMessaging"</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/messaging/y;->b()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/String;->hashCode()I</span>
+<span class="">	move-result v3</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	const/16 v4, 0x53</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	if-eq v3, v4, :cond_1</span>
+<span class="">	const/16 v4, 0x55</span>
+<span class="">	if-eq v3, v4, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v3, "U"</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v3, "S"</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 v2, -0x1</span>
+<span class="">	:goto_1</span>
+<span class="">	const-string v3, " succeeded."</span>
+<span class="">	if-eqz v2, :cond_4</span>
+<span class="">	if-eq v2, v5, :cond_3</span>
+<span class="">	:try_start_1</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/messaging/b0;->g()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_5</span>
+<span class="">	invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	add-int/lit8 v2, v2, 0x18</span>
+<span class="">	new-instance v3, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v3, v2}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	const-string v2, "Unknown topic operation"</span>
+<span class="">	invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, "."</span>
+<span class="">	invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v0, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/messaging/y;->c()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/firebase/messaging/b0;->c(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/messaging/b0;->g()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_5</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/messaging/y;->c()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	add-int/lit8 v2, v2, 0x23</span>
+<span class="">	new-instance v4, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v4, v2}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	const-string v2, "Unsubscribe from topic: "</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v0, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/messaging/y;->c()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/firebase/messaging/b0;->b(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/messaging/b0;->g()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_5</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/messaging/y;->c()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	add-int/lit8 v2, v2, 0x1f</span>
+<span class="">	new-instance v4, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v4, v2}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	const-string v2, "Subscribe to topic: "</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v0, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:goto_2</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	:cond_5</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-virtual {p1}, Ljava/io/IOException;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "SERVICE_NOT_AVAILABLE"</span>
+<span class="">	invoke-virtual {v3, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_8</span>
+<span class="">	invoke-virtual {p1}, Ljava/io/IOException;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "INTERNAL_SERVER_ERROR"</span>
+<span class="">	invoke-virtual {v3, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_6</span>
+<span class="">	goto :goto_3</span>
+<span class="">	invoke-virtual {p1}, Ljava/io/IOException;->getMessage()Ljava/lang/String;</span>
+<span class="">	:cond_6</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-nez v2, :cond_7</span>
+<span class="">	const-string p1, "Topic operation failed without exception message. Will retry Topic operation."</span>
+<span class="">	invoke-static {v0, p1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	throw p1</span>
+<span class="">	invoke-virtual {p1}, Ljava/io/IOException;->getMessage()Ljava/lang/String;</span>
+<span class="">	:cond_7</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_3</span>
+<span class="">	:cond_8</span>
+<span class="">	invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	new-instance v3, Ljava/lang/StringBuilder;</span>
+<span class="">	add-int/lit8 v2, v2, 0x35</span>
+<span class="">	invoke-direct {v3, v2}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	const-string v2, "Topic operation failed: "</span>
+<span class="">	invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, ". Will retry Topic operation."</span>
+<span class="">	invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v0, p1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I</span>
+.end method
+
+.method  l(Ljava/lang/Runnable;J)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/messaging/b0;->f:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	sget-object v1, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-interface {v0, p1, p2, p3, v1}, Ljava/util/concurrent/ScheduledExecutorService;->schedule(Ljava/lang/Runnable;JLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;</span>
+.end method
+
+.method declared-synchronized m(Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iput-boolean p1, p0, Lcom/google/firebase/messaging/b0;->g:Z</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+<span class="cov">.method  o()V</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/messaging/b0;->f()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/messaging/b0;->n()V</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method  p()Z
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:goto_0</span>
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/messaging/b0;->h:Lcom/google/firebase/messaging/z;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/messaging/z;->b()Lcom/google/firebase/messaging/y;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/messaging/b0;->g()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-string v0, "FirebaseMessaging"</span>
+<span class="">	const-string v1, "topic sync succeeded"</span>
+<span class="">	invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/google/firebase/messaging/b0;->k(Lcom/google/firebase/messaging/y;)Z</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_2</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/messaging/b0;->h:Lcom/google/firebase/messaging/z;</span>
+<span class="">	invoke-virtual {v1, v0}, Lcom/google/firebase/messaging/z;->d(Lcom/google/firebase/messaging/y;)Z</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/messaging/b0;->j(Lcom/google/firebase/messaging/y;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw v0</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+.end method
+
+.method  q(J)V
+<span class="">	.locals 10</span>
+
+<span class="">	add-long v0, p1, p1</span>
+<span class="">	const-wide/16 v2, 0x1e</span>
+<span class="">	invoke-static {v2, v3, v0, v1}, Ljava/lang/Math;->max(JJ)J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	sget-wide v2, Lcom/google/firebase/messaging/b0;->i:J</span>
+<span class="">	invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->min(JJ)J</span>
+<span class="">	move-result-wide v8</span>
+<span class="">	new-instance v0, Lcom/google/firebase/messaging/c0;</span>
+<span class="">	iget-object v6, p0, Lcom/google/firebase/messaging/b0;->b:Landroid/content/Context;</span>
+<span class="">	iget-object v7, p0, Lcom/google/firebase/messaging/b0;->c:Lcom/google/firebase/iid/r;</span>
+<span class="">	move-object v4, v0</span>
+<span class="">	move-object v5, p0</span>
+<span class="">	invoke-direct/range {v4 .. v9}, Lcom/google/firebase/messaging/c0;-><init>(Lcom/google/firebase/messaging/b0;Landroid/content/Context;Lcom/google/firebase/iid/r;J)V</span>
+<span class="">	invoke-virtual {p0, v0, p1, p2}, Lcom/google/firebase/messaging/b0;->l(Ljava/lang/Runnable;J)V</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/firebase/messaging/b0;->m(Z)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

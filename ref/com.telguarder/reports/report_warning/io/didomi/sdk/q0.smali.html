@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">io.didomi.sdk</a></li>
+        <li><i class="ico ico-class"></i> q0.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lio/didomi/sdk/q0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private final a:Landroid/content/Context;
+.field private final b:Lkotlin/Lazy;
+.field private final c:Landroid/content/SharedPreferences;
+.field private final d:Ljava/lang/String;
+.field private final e:Ljava/lang/String;
+.field private final f:Ljava/lang/String;
+.field private final g:Ljava/lang/String;
+
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;Lio/didomi/sdk/DidomiInitializeParameters;)V</span>
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Ljavax/inject/Inject;</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	const-string v0, "context"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v0, "parameters"</span>
+<span class="cov">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lio/didomi/sdk/q0;->a:Landroid/content/Context;</span>
+<span class="cov">	new-instance v0, Lio/didomi/sdk/q0$a;</span>
+<span class="cov">	invoke-direct {v0, p0}, Lio/didomi/sdk/q0$a;-><init>(Lio/didomi/sdk/q0;)V</span>
+<span class="exec">	invoke-static {v0}, Lkotlin/LazyKt;->lazy(Lkotlin/jvm/functions/Function0;)Lkotlin/Lazy;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	iput-object v0, p0, Lio/didomi/sdk/q0;->b:Lkotlin/Lazy;</span>
+<span class="exec">	invoke-static {p1}, Landroidx/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	iput-object v0, p0, Lio/didomi/sdk/q0;->c:Landroid/content/SharedPreferences;</span>
+<span class="cov">	const-string v1, "sharedPreferences"</span>
+<span class="cov">	invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0, v0}, Lio/didomi/sdk/q0;->a(Landroid/content/SharedPreferences;)Ljava/lang/String;</span>
+<span class="cov">	const-string v0, "https://mobile-1520.api.privacy-center.org/"</span>
+<span class="cov">	iput-object v0, p0, Lio/didomi/sdk/q0;->d:Ljava/lang/String;</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const-string v0, "context.packageName"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	iput-object p1, p0, Lio/didomi/sdk/q0;->e:Ljava/lang/String;</span>
+<span class="cov">	const-string p1, "https://sdk.privacy-center.org/"</span>
+<span class="cov">	iput-object p1, p0, Lio/didomi/sdk/q0;->f:Ljava/lang/String;</span>
+<span class="cov">	const-string p1, "1.52.0"</span>
+<span class="cov">	iput-object p1, p0, Lio/didomi/sdk/q0;->g:Ljava/lang/String;</span>
+<span class="exec">	invoke-virtual {p0}, Lio/didomi/sdk/q0;->g()Z</span>
+<span class="cov">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	iget-boolean p1, p2, Lio/didomi/sdk/DidomiInitializeParameters;->androidTvEnabled:Z</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/Exception;</span>
+<span class="">	const-string p2, "TV device detected, but androidTvEnabled parameter is false"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static final synthetic a(Lio/didomi/sdk/q0;)Landroid/content/Context;</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	iget-object p0, p0, Lio/didomi/sdk/q0;->a:Landroid/content/Context;</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method private final a(Landroid/content/SharedPreferences;)Ljava/lang/String;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	sget-object v0, Lio/didomi/sdk/p1;->a:Ljava/lang/String;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="exec">	invoke-interface {p1, v0, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-static {}, Ljava/util/UUID;->randomUUID()Ljava/util/UUID;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/UUID;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {p1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sget-object v1, Lio/didomi/sdk/p1;->a:Ljava/lang/String;</span>
+<span class="">	invoke-interface {p1, v1, v0}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public a()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/q0;->d:Ljava/lang/String;</span>
+.end method
+
+<span class="cov">.method public a(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	const-string v0, "tcfVersion"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="exec">	invoke-virtual {p0}, Lio/didomi/sdk/q0;->e()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="cov">	invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	const-string v0, "tcf/"</span>
+<span class="cov">	invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	const-string p1, "/vendor-list.json"</span>
+<span class="cov">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public a(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	const-string v0, "apiKey"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="exec">	invoke-virtual {p0}, Lio/didomi/sdk/q0;->e()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {p0}, Lio/didomi/sdk/q0;->c()Lio/didomi/sdk/m3;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-interface {v1}, Lio/didomi/sdk/m3;->getName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	invoke-static {p2}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	goto :goto_1</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	const/4 v2, 0x1</span>
+<span class="cov">	:goto_1</span>
+<span class="cov">	if-eqz v2, :cond_2</span>
+<span class="exec">	invoke-virtual {p0}, Lio/didomi/sdk/q0;->b()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="cov">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="cov">	const-string v3, "target="</span>
+<span class="cov">	invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v3, "target_type=notice&target="</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="cov">	:goto_2</span>
+<span class="cov">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="cov">	invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	const-string p1, "/didomi_config.json?platform="</span>
+<span class="cov">	invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	const-string p1, "&os=android&version=1.52.0&"</span>
+<span class="cov">	invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public b(Ljava/lang/String;)I</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	iget-object v0, p0, Lio/didomi/sdk/q0;->a:Landroid/content/Context;</span>
+<span class="exec">	invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	if-eqz p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p1, ""</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	iget-object v1, p0, Lio/didomi/sdk/q0;->a:Landroid/content/Context;</span>
+<span class="exec">	invoke-virtual {v1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "drawable"</span>
+<span class="exec">	invoke-virtual {v0, p1, v2, v1}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="cov">	move-result p1</span>
+<span class="exec">	return p1</span>
+.end method
+
+<span class="cov">.method public b()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lio/didomi/sdk/q0;->e:Ljava/lang/String;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method protected c()Lio/didomi/sdk/m3;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lio/didomi/sdk/q0;->b:Lkotlin/Lazy;</span>
+<span class="exec">	invoke-interface {v0}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Lio/didomi/sdk/m3;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public d()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-virtual {p0}, Lio/didomi/sdk/q0;->c()Lio/didomi/sdk/m3;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-interface {v0}, Lio/didomi/sdk/m3;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public e()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lio/didomi/sdk/q0;->f:Ljava/lang/String;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public f()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lio/didomi/sdk/q0;->g:Ljava/lang/String;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public final g()Z</span>
+<span class="">	.locals 2</span>
+
+<span class="exec">	invoke-virtual {p0}, Lio/didomi/sdk/q0;->c()Lio/didomi/sdk/m3;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-interface {v0}, Lio/didomi/sdk/m3;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "sdk-ctv"</span>
+<span class="exec">	invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

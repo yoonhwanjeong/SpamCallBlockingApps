@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.media</a></li>
+        <li><i class="ico ico-class"></i> MediaBrowserServiceCompat.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Landroidx/media/MediaBrowserServiceCompat;
+.super Landroid/app/Service;
+.source "MediaBrowserServiceCompat.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/media/MediaBrowserServiceCompat$BrowserRoot;,
+Landroidx/media/MediaBrowserServiceCompat$ResultWrapper;,
+Landroidx/media/MediaBrowserServiceCompat$ServiceCallbacksCompat;,
+Landroidx/media/MediaBrowserServiceCompat$ServiceCallbacks;,
+Landroidx/media/MediaBrowserServiceCompat$ServiceBinderImpl;,
+Landroidx/media/MediaBrowserServiceCompat$Result;,
+Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;,
+Landroidx/media/MediaBrowserServiceCompat$ServiceHandler;,
+Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi28;,
+Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi26;,
+Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi23;,
+Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi21;,
+Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplBase;,
+Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;
+}
+.end annotation
+
+.field static final DEBUG:Z
+.field private static final EPSILON:F = 1.0E-5f
+.field public static final KEY_MEDIA_ITEM:Ljava/lang/String; = "media_item"
+.field public static final KEY_SEARCH_RESULTS:Ljava/lang/String; = "search_results"
+.field public static final RESULT_ERROR:I = -0x1
+.field static final RESULT_FLAG_ON_LOAD_ITEM_NOT_IMPLEMENTED:I = 0x2
+.field static final RESULT_FLAG_ON_SEARCH_NOT_IMPLEMENTED:I = 0x4
+.field static final RESULT_FLAG_OPTION_NOT_HANDLED:I = 0x1
+.field public static final RESULT_OK:I = 0x0
+.field public static final RESULT_PROGRESS_UPDATE:I = 0x1
+.field public static final SERVICE_INTERFACE:Ljava/lang/String; = "android.media.browse.MediaBrowserService"
+.field static final TAG:Ljava/lang/String; = "MBServiceCompat"
+.field final mConnectionFromFwk:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;
+.field final mConnections:Landroidx/collection/ArrayMap;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Landroidx/collection/ArrayMap<",
+"Landroid/os/IBinder;",
+"Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;",
+">;"
+}
+.end annotation
+.end field
+.field  mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;
+.field final mHandler:Landroidx/media/MediaBrowserServiceCompat$ServiceHandler;
+.field private mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;
+.field final mPendingConnections:Ljava/util/ArrayList;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/ArrayList<",
+"Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;",
+">;"
+}
+.end annotation
+.end field
+.field  mSession:Landroid/support/v4/media/session/MediaSessionCompat$Token;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 2</span>
+
+<span class="">	const-string v0, "MBServiceCompat"</span>
+<span class="">	const/4 v1, 0x3</span>
+<span class="">	invoke-static {v0, v1}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	sput-boolean v0, Landroidx/media/MediaBrowserServiceCompat;->DEBUG:Z</span>
+.end method
+
+.method public constructor <init>()V
+<span class="">	.locals 8</span>
+
+<span class="">	invoke-direct {p0}, Landroid/app/Service;-><init>()V</span>
+<span class="">	new-instance v7, Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	const-string v2, "android.media.session.MediaController"</span>
+<span class="">	const/4 v3, -0x1</span>
+<span class="">	const/4 v4, -0x1</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	move-object v0, v7</span>
+<span class="">	move-object v1, p0</span>
+<span class="">	invoke-direct/range {v0 .. v6}, Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;-><init>(Landroidx/media/MediaBrowserServiceCompat;Ljava/lang/String;IILandroid/os/Bundle;Landroidx/media/MediaBrowserServiceCompat$ServiceCallbacks;)V</span>
+<span class="">	iput-object v7, p0, Landroidx/media/MediaBrowserServiceCompat;->mConnectionFromFwk:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mPendingConnections:Ljava/util/ArrayList;</span>
+<span class="">	new-instance v0, Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-direct {v0}, Landroidx/collection/ArrayMap;-><init>()V</span>
+<span class="">	iput-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mConnections:Landroidx/collection/ArrayMap;</span>
+<span class="">	new-instance v0, Landroidx/media/MediaBrowserServiceCompat$ServiceHandler;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/media/MediaBrowserServiceCompat$ServiceHandler;-><init>(Landroidx/media/MediaBrowserServiceCompat;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mHandler:Landroidx/media/MediaBrowserServiceCompat$ServiceHandler;</span>
+.end method
+
+.method  addSubscription(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;Landroid/os/IBinder;Landroid/os/Bundle;)V
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"id",</span>
+<span class="">	"connection",</span>
+<span class="">	"token",</span>
+<span class="">	"options"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p2, Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;->subscriptions:Ljava/util/HashMap;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/util/List;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroidx/core/util/Pair;</span>
+<span class="">	iget-object v3, v2, Landroidx/core/util/Pair;->first:Ljava/lang/Object;</span>
+<span class="">	if-ne p3, v3, :cond_1</span>
+<span class="">	iget-object v2, v2, Landroidx/core/util/Pair;->second:Ljava/lang/Object;</span>
+<span class="">	check-cast v2, Landroid/os/Bundle;</span>
+<span class="">	invoke-static {p4, v2}, Landroidx/media/MediaBrowserCompatUtils;->areSameOptions(Landroid/os/Bundle;Landroid/os/Bundle;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	new-instance v1, Landroidx/core/util/Pair;</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-direct {v1, p3, p4}, Landroidx/core/util/Pair;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	iget-object p3, p2, Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;->subscriptions:Ljava/util/HashMap;</span>
+<span class="">	invoke-virtual {p3, p1, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const/4 p3, 0x0</span>
+<span class="">	invoke-virtual {p0, p1, p2, p4, p3}, Landroidx/media/MediaBrowserServiceCompat;->performLoadChildren(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;Landroid/os/Bundle;Landroid/os/Bundle;)V</span>
+<span class="">	iput-object p2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	invoke-virtual {p0, p1, p4}, Landroidx/media/MediaBrowserServiceCompat;->onSubscribe(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	iput-object p3, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+.end method
+
+.method  applyOptions(Ljava/util/List;Landroid/os/Bundle;)Ljava/util/List;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroid/support/v4/media/MediaBrowserCompat$MediaItem;",</span>
+<span class="">	">;",</span>
+<span class="">	"Landroid/os/Bundle;",</span>
+<span class="">	")",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroid/support/v4/media/MediaBrowserCompat$MediaItem;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x10</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"list",</span>
+<span class="">	"options"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	const-string v0, "android.media.browse.extra.PAGE"</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v1, -0x1</span>
+<span class="">	invoke-virtual {p2, v0, v1}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+<span class="">	const-string v2, "android.media.browse.extra.PAGE_SIZE"</span>
+<span class="">	invoke-virtual {p2, v2, v1}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result p2</span>
+<span class="">	if-ne v0, v1, :cond_1</span>
+<span class="">	if-ne p2, v1, :cond_1</span>
+<span class="">	mul-int v1, p2, v0</span>
+<span class="">	add-int v2, v1, p2</span>
+<span class="">	:cond_1</span>
+<span class="">	if-ltz v0, :cond_4</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	if-lt p2, v0, :cond_4</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->size()I</span>
+<span class="">	move-result p2</span>
+<span class="">	if-lt v1, p2, :cond_2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->size()I</span>
+<span class="">	move-result p2</span>
+<span class="">	:cond_2</span>
+<span class="">	if-le v2, p2, :cond_3</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-interface {p1, v1, v2}, Ljava/util/List;->subList(II)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_4</span>
+.end method
+
+.method public attachToBaseContext(Landroid/content/Context;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"base"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroidx/media/MediaBrowserServiceCompat;->attachBaseContext(Landroid/content/Context;)V</span>
+.end method
+
+.method public dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"fd",</span>
+<span class="">	"writer",</span>
+<span class="">	"args"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method public final getBrowserRootHints()Landroid/os/Bundle;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	invoke-interface {v0}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;->getBrowserRootHints()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public final getCurrentBrowserInfo()Landroidx/media/MediaSessionManager$RemoteUserInfo;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	invoke-interface {v0}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;->getCurrentBrowserInfo()Landroidx/media/MediaSessionManager$RemoteUserInfo;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public getSessionToken()Landroid/support/v4/media/session/MediaSessionCompat$Token;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mSession:Landroid/support/v4/media/session/MediaSessionCompat$Token;</span>
+.end method
+
+.method  isValidPackage(Ljava/lang/String;I)Z
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"pkg",</span>
+<span class="">	"uid"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/media/MediaBrowserServiceCompat;->getPackageManager()Landroid/content/pm/PackageManager;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1, p2}, Landroid/content/pm/PackageManager;->getPackagesForUid(I)[Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	array-length v1, p2</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-ge v2, v1, :cond_2</span>
+<span class="">	:goto_0</span>
+<span class="">	aget-object v3, p2, v2</span>
+<span class="">	invoke-virtual {v3, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public notifyChildrenChanged(Landroidx/media/MediaSessionManager$RemoteUserInfo;Ljava/lang/String;Landroid/os/Bundle;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"remoteUserInfo",</span>
+<span class="">	"parentId",</span>
+<span class="">	"options"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	if-eqz p3, :cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	invoke-interface {v0, p1, p2, p3}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;->notifyChildrenChanged(Landroidx/media/MediaSessionManager$RemoteUserInfo;Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p2, "options cannot be null in notifyChildrenChanged"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string p2, "parentId cannot be null in notifyChildrenChanged"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string p2, "remoteUserInfo cannot be null in notifyChildrenChanged"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public notifyChildrenChanged(Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"parentId"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-interface {v0, p1, v1}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;->notifyChildrenChanged(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, "parentId cannot be null in notifyChildrenChanged"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public notifyChildrenChanged(Ljava/lang/String;Landroid/os/Bundle;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"parentId",</span>
+<span class="">	"options"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	invoke-interface {v0, p1, p2}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;->notifyChildrenChanged(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p2, "options cannot be null in notifyChildrenChanged"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string p2, "parentId cannot be null in notifyChildrenChanged"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public onBind(Landroid/content/Intent;)Landroid/os/IBinder;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"intent"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	invoke-interface {v0, p1}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;->onBind(Landroid/content/Intent;)Landroid/os/IBinder;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public onCreate()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0}, Landroid/app/Service;->onCreate()V</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x1c</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	new-instance v0, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi28;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi28;-><init>(Landroidx/media/MediaBrowserServiceCompat;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x1a</span>
+<span class="">	if-lt v0, v1, :cond_1</span>
+<span class="">	new-instance v0, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi26;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi26;-><init>(Landroidx/media/MediaBrowserServiceCompat;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x17</span>
+<span class="">	if-lt v0, v1, :cond_2</span>
+<span class="">	new-instance v0, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi23;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi23;-><init>(Landroidx/media/MediaBrowserServiceCompat;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x15</span>
+<span class="">	if-lt v0, v1, :cond_3</span>
+<span class="">	new-instance v0, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi21;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplApi21;-><init>(Landroidx/media/MediaBrowserServiceCompat;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_3</span>
+<span class="">	new-instance v0, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplBase;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImplBase;-><init>(Landroidx/media/MediaBrowserServiceCompat;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	:goto_0</span>
+<span class="">	iget-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	invoke-interface {v0}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;->onCreate()V</span>
+.end method
+
+.method public onCustomAction(Ljava/lang/String;Landroid/os/Bundle;Landroidx/media/MediaBrowserServiceCompat$Result;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Landroid/os/Bundle;",</span>
+<span class="">	"Landroidx/media/MediaBrowserServiceCompat$Result<",</span>
+<span class="">	"Landroid/os/Bundle;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"action",</span>
+<span class="">	"extras",</span>
+<span class="">	"result"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-virtual {p3, p1}, Landroidx/media/MediaBrowserServiceCompat$Result;->sendError(Landroid/os/Bundle;)V</span>
+.end method
+
+.method public abstract onGetRoot(Ljava/lang/String;ILandroid/os/Bundle;)Landroidx/media/MediaBrowserServiceCompat$BrowserRoot;
+<span class="">	</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"clientPackageName",</span>
+<span class="">	"clientUid",</span>
+<span class="">	"rootHints"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method public abstract onLoadChildren(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$Result;)V
+<span class="">	</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Landroidx/media/MediaBrowserServiceCompat$Result<",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroid/support/v4/media/MediaBrowserCompat$MediaItem;",</span>
+<span class="">	">;>;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"parentId",</span>
+<span class="">	"result"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method public onLoadChildren(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$Result;Landroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Landroidx/media/MediaBrowserServiceCompat$Result<",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroid/support/v4/media/MediaBrowserCompat$MediaItem;",</span>
+<span class="">	">;>;",</span>
+<span class="">	"Landroid/os/Bundle;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"parentId",</span>
+<span class="">	"result",</span>
+<span class="">	"options"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 p3, 0x1</span>
+<span class="">	invoke-virtual {p2, p3}, Landroidx/media/MediaBrowserServiceCompat$Result;->setFlags(I)V</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Landroidx/media/MediaBrowserServiceCompat;->onLoadChildren(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$Result;)V</span>
+.end method
+
+.method public onLoadItem(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$Result;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Landroidx/media/MediaBrowserServiceCompat$Result<",</span>
+<span class="">	"Landroid/support/v4/media/MediaBrowserCompat$MediaItem;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"itemId",</span>
+<span class="">	"result"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 p1, 0x2</span>
+<span class="">	invoke-virtual {p2, p1}, Landroidx/media/MediaBrowserServiceCompat$Result;->setFlags(I)V</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-virtual {p2, p1}, Landroidx/media/MediaBrowserServiceCompat$Result;->sendResult(Ljava/lang/Object;)V</span>
+.end method
+
+.method public onSearch(Ljava/lang/String;Landroid/os/Bundle;Landroidx/media/MediaBrowserServiceCompat$Result;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Landroid/os/Bundle;",</span>
+<span class="">	"Landroidx/media/MediaBrowserServiceCompat$Result<",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroid/support/v4/media/MediaBrowserCompat$MediaItem;",</span>
+<span class="">	">;>;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"query",</span>
+<span class="">	"extras",</span>
+<span class="">	"result"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 p1, 0x4</span>
+<span class="">	invoke-virtual {p3, p1}, Landroidx/media/MediaBrowserServiceCompat$Result;->setFlags(I)V</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-virtual {p3, p1}, Landroidx/media/MediaBrowserServiceCompat$Result;->sendResult(Ljava/lang/Object;)V</span>
+.end method
+
+.method public onSubscribe(Ljava/lang/String;Landroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"id",</span>
+<span class="">	"option"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method public onUnsubscribe(Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"id"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method  performCustomAction(Ljava/lang/String;Landroid/os/Bundle;Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;Landroid/support/v4/os/ResultReceiver;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x10,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x10</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"action",</span>
+<span class="">	"extras",</span>
+<span class="">	"connection",</span>
+<span class="">	"receiver"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Landroidx/media/MediaBrowserServiceCompat$4;</span>
+<span class="">	invoke-direct {v0, p0, p1, p4}, Landroidx/media/MediaBrowserServiceCompat$4;-><init>(Landroidx/media/MediaBrowserServiceCompat;Ljava/lang/Object;Landroid/support/v4/os/ResultReceiver;)V</span>
+<span class="">	iput-object p3, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	invoke-virtual {p0, p1, p2, v0}, Landroidx/media/MediaBrowserServiceCompat;->onCustomAction(Ljava/lang/String;Landroid/os/Bundle;Landroidx/media/MediaBrowserServiceCompat$Result;)V</span>
+<span class="">	const/4 p3, 0x0</span>
+<span class="">	iput-object p3, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/media/MediaBrowserServiceCompat$Result;->isDone()Z</span>
+<span class="">	move-result p3</span>
+<span class="">	if-eqz p3, :cond_0</span>
+<span class="">	new-instance p3, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p4, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {p4}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v0, "onCustomAction must call detach() or sendResult() or sendError() before returning for action="</span>
+<span class="">	invoke-virtual {p4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, " extras="</span>
+<span class="">	invoke-virtual {p4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p4, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p3, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p3</span>
+.end method
+
+.method  performLoadChildren(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;Landroid/os/Bundle;Landroid/os/Bundle;)V
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x10,</span>
+<span class="">	0x10,</span>
+<span class="">	0x10,</span>
+<span class="">	0x10</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"parentId",</span>
+<span class="">	"connection",</span>
+<span class="">	"subscribeOptions",</span>
+<span class="">	"notifyChildrenChangedOptions"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v7, Landroidx/media/MediaBrowserServiceCompat$1;</span>
+<span class="">	move-object v0, v7</span>
+<span class="">	move-object v1, p0</span>
+<span class="">	move-object v2, p1</span>
+<span class="">	move-object v3, p2</span>
+<span class="">	move-object v4, p1</span>
+<span class="">	move-object v5, p3</span>
+<span class="">	move-object v6, p4</span>
+<span class="">	invoke-direct/range {v0 .. v6}, Landroidx/media/MediaBrowserServiceCompat$1;-><init>(Landroidx/media/MediaBrowserServiceCompat;Ljava/lang/Object;Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)V</span>
+<span class="">	iput-object p2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	if-nez p3, :cond_0</span>
+<span class="">	invoke-virtual {p0, p1, v7}, Landroidx/media/MediaBrowserServiceCompat;->onLoadChildren(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$Result;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0, p1, v7, p3}, Landroidx/media/MediaBrowserServiceCompat;->onLoadChildren(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$Result;Landroid/os/Bundle;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 p3, 0x0</span>
+<span class="">	iput-object p3, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	invoke-virtual {v7}, Landroidx/media/MediaBrowserServiceCompat$Result;->isDone()Z</span>
+<span class="">	move-result p3</span>
+<span class="">	if-eqz p3, :cond_1</span>
+<span class="">	new-instance p3, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance p4, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {p4}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v0, "onLoadChildren must call detach() or sendResult() before returning for package="</span>
+<span class="">	invoke-virtual {p4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object p2, p2, Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;->pkg:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p4, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p2, " id="</span>
+<span class="">	invoke-virtual {p4, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p3, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p3</span>
+.end method
+
+.method  performLoadItem(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;Landroid/support/v4/os/ResultReceiver;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x10</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"itemId",</span>
+<span class="">	"connection",</span>
+<span class="">	"receiver"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Landroidx/media/MediaBrowserServiceCompat$2;</span>
+<span class="">	invoke-direct {v0, p0, p1, p3}, Landroidx/media/MediaBrowserServiceCompat$2;-><init>(Landroidx/media/MediaBrowserServiceCompat;Ljava/lang/Object;Landroid/support/v4/os/ResultReceiver;)V</span>
+<span class="">	iput-object p2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	invoke-virtual {p0, p1, v0}, Landroidx/media/MediaBrowserServiceCompat;->onLoadItem(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$Result;)V</span>
+<span class="">	const/4 p2, 0x0</span>
+<span class="">	iput-object p2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/media/MediaBrowserServiceCompat$Result;->isDone()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	new-instance p2, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p3, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {p3}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v0, "onLoadItem must call detach() or sendResult() before returning for id="</span>
+<span class="">	invoke-virtual {p3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p2, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p2</span>
+.end method
+
+.method  performSearch(Ljava/lang/String;Landroid/os/Bundle;Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;Landroid/support/v4/os/ResultReceiver;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x10,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x10</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"query",</span>
+<span class="">	"extras",</span>
+<span class="">	"connection",</span>
+<span class="">	"receiver"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Landroidx/media/MediaBrowserServiceCompat$3;</span>
+<span class="">	invoke-direct {v0, p0, p1, p4}, Landroidx/media/MediaBrowserServiceCompat$3;-><init>(Landroidx/media/MediaBrowserServiceCompat;Ljava/lang/Object;Landroid/support/v4/os/ResultReceiver;)V</span>
+<span class="">	iput-object p3, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	invoke-virtual {p0, p1, p2, v0}, Landroidx/media/MediaBrowserServiceCompat;->onSearch(Ljava/lang/String;Landroid/os/Bundle;Landroidx/media/MediaBrowserServiceCompat$Result;)V</span>
+<span class="">	const/4 p2, 0x0</span>
+<span class="">	iput-object p2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/media/MediaBrowserServiceCompat$Result;->isDone()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	new-instance p2, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p3, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {p3}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string p4, "onSearch must call detach() or sendResult() before returning for query="</span>
+<span class="">	invoke-virtual {p3, p4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p2, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p2</span>
+.end method
+
+.method  removeSubscription(Ljava/lang/String;Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;Landroid/os/IBinder;)Z
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0,</span>
+<span class="">	0x0,</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"id",</span>
+<span class="">	"connection",</span>
+<span class="">	"token"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-nez p3, :cond_1</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object p3, p2, Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;->subscriptions:Ljava/util/HashMap;</span>
+<span class="">	invoke-virtual {p3, p1}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	if-eqz p3, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	iput-object p2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/media/MediaBrowserServiceCompat;->onUnsubscribe(Ljava/lang/String;)V</span>
+<span class="">	iput-object v2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	iget-object v3, p2, Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;->subscriptions:Ljava/util/HashMap;</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v3, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/util/List;</span>
+<span class="">	if-eqz v3, :cond_4</span>
+<span class="">	invoke-interface {v3}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_3</span>
+<span class="">	invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	check-cast v5, Landroidx/core/util/Pair;</span>
+<span class="">	iget-object v5, v5, Landroidx/core/util/Pair;->first:Ljava/lang/Object;</span>
+<span class="">	if-ne p3, v5, :cond_2</span>
+<span class="">	invoke-interface {v4}, Ljava/util/Iterator;->remove()V</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	invoke-interface {v3}, Ljava/util/List;->size()I</span>
+<span class="">	:cond_3</span>
+<span class="">	move-result p3</span>
+<span class="">	if-nez p3, :cond_4</span>
+<span class="">	iget-object p3, p2, Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;->subscriptions:Ljava/util/HashMap;</span>
+<span class="">	invoke-virtual {p3, p1}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	iput-object p2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/media/MediaBrowserServiceCompat;->onUnsubscribe(Ljava/lang/String;)V</span>
+<span class="">	iput-object v2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	move-exception p3</span>
+<span class="">	iput-object p2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/media/MediaBrowserServiceCompat;->onUnsubscribe(Ljava/lang/String;)V</span>
+<span class="">	iput-object v2, p0, Landroidx/media/MediaBrowserServiceCompat;->mCurConnection:Landroidx/media/MediaBrowserServiceCompat$ConnectionRecord;</span>
+<span class="">	throw p3</span>
+.end method
+
+.method public setSessionToken(Landroid/support/v4/media/session/MediaSessionCompat$Token;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"token"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	iget-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mSession:Landroid/support/v4/media/session/MediaSessionCompat$Token;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	iput-object p1, p0, Landroidx/media/MediaBrowserServiceCompat;->mSession:Landroid/support/v4/media/session/MediaSessionCompat$Token;</span>
+<span class="">	iget-object v0, p0, Landroidx/media/MediaBrowserServiceCompat;->mImpl:Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;</span>
+<span class="">	invoke-interface {v0, p1}, Landroidx/media/MediaBrowserServiceCompat$MediaBrowserServiceImpl;->setSessionToken(Landroid/support/v4/media/session/MediaSessionCompat$Token;)V</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, "The session token has already been set"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v0, "Session token may not be null"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

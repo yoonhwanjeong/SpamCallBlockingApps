@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.common.data</a></li>
+        <li><i class="ico ico-class"></i> BitmapTeleporter.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/android/gms/common/data/BitmapTeleporter;
+.super Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;
+.source "com.google.android.gms:play-services-base@@18.0.1"
+.implements Lcom/google/android/gms/common/internal/ReflectedParcelable;
+
+
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Landroid/os/Parcelable$Creator<",
+"Lcom/google/android/gms/common/data/BitmapTeleporter;",
+">;"
+}
+.end annotation
+.end field
+.field final zaa:I
+.field  zab:Landroid/os/ParcelFileDescriptor;
+.field final zac:I
+.field private zad:Landroid/graphics/Bitmap;
+.field private zae:Z
+.field private zaf:Ljava/io/File;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/google/android/gms/common/data/zaa;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/android/gms/common/data/zaa;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/google/android/gms/common/data/BitmapTeleporter;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+.end method
+
+.method constructor <init>(ILandroid/os/ParcelFileDescriptor;I)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;-><init>()V</span>
+<span class="">	iput p1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaa:I</span>
+<span class="">	iput-object p2, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab:Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	iput p3, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zac:I</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zad:Landroid/graphics/Bitmap;</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput-boolean p1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zae:Z</span>
+.end method
+
+.method public constructor <init>(Landroid/graphics/Bitmap;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;-><init>()V</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	iput v0, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaa:I</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	iput-object v1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab:Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	iput v1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zac:I</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zad:Landroid/graphics/Bitmap;</span>
+<span class="">	iput-boolean v0, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zae:Z</span>
+.end method
+
+.method private static final zaa(Ljava/io/Closeable;)V
+<span class="">	.locals 2</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	invoke-interface {p0}, Ljava/io/Closeable;->close()V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catch_0</span>
+<span class="">	const-string v0, "BitmapTeleporter"</span>
+<span class="">	const-string v1, "Could not close stream"</span>
+<span class="">	invoke-static {v0, v1, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+.end method
+
+.method public get()Landroid/graphics/Bitmap;
+<span class="">	.locals 5</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zae:Z</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-instance v0, Ljava/io/DataInputStream;</span>
+<span class="">	new-instance v1, Landroid/os/ParcelFileDescriptor$AutoCloseInputStream;</span>
+<span class="">	iget-object v2, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab:Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	invoke-static {v2}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	invoke-direct {v1, v2}, Landroid/os/ParcelFileDescriptor$AutoCloseInputStream;-><init>(Landroid/os/ParcelFileDescriptor;)V</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/io/DataInputStream;-><init>(Ljava/io/InputStream;)V</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/DataInputStream;->readInt()I</span>
+<span class="">	move-result v1</span>
+<span class="">	new-array v1, v1, [B</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/DataInputStream;->readInt()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/DataInputStream;->readInt()I</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/DataInputStream;->readUTF()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-static {v4}, Landroid/graphics/Bitmap$Config;->valueOf(Ljava/lang/String;)Landroid/graphics/Bitmap$Config;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/io/DataInputStream;->read([B)I</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaa(Ljava/io/Closeable;)V</span>
+<span class="">	invoke-static {v1}, Ljava/nio/ByteBuffer;->wrap([B)Ljava/nio/ByteBuffer;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v2, v3, v4}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1, v0}, Landroid/graphics/Bitmap;->copyPixelsFromBuffer(Ljava/nio/Buffer;)V</span>
+<span class="">	iput-object v1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zad:Landroid/graphics/Bitmap;</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	iput-boolean v0, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zae:Z</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	:try_start_1</span>
+<span class="">	new-instance v2, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string v3, "Could not read from parcel file descriptor"</span>
+<span class="">	invoke-direct {v2, v3, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	throw v2</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaa(Ljava/io/Closeable;)V</span>
+<span class="">	throw v1</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zad:Landroid/graphics/Bitmap;</span>
+.end method
+
+.method public release()V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zae:Z</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab:Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/ParcelFileDescriptor;->close()V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_0</span>
+<span class="">	const-string v1, "BitmapTeleporter"</span>
+<span class="">	const-string v2, "Could not close PFD"</span>
+<span class="">	invoke-static {v1, v2, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public setTempDir(Ljava/io/File;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "Cannot set null temp directory"</span>
+<span class="">	invoke-static {p1, v0}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaf:Ljava/io/File;</span>
+.end method
+
+.method public final writeToParcel(Landroid/os/Parcel;I)V
+<span class="">	.locals 6</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab:Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zad:Landroid/graphics/Bitmap;</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroid/graphics/Bitmap;</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/Bitmap;->getRowBytes()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/Bitmap;->getHeight()I</span>
+<span class="">	move-result v2</span>
+<span class="">	mul-int v1, v1, v2</span>
+<span class="">	invoke-static {v1}, Ljava/nio/ByteBuffer;->allocate(I)Ljava/nio/ByteBuffer;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Bitmap;->copyPixelsToBuffer(Ljava/nio/Buffer;)V</span>
+<span class="">	invoke-virtual {v1}, Ljava/nio/ByteBuffer;->array()[B</span>
+<span class="">	move-result-object v1</span>
+<span class="">	new-instance v2, Ljava/io/BufferedOutputStream;</span>
+<span class="">	iget-object v3, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaf:Ljava/io/File;</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v4, "teleporter"</span>
+<span class="">	const-string v5, ".tmp"</span>
+<span class="">	invoke-static {v4, v5, v3}, Ljava/io/File;->createTempFile(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/io/File;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_2</span>
+<span class="">	new-instance v4, Ljava/io/FileOutputStream;</span>
+<span class="">	invoke-direct {v4, v3}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V</span>
+<span class="">	const/high16 v5, 0x10000000</span>
+<span class="">	invoke-static {v3, v5}, Landroid/os/ParcelFileDescriptor;->open(Ljava/io/File;I)Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	iput-object v5, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab:Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_1} :catch_1</span>
+<span class="">	invoke-virtual {v3}, Ljava/io/File;->delete()Z</span>
+<span class="">	invoke-direct {v2, v4}, Ljava/io/BufferedOutputStream;-><init>(Ljava/io/OutputStream;)V</span>
+<span class="">	new-instance v3, Ljava/io/DataOutputStream;</span>
+<span class="">	invoke-direct {v3, v2}, Ljava/io/DataOutputStream;-><init>(Ljava/io/OutputStream;)V</span>
+<span class="">	:try_start_2</span>
+<span class="">	array-length v2, v1</span>
+<span class="">	invoke-virtual {v3, v2}, Ljava/io/DataOutputStream;->writeInt(I)V</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/Bitmap;->getWidth()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v3, v2}, Ljava/io/DataOutputStream;->writeInt(I)V</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/Bitmap;->getHeight()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v3, v2}, Ljava/io/DataOutputStream;->writeInt(I)V</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/Bitmap;->getConfig()Landroid/graphics/Bitmap$Config;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/Bitmap$Config;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v3, v0}, Ljava/io/DataOutputStream;->writeUTF(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v3, v1}, Ljava/io/DataOutputStream;->write([B)V</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="">	invoke-static {v3}, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaa(Ljava/io/Closeable;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:try_start_3</span>
+<span class="">	new-instance p2, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string v0, "Could not write into unlinked file"</span>
+<span class="">	invoke-direct {p2, v0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	throw p2</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_0</span>
+<span class="">	invoke-static {v3}, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaa(Ljava/io/Closeable;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:catch_1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string p2, "Temporary file is somehow already deleted"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:catch_2</span>
+<span class="">	move-exception p1</span>
+<span class="">	new-instance p2, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string v0, "Could not create temporary file"</span>
+<span class="">	invoke-direct {p2, v0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	throw p2</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string p2, "setTempDir() must be called before writing this object to a parcel"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->beginObjectHeader(Landroid/os/Parcel;)I</span>
+<span class="">	move-result v0</span>
+<span class="">	iget v1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zaa:I</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-static {p1, v2, v1}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeInt(Landroid/os/Parcel;II)V</span>
+<span class="">	const/4 v1, 0x2</span>
+<span class="">	iget-object v3, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab:Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	or-int/2addr p2, v2</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-static {p1, v1, v3, p2, v2}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeParcelable(Landroid/os/Parcel;ILandroid/os/Parcelable;IZ)V</span>
+<span class="">	const/4 p2, 0x3</span>
+<span class="">	iget v1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zac:I</span>
+<span class="">	invoke-static {p1, p2, v1}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeInt(Landroid/os/Parcel;II)V</span>
+<span class="">	invoke-static {p1, v0}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->finishObjectHeader(Landroid/os/Parcel;I)V</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/data/BitmapTeleporter;->zab:Landroid/os/ParcelFileDescriptor;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

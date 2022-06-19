@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.manager</a></li>
+        <li><i class="ico ico-class"></i> l2.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/hiya/stingray/manager/l2;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private final a:Landroid/content/Context;
+.field private final b:Lcom/hiya/stingray/manager/i1;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 0</span>
+
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;Lcom/hiya/stingray/manager/i1;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const-string v0, "context"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v0, "appSettingsManager"</span>
+<span class="cov">	invoke-static {p2, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lcom/hiya/stingray/manager/l2;->a:Landroid/content/Context;</span>
+<span class="cov">	iput-object p2, p0, Lcom/hiya/stingray/manager/l2;->b:Lcom/hiya/stingray/manager/i1;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public static synthetic b(Lcom/hiya/stingray/manager/l2;Lcom/hiya/stingray/manager/m3$a;Ljava/lang/Throwable;ILjava/lang/Object;)V
+<span class="">	.locals 0</span>
+
+<span class="">	if-nez p4, :cond_1</span>
+<span class="">	and-int/lit8 p3, p3, 0x2</span>
+<span class="">	if-eqz p3, :cond_0</span>
+<span class="">	const/4 p2, 0x0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Lcom/hiya/stingray/manager/l2;->a(Lcom/hiya/stingray/manager/m3$a;Ljava/lang/Throwable;)V</span>
+<span class="">	new-instance p0, Ljava/lang/UnsupportedOperationException;</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string p1, "Super calls with default arguments not supported in this target, function: failedToFindEvent"</span>
+<span class="">	invoke-direct {p0, p1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+.end method
+
+.method public final a(Lcom/hiya/stingray/manager/m3$a;Ljava/lang/Throwable;)V
+<span class="">	.locals 2</span>
+
+<span class="">	const-string v0, "eventDestination"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	new-array v0, v0, [Lkotlin/l;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Enum;->name()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v1, "destination"</span>
+<span class="">	invoke-static {v1, p1}, Lkotlin/p;->a(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/l;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	aput-object p1, v0, v1</span>
+<span class="">	invoke-static {v0}, Lkotlin/s/b0;->j([Lkotlin/l;)Ljava/util/Map;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const-string v0, "throwable.javaClass.name"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "throwable"</span>
+<span class="">	invoke-interface {p1, v0, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p2, "Failed to Find Phone Event"</span>
+<span class="">	invoke-virtual {p0, p2, p1}, Lcom/hiya/stingray/manager/l2;->e(Ljava/lang/String;Ljava/util/Map;)V</span>
+.end method
+
+.method public final c(Ljava/lang/Throwable;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "throwable"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v0, p1}, Lkotlin/p;->a(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/l;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lkotlin/s/b0;->c(Lkotlin/l;)Ljava/util/Map;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "Failed to Save Phone Event"</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Lcom/hiya/stingray/manager/l2;->e(Ljava/lang/String;Ljava/util/Map;)V</span>
+.end method
+
+.method public final d(Ljava/lang/Throwable;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "throwable"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v0, p1}, Lkotlin/p;->a(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/l;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lkotlin/s/b0;->c(Lkotlin/l;)Ljava/util/Map;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "Failed to Send Phone Events"</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Lcom/hiya/stingray/manager/l2;->e(Ljava/lang/String;Ljava/util/Map;)V</span>
+.end method
+
+.method public e(Ljava/lang/String;Ljava/util/Map;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "eventName"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "attributes"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/manager/l2;->b:Lcom/hiya/stingray/manager/i1;</span>
+<span class="">	invoke-virtual {v0}, Lcom/hiya/stingray/manager/i1;->g()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-instance v0, Landroid/os/Bundle;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v0}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	invoke-interface {p2}, Ljava/util/Map;->entrySet()Ljava/util/Set;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-interface {p2}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-interface {p2}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-interface {p2}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/util/Map$Entry;</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/String;</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const-string p2, "app version"</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v1, "11.0.1-8647"</span>
+<span class="">	invoke-virtual {v0, p2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/hiya/stingray/manager/l2;->a:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {p2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const-string v1, "context.resources"</span>
+<span class="">	invoke-static {p2, v1}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p2}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	iget-object p2, p2, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;</span>
+<span class="">	const-string v1, "context.resources.configuration.locale"</span>
+<span class="">	invoke-static {p2, v1}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p2}, Ljava/util/Locale;->getDisplayCountry()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const-string v1, "country"</span>
+<span class="">	invoke-virtual {v0, v1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	sget p2, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	invoke-static {p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const-string v1, "os"</span>
+<span class="">	invoke-virtual {v0, v1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	sget-object p2, Landroid/os/Build;->MODEL:Ljava/lang/String;</span>
+<span class="">	const-string v1, "device"</span>
+<span class="">	invoke-virtual {v0, v1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/hiya/stingray/manager/l2;->a:Landroid/content/Context;</span>
+<span class="">	invoke-static {p2}, Lcom/hiya/stingray/util/d0;->b(Landroid/content/Context;)Lcom/google/common/base/j;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const-string v1, "no"</span>
+<span class="">	invoke-virtual {p2, v1}, Lcom/google/common/base/j;->f(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Ljava/lang/String;</span>
+<span class="">	const-string v1, "carrier"</span>
+<span class="">	invoke-virtual {v0, v1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/hiya/stingray/manager/l2;->a:Landroid/content/Context;</span>
+<span class="">	invoke-static {p2}, Lcom/hiya/stingray/util/d0;->a(Landroid/content/Context;)Lcom/google/common/base/j;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const-string v1, "undefined"</span>
+<span class="">	invoke-virtual {p2, v1}, Lcom/google/common/base/j;->f(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Ljava/lang/String;</span>
+<span class="">	const-string v1, "radio"</span>
+<span class="">	invoke-virtual {v0, v1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/hiya/stingray/manager/l2;->a:Landroid/content/Context;</span>
+<span class="">	invoke-static {p2}, Lcom/google/firebase/analytics/FirebaseAnalytics;->getInstance(Landroid/content/Context;)Lcom/google/firebase/analytics/FirebaseAnalytics;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2, p1, v0}, Lcom/google/firebase/analytics/FirebaseAnalytics;->a(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

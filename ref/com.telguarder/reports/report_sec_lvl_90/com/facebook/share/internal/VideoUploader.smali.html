@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.share.internal</a></li>
+        <li><i class="ico ico-class"></i> VideoUploader.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/share/internal/VideoUploader;
+.super Ljava/lang/Object;
+.source "VideoUploader.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/share/internal/VideoUploader$UploadWorkItemBase;,
+Lcom/facebook/share/internal/VideoUploader$FinishUploadWorkItem;,
+Lcom/facebook/share/internal/VideoUploader$TransferChunkWorkItem;,
+Lcom/facebook/share/internal/VideoUploader$StartUploadWorkItem;,
+Lcom/facebook/share/internal/VideoUploader$UploadContext;
+}
+.end annotation
+
+.field private static final ERROR_BAD_SERVER_RESPONSE:Ljava/lang/String; = "Unexpected error in server response"
+.field private static final ERROR_UPLOAD:Ljava/lang/String; = "Video upload failed"
+.field private static final MAX_RETRIES_PER_PHASE:I = 0x2
+.field private static final PARAM_DESCRIPTION:Ljava/lang/String; = "description"
+.field private static final PARAM_END_OFFSET:Ljava/lang/String; = "end_offset"
+.field private static final PARAM_FILE_SIZE:Ljava/lang/String; = "file_size"
+.field private static final PARAM_REF:Ljava/lang/String; = "ref"
+.field private static final PARAM_SESSION_ID:Ljava/lang/String; = "upload_session_id"
+.field private static final PARAM_START_OFFSET:Ljava/lang/String; = "start_offset"
+.field private static final PARAM_TITLE:Ljava/lang/String; = "title"
+.field private static final PARAM_UPLOAD_PHASE:Ljava/lang/String; = "upload_phase"
+.field private static final PARAM_VALUE_UPLOAD_FINISH_PHASE:Ljava/lang/String; = "finish"
+.field private static final PARAM_VALUE_UPLOAD_START_PHASE:Ljava/lang/String; = "start"
+.field private static final PARAM_VALUE_UPLOAD_TRANSFER_PHASE:Ljava/lang/String; = "transfer"
+.field private static final PARAM_VIDEO_FILE_CHUNK:Ljava/lang/String; = "video_file_chunk"
+.field private static final PARAM_VIDEO_ID:Ljava/lang/String; = "video_id"
+.field private static final RETRY_DELAY_BACK_OFF_FACTOR:I = 0x3
+.field private static final RETRY_DELAY_UNIT_MS:I = 0x1388
+.field private static final TAG:Ljava/lang/String; = "VideoUploader"
+.field private static final UPLOAD_QUEUE_MAX_CONCURRENT:I = 0x8
+.field private static accessTokenTracker:Lcom/facebook/AccessTokenTracker;
+.field private static handler:Landroid/os/Handler;
+.field private static initialized:Z
+.field private static pendingUploads:Ljava/util/Set;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Set<",
+"Lcom/facebook/share/internal/VideoUploader$UploadContext;",
+">;"
+}
+.end annotation
+.end field
+.field private static uploadQueue:Lcom/facebook/internal/WorkQueue;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/WorkQueue;</span>
+<span class="">	const/16 v1, 0x8</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/internal/WorkQueue;-><init>(I)V</span>
+<span class="">	sput-object v0, Lcom/facebook/share/internal/VideoUploader;->uploadQueue:Lcom/facebook/internal/WorkQueue;</span>
+<span class="">	new-instance v0, Ljava/util/HashSet;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashSet;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/facebook/share/internal/VideoUploader;->pendingUploads:Ljava/util/Set;</span>
+.end method
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method static synthetic access$200()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/share/internal/VideoUploader;->cancelAllRequests()V</span>
+.end method
+
+.method static synthetic access$300(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/String;Ljava/lang/String;I)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1, p2, p3}, Lcom/facebook/share/internal/VideoUploader;->enqueueUploadChunk(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/String;Ljava/lang/String;I)V</span>
+.end method
+
+.method static synthetic access$400(Ljava/lang/Exception;Ljava/lang/String;[Ljava/lang/Object;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1, p2}, Lcom/facebook/share/internal/VideoUploader;->logError(Ljava/lang/Exception;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+.end method
+
+.method static synthetic access$500(Lcom/facebook/share/internal/VideoUploader$UploadContext;I)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/VideoUploader;->enqueueUploadStart(Lcom/facebook/share/internal/VideoUploader$UploadContext;I)V</span>
+.end method
+
+.method static synthetic access$600(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/String;Ljava/lang/String;)[B
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0, p1, p2}, Lcom/facebook/share/internal/VideoUploader;->getChunk(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/String;Ljava/lang/String;)[B</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method static synthetic access$700(Lcom/facebook/share/internal/VideoUploader$UploadContext;I)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/VideoUploader;->enqueueUploadFinish(Lcom/facebook/share/internal/VideoUploader$UploadContext;I)V</span>
+.end method
+
+.method static synthetic access$800()Landroid/os/Handler;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/share/internal/VideoUploader;->getHandler()Landroid/os/Handler;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method static synthetic access$900(Lcom/facebook/share/internal/VideoUploader$UploadContext;Lcom/facebook/FacebookException;Lcom/facebook/GraphResponse;Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1, p2, p3}, Lcom/facebook/share/internal/VideoUploader;->issueResponse(Lcom/facebook/share/internal/VideoUploader$UploadContext;Lcom/facebook/FacebookException;Lcom/facebook/GraphResponse;Ljava/lang/String;)V</span>
+.end method
+
+.method private static declared-synchronized cancelAllRequests()V
+<span class="">	.locals 4</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/VideoUploader;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/internal/VideoUploader;->pendingUploads:Ljava/util/Set;</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Lcom/facebook/share/internal/VideoUploader$UploadContext;</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	iput-boolean v3, v2, Lcom/facebook/share/internal/VideoUploader$UploadContext;->isCanceled:Z</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw v1</span>
+.end method
+
+.method private static declared-synchronized enqueueRequest(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/Runnable;)V
+<span class="">	.locals 2</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/VideoUploader;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/internal/VideoUploader;->uploadQueue:Lcom/facebook/internal/WorkQueue;</span>
+<span class="">	invoke-virtual {v1, p1}, Lcom/facebook/internal/WorkQueue;->addActiveWorkItem(Ljava/lang/Runnable;)Lcom/facebook/internal/WorkQueue$WorkItem;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->workItem:Lcom/facebook/internal/WorkQueue$WorkItem;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+.end method
+
+.method private static enqueueUploadChunk(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/String;Ljava/lang/String;I)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/internal/VideoUploader$TransferChunkWorkItem;</span>
+<span class="">	invoke-direct {v0, p0, p1, p2, p3}, Lcom/facebook/share/internal/VideoUploader$TransferChunkWorkItem;-><init>(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/String;Ljava/lang/String;I)V</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/share/internal/VideoUploader;->enqueueRequest(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/Runnable;)V</span>
+.end method
+
+.method private static enqueueUploadFinish(Lcom/facebook/share/internal/VideoUploader$UploadContext;I)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/internal/VideoUploader$FinishUploadWorkItem;</span>
+<span class="">	invoke-direct {v0, p0, p1}, Lcom/facebook/share/internal/VideoUploader$FinishUploadWorkItem;-><init>(Lcom/facebook/share/internal/VideoUploader$UploadContext;I)V</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/share/internal/VideoUploader;->enqueueRequest(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/Runnable;)V</span>
+.end method
+
+.method private static enqueueUploadStart(Lcom/facebook/share/internal/VideoUploader$UploadContext;I)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/internal/VideoUploader$StartUploadWorkItem;</span>
+<span class="">	invoke-direct {v0, p0, p1}, Lcom/facebook/share/internal/VideoUploader$StartUploadWorkItem;-><init>(Lcom/facebook/share/internal/VideoUploader$UploadContext;I)V</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/share/internal/VideoUploader;->enqueueRequest(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/Runnable;)V</span>
+.end method
+
+.method private static getChunk(Lcom/facebook/share/internal/VideoUploader$UploadContext;Ljava/lang/String;Ljava/lang/String;)[B
+<span class="">	.locals 9</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->chunkStart:Ljava/lang/String;</span>
+<span class="">	invoke-static {p1, v0}, Lcom/facebook/internal/Utility;->areObjectsEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-array p2, v2, [Ljava/lang/Object;</span>
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->chunkStart:Ljava/lang/String;</span>
+<span class="">	aput-object p0, p2, v3</span>
+<span class="">	aput-object p1, p2, v1</span>
+<span class="">	const-string p0, "Error reading video chunk. Expected chunk \'%s\'. Requested chunk \'%s\'."</span>
+<span class="">	invoke-static {v4, p0, p2}, Lcom/facebook/share/internal/VideoUploader;->logError(Ljava/lang/Exception;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-wide v5</span>
+<span class="">	invoke-static {p2}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J</span>
+<span class="">	move-result-wide v7</span>
+<span class="">	sub-long/2addr v7, v5</span>
+<span class="">	long-to-int p1, v7</span>
+<span class="">	new-instance v0, Ljava/io/ByteArrayOutputStream;</span>
+<span class="">	invoke-direct {v0}, Ljava/io/ByteArrayOutputStream;-><init>()V</span>
+<span class="">	const/16 v5, 0x2000</span>
+<span class="">	invoke-static {v5, p1}, Ljava/lang/Math;->min(II)I</span>
+<span class="">	move-result v5</span>
+<span class="">	new-array v5, v5, [B</span>
+<span class="">	iget-object v6, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->videoStream:Ljava/io/InputStream;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v6, v5}, Ljava/io/InputStream;->read([B)I</span>
+<span class="">	move-result v6</span>
+<span class="">	const/4 v7, -0x1</span>
+<span class="">	if-eq v6, v7, :cond_3</span>
+<span class="">	invoke-virtual {v0, v5, v3, v6}, Ljava/io/ByteArrayOutputStream;->write([BII)V</span>
+<span class="">	sub-int/2addr p1, v6</span>
+<span class="">	if-nez p1, :cond_2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	if-gez p1, :cond_1</span>
+<span class="">	:cond_2</span>
+<span class="">	new-array p0, v2, [Ljava/lang/Object;</span>
+<span class="">	add-int/2addr p1, v6</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	aput-object p1, p0, v3</span>
+<span class="">	invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	aput-object p1, p0, v1</span>
+<span class="">	const-string p1, "Error reading video chunk. Expected buffer length - \'%d\'. Actual - \'%d\'."</span>
+<span class="">	invoke-static {v4, p1, p0}, Lcom/facebook/share/internal/VideoUploader;->logError(Ljava/lang/Exception;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	iput-object p2, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->chunkStart:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B</span>
+<span class="">	:cond_3</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method private static declared-synchronized getHandler()Landroid/os/Handler;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/VideoUploader;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/internal/VideoUploader;->handler:Landroid/os/Handler;</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	new-instance v1, Landroid/os/Handler;</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {v1, v2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V</span>
+<span class="">	sput-object v1, Lcom/facebook/share/internal/VideoUploader;->handler:Landroid/os/Handler;</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/internal/VideoUploader;->handler:Landroid/os/Handler;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw v1</span>
+.end method
+
+.method private static issueResponse(Lcom/facebook/share/internal/VideoUploader$UploadContext;Lcom/facebook/FacebookException;Lcom/facebook/GraphResponse;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/VideoUploader;->removePendingUpload(Lcom/facebook/share/internal/VideoUploader$UploadContext;)V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->videoStream:Ljava/io/InputStream;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/Utility;->closeQuietly(Ljava/io/Closeable;)V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->callback:Lcom/facebook/FacebookCallback;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->callback:Lcom/facebook/FacebookCallback;</span>
+<span class="">	invoke-static {v0, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->invokeOnErrorCallback(Lcom/facebook/FacebookCallback;Lcom/facebook/FacebookException;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-boolean p1, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->isCanceled:Z</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	iget-object p1, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->callback:Lcom/facebook/FacebookCallback;</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/share/internal/ShareInternalUtility;->invokeOnCancelCallback(Lcom/facebook/FacebookCallback;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object p1, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->callback:Lcom/facebook/FacebookCallback;</span>
+<span class="">	invoke-static {p1, p3}, Lcom/facebook/share/internal/ShareInternalUtility;->invokeOnSuccessCallback(Lcom/facebook/FacebookCallback;Ljava/lang/String;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-object p1, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->progressCallback:Lcom/facebook/GraphRequest$OnProgressCallback;</span>
+<span class="">	if-eqz p1, :cond_4</span>
+<span class="">	if-eqz p2, :cond_3</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p2}, Lcom/facebook/GraphResponse;->getJSONObject()Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_3</span>
+<span class="">	invoke-virtual {p2}, Lcom/facebook/GraphResponse;->getJSONObject()Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string/jumbo v0, "video_id"</span>
+<span class="">	invoke-virtual {p1, v0, p3}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:catch_0</span>
+<span class="">	:cond_3</span>
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/VideoUploader$UploadContext;->progressCallback:Lcom/facebook/GraphRequest$OnProgressCallback;</span>
+<span class="">	invoke-interface {p0, p2}, Lcom/facebook/GraphRequest$OnProgressCallback;->onCompleted(Lcom/facebook/GraphResponse;)V</span>
+<span class="">	:cond_4</span>
+.end method
+
+.method private static varargs logError(Ljava/lang/Exception;Ljava/lang/String;[Ljava/lang/Object;)V
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Ljava/util/Locale;->ROOT:Ljava/util/Locale;</span>
+<span class="">	invoke-static {v0, p1, p2}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string p2, "VideoUploader"</span>
+<span class="">	invoke-static {p2, p1, p0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+.end method
+
+.method private static registerAccessTokenTracker()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/internal/VideoUploader$1;</span>
+<span class="">	invoke-direct {v0}, Lcom/facebook/share/internal/VideoUploader$1;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/facebook/share/internal/VideoUploader;->accessTokenTracker:Lcom/facebook/AccessTokenTracker;</span>
+.end method
+
+.method private static declared-synchronized removePendingUpload(Lcom/facebook/share/internal/VideoUploader$UploadContext;)V
+<span class="">	.locals 2</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/VideoUploader;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/internal/VideoUploader;->pendingUploads:Ljava/util/Set;</span>
+<span class="">	invoke-interface {v1, p0}, Ljava/util/Set;->remove(Ljava/lang/Object;)Z</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+.end method
+
+.method public static declared-synchronized uploadAsync(Lcom/facebook/share/model/ShareVideoContent;Ljava/lang/String;Lcom/facebook/FacebookCallback;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/FileNotFoundException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/share/model/ShareVideoContent;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/VideoUploader;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {p0, p1, p2, v1}, Lcom/facebook/share/internal/VideoUploader;->uploadAsync(Lcom/facebook/share/model/ShareVideoContent;Ljava/lang/String;Lcom/facebook/FacebookCallback;Lcom/facebook/GraphRequest$OnProgressCallback;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+.end method
+
+.method private static declared-synchronized uploadAsync(Lcom/facebook/share/model/ShareVideoContent;Ljava/lang/String;Lcom/facebook/FacebookCallback;Lcom/facebook/GraphRequest$OnProgressCallback;)V
+<span class="">	.locals 9</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/FileNotFoundException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/share/model/ShareVideoContent;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/Sharer$Result;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lcom/facebook/GraphRequest$OnProgressCallback;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/VideoUploader;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-boolean v1, Lcom/facebook/share/internal/VideoUploader;->initialized:Z</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/share/internal/VideoUploader;->registerAccessTokenTracker()V</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	sput-boolean v1, Lcom/facebook/share/internal/VideoUploader;->initialized:Z</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string/jumbo v1, "videoContent"</span>
+<span class="">	invoke-static {p0, v1}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v1, "graphNode"</span>
+<span class="">	invoke-static {p1, v1}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareVideoContent;->getVideo()Lcom/facebook/share/model/ShareVideo;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string/jumbo v2, "videoContent.video"</span>
+<span class="">	invoke-static {v1, v2}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v1}, Lcom/facebook/share/model/ShareVideo;->getLocalUrl()Landroid/net/Uri;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string/jumbo v2, "videoContent.video.localUrl"</span>
+<span class="">	invoke-static {v1, v2}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/VideoUploader$UploadContext;</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	move-object v3, v1</span>
+<span class="">	move-object v4, p0</span>
+<span class="">	move-object v5, p1</span>
+<span class="">	move-object v6, p2</span>
+<span class="">	move-object v7, p3</span>
+<span class="">	invoke-direct/range {v3 .. v8}, Lcom/facebook/share/internal/VideoUploader$UploadContext;-><init>(Lcom/facebook/share/model/ShareVideoContent;Ljava/lang/String;Lcom/facebook/FacebookCallback;Lcom/facebook/GraphRequest$OnProgressCallback;Lcom/facebook/share/internal/VideoUploader$1;)V</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/share/internal/VideoUploader$UploadContext;->access$100(Lcom/facebook/share/internal/VideoUploader$UploadContext;)V</span>
+<span class="">	sget-object p0, Lcom/facebook/share/internal/VideoUploader;->pendingUploads:Ljava/util/Set;</span>
+<span class="">	invoke-interface {p0, v1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	invoke-static {v1, p0}, Lcom/facebook/share/internal/VideoUploader;->enqueueUploadStart(Lcom/facebook/share/internal/VideoUploader$UploadContext;I)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+.end method
+
+.method public static declared-synchronized uploadAsyncWithProgressCallback(Lcom/facebook/share/model/ShareVideoContent;Lcom/facebook/GraphRequest$OnProgressCallback;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/FileNotFoundException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/VideoUploader;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v1, "me"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-static {p0, v1, v2, p1}, Lcom/facebook/share/internal/VideoUploader;->uploadAsync(Lcom/facebook/share/model/ShareVideoContent;Ljava/lang/String;Lcom/facebook/FacebookCallback;Lcom/facebook/GraphRequest$OnProgressCallback;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+.end method
+
+.method public static declared-synchronized uploadAsyncWithProgressCallback(Lcom/facebook/share/model/ShareVideoContent;Ljava/lang/String;Lcom/facebook/GraphRequest$OnProgressCallback;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/FileNotFoundException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/VideoUploader;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {p0, p1, v1, p2}, Lcom/facebook/share/internal/VideoUploader;->uploadAsync(Lcom/facebook/share/model/ShareVideoContent;Ljava/lang/String;Lcom/facebook/FacebookCallback;Lcom/facebook/GraphRequest$OnProgressCallback;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

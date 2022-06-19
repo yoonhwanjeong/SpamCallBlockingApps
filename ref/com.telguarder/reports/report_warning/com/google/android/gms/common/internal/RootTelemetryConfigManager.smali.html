@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.common.internal</a></li>
+        <li><i class="ico ico-class"></i> RootTelemetryConfigManager.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;
+.super Ljava/lang/Object;
+.source "com.google.android.gms:play-services-basement@@18.0.0"
+
+
+.field private static zza:Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;
+.field private static final zzb:Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;
+.field private zzc:Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 7</span>
+
+<span class="">	new-instance v6, Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	move-object v0, v6</span>
+<span class="">	invoke-direct/range {v0 .. v5}, Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;-><init>(IZZII)V</span>
+<span class="">	sput-object v6, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->zzb:Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;</span>
+.end method
+
+.method private constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public static declared-synchronized getInstance()Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;
+<span class="">	.locals 2</span>
+
+<span class="">	const-class v0, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->zza:Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	new-instance v1, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;</span>
+<span class="">	invoke-direct {v1}, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;-><init>()V</span>
+<span class="">	sput-object v1, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->zza:Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v1, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->zza:Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw v1</span>
+.end method
+
+.method public getConfig()Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->zzc:Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;</span>
+.end method
+
+.method public final declared-synchronized zza(Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;)V
+<span class="">	.locals 2</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object p1, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->zzb:Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->zzc:Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->zzc:Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;->getVersion()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;->getVersion()I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-ge v0, v1, :cond_1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	:cond_1</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/internal/RootTelemetryConfigManager;->zzc:Lcom/google/android/gms/common/internal/RootTelemetryConfiguration;</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_start_2</span>
+<span class="">	:cond_2</span>
+<span class="">	move-exception p1</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+<span class="">	:catchall_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

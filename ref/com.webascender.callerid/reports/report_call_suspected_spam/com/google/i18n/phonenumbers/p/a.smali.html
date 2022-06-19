@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.i18n.phonenumbers.p</a></li>
+        <li><i class="ico ico-class"></i> a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/i18n/phonenumbers/p/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private static c:Lcom/google/i18n/phonenumbers/p/a;
+.field private a:Lcom/google/i18n/phonenumbers/r/f;
+.field private final b:Lcom/google/i18n/phonenumbers/h;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 0</span>
+
+.end method
+
+<span class="cov">.method constructor &lt;init&gt;(Ljava/lang/String;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/i18n/phonenumbers/p/a;->a:Lcom/google/i18n/phonenumbers/r/f;</span>
+<span class="exec">	invoke-static {}, Lcom/google/i18n/phonenumbers/h;->t()Lcom/google/i18n/phonenumbers/h;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/i18n/phonenumbers/p/a;->b:Lcom/google/i18n/phonenumbers/h;</span>
+<span class="cov">	new-instance v0, Lcom/google/i18n/phonenumbers/r/f;</span>
+<span class="cov">	invoke-direct {v0, p1}, Lcom/google/i18n/phonenumbers/r/f;-><init>(Ljava/lang/String;)V</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/i18n/phonenumbers/p/a;->a:Lcom/google/i18n/phonenumbers/r/f;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private a(Lcom/google/i18n/phonenumbers/m;Ljava/util/Locale;)Ljava/lang/String;
+<span class="">	.locals 5</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/i18n/phonenumbers/p/a;->b:Lcom/google/i18n/phonenumbers/h;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/i18n/phonenumbers/m;->c()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/i18n/phonenumbers/h;->E(I)Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	if-ne v1, v2, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Ljava/lang/String;</span>
+<span class="">	invoke-direct {p0, p1, p2}, Lcom/google/i18n/phonenumbers/p/a;->e(Ljava/lang/String;Ljava/util/Locale;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "ZZ"</span>
+<span class="">	move-object v2, v1</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_3</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/String;</span>
+<span class="">	iget-object v4, p0, Lcom/google/i18n/phonenumbers/p/a;->b:Lcom/google/i18n/phonenumbers/h;</span>
+<span class="">	invoke-virtual {v4, p1, v3}, Lcom/google/i18n/phonenumbers/h;->J(Lcom/google/i18n/phonenumbers/m;Ljava/lang/String;)Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_1</span>
+<span class="">	invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_2</span>
+<span class="">	const-string p1, ""</span>
+<span class="">	move-object v2, v3</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-direct {p0, v2, p2}, Lcom/google/i18n/phonenumbers/p/a;->e(Ljava/lang/String;Ljava/util/Locale;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_3</span>
+.end method
+
+<span class="cov">.method public static declared-synchronized d()Lcom/google/i18n/phonenumbers/p/a;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	const-class v0, Lcom/google/i18n/phonenumbers/p/a;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	sget-object v1, Lcom/google/i18n/phonenumbers/p/a;->c:Lcom/google/i18n/phonenumbers/p/a;</span>
+<span class="cov">	if-nez v1, :cond_0</span>
+<span class="cov">	new-instance v1, Lcom/google/i18n/phonenumbers/p/a;</span>
+<span class="cov">	const-string v2, "/com/google/i18n/phonenumbers/geocoding/data/"</span>
+<span class="cov">	invoke-direct {v1, v2}, Lcom/google/i18n/phonenumbers/p/a;-><init>(Ljava/lang/String;)V</span>
+<span class="cov">	sput-object v1, Lcom/google/i18n/phonenumbers/p/a;->c:Lcom/google/i18n/phonenumbers/p/a;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	sget-object v1, Lcom/google/i18n/phonenumbers/p/a;->c:Lcom/google/i18n/phonenumbers/p/a;</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-object v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw v1</span>
+.end method
+
+<span class="cov">.method private e(Ljava/lang/String;Ljava/util/Locale;)Ljava/lang/String;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	const-string v0, ""</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	const-string v1, "ZZ"</span>
+<span class="">	invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	const-string v1, "001"</span>
+<span class="">	invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v1, Ljava/util/Locale;</span>
+<span class="">	invoke-direct {v1, v0, p1}, Ljava/util/Locale;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v1, p2}, Ljava/util/Locale;->getDisplayCountry(Ljava/util/Locale;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public b(Lcom/google/i18n/phonenumbers/m;Ljava/util/Locale;)Ljava/lang/String;
+<span class="">	.locals 6</span>
+
+<span class="">	invoke-virtual {p2}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p2}, Ljava/util/Locale;->getCountry()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/i18n/phonenumbers/m;->c()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-static {v2}, Lcom/google/i18n/phonenumbers/h;->s(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	iget-object v3, p0, Lcom/google/i18n/phonenumbers/p/a;->b:Lcom/google/i18n/phonenumbers/h;</span>
+<span class="">	invoke-virtual {v3, p1}, Lcom/google/i18n/phonenumbers/h;->x(Lcom/google/i18n/phonenumbers/m;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const-string v4, ""</span>
+<span class="">	invoke-virtual {v2, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-nez v5, :cond_0</span>
+<span class="">	invoke-virtual {v3, v2}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_0</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v3, v2}, Ljava/lang/String;->substring(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	iget-object v3, p0, Lcom/google/i18n/phonenumbers/p/a;->b:Lcom/google/i18n/phonenumbers/h;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/i18n/phonenumbers/m;->c()I</span>
+<span class="">	move-result v5</span>
+<span class="">	invoke-virtual {v3, v5}, Lcom/google/i18n/phonenumbers/h;->B(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v5, p0, Lcom/google/i18n/phonenumbers/p/a;->b:Lcom/google/i18n/phonenumbers/h;</span>
+<span class="">	invoke-virtual {v5, v2, v3}, Lcom/google/i18n/phonenumbers/h;->parse(Ljava/lang/String;Ljava/lang/String;)Lcom/google/i18n/phonenumbers/m;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lcom/google/i18n/phonenumbers/NumberParseException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-object v2, p1</span>
+<span class="">	:goto_0</span>
+<span class="">	iget-object v3, p0, Lcom/google/i18n/phonenumbers/p/a;->a:Lcom/google/i18n/phonenumbers/r/f;</span>
+<span class="">	invoke-virtual {v3, v2, v0, v4, v1}, Lcom/google/i18n/phonenumbers/r/f;->b(Lcom/google/i18n/phonenumbers/m;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v2, p0, Lcom/google/i18n/phonenumbers/p/a;->a:Lcom/google/i18n/phonenumbers/r/f;</span>
+<span class="">	invoke-virtual {v2, p1, v0, v4, v1}, Lcom/google/i18n/phonenumbers/r/f;->b(Lcom/google/i18n/phonenumbers/m;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-lez v1, :cond_1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {p0, p1, p2}, Lcom/google/i18n/phonenumbers/p/a;->a(Lcom/google/i18n/phonenumbers/m;Ljava/util/Locale;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_2</span>
+.end method
+
+<span class="cov">.method public c(Lcom/google/i18n/phonenumbers/m;Ljava/util/Locale;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/i18n/phonenumbers/p/a;->b:Lcom/google/i18n/phonenumbers/h;</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/i18n/phonenumbers/h;->C(Lcom/google/i18n/phonenumbers/m;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {p3, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result p3</span>
+<span class="">	if-eqz p3, :cond_0</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Lcom/google/i18n/phonenumbers/p/a;->b(Lcom/google/i18n/phonenumbers/m;Ljava/util/Locale;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="exec">	invoke-direct {p0, v0, p2}, Lcom/google/i18n/phonenumbers/p/a;->e(Ljava/lang/String;Ljava/util/Locale;)Ljava/lang/String;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

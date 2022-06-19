@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot.xy</a></li>
+        <li><i class="ico ico-class"></i> NormedXYSeries$Norm.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/androidplot/xy/NormedXYSeries$Norm;
+.super Ljava/lang/Object;
+.source "NormedXYSeries.java"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lcom/androidplot/xy/NormedXYSeries;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x9
+name = "Norm"
+.end annotation
+
+.field final minMax:Lcom/androidplot/Region;
+.field final offset:D
+.field final useOffsetCompression:Z
+
+
+.method public constructor <init>(Lcom/androidplot/Region;)V
+<span class="">	.locals 3</span>
+
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-direct {p0, p1, v0, v1, v2}, Lcom/androidplot/xy/NormedXYSeries$Norm;-><init>(Lcom/androidplot/Region;DZ)V</span>
+.end method
+
+.method public constructor <init>(Lcom/androidplot/Region;DZ)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/NormedXYSeries$Norm;->minMax:Lcom/androidplot/Region;</span>
+<span class="">	iput-wide p2, p0, Lcom/androidplot/xy/NormedXYSeries$Norm;->offset:D</span>
+<span class="">	iput-boolean p4, p0, Lcom/androidplot/xy/NormedXYSeries$Norm;->useOffsetCompression:Z</span>
+<span class="">	if-eqz p4, :cond_1</span>
+<span class="">	const-wide/high16 v0, -0x4010000000000000L    # -1.0</span>
+<span class="">	cmpg-double p1, p2, v0</span>
+<span class="">	if-lez p1, :cond_0</span>
+<span class="">	const-wide/high16 v0, 0x3ff0000000000000L    # 1.0</span>
+<span class="">	cmpl-double p1, p2, v0</span>
+<span class="">	if-gez p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	const-string p2, "When useOffsetCompression is true, offset must be > -1 and < 1."</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

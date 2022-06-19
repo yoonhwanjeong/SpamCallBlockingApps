@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.webkit</a></li>
+        <li><i class="ico ico-class"></i> WebViewClientCompat.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Landroidx/webkit/WebViewClientCompat;
+.super Landroid/webkit/WebViewClient;
+.source "WebViewClientCompat.java"
+.implements Lorg/chromium/support_lib_boundary/WebViewClientBoundaryInterface;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/webkit/WebViewClientCompat$SafeBrowsingThreat;
+}
+.end annotation
+
+.field private static final sSupportedFeatures:[Ljava/lang/String;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 5</span>
+
+<span class="">	const-string v0, "VISUAL_STATE_CALLBACK"</span>
+<span class="">	const-string v1, "RECEIVE_WEB_RESOURCE_ERROR"</span>
+<span class="">	const-string v2, "RECEIVE_HTTP_ERROR"</span>
+<span class="">	const-string v3, "SHOULD_OVERRIDE_WITH_REDIRECTS"</span>
+<span class="">	const-string v4, "SAFE_BROWSING_HIT"</span>
+<span class="">	filled-new-array {v0, v1, v2, v3, v4}, [Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sput-object v0, Landroidx/webkit/WebViewClientCompat;->sSupportedFeatures:[Ljava/lang/String;</span>
+.end method
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroid/webkit/WebViewClient;-><init>()V</span>
+.end method
+
+.method public final getSupportedFeatures()[Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/webkit/WebViewClientCompat;->sSupportedFeatures:[Ljava/lang/String;</span>
+.end method
+
+.method public onPageCommitVisible(Landroid/webkit/WebView;Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+.end method
+
+.method public final onReceivedError(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;Landroid/webkit/WebResourceError;)V
+<span class="">	.locals 2</span>
+
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x17</span>
+<span class="">	if-ge v0, v1, :cond_0</span>
+<span class="">	new-instance v0, Landroidx/webkit/internal/WebResourceErrorImpl;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v0, p3}, Landroidx/webkit/internal/WebResourceErrorImpl;-><init>(Landroid/webkit/WebResourceError;)V</span>
+<span class="">	invoke-virtual {p0, p1, p2, v0}, Landroidx/webkit/WebViewClientCompat;->onReceivedError(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;Landroidx/webkit/WebResourceErrorCompat;)V</span>
+.end method
+
+.method public onReceivedError(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;Landroidx/webkit/WebResourceErrorCompat;)V
+<span class="">	.locals 2</span>
+
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x15</span>
+<span class="">	if-ge v0, v1, :cond_0</span>
+<span class="">	const-string v0, "WEB_RESOURCE_ERROR_GET_CODE"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v0}, Landroidx/webkit/WebViewFeature;->isFeatureSupported(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	const-string v0, "WEB_RESOURCE_ERROR_GET_DESCRIPTION"</span>
+<span class="">	invoke-static {v0}, Landroidx/webkit/WebViewFeature;->isFeatureSupported(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-interface {p2}, Landroid/webkit/WebResourceRequest;->isForMainFrame()Z</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {p3}, Landroidx/webkit/WebResourceErrorCompat;->getErrorCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p3}, Landroidx/webkit/WebResourceErrorCompat;->getDescription()Ljava/lang/CharSequence;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-interface {p3}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-interface {p2}, Landroid/webkit/WebResourceRequest;->getUrl()Landroid/net/Uri;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Landroid/net/Uri;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p0, p1, v0, p3, p2}, Landroidx/webkit/WebViewClientCompat;->onReceivedError(Landroid/webkit/WebView;ILjava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public final onReceivedError(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;Ljava/lang/reflect/InvocationHandler;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/webkit/internal/WebResourceErrorImpl;</span>
+<span class="">	invoke-direct {v0, p3}, Landroidx/webkit/internal/WebResourceErrorImpl;-><init>(Ljava/lang/reflect/InvocationHandler;)V</span>
+<span class="">	invoke-virtual {p0, p1, p2, v0}, Landroidx/webkit/WebViewClientCompat;->onReceivedError(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;Landroidx/webkit/WebResourceErrorCompat;)V</span>
+.end method
+
+.method public onReceivedHttpError(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;Landroid/webkit/WebResourceResponse;)V
+<span class="">	.locals 0</span>
+
+.end method
+
+.method public final onSafeBrowsingHit(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;ILandroid/webkit/SafeBrowsingResponse;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/webkit/internal/SafeBrowsingResponseImpl;</span>
+<span class="">	invoke-direct {v0, p4}, Landroidx/webkit/internal/SafeBrowsingResponseImpl;-><init>(Landroid/webkit/SafeBrowsingResponse;)V</span>
+<span class="">	invoke-virtual {p0, p1, p2, p3, v0}, Landroidx/webkit/WebViewClientCompat;->onSafeBrowsingHit(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;ILandroidx/webkit/SafeBrowsingResponseCompat;)V</span>
+.end method
+
+.method public onSafeBrowsingHit(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;ILandroidx/webkit/SafeBrowsingResponseCompat;)V
+<span class="">	.locals 0</span>
+
+<span class="">	const-string p1, "SAFE_BROWSING_RESPONSE_SHOW_INTERSTITIAL"</span>
+<span class="">	invoke-static {p1}, Landroidx/webkit/WebViewFeature;->isFeatureSupported(Ljava/lang/String;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	invoke-virtual {p4, p1}, Landroidx/webkit/SafeBrowsingResponseCompat;->showInterstitial(Z)V</span>
+<span class="">	invoke-static {}, Landroidx/webkit/internal/WebViewFeatureInternal;->getUnsupportedOperationException()Ljava/lang/UnsupportedOperationException;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public final onSafeBrowsingHit(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;ILjava/lang/reflect/InvocationHandler;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/webkit/internal/SafeBrowsingResponseImpl;</span>
+<span class="">	invoke-direct {v0, p4}, Landroidx/webkit/internal/SafeBrowsingResponseImpl;-><init>(Ljava/lang/reflect/InvocationHandler;)V</span>
+<span class="">	invoke-virtual {p0, p1, p2, p3, v0}, Landroidx/webkit/WebViewClientCompat;->onSafeBrowsingHit(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;ILandroidx/webkit/SafeBrowsingResponseCompat;)V</span>
+.end method
+
+.method public shouldOverrideUrlLoading(Landroid/webkit/WebView;Landroid/webkit/WebResourceRequest;)Z
+<span class="">	.locals 2</span>
+
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x15</span>
+<span class="">	if-ge v0, v1, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-interface {p2}, Landroid/webkit/WebResourceRequest;->getUrl()Landroid/net/Uri;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Landroid/net/Uri;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Landroidx/webkit/WebViewClientCompat;->shouldOverrideUrlLoading(Landroid/webkit/WebView;Ljava/lang/String;)Z</span>
+<span class="">	move-result p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

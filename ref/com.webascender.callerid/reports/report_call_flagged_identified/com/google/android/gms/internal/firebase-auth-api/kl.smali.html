@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.internal.firebase-auth-api</a></li>
+        <li><i class="ico ico-class"></i> kl.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/android/gms/internal/firebase-auth-api/kl;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"<ResultT:",
+"Ljava/lang/Object;",
+"CallbackT:",
+"Ljava/lang/Object;",
+">",
+"Ljava/lang/Object;"
+}
+.end annotation
+
+.field private final a:Lcom/google/android/gms/internal/firebase-auth-api/ll;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/android/gms/internal/firebase-auth-api/ll<",
+"TResultT;TCallbackT;>;"
+}
+.end annotation
+.end field
+.field private final b:Lcom/google/android/gms/tasks/h;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/android/gms/tasks/h<",
+"TResultT;>;"
+}
+.end annotation
+.end field
+
+
+.method public constructor <init>(Lcom/google/android/gms/internal/firebase-auth-api/ll;Lcom/google/android/gms/tasks/h;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/internal/firebase-auth-api/ll<",</span>
+<span class="">	"TResultT;TCallbackT;>;",</span>
+<span class="">	"Lcom/google/android/gms/tasks/h<",</span>
+<span class="">	"TResultT;>;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->a:Lcom/google/android/gms/internal/firebase-auth-api/ll;</span>
+<span class="">	iput-object p2, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->b:Lcom/google/android/gms/tasks/h;</span>
+.end method
+
+.method public final a(Ljava/lang/Object;Lcom/google/android/gms/common/api/Status;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TResultT;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Status;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->b:Lcom/google/android/gms/tasks/h;</span>
+<span class="">	const-string v1, "completion source cannot be null"</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/r;->l(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	if-eqz p2, :cond_4</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->a:Lcom/google/android/gms/internal/firebase-auth-api/ll;</span>
+<span class="">	iget-object v0, p1, Lcom/google/android/gms/internal/firebase-auth-api/ll;->r:Lcom/google/android/gms/internal/firebase-auth-api/lg;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	iget-object p2, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->b:Lcom/google/android/gms/tasks/h;</span>
+<span class="">	iget-object p1, p1, Lcom/google/android/gms/internal/firebase-auth-api/ll;->c:Lcom/google/firebase/c;</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/auth/FirebaseAuth;->getInstance(Lcom/google/firebase/c;)Lcom/google/firebase/auth/FirebaseAuth;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->a:Lcom/google/android/gms/internal/firebase-auth-api/ll;</span>
+<span class="">	iget-object v1, v0, Lcom/google/android/gms/internal/firebase-auth-api/ll;->r:Lcom/google/android/gms/internal/firebase-auth-api/lg;</span>
+<span class="">	invoke-interface {v0}, Lcom/google/android/gms/internal/firebase-auth-api/ki;->zza()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "reauthenticateWithCredential"</span>
+<span class="">	invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->a:Lcom/google/android/gms/internal/firebase-auth-api/ll;</span>
+<span class="">	invoke-interface {v0}, Lcom/google/android/gms/internal/firebase-auth-api/ki;->zza()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "reauthenticateWithCredentialWithData"</span>
+<span class="">	invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->a:Lcom/google/android/gms/internal/firebase-auth-api/ll;</span>
+<span class="">	iget-object v0, v0, Lcom/google/android/gms/internal/firebase-auth-api/ll;->d:Lcom/google/firebase/auth/g;</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-static {p1, v1, v0}, Lcom/google/android/gms/internal/firebase-auth-api/bk;->c(Lcom/google/firebase/auth/FirebaseAuth;Lcom/google/android/gms/internal/firebase-auth-api/lg;Lcom/google/firebase/auth/g;)Lcom/google/firebase/auth/FirebaseAuthMultiFactorException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2, p1}, Lcom/google/android/gms/tasks/h;->b(Ljava/lang/Exception;)V</span>
+<span class="">	iget-object v0, p1, Lcom/google/android/gms/internal/firebase-auth-api/ll;->o:Lcom/google/firebase/auth/c;</span>
+<span class="">	:cond_2</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->b:Lcom/google/android/gms/tasks/h;</span>
+<span class="">	iget-object v2, p1, Lcom/google/android/gms/internal/firebase-auth-api/ll;->p:Ljava/lang/String;</span>
+<span class="">	iget-object p1, p1, Lcom/google/android/gms/internal/firebase-auth-api/ll;->q:Ljava/lang/String;</span>
+<span class="">	invoke-static {p2, v0, v2, p1}, Lcom/google/android/gms/internal/firebase-auth-api/bk;->b(Lcom/google/android/gms/common/api/Status;Lcom/google/firebase/auth/c;Ljava/lang/String;Ljava/lang/String;)Lcom/google/firebase/FirebaseException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v1, p1}, Lcom/google/android/gms/tasks/h;->b(Ljava/lang/Exception;)V</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->b:Lcom/google/android/gms/tasks/h;</span>
+<span class="">	invoke-static {p2}, Lcom/google/android/gms/internal/firebase-auth-api/bk;->a(Lcom/google/android/gms/common/api/Status;)Lcom/google/firebase/FirebaseException;</span>
+<span class="">	:cond_3</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p1, p2}, Lcom/google/android/gms/tasks/h;->b(Ljava/lang/Exception;)V</span>
+<span class="">	iget-object p2, p0, Lcom/google/android/gms/internal/firebase-auth-api/kl;->b:Lcom/google/android/gms/tasks/h;</span>
+<span class="">	invoke-virtual {p2, p1}, Lcom/google/android/gms/tasks/h;->c(Ljava/lang/Object;)V</span>
+<span class="">	:cond_4</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

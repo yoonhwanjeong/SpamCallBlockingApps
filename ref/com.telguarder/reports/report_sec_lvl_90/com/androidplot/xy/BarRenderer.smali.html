@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot.xy</a></li>
+        <li><i class="ico ico-class"></i> BarRenderer.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/androidplot/xy/BarRenderer;
+.super Lcom/androidplot/xy/GroupRenderer;
+.source "BarRenderer.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/androidplot/xy/BarRenderer$BarComparator;,
+Lcom/androidplot/xy/BarRenderer$BarGroup;,
+Lcom/androidplot/xy/BarRenderer$Bar;,
+Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;,
+Lcom/androidplot/xy/BarRenderer$BarOrientation;
+}
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"<FormatterType:",
+"Lcom/androidplot/xy/BarFormatter;",
+">",
+"Lcom/androidplot/xy/GroupRenderer<",
+"TFormatterType;>;"
+}
+.end annotation
+
+.field private barGroupWidthMode:Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;
+.field private barOrientation:Lcom/androidplot/xy/BarRenderer$BarOrientation;
+.field private width:F
+
+
+.method public constructor <init>(Lcom/androidplot/xy/XYPlot;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/androidplot/xy/GroupRenderer;-><init>(Lcom/androidplot/xy/XYPlot;)V</span>
+<span class="">	sget-object p1, Lcom/androidplot/xy/BarRenderer$BarOrientation;->OVERLAID:Lcom/androidplot/xy/BarRenderer$BarOrientation;</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/BarRenderer;->barOrientation:Lcom/androidplot/xy/BarRenderer$BarOrientation;</span>
+<span class="">	sget-object p1, Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;->FIXED_WIDTH:Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/BarRenderer;->barGroupWidthMode:Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;</span>
+<span class="">	const/high16 p1, 0x40400000    # 3.0f</span>
+<span class="">	invoke-static {p1}, Lcom/androidplot/util/PixelUtils;->dpToPix(F)F</span>
+<span class="">	move-result p1</span>
+<span class="">	iput p1, p0, Lcom/androidplot/xy/BarRenderer;->width:F</span>
+.end method
+
+.method protected createBarRect(FFFFLcom/androidplot/xy/BarFormatter;)Landroid/graphics/RectF;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p1, p2, p3, p4}, Lcom/androidplot/util/RectFUtils;->createFromEdges(FFFF)Landroid/graphics/RectF;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget p2, p1, Landroid/graphics/RectF;->left:F</span>
+<span class="">	invoke-virtual {p5}, Lcom/androidplot/xy/BarFormatter;->getMarginLeft()F</span>
+<span class="">	move-result p3</span>
+<span class="">	add-float/2addr p2, p3</span>
+<span class="">	iput p2, p1, Landroid/graphics/RectF;->left:F</span>
+<span class="">	iget p2, p1, Landroid/graphics/RectF;->right:F</span>
+<span class="">	invoke-virtual {p5}, Lcom/androidplot/xy/BarFormatter;->getMarginRight()F</span>
+<span class="">	move-result p3</span>
+<span class="">	sub-float/2addr p2, p3</span>
+<span class="">	iput p2, p1, Landroid/graphics/RectF;->right:F</span>
+<span class="">	iget p2, p1, Landroid/graphics/RectF;->top:F</span>
+<span class="">	invoke-virtual {p5}, Lcom/androidplot/xy/BarFormatter;->getMarginTop()F</span>
+<span class="">	move-result p3</span>
+<span class="">	add-float/2addr p2, p3</span>
+<span class="">	iput p2, p1, Landroid/graphics/RectF;->top:F</span>
+<span class="">	iget p2, p1, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	invoke-virtual {p5}, Lcom/androidplot/xy/BarFormatter;->getMarginBottom()F</span>
+<span class="">	move-result p3</span>
+<span class="">	sub-float/2addr p2, p3</span>
+<span class="">	iput p2, p1, Landroid/graphics/RectF;->bottom:F</span>
+.end method
+
+.method public bridge synthetic doDrawLegendIcon(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/ui/Formatter;)V
+<span class="">	.locals 0</span>
+
+<span class="">	check-cast p3, Lcom/androidplot/xy/BarFormatter;</span>
+<span class="">	invoke-virtual {p0, p1, p2, p3}, Lcom/androidplot/xy/BarRenderer;->doDrawLegendIcon(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/xy/BarFormatter;)V</span>
+.end method
+
+.method public doDrawLegendIcon(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/xy/BarFormatter;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/BarFormatter;->hasFillPaint()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/BarFormatter;->getFillPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1, p2, v0}, Landroid/graphics/Canvas;->drawRect(Landroid/graphics/RectF;Landroid/graphics/Paint;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/BarFormatter;->getBorderPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p1, p2, p3}, Landroid/graphics/Canvas;->drawRect(Landroid/graphics/RectF;Landroid/graphics/Paint;)V</span>
+.end method
+
+.method protected drawBar(Landroid/graphics/Canvas;Lcom/androidplot/xy/BarRenderer$Bar;Landroid/graphics/RectF;)V
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/graphics/Canvas;",</span>
+<span class="">	"Lcom/androidplot/xy/BarRenderer$Bar<",</span>
+<span class="">	"TFormatterType;>;",</span>
+<span class="">	"Landroid/graphics/RectF;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/xy/BarRenderer$Bar;->getY()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	iget v0, p2, Lcom/androidplot/xy/BarRenderer$Bar;->i:I</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v1, p2, Lcom/androidplot/xy/BarRenderer$Bar;->series:Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	invoke-virtual {p0, v0, v1}, Lcom/androidplot/xy/BarRenderer;->getFormatter(ILcom/androidplot/xy/XYSeries;)Lcom/androidplot/xy/BarFormatter;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	iget-object v0, p2, Lcom/androidplot/xy/BarRenderer$Bar;->formatter:Lcom/androidplot/xy/BarFormatter;</span>
+<span class="">	invoke-virtual {p3}, Landroid/graphics/RectF;->height()F</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	cmpl-float v1, v1, v2</span>
+<span class="">	if-lez v1, :cond_3</span>
+<span class="">	invoke-virtual {p3}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	move-result v1</span>
+<span class="">	cmpl-float v1, v1, v2</span>
+<span class="">	if-lez v1, :cond_3</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/BarFormatter;->hasFillPaint()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	iget v3, p3, Landroid/graphics/RectF;->left:F</span>
+<span class="">	iget v4, p3, Landroid/graphics/RectF;->top:F</span>
+<span class="">	iget v5, p3, Landroid/graphics/RectF;->right:F</span>
+<span class="">	iget v6, p3, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/BarFormatter;->getFillPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	move-object v2, p1</span>
+<span class="">	invoke-virtual/range {v2 .. v7}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/BarFormatter;->hasLinePaint()Z</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	iget v3, p3, Landroid/graphics/RectF;->left:F</span>
+<span class="">	iget v4, p3, Landroid/graphics/RectF;->top:F</span>
+<span class="">	iget v5, p3, Landroid/graphics/RectF;->right:F</span>
+<span class="">	iget v6, p3, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/BarFormatter;->getBorderPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	move-object v2, p1</span>
+<span class="">	invoke-virtual/range {v2 .. v7}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/BarFormatter;->hasPointLabelFormatter()Z</span>
+<span class="">	:cond_3</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_4</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/BarFormatter;->getPointLabelFormatter()Lcom/androidplot/xy/PointLabelFormatter;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-object v1, v2</span>
+<span class="">	:cond_4</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/BarFormatter;->getPointLabeler()Lcom/androidplot/xy/PointLabeler;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v1, :cond_6</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/xy/PointLabelFormatter;->hasTextPaint()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_6</span>
+<span class="">	if-eqz v2, :cond_6</span>
+<span class="">	iget-object v0, p2, Lcom/androidplot/xy/BarRenderer$Bar;->series:Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	iget v3, p2, Lcom/androidplot/xy/BarRenderer$Bar;->i:I</span>
+<span class="">	invoke-interface {v2, v0, v3}, Lcom/androidplot/xy/PointLabeler;->getLabel(Lcom/androidplot/xy/XYSeries;I)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p3}, Landroid/graphics/RectF;->centerX()F</span>
+<span class="">	move-result p3</span>
+<span class="">	iget v2, v1, Lcom/androidplot/xy/PointLabelFormatter;->hOffset:F</span>
+<span class="">	add-float/2addr p3, v2</span>
+<span class="">	iget p2, p2, Lcom/androidplot/xy/BarRenderer$Bar;->yPix:F</span>
+<span class="">	iget v2, v1, Lcom/androidplot/xy/PointLabelFormatter;->vOffset:F</span>
+<span class="">	add-float/2addr p2, v2</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/xy/PointLabelFormatter;->getTextPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1, v0, p3, p2, v1}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V</span>
+<span class="">	:cond_6</span>
+.end method
+
+.method protected getBarComparator(F)Lcom/androidplot/xy/BarRenderer$BarComparator;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/androidplot/xy/BarRenderer$BarComparator;</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/BarRenderer;->getBarOrientation()Lcom/androidplot/xy/BarRenderer$BarOrientation;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1, p1}, Lcom/androidplot/xy/BarRenderer$BarComparator;-><init>(Lcom/androidplot/xy/BarRenderer$BarOrientation;F)V</span>
+.end method
+
+.method public getBarGroupWidth()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/androidplot/xy/BarRenderer;->width:F</span>
+.end method
+
+.method public getBarGroupWidthMode()Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/BarRenderer;->barGroupWidthMode:Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;</span>
+.end method
+
+.method public getBarOrientation()Lcom/androidplot/xy/BarRenderer$BarOrientation;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/BarRenderer;->barOrientation:Lcom/androidplot/xy/BarRenderer$BarOrientation;</span>
+.end method
+
+.method public getFormatter(ILcom/androidplot/xy/XYSeries;)Lcom/androidplot/xy/BarFormatter;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(I",</span>
+<span class="">	"Lcom/androidplot/xy/XYSeries;",</span>
+<span class="">	")TFormatterType;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 p1, 0x0</span>
+.end method
+
+.method public onRender(Landroid/graphics/Canvas;Landroid/graphics/RectF;Ljava/util/List;ILcom/androidplot/ui/RenderStack;)V
+<span class="">	.locals 24</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/graphics/Canvas;",</span>
+<span class="">	"Landroid/graphics/RectF;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/androidplot/ui/SeriesBundle<",</span>
+<span class="">	"Lcom/androidplot/xy/XYSeries;",</span>
+<span class="">	"+TFormatterType;>;>;I",</span>
+<span class="">	"Lcom/androidplot/ui/RenderStack;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	move-object/from16 v6, p0</span>
+<span class="">	move-object/from16 v7, p1</span>
+<span class="">	move-object/from16 v15, p2</span>
+<span class="">	new-instance v5, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v5}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	move/from16 v0, p4</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v1, v0, :cond_2</span>
+<span class="">	new-instance v2, Lcom/androidplot/xy/BarRenderer$BarGroup;</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-direct {v2, v1, v3, v15}, Lcom/androidplot/xy/BarRenderer$BarGroup;-><init>(IFLandroid/graphics/RectF;)V</span>
+<span class="">	invoke-interface/range {p3 .. p3}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const/16 v16, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v8</span>
+<span class="">	if-eqz v8, :cond_1</span>
+<span class="">	invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	check-cast v8, Lcom/androidplot/ui/SeriesBundle;</span>
+<span class="">	invoke-virtual {v8}, Lcom/androidplot/ui/SeriesBundle;->getSeries()Lcom/androidplot/Series;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	check-cast v9, Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	invoke-interface {v9, v1}, Lcom/androidplot/xy/XYSeries;->getX(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	if-eqz v9, :cond_0</span>
+<span class="">	new-instance v14, Lcom/androidplot/xy/BarRenderer$Bar;</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lcom/androidplot/xy/BarRenderer;->getPlot()Lcom/androidplot/Plot;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	check-cast v9, Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v8}, Lcom/androidplot/ui/SeriesBundle;->getSeries()Lcom/androidplot/Series;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	check-cast v10, Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	invoke-virtual {v8}, Lcom/androidplot/ui/SeriesBundle;->getFormatter()Lcom/androidplot/ui/Formatter;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	move-object v11, v8</span>
+<span class="">	check-cast v11, Lcom/androidplot/xy/BarFormatter;</span>
+<span class="">	move-object v8, v14</span>
+<span class="">	move/from16 v12, v16</span>
+<span class="">	move v13, v1</span>
+<span class="">	move-object v4, v14</span>
+<span class="">	move-object/from16 v14, p2</span>
+<span class="">	invoke-direct/range {v8 .. v14}, Lcom/androidplot/xy/BarRenderer$Bar;-><init>(Lcom/androidplot/xy/XYPlot;Lcom/androidplot/xy/XYSeries;Lcom/androidplot/xy/BarFormatter;IILandroid/graphics/RectF;)V</span>
+<span class="">	invoke-virtual {v2, v4}, Lcom/androidplot/xy/BarRenderer$BarGroup;->addBar(Lcom/androidplot/xy/BarRenderer$Bar;)V</span>
+<span class="">	iget v4, v4, Lcom/androidplot/xy/BarRenderer$Bar;->xPix:F</span>
+<span class="">	iput v4, v2, Lcom/androidplot/xy/BarRenderer$BarGroup;->centerPix:F</span>
+<span class="">	:cond_0</span>
+<span class="">	add-int/lit8 v16, v16, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-interface {v5, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-interface {v5}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v8</span>
+<span class="">	invoke-interface {v5}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-interface {v9}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_b</span>
+<span class="">	invoke-interface {v9}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/androidplot/xy/BarRenderer$BarGroup;</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/BarRenderer$1;->$SwitchMap$com$androidplot$xy$BarRenderer$BarGroupWidthMode:[I</span>
+<span class="">	iget-object v2, v6, Lcom/androidplot/xy/BarRenderer;->barGroupWidthMode:Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;->ordinal()I</span>
+<span class="">	move-result v2</span>
+<span class="">	aget v1, v1, v2</span>
+<span class="">	const/high16 v2, 0x40000000    # 2.0f</span>
+<span class="">	const/4 v3, 0x2</span>
+<span class="">	const/4 v4, 0x1</span>
+<span class="">	if-eq v1, v4, :cond_5</span>
+<span class="">	if-eq v1, v3, :cond_3</span>
+<span class="">	const/4 v10, 0x0</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual/range {p2 .. p2}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	move-result v1</span>
+<span class="">	if-le v8, v4, :cond_4</span>
+<span class="">	invoke-interface {v5, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/androidplot/xy/BarRenderer$BarGroup;</span>
+<span class="">	iget v1, v1, Lcom/androidplot/xy/BarRenderer$BarGroup;->centerPix:F</span>
+<span class="">	const/4 v10, 0x0</span>
+<span class="">	invoke-interface {v5, v10}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	check-cast v11, Lcom/androidplot/xy/BarRenderer$BarGroup;</span>
+<span class="">	iget v11, v11, Lcom/androidplot/xy/BarRenderer$BarGroup;->centerPix:F</span>
+<span class="">	sub-float/2addr v1, v11</span>
+<span class="">	iget v11, v6, Lcom/androidplot/xy/BarRenderer;->width:F</span>
+<span class="">	sub-float/2addr v1, v11</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_4</span>
+<span class="">	const/4 v10, 0x0</span>
+<span class="">	:goto_3</span>
+<span class="">	div-float/2addr v1, v2</span>
+<span class="">	iget v2, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->centerPix:F</span>
+<span class="">	sub-float/2addr v2, v1</span>
+<span class="">	iput v2, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->leftPix:F</span>
+<span class="">	iget v2, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->centerPix:F</span>
+<span class="">	add-float/2addr v2, v1</span>
+<span class="">	iput v2, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->rightPix:F</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:cond_5</span>
+<span class="">	const/4 v10, 0x0</span>
+<span class="">	iget v1, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->centerPix:F</span>
+<span class="">	iget v11, v6, Lcom/androidplot/xy/BarRenderer;->width:F</span>
+<span class="">	div-float/2addr v11, v2</span>
+<span class="">	sub-float/2addr v1, v11</span>
+<span class="">	iput v1, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->leftPix:F</span>
+<span class="">	iget v1, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->leftPix:F</span>
+<span class="">	iget v2, v6, Lcom/androidplot/xy/BarRenderer;->width:F</span>
+<span class="">	add-float/2addr v1, v2</span>
+<span class="">	iput v1, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->rightPix:F</span>
+<span class="">	:goto_4</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lcom/androidplot/xy/BarRenderer;->getPlot()Lcom/androidplot/Plot;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/xy/XYPlot;->getRangeOrigin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v17</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lcom/androidplot/xy/BarRenderer;->getPlot()Lcom/androidplot/Plot;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/xy/XYPlot;->getBounds()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iget-object v1, v1, Lcom/androidplot/xy/RectRegion;->yRegion:Lcom/androidplot/Region;</span>
+<span class="">	iget v2, v15, Landroid/graphics/RectF;->top:F</span>
+<span class="">	float-to-double v11, v2</span>
+<span class="">	iget v2, v15, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	float-to-double v13, v2</span>
+<span class="">	const/16 v23, 0x1</span>
+<span class="">	move-object/from16 v16, v1</span>
+<span class="">	move-wide/from16 v19, v11</span>
+<span class="">	move-wide/from16 v21, v13</span>
+<span class="">	invoke-virtual/range {v16 .. v23}, Lcom/androidplot/Region;->transform(DDDZ)D</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	double-to-float v11, v1</span>
+<span class="">	invoke-virtual {v6, v11}, Lcom/androidplot/xy/BarRenderer;->getBarComparator(F)Lcom/androidplot/xy/BarRenderer$BarComparator;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	sget-object v2, Lcom/androidplot/xy/BarRenderer$1;->$SwitchMap$com$androidplot$xy$BarRenderer$BarOrientation:[I</span>
+<span class="">	iget-object v12, v6, Lcom/androidplot/xy/BarRenderer;->barOrientation:Lcom/androidplot/xy/BarRenderer$BarOrientation;</span>
+<span class="">	invoke-virtual {v12}, Lcom/androidplot/xy/BarRenderer$BarOrientation;->ordinal()I</span>
+<span class="">	move-result v12</span>
+<span class="">	aget v2, v2, v12</span>
+<span class="">	if-eq v2, v4, :cond_9</span>
+<span class="">	if-eq v2, v3, :cond_9</span>
+<span class="">	const/4 v3, 0x3</span>
+<span class="">	if-eq v2, v3, :cond_8</span>
+<span class="">	const/4 v3, 0x4</span>
+<span class="">	if-ne v2, v3, :cond_7</span>
+<span class="">	iget-object v2, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->plotArea:Landroid/graphics/RectF;</span>
+<span class="">	iget v2, v2, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	float-to-int v2, v2</span>
+<span class="">	int-to-float v2, v2</span>
+<span class="">	iget-object v3, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->bars:Ljava/util/ArrayList;</span>
+<span class="">	invoke-static {v3, v1}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V</span>
+<span class="">	iget-object v0, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->bars:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	move v4, v2</span>
+<span class="">	:goto_5</span>
+<span class="">	invoke-interface {v11}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_6</span>
+<span class="">	invoke-interface {v11}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	move-object v12, v0</span>
+<span class="">	check-cast v12, Lcom/androidplot/xy/BarRenderer$Bar;</span>
+<span class="">	iget-object v0, v12, Lcom/androidplot/xy/BarRenderer$Bar;->barGroup:Lcom/androidplot/xy/BarRenderer$BarGroup;</span>
+<span class="">	iget-object v0, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->plotArea:Landroid/graphics/RectF;</span>
+<span class="">	iget v0, v0, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	float-to-int v0, v0</span>
+<span class="">	int-to-float v0, v0</span>
+<span class="">	iget v1, v12, Lcom/androidplot/xy/BarRenderer$Bar;->yPix:F</span>
+<span class="">	sub-float/2addr v0, v1</span>
+<span class="">	sub-float v13, v4, v0</span>
+<span class="">	iget-object v0, v12, Lcom/androidplot/xy/BarRenderer$Bar;->barGroup:Lcom/androidplot/xy/BarRenderer$BarGroup;</span>
+<span class="">	iget v1, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->leftPix:F</span>
+<span class="">	iget-object v0, v12, Lcom/androidplot/xy/BarRenderer$Bar;->barGroup:Lcom/androidplot/xy/BarRenderer$BarGroup;</span>
+<span class="">	iget v3, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->rightPix:F</span>
+<span class="">	iget-object v14, v12, Lcom/androidplot/xy/BarRenderer$Bar;->formatter:Lcom/androidplot/xy/BarFormatter;</span>
+<span class="">	move-object/from16 v0, p0</span>
+<span class="">	move v2, v13</span>
+<span class="">	move-object/from16 v16, v5</span>
+<span class="">	move-object v5, v14</span>
+<span class="">	invoke-virtual/range {v0 .. v5}, Lcom/androidplot/xy/BarRenderer;->createBarRect(FFFFLcom/androidplot/xy/BarFormatter;)Landroid/graphics/RectF;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v6, v7, v12, v0}, Lcom/androidplot/xy/BarRenderer;->drawBar(Landroid/graphics/Canvas;Lcom/androidplot/xy/BarRenderer$Bar;Landroid/graphics/RectF;)V</span>
+<span class="">	move v4, v13</span>
+<span class="">	move-object/from16 v5, v16</span>
+<span class="">	goto :goto_5</span>
+<span class="">	:cond_6</span>
+<span class="">	move-object/from16 v16, v5</span>
+<span class="">	goto/16 :goto_8</span>
+<span class="">	:cond_7</span>
+<span class="">	new-instance v0, Ljava/lang/UnsupportedOperationException;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Unexpected BarOrientation: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v2, v6, Lcom/androidplot/xy/BarRenderer;->barOrientation:Lcom/androidplot/xy/BarRenderer$BarOrientation;</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+<span class="">	:cond_8</span>
+<span class="">	move-object/from16 v16, v5</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/BarRenderer$BarGroup;->getWidth()F</span>
+<span class="">	move-result v2</span>
+<span class="">	iget-object v3, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->bars:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v3}, Ljava/util/ArrayList;->size()I</span>
+<span class="">	move-result v3</span>
+<span class="">	int-to-float v3, v3</span>
+<span class="">	div-float v12, v2, v3</span>
+<span class="">	iget v2, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->leftPix:F</span>
+<span class="">	iget-object v3, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->bars:Ljava/util/ArrayList;</span>
+<span class="">	invoke-static {v3, v1}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V</span>
+<span class="">	iget-object v0, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->bars:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v13</span>
+<span class="">	move v1, v2</span>
+<span class="">	:goto_6</span>
+<span class="">	invoke-interface {v13}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_a</span>
+<span class="">	invoke-interface {v13}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	move-object v14, v0</span>
+<span class="">	check-cast v14, Lcom/androidplot/xy/BarRenderer$Bar;</span>
+<span class="">	iget v2, v14, Lcom/androidplot/xy/BarRenderer$Bar;->yPix:F</span>
+<span class="">	add-float v17, v1, v12</span>
+<span class="">	iget-object v5, v14, Lcom/androidplot/xy/BarRenderer$Bar;->formatter:Lcom/androidplot/xy/BarFormatter;</span>
+<span class="">	move-object/from16 v0, p0</span>
+<span class="">	move/from16 v3, v17</span>
+<span class="">	move v4, v11</span>
+<span class="">	invoke-virtual/range {v0 .. v5}, Lcom/androidplot/xy/BarRenderer;->createBarRect(FFFFLcom/androidplot/xy/BarFormatter;)Landroid/graphics/RectF;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v6, v7, v14, v0}, Lcom/androidplot/xy/BarRenderer;->drawBar(Landroid/graphics/Canvas;Lcom/androidplot/xy/BarRenderer$Bar;Landroid/graphics/RectF;)V</span>
+<span class="">	move/from16 v1, v17</span>
+<span class="">	goto :goto_6</span>
+<span class="">	:cond_9</span>
+<span class="">	move-object/from16 v16, v5</span>
+<span class="">	iget-object v2, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->bars:Ljava/util/ArrayList;</span>
+<span class="">	invoke-static {v2, v1}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V</span>
+<span class="">	iget-object v0, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->bars:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	:goto_7</span>
+<span class="">	invoke-interface {v12}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_a</span>
+<span class="">	invoke-interface {v12}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	move-object v13, v0</span>
+<span class="">	check-cast v13, Lcom/androidplot/xy/BarRenderer$Bar;</span>
+<span class="">	iget-object v0, v13, Lcom/androidplot/xy/BarRenderer$Bar;->barGroup:Lcom/androidplot/xy/BarRenderer$BarGroup;</span>
+<span class="">	iget v1, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->leftPix:F</span>
+<span class="">	iget v2, v13, Lcom/androidplot/xy/BarRenderer$Bar;->yPix:F</span>
+<span class="">	iget-object v0, v13, Lcom/androidplot/xy/BarRenderer$Bar;->barGroup:Lcom/androidplot/xy/BarRenderer$BarGroup;</span>
+<span class="">	iget v3, v0, Lcom/androidplot/xy/BarRenderer$BarGroup;->rightPix:F</span>
+<span class="">	iget-object v5, v13, Lcom/androidplot/xy/BarRenderer$Bar;->formatter:Lcom/androidplot/xy/BarFormatter;</span>
+<span class="">	move-object/from16 v0, p0</span>
+<span class="">	move v4, v11</span>
+<span class="">	invoke-virtual/range {v0 .. v5}, Lcom/androidplot/xy/BarRenderer;->createBarRect(FFFFLcom/androidplot/xy/BarFormatter;)Landroid/graphics/RectF;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v6, v7, v13, v0}, Lcom/androidplot/xy/BarRenderer;->drawBar(Landroid/graphics/Canvas;Lcom/androidplot/xy/BarRenderer$Bar;Landroid/graphics/RectF;)V</span>
+<span class="">	goto :goto_7</span>
+<span class="">	:cond_a</span>
+<span class="">	:goto_8</span>
+<span class="">	move-object/from16 v5, v16</span>
+<span class="">	goto/16 :goto_2</span>
+<span class="">	:cond_b</span>
+.end method
+
+.method public setBarGroupWidth(Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;F)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/BarRenderer;->barGroupWidthMode:Lcom/androidplot/xy/BarRenderer$BarGroupWidthMode;</span>
+<span class="">	iput p2, p0, Lcom/androidplot/xy/BarRenderer;->width:F</span>
+.end method
+
+.method public setBarOrientation(Lcom/androidplot/xy/BarRenderer$BarOrientation;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/BarRenderer;->barOrientation:Lcom/androidplot/xy/BarRenderer$BarOrientation;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

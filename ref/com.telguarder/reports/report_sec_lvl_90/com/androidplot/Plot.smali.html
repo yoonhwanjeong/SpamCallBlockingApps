@@ -1,0 +1,1729 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot</a></li>
+        <li><i class="ico ico-class"></i> Plot.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Lcom/androidplot/Plot;
+.super Landroid/view/View;
+.source "Plot.java"
+.implements Lcom/androidplot/ui/Resizable;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/androidplot/Plot$BufferedCanvas;,
+Lcom/androidplot/Plot$RenderMode;,
+Lcom/androidplot/Plot$BorderStyle;
+}
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"<SeriesType::",
+"Lcom/androidplot/Series;",
+"FormatterType:",
+"Lcom/androidplot/ui/Formatter;",
+"RendererType:",
+"Lcom/androidplot/ui/SeriesRenderer;",
+"BundleType:",
+"Lcom/androidplot/ui/SeriesBundle<",
+"TSeriesType;TFormatterType;>;RegistryType:",
+"Lcom/androidplot/SeriesRegistry<",
+"TBundleType;TSeriesType;TFormatterType;>;>",
+"Landroid/view/View;",
+"Lcom/androidplot/ui/Resizable;"
+}
+.end annotation
+
+.field private static final BASE_PACKAGE:Ljava/lang/String; = "com.androidplot."
+.field private static final DEFAULT_TITLE_WIDGET_TEXT_SIZE_SP:I = 0xa
+.field private static final TAG:Ljava/lang/String; = "com.androidplot.Plot"
+.field private static final XML_ATTR_PREFIX:Ljava/lang/String; = "androidplot"
+.field private backgroundPaint:Landroid/graphics/Paint;
+.field private borderPaint:Landroid/graphics/Paint;
+.field private borderRadiusX:F
+.field private borderRadiusY:F
+.field private borderStyle:Lcom/androidplot/Plot$BorderStyle;
+.field private boxModel:Lcom/androidplot/ui/BoxModel;
+.field private displayDims:Lcom/androidplot/util/DisplayDimensions;
+.field private isIdle:Z
+.field private keepRunning:Z
+.field private layoutManager:Lcom/androidplot/ui/LayoutManager;
+.field private final listeners:Ljava/util/ArrayList;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/ArrayList<",
+"Lcom/androidplot/PlotListener;",
+">;"
+}
+.end annotation
+.end field
+.field private final pingPong:Lcom/androidplot/Plot$BufferedCanvas;
+.field private registry:Lcom/androidplot/SeriesRegistry;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"TRegistryType;"
+}
+.end annotation
+.end field
+.field private renderMode:Lcom/androidplot/Plot$RenderMode;
+.field private final renderSync:Ljava/lang/Object;
+.field private renderThread:Ljava/lang/Thread;
+.field private renderers:Ljava/util/HashMap;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/HashMap<",
+"Ljava/lang/Class<",
+"+TRendererType;>;TRendererType;>;"
+}
+.end annotation
+.end field
+.field private title:Lcom/androidplot/ui/widget/TextLabelWidget;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 0</span>
+
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;Landroid/util/AttributeSet;)V</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	invoke-direct {p0, p1, p2}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V</span>
+<span class="cov">	new-instance v0, Lcom/androidplot/ui/BoxModel;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/androidplot/ui/BoxModel;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="cov">	sget-object v0, Lcom/androidplot/Plot$BorderStyle;->NONE:Lcom/androidplot/Plot$BorderStyle;</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Plot;->borderStyle:Lcom/androidplot/Plot$BorderStyle;</span>
+<span class="cov">	const/high16 v0, 0x41700000    # 15.0f</span>
+<span class="cov">	iput v0, p0, Lcom/androidplot/Plot;->borderRadiusX:F</span>
+<span class="cov">	iput v0, p0, Lcom/androidplot/Plot;->borderRadiusY:F</span>
+<span class="cov">	new-instance v0, Lcom/androidplot/util/DisplayDimensions;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/androidplot/util/DisplayDimensions;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Plot;->displayDims:Lcom/androidplot/util/DisplayDimensions;</span>
+<span class="cov">	sget-object v0, Lcom/androidplot/Plot$RenderMode;->USE_MAIN_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	new-instance v0, Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/androidplot/Plot$BufferedCanvas;-><init>(Lcom/androidplot/Plot$1;)V</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="cov">	new-instance v0, Ljava/lang/Object;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Plot;->renderSync:Ljava/lang/Object;</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	iput-boolean v0, p0, Lcom/androidplot/Plot;->keepRunning:Z</span>
+<span class="cov">	const/4 v1, 0x1</span>
+<span class="cov">	iput-boolean v1, p0, Lcom/androidplot/Plot;->isIdle:Z</span>
+<span class="cov">	new-instance v2, Ljava/util/ArrayList;</span>
+<span class="cov">	invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="cov">	iput-object v2, p0, Lcom/androidplot/Plot;->listeners:Ljava/util/ArrayList;</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRegistryInstance()Lcom/androidplot/SeriesRegistry;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	iput-object v2, p0, Lcom/androidplot/Plot;->registry:Lcom/androidplot/SeriesRegistry;</span>
+<span class="cov">	new-instance v2, Ljava/util/HashMap;</span>
+<span class="cov">	invoke-direct {v2}, Ljava/util/HashMap;-><init>()V</span>
+<span class="cov">	iput-object v2, p0, Lcom/androidplot/Plot;->renderers:Ljava/util/HashMap;</span>
+<span class="cov">	new-instance v2, Landroid/graphics/Paint;</span>
+<span class="cov">	invoke-direct {v2}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="cov">	iput-object v2, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="cov">	const/16 v3, 0x96</span>
+<span class="exec">	invoke-static {v3, v3, v3}, Landroid/graphics/Color;->rgb(III)I</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="cov">	iget-object v2, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="cov">	sget-object v3, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="cov">	invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="cov">	iget-object v2, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="cov">	const/high16 v3, 0x3f800000    # 1.0f</span>
+<span class="cov">	invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="cov">	iget-object v2, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="cov">	invoke-virtual {v2, v1}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="cov">	new-instance v1, Landroid/graphics/Paint;</span>
+<span class="cov">	invoke-direct {v1}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="cov">	iput-object v1, p0, Lcom/androidplot/Plot;->backgroundPaint:Landroid/graphics/Paint;</span>
+<span class="cov">	const v2, -0xbbbbbc</span>
+<span class="cov">	invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="cov">	iget-object v1, p0, Lcom/androidplot/Plot;->backgroundPaint:Landroid/graphics/Paint;</span>
+<span class="cov">	sget-object v2, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;</span>
+<span class="cov">	invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="cov">	invoke-virtual {p0, p1, p2, v0}, Lcom/androidplot/Plot;->init(Landroid/content/Context;Landroid/util/AttributeSet;I)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-direct {p0, p1, p2, p3}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V</span>
+<span class="">	new-instance v0, Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-direct {v0}, Lcom/androidplot/ui/BoxModel;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	sget-object v0, Lcom/androidplot/Plot$BorderStyle;->NONE:Lcom/androidplot/Plot$BorderStyle;</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->borderStyle:Lcom/androidplot/Plot$BorderStyle;</span>
+<span class="">	const/high16 v0, 0x41700000    # 15.0f</span>
+<span class="">	iput v0, p0, Lcom/androidplot/Plot;->borderRadiusX:F</span>
+<span class="">	iput v0, p0, Lcom/androidplot/Plot;->borderRadiusY:F</span>
+<span class="">	new-instance v0, Lcom/androidplot/util/DisplayDimensions;</span>
+<span class="">	invoke-direct {v0}, Lcom/androidplot/util/DisplayDimensions;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->displayDims:Lcom/androidplot/util/DisplayDimensions;</span>
+<span class="">	sget-object v0, Lcom/androidplot/Plot$RenderMode;->USE_MAIN_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	new-instance v0, Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/androidplot/Plot$BufferedCanvas;-><init>(Lcom/androidplot/Plot$1;)V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	new-instance v0, Ljava/lang/Object;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->renderSync:Ljava/lang/Object;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-boolean v0, p0, Lcom/androidplot/Plot;->keepRunning:Z</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	iput-boolean v0, p0, Lcom/androidplot/Plot;->isIdle:Z</span>
+<span class="">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object v1, p0, Lcom/androidplot/Plot;->listeners:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRegistryInstance()Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iput-object v1, p0, Lcom/androidplot/Plot;->registry:Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	new-instance v1, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v1}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	iput-object v1, p0, Lcom/androidplot/Plot;->renderers:Ljava/util/HashMap;</span>
+<span class="">	new-instance v1, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v1}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	iput-object v1, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="">	const/16 v2, 0x96</span>
+<span class="">	invoke-static {v2, v2, v2}, Landroid/graphics/Color;->rgb(III)I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="">	sget-object v2, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="">	const/high16 v2, 0x3f800000    # 1.0f</span>
+<span class="">	invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="">	invoke-virtual {v1, v0}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->backgroundPaint:Landroid/graphics/Paint;</span>
+<span class="">	const v1, -0xbbbbbc</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->backgroundPaint:Landroid/graphics/Paint;</span>
+<span class="">	sget-object v1, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	invoke-virtual {p0, p1, p2, p3}, Lcom/androidplot/Plot;->init(Landroid/content/Context;Landroid/util/AttributeSet;I)V</span>
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/androidplot/Plot$RenderMode;->USE_MAIN_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	invoke-direct {p0, p1, p2, v0}, Lcom/androidplot/Plot;-><init>(Landroid/content/Context;Ljava/lang/String;Lcom/androidplot/Plot$RenderMode;)V</span>
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Ljava/lang/String;Lcom/androidplot/Plot$RenderMode;)V
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-direct {p0, p1}, Landroid/view/View;-><init>(Landroid/content/Context;)V</span>
+<span class="">	new-instance v0, Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-direct {v0}, Lcom/androidplot/ui/BoxModel;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	sget-object v0, Lcom/androidplot/Plot$BorderStyle;->NONE:Lcom/androidplot/Plot$BorderStyle;</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->borderStyle:Lcom/androidplot/Plot$BorderStyle;</span>
+<span class="">	const/high16 v0, 0x41700000    # 15.0f</span>
+<span class="">	iput v0, p0, Lcom/androidplot/Plot;->borderRadiusX:F</span>
+<span class="">	iput v0, p0, Lcom/androidplot/Plot;->borderRadiusY:F</span>
+<span class="">	new-instance v0, Lcom/androidplot/util/DisplayDimensions;</span>
+<span class="">	invoke-direct {v0}, Lcom/androidplot/util/DisplayDimensions;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->displayDims:Lcom/androidplot/util/DisplayDimensions;</span>
+<span class="">	sget-object v0, Lcom/androidplot/Plot$RenderMode;->USE_MAIN_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	new-instance v0, Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/androidplot/Plot$BufferedCanvas;-><init>(Lcom/androidplot/Plot$1;)V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	new-instance v0, Ljava/lang/Object;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->renderSync:Ljava/lang/Object;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-boolean v0, p0, Lcom/androidplot/Plot;->keepRunning:Z</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	iput-boolean v2, p0, Lcom/androidplot/Plot;->isIdle:Z</span>
+<span class="">	new-instance v3, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object v3, p0, Lcom/androidplot/Plot;->listeners:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRegistryInstance()Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iput-object v3, p0, Lcom/androidplot/Plot;->registry:Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	new-instance v3, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v3}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	iput-object v3, p0, Lcom/androidplot/Plot;->renderers:Ljava/util/HashMap;</span>
+<span class="">	new-instance v3, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v3}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	iput-object v3, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="">	const/16 v4, 0x96</span>
+<span class="">	invoke-static {v4, v4, v4}, Landroid/graphics/Color;->rgb(III)I</span>
+<span class="">	move-result v4</span>
+<span class="">	invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	iget-object v3, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="">	sget-object v4, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	iget-object v3, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="">	const/high16 v4, 0x3f800000    # 1.0f</span>
+<span class="">	invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="">	iget-object v3, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="">	invoke-virtual {v3, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	new-instance v2, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v2}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	iput-object v2, p0, Lcom/androidplot/Plot;->backgroundPaint:Landroid/graphics/Paint;</span>
+<span class="">	const v3, -0xbbbbbc</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	iget-object v2, p0, Lcom/androidplot/Plot;->backgroundPaint:Landroid/graphics/Paint;</span>
+<span class="">	sget-object v3, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	iput-object p3, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	invoke-virtual {p0, p1, v1, v0}, Lcom/androidplot/Plot;->init(Landroid/content/Context;Landroid/util/AttributeSet;I)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getTitle()Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, p2}, Lcom/androidplot/ui/widget/TextLabelWidget;->setText(Ljava/lang/String;)V</span>
+.end method
+
+<span class="cov">.method private loadAttrs(Landroid/util/AttributeSet;I)V</span>
+<span class="">	.locals 7</span>
+
+<span class="cov">	const-string v0, "Plot"</span>
+<span class="cov">	const-string v1, "Styleable definition not found for: "</span>
+<span class="cov">	if-eqz p1, :cond_7</span>
+<span class="cov">	const-class v2, Lcom/androidplot/R$styleable;</span>
+<span class="exec">	invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="exec">	invoke-virtual {v3}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	const/16 v4, 0x10</span>
+<span class="exec">	invoke-virtual {v3, v4}, Ljava/lang/String;->substring(I)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	const/16 v4, 0x2e</span>
+<span class="cov">	const/16 v5, 0x5f</span>
+<span class="exec">	invoke-virtual {v3, v4, v5}, Ljava/lang/String;->replace(CC)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	const/4 v4, 0x0</span>
+<span class="cov">	:try_start_0</span>
+<span class="exec">	invoke-virtual {v2, v3}, Ljava/lang/Class;->getField(Ljava/lang/String;)Ljava/lang/reflect/Field;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/NoSuchFieldException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	sget-object v5, Lcom/androidplot/Plot;->TAG:Ljava/lang/String;</span>
+<span class="">	new-instance v6, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v6, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {v5, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	move-object v3, v4</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	const/4 v5, 0x0</span>
+<span class="cov">	if-eqz v3, :cond_0</span>
+<span class="cov">	:try_start_1</span>
+<span class="exec">	invoke-virtual {v3, v4}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, [I</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v6</span>
+<span class="exec">	invoke-virtual {v6, p1, v3, p2, v5}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/IllegalAccessException; {:try_start_1 .. :try_end_1} :catch_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="cov">	if-eqz v3, :cond_1</span>
+<span class="cov">	invoke-virtual {p0, v3}, Lcom/androidplot/Plot;->processAttrs(Landroid/content/res/TypedArray;)V</span>
+<span class="cov">	invoke-virtual {v3}, Landroid/content/res/TypedArray;->recycle()V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	throw p1</span>
+<span class="">	:catch_1</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object v3, v4</span>
+<span class="cov">	:try_start_2</span>
+<span class="cov">	:goto_1</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-virtual {v2, v0}, Ljava/lang/Class;->getField(Ljava/lang/String;)Ljava/lang/reflect/Field;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	if-eqz v2, :cond_2</span>
+<span class="exec">	invoke-virtual {v2, v4}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	check-cast v2, [I</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="exec">	invoke-virtual {v4, p1, v2, p2, v5}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	:try_end_2</span>
+<span class="">	.catch Ljava/lang/IllegalAccessException; {:try_start_2 .. :try_end_2} :catch_3</span>
+<span class="">	.catch Ljava/lang/NoSuchFieldException; {:try_start_2 .. :try_end_2} :catch_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_1</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	if-eqz v3, :cond_4</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:try_start_3</span>
+<span class="">	:catch_2</span>
+<span class="">	sget-object p2, Lcom/androidplot/Plot;->TAG:Ljava/lang/String;</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {p2, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_1</span>
+<span class="">	if-eqz v3, :cond_4</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:catchall_1</span>
+<span class="">	move-exception p1</span>
+<span class="">	if-eqz v3, :cond_3</span>
+<span class="">	invoke-direct {p0, v3}, Lcom/androidplot/Plot;->processBaseAttrs(Landroid/content/res/TypedArray;)V</span>
+<span class="">	invoke-virtual {v3}, Landroid/content/res/TypedArray;->recycle()V</span>
+<span class="">	:cond_3</span>
+<span class="">	throw p1</span>
+<span class="">	:catch_3</span>
+<span class="">	nop</span>
+<span class="">	if-eqz v3, :cond_4</span>
+<span class="cov">	:goto_2</span>
+<span class="cov">	invoke-direct {p0, v3}, Lcom/androidplot/Plot;->processBaseAttrs(Landroid/content/res/TypedArray;)V</span>
+<span class="cov">	invoke-virtual {v3}, Landroid/content/res/TypedArray;->recycle()V</span>
+<span class="cov">	:cond_4</span>
+<span class="cov">	new-instance p2, Ljava/util/HashMap;</span>
+<span class="cov">	invoke-direct {p2}, Ljava/util/HashMap;-><init>()V</span>
+<span class="cov">	:goto_3</span>
+<span class="exec">	invoke-interface {p1}, Landroid/util/AttributeSet;->getAttributeCount()I</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-ge v5, v0, :cond_6</span>
+<span class="exec">	invoke-interface {p1, v5}, Landroid/util/AttributeSet;->getAttributeName(I)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	if-eqz v0, :cond_5</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/String;->toUpperCase()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "androidplot"</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/String;->toUpperCase()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v1, v2}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_5</span>
+<span class="">	const/16 v1, 0xc</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/String;->substring(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {p1, v5}, Landroid/util/AttributeSet;->getAttributeValue(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p2, v0, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	:cond_5</span>
+<span class="cov">	add-int/lit8 v5, v5, 0x1</span>
+<span class="">	goto :goto_3</span>
+<span class="cov">	:try_start_4</span>
+<span class="cov">	:cond_6</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-static {p1, p0, p2}, Lcom/halfhp/fig/Fig;->configure(Landroid/content/Context;Ljava/lang/Object;Ljava/util/HashMap;)V</span>
+<span class="cov">	:try_end_4</span>
+<span class="">	.catch Lcom/halfhp/fig/FigException; {:try_start_4 .. :try_end_4} :catch_4</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:catch_4</span>
+<span class="">	move-exception p1</span>
+<span class="">	new-instance p2, Ljava/lang/RuntimeException;</span>
+<span class="">	invoke-direct {p2, p1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V</span>
+<span class="">	throw p2</span>
+<span class="cov">	:goto_4</span>
+<span class="cov">	:cond_7</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private processBaseAttrs(Landroid/content/res/TypedArray;)V</span>
+<span class="">	.locals 12</span>
+
+<span class="cov">	sget v0, Lcom/androidplot/R$styleable;->Plot_markupEnabled:I</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="exec">	invoke-virtual {p1, v0, v1}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	invoke-virtual {p0, v0}, Lcom/androidplot/Plot;->setMarkupEnabled(Z)V</span>
+<span class="exec">	invoke-static {}, Lcom/androidplot/Plot$RenderMode;->values()[Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sget v1, Lcom/androidplot/R$styleable;->Plot_renderMode:I</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRenderMode()Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v2}, Lcom/androidplot/Plot$RenderMode;->ordinal()I</span>
+<span class="cov">	move-result v2</span>
+<span class="exec">	invoke-virtual {p1, v1, v2}, Landroid/content/res/TypedArray;->getInt(II)I</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	aget-object v0, v0, v1</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRenderMode()Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="">	if-eq v0, v1, :cond_0</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/Plot;->setRenderMode(Lcom/androidplot/Plot$RenderMode;)V</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	iget-object v3, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="cov">	sget v4, Lcom/androidplot/R$styleable;->Plot_marginTop:I</span>
+<span class="cov">	sget v5, Lcom/androidplot/R$styleable;->Plot_marginBottom:I</span>
+<span class="cov">	sget v6, Lcom/androidplot/R$styleable;->Plot_marginLeft:I</span>
+<span class="cov">	sget v7, Lcom/androidplot/R$styleable;->Plot_marginRight:I</span>
+<span class="cov">	sget v8, Lcom/androidplot/R$styleable;->Plot_paddingTop:I</span>
+<span class="cov">	sget v9, Lcom/androidplot/R$styleable;->Plot_paddingBottom:I</span>
+<span class="cov">	sget v10, Lcom/androidplot/R$styleable;->Plot_paddingLeft:I</span>
+<span class="cov">	sget v11, Lcom/androidplot/R$styleable;->Plot_paddingRight:I</span>
+<span class="cov">	move-object v2, p1</span>
+<span class="cov">	invoke-static/range {v2 .. v11}, Lcom/androidplot/util/AttrUtils;->configureBoxModelable(Landroid/content/res/TypedArray;Lcom/androidplot/ui/BoxModelable;IIIIIIII)V</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getTitle()Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sget v1, Lcom/androidplot/R$styleable;->Plot_title:I</span>
+<span class="exec">	invoke-virtual {p1, v1}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-virtual {v0, v1}, Lcom/androidplot/ui/widget/TextLabelWidget;->setText(Ljava/lang/String;)V</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getTitle()Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/androidplot/ui/widget/TextLabelWidget;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sget v1, Lcom/androidplot/R$styleable;->Plot_titleTextSize:I</span>
+<span class="cov">	const/high16 v2, 0x41200000    # 10.0f</span>
+<span class="exec">	invoke-static {v2}, Lcom/androidplot/util/PixelUtils;->spToPix(F)F</span>
+<span class="cov">	move-result v2</span>
+<span class="exec">	invoke-virtual {p1, v1, v2}, Landroid/content/res/TypedArray;->getDimension(IF)F</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setTextSize(F)V</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getTitle()Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/androidplot/ui/widget/TextLabelWidget;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sget v1, Lcom/androidplot/R$styleable;->Plot_titleTextColor:I</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getTitle()Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v2}, Lcom/androidplot/ui/widget/TextLabelWidget;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v2}, Landroid/graphics/Paint;->getColor()I</span>
+<span class="cov">	move-result v2</span>
+<span class="exec">	invoke-virtual {p1, v1, v2}, Landroid/content/res/TypedArray;->getColor(II)I</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getBackgroundPaint()Landroid/graphics/Paint;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sget v1, Lcom/androidplot/R$styleable;->Plot_backgroundColor:I</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getBackgroundPaint()Landroid/graphics/Paint;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v2}, Landroid/graphics/Paint;->getColor()I</span>
+<span class="cov">	move-result v2</span>
+<span class="exec">	invoke-virtual {p1, v1, v2}, Landroid/content/res/TypedArray;->getColor(II)I</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getBorderPaint()Landroid/graphics/Paint;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sget v1, Lcom/androidplot/R$styleable;->Plot_borderColor:I</span>
+<span class="cov">	sget v2, Lcom/androidplot/R$styleable;->Plot_borderThickness:I</span>
+<span class="cov">	invoke-static {p1, v0, v1, v2}, Lcom/androidplot/util/AttrUtils;->configureLinePaint(Landroid/content/res/TypedArray;Landroid/graphics/Paint;II)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public declared-synchronized addListener(Lcom/androidplot/PlotListener;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->listeners:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->listeners:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+<span class="cov">.method public declared-synchronized addSeries(Lcom/androidplot/Series;Lcom/androidplot/ui/Formatter;)Z</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TSeriesType;TFormatterType;)Z"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	monitor-enter p0</span>
+<span class="cov">	:try_start_0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Lcom/androidplot/SeriesRegistry;->add(Lcom/androidplot/Series;Lcom/androidplot/ui/Formatter;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Lcom/androidplot/Plot;->attachSeries(Lcom/androidplot/Series;Lcom/androidplot/ui/Formatter;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="cov">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="cov">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public varargs declared-synchronized addSeries(Lcom/androidplot/ui/Formatter;[Lcom/androidplot/Series;)Z
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TFormatterType;[TSeriesType;)Z"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	array-length v0, p2</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v2, v0, :cond_1</span>
+<span class="">	aget-object v3, p2, v2</span>
+<span class="">	invoke-virtual {p0, v3, p1}, Lcom/androidplot/Plot;->addSeries(Lcom/androidplot/Series;Lcom/androidplot/ui/Formatter;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	if-nez v3, :cond_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	:cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method protected attachSeries(Lcom/androidplot/Series;Lcom/androidplot/ui/Formatter;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TSeriesType;TFormatterType;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/ui/Formatter;->getRendererClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRenderers()Ljava/util/HashMap;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRenderers()Ljava/util/HashMap;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p2, p0}, Lcom/androidplot/ui/Formatter;->getRendererInstance(Lcom/androidplot/Plot;)Lcom/androidplot/ui/SeriesRenderer;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {v1, v0, p2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_0</span>
+<span class="">	instance-of p2, p1, Lcom/androidplot/PlotListener;</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	check-cast p1, Lcom/androidplot/PlotListener;</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/Plot;->addListener(Lcom/androidplot/PlotListener;)Z</span>
+<span class="">	:cond_1</span>
+.end method
+
+<span class="cov">.method public clear()V</span>
+<span class="">	.locals 3</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/androidplot/SeriesRegistry;->getSeriesList()Ljava/util/List;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/androidplot/Series;</span>
+<span class="">	instance-of v2, v1, Lcom/androidplot/PlotListener;</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	check-cast v1, Lcom/androidplot/PlotListener;</span>
+<span class="">	invoke-virtual {p0, v1}, Lcom/androidplot/Plot;->removeListener(Lcom/androidplot/PlotListener;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	invoke-virtual {v0}, Lcom/androidplot/SeriesRegistry;->clear()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method protected drawBackground(Landroid/graphics/Canvas;Landroid/graphics/RectF;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->backgroundPaint:Landroid/graphics/Paint;</span>
+<span class="cov">	invoke-virtual {p0, p1, p2, v0}, Lcom/androidplot/Plot;->drawRect(Landroid/graphics/Canvas;Landroid/graphics/RectF;Landroid/graphics/Paint;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method protected drawBorder(Landroid/graphics/Canvas;Landroid/graphics/RectF;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="cov">	invoke-virtual {p0, p1, p2, v0}, Lcom/androidplot/Plot;->drawRect(Landroid/graphics/Canvas;Landroid/graphics/RectF;Landroid/graphics/Paint;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method protected drawRect(Landroid/graphics/Canvas;Landroid/graphics/RectF;Landroid/graphics/Paint;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	sget-object v0, Lcom/androidplot/Plot$1;->$SwitchMap$com$androidplot$Plot$BorderStyle:[I</span>
+<span class="cov">	iget-object v1, p0, Lcom/androidplot/Plot;->borderStyle:Lcom/androidplot/Plot$BorderStyle;</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/androidplot/Plot$BorderStyle;->ordinal()I</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	aget v0, v0, v1</span>
+<span class="cov">	const/4 v1, 0x1</span>
+<span class="cov">	if-eq v0, v1, :cond_0</span>
+<span class="cov">	invoke-virtual {p1, p2, p3}, Landroid/graphics/Canvas;->drawRect(Landroid/graphics/RectF;Landroid/graphics/Paint;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget v0, p0, Lcom/androidplot/Plot;->borderRadiusX:F</span>
+<span class="">	iget v1, p0, Lcom/androidplot/Plot;->borderRadiusY:F</span>
+<span class="">	invoke-virtual {p1, p2, v0, v1, p3}, Landroid/graphics/Canvas;->drawRoundRect(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public getBackgroundPaint()Landroid/graphics/Paint;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->backgroundPaint:Landroid/graphics/Paint;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public getBorderPaint()Landroid/graphics/Paint;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public getDisplayDimensions()Lcom/androidplot/util/DisplayDimensions;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->displayDims:Lcom/androidplot/util/DisplayDimensions;</span>
+.end method
+
+.method public getFormatter(Lcom/androidplot/Series;Ljava/lang/Class;)Lcom/androidplot/ui/Formatter;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TSeriesType;",</span>
+<span class="">	"Ljava/lang/Class<",</span>
+<span class="">	"+TRendererType;>;)TFormatterType;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p1, p2}, Lcom/androidplot/Plot;->getSeries(Lcom/androidplot/Series;Ljava/lang/Class;)Lcom/androidplot/ui/SeriesBundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/ui/SeriesBundle;->getFormatter()Lcom/androidplot/ui/Formatter;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+<span class="cov">.method public getLayoutManager()Lcom/androidplot/ui/LayoutManager;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->layoutManager:Lcom/androidplot/ui/LayoutManager;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method protected getListeners()Ljava/util/ArrayList;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/ArrayList<",</span>
+<span class="">	"Lcom/androidplot/PlotListener;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->listeners:Ljava/util/ArrayList;</span>
+.end method
+
+.method public getPlotMarginBottom()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/BoxModel;->getMarginBottom()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public getPlotMarginLeft()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/BoxModel;->getMarginLeft()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public getPlotMarginRight()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/BoxModel;->getMarginRight()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public getPlotMarginTop()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/BoxModel;->getMarginTop()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public getPlotPaddingBottom()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/BoxModel;->getPaddingBottom()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public getPlotPaddingLeft()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/BoxModel;->getPaddingLeft()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public getPlotPaddingRight()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/BoxModel;->getPaddingRight()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public getPlotPaddingTop()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/BoxModel;->getPaddingTop()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+<span class="cov">.method public getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()TRegistryType;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->registry:Lcom/androidplot/SeriesRegistry;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method protected abstract getRegistryInstance()Lcom/androidplot/SeriesRegistry;
+<span class="">	</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()TRegistryType;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+<span class="cov">.method public getRenderMode()Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public getRenderer(Ljava/lang/Class;)Lcom/androidplot/ui/SeriesRenderer;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<T:TRendererType;>(",</span>
+<span class="">	"Ljava/lang/Class<",</span>
+<span class="">	"TT;>;)TT;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRenderers()Ljava/util/HashMap;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lcom/androidplot/ui/SeriesRenderer;</span>
+.end method
+
+<span class="cov">.method public getRendererList()Ljava/util/List;</span>
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"TRendererType;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRenderers()Ljava/util/HashMap;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/util/HashMap;->values()Ljava/util/Collection;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public getRenderers()Ljava/util/HashMap;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/HashMap<",</span>
+<span class="">	"Ljava/lang/Class<",</span>
+<span class="">	"+TRendererType;>;TRendererType;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->renderers:Ljava/util/HashMap;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method protected getSeries(Lcom/androidplot/Series;Ljava/lang/Class;)Lcom/androidplot/ui/SeriesBundle;
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TSeriesType;",</span>
+<span class="">	"Ljava/lang/Class<",</span>
+<span class="">	"+TRendererType;>;)",</span>
+<span class="">	"Lcom/androidplot/ui/SeriesBundle<",</span>
+<span class="">	"TSeriesType;TFormatterType;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/Plot;->getSeries(Lcom/androidplot/Series;)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/androidplot/ui/SeriesBundle;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/SeriesBundle;->getFormatter()Lcom/androidplot/ui/Formatter;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/ui/Formatter;->getRendererClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-ne v1, p2, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method protected getSeries(Lcom/androidplot/Series;)Ljava/util/List;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TSeriesType;)",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/androidplot/ui/SeriesBundle<",</span>
+<span class="">	"TSeriesType;TFormatterType;>;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/androidplot/SeriesRegistry;->get(Lcom/androidplot/Series;)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+<span class="cov">.method public getTitle()Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->title:Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method protected final init(Landroid/content/Context;Landroid/util/AttributeSet;I)V</span>
+<span class="">	.locals 7</span>
+
+<span class="cov">	invoke-static {p1}, Lcom/androidplot/util/PixelUtils;->init(Landroid/content/Context;)V</span>
+<span class="cov">	new-instance v0, Lcom/androidplot/ui/LayoutManager;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/androidplot/ui/LayoutManager;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Plot;->layoutManager:Lcom/androidplot/ui/LayoutManager;</span>
+<span class="cov">	new-instance v1, Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="cov">	new-instance v2, Lcom/androidplot/ui/Size;</span>
+<span class="cov">	sget-object v3, Lcom/androidplot/ui/SizeMode;->ABSOLUTE:Lcom/androidplot/ui/SizeMode;</span>
+<span class="cov">	sget-object v4, Lcom/androidplot/ui/SizeMode;->ABSOLUTE:Lcom/androidplot/ui/SizeMode;</span>
+<span class="cov">	const/high16 v5, 0x41c80000    # 25.0f</span>
+<span class="cov">	const/high16 v6, 0x42c80000    # 100.0f</span>
+<span class="cov">	invoke-direct {v2, v5, v3, v6, v4}, Lcom/androidplot/ui/Size;-><init>(FLcom/androidplot/ui/SizeMode;FLcom/androidplot/ui/SizeMode;)V</span>
+<span class="cov">	sget-object v3, Lcom/androidplot/ui/TextOrientation;->HORIZONTAL:Lcom/androidplot/ui/TextOrientation;</span>
+<span class="cov">	invoke-direct {v1, v0, v2, v3}, Lcom/androidplot/ui/widget/TextLabelWidget;-><init>(Lcom/androidplot/ui/LayoutManager;Lcom/androidplot/ui/Size;Lcom/androidplot/ui/TextOrientation;)V</span>
+<span class="cov">	iput-object v1, p0, Lcom/androidplot/Plot;->title:Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="cov">	sget-object v3, Lcom/androidplot/ui/HorizontalPositioning;->RELATIVE_TO_CENTER:Lcom/androidplot/ui/HorizontalPositioning;</span>
+<span class="cov">	sget-object v5, Lcom/androidplot/ui/VerticalPositioning;->ABSOLUTE_FROM_TOP:Lcom/androidplot/ui/VerticalPositioning;</span>
+<span class="cov">	sget-object v6, Lcom/androidplot/ui/Anchor;->TOP_MIDDLE:Lcom/androidplot/ui/Anchor;</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="cov">	const/4 v4, 0x0</span>
+<span class="cov">	invoke-virtual/range {v1 .. v6}, Lcom/androidplot/ui/widget/TextLabelWidget;->position(FLcom/androidplot/ui/HorizontalPositioning;FLcom/androidplot/ui/VerticalPositioning;Lcom/androidplot/ui/Anchor;)V</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->title:Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/androidplot/ui/widget/TextLabelWidget;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const/high16 v1, 0x41200000    # 10.0f</span>
+<span class="exec">	invoke-static {v1}, Lcom/androidplot/util/PixelUtils;->spToPix(F)F</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setTextSize(F)V</span>
+<span class="cov">	invoke-virtual {p0}, Lcom/androidplot/Plot;->onPreInit()V</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->layoutManager:Lcom/androidplot/ui/LayoutManager;</span>
+<span class="cov">	iget-object v1, p0, Lcom/androidplot/Plot;->title:Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="cov">	invoke-virtual {v0, v1}, Lcom/androidplot/ui/LayoutManager;->moveToTop(Ljava/lang/Object;)Z</span>
+<span class="cov">	if-eqz p1, :cond_0</span>
+<span class="cov">	if-eqz p2, :cond_0</span>
+<span class="cov">	invoke-direct {p0, p2, p3}, Lcom/androidplot/Plot;->loadAttrs(Landroid/util/AttributeSet;I)V</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	invoke-virtual {p0}, Lcom/androidplot/Plot;->onAfterConfig()V</span>
+<span class="cov">	iget-object p1, p0, Lcom/androidplot/Plot;->layoutManager:Lcom/androidplot/ui/LayoutManager;</span>
+<span class="cov">	invoke-virtual {p1}, Lcom/androidplot/ui/LayoutManager;->onPostInit()V</span>
+<span class="cov">	iget-object p1, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	sget-object p2, Lcom/androidplot/Plot$RenderMode;->USE_BACKGROUND_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	if-ne p1, p2, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->startBackgroundRendering()V</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public isEmpty()Z
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/SeriesRegistry;->isEmpty()Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+<span class="cov">.method protected isHwAccelerationSupported()Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="exec">	return v0</span>
+.end method
+
+.method public synthetic lambda$startBackgroundRendering$0$com-androidplot-Plot()V
+<span class="">	.locals 3</span>
+
+<span class="">	sget-object v0, Ljava/lang/System;->out:Ljava/io/PrintStream;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Thread started with id "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Object;->hashCode()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	iput-boolean v0, p0, Lcom/androidplot/Plot;->keepRunning:Z</span>
+<span class="">	:goto_0</span>
+<span class="">	iget-boolean v0, p0, Lcom/androidplot/Plot;->keepRunning:Z</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-boolean v0, p0, Lcom/androidplot/Plot;->isIdle:Z</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	monitor-enter v1</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v2, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/Plot$BufferedCanvas;->getCanvas()Landroid/graphics/Canvas;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {p0, v2}, Lcom/androidplot/Plot;->renderOnCanvas(Landroid/graphics/Canvas;)V</span>
+<span class="">	iget-object v2, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/Plot$BufferedCanvas;->swap()V</span>
+<span class="">	monitor-exit v1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_1</span>
+<span class="">	iget-object v2, p0, Lcom/androidplot/Plot;->renderSync:Ljava/lang/Object;</span>
+<span class="">	monitor-enter v2</span>
+<span class="">	:try_start_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->postInvalidate()V</span>
+<span class="">	iget-boolean v1, p0, Lcom/androidplot/Plot;->keepRunning:Z</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	:try_start_2</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Plot;->renderSync:Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->wait()V</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catch Ljava/lang/InterruptedException; {:try_start_2 .. :try_end_2} :catch_0</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:try_start_3</span>
+<span class="">	:catch_0</span>
+<span class="">	iput-boolean v0, p0, Lcom/androidplot/Plot;->keepRunning:Z</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	monitor-exit v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	monitor-exit v2</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_0</span>
+<span class="">	throw v0</span>
+<span class="">	:catchall_1</span>
+<span class="">	move-exception v0</span>
+<span class="">	:try_start_4</span>
+<span class="">	monitor-exit v1</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_1</span>
+<span class="">	throw v0</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v0, Ljava/lang/System;->out:Ljava/io/PrintStream;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Thread exited with id "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Object;->hashCode()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->renderThread:Ljava/lang/Thread;</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/Plot$BufferedCanvas;->recycle()V</span>
+.end method
+
+<span class="cov">.method public declared-synchronized layout(Lcom/androidplot/util/DisplayDimensions;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	monitor-enter p0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	iput-object p1, p0, Lcom/androidplot/Plot;->displayDims:Lcom/androidplot/util/DisplayDimensions;</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->layoutManager:Lcom/androidplot/ui/LayoutManager;</span>
+<span class="cov">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/LayoutManager;->layout(Lcom/androidplot/util/DisplayDimensions;)V</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	monitor-exit p0</span>
+<span class="exec">	return-void</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+<span class="cov">.method protected notifyListenersAfterDraw(Landroid/graphics/Canvas;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->listeners:Ljava/util/ArrayList;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/androidplot/PlotListener;</span>
+<span class="">	invoke-interface {v1, p0, p1}, Lcom/androidplot/PlotListener;->onAfterDraw(Lcom/androidplot/Plot;Landroid/graphics/Canvas;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method protected notifyListenersBeforeDraw(Landroid/graphics/Canvas;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->listeners:Ljava/util/ArrayList;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/androidplot/PlotListener;</span>
+<span class="">	invoke-interface {v1, p0, p1}, Lcom/androidplot/PlotListener;->onBeforeDraw(Lcom/androidplot/Plot;Landroid/graphics/Canvas;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method protected onAfterConfig()V
+<span class="">	.locals 0</span>
+
+.end method
+
+<span class="cov">.method protected onAttachedToWindow()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	invoke-super {p0}, Landroid/view/View;->onAttachedToWindow()V</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	sget-object v1, Lcom/androidplot/Plot$RenderMode;->USE_BACKGROUND_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->renderThread:Ljava/lang/Thread;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/Plot$BufferedCanvas;->resizeToLast()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->startBackgroundRendering()V</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->renderThread:Ljava/lang/Thread;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Thread;->start()V</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method protected onDetachedFromWindow()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	invoke-super {p0}, Landroid/view/View;->onDetachedFromWindow()V</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->renderSync:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	iput-boolean v1, p0, Lcom/androidplot/Plot;->keepRunning:Z</span>
+<span class="cov">	iget-object v1, p0, Lcom/androidplot/Plot;->renderSync:Ljava/lang/Object;</span>
+<span class="cov">	invoke-virtual {v1}, Ljava/lang/Object;->notify()V</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-void</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw v1</span>
+.end method
+
+<span class="cov">.method protected onDraw(Landroid/graphics/Canvas;)V</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	sget-object v1, Lcom/androidplot/Plot$RenderMode;->USE_BACKGROUND_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	if-ne v0, v1, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/Plot$BufferedCanvas;->getBitmap()Landroid/graphics/Bitmap;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-virtual {p1, v1, v3, v3, v2}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw p1</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	sget-object v1, Lcom/androidplot/Plot$RenderMode;->USE_MAIN_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	if-ne v0, v1, :cond_2</span>
+<span class="cov">	invoke-virtual {p0, p1}, Lcom/androidplot/Plot;->renderOnCanvas(Landroid/graphics/Canvas;)V</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-void</span>
+<span class="">	:cond_2</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "Unsupported Render Mode: "</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method protected onPreInit()V
+<span class="">	.locals 0</span>
+
+.end method
+
+<span class="cov">.method protected declared-synchronized onSizeChanged(IIII)V</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	monitor-enter p0</span>
+<span class="cov">	:try_start_0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	invoke-static {v0}, Lcom/androidplot/util/PixelUtils;->init(Landroid/content/Context;)V</span>
+<span class="cov">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="cov">	const/16 v1, 0xb</span>
+<span class="cov">	if-lt v0, v1, :cond_0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->isHwAccelerationSupported()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-nez v0, :cond_0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->isHardwareAccelerated()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-virtual {p0, v0, v1}, Lcom/androidplot/Plot;->setLayerType(ILandroid/graphics/Paint;)V</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="cov">	sget-object v1, Lcom/androidplot/Plot$RenderMode;->USE_BACKGROUND_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	if-ne v0, v1, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->pingPong:Lcom/androidplot/Plot$BufferedCanvas;</span>
+<span class="">	invoke-virtual {v0, p2, p1}, Lcom/androidplot/Plot$BufferedCanvas;->resize(II)V</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	new-instance v0, Landroid/graphics/RectF;</span>
+<span class="cov">	int-to-float v1, p1</span>
+<span class="cov">	int-to-float v2, p2</span>
+<span class="cov">	const/4 v3, 0x0</span>
+<span class="cov">	invoke-direct {v0, v3, v3, v1, v2}, Landroid/graphics/RectF;-><init>(FFFF)V</span>
+<span class="cov">	iget-object v1, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="exec">	invoke-virtual {v1, v0}, Lcom/androidplot/ui/BoxModel;->getMarginatedRect(Landroid/graphics/RectF;)Landroid/graphics/RectF;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	iget-object v2, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="exec">	invoke-virtual {v2, v1}, Lcom/androidplot/ui/BoxModel;->getPaddedRect(Landroid/graphics/RectF;)Landroid/graphics/RectF;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	new-instance v3, Lcom/androidplot/util/DisplayDimensions;</span>
+<span class="cov">	invoke-direct {v3, v0, v1, v2}, Lcom/androidplot/util/DisplayDimensions;-><init>(Landroid/graphics/RectF;Landroid/graphics/RectF;Landroid/graphics/RectF;)V</span>
+<span class="cov">	invoke-virtual {p0, v3}, Lcom/androidplot/Plot;->layout(Lcom/androidplot/util/DisplayDimensions;)V</span>
+<span class="cov">	invoke-super {p0, p1, p2, p3, p4}, Landroid/view/View;->onSizeChanged(IIII)V</span>
+<span class="cov">	iget-object p1, p0, Lcom/androidplot/Plot;->renderThread:Ljava/lang/Thread;</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Thread;->isAlive()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_2</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/Plot;->renderThread:Ljava/lang/Thread;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Thread;->start()V</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	monitor-exit p0</span>
+<span class="exec">	return-void</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method protected abstract processAttrs(Landroid/content/res/TypedArray;)V
+<span class="">	</span>
+
+.end method
+
+.method public redraw()V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	sget-object v1, Lcom/androidplot/Plot$RenderMode;->USE_BACKGROUND_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->renderThread:Ljava/lang/Thread;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	iget-boolean v0, p0, Lcom/androidplot/Plot;->isIdle:Z</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->renderSync:Ljava/lang/Object;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Plot;->renderSync:Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->notify()V</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw v1</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	sget-object v1, Lcom/androidplot/Plot$RenderMode;->USE_MAIN_THREAD:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	if-ne v0, v1, :cond_3</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->myLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-ne v0, v1, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->invalidate()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->postInvalidate()V</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_3</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Unsupported Render Mode: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v2, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public declared-synchronized removeListener(Lcom/androidplot/PlotListener;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->listeners:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public declared-synchronized removeSeries(Lcom/androidplot/Series;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TSeriesType;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	instance-of v0, p1, Lcom/androidplot/PlotListener;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	move-object v0, p1</span>
+<span class="">	check-cast v0, Lcom/androidplot/PlotListener;</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/Plot;->removeListener(Lcom/androidplot/PlotListener;)Z</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/androidplot/SeriesRegistry;->remove(Lcom/androidplot/Series;)Z</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public declared-synchronized removeSeries(Lcom/androidplot/Series;Ljava/lang/Class;)Z
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TSeriesType;",</span>
+<span class="">	"Ljava/lang/Class<",</span>
+<span class="">	"+TRendererType;>;)Z"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Lcom/androidplot/SeriesRegistry;->remove(Lcom/androidplot/Series;Ljava/lang/Class;)Ljava/util/List;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-interface {p2}, Ljava/util/List;->size()I</span>
+<span class="">	move-result p2</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	if-ne p2, v0, :cond_0</span>
+<span class="">	instance-of p2, p1, Lcom/androidplot/PlotListener;</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	check-cast p1, Lcom/androidplot/PlotListener;</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/Plot;->removeListener(Lcom/androidplot/PlotListener;)Z</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:cond_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw p1</span>
+.end method
+
+<span class="cov">.method protected declared-synchronized renderOnCanvas(Landroid/graphics/Canvas;)V</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	monitor-enter p0</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="cov">	invoke-virtual {p0, p1}, Lcom/androidplot/Plot;->notifyListenersBeforeDraw(Landroid/graphics/Canvas;)V</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	sget-object v1, Landroid/graphics/PorterDuff$Mode;->CLEAR:Landroid/graphics/PorterDuff$Mode;</span>
+<span class="cov">	:try_start_1</span>
+<span class="cov">	invoke-virtual {p1, v0, v1}, Landroid/graphics/Canvas;->drawColor(ILandroid/graphics/PorterDuff$Mode;)V</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->backgroundPaint:Landroid/graphics/Paint;</span>
+<span class="cov">	if-eqz v0, :cond_1</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->displayDims:Lcom/androidplot/util/DisplayDimensions;</span>
+<span class="cov">	iget-object v0, v0, Lcom/androidplot/util/DisplayDimensions;->marginatedRect:Landroid/graphics/RectF;</span>
+<span class="cov">	invoke-virtual {p0, p1, v0}, Lcom/androidplot/Plot;->drawBackground(Landroid/graphics/Canvas;Landroid/graphics/RectF;)V</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->layoutManager:Lcom/androidplot/ui/LayoutManager;</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/LayoutManager;->draw(Landroid/graphics/Canvas;)V</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getBorderPaint()Landroid/graphics/Paint;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	if-eqz v0, :cond_2</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->displayDims:Lcom/androidplot/util/DisplayDimensions;</span>
+<span class="cov">	iget-object v0, v0, Lcom/androidplot/util/DisplayDimensions;->marginatedRect:Landroid/graphics/RectF;</span>
+<span class="cov">	invoke-virtual {p0, p1, v0}, Lcom/androidplot/Plot;->drawBorder(Landroid/graphics/Canvas;Landroid/graphics/RectF;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_0</span>
+<span class="">	sget-object v1, Lcom/androidplot/Plot;->TAG:Ljava/lang/String;</span>
+<span class="">	:try_start_2</span>
+<span class="">	const-string v2, "Exception while rendering Plot."</span>
+<span class="">	invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	iput-boolean v0, p0, Lcom/androidplot/Plot;->isIdle:Z</span>
+<span class="cov">	invoke-virtual {p0, p1}, Lcom/androidplot/Plot;->notifyListenersAfterDraw(Landroid/graphics/Canvas;)V</span>
+<span class="cov">	monitor-exit p0</span>
+<span class="cov">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="exec">	return-void</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public setBackgroundPaint(Landroid/graphics/Paint;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/Plot;->backgroundPaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public setBorderPaint(Landroid/graphics/Paint;)V
+<span class="">	.locals 1</span>
+
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0, p1}, Landroid/graphics/Paint;-><init>(Landroid/graphics/Paint;)V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->borderPaint:Landroid/graphics/Paint;</span>
+<span class="">	sget-object p1, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	:goto_0</span>
+.end method
+
+<span class="cov">.method public setBorderStyle(Lcom/androidplot/Plot$BorderStyle;Ljava/lang/Float;Ljava/lang/Float;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	sget-object v0, Lcom/androidplot/Plot$BorderStyle;->ROUNDED:Lcom/androidplot/Plot$BorderStyle;</span>
+<span class="">	if-ne p1, v0, :cond_1</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	if-eqz p3, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result p2</span>
+<span class="">	iput p2, p0, Lcom/androidplot/Plot;->borderRadiusX:F</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result p2</span>
+<span class="">	iput p2, p0, Lcom/androidplot/Plot;->borderRadiusY:F</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	const-string p2, "radiusX and radiusY cannot be null when using BorderStyle.ROUNDED"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	iput-object p1, p0, Lcom/androidplot/Plot;->borderStyle:Lcom/androidplot/Plot$BorderStyle;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public setLayoutManager(Lcom/androidplot/ui/LayoutManager;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/Plot;->layoutManager:Lcom/androidplot/ui/LayoutManager;</span>
+.end method
+
+<span class="cov">.method public setMarkupEnabled(Z)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->layoutManager:Lcom/androidplot/ui/LayoutManager;</span>
+<span class="cov">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/LayoutManager;->setMarkupEnabled(Z)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public setPlotMarginBottom(F)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="cov">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/BoxModel;->setMarginBottom(F)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public setPlotMarginLeft(F)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="cov">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/BoxModel;->setMarginLeft(F)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public setPlotMarginRight(F)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="cov">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/BoxModel;->setMarginRight(F)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public setPlotMarginTop(F)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="cov">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/BoxModel;->setMarginTop(F)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public setPlotMargins(FFFF)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/Plot;->setPlotMarginLeft(F)V</span>
+<span class="">	invoke-virtual {p0, p2}, Lcom/androidplot/Plot;->setPlotMarginTop(F)V</span>
+<span class="">	invoke-virtual {p0, p3}, Lcom/androidplot/Plot;->setPlotMarginRight(F)V</span>
+<span class="">	invoke-virtual {p0, p4}, Lcom/androidplot/Plot;->setPlotMarginBottom(F)V</span>
+.end method
+
+.method public setPlotPadding(FFFF)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/Plot;->setPlotPaddingLeft(F)V</span>
+<span class="">	invoke-virtual {p0, p2}, Lcom/androidplot/Plot;->setPlotPaddingTop(F)V</span>
+<span class="">	invoke-virtual {p0, p3}, Lcom/androidplot/Plot;->setPlotPaddingRight(F)V</span>
+<span class="">	invoke-virtual {p0, p4}, Lcom/androidplot/Plot;->setPlotPaddingBottom(F)V</span>
+.end method
+
+.method public setPlotPaddingBottom(F)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/BoxModel;->setPaddingBottom(F)V</span>
+.end method
+
+.method public setPlotPaddingLeft(F)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/BoxModel;->setPaddingLeft(F)V</span>
+.end method
+
+.method public setPlotPaddingRight(F)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/BoxModel;->setPaddingRight(F)V</span>
+.end method
+
+.method public setPlotPaddingTop(F)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->boxModel:Lcom/androidplot/ui/BoxModel;</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/BoxModel;->setPaddingTop(F)V</span>
+.end method
+
+.method public setRegistry(Lcom/androidplot/SeriesRegistry;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TRegistryType;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/Plot;->registry:Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/SeriesRegistry;->getSeriesAndFormatterList()Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/androidplot/ui/SeriesBundle;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/SeriesBundle;->getSeries()Lcom/androidplot/Series;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/ui/SeriesBundle;->getFormatter()Lcom/androidplot/ui/Formatter;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0, v1, v0}, Lcom/androidplot/Plot;->attachSeries(Lcom/androidplot/Series;Lcom/androidplot/ui/Formatter;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public setRenderMode(Lcom/androidplot/Plot$RenderMode;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/Plot;->renderMode:Lcom/androidplot/Plot$RenderMode;</span>
+.end method
+
+.method public setTitle(Lcom/androidplot/ui/widget/TextLabelWidget;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/Plot;->title:Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+.end method
+
+.method public setTitle(Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Plot;->getTitle()Lcom/androidplot/ui/widget/TextLabelWidget;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/androidplot/ui/widget/TextLabelWidget;->setText(Ljava/lang/String;)V</span>
+.end method
+
+.method protected startBackgroundRendering()V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/Plot;->renderThread:Ljava/lang/Thread;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	new-instance v0, Ljava/lang/Thread;</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v1, Lcom/androidplot/Plot$$ExternalSyntheticLambda0;</span>
+<span class="">	invoke-direct {v1, p0}, Lcom/androidplot/Plot$$ExternalSyntheticLambda0;-><init>(Lcom/androidplot/Plot;)V</span>
+<span class="">	const-string v2, "Androidplot renderThread"</span>
+<span class="">	invoke-direct {v0, v1, v2}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/Plot;->renderThread:Ljava/lang/Thread;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

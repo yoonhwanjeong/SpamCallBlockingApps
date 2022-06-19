@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot.pie</a></li>
+        <li><i class="ico ico-class"></i> PieLegendWidget.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/androidplot/pie/PieLegendWidget;
+.super Lcom/androidplot/ui/widget/LegendWidget;
+.source "PieLegendWidget.java"
+
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/androidplot/ui/widget/LegendWidget<",
+"Lcom/androidplot/pie/PieLegendItem;",
+">;"
+}
+.end annotation
+
+.field private pieChart:Lcom/androidplot/pie/PieChart;
+
+
+.method public constructor <init>(Lcom/androidplot/ui/LayoutManager;Lcom/androidplot/pie/PieChart;Lcom/androidplot/ui/Size;Lcom/androidplot/ui/TableModel;Lcom/androidplot/ui/Size;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p4, p1, p3, p5}, Lcom/androidplot/ui/widget/LegendWidget;-><init>(Lcom/androidplot/ui/TableModel;Lcom/androidplot/ui/LayoutManager;Lcom/androidplot/ui/Size;Lcom/androidplot/ui/Size;)V</span>
+<span class="">	iput-object p2, p0, Lcom/androidplot/pie/PieLegendWidget;->pieChart:Lcom/androidplot/pie/PieChart;</span>
+.end method
+
+.method protected drawIcon(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/pie/PieLegendItem;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p3, p3, Lcom/androidplot/pie/PieLegendItem;->formatter:Lcom/androidplot/pie/SegmentFormatter;</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/pie/SegmentFormatter;->getFillPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p1, p2, p3}, Landroid/graphics/Canvas;->drawRect(Landroid/graphics/RectF;Landroid/graphics/Paint;)V</span>
+.end method
+
+.method protected bridge synthetic drawIcon(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/ui/widget/LegendItem;)V
+<span class="">	.locals 0</span>
+
+<span class="">	check-cast p3, Lcom/androidplot/pie/PieLegendItem;</span>
+<span class="">	invoke-virtual {p0, p1, p2, p3}, Lcom/androidplot/pie/PieLegendWidget;->drawIcon(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/pie/PieLegendItem;)V</span>
+.end method
+
+.method protected getLegendItems()Ljava/util/List;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/androidplot/pie/PieLegendItem;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/pie/PieLegendWidget;->pieChart:Lcom/androidplot/pie/PieChart;</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/pie/PieChart;->getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/androidplot/pie/SegmentRegistry;</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/pie/SegmentRegistry;->getLegendEnabledItems()Ljava/util/List;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Lcom/androidplot/ui/SeriesBundle;</span>
+<span class="">	new-instance v3, Lcom/androidplot/pie/PieLegendItem;</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/ui/SeriesBundle;->getSeries()Lcom/androidplot/Series;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	check-cast v4, Lcom/androidplot/pie/Segment;</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/ui/SeriesBundle;->getFormatter()Lcom/androidplot/ui/Formatter;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Lcom/androidplot/pie/SegmentFormatter;</span>
+<span class="">	invoke-direct {v3, v4, v2}, Lcom/androidplot/pie/PieLegendItem;-><init>(Lcom/androidplot/pie/Segment;Lcom/androidplot/pie/SegmentFormatter;)V</span>
+<span class="">	invoke-interface {v0, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

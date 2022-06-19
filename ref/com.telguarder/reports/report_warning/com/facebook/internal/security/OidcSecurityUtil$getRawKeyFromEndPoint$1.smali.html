@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.internal.security</a></li>
+        <li><i class="ico ico-class"></i> OidcSecurityUtil$getRawKeyFromEndPoint$1.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class final Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;
+.super Ljava/lang/Object;
+.source "OidcSecurityUtil.kt"
+.implements Ljava/lang/Runnable;
+
+.annotation system Ldalvik/annotation/EnclosingMethod;
+value = Lcom/facebook/internal/security/OidcSecurityUtil;->getRawKeyFromEndPoint(Ljava/lang/String;)Ljava/lang/String;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x18
+name = null
+.end annotation
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+value = "SMAP\nOidcSecurityUtil.kt\nKotlin\n*S Kotlin\n*F\n+ 1 OidcSecurityUtil.kt\ncom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1\n+ 2 fake.kt\nkotlin/jvm/internal/FakeKt\n*L\n1#1,106:1\n1#2:107\n*E\n"
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000\u0008\n\u0000\n\u0002\u0010\u0002\n\u0000\u0010\u0000\u001a\u00020\u0001H\n\u00a2\u0006\u0002\u0008\u0002"
+}
+d2 = {
+"<anonymous>",
+"",
+"run"
+}
+k = 0x3
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field final synthetic $condition:Ljava/util/concurrent/locks/Condition;
+.field final synthetic $kid:Ljava/lang/String;
+.field final synthetic $lock:Ljava/util/concurrent/locks/ReentrantLock;
+.field final synthetic $openIdKeyUrl:Ljava/net/URL;
+.field final synthetic $result:Lkotlin/jvm/internal/Ref$ObjectRef;
+
+
+.method constructor <init>(Ljava/net/URL;Lkotlin/jvm/internal/Ref$ObjectRef;Ljava/lang/String;Ljava/util/concurrent/locks/ReentrantLock;Ljava/util/concurrent/locks/Condition;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$openIdKeyUrl:Ljava/net/URL;</span>
+<span class="">	iput-object p2, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$result:Lkotlin/jvm/internal/Ref$ObjectRef;</span>
+<span class="">	iput-object p3, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$kid:Ljava/lang/String;</span>
+<span class="">	iput-object p4, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$lock:Ljava/util/concurrent/locks/ReentrantLock;</span>
+<span class="">	iput-object p5, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$condition:Ljava/util/concurrent/locks/Condition;</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public final run()V
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$openIdKeyUrl:Ljava/net/URL;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	check-cast v0, Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getInputStream()Ljava/io/InputStream;</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_4</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "connection.inputStream"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	sget-object v2, Lkotlin/text/Charsets;->UTF_8:Ljava/nio/charset/Charset;</span>
+<span class="">	new-instance v3, Ljava/io/InputStreamReader;</span>
+<span class="">	invoke-direct {v3, v1, v2}, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream;Ljava/nio/charset/Charset;)V</span>
+<span class="">	check-cast v3, Ljava/io/Reader;</span>
+<span class="">	const/16 v1, 0x2000</span>
+<span class="">	instance-of v2, v3, Ljava/io/BufferedReader;</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	check-cast v3, Ljava/io/BufferedReader;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	new-instance v2, Ljava/io/BufferedReader;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v2, v3, v1}, Ljava/io/BufferedReader;-><init>(Ljava/io/Reader;I)V</span>
+<span class="">	move-object v3, v2</span>
+<span class="">	check-cast v3, Ljava/io/Reader;</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v3}, Lkotlin/io/TextStreamsKt;->readText(Ljava/io/Reader;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getInputStream()Ljava/io/InputStream;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/io/InputStream;->close()V</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$result:Lkotlin/jvm/internal/Ref$ObjectRef;</span>
+<span class="">	new-instance v3, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v3, v1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V</span>
+<span class="">	iget-object v1, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$kid:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v3, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iput-object v1, v2, Lkotlin/jvm/internal/Ref$ObjectRef;->element:Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	:try_start_2</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_1</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$lock:Ljava/util/concurrent/locks/ReentrantLock;</span>
+<span class="">	check-cast v0, Ljava/util/concurrent/locks/Lock;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/concurrent/locks/Lock;->lock()V</span>
+<span class="">	iget-object v1, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$condition:Ljava/util/concurrent/locks/Condition;</span>
+<span class="">	:try_start_3</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_4</span>
+<span class="">	invoke-interface {v1}, Ljava/util/concurrent/locks/Condition;->signal()V</span>
+<span class="">	sget-object v1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/concurrent/locks/Lock;->unlock()V</span>
+<span class="">	:try_start_4</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_0</span>
+<span class="">	:goto_1</span>
+<span class="">	goto :goto_3</span>
+<span class="">	move-exception v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/concurrent/locks/Lock;->unlock()V</span>
+<span class="">	throw v1</span>
+<span class="">	move-exception v1</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_4</span>
+<span class="">	:catchall_1</span>
+<span class="">	goto :goto_4</span>
+<span class="">	move-exception v1</span>
+<span class="">	:catch_0</span>
+<span class="">	sget-object v2, Lcom/facebook/internal/security/OidcSecurityUtil;->INSTANCE:Lcom/facebook/internal/security/OidcSecurityUtil;</span>
+<span class="">	:try_start_5</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	goto :goto_2</span>
+<span class="">	const-string v1, "Error getting public key"</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {v2, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	:try_start_6</span>
+<span class="">	:try_end_5</span>
+<span class="">	.catchall {:try_start_5 .. :try_end_5} :catchall_1</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$lock:Ljava/util/concurrent/locks/ReentrantLock;</span>
+<span class="">	check-cast v0, Ljava/util/concurrent/locks/Lock;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/concurrent/locks/Lock;->lock()V</span>
+<span class="">	iget-object v1, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$condition:Ljava/util/concurrent/locks/Condition;</span>
+<span class="">	:try_start_7</span>
+<span class="">	:try_end_6</span>
+<span class="">	.catchall {:try_start_6 .. :try_end_6} :catchall_4</span>
+<span class="">	invoke-interface {v1}, Ljava/util/concurrent/locks/Condition;->signal()V</span>
+<span class="">	sget-object v1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:try_end_7</span>
+<span class="">	.catchall {:try_start_7 .. :try_end_7} :catchall_2</span>
+<span class="">	move-exception v1</span>
+<span class="">	:goto_3</span>
+<span class="">	invoke-interface {v0}, Ljava/util/concurrent/locks/Lock;->unlock()V</span>
+<span class="">	:catchall_2</span>
+<span class="">	throw v1</span>
+<span class="">	:try_start_8</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$lock:Ljava/util/concurrent/locks/ReentrantLock;</span>
+<span class="">	:goto_4</span>
+<span class="">	check-cast v0, Ljava/util/concurrent/locks/Lock;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/concurrent/locks/Lock;->lock()V</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/internal/security/OidcSecurityUtil$getRawKeyFromEndPoint$1;->$condition:Ljava/util/concurrent/locks/Condition;</span>
+<span class="">	invoke-interface {v2}, Ljava/util/concurrent/locks/Condition;->signal()V</span>
+<span class="">	:try_start_9</span>
+<span class="">	:try_end_8</span>
+<span class="">	.catchall {:try_start_8 .. :try_end_8} :catchall_4</span>
+<span class="">	sget-object v2, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/concurrent/locks/Lock;->unlock()V</span>
+<span class="">	throw v1</span>
+<span class="">	:try_end_9</span>
+<span class="">	.catchall {:try_start_9 .. :try_end_9} :catchall_3</span>
+<span class="">	:try_start_a</span>
+<span class="">	move-exception v1</span>
+<span class="">	invoke-interface {v0}, Ljava/util/concurrent/locks/Lock;->unlock()V</span>
+<span class="">	:catchall_3</span>
+<span class="">	throw v1</span>
+<span class="">	new-instance v0, Ljava/lang/NullPointerException;</span>
+<span class="">	const-string v1, "null cannot be cast to non-null type java.net.HttpURLConnection"</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+<span class="">	move-exception v0</span>
+<span class="">	invoke-static {v0, p0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_4</span>
+<span class="">	:try_end_a</span>
+<span class="">	.catchall {:try_start_a .. :try_end_a} :catchall_4</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

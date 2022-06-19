@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.ui.calllog</a></li>
+        <li><i class="ico ico-class"></i> w.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/hiya/stingray/ui/calllog/w;
+.super Landroid/widget/Filter;
+.source "SourceFile"
+
+
+.field private a:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Lcom/hiya/stingray/t/n0;",
+">;"
+}
+.end annotation
+.end field
+.field private b:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Lcom/hiya/stingray/t/n0;",
+">;"
+}
+.end annotation
+.end field
+.field private c:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Lcom/hiya/stingray/t/n0;",
+">;"
+}
+.end annotation
+.end field
+.field private d:Lcom/hiya/stingray/ui/calllog/SearchListAdapter;
+.field private e:Ljava/lang/Boolean;
+
+
+.method public constructor <init>(Lcom/hiya/stingray/ui/calllog/SearchListAdapter;Ljava/util/List;Ljava/lang/Boolean;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/hiya/stingray/ui/calllog/SearchListAdapter;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/hiya/stingray/t/n0;",</span>
+<span class="">	">;",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Landroid/widget/Filter;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->d:Lcom/hiya/stingray/ui/calllog/SearchListAdapter;</span>
+<span class="">	iput-object p2, p0, Lcom/hiya/stingray/ui/calllog/w;->a:Ljava/util/List;</span>
+<span class="">	new-instance p1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->b:Ljava/util/List;</span>
+<span class="">	new-instance p1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->c:Ljava/util/List;</span>
+<span class="">	iput-object p3, p0, Lcom/hiya/stingray/ui/calllog/w;->e:Ljava/lang/Boolean;</span>
+.end method
+
+.method private a()V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/calllog/w;->e:Ljava/lang/Boolean;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/calllog/w;->c:Ljava/util/List;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->listIterator()Ljava/util/ListIterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/ListIterator;->hasNext()Z</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/ListIterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/hiya/stingray/t/n0;</span>
+<span class="">	invoke-virtual {v1}, Lcom/hiya/stingray/t/n0;->f()Lcom/hiya/stingray/t/m0;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	sget-object v2, Lcom/hiya/stingray/t/m0;->PERSON:Lcom/hiya/stingray/t/m0;</span>
+<span class="">	if-ne v1, v2, :cond_1</span>
+<span class="">	invoke-interface {v0}, Ljava/util/ListIterator;->remove()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private b(Ljava/lang/String;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "\\d+"</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/String;->matches(Ljava/lang/String;)Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method private d(Ljava/lang/String;)V
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/calllog/w;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/hiya/stingray/t/n0;</span>
+<span class="">	invoke-virtual {v1}, Lcom/hiya/stingray/t/n0;->i()Ljava/util/Map;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2}, Ljava/util/Map;->keySet()Ljava/util/Set;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v3, p1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/ui/calllog/w;->c:Ljava/util/List;</span>
+<span class="">	invoke-interface {v2, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method  c(Ljava/lang/CharSequence;)V
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-interface {p1}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/hiya/stingray/util/p;->z(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/String;->isEmpty()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_2</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/hiya/stingray/ui/calllog/w;->b(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/hiya/stingray/ui/calllog/w;->d(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/calllog/w;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/hiya/stingray/t/n0;</span>
+<span class="">	invoke-virtual {v1}, Lcom/hiya/stingray/t/n0;->h()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2}, Lcom/hiya/stingray/util/p;->z(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/String;->isEmpty()Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-nez v3, :cond_1</span>
+<span class="">	invoke-virtual {v2, p1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/ui/calllog/w;->c:Ljava/util/List;</span>
+<span class="">	invoke-interface {v2, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	:goto_1</span>
+.end method
+
+.method public e(Ljava/util/List;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/hiya/stingray/t/n0;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iput-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->a:Ljava/util/List;</span>
+.end method
+
+.method public f(Ljava/util/List;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/hiya/stingray/t/n0;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iput-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->b:Ljava/util/List;</span>
+.end method
+
+.method protected performFiltering(Ljava/lang/CharSequence;)Landroid/widget/Filter$FilterResults;
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/calllog/w;->c:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->clear()V</span>
+<span class="">	new-instance v0, Landroid/widget/Filter$FilterResults;</span>
+<span class="">	invoke-direct {v0}, Landroid/widget/Filter$FilterResults;-><init>()V</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/hiya/stingray/ui/calllog/w;->c(Ljava/lang/CharSequence;)V</span>
+<span class="">	invoke-direct {p0}, Lcom/hiya/stingray/ui/calllog/w;->a()V</span>
+<span class="">	iget-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->c:Ljava/util/List;</span>
+<span class="">	iput-object p1, v0, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->size()I</span>
+<span class="">	move-result p1</span>
+<span class="">	iput p1, v0, Landroid/widget/Filter$FilterResults;->count:I</span>
+<span class="">	iget-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->b:Ljava/util/List;</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	iput-object p1, v0, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->size()I</span>
+<span class="">	move-result p1</span>
+<span class="">	iput p1, v0, Landroid/widget/Filter$FilterResults;->count:I</span>
+.end method
+
+.method protected publishResults(Ljava/lang/CharSequence;Landroid/widget/Filter$FilterResults;)V
+<span class="">	.locals 1</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/calllog/w;->d:Lcom/hiya/stingray/ui/calllog/SearchListAdapter;</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/hiya/stingray/ui/calllog/SearchListAdapter;->j(Ljava/lang/String;)V</span>
+<span class="">	iget-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->d:Lcom/hiya/stingray/ui/calllog/SearchListAdapter;</span>
+<span class="">	iget-object p2, p2, Landroid/widget/Filter$FilterResults;->values:Ljava/lang/Object;</span>
+<span class="">	check-cast p2, Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {p1, p2}, Lcom/hiya/stingray/ui/calllog/SearchListAdapter;->k(Ljava/util/List;)V</span>
+<span class="">	iget-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->d:Lcom/hiya/stingray/ui/calllog/SearchListAdapter;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/recyclerview/widget/RecyclerView$g;->notifyDataSetChanged()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->d:Lcom/hiya/stingray/ui/calllog/SearchListAdapter;</span>
+<span class="">	const-string p2, ""</span>
+<span class="">	invoke-virtual {p1, p2}, Lcom/hiya/stingray/ui/calllog/SearchListAdapter;->j(Ljava/lang/String;)V</span>
+<span class="">	iget-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->d:Lcom/hiya/stingray/ui/calllog/SearchListAdapter;</span>
+<span class="">	iget-object p2, p0, Lcom/hiya/stingray/ui/calllog/w;->b:Ljava/util/List;</span>
+<span class="">	invoke-virtual {p1, p2}, Lcom/hiya/stingray/ui/calllog/SearchListAdapter;->k(Ljava/util/List;)V</span>
+<span class="">	iget-object p1, p0, Lcom/hiya/stingray/ui/calllog/w;->d:Lcom/hiya/stingray/ui/calllog/SearchListAdapter;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/recyclerview/widget/RecyclerView$g;->notifyDataSetChanged()V</span>
+<span class="">	:goto_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

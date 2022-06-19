@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.referrals</a></li>
+        <li><i class="ico ico-class"></i> ReferralManager.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/referrals/ReferralManager;
+.super Ljava/lang/Object;
+.source "ReferralManager.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/referrals/ReferralManager$FragmentStartActivityDelegate;,
+Lcom/facebook/referrals/ReferralManager$ActivityStartActivityDelegate;
+}
+.end annotation
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+.field private static volatile instance:Lcom/facebook/referrals/ReferralManager;
+.field private logger:Lcom/facebook/referrals/ReferralLogger;
+
+
+.method constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	invoke-static {}, Lcom/facebook/internal/Validate;->sdkInitialized()V</span>
+.end method
+
+.method public static getInstance()Lcom/facebook/referrals/ReferralManager;
+<span class="">	.locals 2</span>
+
+<span class="">	sget-object v0, Lcom/facebook/referrals/ReferralManager;->instance:Lcom/facebook/referrals/ReferralManager;</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	const-class v0, Lcom/facebook/referrals/ReferralManager;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/facebook/referrals/ReferralManager;->instance:Lcom/facebook/referrals/ReferralManager;</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	new-instance v1, Lcom/facebook/referrals/ReferralManager;</span>
+<span class="">	invoke-direct {v1}, Lcom/facebook/referrals/ReferralManager;-><init>()V</span>
+<span class="">	sput-object v1, Lcom/facebook/referrals/ReferralManager;->instance:Lcom/facebook/referrals/ReferralManager;</span>
+<span class="">	:cond_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw v1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v0, Lcom/facebook/referrals/ReferralManager;->instance:Lcom/facebook/referrals/ReferralManager;</span>
+.end method
+
+.method private getLogger(Landroid/content/Context;)Lcom/facebook/referrals/ReferralLogger;
+<span class="">	.locals 2</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_0</span>
+<span class="">	if-nez p1, :cond_1</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/referrals/ReferralManager;->logger:Lcom/facebook/referrals/ReferralLogger;</span>
+<span class="">	:cond_1</span>
+<span class="">	if-nez v0, :cond_2</span>
+<span class="">	new-instance v0, Lcom/facebook/referrals/ReferralLogger;</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationId()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, p1, v1}, Lcom/facebook/referrals/ReferralLogger;-><init>(Landroid/content/Context;Ljava/lang/String;)V</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/referrals/ReferralManager;->logger:Lcom/facebook/referrals/ReferralLogger;</span>
+<span class="">	iget-object p1, p0, Lcom/facebook/referrals/ReferralManager;->logger:Lcom/facebook/referrals/ReferralLogger;</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private static resolveIntent(Landroid/content/Intent;)Z
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {v0, p0, v1}, Landroid/content/pm/PackageManager;->resolveActivity(Landroid/content/Intent;I)Landroid/content/pm/ResolveInfo;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private startReferralImpl(Lcom/facebook/referrals/StartActivityDelegate;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-interface {p1}, Lcom/facebook/referrals/StartActivityDelegate;->getActivityContext()Landroid/app/Activity;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/referrals/ReferralManager;->getLogger(Landroid/content/Context;)Lcom/facebook/referrals/ReferralLogger;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/referrals/ReferralLogger;->logStartReferral()V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/referrals/ReferralManager;->tryFacebookActivity(Lcom/facebook/referrals/StartActivityDelegate;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_2</span>
+<span class="">	new-instance p1, Lcom/facebook/FacebookException;</span>
+<span class="">	const-string v1, "Failed to open Referral dialog: FacebookActivity could not be started. Please make sure you added FacebookActivity to the AndroidManifest."</span>
+<span class="">	invoke-direct {p1, v1}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/facebook/referrals/ReferralLogger;->logError(Ljava/lang/Exception;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private tryFacebookActivity(Lcom/facebook/referrals/StartActivityDelegate;)Z
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Landroid/content/Intent;</span>
+<span class="">	invoke-direct {v0}, Landroid/content/Intent;-><init>()V</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-class v2, Lcom/facebook/FacebookActivity;</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;</span>
+<span class="">	const-string v1, "ReferralFragment"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/referrals/ReferralManager;->resolveIntent(Landroid/content/Intent;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	sget-object v1, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->Referral:Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->toRequestCode()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-interface {p1, v0, v1}, Lcom/facebook/referrals/StartActivityDelegate;->startActivityForResult(Landroid/content/Intent;I)V</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Landroid/content/ActivityNotFoundException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:catch_0</span>
+.end method
+
+.method  onActivityResult(ILandroid/content/Intent;Lcom/facebook/FacebookCallback;)Z
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(I",</span>
+<span class="">	"Landroid/content/Intent;",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/referrals/ReferralResult;",</span>
+<span class="">	">;)Z"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "error_message"</span>
+<span class="">	const-string v1, "fb_referral_codes"</span>
+<span class="">	const/4 v2, -0x1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	if-ne p1, v2, :cond_0</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2, v1}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p2, Lorg/json/JSONArray;</span>
+<span class="">	invoke-direct {p2, p1}, Lorg/json/JSONArray;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p2}, Lcom/facebook/internal/Utility;->convertJSONArrayToList(Lorg/json/JSONArray;)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p2, Lcom/facebook/referrals/ReferralResult;</span>
+<span class="">	invoke-direct {p2, p1}, Lcom/facebook/referrals/ReferralResult;-><init>(Ljava/util/List;)V</span>
+<span class="">	move-object p1, v3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_0</span>
+<span class="">	if-nez p1, :cond_2</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p2, Lcom/facebook/FacebookException;</span>
+<span class="">	invoke-direct {p2, p1}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	move-object p1, v3</span>
+<span class="">	move-object p2, p1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	new-instance p2, Lcom/facebook/FacebookException;</span>
+<span class="">	const-string p1, "Unexpected call to ReferralManager.onActivityResult"</span>
+<span class="">	invoke-direct {p2, p1}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-object p1, p2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catch_0</span>
+<span class="">	new-instance p1, Lcom/facebook/FacebookException;</span>
+<span class="">	const-string p2, "Unable to parse referral codes from response"</span>
+<span class="">	invoke-direct {p1, p2}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	:goto_1</span>
+<span class="">	move-object p2, v3</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-direct {p0, v3}, Lcom/facebook/referrals/ReferralManager;->getLogger(Landroid/content/Context;)Lcom/facebook/referrals/ReferralLogger;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	if-eqz p2, :cond_3</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/referrals/ReferralLogger;->logSuccess()V</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_3</span>
+<span class="">	if-eqz p1, :cond_4</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/facebook/referrals/ReferralLogger;->logError(Ljava/lang/Exception;)V</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/referrals/ReferralLogger;->logCancel()V</span>
+<span class="">	:goto_3</span>
+<span class="">	:cond_5</span>
+<span class="">	if-eqz p2, :cond_6</span>
+<span class="">	invoke-interface {p3, p2}, Lcom/facebook/FacebookCallback;->onSuccess(Ljava/lang/Object;)V</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:cond_6</span>
+<span class="">	if-eqz p1, :cond_7</span>
+<span class="">	invoke-interface {p3, p1}, Lcom/facebook/FacebookCallback;->onError(Lcom/facebook/FacebookException;)V</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:cond_7</span>
+<span class="">	invoke-interface {p3}, Lcom/facebook/FacebookCallback;->onCancel()V</span>
+<span class="">	:goto_4</span>
+<span class="">	const/4 p1, 0x1</span>
+.end method
+
+.method public registerCallback(Lcom/facebook/CallbackManager;Lcom/facebook/FacebookCallback;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/CallbackManager;",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/referrals/ReferralResult;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	instance-of v0, p1, Lcom/facebook/internal/CallbackManagerImpl;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	check-cast p1, Lcom/facebook/internal/CallbackManagerImpl;</span>
+<span class="">	invoke-static {}, Lcom/facebook/referrals/ReferralClient;->getReferralRequestCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	new-instance v1, Lcom/facebook/referrals/ReferralManager$1;</span>
+<span class="">	invoke-direct {v1, p0, p2}, Lcom/facebook/referrals/ReferralManager$1;-><init>(Lcom/facebook/referrals/ReferralManager;Lcom/facebook/FacebookCallback;)V</span>
+<span class="">	invoke-virtual {p1, v0, v1}, Lcom/facebook/internal/CallbackManagerImpl;->registerCallback(ILcom/facebook/internal/CallbackManagerImpl$Callback;)V</span>
+<span class="">	new-instance p1, Lcom/facebook/FacebookException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p2, "Unexpected CallbackManager, please use the provided Factory."</span>
+<span class="">	invoke-direct {p1, p2}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public startReferral(Landroid/app/Activity;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/referrals/ReferralManager$ActivityStartActivityDelegate;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/facebook/referrals/ReferralManager$ActivityStartActivityDelegate;-><init>(Landroid/app/Activity;)V</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/referrals/ReferralManager;->startReferralImpl(Lcom/facebook/referrals/StartActivityDelegate;)V</span>
+.end method
+
+.method public startReferral(Landroid/app/Fragment;)V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/facebook/referrals/ReferralManager$FragmentStartActivityDelegate;</span>
+<span class="">	new-instance v1, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v1, p1}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroid/app/Fragment;)V</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/referrals/ReferralManager$FragmentStartActivityDelegate;-><init>(Lcom/facebook/internal/FragmentWrapper;)V</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/referrals/ReferralManager;->startReferralImpl(Lcom/facebook/referrals/StartActivityDelegate;)V</span>
+.end method
+
+.method public startReferral(Landroidx/fragment/app/Fragment;)V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/facebook/referrals/ReferralManager$FragmentStartActivityDelegate;</span>
+<span class="">	new-instance v1, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v1, p1}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroidx/fragment/app/Fragment;)V</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/referrals/ReferralManager$FragmentStartActivityDelegate;-><init>(Lcom/facebook/internal/FragmentWrapper;)V</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/referrals/ReferralManager;->startReferralImpl(Lcom/facebook/referrals/StartActivityDelegate;)V</span>
+.end method
+
+.method public startReferral(Lcom/facebook/internal/FragmentWrapper;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/referrals/ReferralManager$FragmentStartActivityDelegate;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/facebook/referrals/ReferralManager$FragmentStartActivityDelegate;-><init>(Lcom/facebook/internal/FragmentWrapper;)V</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/referrals/ReferralManager;->startReferralImpl(Lcom/facebook/referrals/StartActivityDelegate;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

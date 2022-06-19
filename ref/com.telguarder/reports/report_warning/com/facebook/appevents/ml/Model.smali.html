@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.appevents.ml</a></li>
+        <li><i class="ico ico-class"></i> Model.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/appevents/ml/Model;
+.super Ljava/lang/Object;
+.source "Model.kt"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/appevents/ml/Model$Companion;
+}
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000*\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010$\n\u0002\u0010\u000e\n\u0002\u0018\u0002\n\u0002\u0008\r\n\u0002\u0010%\n\u0002\u0008\u0003\n\u0002\u0010\u0011\n\u0002\u0008\u0004\u0008\u0007\u0018\u0000 \u001a2\u00020\u0001:\u0001\u001aB\u001b\u0008\u0002\u0012\u0012\u0010\u0002\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00050\u0003\u00a2\u0006\u0002\u0010\u0006J+\u0010\u0014\u001a\u0004\u0018\u00010\u00052\u0006\u0010\u0015\u001a\u00020\u00052\u000c\u0010\u0016\u001a\u0008\u0012\u0004\u0012\u00020\u00040\u00172\u0006\u0010\u0018\u001a\u00020\u0004\u00a2\u0006\u0002\u0010\u0019R\u000e\u0010\u0007\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0008\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\t\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000b\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000c\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\r\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000f\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0010\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0011\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u001a\u0010\u0012\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00050\u0013X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u001b"
+}
+d2 = {
+"Lcom/facebook/appevents/ml/Model;",
+"",
+"weights",
+"",
+"",
+"Lcom/facebook/appevents/ml/MTensor;",
+"(Ljava/util/Map;)V",
+"convs0Bias",
+"convs0Weight",
+"convs1Bias",
+"convs1Weight",
+"convs2Bias",
+"convs2Weight",
+"embedding",
+"fc1Bias",
+"fc1Weight",
+"fc2Bias",
+"fc2Weight",
+"finalWeights",
+"",
+"predictOnMTML",
+"dense",
+"texts",
+"",
+"task",
+"(Lcom/facebook/appevents/ml/MTensor;[Ljava/lang/String;Ljava/lang/String;)Lcom/facebook/appevents/ml/MTensor;",
+"Companion",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field public static final Companion:Lcom/facebook/appevents/ml/Model$Companion;
+.field private static final SEQ_LEN:I = 0x80
+.field private static final mapping:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+.field private final convs0Bias:Lcom/facebook/appevents/ml/MTensor;
+.field private final convs0Weight:Lcom/facebook/appevents/ml/MTensor;
+.field private final convs1Bias:Lcom/facebook/appevents/ml/MTensor;
+.field private final convs1Weight:Lcom/facebook/appevents/ml/MTensor;
+.field private final convs2Bias:Lcom/facebook/appevents/ml/MTensor;
+.field private final convs2Weight:Lcom/facebook/appevents/ml/MTensor;
+.field private final embedding:Lcom/facebook/appevents/ml/MTensor;
+.field private final fc1Bias:Lcom/facebook/appevents/ml/MTensor;
+.field private final fc1Weight:Lcom/facebook/appevents/ml/MTensor;
+.field private final fc2Bias:Lcom/facebook/appevents/ml/MTensor;
+.field private final fc2Weight:Lcom/facebook/appevents/ml/MTensor;
+.field private final finalWeights:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Lcom/facebook/appevents/ml/MTensor;",
+">;"
+}
+.end annotation
+.end field
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Lcom/facebook/appevents/ml/Model$Companion;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/appevents/ml/Model$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+<span class="">	sput-object v0, Lcom/facebook/appevents/ml/Model;->Companion:Lcom/facebook/appevents/ml/Model$Companion;</span>
+<span class="">	const/4 v0, 0x7</span>
+<span class="">	new-array v0, v0, [Lkotlin/Pair;</span>
+<span class="">	const-string v1, "embedding.weight"</span>
+<span class="">	const-string v2, "embed.weight"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	aput-object v1, v0, v2</span>
+<span class="">	const-string v1, "dense1.weight"</span>
+<span class="">	const-string v2, "fc1.weight"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	aput-object v1, v0, v2</span>
+<span class="">	const-string v1, "dense2.weight"</span>
+<span class="">	const-string v2, "fc2.weight"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	aput-object v1, v0, v2</span>
+<span class="">	const-string v1, "dense3.weight"</span>
+<span class="">	const-string v2, "fc3.weight"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x3</span>
+<span class="">	aput-object v1, v0, v2</span>
+<span class="">	const-string v1, "dense1.bias"</span>
+<span class="">	const-string v2, "fc1.bias"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x4</span>
+<span class="">	aput-object v1, v0, v2</span>
+<span class="">	const-string v1, "dense2.bias"</span>
+<span class="">	const-string v2, "fc2.bias"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x5</span>
+<span class="">	aput-object v1, v0, v2</span>
+<span class="">	const-string v1, "dense3.bias"</span>
+<span class="">	const-string v2, "fc3.bias"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x6</span>
+<span class="">	aput-object v1, v0, v2</span>
+<span class="">	invoke-static {v0}, Lkotlin/collections/MapsKt;->hashMapOf([Lkotlin/Pair;)Ljava/util/HashMap;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/util/Map;</span>
+<span class="">	sput-object v0, Lcom/facebook/appevents/ml/Model;->mapping:Ljava/util/Map;</span>
+.end method
+
+.method private constructor <init>(Ljava/util/Map;)V
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Lcom/facebook/appevents/ml/MTensor;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const-string v0, "embed.weight"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "Required value was null."</span>
+<span class="">	if-eqz v0, :cond_d</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->embedding:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const-string v0, "convs.0.weight"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_c</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/appevents/ml/Operator;->transpose3D(Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->convs0Weight:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const-string v0, "convs.1.weight"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_b</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/appevents/ml/Operator;->transpose3D(Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->convs1Weight:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const-string v0, "convs.2.weight"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_a</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/appevents/ml/Operator;->transpose3D(Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->convs2Weight:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const-string v0, "convs.0.bias"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_9</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->convs0Bias:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const-string v0, "convs.1.bias"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_8</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->convs1Bias:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const-string v0, "convs.2.bias"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_7</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->convs2Bias:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const-string v0, "fc1.weight"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_6</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/appevents/ml/Operator;->transpose2D(Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->fc1Weight:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const-string v0, "fc2.weight"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/appevents/ml/Operator;->transpose2D(Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->fc2Weight:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const-string v0, "fc1.bias"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_4</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->fc1Bias:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const-string v0, "fc2.bias"</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	check-cast v0, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->fc2Bias:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	new-instance v0, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	check-cast v0, Ljava/util/Map;</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/appevents/ml/Model;->finalWeights:Ljava/util/Map;</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	new-array v0, v0, [Ljava/lang/String;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	sget-object v2, Lcom/facebook/appevents/ml/ModelManager$Task;->MTML_INTEGRITY_DETECT:Lcom/facebook/appevents/ml/ModelManager$Task;</span>
+<span class="">	invoke-virtual {v2}, Lcom/facebook/appevents/ml/ModelManager$Task;->toKey()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	aput-object v2, v0, v1</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	sget-object v2, Lcom/facebook/appevents/ml/ModelManager$Task;->MTML_APP_EVENT_PREDICTION:Lcom/facebook/appevents/ml/ModelManager$Task;</span>
+<span class="">	invoke-virtual {v2}, Lcom/facebook/appevents/ml/ModelManager$Task;->toKey()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	aput-object v2, v0, v1</span>
+<span class="">	invoke-static {v0}, Lkotlin/collections/SetsKt;->setOf([Ljava/lang/Object;)Ljava/util/Set;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/lang/String;</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v3, ".weight"</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	new-instance v3, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, ".bias"</span>
+<span class="">	invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {p1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	check-cast v4, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	invoke-static {v3}, Lcom/facebook/appevents/ml/Operator;->transpose2D(Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iget-object v5, p0, Lcom/facebook/appevents/ml/Model;->finalWeights:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v5, v2, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz v4, :cond_0</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/appevents/ml/Model;->finalWeights:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v2, v1, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_7</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_8</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_9</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_a</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_b</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_c</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_d</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public synthetic constructor <init>(Ljava/util/Map;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/appevents/ml/Model;-><init>(Ljava/util/Map;)V</span>
+.end method
+
+.method public static final synthetic access$getMapping$cp()Ljava/util/Map;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/appevents/ml/Model;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	sget-object v0, Lcom/facebook/appevents/ml/Model;->mapping:Ljava/util/Map;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {v1, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public final predictOnMTML(Lcom/facebook/appevents/ml/MTensor;[Ljava/lang/String;Ljava/lang/String;)Lcom/facebook/appevents/ml/MTensor;
+<span class="">	.locals 7</span>
+
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-string v0, "dense"</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "texts"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "task"</span>
+<span class="">	invoke-static {p3, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const/16 v0, 0x80</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/appevents/ml/Model;->embedding:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {p2, v0, v2}, Lcom/facebook/appevents/ml/Operator;->embedding([Ljava/lang/String;ILcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/ml/Model;->convs0Weight:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {p2, v0}, Lcom/facebook/appevents/ml/Operator;->conv1D(Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/ml/Model;->convs0Bias:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {p2, v0}, Lcom/facebook/appevents/ml/Operator;->addmv(Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;)V</span>
+<span class="">	invoke-static {p2}, Lcom/facebook/appevents/ml/Operator;->relu(Lcom/facebook/appevents/ml/MTensor;)V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/ml/Model;->convs1Weight:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {p2, v0}, Lcom/facebook/appevents/ml/Operator;->conv1D(Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/appevents/ml/Model;->convs1Bias:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {v0, v2}, Lcom/facebook/appevents/ml/Operator;->addmv(Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;)V</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/appevents/ml/Operator;->relu(Lcom/facebook/appevents/ml/MTensor;)V</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	invoke-static {v0, v2}, Lcom/facebook/appevents/ml/Operator;->maxPool1D(Lcom/facebook/appevents/ml/MTensor;I)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v3, p0, Lcom/facebook/appevents/ml/Model;->convs2Weight:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {v0, v3}, Lcom/facebook/appevents/ml/Operator;->conv1D(Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iget-object v4, p0, Lcom/facebook/appevents/ml/Model;->convs2Bias:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {v3, v4}, Lcom/facebook/appevents/ml/Operator;->addmv(Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;)V</span>
+<span class="">	invoke-static {v3}, Lcom/facebook/appevents/ml/Operator;->relu(Lcom/facebook/appevents/ml/MTensor;)V</span>
+<span class="">	const/4 v4, 0x1</span>
+<span class="">	invoke-virtual {p2, v4}, Lcom/facebook/appevents/ml/MTensor;->getShape(I)I</span>
+<span class="">	move-result v5</span>
+<span class="">	invoke-static {p2, v5}, Lcom/facebook/appevents/ml/Operator;->maxPool1D(Lcom/facebook/appevents/ml/MTensor;I)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {v0, v4}, Lcom/facebook/appevents/ml/MTensor;->getShape(I)I</span>
+<span class="">	move-result v5</span>
+<span class="">	invoke-static {v0, v5}, Lcom/facebook/appevents/ml/Operator;->maxPool1D(Lcom/facebook/appevents/ml/MTensor;I)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v3, v4}, Lcom/facebook/appevents/ml/MTensor;->getShape(I)I</span>
+<span class="">	move-result v5</span>
+<span class="">	invoke-static {v3, v5}, Lcom/facebook/appevents/ml/Operator;->maxPool1D(Lcom/facebook/appevents/ml/MTensor;I)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {p2, v4}, Lcom/facebook/appevents/ml/Operator;->flatten(Lcom/facebook/appevents/ml/MTensor;I)V</span>
+<span class="">	invoke-static {v0, v4}, Lcom/facebook/appevents/ml/Operator;->flatten(Lcom/facebook/appevents/ml/MTensor;I)V</span>
+<span class="">	invoke-static {v3, v4}, Lcom/facebook/appevents/ml/Operator;->flatten(Lcom/facebook/appevents/ml/MTensor;I)V</span>
+<span class="">	const/4 v5, 0x4</span>
+<span class="">	new-array v5, v5, [Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	aput-object p2, v5, v6</span>
+<span class="">	aput-object v0, v5, v4</span>
+<span class="">	aput-object v3, v5, v2</span>
+<span class="">	const/4 p2, 0x3</span>
+<span class="">	aput-object p1, v5, p2</span>
+<span class="">	invoke-static {v5}, Lcom/facebook/appevents/ml/Operator;->concatenate([Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/appevents/ml/Model;->fc1Weight:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/ml/Model;->fc1Bias:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {p1, p2, v0}, Lcom/facebook/appevents/ml/Operator;->dense(Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/appevents/ml/Operator;->relu(Lcom/facebook/appevents/ml/MTensor;)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/appevents/ml/Model;->fc2Weight:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/ml/Model;->fc2Bias:Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	invoke-static {p1, p2, v0}, Lcom/facebook/appevents/ml/Operator;->dense(Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/appevents/ml/Operator;->relu(Lcom/facebook/appevents/ml/MTensor;)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/appevents/ml/Model;->finalWeights:Ljava/util/Map;</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v2, ".weight"</span>
+<span class="">	invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {p2, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/ml/Model;->finalWeights:Ljava/util/Map;</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p3, ".bias"</span>
+<span class="">	invoke-virtual {v2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-interface {v0, p3}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	check-cast p3, Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	if-eqz p2, :cond_2</span>
+<span class="">	if-nez p3, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-static {p1, p2, p3}, Lcom/facebook/appevents/ml/Operator;->dense(Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;Lcom/facebook/appevents/ml/MTensor;)Lcom/facebook/appevents/ml/MTensor;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/appevents/ml/Operator;->softmax(Lcom/facebook/appevents/ml/MTensor;)V</span>
+<span class="">	move-exception p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {p1, p0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	:catchall_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

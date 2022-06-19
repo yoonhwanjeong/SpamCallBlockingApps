@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot.ui</a></li>
+        <li><i class="ico ico-class"></i> Size.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/androidplot/ui/Size;
+.super Ljava/lang/Object;
+.source "Size.java"
+
+
+.field public static FILL:Lcom/androidplot/ui/Size;
+.field private height:Lcom/androidplot/ui/SizeMetric;
+.field private width:Lcom/androidplot/ui/SizeMetric;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 4</span>
+
+<span class="">	new-instance v0, Lcom/androidplot/ui/Size;</span>
+<span class="">	sget-object v1, Lcom/androidplot/ui/SizeMode;->FILL:Lcom/androidplot/ui/SizeMode;</span>
+<span class="">	sget-object v2, Lcom/androidplot/ui/SizeMode;->FILL:Lcom/androidplot/ui/SizeMode;</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-direct {v0, v3, v1, v3, v2}, Lcom/androidplot/ui/Size;-><init>(FLcom/androidplot/ui/SizeMode;FLcom/androidplot/ui/SizeMode;)V</span>
+<span class="">	sput-object v0, Lcom/androidplot/ui/Size;->FILL:Lcom/androidplot/ui/Size;</span>
+.end method
+
+.method public constructor <init>(FLcom/androidplot/ui/SizeMode;FLcom/androidplot/ui/SizeMode;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	new-instance v0, Lcom/androidplot/ui/SizeMetric;</span>
+<span class="">	invoke-direct {v0, p1, p2}, Lcom/androidplot/ui/SizeMetric;-><init>(FLcom/androidplot/ui/SizeMode;)V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/ui/Size;->height:Lcom/androidplot/ui/SizeMetric;</span>
+<span class="">	new-instance p1, Lcom/androidplot/ui/SizeMetric;</span>
+<span class="">	invoke-direct {p1, p3, p4}, Lcom/androidplot/ui/SizeMetric;-><init>(FLcom/androidplot/ui/SizeMode;)V</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/ui/Size;->width:Lcom/androidplot/ui/SizeMetric;</span>
+.end method
+
+.method public constructor <init>(Lcom/androidplot/ui/SizeMetric;Lcom/androidplot/ui/SizeMetric;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/ui/Size;->height:Lcom/androidplot/ui/SizeMetric;</span>
+<span class="">	iput-object p2, p0, Lcom/androidplot/ui/Size;->width:Lcom/androidplot/ui/SizeMetric;</span>
+.end method
+
+.method public getHeight()Lcom/androidplot/ui/SizeMetric;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/ui/Size;->height:Lcom/androidplot/ui/SizeMetric;</span>
+.end method
+
+.method public getRectF(Landroid/graphics/RectF;)Landroid/graphics/RectF;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Landroid/graphics/RectF;</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/ui/Size;->width:Lcom/androidplot/ui/SizeMetric;</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v1, v2}, Lcom/androidplot/ui/SizeMetric;->getPixelValue(F)F</span>
+<span class="">	move-result v1</span>
+<span class="">	iget-object v2, p0, Lcom/androidplot/ui/Size;->height:Lcom/androidplot/ui/SizeMetric;</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/RectF;->height()F</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {v2, p1}, Lcom/androidplot/ui/SizeMetric;->getPixelValue(F)F</span>
+<span class="">	move-result p1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-direct {v0, v2, v2, v1, p1}, Landroid/graphics/RectF;-><init>(FFFF)V</span>
+.end method
+
+.method public getWidth()Lcom/androidplot/ui/SizeMetric;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/ui/Size;->width:Lcom/androidplot/ui/SizeMetric;</span>
+.end method
+
+.method public setHeight(Lcom/androidplot/ui/SizeMetric;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/ui/Size;->height:Lcom/androidplot/ui/SizeMetric;</span>
+.end method
+
+.method public setWidth(Lcom/androidplot/ui/SizeMetric;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/ui/Size;->width:Lcom/androidplot/ui/SizeMetric;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.auth.internal</a></li>
+        <li><i class="ico ico-class"></i> w.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/firebase/auth/internal/w;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field static final c:J = 0x36ee80L
+.field private static final d:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+.field private static final e:Lcom/google/firebase/auth/internal/w;
+.field private a:Lcom/google/android/gms/tasks/g;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/android/gms/tasks/g<",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+.field private b:J
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 9</span>
+
+<span class="cov">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="cov">	const-string v1, "firebaseAppName"</span>
+<span class="cov">	const-string v2, "firebaseUserUid"</span>
+<span class="cov">	const-string v3, "operation"</span>
+<span class="cov">	const-string v4, "tenantId"</span>
+<span class="cov">	const-string v5, "verifyAssertionRequest"</span>
+<span class="cov">	const-string v6, "statusCode"</span>
+<span class="cov">	const-string v7, "statusMessage"</span>
+<span class="cov">	const-string v8, "timestamp"</span>
+<span class="exec">	filled-new-array/range {v1 .. v8}, [Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-static {v1}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V</span>
+<span class="cov">	sput-object v0, Lcom/google/firebase/auth/internal/w;->d:Ljava/util/List;</span>
+<span class="cov">	new-instance v0, Lcom/google/firebase/auth/internal/w;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/google/firebase/auth/internal/w;-><init>()V</span>
+<span class="cov">	sput-object v0, Lcom/google/firebase/auth/internal/w;->e:Lcom/google/firebase/auth/internal/w;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private constructor &lt;init&gt;()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	const-wide/16 v0, 0x0</span>
+<span class="cov">	iput-wide v0, p0, Lcom/google/firebase/auth/internal/w;->b:J</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static a()Lcom/google/firebase/auth/internal/w;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	sget-object v0, Lcom/google/firebase/auth/internal/w;->e:Lcom/google/firebase/auth/internal/w;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method private static final e(Landroid/content/SharedPreferences;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	sget-object v0, Lcom/google/firebase/auth/internal/w;->d:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/lang/String;</span>
+<span class="">	invoke-interface {p0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->commit()Z</span>
+.end method
+
+<span class="cov">.method public final b(Lcom/google/firebase/auth/FirebaseAuth;)V</span>
+<span class="">	.locals 11</span>
+
+<span class="cov">	invoke-static {p1}, Lcom/google/android/gms/common/internal/r;->k(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/auth/FirebaseAuth;->b()Lcom/google/firebase/c;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/c;->h()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "com.google.firebase.auth.internal.ProcessDeathHelper"</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="exec">	invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "firebaseAppName"</span>
+<span class="cov">	const-string v3, ""</span>
+<span class="exec">	invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/auth/FirebaseAuth;->b()Lcom/google/firebase/c;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="exec">	invoke-virtual {v4}, Lcom/google/firebase/c;->k()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="exec">	invoke-virtual {v4, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	if-nez v1, :cond_0</span>
+<span class="exec">	return-void</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v1, "verifyAssertionRequest"</span>
+<span class="">	invoke-interface {v0, v1}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z</span>
+<span class="">	move-result v4</span>
+<span class="">	const/4 v5, -0x1</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	const-string v7, "operation"</span>
+<span class="">	const-wide/16 v8, 0x0</span>
+<span class="">	const-string v10, "timestamp"</span>
+<span class="">	if-eqz v4, :cond_a</span>
+<span class="">	invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	sget-object v4, Lcom/google/android/gms/internal/firebase-auth-api/fo;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+<span class="">	invoke-static {v1, v4}, Lcom/google/android/gms/common/internal/safeparcel/d;->c(Ljava/lang/String;Landroid/os/Parcelable$Creator;)Lcom/google/android/gms/common/internal/safeparcel/c;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/google/android/gms/internal/firebase-auth-api/fo;</span>
+<span class="">	invoke-interface {v0, v7, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	const-string v7, "tenantId"</span>
+<span class="">	invoke-interface {v0, v7, v6}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	const-string v7, "firebaseUserUid"</span>
+<span class="">	invoke-interface {v0, v7, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-interface {v0, v10, v8, v9}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v7</span>
+<span class="">	iput-wide v7, p0, Lcom/google/firebase/auth/internal/w;->b:J</span>
+<span class="">	if-eqz v6, :cond_1</span>
+<span class="">	invoke-virtual {p1, v6}, Lcom/google/firebase/auth/FirebaseAuth;->h(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v1, v6}, Lcom/google/android/gms/internal/firebase-auth-api/fo;->A1(Ljava/lang/String;)Lcom/google/android/gms/internal/firebase-auth-api/fo;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/String;->hashCode()I</span>
+<span class="">	move-result v6</span>
+<span class="">	const v7, -0x5df2262</span>
+<span class="">	const/4 v8, 0x2</span>
+<span class="">	const/4 v9, 0x1</span>
+<span class="">	if-eq v6, v7, :cond_4</span>
+<span class="">	const v7, 0xa6e6490</span>
+<span class="">	if-eq v6, v7, :cond_3</span>
+<span class="">	const v7, 0x56745691</span>
+<span class="">	if-eq v6, v7, :cond_2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string v6, "com.google.firebase.auth.internal.NONGMSCORE_SIGN_IN"</span>
+<span class="">	invoke-virtual {v4, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_5</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	const-string v2, "com.google.firebase.auth.internal.NONGMSCORE_LINK"</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_5</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_4</span>
+<span class="">	const-string v2, "com.google.firebase.auth.internal.NONGMSCORE_REAUTHENTICATE"</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_5</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_5</span>
+<span class="">	const/4 v2, -0x1</span>
+<span class="">	:goto_1</span>
+<span class="">	if-eqz v2, :cond_8</span>
+<span class="">	if-eq v2, v9, :cond_7</span>
+<span class="">	if-eq v2, v8, :cond_6</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/auth/FirebaseAuth;->c()Lcom/google/firebase/auth/g;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/auth/g;->C1()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_9</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/auth/FirebaseAuth;->c()Lcom/google/firebase/auth/g;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/auth/i0;->B1(Lcom/google/android/gms/internal/firebase-auth-api/fo;)Lcom/google/firebase/auth/i0;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1, v2, v1}, Lcom/google/firebase/auth/FirebaseAuth;->A(Lcom/google/firebase/auth/g;Lcom/google/firebase/auth/c;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_7</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/auth/FirebaseAuth;->c()Lcom/google/firebase/auth/g;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/auth/g;->C1()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_9</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/auth/FirebaseAuth;->c()Lcom/google/firebase/auth/g;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/auth/i0;->B1(Lcom/google/android/gms/internal/firebase-auth-api/fo;)Lcom/google/firebase/auth/i0;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1, v2, v1}, Lcom/google/firebase/auth/FirebaseAuth;->D(Lcom/google/firebase/auth/g;Lcom/google/firebase/auth/c;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_8</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/auth/i0;->B1(Lcom/google/android/gms/internal/firebase-auth-api/fo;)Lcom/google/firebase/auth/i0;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1, v1}, Lcom/google/firebase/auth/FirebaseAuth;->i(Lcom/google/firebase/auth/c;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_9</span>
+<span class="">	invoke-static {v0}, Lcom/google/firebase/auth/internal/w;->e(Landroid/content/SharedPreferences;)V</span>
+<span class="">	const-string p1, "recaptchaToken"</span>
+<span class="">	:cond_a</span>
+<span class="">	invoke-interface {v0, p1}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_e</span>
+<span class="">	invoke-interface {v0, p1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {v0, v7, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v0, v10, v8, v9}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	iput-wide v3, p0, Lcom/google/firebase/auth/internal/w;->b:J</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/String;->hashCode()I</span>
+<span class="">	move-result v3</span>
+<span class="">	const v4, -0xccd86fc</span>
+<span class="">	if-eq v3, v4, :cond_b</span>
+<span class="">	goto :goto_3</span>
+<span class="">	const-string v3, "com.google.firebase.auth.internal.ACTION_SHOW_RECAPTCHA"</span>
+<span class="">	:cond_b</span>
+<span class="">	invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_c</span>
+<span class="">	goto :goto_4</span>
+<span class="">	const/4 v2, -0x1</span>
+<span class="">	:goto_3</span>
+<span class="">	:cond_c</span>
+<span class="">	if-eqz v2, :cond_d</span>
+<span class="">	:goto_4</span>
+<span class="">	iput-object v6, p0, Lcom/google/firebase/auth/internal/w;->a:Lcom/google/android/gms/tasks/g;</span>
+<span class="">	goto :goto_5</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/tasks/j;->e(Ljava/lang/Object;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	:cond_d</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/google/firebase/auth/internal/w;->a:Lcom/google/android/gms/tasks/g;</span>
+<span class="">	invoke-static {v0}, Lcom/google/firebase/auth/internal/w;->e(Landroid/content/SharedPreferences;)V</span>
+<span class="">	:goto_5</span>
+<span class="">	const-string p1, "statusCode"</span>
+<span class="">	invoke-interface {v0, p1}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z</span>
+<span class="">	:cond_e</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_f</span>
+<span class="">	const/16 v1, 0x42a6</span>
+<span class="">	invoke-interface {v0, p1, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result p1</span>
+<span class="">	const-string v1, "statusMessage"</span>
+<span class="">	invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	new-instance v2, Lcom/google/android/gms/common/api/Status;</span>
+<span class="">	invoke-direct {v2, p1, v1}, Lcom/google/android/gms/common/api/Status;-><init>(ILjava/lang/String;)V</span>
+<span class="">	invoke-interface {v0, v10, v8, v9}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	iput-wide v3, p0, Lcom/google/firebase/auth/internal/w;->b:J</span>
+<span class="">	invoke-static {v0}, Lcom/google/firebase/auth/internal/w;->e(Landroid/content/SharedPreferences;)V</span>
+<span class="">	invoke-static {v2}, Lcom/google/android/gms/internal/firebase-auth-api/bk;->a(Lcom/google/android/gms/common/api/Status;)Lcom/google/firebase/FirebaseException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/tasks/j;->d(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	:cond_f</span>
+.end method
+
+.method public final c()Lcom/google/android/gms/tasks/g;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Lcom/google/android/gms/common/util/i;->d()Lcom/google/android/gms/common/util/f;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Lcom/google/android/gms/common/util/f;->b()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	iget-wide v2, p0, Lcom/google/firebase/auth/internal/w;->b:J</span>
+<span class="">	sub-long/2addr v0, v2</span>
+<span class="">	sget-wide v2, Lcom/google/firebase/auth/internal/w;->c:J</span>
+<span class="">	cmp-long v4, v0, v2</span>
+<span class="">	if-gez v4, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/auth/internal/w;->a:Lcom/google/android/gms/tasks/g;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public final d(Landroid/content/Context;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/common/internal/r;->k(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v0, "com.google.firebase.auth.internal.ProcessDeathHelper"</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {p1, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/auth/internal/w;->e(Landroid/content/SharedPreferences;)V</span>
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	iput-wide v0, p0, Lcom/google/firebase/auth/internal/w;->b:J</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,1507 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.protobuf</a></li>
+        <li><i class="ico ico-class"></i> j$c.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class final Lcom/google/protobuf/j$c;
+.super Lcom/google/protobuf/j;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lcom/google/protobuf/j;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x1a
+name = "c"
+.end annotation
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/google/protobuf/j$c$a;
+}
+.end annotation
+
+.field private final e:Ljava/io/InputStream;
+.field private final f:[B
+.field private g:I
+.field private h:I
+.field private i:I
+.field private j:I
+.field private k:I
+.field private l:I
+.field private m:Lcom/google/protobuf/j$c$a;
+
+
+.method private constructor <init>(Ljava/io/InputStream;I)V
+<span class="">	.locals 2</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/protobuf/j;-><init>(Lcom/google/protobuf/j$a;)V</span>
+<span class="">	const v1, 0x7fffffff</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->l:I</span>
+<span class="">	iput-object v0, p0, Lcom/google/protobuf/j$c;->m:Lcom/google/protobuf/j$c$a;</span>
+<span class="">	const-string v0, "input"</span>
+<span class="">	invoke-static {p1, v0}, Lcom/google/protobuf/a0;->b(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	iput-object p1, p0, Lcom/google/protobuf/j$c;->e:Ljava/io/InputStream;</span>
+<span class="">	new-array p1, p2, [B</span>
+<span class="">	iput-object p1, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput p1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	iput p1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iput p1, p0, Lcom/google/protobuf/j$c;->k:I</span>
+.end method
+
+.method synthetic constructor <init>(Ljava/io/InputStream;ILcom/google/protobuf/j$a;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1, p2}, Lcom/google/protobuf/j$c;-><init>(Ljava/io/InputStream;I)V</span>
+.end method
+
+.method private G(I)Lcom/google/protobuf/i;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/protobuf/j$c;->J(I)[B</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-static {v0}, Lcom/google/protobuf/i;->h([B)Lcom/google/protobuf/i;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	:cond_0</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	sub-int v2, v1, v0</span>
+<span class="">	iget v3, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	add-int/2addr v3, v1</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	sub-int v3, p1, v2</span>
+<span class="">	invoke-direct {p0, v3}, Lcom/google/protobuf/j$c;->K(I)Ljava/util/List;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	new-array p1, p1, [B</span>
+<span class="">	iget-object v4, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	invoke-static {v4, v0, p1, v1, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V</span>
+<span class="">	invoke-interface {v3}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, [B</span>
+<span class="">	array-length v4, v3</span>
+<span class="">	invoke-static {v3, v1, p1, v2, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V</span>
+<span class="">	array-length v3, v3</span>
+<span class="">	add-int/2addr v2, v3</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-static {p1}, Lcom/google/protobuf/i;->E([B)Lcom/google/protobuf/i;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method private I(IZ)[B
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/protobuf/j$c;->J(I)[B</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-virtual {v0}, [B->clone()Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	move-object v0, p1</span>
+<span class="">	check-cast v0, [B</span>
+<span class="">	:cond_0</span>
+<span class="">	iget p2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	:cond_1</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	sub-int v1, v0, p2</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	add-int/2addr v2, v0</span>
+<span class="">	iput v2, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	sub-int v2, p1, v1</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/protobuf/j$c;->K(I)Ljava/util/List;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	new-array p1, p1, [B</span>
+<span class="">	iget-object v3, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	invoke-static {v3, p2, p1, v0, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V</span>
+<span class="">	invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-interface {p2}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-interface {p2}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, [B</span>
+<span class="">	array-length v3, v2</span>
+<span class="">	invoke-static {v2, v0, p1, v1, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V</span>
+<span class="">	array-length v2, v2</span>
+<span class="">	add-int/2addr v1, v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private J(I)[B
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	sget-object p1, Lcom/google/protobuf/a0;->b:[B</span>
+<span class="">	if-ltz p1, :cond_7</span>
+<span class="">	:cond_0</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	add-int v2, v0, v1</span>
+<span class="">	add-int/2addr v2, p1</span>
+<span class="">	iget v3, p0, Lcom/google/protobuf/j;->c:I</span>
+<span class="">	sub-int v3, v2, v3</span>
+<span class="">	if-gtz v3, :cond_6</span>
+<span class="">	iget v3, p0, Lcom/google/protobuf/j$c;->l:I</span>
+<span class="">	if-gt v2, v3, :cond_5</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	sub-int/2addr v0, v1</span>
+<span class="">	sub-int v1, p1, v0</span>
+<span class="">	const/16 v2, 0x1000</span>
+<span class="">	if-lt v1, v2, :cond_2</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->e:Ljava/io/InputStream;</span>
+<span class="">	invoke-virtual {v2}, Ljava/io/InputStream;->available()I</span>
+<span class="">	move-result v2</span>
+<span class="">	if-gt v1, v2, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	new-array v1, p1, [B</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	iget v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	invoke-static {v2, v3, v1, v4, v0}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	iget v3, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	add-int/2addr v2, v3</span>
+<span class="">	iput v2, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	iput v4, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iput v4, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	if-ge v0, p1, :cond_4</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->e:Ljava/io/InputStream;</span>
+<span class="">	:goto_1</span>
+<span class="">	sub-int v3, p1, v0</span>
+<span class="">	invoke-virtual {v2, v1, v0, v3}, Ljava/io/InputStream;->read([BII)I</span>
+<span class="">	move-result v2</span>
+<span class="">	const/4 v3, -0x1</span>
+<span class="">	if-eq v2, v3, :cond_3</span>
+<span class="">	iget v3, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	add-int/2addr v3, v2</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	add-int/2addr v0, v2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->k()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_3</span>
+<span class="">	throw p1</span>
+<span class="">	sub-int/2addr v3, v0</span>
+<span class="">	sub-int/2addr v3, v1</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {p0, v3}, Lcom/google/protobuf/j$c;->T(I)V</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->k()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->j()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->f()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_7</span>
+.end method
+
+.method private K(I)Ljava/util/List;
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(I)",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"[B>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	:goto_0</span>
+<span class="">	if-lez p1, :cond_2</span>
+<span class="">	const/16 v1, 0x1000</span>
+<span class="">	invoke-static {p1, v1}, Ljava/lang/Math;->min(II)I</span>
+<span class="">	move-result v1</span>
+<span class="">	new-array v2, v1, [B</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	if-ge v3, v1, :cond_1</span>
+<span class="">	iget-object v4, p0, Lcom/google/protobuf/j$c;->e:Ljava/io/InputStream;</span>
+<span class="">	sub-int v5, v1, v3</span>
+<span class="">	invoke-virtual {v4, v2, v3, v5}, Ljava/io/InputStream;->read([BII)I</span>
+<span class="">	move-result v4</span>
+<span class="">	const/4 v5, -0x1</span>
+<span class="">	if-eq v4, v5, :cond_0</span>
+<span class="">	iget v5, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	add-int/2addr v5, v4</span>
+<span class="">	iput v5, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	add-int/2addr v3, v4</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->k()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+<span class="">	sub-int/2addr p1, v1</span>
+<span class="">	invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private Q()V
+<span class="">	.locals 3</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->h:I</span>
+<span class="">	add-int/2addr v0, v1</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	add-int/2addr v1, v0</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->l:I</span>
+<span class="">	if-le v1, v2, :cond_0</span>
+<span class="">	sub-int/2addr v1, v2</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->h:I</span>
+<span class="">	sub-int/2addr v0, v1</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->h:I</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private R(I)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/protobuf/j$c;->Y(I)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j;->c:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	sub-int/2addr v0, v1</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	sub-int/2addr v0, v1</span>
+<span class="">	if-le p1, v0, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->j()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->k()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method private U(I)V
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-ltz p1, :cond_7</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	add-int v2, v0, v1</span>
+<span class="">	add-int/2addr v2, p1</span>
+<span class="">	iget v3, p0, Lcom/google/protobuf/j$c;->l:I</span>
+<span class="">	if-gt v2, v3, :cond_6</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->m:Lcom/google/protobuf/j$c$a;</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	if-nez v2, :cond_3</span>
+<span class="">	add-int/2addr v0, v1</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	sub-int/2addr v0, v1</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	move v3, v0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v3, p1, :cond_2</span>
+<span class="">	sub-int v0, p1, v3</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/protobuf/j$c;->e:Ljava/io/InputStream;</span>
+<span class="">	int-to-long v4, v0</span>
+<span class="">	invoke-virtual {v1, v4, v5}, Ljava/io/InputStream;->skip(J)J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	const-wide/16 v6, 0x0</span>
+<span class="">	cmp-long v2, v0, v6</span>
+<span class="">	if-ltz v2, :cond_1</span>
+<span class="">	cmp-long v6, v0, v4</span>
+<span class="">	if-gtz v6, :cond_1</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	long-to-int v1, v0</span>
+<span class="">	add-int/2addr v3, v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	iget-object v4, p0, Lcom/google/protobuf/j$c;->e:Ljava/io/InputStream;</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v4, "#skip returned invalid result: "</span>
+<span class="">	invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2, v0, v1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v0, "\nThe InputStream implementation is buggy."</span>
+<span class="">	invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	add-int/2addr v0, v3</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	invoke-direct {p0}, Lcom/google/protobuf/j$c;->Q()V</span>
+<span class="">	throw p1</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	add-int/2addr v0, v3</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	invoke-direct {p0}, Lcom/google/protobuf/j$c;->Q()V</span>
+<span class="">	:cond_3</span>
+<span class="">	if-ge v3, p1, :cond_5</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	sub-int v1, v0, v1</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/protobuf/j$c;->R(I)V</span>
+<span class="">	:goto_2</span>
+<span class="">	sub-int v2, p1, v1</span>
+<span class="">	iget v3, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	if-le v2, v3, :cond_4</span>
+<span class="">	add-int/2addr v1, v3</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/protobuf/j$c;->R(I)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_4</span>
+<span class="">	iput v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	:cond_5</span>
+<span class="">	sub-int/2addr v3, v0</span>
+<span class="">	:cond_6</span>
+<span class="">	sub-int/2addr v3, v1</span>
+<span class="">	invoke-virtual {p0, v3}, Lcom/google/protobuf/j$c;->T(I)V</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->k()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->f()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	:cond_7</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+.end method
+
+.method private V()V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	sub-int/2addr v0, v1</span>
+<span class="">	const/16 v1, 0xa</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	invoke-direct {p0}, Lcom/google/protobuf/j$c;->W()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0}, Lcom/google/protobuf/j$c;->X()V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private W()V
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	const/16 v1, 0xa</span>
+<span class="">	if-ge v0, v1, :cond_1</span>
+<span class="">	iget-object v1, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	add-int/lit8 v3, v2, 0x1</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	aget-byte v1, v1, v2</span>
+<span class="">	if-ltz v1, :cond_0</span>
+<span class="">	add-int/lit8 v0, v0, 0x1</span>
+<span class="">	:cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->e()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	throw v0</span>
+.end method
+
+.method private X()V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	const/16 v1, 0xa</span>
+<span class="">	if-ge v0, v1, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->H()B</span>
+<span class="">	move-result v1</span>
+<span class="">	if-ltz v1, :cond_0</span>
+<span class="">	add-int/lit8 v0, v0, 0x1</span>
+<span class="">	:cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->e()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	throw v0</span>
+.end method
+
+.method private Y(I)Z
+<span class="">	.locals 7</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	add-int v1, v0, p1</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	if-le v1, v2, :cond_8</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j;->c:I</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	sub-int/2addr v1, v2</span>
+<span class="">	sub-int/2addr v1, v0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	if-le p1, v1, :cond_0</span>
+<span class="">	add-int/2addr v2, v0</span>
+<span class="">	:cond_0</span>
+<span class="">	add-int/2addr v2, p1</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->l:I</span>
+<span class="">	if-le v2, v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/google/protobuf/j$c;->m:Lcom/google/protobuf/j$c$a;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-interface {v0}, Lcom/google/protobuf/j$c$a;->a()V</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	if-lez v0, :cond_4</span>
+<span class="">	:cond_2</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	if-le v1, v0, :cond_3</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	sub-int/2addr v1, v0</span>
+<span class="">	invoke-static {v2, v0, v2, v3, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	add-int/2addr v1, v0</span>
+<span class="">	:cond_3</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	sub-int/2addr v1, v0</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iget-object v0, p0, Lcom/google/protobuf/j$c;->e:Ljava/io/InputStream;</span>
+<span class="">	iget-object v1, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	:cond_4</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	array-length v4, v1</span>
+<span class="">	sub-int/2addr v4, v2</span>
+<span class="">	iget v5, p0, Lcom/google/protobuf/j;->c:I</span>
+<span class="">	iget v6, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	sub-int/2addr v5, v6</span>
+<span class="">	sub-int/2addr v5, v2</span>
+<span class="">	invoke-static {v4, v5}, Ljava/lang/Math;->min(II)I</span>
+<span class="">	move-result v4</span>
+<span class="">	invoke-virtual {v0, v1, v2, v4}, Ljava/io/InputStream;->read([BII)I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_7</span>
+<span class="">	const/4 v1, -0x1</span>
+<span class="">	if-lt v0, v1, :cond_7</span>
+<span class="">	iget-object v1, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	array-length v1, v1</span>
+<span class="">	if-gt v0, v1, :cond_7</span>
+<span class="">	if-lez v0, :cond_6</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	add-int/2addr v1, v0</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	invoke-direct {p0}, Lcom/google/protobuf/j$c;->Q()V</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	if-lt v0, p1, :cond_5</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/protobuf/j$c;->Y(I)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	:cond_5</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	:cond_6</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->e:Ljava/io/InputStream;</span>
+<span class="">	:cond_7</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v2, "#read(byte[]) returned invalid result: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v0, "\nThe InputStream implementation is buggy."</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalStateException;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "refillBuffer() called when "</span>
+<span class="">	:cond_8</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, " bytes were already available in buffer"</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {v0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public A()Ljava/lang/String;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->N()I</span>
+<span class="">	move-result v0</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	sub-int v3, v2, v1</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	if-gt v0, v3, :cond_0</span>
+<span class="">	if-lez v0, :cond_0</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	add-int v3, v1, v0</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	const-string v0, ""</span>
+<span class="">	if-gt v0, v2, :cond_2</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/protobuf/j$c;->R(I)V</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	add-int/lit8 v1, v0, 0x0</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-direct {p0, v0, v4}, Lcom/google/protobuf/j$c;->I(IZ)[B</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v2, v1, v0}, Lcom/google/protobuf/r1;->e([BII)Ljava/lang/String;</span>
+<span class="">	:goto_1</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public B()I
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->e()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->j:I</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->N()I</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result v0</span>
+<span class="">	iput v0, p0, Lcom/google/protobuf/j$c;->j:I</span>
+<span class="">	invoke-static {v0}, Lcom/google/protobuf/s1;->a(I)I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->j:I</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->b()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_1</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public C()I
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->N()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public D()J
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->O()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public F(I)Z
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p1}, Lcom/google/protobuf/s1;->b(I)I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	if-eq v0, v1, :cond_4</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	if-eq v0, v2, :cond_3</span>
+<span class="">	const/4 v2, 0x3</span>
+<span class="">	const/4 v3, 0x4</span>
+<span class="">	if-eq v0, v2, :cond_2</span>
+<span class="">	if-eq v0, v3, :cond_1</span>
+<span class="">	const/4 p1, 0x5</span>
+<span class="">	if-ne v0, p1, :cond_0</span>
+<span class="">	invoke-virtual {p0, v3}, Lcom/google/protobuf/j$c;->T(I)V</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->d()Lcom/google/protobuf/InvalidProtocolBufferException$InvalidWireTypeException;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->S()V</span>
+<span class="">	invoke-static {p1}, Lcom/google/protobuf/s1;->a(I)I</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-static {p1, v3}, Lcom/google/protobuf/s1;->c(II)I</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/protobuf/j$c;->a(I)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->N()I</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/protobuf/j$c;->T(I)V</span>
+<span class="">	:cond_3</span>
+<span class="">	const/16 p1, 0x8</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/protobuf/j$c;->T(I)V</span>
+<span class="">	invoke-direct {p0}, Lcom/google/protobuf/j$c;->V()V</span>
+<span class="">	:cond_4</span>
+<span class="">	:cond_5</span>
+.end method
+
+.method public H()B
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/protobuf/j$c;->R(I)V</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	add-int/lit8 v2, v1, 0x1</span>
+<span class="">	iput v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	aget-byte v0, v0, v1</span>
+.end method
+
+.method public L()I
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	sub-int/2addr v1, v0</span>
+<span class="">	const/4 v2, 0x4</span>
+<span class="">	if-ge v1, v2, :cond_0</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/protobuf/j$c;->R(I)V</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	add-int/lit8 v2, v0, 0x4</span>
+<span class="">	iput v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	aget-byte v2, v1, v0</span>
+<span class="">	and-int/lit16 v2, v2, 0xff</span>
+<span class="">	add-int/lit8 v3, v0, 0x1</span>
+<span class="">	aget-byte v3, v1, v3</span>
+<span class="">	and-int/lit16 v3, v3, 0xff</span>
+<span class="">	shl-int/lit8 v3, v3, 0x8</span>
+<span class="">	or-int/2addr v2, v3</span>
+<span class="">	add-int/lit8 v3, v0, 0x2</span>
+<span class="">	aget-byte v3, v1, v3</span>
+<span class="">	and-int/lit16 v3, v3, 0xff</span>
+<span class="">	shl-int/lit8 v3, v3, 0x10</span>
+<span class="">	or-int/2addr v2, v3</span>
+<span class="">	add-int/lit8 v0, v0, 0x3</span>
+<span class="">	aget-byte v0, v1, v0</span>
+<span class="">	and-int/lit16 v0, v0, 0xff</span>
+<span class="">	shl-int/lit8 v0, v0, 0x18</span>
+<span class="">	or-int/2addr v0, v2</span>
+.end method
+
+.method public M()J
+<span class="">	.locals 9</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	sub-int/2addr v1, v0</span>
+<span class="">	const/16 v2, 0x8</span>
+<span class="">	if-ge v1, v2, :cond_0</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/protobuf/j$c;->R(I)V</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	add-int/lit8 v3, v0, 0x8</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	aget-byte v3, v1, v0</span>
+<span class="">	int-to-long v3, v3</span>
+<span class="">	const-wide/16 v5, 0xff</span>
+<span class="">	and-long/2addr v3, v5</span>
+<span class="">	add-int/lit8 v7, v0, 0x1</span>
+<span class="">	aget-byte v7, v1, v7</span>
+<span class="">	int-to-long v7, v7</span>
+<span class="">	and-long/2addr v7, v5</span>
+<span class="">	shl-long/2addr v7, v2</span>
+<span class="">	or-long v2, v3, v7</span>
+<span class="">	add-int/lit8 v4, v0, 0x2</span>
+<span class="">	aget-byte v4, v1, v4</span>
+<span class="">	int-to-long v7, v4</span>
+<span class="">	and-long/2addr v7, v5</span>
+<span class="">	const/16 v4, 0x10</span>
+<span class="">	shl-long/2addr v7, v4</span>
+<span class="">	or-long/2addr v2, v7</span>
+<span class="">	add-int/lit8 v4, v0, 0x3</span>
+<span class="">	aget-byte v4, v1, v4</span>
+<span class="">	int-to-long v7, v4</span>
+<span class="">	and-long/2addr v7, v5</span>
+<span class="">	const/16 v4, 0x18</span>
+<span class="">	shl-long/2addr v7, v4</span>
+<span class="">	or-long/2addr v2, v7</span>
+<span class="">	add-int/lit8 v4, v0, 0x4</span>
+<span class="">	aget-byte v4, v1, v4</span>
+<span class="">	int-to-long v7, v4</span>
+<span class="">	and-long/2addr v7, v5</span>
+<span class="">	const/16 v4, 0x20</span>
+<span class="">	shl-long/2addr v7, v4</span>
+<span class="">	or-long/2addr v2, v7</span>
+<span class="">	add-int/lit8 v4, v0, 0x5</span>
+<span class="">	aget-byte v4, v1, v4</span>
+<span class="">	int-to-long v7, v4</span>
+<span class="">	and-long/2addr v7, v5</span>
+<span class="">	const/16 v4, 0x28</span>
+<span class="">	shl-long/2addr v7, v4</span>
+<span class="">	or-long/2addr v2, v7</span>
+<span class="">	add-int/lit8 v4, v0, 0x6</span>
+<span class="">	aget-byte v4, v1, v4</span>
+<span class="">	int-to-long v7, v4</span>
+<span class="">	and-long/2addr v7, v5</span>
+<span class="">	const/16 v4, 0x30</span>
+<span class="">	shl-long/2addr v7, v4</span>
+<span class="">	or-long/2addr v2, v7</span>
+<span class="">	add-int/lit8 v0, v0, 0x7</span>
+<span class="">	aget-byte v0, v1, v0</span>
+<span class="">	int-to-long v0, v0</span>
+<span class="">	and-long/2addr v0, v5</span>
+<span class="">	const/16 v4, 0x38</span>
+<span class="">	shl-long/2addr v0, v4</span>
+<span class="">	or-long/2addr v0, v2</span>
+.end method
+
+.method public N()I
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	if-ne v1, v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	add-int/lit8 v3, v0, 0x1</span>
+<span class="">	aget-byte v0, v2, v0</span>
+<span class="">	if-ltz v0, :cond_1</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	sub-int/2addr v1, v3</span>
+<span class="">	:cond_1</span>
+<span class="">	const/16 v4, 0x9</span>
+<span class="">	if-ge v1, v4, :cond_2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	add-int/lit8 v1, v3, 0x1</span>
+<span class="">	:cond_2</span>
+<span class="">	aget-byte v3, v2, v3</span>
+<span class="">	shl-int/lit8 v3, v3, 0x7</span>
+<span class="">	xor-int/2addr v0, v3</span>
+<span class="">	if-gez v0, :cond_3</span>
+<span class="">	xor-int/lit8 v0, v0, -0x80</span>
+<span class="">	goto :goto_1</span>
+<span class="">	add-int/lit8 v3, v1, 0x1</span>
+<span class="">	:cond_3</span>
+<span class="">	aget-byte v1, v2, v1</span>
+<span class="">	shl-int/lit8 v1, v1, 0xe</span>
+<span class="">	xor-int/2addr v0, v1</span>
+<span class="">	if-ltz v0, :cond_5</span>
+<span class="">	xor-int/lit16 v0, v0, 0x3f80</span>
+<span class="">	move v1, v3</span>
+<span class="">	:cond_4</span>
+<span class="">	goto :goto_1</span>
+<span class="">	add-int/lit8 v1, v3, 0x1</span>
+<span class="">	:cond_5</span>
+<span class="">	aget-byte v3, v2, v3</span>
+<span class="">	shl-int/lit8 v3, v3, 0x15</span>
+<span class="">	xor-int/2addr v0, v3</span>
+<span class="">	if-gez v0, :cond_6</span>
+<span class="">	const v2, -0x1fc080</span>
+<span class="">	xor-int/2addr v0, v2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	add-int/lit8 v3, v1, 0x1</span>
+<span class="">	:cond_6</span>
+<span class="">	aget-byte v1, v2, v1</span>
+<span class="">	shl-int/lit8 v4, v1, 0x1c</span>
+<span class="">	xor-int/2addr v0, v4</span>
+<span class="">	const v4, 0xfe03f80</span>
+<span class="">	xor-int/2addr v0, v4</span>
+<span class="">	if-gez v1, :cond_4</span>
+<span class="">	add-int/lit8 v1, v3, 0x1</span>
+<span class="">	aget-byte v3, v2, v3</span>
+<span class="">	if-gez v3, :cond_7</span>
+<span class="">	add-int/lit8 v3, v1, 0x1</span>
+<span class="">	aget-byte v1, v2, v1</span>
+<span class="">	if-gez v1, :cond_4</span>
+<span class="">	add-int/lit8 v1, v3, 0x1</span>
+<span class="">	aget-byte v3, v2, v3</span>
+<span class="">	if-gez v3, :cond_7</span>
+<span class="">	add-int/lit8 v3, v1, 0x1</span>
+<span class="">	aget-byte v1, v2, v1</span>
+<span class="">	if-gez v1, :cond_4</span>
+<span class="">	add-int/lit8 v1, v3, 0x1</span>
+<span class="">	aget-byte v2, v2, v3</span>
+<span class="">	if-gez v2, :cond_7</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->P()J</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	long-to-int v1, v0</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_7</span>
+.end method
+
+.method public O()J
+<span class="">	.locals 11</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	if-ne v1, v0, :cond_0</span>
+<span class="">	goto/16 :goto_3</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	add-int/lit8 v3, v0, 0x1</span>
+<span class="">	aget-byte v0, v2, v0</span>
+<span class="">	if-ltz v0, :cond_1</span>
+<span class="">	iput v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	int-to-long v0, v0</span>
+<span class="">	sub-int/2addr v1, v3</span>
+<span class="">	:cond_1</span>
+<span class="">	const/16 v4, 0x9</span>
+<span class="">	if-ge v1, v4, :cond_2</span>
+<span class="">	goto/16 :goto_3</span>
+<span class="">	add-int/lit8 v1, v3, 0x1</span>
+<span class="">	:cond_2</span>
+<span class="">	aget-byte v3, v2, v3</span>
+<span class="">	shl-int/lit8 v3, v3, 0x7</span>
+<span class="">	xor-int/2addr v0, v3</span>
+<span class="">	if-gez v0, :cond_3</span>
+<span class="">	xor-int/lit8 v0, v0, -0x80</span>
+<span class="">	int-to-long v2, v0</span>
+<span class="">	:goto_0</span>
+<span class="">	goto/16 :goto_4</span>
+<span class="">	add-int/lit8 v3, v1, 0x1</span>
+<span class="">	:cond_3</span>
+<span class="">	aget-byte v1, v2, v1</span>
+<span class="">	shl-int/lit8 v1, v1, 0xe</span>
+<span class="">	xor-int/2addr v0, v1</span>
+<span class="">	if-ltz v0, :cond_4</span>
+<span class="">	xor-int/lit16 v0, v0, 0x3f80</span>
+<span class="">	int-to-long v0, v0</span>
+<span class="">	move-wide v9, v0</span>
+<span class="">	move v1, v3</span>
+<span class="">	move-wide v2, v9</span>
+<span class="">	goto/16 :goto_4</span>
+<span class="">	add-int/lit8 v1, v3, 0x1</span>
+<span class="">	:cond_4</span>
+<span class="">	aget-byte v3, v2, v3</span>
+<span class="">	shl-int/lit8 v3, v3, 0x15</span>
+<span class="">	xor-int/2addr v0, v3</span>
+<span class="">	if-gez v0, :cond_5</span>
+<span class="">	const v2, -0x1fc080</span>
+<span class="">	xor-int/2addr v0, v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	int-to-long v3, v0</span>
+<span class="">	:cond_5</span>
+<span class="">	add-int/lit8 v0, v1, 0x1</span>
+<span class="">	aget-byte v1, v2, v1</span>
+<span class="">	int-to-long v5, v1</span>
+<span class="">	const/16 v1, 0x1c</span>
+<span class="">	shl-long/2addr v5, v1</span>
+<span class="">	xor-long/2addr v3, v5</span>
+<span class="">	const-wide/16 v5, 0x0</span>
+<span class="">	cmp-long v1, v3, v5</span>
+<span class="">	if-ltz v1, :cond_6</span>
+<span class="">	const-wide/32 v1, 0xfe03f80</span>
+<span class="">	xor-long v2, v3, v1</span>
+<span class="">	:goto_1</span>
+<span class="">	move v1, v0</span>
+<span class="">	goto :goto_4</span>
+<span class="">	add-int/lit8 v1, v0, 0x1</span>
+<span class="">	:cond_6</span>
+<span class="">	aget-byte v0, v2, v0</span>
+<span class="">	int-to-long v7, v0</span>
+<span class="">	const/16 v0, 0x23</span>
+<span class="">	shl-long/2addr v7, v0</span>
+<span class="">	xor-long/2addr v3, v7</span>
+<span class="">	cmp-long v0, v3, v5</span>
+<span class="">	if-gez v0, :cond_7</span>
+<span class="">	const-wide v5, -0x7f01fc080L</span>
+<span class="">	xor-long v2, v3, v5</span>
+<span class="">	:goto_2</span>
+<span class="">	goto :goto_4</span>
+<span class="">	add-int/lit8 v0, v1, 0x1</span>
+<span class="">	:cond_7</span>
+<span class="">	aget-byte v1, v2, v1</span>
+<span class="">	int-to-long v7, v1</span>
+<span class="">	const/16 v1, 0x2a</span>
+<span class="">	shl-long/2addr v7, v1</span>
+<span class="">	xor-long/2addr v3, v7</span>
+<span class="">	cmp-long v1, v3, v5</span>
+<span class="">	if-ltz v1, :cond_8</span>
+<span class="">	const-wide v1, 0x3f80fe03f80L</span>
+<span class="">	goto :goto_1</span>
+<span class="">	add-int/lit8 v1, v0, 0x1</span>
+<span class="">	:cond_8</span>
+<span class="">	aget-byte v0, v2, v0</span>
+<span class="">	int-to-long v7, v0</span>
+<span class="">	const/16 v0, 0x31</span>
+<span class="">	shl-long/2addr v7, v0</span>
+<span class="">	xor-long/2addr v3, v7</span>
+<span class="">	cmp-long v0, v3, v5</span>
+<span class="">	if-gez v0, :cond_9</span>
+<span class="">	const-wide v5, -0x1fc07f01fc080L</span>
+<span class="">	goto :goto_2</span>
+<span class="">	add-int/lit8 v0, v1, 0x1</span>
+<span class="">	:cond_9</span>
+<span class="">	aget-byte v1, v2, v1</span>
+<span class="">	int-to-long v7, v1</span>
+<span class="">	const/16 v1, 0x38</span>
+<span class="">	shl-long/2addr v7, v1</span>
+<span class="">	xor-long/2addr v3, v7</span>
+<span class="">	const-wide v7, 0xfe03f80fe03f80L</span>
+<span class="">	xor-long/2addr v3, v7</span>
+<span class="">	cmp-long v1, v3, v5</span>
+<span class="">	if-gez v1, :cond_a</span>
+<span class="">	add-int/lit8 v1, v0, 0x1</span>
+<span class="">	aget-byte v0, v2, v0</span>
+<span class="">	int-to-long v7, v0</span>
+<span class="">	cmp-long v0, v7, v5</span>
+<span class="">	if-gez v0, :cond_b</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->P()J</span>
+<span class="">	:goto_3</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	move v1, v0</span>
+<span class="">	move-wide v2, v3</span>
+<span class="">	:cond_a</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	:cond_b</span>
+<span class="">	:goto_4</span>
+.end method
+
+.method  P()J
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	const/16 v3, 0x40</span>
+<span class="">	if-ge v2, v3, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->H()B</span>
+<span class="">	move-result v3</span>
+<span class="">	and-int/lit8 v4, v3, 0x7f</span>
+<span class="">	int-to-long v4, v4</span>
+<span class="">	shl-long/2addr v4, v2</span>
+<span class="">	or-long/2addr v0, v4</span>
+<span class="">	and-int/lit16 v3, v3, 0x80</span>
+<span class="">	if-nez v3, :cond_0</span>
+<span class="">	add-int/lit8 v2, v2, 0x7</span>
+<span class="">	:cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->e()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public S()V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->B()I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/google/protobuf/j$c;->F(I)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public T(I)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	sub-int/2addr v0, v1</span>
+<span class="">	if-gt p1, v0, :cond_0</span>
+<span class="">	if-ltz p1, :cond_0</span>
+<span class="">	add-int/2addr v1, p1</span>
+<span class="">	iput v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/protobuf/j$c;->U(I)V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public a(I)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->j:I</span>
+<span class="">	if-ne v0, p1, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->a()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public d()I
+<span class="">	.locals 2</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	add-int/2addr v0, v1</span>
+.end method
+
+.method public e()Z
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/protobuf/j$c;->Y(I)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public k(I)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput p1, p0, Lcom/google/protobuf/j$c;->l:I</span>
+<span class="">	invoke-direct {p0}, Lcom/google/protobuf/j$c;->Q()V</span>
+.end method
+
+.method public l(I)I
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-ltz p1, :cond_1</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->k:I</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	add-int/2addr v0, v1</span>
+<span class="">	add-int/2addr p1, v0</span>
+<span class="">	iget v0, p0, Lcom/google/protobuf/j$c;->l:I</span>
+<span class="">	if-gt p1, v0, :cond_0</span>
+<span class="">	iput p1, p0, Lcom/google/protobuf/j$c;->l:I</span>
+<span class="">	invoke-direct {p0}, Lcom/google/protobuf/j$c;->Q()V</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->k()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+<span class="">	invoke-static {}, Lcom/google/protobuf/InvalidProtocolBufferException;->f()Lcom/google/protobuf/InvalidProtocolBufferException;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public m()Z
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->O()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	const-wide/16 v2, 0x0</span>
+<span class="">	cmp-long v4, v0, v2</span>
+<span class="">	if-eqz v4, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public n()Lcom/google/protobuf/i;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->N()I</span>
+<span class="">	move-result v0</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	sub-int/2addr v1, v2</span>
+<span class="">	if-gt v0, v1, :cond_0</span>
+<span class="">	if-lez v0, :cond_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	invoke-static {v1, v2, v0}, Lcom/google/protobuf/i;->i([BII)Lcom/google/protobuf/i;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	add-int/2addr v2, v0</span>
+<span class="">	iput v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v0, Lcom/google/protobuf/i;->g:Lcom/google/protobuf/i;</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/protobuf/j$c;->G(I)Lcom/google/protobuf/i;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public o()D
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->M()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-static {v0, v1}, Ljava/lang/Double;->longBitsToDouble(J)D</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public p()I
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->N()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public q()I
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->L()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public r()J
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->M()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public s()F
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->L()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-static {v0}, Ljava/lang/Float;->intBitsToFloat(I)F</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public t()I
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->N()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public u()J
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->O()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public v()I
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->L()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public w()J
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->M()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public x()I
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->N()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/protobuf/j;->b(I)I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public y()J
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->O()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/protobuf/j;->c(J)J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public z()Ljava/lang/String;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/protobuf/j$c;->N()I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-lez v0, :cond_0</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	sub-int/2addr v1, v2</span>
+<span class="">	if-gt v0, v1, :cond_0</span>
+<span class="">	new-instance v1, Ljava/lang/String;</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	iget v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	sget-object v4, Lcom/google/protobuf/a0;->a:Ljava/nio/charset/Charset;</span>
+<span class="">	invoke-direct {v1, v2, v3, v0, v4}, Ljava/lang/String;-><init>([BIILjava/nio/charset/Charset;)V</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	add-int/2addr v2, v0</span>
+<span class="">	iput v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, ""</span>
+<span class="">	iget v1, p0, Lcom/google/protobuf/j$c;->g:I</span>
+<span class="">	if-gt v0, v1, :cond_2</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/protobuf/j$c;->R(I)V</span>
+<span class="">	new-instance v1, Ljava/lang/String;</span>
+<span class="">	iget-object v2, p0, Lcom/google/protobuf/j$c;->f:[B</span>
+<span class="">	iget v3, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	sget-object v4, Lcom/google/protobuf/a0;->a:Ljava/nio/charset/Charset;</span>
+<span class="">	invoke-direct {v1, v2, v3, v0, v4}, Ljava/lang/String;-><init>([BIILjava/nio/charset/Charset;)V</span>
+<span class="">	iget v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	add-int/2addr v2, v0</span>
+<span class="">	iput v2, p0, Lcom/google/protobuf/j$c;->i:I</span>
+<span class="">	new-instance v1, Ljava/lang/String;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-direct {p0, v0, v2}, Lcom/google/protobuf/j$c;->I(IZ)[B</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v2, Lcom/google/protobuf/a0;->a:Ljava/nio/charset/Charset;</span>
+<span class="">	invoke-direct {v1, v0, v2}, Ljava/lang/String;-><init>([BLjava/nio/charset/Charset;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

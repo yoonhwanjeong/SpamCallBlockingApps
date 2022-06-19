@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.browser.browseractions</a></li>
+        <li><i class="ico ico-class"></i> BrowserActionsFallbackMenuUi.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;
+.super Ljava/lang/Object;
+.source "BrowserActionsFallbackMenuUi.java"
+.implements Landroid/widget/AdapterView$OnItemClickListener;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$BrowserActionsFallMenuUiListener;
+}
+.end annotation
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+.field private static final TAG:Ljava/lang/String; = "BrowserActionskMenuUi"
+.field private mBrowserActionsDialog:Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;
+.field final mContext:Landroid/content/Context;
+.field private final mMenuItems:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Landroidx/browser/browseractions/BrowserActionItem;",
+">;"
+}
+.end annotation
+.end field
+.field  mMenuUiListener:Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$BrowserActionsFallMenuUiListener;
+.field final mUri:Landroid/net/Uri;
+
+
+.method constructor <init>(Landroid/content/Context;Landroid/net/Uri;Ljava/util/List;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Landroid/net/Uri;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/browser/browseractions/BrowserActionItem;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mContext:Landroid/content/Context;</span>
+<span class="">	iput-object p2, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mUri:Landroid/net/Uri;</span>
+<span class="">	invoke-direct {p0, p3}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->buildFallbackMenuItemList(Ljava/util/List;)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mMenuItems:Ljava/util/List;</span>
+.end method
+
+.method private buildCopyAction()Ljava/lang/Runnable;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$1;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$1;-><init>(Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;)V</span>
+.end method
+
+.method private buildFallbackMenuItemList(Ljava/util/List;)Ljava/util/List;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/browser/browseractions/BrowserActionItem;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/browser/browseractions/BrowserActionItem;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v1, Landroidx/browser/browseractions/BrowserActionItem;</span>
+<span class="">	iget-object v2, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mContext:Landroid/content/Context;</span>
+<span class="">	sget v3, Landroidx/browser/R$string;->fallback_menu_item_open_in_browser:I</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {p0}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->buildOpenInBrowserAction()Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-direct {v1, v2, v3}, Landroidx/browser/browseractions/BrowserActionItem;-><init>(Ljava/lang/String;Landroid/app/PendingIntent;)V</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	new-instance v1, Landroidx/browser/browseractions/BrowserActionItem;</span>
+<span class="">	iget-object v2, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mContext:Landroid/content/Context;</span>
+<span class="">	sget v3, Landroidx/browser/R$string;->fallback_menu_item_copy_link:I</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {p0}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->buildCopyAction()Ljava/lang/Runnable;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-direct {v1, v2, v3}, Landroidx/browser/browseractions/BrowserActionItem;-><init>(Ljava/lang/String;Ljava/lang/Runnable;)V</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	new-instance v1, Landroidx/browser/browseractions/BrowserActionItem;</span>
+<span class="">	iget-object v2, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mContext:Landroid/content/Context;</span>
+<span class="">	sget v3, Landroidx/browser/R$string;->fallback_menu_item_share_link:I</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {p0}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->buildShareAction()Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-direct {v1, v2, v3}, Landroidx/browser/browseractions/BrowserActionItem;-><init>(Ljava/lang/String;Landroid/app/PendingIntent;)V</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z</span>
+.end method
+
+.method private buildOpenInBrowserAction()Landroid/app/PendingIntent;
+<span class="">	.locals 4</span>
+
+<span class="">	new-instance v0, Landroid/content/Intent;</span>
+<span class="">	iget-object v1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mUri:Landroid/net/Uri;</span>
+<span class="">	const-string v2, "android.intent.action.VIEW"</span>
+<span class="">	invoke-direct {v0, v2, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V</span>
+<span class="">	iget-object v1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mContext:Landroid/content/Context;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/high16 v3, 0x4000000</span>
+<span class="">	invoke-static {v1, v2, v0, v3}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method private buildShareAction()Landroid/app/PendingIntent;
+<span class="">	.locals 4</span>
+
+<span class="">	new-instance v0, Landroid/content/Intent;</span>
+<span class="">	const-string v1, "android.intent.action.SEND"</span>
+<span class="">	invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V</span>
+<span class="">	iget-object v1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mUri:Landroid/net/Uri;</span>
+<span class="">	invoke-virtual {v1}, Landroid/net/Uri;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "android.intent.extra.TEXT"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	const-string v1, "text/plain"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	iget-object v1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mContext:Landroid/content/Context;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/high16 v3, 0x4000000</span>
+<span class="">	invoke-static {v1, v2, v0, v3}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method private initMenuView(Landroid/view/View;)Landroidx/browser/browseractions/BrowserActionsFallbackMenuView;
+<span class="">	.locals 4</span>
+
+<span class="">	sget v0, Landroidx/browser/R$id;->browser_actions_menu_view:I</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuView;</span>
+<span class="">	sget v1, Landroidx/browser/R$id;->browser_actions_header_text:I</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroid/widget/TextView;</span>
+<span class="">	iget-object v2, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mUri:Landroid/net/Uri;</span>
+<span class="">	invoke-virtual {v2}, Landroid/net/Uri;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V</span>
+<span class="">	new-instance v2, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$3;</span>
+<span class="">	invoke-direct {v2, p0, v1}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$3;-><init>(Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;Landroid/widget/TextView;)V</span>
+<span class="">	invoke-virtual {v1, v2}, Landroid/widget/TextView;->setOnClickListener(Landroid/view/View$OnClickListener;)V</span>
+<span class="">	sget v1, Landroidx/browser/R$id;->browser_actions_menu_items:I</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroid/widget/ListView;</span>
+<span class="">	new-instance v1, Landroidx/browser/browseractions/BrowserActionsFallbackMenuAdapter;</span>
+<span class="">	iget-object v2, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mMenuItems:Ljava/util/List;</span>
+<span class="">	iget-object v3, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mContext:Landroid/content/Context;</span>
+<span class="">	invoke-direct {v1, v2, v3}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuAdapter;-><init>(Ljava/util/List;Landroid/content/Context;)V</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V</span>
+<span class="">	invoke-virtual {p1, p0}, Landroid/widget/ListView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V</span>
+.end method
+
+.method public displayMenu()V
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mContext:Landroid/content/Context;</span>
+<span class="">	invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget v1, Landroidx/browser/R$layout;->browser_actions_context_menu_page:I</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;</span>
+<span class="">	iget-object v2, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mContext:Landroid/content/Context;</span>
+<span class="">	invoke-direct {p0, v0}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->initMenuView(Landroid/view/View;)Landroidx/browser/browseractions/BrowserActionsFallbackMenuView;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-direct {v1, v2, v3}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;-><init>(Landroid/content/Context;Landroid/view/View;)V</span>
+<span class="">	iput-object v1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mBrowserActionsDialog:Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;</span>
+<span class="">	invoke-virtual {v1, v0}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;->setContentView(Landroid/view/View;)V</span>
+<span class="">	iget-object v1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mMenuUiListener:Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$BrowserActionsFallMenuUiListener;</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	iget-object v1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mBrowserActionsDialog:Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;</span>
+<span class="">	new-instance v2, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$2;</span>
+<span class="">	invoke-direct {v2, p0, v0}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$2;-><init>(Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;Landroid/view/View;)V</span>
+<span class="">	invoke-virtual {v1, v2}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;->setOnShowListener(Landroid/content/DialogInterface$OnShowListener;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mBrowserActionsDialog:Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;->show()V</span>
+.end method
+
+.method public onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/widget/AdapterView<",</span>
+<span class="">	"*>;",</span>
+<span class="">	"Landroid/view/View;",</span>
+<span class="">	"IJ)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object p1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mMenuItems:Ljava/util/List;</span>
+<span class="">	invoke-interface {p1, p3}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroidx/browser/browseractions/BrowserActionItem;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/browser/browseractions/BrowserActionItem;->getAction()Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const-string p3, "BrowserActionskMenuUi"</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p1}, Landroidx/browser/browseractions/BrowserActionItem;->getAction()Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/PendingIntent;->send()V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Landroid/app/PendingIntent$CanceledException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	const-string p2, "Failed to send custom item action"</span>
+<span class="">	invoke-static {p3, p2, p1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroidx/browser/browseractions/BrowserActionItem;->getRunnableAction()Ljava/lang/Runnable;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	invoke-virtual {p1}, Landroidx/browser/browseractions/BrowserActionItem;->getRunnableAction()Ljava/lang/Runnable;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/Runnable;->run()V</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object p1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mBrowserActionsDialog:Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;</span>
+<span class="">	if-nez p1, :cond_2</span>
+<span class="">	const-string p1, "Cannot dismiss dialog, it has already been dismissed."</span>
+<span class="">	invoke-static {p3, p1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	invoke-virtual {p1}, Landroidx/browser/browseractions/BrowserActionsFallbackMenuDialog;->dismiss()V</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method  setMenuUiListener(Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$BrowserActionsFallMenuUiListener;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi;->mMenuUiListener:Landroidx/browser/browseractions/BrowserActionsFallbackMenuUi$BrowserActionsFallMenuUiListener;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

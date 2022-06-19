@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook</a></li>
+        <li><i class="ico ico-class"></i> AccessTokenManager.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/AccessTokenManager;
+.super Ljava/lang/Object;
+.source "AccessTokenManager.kt"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/AccessTokenManager$RefreshTokenInfo;,
+Lcom/facebook/AccessTokenManager$FacebookRefreshTokenInfo;,
+Lcom/facebook/AccessTokenManager$InstagramRefreshTokenInfo;,
+Lcom/facebook/AccessTokenManager$RefreshResult;,
+Lcom/facebook/AccessTokenManager$Companion;
+}
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000D\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0007\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\u0008\u0002\n\u0002\u0010\u000b\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u000c\u0018\u0000 !2\u00020\u0001:\u0005!\"#$%B\u0017\u0008\u0000\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u00a2\u0006\u0002\u0010\u0006J\u0006\u0010\u0013\u001a\u00020\u0014J\u0006\u0010\u0015\u001a\u00020\u0014J\u0006\u0010\u0016\u001a\u00020\u0017J\u0010\u0010\u0018\u001a\u00020\u00142\u0008\u0010\u0019\u001a\u0004\u0018\u00010\u001aJ\u0012\u0010\u001b\u001a\u00020\u00142\u0008\u0010\u0019\u001a\u0004\u0018\u00010\u001aH\u0002J\u001c\u0010\u001c\u001a\u00020\u00142\u0008\u0010\u001d\u001a\u0004\u0018\u00010\u00082\u0008\u0010\t\u001a\u0004\u0018\u00010\u0008H\u0002J\u001a\u0010\u000c\u001a\u00020\u00142\u0008\u0010\t\u001a\u0004\u0018\u00010\u00082\u0006\u0010\u001e\u001a\u00020\u0017H\u0002J\u0008\u0010\u001f\u001a\u00020\u0014H\u0002J\u0008\u0010 \u001a\u00020\u0017H\u0002R\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R(\u0010\t\u001a\u0004\u0018\u00010\u00082\u0008\u0010\u0007\u001a\u0004\u0018\u00010\u00088F@FX\u0086\u000e\u00a2\u0006\u000c\u001a\u0004\u0008\n\u0010\u000b\"\u0004\u0008\u000c\u0010\rR\u0010\u0010\u000e\u001a\u0004\u0018\u00010\u0008X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000f\u001a\u00020\u0010X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0011\u001a\u00020\u0012X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006&"
+}
+d2 = {
+"Lcom/facebook/AccessTokenManager;",
+"",
+"localBroadcastManager",
+"Landroidx/localbroadcastmanager/content/LocalBroadcastManager;",
+"accessTokenCache",
+"Lcom/facebook/AccessTokenCache;",
+"(Landroidx/localbroadcastmanager/content/LocalBroadcastManager;Lcom/facebook/AccessTokenCache;)V",
+"value",
+"Lcom/facebook/AccessToken;",
+"currentAccessToken",
+"getCurrentAccessToken",
+"()Lcom/facebook/AccessToken;",
+"setCurrentAccessToken",
+"(Lcom/facebook/AccessToken;)V",
+"currentAccessTokenField",
+"lastAttemptedTokenExtendDate",
+"Ljava/util/Date;",
+"tokenRefreshInProgress",
+"Ljava/util/concurrent/atomic/AtomicBoolean;",
+"currentAccessTokenChanged",
+"",
+"extendAccessTokenIfNeeded",
+"loadCurrentAccessToken",
+"",
+"refreshCurrentAccessToken",
+"callback",
+"Lcom/facebook/AccessToken$AccessTokenRefreshCallback;",
+"refreshCurrentAccessTokenImpl",
+"sendCurrentAccessTokenChangedBroadcastIntent",
+"oldAccessToken",
+"saveToCache",
+"setTokenExpirationBroadcastAlarm",
+"shouldExtendAccessToken",
+"Companion",
+"FacebookRefreshTokenInfo",
+"InstagramRefreshTokenInfo",
+"RefreshResult",
+"RefreshTokenInfo",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field public static final ACTION_CURRENT_ACCESS_TOKEN_CHANGED:Ljava/lang/String; = "com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"
+.field public static final Companion:Lcom/facebook/AccessTokenManager$Companion;
+.field public static final EXTRA_NEW_ACCESS_TOKEN:Ljava/lang/String; = "com.facebook.sdk.EXTRA_NEW_ACCESS_TOKEN"
+.field public static final EXTRA_OLD_ACCESS_TOKEN:Ljava/lang/String; = "com.facebook.sdk.EXTRA_OLD_ACCESS_TOKEN"
+.field private static final ME_PERMISSIONS_GRAPH_PATH:Ljava/lang/String; = "me/permissions"
+.field public static final SHARED_PREFERENCES_NAME:Ljava/lang/String; = "com.facebook.AccessTokenManager.SharedPreferences"
+.field public static final TAG:Ljava/lang/String; = "AccessTokenManager"
+.field private static final TOKEN_EXTEND_RETRY_SECONDS:I = 0xe10
+.field private static final TOKEN_EXTEND_THRESHOLD_SECONDS:I = 0x15180
+.field private static instanceField:Lcom/facebook/AccessTokenManager;
+.field private final accessTokenCache:Lcom/facebook/AccessTokenCache;
+.field private currentAccessTokenField:Lcom/facebook/AccessToken;
+.field private lastAttemptedTokenExtendDate:Ljava/util/Date;
+.field private final localBroadcastManager:Landroidx/localbroadcastmanager/content/LocalBroadcastManager;
+.field private final tokenRefreshInProgress:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lcom/facebook/AccessTokenManager$Companion;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/facebook/AccessTokenManager$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/AccessTokenManager;->Companion:Lcom/facebook/AccessTokenManager$Companion;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroidx/localbroadcastmanager/content/LocalBroadcastManager;Lcom/facebook/AccessTokenCache;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	const-string v0, "localBroadcastManager"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v0, "accessTokenCache"</span>
+<span class="cov">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lcom/facebook/AccessTokenManager;->localBroadcastManager:Landroidx/localbroadcastmanager/content/LocalBroadcastManager;</span>
+<span class="cov">	iput-object p2, p0, Lcom/facebook/AccessTokenManager;->accessTokenCache:Lcom/facebook/AccessTokenCache;</span>
+<span class="cov">	new-instance p1, Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="cov">	const/4 p2, 0x0</span>
+<span class="cov">	invoke-direct {p1, p2}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V</span>
+<span class="cov">	iput-object p1, p0, Lcom/facebook/AccessTokenManager;->tokenRefreshInProgress:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="cov">	new-instance p1, Ljava/util/Date;</span>
+<span class="cov">	const-wide/16 v0, 0x0</span>
+<span class="cov">	invoke-direct {p1, v0, v1}, Ljava/util/Date;-><init>(J)V</span>
+<span class="cov">	iput-object p1, p0, Lcom/facebook/AccessTokenManager;->lastAttemptedTokenExtendDate:Ljava/util/Date;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static final synthetic access$getInstanceField$cp()Lcom/facebook/AccessTokenManager;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	sget-object v0, Lcom/facebook/AccessTokenManager;->instanceField:Lcom/facebook/AccessTokenManager;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public static final synthetic access$getTokenRefreshInProgress$p(Lcom/facebook/AccessTokenManager;)Ljava/util/concurrent/atomic/AtomicBoolean;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/facebook/AccessTokenManager;->tokenRefreshInProgress:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+.end method
+
+.method public static final synthetic access$refreshCurrentAccessTokenImpl(Lcom/facebook/AccessTokenManager;Lcom/facebook/AccessToken$AccessTokenRefreshCallback;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/AccessTokenManager;->refreshCurrentAccessTokenImpl(Lcom/facebook/AccessToken$AccessTokenRefreshCallback;)V</span>
+.end method
+
+<span class="cov">.method public static final synthetic access$setInstanceField$cp(Lcom/facebook/AccessTokenManager;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	sput-object p0, Lcom/facebook/AccessTokenManager;->instanceField:Lcom/facebook/AccessTokenManager;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public static final getInstance()Lcom/facebook/AccessTokenManager;
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/facebook/AccessTokenManager;->Companion:Lcom/facebook/AccessTokenManager$Companion;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/AccessTokenManager$Companion;->getInstance()Lcom/facebook/AccessTokenManager;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method private final refreshCurrentAccessTokenImpl(Lcom/facebook/AccessToken$AccessTokenRefreshCallback;)V
+<span class="">	.locals 12</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/facebook/AccessTokenManager;->getCurrentAccessToken()Lcom/facebook/AccessToken;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	if-nez v3, :cond_1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	new-instance v0, Lcom/facebook/FacebookException;</span>
+<span class="">	const-string v1, "No current access token to refresh"</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p1, v0}, Lcom/facebook/AccessToken$AccessTokenRefreshCallback;->OnTokenRefreshFailed(Lcom/facebook/FacebookException;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/AccessTokenManager;->tokenRefreshInProgress:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Ljava/util/concurrent/atomic/AtomicBoolean;->compareAndSet(ZZ)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_3</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	new-instance v0, Lcom/facebook/FacebookException;</span>
+<span class="">	const-string v1, "Refresh already in progress"</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p1, v0}, Lcom/facebook/AccessToken$AccessTokenRefreshCallback;->OnTokenRefreshFailed(Lcom/facebook/FacebookException;)V</span>
+<span class="">	new-instance v0, Ljava/util/Date;</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-direct {v0}, Ljava/util/Date;-><init>()V</span>
+<span class="">	:cond_3</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/AccessTokenManager;->lastAttemptedTokenExtendDate:Ljava/util/Date;</span>
+<span class="">	new-instance v0, Ljava/util/HashSet;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashSet;-><init>()V</span>
+<span class="">	move-object v6, v0</span>
+<span class="">	check-cast v6, Ljava/util/Set;</span>
+<span class="">	new-instance v0, Ljava/util/HashSet;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashSet;-><init>()V</span>
+<span class="">	move-object v7, v0</span>
+<span class="">	check-cast v7, Ljava/util/Set;</span>
+<span class="">	new-instance v0, Ljava/util/HashSet;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashSet;-><init>()V</span>
+<span class="">	move-object v8, v0</span>
+<span class="">	check-cast v8, Ljava/util/Set;</span>
+<span class="">	new-instance v5, Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="">	invoke-direct {v5, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V</span>
+<span class="">	new-instance v4, Lcom/facebook/AccessTokenManager$RefreshResult;</span>
+<span class="">	invoke-direct {v4}, Lcom/facebook/AccessTokenManager$RefreshResult;-><init>()V</span>
+<span class="">	new-instance v9, Lcom/facebook/GraphRequestBatch;</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	new-array v0, v0, [Lcom/facebook/GraphRequest;</span>
+<span class="">	sget-object v10, Lcom/facebook/AccessTokenManager;->Companion:Lcom/facebook/AccessTokenManager$Companion;</span>
+<span class="">	new-instance v11, Lcom/facebook/AccessTokenManager$refreshCurrentAccessTokenImpl$batch$1;</span>
+<span class="">	invoke-direct {v11, v5, v6, v7, v8}, Lcom/facebook/AccessTokenManager$refreshCurrentAccessTokenImpl$batch$1;-><init>(Ljava/util/concurrent/atomic/AtomicBoolean;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;)V</span>
+<span class="">	check-cast v11, Lcom/facebook/GraphRequest$Callback;</span>
+<span class="">	invoke-static {v10, v3, v11}, Lcom/facebook/AccessTokenManager$Companion;->access$createGrantedPermissionsRequest(Lcom/facebook/AccessTokenManager$Companion;Lcom/facebook/AccessToken;Lcom/facebook/GraphRequest$Callback;)Lcom/facebook/GraphRequest;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	aput-object v11, v0, v1</span>
+<span class="">	new-instance v1, Lcom/facebook/AccessTokenManager$refreshCurrentAccessTokenImpl$batch$2;</span>
+<span class="">	invoke-direct {v1, v4}, Lcom/facebook/AccessTokenManager$refreshCurrentAccessTokenImpl$batch$2;-><init>(Lcom/facebook/AccessTokenManager$RefreshResult;)V</span>
+<span class="">	check-cast v1, Lcom/facebook/GraphRequest$Callback;</span>
+<span class="">	invoke-static {v10, v3, v1}, Lcom/facebook/AccessTokenManager$Companion;->access$createExtendAccessTokenRequest(Lcom/facebook/AccessTokenManager$Companion;Lcom/facebook/AccessToken;Lcom/facebook/GraphRequest$Callback;)Lcom/facebook/GraphRequest;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	aput-object v1, v0, v2</span>
+<span class="">	invoke-direct {v9, v0}, Lcom/facebook/GraphRequestBatch;-><init>([Lcom/facebook/GraphRequest;)V</span>
+<span class="">	new-instance v10, Lcom/facebook/AccessTokenManager$refreshCurrentAccessTokenImpl$1;</span>
+<span class="">	move-object v0, v10</span>
+<span class="">	move-object v1, p0</span>
+<span class="">	move-object v2, v4</span>
+<span class="">	move-object v4, p1</span>
+<span class="">	invoke-direct/range {v0 .. v8}, Lcom/facebook/AccessTokenManager$refreshCurrentAccessTokenImpl$1;-><init>(Lcom/facebook/AccessTokenManager;Lcom/facebook/AccessTokenManager$RefreshResult;Lcom/facebook/AccessToken;Lcom/facebook/AccessToken$AccessTokenRefreshCallback;Ljava/util/concurrent/atomic/AtomicBoolean;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;)V</span>
+<span class="">	check-cast v10, Lcom/facebook/GraphRequestBatch$Callback;</span>
+<span class="">	invoke-virtual {v9, v10}, Lcom/facebook/GraphRequestBatch;->addCallback(Lcom/facebook/GraphRequestBatch$Callback;)V</span>
+<span class="">	invoke-virtual {v9}, Lcom/facebook/GraphRequestBatch;->executeAsync()Lcom/facebook/GraphRequestAsyncTask;</span>
+.end method
+
+.method private final sendCurrentAccessTokenChangedBroadcastIntent(Lcom/facebook/AccessToken;Lcom/facebook/AccessToken;)V
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Landroid/content/Intent;</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-class v2, Lcom/facebook/CurrentAccessTokenExpirationBroadcastReceiver;</span>
+<span class="">	invoke-direct {v0, v1, v2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V</span>
+<span class="">	const-string v1, "com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	check-cast p1, Landroid/os/Parcelable;</span>
+<span class="">	const-string v1, "com.facebook.sdk.EXTRA_OLD_ACCESS_TOKEN"</span>
+<span class="">	invoke-virtual {v0, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;</span>
+<span class="">	check-cast p2, Landroid/os/Parcelable;</span>
+<span class="">	const-string p1, "com.facebook.sdk.EXTRA_NEW_ACCESS_TOKEN"</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;</span>
+<span class="">	iget-object p1, p0, Lcom/facebook/AccessTokenManager;->localBroadcastManager:Landroidx/localbroadcastmanager/content/LocalBroadcastManager;</span>
+<span class="">	invoke-virtual {p1, v0}, Landroidx/localbroadcastmanager/content/LocalBroadcastManager;->sendBroadcast(Landroid/content/Intent;)Z</span>
+.end method
+
+.method private final setCurrentAccessToken(Lcom/facebook/AccessToken;Z)V
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/AccessTokenManager;->currentAccessTokenField:Lcom/facebook/AccessToken;</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/AccessTokenManager;->currentAccessTokenField:Lcom/facebook/AccessToken;</span>
+<span class="">	iget-object v1, p0, Lcom/facebook/AccessTokenManager;->tokenRefreshInProgress:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V</span>
+<span class="">	new-instance v1, Ljava/util/Date;</span>
+<span class="">	const-wide/16 v2, 0x0</span>
+<span class="">	invoke-direct {v1, v2, v3}, Ljava/util/Date;-><init>(J)V</span>
+<span class="">	iput-object v1, p0, Lcom/facebook/AccessTokenManager;->lastAttemptedTokenExtendDate:Ljava/util/Date;</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/AccessTokenManager;->accessTokenCache:Lcom/facebook/AccessTokenCache;</span>
+<span class="">	invoke-virtual {p2, p1}, Lcom/facebook/AccessTokenCache;->save(Lcom/facebook/AccessToken;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/AccessTokenManager;->accessTokenCache:Lcom/facebook/AccessTokenCache;</span>
+<span class="">	invoke-virtual {p2}, Lcom/facebook/AccessTokenCache;->clear()V</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-static {p2}, Lcom/facebook/internal/Utility;->clearFacebookCookies(Landroid/content/Context;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v0, p1}, Lcom/facebook/internal/Utility;->areObjectsEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-nez p2, :cond_2</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/facebook/AccessTokenManager;->sendCurrentAccessTokenChangedBroadcastIntent(Lcom/facebook/AccessToken;Lcom/facebook/AccessToken;)V</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/AccessTokenManager;->setTokenExpirationBroadcastAlarm()V</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private final setTokenExpirationBroadcastAlarm()V
+<span class="">	.locals 7</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v1, Lcom/facebook/AccessToken;->Companion:Lcom/facebook/AccessToken$Companion;</span>
+<span class="">	invoke-virtual {v1}, Lcom/facebook/AccessToken$Companion;->getCurrentAccessToken()Lcom/facebook/AccessToken;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "alarm"</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroid/app/AlarmManager;</span>
+<span class="">	sget-object v3, Lcom/facebook/AccessToken;->Companion:Lcom/facebook/AccessToken$Companion;</span>
+<span class="">	invoke-virtual {v3}, Lcom/facebook/AccessToken$Companion;->isCurrentAccessTokenActive()Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_3</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/facebook/AccessToken;->getExpires()Ljava/util/Date;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v3, :cond_3</span>
+<span class="">	if-nez v2, :cond_1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance v3, Landroid/content/Intent;</span>
+<span class="">	const-class v4, Lcom/facebook/CurrentAccessTokenExpirationBroadcastReceiver;</span>
+<span class="">	invoke-direct {v3, v0, v4}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V</span>
+<span class="">	const-string v4, "com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"</span>
+<span class="">	invoke-virtual {v3, v4}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	sget v4, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v5, 0x17</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	if-lt v4, v5, :cond_2</span>
+<span class="">	const/high16 v4, 0x4000000</span>
+<span class="">	invoke-static {v0, v6, v3, v4}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {v0, v6, v3, v6}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_1</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/facebook/AccessToken;->getExpires()Ljava/util/Date;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/util/Date;->getTime()J</span>
+<span class="">	move-result-wide v4</span>
+<span class="">	invoke-virtual {v2, v3, v4, v5, v0}, Landroid/app/AlarmManager;->set(IJLandroid/app/PendingIntent;)V</span>
+<span class="">	:goto_2</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:catch_0</span>
+<span class="">	:cond_3</span>
+.end method
+
+<span class="cov">.method private final shouldExtendAccessToken()Z</span>
+<span class="">	.locals 9</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/facebook/AccessTokenManager;->getCurrentAccessToken()Lcom/facebook/AccessToken;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	new-instance v2, Ljava/util/Date;</span>
+<span class="">	invoke-direct {v2}, Ljava/util/Date;-><init>()V</span>
+<span class="">	invoke-virtual {v2}, Ljava/util/Date;->getTime()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/AccessToken;->getSource()Lcom/facebook/AccessTokenSource;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v4}, Lcom/facebook/AccessTokenSource;->canExtendToken()Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_0</span>
+<span class="">	iget-object v4, p0, Lcom/facebook/AccessTokenManager;->lastAttemptedTokenExtendDate:Ljava/util/Date;</span>
+<span class="">	invoke-virtual {v4}, Ljava/util/Date;->getTime()J</span>
+<span class="">	move-result-wide v4</span>
+<span class="">	sub-long v4, v2, v4</span>
+<span class="">	const v6, 0x36ee80</span>
+<span class="">	int-to-long v6, v6</span>
+<span class="">	cmp-long v8, v4, v6</span>
+<span class="">	if-lez v8, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/AccessToken;->getLastRefresh()Ljava/util/Date;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/Date;->getTime()J</span>
+<span class="">	move-result-wide v4</span>
+<span class="">	sub-long/2addr v2, v4</span>
+<span class="">	const v0, 0x5265c00</span>
+<span class="">	int-to-long v4, v0</span>
+<span class="">	cmp-long v0, v2, v4</span>
+<span class="">	if-lez v0, :cond_0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return v1</span>
+.end method
+
+.method public final currentAccessTokenChanged()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/facebook/AccessTokenManager;->getCurrentAccessToken()Lcom/facebook/AccessToken;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/AccessTokenManager;->getCurrentAccessToken()Lcom/facebook/AccessToken;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {p0, v0, v1}, Lcom/facebook/AccessTokenManager;->sendCurrentAccessTokenChangedBroadcastIntent(Lcom/facebook/AccessToken;Lcom/facebook/AccessToken;)V</span>
+.end method
+
+<span class="cov">.method public final extendAccessTokenIfNeeded()V</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-direct {p0}, Lcom/facebook/AccessTokenManager;->shouldExtendAccessToken()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-nez v0, :cond_0</span>
+<span class="exec">	return-void</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/facebook/AccessTokenManager;->refreshCurrentAccessToken(Lcom/facebook/AccessToken$AccessTokenRefreshCallback;)V</span>
+.end method
+
+<span class="cov">.method public final getCurrentAccessToken()Lcom/facebook/AccessToken;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/AccessTokenManager;->currentAccessTokenField:Lcom/facebook/AccessToken;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public final loadCurrentAccessToken()Z</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/AccessTokenManager;->accessTokenCache:Lcom/facebook/AccessTokenCache;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/facebook/AccessTokenCache;->load()Lcom/facebook/AccessToken;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-direct {p0, v0, v1}, Lcom/facebook/AccessTokenManager;->setCurrentAccessToken(Lcom/facebook/AccessToken;Z)V</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="exec">	return v1</span>
+<span class="cov">	:cond_0</span>
+.end method
+
+.method public final refreshCurrentAccessToken(Lcom/facebook/AccessToken$AccessTokenRefreshCallback;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->myLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/AccessTokenManager;->refreshCurrentAccessTokenImpl(Lcom/facebook/AccessToken$AccessTokenRefreshCallback;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v0, Landroid/os/Handler;</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V</span>
+<span class="">	new-instance v1, Lcom/facebook/AccessTokenManager$refreshCurrentAccessToken$1;</span>
+<span class="">	invoke-direct {v1, p0, p1}, Lcom/facebook/AccessTokenManager$refreshCurrentAccessToken$1;-><init>(Lcom/facebook/AccessTokenManager;Lcom/facebook/AccessToken$AccessTokenRefreshCallback;)V</span>
+<span class="">	check-cast v1, Ljava/lang/Runnable;</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public final setCurrentAccessToken(Lcom/facebook/AccessToken;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	invoke-direct {p0, p1, v0}, Lcom/facebook/AccessTokenManager;->setCurrentAccessToken(Lcom/facebook/AccessToken;Z)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

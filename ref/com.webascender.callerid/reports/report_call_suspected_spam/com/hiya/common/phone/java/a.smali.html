@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.common.phone.java</a></li>
+        <li><i class="ico ico-class"></i> a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/hiya/common/phone/java/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private static final a:[C
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->toCharArray()[C</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sput-object v0, Lcom/hiya/common/phone/java/a;->a:[C</span>
+.end method
+
+.method public static final a([BZ)[C
+<span class="">	.locals 16</span>
+
+<span class="">	move-object/from16 v0, p0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	array-length v2, v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-nez v2, :cond_1</span>
+<span class="">	new-array v0, v1, [C</span>
+<span class="">	div-int/lit8 v3, v2, 0x3</span>
+<span class="">	:cond_1</span>
+<span class="">	mul-int/lit8 v3, v3, 0x3</span>
+<span class="">	add-int/lit8 v4, v2, -0x1</span>
+<span class="">	div-int/lit8 v5, v4, 0x3</span>
+<span class="">	add-int/lit8 v5, v5, 0x1</span>
+<span class="">	const/4 v6, 0x2</span>
+<span class="">	shl-int/2addr v5, v6</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	add-int/lit8 v7, v5, -0x1</span>
+<span class="">	div-int/lit8 v7, v7, 0x4c</span>
+<span class="">	shl-int/lit8 v7, v7, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	const/4 v7, 0x0</span>
+<span class="">	:cond_2</span>
+<span class="">	add-int/2addr v5, v7</span>
+<span class="">	:goto_1</span>
+<span class="">	new-array v7, v5, [C</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	const/4 v9, 0x0</span>
+<span class="">	const/4 v10, 0x0</span>
+<span class="">	const/16 v11, 0xa</span>
+<span class="">	:goto_2</span>
+<span class="">	if-ge v8, v3, :cond_4</span>
+<span class="">	add-int/lit8 v12, v8, 0x1</span>
+<span class="">	aget-byte v8, v0, v8</span>
+<span class="">	and-int/lit16 v8, v8, 0xff</span>
+<span class="">	shl-int/lit8 v8, v8, 0x10</span>
+<span class="">	add-int/lit8 v13, v12, 0x1</span>
+<span class="">	aget-byte v12, v0, v12</span>
+<span class="">	and-int/lit16 v12, v12, 0xff</span>
+<span class="">	shl-int/lit8 v12, v12, 0x8</span>
+<span class="">	or-int/2addr v8, v12</span>
+<span class="">	add-int/lit8 v12, v13, 0x1</span>
+<span class="">	aget-byte v13, v0, v13</span>
+<span class="">	and-int/lit16 v13, v13, 0xff</span>
+<span class="">	or-int/2addr v8, v13</span>
+<span class="">	add-int/lit8 v13, v9, 0x1</span>
+<span class="">	sget-object v14, Lcom/hiya/common/phone/java/a;->a:[C</span>
+<span class="">	ushr-int/lit8 v15, v8, 0x12</span>
+<span class="">	and-int/lit8 v15, v15, 0x3f</span>
+<span class="">	aget-char v15, v14, v15</span>
+<span class="">	aput-char v15, v7, v9</span>
+<span class="">	add-int/lit8 v9, v13, 0x1</span>
+<span class="">	ushr-int/lit8 v15, v8, 0xc</span>
+<span class="">	and-int/lit8 v15, v15, 0x3f</span>
+<span class="">	aget-char v15, v14, v15</span>
+<span class="">	aput-char v15, v7, v13</span>
+<span class="">	add-int/lit8 v13, v9, 0x1</span>
+<span class="">	ushr-int/lit8 v15, v8, 0x6</span>
+<span class="">	and-int/lit8 v15, v15, 0x3f</span>
+<span class="">	aget-char v15, v14, v15</span>
+<span class="">	aput-char v15, v7, v9</span>
+<span class="">	add-int/lit8 v9, v13, 0x1</span>
+<span class="">	and-int/lit8 v8, v8, 0x3f</span>
+<span class="">	aget-char v8, v14, v8</span>
+<span class="">	aput-char v8, v7, v13</span>
+<span class="">	if-eqz p1, :cond_3</span>
+<span class="">	add-int/lit8 v10, v10, 0x1</span>
+<span class="">	const/16 v8, 0x13</span>
+<span class="">	if-ne v10, v8, :cond_3</span>
+<span class="">	add-int/lit8 v8, v5, -0x2</span>
+<span class="">	if-ge v9, v8, :cond_3</span>
+<span class="">	add-int/lit8 v8, v9, 0x1</span>
+<span class="">	const/16 v10, 0xd</span>
+<span class="">	aput-char v10, v7, v9</span>
+<span class="">	add-int/lit8 v9, v8, 0x1</span>
+<span class="">	aput-char v11, v7, v8</span>
+<span class="">	const/4 v10, 0x0</span>
+<span class="">	move v8, v12</span>
+<span class="">	:cond_3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	sub-int/2addr v2, v3</span>
+<span class="">	:cond_4</span>
+<span class="">	if-lez v2, :cond_7</span>
+<span class="">	aget-byte v3, v0, v3</span>
+<span class="">	and-int/lit16 v3, v3, 0xff</span>
+<span class="">	shl-int/2addr v3, v11</span>
+<span class="">	if-ne v2, v6, :cond_5</span>
+<span class="">	aget-byte v0, v0, v4</span>
+<span class="">	and-int/lit16 v0, v0, 0xff</span>
+<span class="">	shl-int/lit8 v1, v0, 0x2</span>
+<span class="">	or-int v0, v3, v1</span>
+<span class="">	:cond_5</span>
+<span class="">	add-int/lit8 v1, v5, -0x4</span>
+<span class="">	sget-object v3, Lcom/hiya/common/phone/java/a;->a:[C</span>
+<span class="">	shr-int/lit8 v4, v0, 0xc</span>
+<span class="">	aget-char v4, v3, v4</span>
+<span class="">	aput-char v4, v7, v1</span>
+<span class="">	add-int/lit8 v1, v5, -0x3</span>
+<span class="">	ushr-int/lit8 v4, v0, 0x6</span>
+<span class="">	and-int/lit8 v4, v4, 0x3f</span>
+<span class="">	aget-char v4, v3, v4</span>
+<span class="">	aput-char v4, v7, v1</span>
+<span class="">	add-int/lit8 v1, v5, -0x2</span>
+<span class="">	const/16 v4, 0x3d</span>
+<span class="">	if-ne v2, v6, :cond_6</span>
+<span class="">	and-int/lit8 v0, v0, 0x3f</span>
+<span class="">	aget-char v0, v3, v0</span>
+<span class="">	goto :goto_3</span>
+<span class="">	const/16 v0, 0x3d</span>
+<span class="">	:cond_6</span>
+<span class="">	aput-char v0, v7, v1</span>
+<span class="">	:goto_3</span>
+<span class="">	add-int/lit8 v5, v5, -0x1</span>
+<span class="">	aput-char v4, v7, v5</span>
+<span class="">	:cond_7</span>
+.end method
+
+.method public static final b([BZ)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Ljava/lang/String;</span>
+<span class="">	invoke-static {p0, p1}, Lcom/hiya/common/phone/java/a;->a([BZ)[C</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-direct {v0, p0}, Ljava/lang/String;-><init>([C)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

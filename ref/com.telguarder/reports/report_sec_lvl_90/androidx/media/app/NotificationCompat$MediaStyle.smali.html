@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.media.app</a></li>
+        <li><i class="ico ico-class"></i> NotificationCompat$MediaStyle.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Landroidx/media/app/NotificationCompat$MediaStyle;
+.super Landroidx/core/app/NotificationCompat$Style;
+.source "NotificationCompat.java"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Landroidx/media/app/NotificationCompat;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x9
+name = "MediaStyle"
+.end annotation
+
+.field private static final MAX_MEDIA_BUTTONS:I = 0x5
+.field private static final MAX_MEDIA_BUTTONS_IN_COMPACT:I = 0x3
+.field  mActionsToShowInCompact:[I
+.field  mCancelButtonIntent:Landroid/app/PendingIntent;
+.field  mShowCancelButton:Z
+.field  mToken:Landroid/support/v4/media/session/MediaSessionCompat$Token;
+
+
+.method public constructor <init>()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/core/app/NotificationCompat$Style;-><init>()V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mActionsToShowInCompact:[I</span>
+.end method
+
+.method public constructor <init>(Landroidx/core/app/NotificationCompat$Builder;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"builder"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/core/app/NotificationCompat$Style;-><init>()V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mActionsToShowInCompact:[I</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/media/app/NotificationCompat$MediaStyle;->setBuilder(Landroidx/core/app/NotificationCompat$Builder;)V</span>
+.end method
+
+.method private generateMediaActionButton(Landroidx/core/app/NotificationCompat$Action;)Landroid/widget/RemoteViews;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"action"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p1}, Landroidx/core/app/NotificationCompat$Action;->getActionIntent()Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	new-instance v1, Landroid/widget/RemoteViews;</span>
+<span class="">	iget-object v2, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mBuilder:Landroidx/core/app/NotificationCompat$Builder;</span>
+<span class="">	iget-object v2, v2, Landroidx/core/app/NotificationCompat$Builder;->mContext:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	sget v3, Landroidx/media/R$layout;->notification_media_action:I</span>
+<span class="">	invoke-direct {v1, v2, v3}, Landroid/widget/RemoteViews;-><init>(Ljava/lang/String;I)V</span>
+<span class="">	sget v2, Landroidx/media/R$id;->action0:I</span>
+<span class="">	invoke-virtual {p1}, Landroidx/core/app/NotificationCompat$Action;->getIcon()I</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Landroid/widget/RemoteViews;->setImageViewResource(II)V</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	sget v0, Landroidx/media/R$id;->action0:I</span>
+<span class="">	invoke-virtual {p1}, Landroidx/core/app/NotificationCompat$Action;->getActionIntent()Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v1, v0, v2}, Landroid/widget/RemoteViews;->setOnClickPendingIntent(ILandroid/app/PendingIntent;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v2, 0xf</span>
+<span class="">	if-lt v0, v2, :cond_2</span>
+<span class="">	sget v0, Landroidx/media/R$id;->action0:I</span>
+<span class="">	invoke-virtual {p1}, Landroidx/core/app/NotificationCompat$Action;->getTitle()Ljava/lang/CharSequence;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v1, v0, p1}, Landroidx/media/app/NotificationCompat$Api15Impl;->setContentDescription(Landroid/widget/RemoteViews;ILjava/lang/CharSequence;)V</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public static getMediaSession(Landroid/app/Notification;)Landroid/support/v4/media/session/MediaSessionCompat$Token;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"notification"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0}, Landroidx/core/app/NotificationCompat;->getExtras(Landroid/app/Notification;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x15</span>
+<span class="">	const-string v2, "android.mediaSession"</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	invoke-virtual {p0, v2}, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	invoke-static {p0}, Landroid/support/v4/media/session/MediaSessionCompat$Token;->fromToken(Ljava/lang/Object;)Landroid/support/v4/media/session/MediaSessionCompat$Token;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0, v2}, Landroidx/core/app/BundleCompat;->getBinder(Landroid/os/Bundle;Ljava/lang/String;)Landroid/os/IBinder;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p0}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	invoke-virtual {v0, p0}, Landroid/os/Parcel;->setDataPosition(I)V</span>
+<span class="">	sget-object p0, Landroid/support/v4/media/session/MediaSessionCompat$Token;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+<span class="">	invoke-interface {p0, v0}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Landroid/support/v4/media/session/MediaSessionCompat$Token;</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public apply(Landroidx/core/app/NotificationBuilderWithBuilderAccessor;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"builder"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x15</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	invoke-interface {p1}, Landroidx/core/app/NotificationBuilderWithBuilderAccessor;->getBuilder()Landroid/app/Notification$Builder;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {}, Landroidx/media/app/NotificationCompat$Api21Impl;->createMediaStyle()Landroid/app/Notification$MediaStyle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mActionsToShowInCompact:[I</span>
+<span class="">	iget-object v2, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mToken:Landroid/support/v4/media/session/MediaSessionCompat$Token;</span>
+<span class="">	invoke-static {v0, v1, v2}, Landroidx/media/app/NotificationCompat$Api21Impl;->fillInMediaStyle(Landroid/app/Notification$MediaStyle;[ILandroid/support/v4/media/session/MediaSessionCompat$Token;)Landroid/app/Notification$MediaStyle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {p1, v0}, Landroidx/media/app/NotificationCompat$Api21Impl;->setMediaStyle(Landroid/app/Notification$Builder;Landroid/app/Notification$MediaStyle;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-boolean v0, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mShowCancelButton:Z</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-interface {p1}, Landroidx/core/app/NotificationBuilderWithBuilderAccessor;->getBuilder()Landroid/app/Notification$Builder;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/app/Notification$Builder;->setOngoing(Z)Landroid/app/Notification$Builder;</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method  generateBigContentView()Landroid/widget/RemoteViews;
+<span class="">	.locals 6</span>
+
+<span class="">	iget-object v0, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mBuilder:Landroidx/core/app/NotificationCompat$Builder;</span>
+<span class="">	iget-object v0, v0, Landroidx/core/app/NotificationCompat$Builder;->mActions:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/ArrayList;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x5</span>
+<span class="">	invoke-static {v0, v1}, Ljava/lang/Math;->min(II)I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p0, v0}, Landroidx/media/app/NotificationCompat$MediaStyle;->getBigContentViewLayoutResource(I)I</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-virtual {p0, v2, v1, v2}, Landroidx/media/app/NotificationCompat$MediaStyle;->applyStandardTemplate(ZIZ)Landroid/widget/RemoteViews;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	sget v3, Landroidx/media/R$id;->media_actions:I</span>
+<span class="">	invoke-virtual {v1, v3}, Landroid/widget/RemoteViews;->removeAllViews(I)V</span>
+<span class="">	if-lez v0, :cond_0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v3, v0, :cond_0</span>
+<span class="">	iget-object v4, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mBuilder:Landroidx/core/app/NotificationCompat$Builder;</span>
+<span class="">	iget-object v4, v4, Landroidx/core/app/NotificationCompat$Builder;->mActions:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v4, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	check-cast v4, Landroidx/core/app/NotificationCompat$Action;</span>
+<span class="">	invoke-direct {p0, v4}, Landroidx/media/app/NotificationCompat$MediaStyle;->generateMediaActionButton(Landroidx/core/app/NotificationCompat$Action;)Landroid/widget/RemoteViews;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	sget v5, Landroidx/media/R$id;->media_actions:I</span>
+<span class="">	invoke-virtual {v1, v5, v4}, Landroid/widget/RemoteViews;->addView(ILandroid/widget/RemoteViews;)V</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-boolean v0, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mShowCancelButton:Z</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	sget v0, Landroidx/media/R$id;->cancel_action:I</span>
+<span class="">	invoke-virtual {v1, v0, v2}, Landroid/widget/RemoteViews;->setViewVisibility(II)V</span>
+<span class="">	sget v0, Landroidx/media/R$id;->cancel_action:I</span>
+<span class="">	iget-object v2, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mBuilder:Landroidx/core/app/NotificationCompat$Builder;</span>
+<span class="">	iget-object v2, v2, Landroidx/core/app/NotificationCompat$Builder;->mContext:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	sget v3, Landroidx/media/R$integer;->cancel_button_image_alpha:I</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getInteger(I)I</span>
+<span class="">	move-result v2</span>
+<span class="">	const-string v3, "setAlpha"</span>
+<span class="">	invoke-virtual {v1, v0, v3, v2}, Landroid/widget/RemoteViews;->setInt(ILjava/lang/String;I)V</span>
+<span class="">	sget v0, Landroidx/media/R$id;->cancel_action:I</span>
+<span class="">	iget-object v2, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mCancelButtonIntent:Landroid/app/PendingIntent;</span>
+<span class="">	invoke-virtual {v1, v0, v2}, Landroid/widget/RemoteViews;->setOnClickPendingIntent(ILandroid/app/PendingIntent;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	sget v0, Landroidx/media/R$id;->cancel_action:I</span>
+<span class="">	const/16 v2, 0x8</span>
+<span class="">	invoke-virtual {v1, v0, v2}, Landroid/widget/RemoteViews;->setViewVisibility(II)V</span>
+<span class="">	:goto_1</span>
+.end method
+
+.method  generateContentView()Landroid/widget/RemoteViews;
+<span class="">	.locals 8</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/media/app/NotificationCompat$MediaStyle;->getContentViewLayoutResource()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-virtual {p0, v1, v0, v2}, Landroidx/media/app/NotificationCompat$MediaStyle;->applyStandardTemplate(ZIZ)Landroid/widget/RemoteViews;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v3, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mBuilder:Landroidx/core/app/NotificationCompat$Builder;</span>
+<span class="">	iget-object v3, v3, Landroidx/core/app/NotificationCompat$Builder;->mActions:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v3}, Ljava/util/ArrayList;->size()I</span>
+<span class="">	move-result v3</span>
+<span class="">	iget-object v4, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mActionsToShowInCompact:[I</span>
+<span class="">	if-nez v4, :cond_0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	array-length v4, v4</span>
+<span class="">	const/4 v5, 0x3</span>
+<span class="">	invoke-static {v4, v5}, Ljava/lang/Math;->min(II)I</span>
+<span class="">	move-result v4</span>
+<span class="">	:goto_0</span>
+<span class="">	sget v5, Landroidx/media/R$id;->media_actions:I</span>
+<span class="">	invoke-virtual {v0, v5}, Landroid/widget/RemoteViews;->removeAllViews(I)V</span>
+<span class="">	if-lez v4, :cond_2</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	if-ge v5, v4, :cond_2</span>
+<span class="">	if-ge v5, v3, :cond_1</span>
+<span class="">	iget-object v6, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mBuilder:Landroidx/core/app/NotificationCompat$Builder;</span>
+<span class="">	iget-object v6, v6, Landroidx/core/app/NotificationCompat$Builder;->mActions:Ljava/util/ArrayList;</span>
+<span class="">	iget-object v7, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mActionsToShowInCompact:[I</span>
+<span class="">	aget v7, v7, v5</span>
+<span class="">	invoke-virtual {v6, v7}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	check-cast v6, Landroidx/core/app/NotificationCompat$Action;</span>
+<span class="">	invoke-direct {p0, v6}, Landroidx/media/app/NotificationCompat$MediaStyle;->generateMediaActionButton(Landroidx/core/app/NotificationCompat$Action;)Landroid/widget/RemoteViews;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	sget v7, Landroidx/media/R$id;->media_actions:I</span>
+<span class="">	invoke-virtual {v0, v7, v6}, Landroid/widget/RemoteViews;->addView(ILandroid/widget/RemoteViews;)V</span>
+<span class="">	add-int/lit8 v5, v5, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	const/4 v4, 0x2</span>
+<span class="">	new-array v4, v4, [Ljava/lang/Object;</span>
+<span class="">	invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	aput-object v5, v4, v1</span>
+<span class="">	sub-int/2addr v3, v2</span>
+<span class="">	invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	aput-object v1, v4, v2</span>
+<span class="">	const-string v1, "setShowActionsInCompactView: action %d out of bounds (max %d)"</span>
+<span class="">	invoke-static {v1, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-boolean v2, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mShowCancelButton:Z</span>
+<span class="">	const/16 v3, 0x8</span>
+<span class="">	if-eqz v2, :cond_3</span>
+<span class="">	sget v2, Landroidx/media/R$id;->end_padder:I</span>
+<span class="">	invoke-virtual {v0, v2, v3}, Landroid/widget/RemoteViews;->setViewVisibility(II)V</span>
+<span class="">	sget v2, Landroidx/media/R$id;->cancel_action:I</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/widget/RemoteViews;->setViewVisibility(II)V</span>
+<span class="">	sget v1, Landroidx/media/R$id;->cancel_action:I</span>
+<span class="">	iget-object v2, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mCancelButtonIntent:Landroid/app/PendingIntent;</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Landroid/widget/RemoteViews;->setOnClickPendingIntent(ILandroid/app/PendingIntent;)V</span>
+<span class="">	sget v1, Landroidx/media/R$id;->cancel_action:I</span>
+<span class="">	iget-object v2, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mBuilder:Landroidx/core/app/NotificationCompat$Builder;</span>
+<span class="">	iget-object v2, v2, Landroidx/core/app/NotificationCompat$Builder;->mContext:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	sget v3, Landroidx/media/R$integer;->cancel_button_image_alpha:I</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getInteger(I)I</span>
+<span class="">	move-result v2</span>
+<span class="">	const-string v3, "setAlpha"</span>
+<span class="">	invoke-virtual {v0, v1, v3, v2}, Landroid/widget/RemoteViews;->setInt(ILjava/lang/String;I)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	sget v2, Landroidx/media/R$id;->end_padder:I</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/widget/RemoteViews;->setViewVisibility(II)V</span>
+<span class="">	sget v1, Landroidx/media/R$id;->cancel_action:I</span>
+<span class="">	invoke-virtual {v0, v1, v3}, Landroid/widget/RemoteViews;->setViewVisibility(II)V</span>
+<span class="">	:goto_2</span>
+.end method
+
+.method  getBigContentViewLayoutResource(I)I
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"actionCount"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	if-gt p1, v0, :cond_0</span>
+<span class="">	sget p1, Landroidx/media/R$layout;->notification_template_big_media_narrow:I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget p1, Landroidx/media/R$layout;->notification_template_big_media:I</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method  getContentViewLayoutResource()I
+<span class="">	.locals 1</span>
+
+<span class="">	sget v0, Landroidx/media/R$layout;->notification_template_media:I</span>
+.end method
+
+.method public makeBigContentView(Landroidx/core/app/NotificationBuilderWithBuilderAccessor;)Landroid/widget/RemoteViews;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"builder"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget p1, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v0, 0x15</span>
+<span class="">	if-lt p1, v0, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/media/app/NotificationCompat$MediaStyle;->generateBigContentView()Landroid/widget/RemoteViews;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public makeContentView(Landroidx/core/app/NotificationBuilderWithBuilderAccessor;)Landroid/widget/RemoteViews;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"builder"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget p1, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v0, 0x15</span>
+<span class="">	if-lt p1, v0, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/media/app/NotificationCompat$MediaStyle;->generateContentView()Landroid/widget/RemoteViews;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public setCancelButtonIntent(Landroid/app/PendingIntent;)Landroidx/media/app/NotificationCompat$MediaStyle;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"pendingIntent"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iput-object p1, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mCancelButtonIntent:Landroid/app/PendingIntent;</span>
+.end method
+
+.method public setMediaSession(Landroid/support/v4/media/session/MediaSessionCompat$Token;)Landroidx/media/app/NotificationCompat$MediaStyle;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"token"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iput-object p1, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mToken:Landroid/support/v4/media/session/MediaSessionCompat$Token;</span>
+.end method
+
+.method public varargs setShowActionsInCompactView([I)Landroidx/media/app/NotificationCompat$MediaStyle;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"actions"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iput-object p1, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mActionsToShowInCompact:[I</span>
+.end method
+
+.method public setShowCancelButton(Z)Landroidx/media/app/NotificationCompat$MediaStyle;
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"show"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x15</span>
+<span class="">	if-ge v0, v1, :cond_0</span>
+<span class="">	iput-boolean p1, p0, Landroidx/media/app/NotificationCompat$MediaStyle;->mShowCancelButton:Z</span>
+<span class="">	:cond_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

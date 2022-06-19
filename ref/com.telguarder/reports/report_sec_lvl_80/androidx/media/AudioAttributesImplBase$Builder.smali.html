@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.media</a></li>
+        <li><i class="ico ico-class"></i> AudioAttributesImplBase$Builder.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Landroidx/media/AudioAttributesImplBase$Builder;
+.super Ljava/lang/Object;
+.source "AudioAttributesImplBase.java"
+.implements Landroidx/media/AudioAttributesImpl$Builder;
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Landroidx/media/AudioAttributesImplBase;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x8
+name = "Builder"
+.end annotation
+
+.field private mContentType:I
+.field private mFlags:I
+.field private mLegacyStream:I
+.field private mUsage:I
+
+
+.method constructor <init>()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mUsage:I</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mFlags:I</span>
+<span class="">	const/4 v0, -0x1</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mLegacyStream:I</span>
+.end method
+
+.method constructor <init>(Landroidx/media/AudioAttributesCompat;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"aa"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mUsage:I</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mFlags:I</span>
+<span class="">	const/4 v0, -0x1</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mLegacyStream:I</span>
+<span class="">	invoke-virtual {p1}, Landroidx/media/AudioAttributesCompat;->getUsage()I</span>
+<span class="">	move-result v0</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mUsage:I</span>
+<span class="">	invoke-virtual {p1}, Landroidx/media/AudioAttributesCompat;->getContentType()I</span>
+<span class="">	move-result v0</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	invoke-virtual {p1}, Landroidx/media/AudioAttributesCompat;->getFlags()I</span>
+<span class="">	move-result v0</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mFlags:I</span>
+<span class="">	invoke-virtual {p1}, Landroidx/media/AudioAttributesCompat;->getRawLegacyStreamType()I</span>
+<span class="">	move-result p1</span>
+<span class="">	iput p1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mLegacyStream:I</span>
+.end method
+
+.method private setInternalLegacyStreamType(I)Landroidx/media/AudioAttributesImplBase$Builder;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"streamType"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	const/4 v1, 0x4</span>
+<span class="">	packed-switch p1, :pswitch_data_0</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "Invalid stream type "</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, " for AudioAttributesCompat"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "AudioAttributesCompat"</span>
+<span class="">	invoke-static {v1, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_0</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	iput v1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_2</span>
+<span class="">	iput v1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_3</span>
+<span class="">	iget v2, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mFlags:I</span>
+<span class="">	or-int/2addr v0, v2</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mFlags:I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_4</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	iget v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mFlags:I</span>
+<span class="">	or-int/2addr v0, v1</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mFlags:I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_5</span>
+<span class="">	iput v1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_6</span>
+<span class="">	iput v1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_7</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_8</span>
+<span class="">	iput v1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_9</span>
+<span class="">	:goto_0</span>
+<span class="">	iput v1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_a</span>
+<span class="">	iput v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-static {p1}, Landroidx/media/AudioAttributesImplBase;->usageForStreamType(I)I</span>
+<span class="">	move-result p1</span>
+<span class="">	iput p1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mUsage:I</span>
+<span class="">	nop</span>
+<span class="">	:pswitch_data_0</span>
+<span class="">	.packed-switch 0x0</span>
+<span class="">	:pswitch_a</span>
+<span class="">	:pswitch_9</span>
+<span class="">	:pswitch_8</span>
+<span class="">	:pswitch_7</span>
+<span class="">	:pswitch_6</span>
+<span class="">	:pswitch_5</span>
+<span class="">	:pswitch_4</span>
+<span class="">	:pswitch_3</span>
+<span class="">	:pswitch_2</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_0</span>
+<span class="">	.end packed-switch</span>
+.end method
+
+.method public build()Landroidx/media/AudioAttributesImpl;
+<span class="">	.locals 5</span>
+
+<span class="">	new-instance v0, Landroidx/media/AudioAttributesImplBase;</span>
+<span class="">	iget v1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	iget v2, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mFlags:I</span>
+<span class="">	iget v3, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mUsage:I</span>
+<span class="">	iget v4, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mLegacyStream:I</span>
+<span class="">	invoke-direct {v0, v1, v2, v3, v4}, Landroidx/media/AudioAttributesImplBase;-><init>(IIII)V</span>
+.end method
+
+.method public bridge synthetic setContentType(I)Landroidx/media/AudioAttributesImpl$Builder;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x1000</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"contentType"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroidx/media/AudioAttributesImplBase$Builder;->setContentType(I)Landroidx/media/AudioAttributesImplBase$Builder;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public setContentType(I)Landroidx/media/AudioAttributesImplBase$Builder;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"contentType"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	if-eq p1, v0, :cond_0</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	if-eq p1, v0, :cond_0</span>
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	if-eq p1, v0, :cond_0</span>
+<span class="">	const/4 v0, 0x4</span>
+<span class="">	if-eq p1, v0, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput p1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iput p1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mContentType:I</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public bridge synthetic setFlags(I)Landroidx/media/AudioAttributesImpl$Builder;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x1000</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"flags"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroidx/media/AudioAttributesImplBase$Builder;->setFlags(I)Landroidx/media/AudioAttributesImplBase$Builder;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public setFlags(I)Landroidx/media/AudioAttributesImplBase$Builder;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"flags"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	and-int/lit16 p1, p1, 0x3ff</span>
+<span class="">	iget v0, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mFlags:I</span>
+<span class="">	or-int/2addr p1, v0</span>
+<span class="">	iput p1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mFlags:I</span>
+.end method
+
+.method public bridge synthetic setLegacyStreamType(I)Landroidx/media/AudioAttributesImpl$Builder;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x1000</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"streamType"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroidx/media/AudioAttributesImplBase$Builder;->setLegacyStreamType(I)Landroidx/media/AudioAttributesImplBase$Builder;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public setLegacyStreamType(I)Landroidx/media/AudioAttributesImplBase$Builder;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"streamType"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/16 v0, 0xa</span>
+<span class="">	if-eq p1, v0, :cond_0</span>
+<span class="">	iput p1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mLegacyStream:I</span>
+<span class="">	invoke-direct {p0, p1}, Landroidx/media/AudioAttributesImplBase$Builder;->setInternalLegacyStreamType(I)Landroidx/media/AudioAttributesImplBase$Builder;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, "STREAM_ACCESSIBILITY is not a legacy stream type that was used for audio playback"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public bridge synthetic setUsage(I)Landroidx/media/AudioAttributesImpl$Builder;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x1000</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"usage"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroidx/media/AudioAttributesImplBase$Builder;->setUsage(I)Landroidx/media/AudioAttributesImplBase$Builder;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public setUsage(I)Landroidx/media/AudioAttributesImplBase$Builder;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/MethodParameters;</span>
+<span class="">	accessFlags = {</span>
+<span class="">	0x0</span>
+<span class="">	}</span>
+<span class="">	names = {</span>
+<span class="">	"usage"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	packed-switch p1, :pswitch_data_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput p1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mUsage:I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_0</span>
+<span class="">	const/16 p1, 0xc</span>
+<span class="">	iput p1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mUsage:I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_1</span>
+<span class="">	iput p1, p0, Landroidx/media/AudioAttributesImplBase$Builder;->mUsage:I</span>
+<span class="">	:goto_0</span>
+<span class="">	nop</span>
+<span class="">	:pswitch_data_0</span>
+<span class="">	.packed-switch 0x0</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_0</span>
+<span class="">	.end packed-switch</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.browser.browseractions</a></li>
+        <li><i class="ico ico-class"></i> BrowserServiceFileProvider.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Landroidx/browser/browseractions/BrowserServiceFileProvider;
+.super Landroidx/core/content/FileProvider;
+.source "BrowserServiceFileProvider.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/browser/browseractions/BrowserServiceFileProvider$FileSaveTask;,
+Landroidx/browser/browseractions/BrowserServiceFileProvider$FileCleanupTask;
+}
+.end annotation
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+.field private static final AUTHORITY_SUFFIX:Ljava/lang/String; = ".image_provider"
+.field private static final CLIP_DATA_LABEL:Ljava/lang/String; = "image_provider_uris"
+.field private static final CONTENT_SCHEME:Ljava/lang/String; = "content"
+.field private static final FILE_EXTENSION:Ljava/lang/String; = ".png"
+.field private static final FILE_SUB_DIR:Ljava/lang/String; = "image_provider"
+.field private static final FILE_SUB_DIR_NAME:Ljava/lang/String; = "image_provider_images/"
+.field private static final LAST_CLEANUP_TIME_KEY:Ljava/lang/String; = "last_cleanup_time"
+.field private static final TAG:Ljava/lang/String; = "BrowserServiceFP"
+.field static sFileCleanupLock:Ljava/lang/Object;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Ljava/lang/Object;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	sput-object v0, Landroidx/browser/browseractions/BrowserServiceFileProvider;->sFileCleanupLock:Ljava/lang/Object;</span>
+.end method
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/core/content/FileProvider;-><init>()V</span>
+.end method
+
+.method private static generateUri(Landroid/content/Context;Ljava/lang/String;)Landroid/net/Uri;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "image_provider_images/"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, ".png"</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance v0, Landroid/net/Uri$Builder;</span>
+<span class="">	invoke-direct {v0}, Landroid/net/Uri$Builder;-><init>()V</span>
+<span class="">	const-string v1, "content"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/net/Uri$Builder;->scheme(Ljava/lang/String;)Landroid/net/Uri$Builder;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p0, ".image_provider"</span>
+<span class="">	invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {v0, p0}, Landroid/net/Uri$Builder;->authority(Ljava/lang/String;)Landroid/net/Uri$Builder;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, p1}, Landroid/net/Uri$Builder;->path(Ljava/lang/String;)Landroid/net/Uri$Builder;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static grantReadPermission(Landroid/content/Intent;Ljava/util/List;Landroid/content/Context;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Intent;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroid/net/Uri;",</span>
+<span class="">	">;",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroid/net/Uri;</span>
+<span class="">	const-string v2, "image_provider_uris"</span>
+<span class="">	invoke-static {p2, v2, v1}, Landroid/content/ClipData;->newUri(Landroid/content/ContentResolver;Ljava/lang/CharSequence;Landroid/net/Uri;)Landroid/content/ClipData;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-ge v0, v1, :cond_1</span>
+<span class="">	new-instance v1, Landroid/content/ClipData$Item;</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroid/net/Uri;</span>
+<span class="">	invoke-direct {v1, v2}, Landroid/content/ClipData$Item;-><init>(Landroid/net/Uri;)V</span>
+<span class="">	invoke-virtual {p2, v1}, Landroid/content/ClipData;->addItem(Landroid/content/ClipData$Item;)V</span>
+<span class="">	add-int/lit8 v0, v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p0, p2}, Landroid/content/Intent;->setClipData(Landroid/content/ClipData;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	:goto_1</span>
+.end method
+
+.method public static loadBitmap(Landroid/content/ContentResolver;Landroid/net/Uri;)Lcom/google/common/util/concurrent/ListenableFuture;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/ContentResolver;",</span>
+<span class="">	"Landroid/net/Uri;",</span>
+<span class="">	")",</span>
+<span class="">	"Lcom/google/common/util/concurrent/ListenableFuture<",</span>
+<span class="">	"Landroid/graphics/Bitmap;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Landroidx/concurrent/futures/ResolvableFuture;->create()Landroidx/concurrent/futures/ResolvableFuture;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v1, Landroid/os/AsyncTask;->THREAD_POOL_EXECUTOR:Ljava/util/concurrent/Executor;</span>
+<span class="">	new-instance v2, Landroidx/browser/browseractions/BrowserServiceFileProvider$1;</span>
+<span class="">	invoke-direct {v2, p0, p1, v0}, Landroidx/browser/browseractions/BrowserServiceFileProvider$1;-><init>(Landroid/content/ContentResolver;Landroid/net/Uri;Landroidx/concurrent/futures/ResolvableFuture;)V</span>
+<span class="">	invoke-interface {v1, v2}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V</span>
+.end method
+
+.method public static saveBitmap(Landroid/content/Context;Landroid/graphics/Bitmap;Ljava/lang/String;I)Landroidx/concurrent/futures/ResolvableFuture;
+<span class="">	.locals 7</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Landroid/graphics/Bitmap;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"I)",</span>
+<span class="">	"Landroidx/concurrent/futures/ResolvableFuture<",</span>
+<span class="">	"Landroid/net/Uri;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p2, "_"</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-static {p3}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {p0, v3}, Landroidx/browser/browseractions/BrowserServiceFileProvider;->generateUri(Landroid/content/Context;Ljava/lang/String;)Landroid/net/Uri;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-static {}, Landroidx/concurrent/futures/ResolvableFuture;->create()Landroidx/concurrent/futures/ResolvableFuture;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	new-instance p3, Landroidx/browser/browseractions/BrowserServiceFileProvider$FileSaveTask;</span>
+<span class="">	move-object v1, p3</span>
+<span class="">	move-object v2, p0</span>
+<span class="">	move-object v4, p1</span>
+<span class="">	move-object v6, p2</span>
+<span class="">	invoke-direct/range {v1 .. v6}, Landroidx/browser/browseractions/BrowserServiceFileProvider$FileSaveTask;-><init>(Landroid/content/Context;Ljava/lang/String;Landroid/graphics/Bitmap;Landroid/net/Uri;Landroidx/concurrent/futures/ResolvableFuture;)V</span>
+<span class="">	sget-object p0, Landroid/os/AsyncTask;->THREAD_POOL_EXECUTOR:Ljava/util/concurrent/Executor;</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	new-array p1, p1, [Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p3, p0, p1}, Landroidx/browser/browseractions/BrowserServiceFileProvider$FileSaveTask;->executeOnExecutor(Ljava/util/concurrent/Executor;[Ljava/lang/Object;)Landroid/os/AsyncTask;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

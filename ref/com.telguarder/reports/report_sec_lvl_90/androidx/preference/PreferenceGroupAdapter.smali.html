@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.preference</a></li>
+        <li><i class="ico ico-class"></i> PreferenceGroupAdapter.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Landroidx/preference/PreferenceGroupAdapter;
+.super Landroidx/recyclerview/widget/RecyclerView$Adapter;
+.source "PreferenceGroupAdapter.java"
+.implements Landroidx/preference/Preference$OnPreferenceChangeInternalListener;
+.implements Landroidx/preference/PreferenceGroup$PreferencePositionCallback;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/preference/PreferenceGroupAdapter$PreferenceResourceDescriptor;
+}
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Landroidx/recyclerview/widget/RecyclerView$Adapter<",
+"Landroidx/preference/PreferenceViewHolder;",
+">;",
+"Landroidx/preference/Preference$OnPreferenceChangeInternalListener;",
+"Landroidx/preference/PreferenceGroup$PreferencePositionCallback;"
+}
+.end annotation
+
+.field private mHandler:Landroid/os/Handler;
+.field private mPreferenceGroup:Landroidx/preference/PreferenceGroup;
+.field private mPreferenceResourceDescriptors:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Landroidx/preference/PreferenceGroupAdapter$PreferenceResourceDescriptor;",
+">;"
+}
+.end annotation
+.end field
+.field private mPreferences:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Landroidx/preference/Preference;",
+">;"
+}
+.end annotation
+.end field
+.field private mSyncRunnable:Ljava/lang/Runnable;
+.field private mVisiblePreferences:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Landroidx/preference/Preference;",
+">;"
+}
+.end annotation
+.end field
+
+
+.method public constructor <init>(Landroidx/preference/PreferenceGroup;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/recyclerview/widget/RecyclerView$Adapter;-><init>()V</span>
+<span class="">	new-instance v0, Landroidx/preference/PreferenceGroupAdapter$1;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/preference/PreferenceGroupAdapter$1;-><init>(Landroidx/preference/PreferenceGroupAdapter;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mSyncRunnable:Ljava/lang/Runnable;</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceGroup:Landroidx/preference/PreferenceGroup;</span>
+<span class="">	new-instance p1, Landroid/os/Handler;</span>
+<span class="">	invoke-direct {p1}, Landroid/os/Handler;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mHandler:Landroid/os/Handler;</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceGroup:Landroidx/preference/PreferenceGroup;</span>
+<span class="">	invoke-virtual {p1, p0}, Landroidx/preference/PreferenceGroup;->setOnPreferenceChangeInternalListener(Landroidx/preference/Preference$OnPreferenceChangeInternalListener;)V</span>
+<span class="">	new-instance p1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferences:Ljava/util/List;</span>
+<span class="">	new-instance p1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mVisiblePreferences:Ljava/util/List;</span>
+<span class="">	new-instance p1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceResourceDescriptors:Ljava/util/List;</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceGroup:Landroidx/preference/PreferenceGroup;</span>
+<span class="">	instance-of v0, p1, Landroidx/preference/PreferenceScreen;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	check-cast p1, Landroidx/preference/PreferenceScreen;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/PreferenceScreen;->shouldUseGeneratedIds()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/preference/PreferenceGroupAdapter;->setHasStableIds(Z)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/preference/PreferenceGroupAdapter;->setHasStableIds(Z)V</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceGroupAdapter;->updatePreferences()V</span>
+.end method
+
+.method private createExpandButton(Landroidx/preference/PreferenceGroup;Ljava/util/List;)Landroidx/preference/ExpandButton;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroidx/preference/PreferenceGroup;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/preference/Preference;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Landroidx/preference/ExpandButton;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Landroidx/preference/ExpandButton;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/PreferenceGroup;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/PreferenceGroup;->getId()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {v0, v1, p2, v2, v3}, Landroidx/preference/ExpandButton;-><init>(Landroid/content/Context;Ljava/util/List;J)V</span>
+<span class="">	new-instance p2, Landroidx/preference/PreferenceGroupAdapter$3;</span>
+<span class="">	invoke-direct {p2, p0, p1}, Landroidx/preference/PreferenceGroupAdapter$3;-><init>(Landroidx/preference/PreferenceGroupAdapter;Landroidx/preference/PreferenceGroup;)V</span>
+<span class="">	invoke-virtual {v0, p2}, Landroidx/preference/ExpandButton;->setOnPreferenceClickListener(Landroidx/preference/Preference$OnPreferenceClickListener;)V</span>
+.end method
+
+.method private createVisiblePreferencesList(Landroidx/preference/PreferenceGroup;)Ljava/util/List;
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroidx/preference/PreferenceGroup;",</span>
+<span class="">	")",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/preference/Preference;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/PreferenceGroup;->getPreferenceCount()I</span>
+<span class="">	move-result v2</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v3, v2, :cond_a</span>
+<span class="">	invoke-virtual {p1, v3}, Landroidx/preference/PreferenceGroup;->getPreference(I)Landroidx/preference/Preference;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v5}, Landroidx/preference/Preference;->isVisible()Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-nez v6, :cond_0</span>
+<span class="">	goto/16 :goto_7</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0, p1}, Landroidx/preference/PreferenceGroupAdapter;->isGroupExpandable(Landroidx/preference/PreferenceGroup;)Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-eqz v6, :cond_2</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/PreferenceGroup;->getInitialExpandedChildrenCount()I</span>
+<span class="">	move-result v6</span>
+<span class="">	if-ge v4, v6, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-interface {v1, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-interface {v0, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:goto_2</span>
+<span class="">	instance-of v6, v5, Landroidx/preference/PreferenceGroup;</span>
+<span class="">	if-nez v6, :cond_3</span>
+<span class="">	add-int/lit8 v4, v4, 0x1</span>
+<span class="">	goto :goto_7</span>
+<span class="">	:cond_3</span>
+<span class="">	check-cast v5, Landroidx/preference/PreferenceGroup;</span>
+<span class="">	invoke-virtual {v5}, Landroidx/preference/PreferenceGroup;->isOnSameScreenAsChildren()Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-nez v6, :cond_4</span>
+<span class="">	goto :goto_7</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-direct {p0, p1}, Landroidx/preference/PreferenceGroupAdapter;->isGroupExpandable(Landroidx/preference/PreferenceGroup;)Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-eqz v6, :cond_6</span>
+<span class="">	invoke-direct {p0, v5}, Landroidx/preference/PreferenceGroupAdapter;->isGroupExpandable(Landroidx/preference/PreferenceGroup;)Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-nez v6, :cond_5</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_5</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string v0, "Nesting an expandable group inside of another expandable group is not supported!"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:goto_3</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-direct {p0, v5}, Landroidx/preference/PreferenceGroupAdapter;->createVisiblePreferencesList(Landroidx/preference/PreferenceGroup;)Ljava/util/List;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-interface {v5}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	:goto_4</span>
+<span class="">	invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-eqz v6, :cond_9</span>
+<span class="">	invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	check-cast v6, Landroidx/preference/Preference;</span>
+<span class="">	invoke-direct {p0, p1}, Landroidx/preference/PreferenceGroupAdapter;->isGroupExpandable(Landroidx/preference/PreferenceGroup;)Z</span>
+<span class="">	move-result v7</span>
+<span class="">	if-eqz v7, :cond_8</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/PreferenceGroup;->getInitialExpandedChildrenCount()I</span>
+<span class="">	move-result v7</span>
+<span class="">	if-ge v4, v7, :cond_7</span>
+<span class="">	goto :goto_5</span>
+<span class="">	:cond_7</span>
+<span class="">	invoke-interface {v1, v6}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_6</span>
+<span class="">	:goto_5</span>
+<span class="">	:cond_8</span>
+<span class="">	invoke-interface {v0, v6}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:goto_6</span>
+<span class="">	add-int/lit8 v4, v4, 0x1</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:goto_7</span>
+<span class="">	:cond_9</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_a</span>
+<span class="">	invoke-direct {p0, p1}, Landroidx/preference/PreferenceGroupAdapter;->isGroupExpandable(Landroidx/preference/PreferenceGroup;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_b</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/PreferenceGroup;->getInitialExpandedChildrenCount()I</span>
+<span class="">	move-result v2</span>
+<span class="">	if-le v4, v2, :cond_b</span>
+<span class="">	invoke-direct {p0, p1, v1}, Landroidx/preference/PreferenceGroupAdapter;->createExpandButton(Landroidx/preference/PreferenceGroup;Ljava/util/List;)Landroidx/preference/ExpandButton;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:cond_b</span>
+.end method
+
+.method private flattenPreferenceGroup(Ljava/util/List;Landroidx/preference/PreferenceGroup;)V
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/preference/Preference;",</span>
+<span class="">	">;",</span>
+<span class="">	"Landroidx/preference/PreferenceGroup;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p2}, Landroidx/preference/PreferenceGroup;->sortPreferences()V</span>
+<span class="">	invoke-virtual {p2}, Landroidx/preference/PreferenceGroup;->getPreferenceCount()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v1, v0, :cond_2</span>
+<span class="">	invoke-virtual {p2, v1}, Landroidx/preference/PreferenceGroup;->getPreference(I)Landroidx/preference/Preference;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {p1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	new-instance v3, Landroidx/preference/PreferenceGroupAdapter$PreferenceResourceDescriptor;</span>
+<span class="">	invoke-direct {v3, v2}, Landroidx/preference/PreferenceGroupAdapter$PreferenceResourceDescriptor;-><init>(Landroidx/preference/Preference;)V</span>
+<span class="">	iget-object v4, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceResourceDescriptors:Ljava/util/List;</span>
+<span class="">	invoke-interface {v4, v3}, Ljava/util/List;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-nez v4, :cond_0</span>
+<span class="">	iget-object v4, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceResourceDescriptors:Ljava/util/List;</span>
+<span class="">	invoke-interface {v4, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:cond_0</span>
+<span class="">	instance-of v3, v2, Landroidx/preference/PreferenceGroup;</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	move-object v3, v2</span>
+<span class="">	check-cast v3, Landroidx/preference/PreferenceGroup;</span>
+<span class="">	invoke-virtual {v3}, Landroidx/preference/PreferenceGroup;->isOnSameScreenAsChildren()Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_1</span>
+<span class="">	invoke-direct {p0, p1, v3}, Landroidx/preference/PreferenceGroupAdapter;->flattenPreferenceGroup(Ljava/util/List;Landroidx/preference/PreferenceGroup;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v2, p0}, Landroidx/preference/Preference;->setOnPreferenceChangeInternalListener(Landroidx/preference/Preference$OnPreferenceChangeInternalListener;)V</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private isGroupExpandable(Landroidx/preference/PreferenceGroup;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p1}, Landroidx/preference/PreferenceGroup;->getInitialExpandedChildrenCount()I</span>
+<span class="">	move-result p1</span>
+<span class="">	const v0, 0x7fffffff</span>
+<span class="">	if-eq p1, v0, :cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public getItem(I)Landroidx/preference/Preference;
+<span class="">	.locals 1</span>
+
+<span class="">	if-ltz p1, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceGroupAdapter;->getItemCount()I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-lt p1, v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mVisiblePreferences:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroidx/preference/Preference;</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public getItemCount()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mVisiblePreferences:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public getItemId(I)J
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceGroupAdapter;->hasStableIds()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-wide/16 v0, -0x1</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/preference/PreferenceGroupAdapter;->getItem(I)Landroidx/preference/Preference;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/Preference;->getId()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public getItemViewType(I)I
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroidx/preference/PreferenceGroupAdapter;->getItem(I)Landroidx/preference/Preference;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance v0, Landroidx/preference/PreferenceGroupAdapter$PreferenceResourceDescriptor;</span>
+<span class="">	invoke-direct {v0, p1}, Landroidx/preference/PreferenceGroupAdapter$PreferenceResourceDescriptor;-><init>(Landroidx/preference/Preference;)V</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceResourceDescriptors:Ljava/util/List;</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/List;->indexOf(Ljava/lang/Object;)I</span>
+<span class="">	move-result p1</span>
+<span class="">	const/4 v1, -0x1</span>
+<span class="">	if-eq p1, v1, :cond_0</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceResourceDescriptors:Ljava/util/List;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/List;->size()I</span>
+<span class="">	move-result p1</span>
+<span class="">	iget-object v1, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceResourceDescriptors:Ljava/util/List;</span>
+<span class="">	invoke-interface {v1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+.end method
+
+.method public getPreferenceAdapterPosition(Landroidx/preference/Preference;)I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mVisiblePreferences:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v1, v0, :cond_1</span>
+<span class="">	iget-object v2, p0, Landroidx/preference/PreferenceGroupAdapter;->mVisiblePreferences:Ljava/util/List;</span>
+<span class="">	invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroidx/preference/Preference;</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v2, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	:cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const/4 p1, -0x1</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public getPreferenceAdapterPosition(Ljava/lang/String;)I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mVisiblePreferences:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v1, v0, :cond_1</span>
+<span class="">	iget-object v2, p0, Landroidx/preference/PreferenceGroupAdapter;->mVisiblePreferences:Ljava/util/List;</span>
+<span class="">	invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroidx/preference/Preference;</span>
+<span class="">	invoke-virtual {v2}, Landroidx/preference/Preference;->getKey()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {p1, v2}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	:cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const/4 p1, -0x1</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public onBindViewHolder(Landroidx/preference/PreferenceViewHolder;I)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p2}, Landroidx/preference/PreferenceGroupAdapter;->getItem(I)Landroidx/preference/Preference;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2, p1}, Landroidx/preference/Preference;->onBindViewHolder(Landroidx/preference/PreferenceViewHolder;)V</span>
+.end method
+
+.method public bridge synthetic onBindViewHolder(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V
+<span class="">	.locals 0</span>
+
+<span class="">	check-cast p1, Landroidx/preference/PreferenceViewHolder;</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Landroidx/preference/PreferenceGroupAdapter;->onBindViewHolder(Landroidx/preference/PreferenceViewHolder;I)V</span>
+.end method
+
+.method public onCreateViewHolder(Landroid/view/ViewGroup;I)Landroidx/preference/PreferenceViewHolder;
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceResourceDescriptors:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p2}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Landroidx/preference/PreferenceGroupAdapter$PreferenceResourceDescriptor;</span>
+<span class="">	invoke-virtual {p1}, Landroid/view/ViewGroup;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1}, Landroid/view/ViewGroup;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	sget-object v2, Landroidx/preference/R$styleable;->BackgroundStyle:[I</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-virtual {v1, v3, v2}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	sget v2, Landroidx/preference/R$styleable;->BackgroundStyle_android_selectableItemBackground:I</span>
+<span class="">	invoke-virtual {v1, v2}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/view/ViewGroup;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const v3, 0x1080062</span>
+<span class="">	invoke-static {v2, v3}, Landroidx/appcompat/content/res/AppCompatResources;->getDrawable(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/content/res/TypedArray;->recycle()V</span>
+<span class="">	iget v1, p2, Landroidx/preference/PreferenceGroupAdapter$PreferenceResourceDescriptor;->mLayoutResId:I</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-virtual {v0, v1, p1, v3}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	invoke-static {p1, v2}, Landroidx/core/view/ViewCompat;->setBackground(Landroid/view/View;Landroid/graphics/drawable/Drawable;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	const v1, 0x1020018</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroid/view/ViewGroup;</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	iget v2, p2, Landroidx/preference/PreferenceGroupAdapter$PreferenceResourceDescriptor;->mWidgetLayoutResId:I</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	iget p2, p2, Landroidx/preference/PreferenceGroupAdapter$PreferenceResourceDescriptor;->mWidgetLayoutResId:I</span>
+<span class="">	invoke-virtual {v0, p2, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	const/16 p2, 0x8</span>
+<span class="">	invoke-virtual {v1, p2}, Landroid/view/ViewGroup;->setVisibility(I)V</span>
+<span class="">	:cond_3</span>
+<span class="">	:goto_0</span>
+<span class="">	new-instance p2, Landroidx/preference/PreferenceViewHolder;</span>
+<span class="">	invoke-direct {p2, p1}, Landroidx/preference/PreferenceViewHolder;-><init>(Landroid/view/View;)V</span>
+.end method
+
+.method public bridge synthetic onCreateViewHolder(Landroid/view/ViewGroup;I)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p1, p2}, Landroidx/preference/PreferenceGroupAdapter;->onCreateViewHolder(Landroid/view/ViewGroup;I)Landroidx/preference/PreferenceViewHolder;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public onPreferenceChange(Landroidx/preference/Preference;)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mVisiblePreferences:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/List;->indexOf(Ljava/lang/Object;)I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, -0x1</span>
+<span class="">	if-eq v0, v1, :cond_0</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Landroidx/preference/PreferenceGroupAdapter;->notifyItemChanged(ILjava/lang/Object;)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public onPreferenceHierarchyChange(Landroidx/preference/Preference;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mHandler:Landroid/os/Handler;</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mSyncRunnable:Ljava/lang/Runnable;</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceGroupAdapter;->mHandler:Landroid/os/Handler;</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mSyncRunnable:Ljava/lang/Runnable;</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z</span>
+.end method
+
+.method public onPreferenceVisibilityChange(Landroidx/preference/Preference;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroidx/preference/PreferenceGroupAdapter;->onPreferenceHierarchyChange(Landroidx/preference/Preference;)V</span>
+.end method
+
+.method  updatePreferences()V
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferences:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroidx/preference/Preference;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-virtual {v1, v2}, Landroidx/preference/Preference;->setOnPreferenceChangeInternalListener(Landroidx/preference/Preference$OnPreferenceChangeInternalListener;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferences:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v1, v0}, Ljava/util/ArrayList;-><init>(I)V</span>
+<span class="">	iput-object v1, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferences:Ljava/util/List;</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceGroup:Landroidx/preference/PreferenceGroup;</span>
+<span class="">	invoke-direct {p0, v1, v0}, Landroidx/preference/PreferenceGroupAdapter;->flattenPreferenceGroup(Ljava/util/List;Landroidx/preference/PreferenceGroup;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mVisiblePreferences:Ljava/util/List;</span>
+<span class="">	iget-object v1, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceGroup:Landroidx/preference/PreferenceGroup;</span>
+<span class="">	invoke-direct {p0, v1}, Landroidx/preference/PreferenceGroupAdapter;->createVisiblePreferencesList(Landroidx/preference/PreferenceGroup;)Ljava/util/List;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iput-object v1, p0, Landroidx/preference/PreferenceGroupAdapter;->mVisiblePreferences:Ljava/util/List;</span>
+<span class="">	iget-object v2, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferenceGroup:Landroidx/preference/PreferenceGroup;</span>
+<span class="">	invoke-virtual {v2}, Landroidx/preference/PreferenceGroup;->getPreferenceManager()Landroidx/preference/PreferenceManager;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v2}, Landroidx/preference/PreferenceManager;->getPreferenceComparisonCallback()Landroidx/preference/PreferenceManager$PreferenceComparisonCallback;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	invoke-virtual {v2}, Landroidx/preference/PreferenceManager;->getPreferenceComparisonCallback()Landroidx/preference/PreferenceManager$PreferenceComparisonCallback;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	new-instance v3, Landroidx/preference/PreferenceGroupAdapter$2;</span>
+<span class="">	invoke-direct {v3, p0, v0, v1, v2}, Landroidx/preference/PreferenceGroupAdapter$2;-><init>(Landroidx/preference/PreferenceGroupAdapter;Ljava/util/List;Ljava/util/List;Landroidx/preference/PreferenceManager$PreferenceComparisonCallback;)V</span>
+<span class="">	invoke-static {v3}, Landroidx/recyclerview/widget/DiffUtil;->calculateDiff(Landroidx/recyclerview/widget/DiffUtil$Callback;)Landroidx/recyclerview/widget/DiffUtil$DiffResult;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p0}, Landroidx/recyclerview/widget/DiffUtil$DiffResult;->dispatchUpdatesTo(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceGroupAdapter;->notifyDataSetChanged()V</span>
+<span class="">	:goto_1</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceGroupAdapter;->mPreferences:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroidx/preference/Preference;</span>
+<span class="">	invoke-virtual {v1}, Landroidx/preference/Preference;->clearWasDetached()V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

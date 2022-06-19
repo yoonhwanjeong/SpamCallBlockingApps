@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.palette.graphics</a></li>
+        <li><i class="ico ico-class"></i> ColorCutQuantizer$Vbox.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Landroidx/palette/graphics/ColorCutQuantizer$Vbox;
+.super Ljava/lang/Object;
+.source "ColorCutQuantizer.java"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Landroidx/palette/graphics/ColorCutQuantizer;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x2
+name = "Vbox"
+.end annotation
+
+.field private mLowerIndex:I
+.field private mMaxBlue:I
+.field private mMaxGreen:I
+.field private mMaxRed:I
+.field private mMinBlue:I
+.field private mMinGreen:I
+.field private mMinRed:I
+.field private mPopulation:I
+.field private mUpperIndex:I
+.field final synthetic this$0:Landroidx/palette/graphics/ColorCutQuantizer;
+
+
+.method constructor <init>(Landroidx/palette/graphics/ColorCutQuantizer;II)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->this$0:Landroidx/palette/graphics/ColorCutQuantizer;</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput p2, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mLowerIndex:I</span>
+<span class="">	iput p3, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mUpperIndex:I</span>
+<span class="">	invoke-virtual {p0}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->fitBox()V</span>
+.end method
+
+.method final canSplit()Z
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->getColorCount()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	if-le v0, v1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method final findSplitPoint()I
+<span class="">	.locals 7</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->getLongestColorDimension()I</span>
+<span class="">	move-result v0</span>
+<span class="">	iget-object v1, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->this$0:Landroidx/palette/graphics/ColorCutQuantizer;</span>
+<span class="">	iget-object v1, v1, Landroidx/palette/graphics/ColorCutQuantizer;->mColors:[I</span>
+<span class="">	iget-object v2, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->this$0:Landroidx/palette/graphics/ColorCutQuantizer;</span>
+<span class="">	iget-object v2, v2, Landroidx/palette/graphics/ColorCutQuantizer;->mHistogram:[I</span>
+<span class="">	iget v3, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mLowerIndex:I</span>
+<span class="">	iget v4, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mUpperIndex:I</span>
+<span class="">	invoke-static {v1, v0, v3, v4}, Landroidx/palette/graphics/ColorCutQuantizer;->modifySignificantOctet([IIII)V</span>
+<span class="">	iget v3, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mLowerIndex:I</span>
+<span class="">	iget v4, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mUpperIndex:I</span>
+<span class="">	add-int/lit8 v4, v4, 0x1</span>
+<span class="">	invoke-static {v1, v3, v4}, Ljava/util/Arrays;->sort([III)V</span>
+<span class="">	iget v3, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mLowerIndex:I</span>
+<span class="">	iget v4, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mUpperIndex:I</span>
+<span class="">	invoke-static {v1, v0, v3, v4}, Landroidx/palette/graphics/ColorCutQuantizer;->modifySignificantOctet([IIII)V</span>
+<span class="">	iget v0, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mPopulation:I</span>
+<span class="">	div-int/lit8 v0, v0, 0x2</span>
+<span class="">	iget v3, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mLowerIndex:I</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	iget v5, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mUpperIndex:I</span>
+<span class="">	if-gt v3, v5, :cond_1</span>
+<span class="">	aget v6, v1, v3</span>
+<span class="">	aget v6, v2, v6</span>
+<span class="">	add-int/2addr v4, v6</span>
+<span class="">	if-lt v4, v0, :cond_0</span>
+<span class="">	add-int/lit8 v5, v5, -0x1</span>
+<span class="">	invoke-static {v5, v3}, Ljava/lang/Math;->min(II)I</span>
+<span class="">	move-result v0</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	:cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	iget v0, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mLowerIndex:I</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method final fitBox()V
+<span class="">	.locals 13</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->this$0:Landroidx/palette/graphics/ColorCutQuantizer;</span>
+<span class="">	iget-object v0, v0, Landroidx/palette/graphics/ColorCutQuantizer;->mColors:[I</span>
+<span class="">	iget-object v1, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->this$0:Landroidx/palette/graphics/ColorCutQuantizer;</span>
+<span class="">	iget-object v1, v1, Landroidx/palette/graphics/ColorCutQuantizer;->mHistogram:[I</span>
+<span class="">	iget v2, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mLowerIndex:I</span>
+<span class="">	const v3, 0x7fffffff</span>
+<span class="">	const/high16 v4, -0x80000000</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	const v4, 0x7fffffff</span>
+<span class="">	const v5, 0x7fffffff</span>
+<span class="">	const/high16 v6, -0x80000000</span>
+<span class="">	const/high16 v7, -0x80000000</span>
+<span class="">	const/high16 v8, -0x80000000</span>
+<span class="">	const/4 v9, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	iget v10, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mUpperIndex:I</span>
+<span class="">	if-gt v2, v10, :cond_6</span>
+<span class="">	aget v10, v0, v2</span>
+<span class="">	aget v11, v1, v10</span>
+<span class="">	add-int/2addr v9, v11</span>
+<span class="">	invoke-static {v10}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedRed(I)I</span>
+<span class="">	move-result v11</span>
+<span class="">	invoke-static {v10}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedGreen(I)I</span>
+<span class="">	move-result v12</span>
+<span class="">	invoke-static {v10}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedBlue(I)I</span>
+<span class="">	move-result v10</span>
+<span class="">	if-le v11, v6, :cond_0</span>
+<span class="">	move v6, v11</span>
+<span class="">	:cond_0</span>
+<span class="">	if-ge v11, v3, :cond_1</span>
+<span class="">	move v3, v11</span>
+<span class="">	:cond_1</span>
+<span class="">	if-le v12, v7, :cond_2</span>
+<span class="">	move v7, v12</span>
+<span class="">	:cond_2</span>
+<span class="">	if-ge v12, v4, :cond_3</span>
+<span class="">	move v4, v12</span>
+<span class="">	:cond_3</span>
+<span class="">	if-le v10, v8, :cond_4</span>
+<span class="">	move v8, v10</span>
+<span class="">	:cond_4</span>
+<span class="">	if-ge v10, v5, :cond_5</span>
+<span class="">	move v5, v10</span>
+<span class="">	:cond_5</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_6</span>
+<span class="">	iput v3, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMinRed:I</span>
+<span class="">	iput v6, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMaxRed:I</span>
+<span class="">	iput v4, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMinGreen:I</span>
+<span class="">	iput v7, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMaxGreen:I</span>
+<span class="">	iput v5, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMinBlue:I</span>
+<span class="">	iput v8, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMaxBlue:I</span>
+<span class="">	iput v9, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mPopulation:I</span>
+.end method
+
+.method final getAverageColor()Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 10</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->this$0:Landroidx/palette/graphics/ColorCutQuantizer;</span>
+<span class="">	iget-object v0, v0, Landroidx/palette/graphics/ColorCutQuantizer;->mColors:[I</span>
+<span class="">	iget-object v1, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->this$0:Landroidx/palette/graphics/ColorCutQuantizer;</span>
+<span class="">	iget-object v1, v1, Landroidx/palette/graphics/ColorCutQuantizer;->mHistogram:[I</span>
+<span class="">	iget v2, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mLowerIndex:I</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	iget v7, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mUpperIndex:I</span>
+<span class="">	if-gt v2, v7, :cond_0</span>
+<span class="">	aget v7, v0, v2</span>
+<span class="">	aget v8, v1, v7</span>
+<span class="">	add-int/2addr v4, v8</span>
+<span class="">	invoke-static {v7}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedRed(I)I</span>
+<span class="">	move-result v9</span>
+<span class="">	mul-int v9, v9, v8</span>
+<span class="">	add-int/2addr v3, v9</span>
+<span class="">	invoke-static {v7}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedGreen(I)I</span>
+<span class="">	move-result v9</span>
+<span class="">	mul-int v9, v9, v8</span>
+<span class="">	add-int/2addr v5, v9</span>
+<span class="">	invoke-static {v7}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedBlue(I)I</span>
+<span class="">	move-result v7</span>
+<span class="">	mul-int v8, v8, v7</span>
+<span class="">	add-int/2addr v6, v8</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	int-to-float v0, v3</span>
+<span class="">	int-to-float v1, v4</span>
+<span class="">	div-float/2addr v0, v1</span>
+<span class="">	invoke-static {v0}, Ljava/lang/Math;->round(F)I</span>
+<span class="">	move-result v0</span>
+<span class="">	int-to-float v2, v5</span>
+<span class="">	div-float/2addr v2, v1</span>
+<span class="">	invoke-static {v2}, Ljava/lang/Math;->round(F)I</span>
+<span class="">	move-result v2</span>
+<span class="">	int-to-float v3, v6</span>
+<span class="">	div-float/2addr v3, v1</span>
+<span class="">	invoke-static {v3}, Ljava/lang/Math;->round(F)I</span>
+<span class="">	move-result v1</span>
+<span class="">	new-instance v3, Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	invoke-static {v0, v2, v1}, Landroidx/palette/graphics/ColorCutQuantizer;->approximateToRgb888(III)I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-direct {v3, v0, v4}, Landroidx/palette/graphics/Palette$Swatch;-><init>(II)V</span>
+.end method
+
+.method final getColorCount()I
+<span class="">	.locals 2</span>
+
+<span class="">	iget v0, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mUpperIndex:I</span>
+<span class="">	add-int/lit8 v0, v0, 0x1</span>
+<span class="">	iget v1, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mLowerIndex:I</span>
+<span class="">	sub-int/2addr v0, v1</span>
+.end method
+
+.method final getLongestColorDimension()I
+<span class="">	.locals 4</span>
+
+<span class="">	iget v0, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMaxRed:I</span>
+<span class="">	iget v1, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMinRed:I</span>
+<span class="">	sub-int/2addr v0, v1</span>
+<span class="">	iget v1, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMaxGreen:I</span>
+<span class="">	iget v2, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMinGreen:I</span>
+<span class="">	sub-int/2addr v1, v2</span>
+<span class="">	iget v2, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMaxBlue:I</span>
+<span class="">	iget v3, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMinBlue:I</span>
+<span class="">	sub-int/2addr v2, v3</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	if-lt v0, v2, :cond_0</span>
+<span class="">	const/4 v0, -0x3</span>
+<span class="">	if-lt v1, v0, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	if-lt v1, v2, :cond_1</span>
+<span class="">	const/4 v0, -0x2</span>
+<span class="">	const/4 v0, -0x1</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method final getVolume()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget v0, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMaxRed:I</span>
+<span class="">	iget v1, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMinRed:I</span>
+<span class="">	sub-int/2addr v0, v1</span>
+<span class="">	add-int/lit8 v0, v0, 0x1</span>
+<span class="">	iget v1, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMaxGreen:I</span>
+<span class="">	iget v2, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMinGreen:I</span>
+<span class="">	sub-int/2addr v1, v2</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	mul-int v0, v0, v1</span>
+<span class="">	iget v1, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMaxBlue:I</span>
+<span class="">	iget v2, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mMinBlue:I</span>
+<span class="">	sub-int/2addr v1, v2</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	mul-int v0, v0, v1</span>
+.end method
+
+.method final splitBox()Landroidx/palette/graphics/ColorCutQuantizer$Vbox;
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->canSplit()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->findSplitPoint()I</span>
+<span class="">	move-result v0</span>
+<span class="">	new-instance v1, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;</span>
+<span class="">	iget-object v2, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->this$0:Landroidx/palette/graphics/ColorCutQuantizer;</span>
+<span class="">	add-int/lit8 v3, v0, 0x1</span>
+<span class="">	iget v4, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mUpperIndex:I</span>
+<span class="">	invoke-direct {v1, v2, v3, v4}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;-><init>(Landroidx/palette/graphics/ColorCutQuantizer;II)V</span>
+<span class="">	iput v0, p0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->mUpperIndex:I</span>
+<span class="">	invoke-virtual {p0}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->fitBox()V</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v1, "Can not split a box with only 1 color"</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

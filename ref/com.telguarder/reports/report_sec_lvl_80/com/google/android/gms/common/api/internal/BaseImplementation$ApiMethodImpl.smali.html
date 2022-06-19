@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.common.api.internal</a></li>
+        <li><i class="ico ico-class"></i> BaseImplementation$ApiMethodImpl.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;
+.super Lcom/google/android/gms/common/api/internal/BasePendingResult;
+.source "com.google.android.gms:play-services-base@@18.0.1"
+.implements Lcom/google/android/gms/common/api/internal/BaseImplementation$ResultHolder;
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lcom/google/android/gms/common/api/internal/BaseImplementation;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x409
+name = "ApiMethodImpl"
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"<R::",
+"Lcom/google/android/gms/common/api/Result;",
+"A::",
+"Lcom/google/android/gms/common/api/Api$AnyClient;",
+">",
+"Lcom/google/android/gms/common/api/internal/BasePendingResult<",
+"TR;>;",
+"Lcom/google/android/gms/common/api/internal/BaseImplementation$ResultHolder<",
+"TR;>;"
+}
+.end annotation
+
+.field private final mApi:Lcom/google/android/gms/common/api/Api;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/android/gms/common/api/Api<",
+"*>;"
+}
+.end annotation
+.end field
+.field private final mClientKey:Lcom/google/android/gms/common/api/Api$AnyClientKey;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/android/gms/common/api/Api$AnyClientKey<",
+"TA;>;"
+}
+.end annotation
+.end field
+
+
+.method protected constructor <init>(Lcom/google/android/gms/common/api/Api$AnyClientKey;Lcom/google/android/gms/common/api/GoogleApiClient;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClientKey<",</span>
+<span class="">	"TA;>;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/GoogleApiClient;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "GoogleApiClient must not be null"</span>
+<span class="">	invoke-static {p2, v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Lcom/google/android/gms/common/api/GoogleApiClient;</span>
+<span class="">	invoke-direct {p0, p2}, Lcom/google/android/gms/common/api/internal/BasePendingResult;-><init>(Lcom/google/android/gms/common/api/GoogleApiClient;)V</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lcom/google/android/gms/common/api/Api$AnyClientKey;</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->mClientKey:Lcom/google/android/gms/common/api/Api$AnyClientKey;</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->mApi:Lcom/google/android/gms/common/api/Api;</span>
+.end method
+
+.method protected constructor <init>(Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/GoogleApiClient;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api<",</span>
+<span class="">	"*>;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/GoogleApiClient;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "GoogleApiClient must not be null"</span>
+<span class="">	invoke-static {p2, v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Lcom/google/android/gms/common/api/GoogleApiClient;</span>
+<span class="">	invoke-direct {p0, p2}, Lcom/google/android/gms/common/api/internal/BasePendingResult;-><init>(Lcom/google/android/gms/common/api/GoogleApiClient;)V</span>
+<span class="">	const-string p2, "Api must not be null"</span>
+<span class="">	invoke-static {p1, p2}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/android/gms/common/api/Api;->zab()Lcom/google/android/gms/common/api/Api$AnyClientKey;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	iput-object p2, p0, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->mClientKey:Lcom/google/android/gms/common/api/Api$AnyClientKey;</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->mApi:Lcom/google/android/gms/common/api/Api;</span>
+.end method
+
+.method protected constructor <init>(Lcom/google/android/gms/common/api/internal/BasePendingResult$CallbackHandler;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/BasePendingResult$CallbackHandler<",</span>
+<span class="">	"TR;>;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/android/gms/common/api/internal/BasePendingResult;-><init>(Lcom/google/android/gms/common/api/internal/BasePendingResult$CallbackHandler;)V</span>
+<span class="">	new-instance p1, Lcom/google/android/gms/common/api/Api$AnyClientKey;</span>
+<span class="">	invoke-direct {p1}, Lcom/google/android/gms/common/api/Api$AnyClientKey;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->mClientKey:Lcom/google/android/gms/common/api/Api$AnyClientKey;</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->mApi:Lcom/google/android/gms/common/api/Api;</span>
+.end method
+
+.method private setFailedResult(Landroid/os/RemoteException;)V
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Lcom/google/android/gms/common/api/Status;</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/RemoteException;->getLocalizedMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/16 v1, 0x8</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-direct {v0, v1, p1, v2}, Lcom/google/android/gms/common/api/Status;-><init>(ILjava/lang/String;Landroid/app/PendingIntent;)V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->setFailedResult(Lcom/google/android/gms/common/api/Status;)V</span>
+.end method
+
+.method protected abstract doExecute(Lcom/google/android/gms/common/api/Api$AnyClient;)V
+<span class="">	</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/RemoteException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TA;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method public final getApi()Lcom/google/android/gms/common/api/Api;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api<",</span>
+<span class="">	"*>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->mApi:Lcom/google/android/gms/common/api/Api;</span>
+.end method
+
+.method public final getClientKey()Lcom/google/android/gms/common/api/Api$AnyClientKey;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClientKey<",</span>
+<span class="">	"TA;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->mClientKey:Lcom/google/android/gms/common/api/Api$AnyClientKey;</span>
+.end method
+
+.method protected onSetFailedResult(Lcom/google/android/gms/common/api/Result;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TR;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method public final run(Lcom/google/android/gms/common/api/Api$AnyClient;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/DeadObjectException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TA;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->doExecute(Lcom/google/android/gms/common/api/Api$AnyClient;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Landroid/os/DeadObjectException; {:try_start_0 .. :try_end_0} :catch_1</span>
+<span class="">	.catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->setFailedResult(Landroid/os/RemoteException;)V</span>
+<span class="">	move-exception p1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->setFailedResult(Landroid/os/RemoteException;)V</span>
+<span class="">	:catch_1</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public final setFailedResult(Lcom/google/android/gms/common/api/Status;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p1}, Lcom/google/android/gms/common/api/Status;->isSuccess()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	xor-int/lit8 v0, v0, 0x1</span>
+<span class="">	const-string v1, "Failed result must not be success"</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(ZLjava/lang/Object;)V</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->createFailedResult(Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/common/api/Result;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/android/gms/common/api/internal/BasePendingResult;->setResult(Lcom/google/android/gms/common/api/Result;)V</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;->onSetFailedResult(Lcom/google/android/gms/common/api/Result;)V</span>
+.end method
+
+.method public bridge synthetic setResult(Ljava/lang/Object;)V
+<span class="">	.locals 0</span>
+
+<span class="">	check-cast p1, Lcom/google/android/gms/common/api/Result;</span>
+<span class="">	invoke-super {p0, p1}, Lcom/google/android/gms/common/api/internal/BasePendingResult;->setResult(Lcom/google/android/gms/common/api/Result;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../../.resources/report.js"></script>
+</body>
+</html>

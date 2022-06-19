@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">io.didomi.sdk</a></li>
+        <li><i class="ico ico-class"></i> e5.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lio/didomi/sdk/e5;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lio/didomi/sdk/e5$a;
+}
+.end annotation
+
+.field private final a:Landroid/content/Context;
+.field private b:Landroid/content/res/Resources;
+.field private c:Ljava/lang/String;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lio/didomi/sdk/e5$a;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-direct {v0, v1}, Lio/didomi/sdk/e5$a;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;)V</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljavax/inject/Inject;</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	const-string v0, "context"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lio/didomi/sdk/e5;->a:Landroid/content/Context;</span>
+<span class="cov">	iget-object p1, p0, Lio/didomi/sdk/e5;->c:Ljava/lang/String;</span>
+<span class="cov">	invoke-direct {p0, p1}, Lio/didomi/sdk/e5;->a(Ljava/lang/String;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private final a(Ljava/lang/String;)V</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	new-instance v0, Landroid/content/res/Configuration;</span>
+<span class="cov">	iget-object v1, p0, Lio/didomi/sdk/e5;->a:Landroid/content/Context;</span>
+<span class="exec">	invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-direct {v0, v1}, Landroid/content/res/Configuration;-><init>(Landroid/content/res/Configuration;)V</span>
+<span class="cov">	sget v1, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="cov">	const/16 v2, 0x11</span>
+<span class="cov">	if-lt v1, v2, :cond_0</span>
+<span class="cov">	sget-object v3, Lio/didomi/sdk/w2;->a:Lio/didomi/sdk/w2;</span>
+<span class="exec">	invoke-virtual {v3, p1}, Lio/didomi/sdk/w2;->a(Ljava/lang/String;)Ljava/util/Locale;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-virtual {v0, p1}, Landroid/content/res/Configuration;->setLocale(Ljava/util/Locale;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v3, Lio/didomi/sdk/w2;->a:Lio/didomi/sdk/w2;</span>
+<span class="">	invoke-virtual {v3, p1}, Lio/didomi/sdk/w2;->a(Ljava/lang/String;)Ljava/util/Locale;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, v0, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	if-lt v1, v2, :cond_1</span>
+<span class="cov">	iget-object p1, p0, Lio/didomi/sdk/e5;->a:Landroid/content/Context;</span>
+<span class="exec">	invoke-virtual {p1, v0}, Landroid/content/Context;->createConfigurationContext(Landroid/content/res/Configuration;)Landroid/content/Context;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const-string/jumbo v2, "{\n            context.cr\u2026tion).resources\n        }"</span>
+<span class="cov">	invoke-static {p1, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance p1, Landroid/content/res/Resources;</span>
+<span class="">	iget-object v2, p0, Lio/didomi/sdk/e5;->a:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/res/Resources;->getAssets()Landroid/content/res/AssetManager;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	iget-object v3, p0, Lio/didomi/sdk/e5;->a:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-direct {p1, v2, v3, v0}, Landroid/content/res/Resources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;)V</span>
+<span class="cov">	:goto_1</span>
+<span class="cov">	iput-object p1, p0, Lio/didomi/sdk/e5;->b:Landroid/content/res/Resources;</span>
+<span class="cov">	const/16 p1, 0x18</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="cov">	if-lt v1, p1, :cond_2</span>
+<span class="exec">	invoke-virtual {v0}, Landroid/content/res/Configuration;->getLocales()Landroid/os/LocaleList;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1, v2}, Landroid/os/LocaleList;->get(I)Ljava/util/Locale;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1}, Ljava/util/Locale;->toLanguageTag()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	const/16 p1, 0x15</span>
+<span class="">	if-lt v1, p1, :cond_3</span>
+<span class="">	iget-object p1, v0, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;</span>
+<span class="">	invoke-virtual {p1}, Ljava/util/Locale;->toLanguageTag()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	iget-object p1, v0, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;</span>
+<span class="">	invoke-virtual {p1}, Ljava/util/Locale;->getCountry()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_4</span>
+<span class="">	invoke-static {p1}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_5</span>
+<span class="">	:cond_4</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	:cond_5</span>
+<span class="">	if-eqz v2, :cond_6</span>
+<span class="">	iget-object p1, v0, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;</span>
+<span class="">	invoke-virtual {p1}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_6</span>
+<span class="">	iget-object p1, v0, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;</span>
+<span class="">	invoke-virtual {p1}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v0, v0, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/Locale;->getCountry()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, "-"</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="cov">	:goto_2</span>
+<span class="cov">	iput-object p1, p0, Lio/didomi/sdk/e5;->c:Ljava/lang/String;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public a()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/e5;->b:Landroid/content/res/Resources;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-string v0, "resources"</span>
+<span class="">	invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget v0, v0, Landroid/util/DisplayMetrics;->density:F</span>
+.end method
+
+.method public a(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+<span class="">	.locals 4</span>
+
+<span class="">	const-string v0, "resourceName"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/e5;->c:Ljava/lang/String;</span>
+<span class="">	invoke-static {p2, v0}, Lio/didomi/sdk/w2;->a(Ljava/lang/String;Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-direct {p0, p2}, Lio/didomi/sdk/e5;->a(Ljava/lang/String;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object p2, Lkotlin/jvm/internal/StringCompanionObject;->INSTANCE:Lkotlin/jvm/internal/StringCompanionObject;</span>
+<span class="">	const/4 p2, 0x1</span>
+<span class="">	new-array v0, p2, [Ljava/lang/Object;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	aput-object p1, v0, v1</span>
+<span class="">	invoke-static {v0, p2}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string p2, "didomi_%s"</span>
+<span class="">	invoke-static {p2, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string p2, "java.lang.String.format(format, *args)"</span>
+<span class="">	invoke-static {p1, p2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lio/didomi/sdk/e5;->b:Landroid/content/res/Resources;</span>
+<span class="">	const-string v0, "resources"</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-nez p2, :cond_1</span>
+<span class="">	invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V</span>
+<span class="">	move-object p2, v1</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object v2, p0, Lio/didomi/sdk/e5;->a:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "string"</span>
+<span class="">	invoke-virtual {p2, p1, v3, v2}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_3</span>
+<span class="">	iget-object p2, p0, Lio/didomi/sdk/e5;->b:Landroid/content/res/Resources;</span>
+<span class="">	if-nez p2, :cond_2</span>
+<span class="">	invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	move-object v1, p2</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {v1, p1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_3</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

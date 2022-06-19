@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.common.api.internal</a></li>
+        <li><i class="ico ico-class"></i> zag.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/android/gms/common/api/internal/zag;
+.super Lcom/google/android/gms/common/api/internal/zac;
+.source "com.google.android.gms:play-services-base@@18.0.1"
+
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"<ResultT:",
+"Ljava/lang/Object;",
+">",
+"Lcom/google/android/gms/common/api/internal/zac;"
+}
+.end annotation
+
+.field private final zaa:Lcom/google/android/gms/common/api/internal/TaskApiCall;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/android/gms/common/api/internal/TaskApiCall<",
+"Lcom/google/android/gms/common/api/Api$AnyClient;",
+"TResultT;>;"
+}
+.end annotation
+.end field
+.field private final zab:Lcom/google/android/gms/tasks/TaskCompletionSource;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/android/gms/tasks/TaskCompletionSource<",
+"TResultT;>;"
+}
+.end annotation
+.end field
+.field private final zad:Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;
+
+
+.method public constructor <init>(ILcom/google/android/gms/common/api/internal/TaskApiCall;Lcom/google/android/gms/tasks/TaskCompletionSource;Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(I",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/TaskApiCall<",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	"TResultT;>;",</span>
+<span class="">	"Lcom/google/android/gms/tasks/TaskCompletionSource<",</span>
+<span class="">	"TResultT;>;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/android/gms/common/api/internal/zac;-><init>(I)V</span>
+<span class="">	iput-object p3, p0, Lcom/google/android/gms/common/api/internal/zag;->zab:Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	iput-object p2, p0, Lcom/google/android/gms/common/api/internal/zag;->zaa:Lcom/google/android/gms/common/api/internal/TaskApiCall;</span>
+<span class="">	iput-object p4, p0, Lcom/google/android/gms/common/api/internal/zag;->zad:Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;</span>
+<span class="">	const/4 p3, 0x2</span>
+<span class="">	if-ne p1, p3, :cond_1</span>
+<span class="">	invoke-virtual {p2}, Lcom/google/android/gms/common/api/internal/TaskApiCall;->shouldAutoResolveMissingFeatures()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	const-string p2, "Best-effort write calls cannot pass methods that should auto-resolve missing features."</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public final zaa(Lcom/google/android/gms/common/api/internal/zabq;)Z
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/zabq<",</span>
+<span class="">	"*>;)Z"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/common/api/internal/zag;->zaa:Lcom/google/android/gms/common/api/internal/TaskApiCall;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/android/gms/common/api/internal/TaskApiCall;->shouldAutoResolveMissingFeatures()Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public final zab(Lcom/google/android/gms/common/api/internal/zabq;)[Lcom/google/android/gms/common/Feature;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/zabq<",</span>
+<span class="">	"*>;)[",</span>
+<span class="">	"Lcom/google/android/gms/common/Feature;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/common/api/internal/zag;->zaa:Lcom/google/android/gms/common/api/internal/TaskApiCall;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/android/gms/common/api/internal/TaskApiCall;->zab()[Lcom/google/android/gms/common/Feature;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public final zad(Lcom/google/android/gms/common/api/Status;)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/zag;->zab:Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/common/api/internal/zag;->zad:Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;</span>
+<span class="">	invoke-interface {v1, p1}, Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;->getException(Lcom/google/android/gms/common/api/Status;)Ljava/lang/Exception;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z</span>
+.end method
+
+.method public final zae(Ljava/lang/Exception;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/zag;->zab:Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z</span>
+.end method
+
+.method public final zaf(Lcom/google/android/gms/common/api/internal/zabq;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/DeadObjectException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/zabq<",</span>
+<span class="">	"*>;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/zag;->zaa:Lcom/google/android/gms/common/api/internal/TaskApiCall;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/android/gms/common/api/internal/zabq;->zaf()Lcom/google/android/gms/common/api/Api$Client;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/common/api/internal/zag;->zab:Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	invoke-virtual {v0, p1, v1}, Lcom/google/android/gms/common/api/internal/TaskApiCall;->doExecute(Lcom/google/android/gms/common/api/Api$AnyClient;Lcom/google/android/gms/tasks/TaskCompletionSource;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Landroid/os/DeadObjectException; {:try_start_0 .. :try_end_0} :catch_2</span>
+<span class="">	.catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_1</span>
+<span class="">	.catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/zag;->zab:Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/google/android/gms/tasks/TaskCompletionSource;->trySetException(Ljava/lang/Exception;)Z</span>
+<span class="">	move-exception p1</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/common/api/internal/zai;->zah(Landroid/os/RemoteException;)Lcom/google/android/gms/common/api/Status;</span>
+<span class="">	:catch_1</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/android/gms/common/api/internal/zag;->zad(Lcom/google/android/gms/common/api/Status;)V</span>
+<span class="">	move-exception p1</span>
+<span class="">	throw p1</span>
+<span class="">	:catch_2</span>
+.end method
+
+.method public final zag(Lcom/google/android/gms/common/api/internal/zaad;Z)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/zag;->zab:Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	invoke-virtual {p1, v0, p2}, Lcom/google/android/gms/common/api/internal/zaad;->zad(Lcom/google/android/gms/tasks/TaskCompletionSource;Z)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.share.widget</a></li>
+        <li><i class="ico ico-class"></i> CreateAppGroupDialog.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/share/widget/CreateAppGroupDialog;
+.super Lcom/facebook/internal/FacebookDialogBase;
+.source "CreateAppGroupDialog.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/share/widget/CreateAppGroupDialog$WebHandler;,
+Lcom/facebook/share/widget/CreateAppGroupDialog$Result;
+}
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/facebook/internal/FacebookDialogBase<",
+"Lcom/facebook/share/model/AppGroupCreationContent;",
+"Lcom/facebook/share/widget/CreateAppGroupDialog$Result;",
+">;"
+}
+.end annotation
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+.field private static final DEFAULT_REQUEST_CODE:I
+.field private static final GAME_GROUP_CREATION_DIALOG:Ljava/lang/String; = "game_group_create"
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->AppGroupCreate:Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->toRequestCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	sput v0, Lcom/facebook/share/widget/CreateAppGroupDialog;->DEFAULT_REQUEST_CODE:I</span>
+.end method
+
+.method public constructor <init>(Landroid/app/Activity;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget v0, Lcom/facebook/share/widget/CreateAppGroupDialog;->DEFAULT_REQUEST_CODE:I</span>
+<span class="">	invoke-direct {p0, p1, v0}, Lcom/facebook/internal/FacebookDialogBase;-><init>(Landroid/app/Activity;I)V</span>
+.end method
+
+.method public constructor <init>(Landroid/app/Fragment;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroid/app/Fragment;)V</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/share/widget/CreateAppGroupDialog;-><init>(Lcom/facebook/internal/FragmentWrapper;)V</span>
+.end method
+
+.method public constructor <init>(Landroidx/fragment/app/Fragment;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroidx/fragment/app/Fragment;)V</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/share/widget/CreateAppGroupDialog;-><init>(Lcom/facebook/internal/FragmentWrapper;)V</span>
+.end method
+
+.method private constructor <init>(Lcom/facebook/internal/FragmentWrapper;)V
+<span class="">	.locals 1</span>
+
+<span class="">	sget v0, Lcom/facebook/share/widget/CreateAppGroupDialog;->DEFAULT_REQUEST_CODE:I</span>
+<span class="">	invoke-direct {p0, p1, v0}, Lcom/facebook/internal/FacebookDialogBase;-><init>(Lcom/facebook/internal/FragmentWrapper;I)V</span>
+.end method
+
+.method public static canShow()Z
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x1</span>
+.end method
+
+.method public static show(Landroid/app/Activity;Lcom/facebook/share/model/AppGroupCreationContent;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/widget/CreateAppGroupDialog;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/share/widget/CreateAppGroupDialog;-><init>(Landroid/app/Activity;)V</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/facebook/share/widget/CreateAppGroupDialog;->show(Ljava/lang/Object;)V</span>
+.end method
+
+.method public static show(Landroid/app/Fragment;Lcom/facebook/share/model/AppGroupCreationContent;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroid/app/Fragment;)V</span>
+<span class="">	invoke-static {v0, p1}, Lcom/facebook/share/widget/CreateAppGroupDialog;->show(Lcom/facebook/internal/FragmentWrapper;Lcom/facebook/share/model/AppGroupCreationContent;)V</span>
+.end method
+
+.method public static show(Landroidx/fragment/app/Fragment;Lcom/facebook/share/model/AppGroupCreationContent;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroidx/fragment/app/Fragment;)V</span>
+<span class="">	invoke-static {v0, p1}, Lcom/facebook/share/widget/CreateAppGroupDialog;->show(Lcom/facebook/internal/FragmentWrapper;Lcom/facebook/share/model/AppGroupCreationContent;)V</span>
+.end method
+
+.method private static show(Lcom/facebook/internal/FragmentWrapper;Lcom/facebook/share/model/AppGroupCreationContent;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/widget/CreateAppGroupDialog;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/share/widget/CreateAppGroupDialog;-><init>(Lcom/facebook/internal/FragmentWrapper;)V</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/facebook/share/widget/CreateAppGroupDialog;->show(Ljava/lang/Object;)V</span>
+.end method
+
+.method protected createBaseAppCall()Lcom/facebook/internal/AppCall;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/AppCall;</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/CreateAppGroupDialog;->getRequestCode()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/internal/AppCall;-><init>(I)V</span>
+.end method
+
+.method protected getOrderedModeHandlers()Ljava/util/List;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/facebook/internal/FacebookDialogBase<",</span>
+<span class="">	"Lcom/facebook/share/model/AppGroupCreationContent;",</span>
+<span class="">	"Lcom/facebook/share/widget/CreateAppGroupDialog$Result;",</span>
+<span class="">	">.ModeHandler;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v1, Lcom/facebook/share/widget/CreateAppGroupDialog$WebHandler;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-direct {v1, p0, v2}, Lcom/facebook/share/widget/CreateAppGroupDialog$WebHandler;-><init>(Lcom/facebook/share/widget/CreateAppGroupDialog;Lcom/facebook/share/widget/CreateAppGroupDialog$1;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z</span>
+.end method
+
+.method protected registerCallbackImpl(Lcom/facebook/internal/CallbackManagerImpl;Lcom/facebook/FacebookCallback;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/internal/CallbackManagerImpl;",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/widget/CreateAppGroupDialog$Result;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-nez p2, :cond_0</span>
+<span class="">	const/4 p2, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v0, Lcom/facebook/share/widget/CreateAppGroupDialog$1;</span>
+<span class="">	invoke-direct {v0, p0, p2, p2}, Lcom/facebook/share/widget/CreateAppGroupDialog$1;-><init>(Lcom/facebook/share/widget/CreateAppGroupDialog;Lcom/facebook/FacebookCallback;Lcom/facebook/FacebookCallback;)V</span>
+<span class="">	move-object p2, v0</span>
+<span class="">	:goto_0</span>
+<span class="">	new-instance v0, Lcom/facebook/share/widget/CreateAppGroupDialog$2;</span>
+<span class="">	invoke-direct {v0, p0, p2}, Lcom/facebook/share/widget/CreateAppGroupDialog$2;-><init>(Lcom/facebook/share/widget/CreateAppGroupDialog;Lcom/facebook/share/internal/ResultProcessor;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/CreateAppGroupDialog;->getRequestCode()I</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p1, p2, v0}, Lcom/facebook/internal/CallbackManagerImpl;->registerCallback(ILcom/facebook/internal/CallbackManagerImpl$Callback;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

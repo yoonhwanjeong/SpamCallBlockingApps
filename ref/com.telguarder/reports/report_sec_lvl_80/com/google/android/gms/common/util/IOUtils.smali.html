@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.common.util</a></li>
+        <li><i class="ico ico-class"></i> IOUtils.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/android/gms/common/util/IOUtils;
+.super Ljava/lang/Object;
+.source "com.google.android.gms:play-services-basement@@18.0.0"
+
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+
+
+.method private constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public static closeQuietly(Landroid/os/ParcelFileDescriptor;)V
+<span class="">	.locals 0</span>
+<span class="">	.param p0    # Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	.annotation runtime Ljavax/annotation/Nullable;</span>
+<span class="">	.end annotation</span>
+<span class="">	.end param</span>
+
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p0}, Landroid/os/ParcelFileDescriptor;->close()V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:cond_0</span>
+<span class="">	:catch_0</span>
+.end method
+
+.method public static closeQuietly(Ljava/io/Closeable;)V
+<span class="">	.locals 0</span>
+<span class="">	.param p0    # Ljava/io/Closeable;</span>
+<span class="">	.annotation runtime Ljavax/annotation/Nullable;</span>
+<span class="">	.end annotation</span>
+<span class="">	.end param</span>
+
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-interface {p0}, Ljava/io/Closeable;->close()V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:cond_0</span>
+<span class="">	:catch_0</span>
+.end method
+
+.method public static copyStream(Ljava/io/InputStream;Ljava/io/OutputStream;)J
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	const/16 v1, 0x400</span>
+<span class="">	invoke-static {p0, p1, v0, v1}, Lcom/google/android/gms/common/util/IOUtils;->copyStream(Ljava/io/InputStream;Ljava/io/OutputStream;ZI)J</span>
+<span class="">	move-result-wide p0</span>
+.end method
+
+.method public static copyStream(Ljava/io/InputStream;Ljava/io/OutputStream;ZI)J
+<span class="">	.locals 7</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-array v0, p3, [B</span>
+<span class="">	const-wide/16 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p0, v0, v3, p3}, Ljava/io/InputStream;->read([BII)I</span>
+<span class="">	move-result v4</span>
+<span class="">	const/4 v5, -0x1</span>
+<span class="">	if-eq v4, v5, :cond_0</span>
+<span class="">	int-to-long v5, v4</span>
+<span class="">	add-long/2addr v1, v5</span>
+<span class="">	invoke-virtual {p1, v0, v3, v4}, Ljava/io/OutputStream;->write([BII)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/common/util/IOUtils;->closeQuietly(Ljava/io/Closeable;)V</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/common/util/IOUtils;->closeQuietly(Ljava/io/Closeable;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	move-exception p3</span>
+<span class="">	:catchall_0</span>
+<span class="">	if-nez p2, :cond_2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/common/util/IOUtils;->closeQuietly(Ljava/io/Closeable;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/common/util/IOUtils;->closeQuietly(Ljava/io/Closeable;)V</span>
+<span class="">	throw p3</span>
+<span class="">	:goto_1</span>
+.end method
+
+.method public static isGzipByteBuffer([B)Z
+<span class="">	.locals 3</span>
+
+<span class="">	array-length v0, p0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	if-le v0, v2, :cond_0</span>
+<span class="">	aget-byte v0, p0, v1</span>
+<span class="">	and-int/lit16 v0, v0, 0xff</span>
+<span class="">	aget-byte p0, p0, v2</span>
+<span class="">	and-int/lit16 p0, p0, 0xff</span>
+<span class="">	shl-int/lit8 p0, p0, 0x8</span>
+<span class="">	or-int/2addr p0, v0</span>
+<span class="">	const v0, 0x8b1f</span>
+<span class="">	if-ne p0, v0, :cond_0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public static readInputStreamFully(Ljava/io/InputStream;)[B
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	invoke-static {p0, v0}, Lcom/google/android/gms/common/util/IOUtils;->readInputStreamFully(Ljava/io/InputStream;Z)[B</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static readInputStreamFully(Ljava/io/InputStream;Z)[B
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/io/ByteArrayOutputStream;</span>
+<span class="">	invoke-direct {v0}, Ljava/io/ByteArrayOutputStream;-><init>()V</span>
+<span class="">	const/16 v1, 0x400</span>
+<span class="">	invoke-static {p0, v0, p1, v1}, Lcom/google/android/gms/common/util/IOUtils;->copyStream(Ljava/io/InputStream;Ljava/io/OutputStream;ZI)J</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static toByteArray(Ljava/io/InputStream;)[B
+<span class="">	.locals 4</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/io/ByteArrayOutputStream;</span>
+<span class="">	invoke-direct {v0}, Ljava/io/ByteArrayOutputStream;-><init>()V</span>
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const/16 v1, 0x1000</span>
+<span class="">	new-array v1, v1, [B</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p0, v1}, Ljava/io/InputStream;->read([B)I</span>
+<span class="">	move-result v2</span>
+<span class="">	const/4 v3, -0x1</span>
+<span class="">	if-ne v2, v3, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0, v1, v3, v2}, Ljava/io/OutputStream;->write([BII)V</span>
+<span class="">	goto :goto_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

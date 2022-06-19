@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.auth.internal</a></li>
+        <li><i class="ico ico-class"></i> e0.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/firebase/auth/internal/e0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field static final a:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/google/firebase/auth/internal/e0;->a:Ljava/util/Map;</span>
+<span class="">	const-string v1, "auth/invalid-provider-id"</span>
+<span class="">	const-string v2, "INVALID_PROVIDER_ID"</span>
+<span class="">	invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v1, "auth/invalid-cert-hash"</span>
+<span class="">	const-string v2, "INVALID_CERT_HASH"</span>
+<span class="">	invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v1, "auth/network-request-failed"</span>
+<span class="">	const-string v2, "WEB_NETWORK_REQUEST_FAILED"</span>
+<span class="">	invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v1, "auth/web-storage-unsupported"</span>
+<span class="">	const-string v2, "WEB_STORAGE_UNSUPPORTED"</span>
+<span class="">	invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v1, "auth/operation-not-allowed"</span>
+<span class="">	const-string v2, "OPERATION_NOT_ALLOWED"</span>
+<span class="">	invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+.end method
+
+.method public static a(Landroid/content/Intent;Lcom/google/android/gms/common/api/Status;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "com.google.firebase.auth.internal.STATUS"</span>
+<span class="">	invoke-static {p1, p0, v0}, Lcom/google/android/gms/common/internal/safeparcel/d;->e(Lcom/google/android/gms/common/internal/safeparcel/c;Landroid/content/Intent;Ljava/lang/String;)V</span>
+.end method
+
+.method public static b(Landroid/content/Intent;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/common/internal/r;->k(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v0, "com.google.firebase.auth.internal.STATUS"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z</span>
+<span class="">	move-result p0</span>
+.end method
+
+.method public static c(Landroid/content/Intent;)Lcom/google/android/gms/common/api/Status;
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/common/internal/r;->k(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-static {p0}, Lcom/google/firebase/auth/internal/e0;->b(Landroid/content/Intent;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/common/internal/r;->a(Z)V</span>
+<span class="">	sget-object v0, Lcom/google/android/gms/common/api/Status;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+<span class="">	const-string v1, "com.google.firebase.auth.internal.STATUS"</span>
+<span class="">	invoke-static {p0, v1, v0}, Lcom/google/android/gms/common/internal/safeparcel/d;->b(Landroid/content/Intent;Ljava/lang/String;Landroid/os/Parcelable$Creator;)Lcom/google/android/gms/common/internal/safeparcel/c;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Lcom/google/android/gms/common/api/Status;</span>
+.end method
+
+.method public static d(Ljava/lang/String;)Lcom/google/android/gms/common/api/Status;
+<span class="">	.locals 5</span>
+
+<span class="">	const-string v0, "WEB_INTERNAL_ERROR:"</span>
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v1, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v1, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V</span>
+<span class="">	const-string v2, "code"</span>
+<span class="">	invoke-virtual {v1, v2}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "message"</span>
+<span class="">	invoke-virtual {v1, v3}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-nez v3, :cond_0</span>
+<span class="">	invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-nez v3, :cond_0</span>
+<span class="">	sget-object v3, Lcom/google/firebase/auth/internal/e0;->a:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v3, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_0</span>
+<span class="">	invoke-interface {v3, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/String;</span>
+<span class="">	invoke-static {v2}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v3</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	invoke-static {v1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v4</span>
+<span class="">	add-int/2addr v3, v4</span>
+<span class="">	new-instance v4, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v4, v3}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v2, ":"</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/auth/internal/j;->a(Ljava/lang/String;)Lcom/google/android/gms/common/api/Status;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	new-instance v1, Ljava/lang/String;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v1, v0}, Ljava/lang/String;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/auth/internal/j;->a(Ljava/lang/String;)Lcom/google/android/gms/common/api/Status;</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	move-exception v1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	invoke-virtual {v1}, Lorg/json/JSONException;->getLocalizedMessage()Ljava/lang/String;</span>
+<span class="">	:catch_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {p0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-static {v1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v3</span>
+<span class="">	new-instance v4, Ljava/lang/StringBuilder;</span>
+<span class="">	add-int/lit8 v2, v2, 0x17</span>
+<span class="">	add-int/2addr v2, v3</span>
+<span class="">	invoke-direct {v4, v2}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p0, "[ "</span>
+<span class="">	invoke-virtual {v4, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p0, " ]"</span>
+<span class="">	invoke-virtual {v4, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Lcom/google/firebase/auth/internal/j;->a(Ljava/lang/String;)Lcom/google/android/gms/common/api/Status;</span>
+<span class="">	move-result-object p0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

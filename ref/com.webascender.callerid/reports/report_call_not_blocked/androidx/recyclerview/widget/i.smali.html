@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.recyclerview.widget</a></li>
+        <li><i class="ico ico-class"></i> i.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Landroidx/recyclerview/widget/i;
+.super Landroidx/recyclerview/widget/RecyclerView$n;
+.source "SourceFile"
+
+
+.field private static final d:[I
+.field private a:Landroid/graphics/drawable/Drawable;
+.field private b:I
+.field private final c:Landroid/graphics/Rect;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 3</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	new-array v0, v0, [I</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const v2, 0x1010214</span>
+<span class="">	aput v2, v0, v1</span>
+<span class="">	sput-object v0, Landroidx/recyclerview/widget/i;->d:[I</span>
+.end method
+
+.method public constructor <init>(Landroid/content/Context;I)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/recyclerview/widget/RecyclerView$n;-><init>()V</span>
+<span class="">	new-instance v0, Landroid/graphics/Rect;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V</span>
+<span class="">	iput-object v0, p0, Landroidx/recyclerview/widget/i;->c:Landroid/graphics/Rect;</span>
+<span class="">	sget-object v0, Landroidx/recyclerview/widget/i;->d:[I</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/content/Context;->obtainStyledAttributes([I)Landroid/content/res/TypedArray;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Landroidx/recyclerview/widget/i;->a:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-string v0, "DividerItem"</span>
+<span class="">	const-string v1, "@android:attr/listDivider was not set in the theme used for this DividerItemDecoration. Please set that attribute all call setDrawable()"</span>
+<span class="">	invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/res/TypedArray;->recycle()V</span>
+<span class="">	invoke-virtual {p0, p2}, Landroidx/recyclerview/widget/i;->f(I)V</span>
+.end method
+
+.method private d(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;)V
+<span class="">	.locals 7</span>
+
+<span class="">	invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I</span>
+<span class="">	invoke-virtual {p2}, Landroidx/recyclerview/widget/RecyclerView;->getClipToPadding()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getPaddingTop()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getHeight()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getPaddingBottom()I</span>
+<span class="">	move-result v3</span>
+<span class="">	sub-int/2addr v2, v3</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getPaddingLeft()I</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getWidth()I</span>
+<span class="">	move-result v4</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getPaddingRight()I</span>
+<span class="">	move-result v5</span>
+<span class="">	sub-int/2addr v4, v5</span>
+<span class="">	invoke-virtual {p1, v3, v0, v4, v2}, Landroid/graphics/Canvas;->clipRect(IIII)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getHeight()I</span>
+<span class="">	move-result v2</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getChildCount()I</span>
+<span class="">	move-result v3</span>
+<span class="">	:goto_1</span>
+<span class="">	if-ge v1, v3, :cond_1</span>
+<span class="">	invoke-virtual {p2, v1}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {p2}, Landroidx/recyclerview/widget/RecyclerView;->getLayoutManager()Landroidx/recyclerview/widget/RecyclerView$o;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	iget-object v6, p0, Landroidx/recyclerview/widget/i;->c:Landroid/graphics/Rect;</span>
+<span class="">	invoke-virtual {v5, v4, v6}, Landroidx/recyclerview/widget/RecyclerView$o;->P(Landroid/view/View;Landroid/graphics/Rect;)V</span>
+<span class="">	iget-object v5, p0, Landroidx/recyclerview/widget/i;->c:Landroid/graphics/Rect;</span>
+<span class="">	iget v5, v5, Landroid/graphics/Rect;->right:I</span>
+<span class="">	invoke-virtual {v4}, Landroid/view/View;->getTranslationX()F</span>
+<span class="">	move-result v4</span>
+<span class="">	invoke-static {v4}, Ljava/lang/Math;->round(F)I</span>
+<span class="">	move-result v4</span>
+<span class="">	add-int/2addr v5, v4</span>
+<span class="">	iget-object v4, p0, Landroidx/recyclerview/widget/i;->a:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	invoke-virtual {v4}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I</span>
+<span class="">	move-result v4</span>
+<span class="">	sub-int v4, v5, v4</span>
+<span class="">	iget-object v6, p0, Landroidx/recyclerview/widget/i;->a:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	invoke-virtual {v6, v4, v0, v5, v2}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V</span>
+<span class="">	iget-object v4, p0, Landroidx/recyclerview/widget/i;->a:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	invoke-virtual {v4, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V</span>
+.end method
+
+.method private e(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;)V
+<span class="">	.locals 7</span>
+
+<span class="">	invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I</span>
+<span class="">	invoke-virtual {p2}, Landroidx/recyclerview/widget/RecyclerView;->getClipToPadding()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getPaddingLeft()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getWidth()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getPaddingRight()I</span>
+<span class="">	move-result v3</span>
+<span class="">	sub-int/2addr v2, v3</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getPaddingTop()I</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getHeight()I</span>
+<span class="">	move-result v4</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getPaddingBottom()I</span>
+<span class="">	move-result v5</span>
+<span class="">	sub-int/2addr v4, v5</span>
+<span class="">	invoke-virtual {p1, v0, v3, v2, v4}, Landroid/graphics/Canvas;->clipRect(IIII)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getWidth()I</span>
+<span class="">	move-result v2</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/ViewGroup;->getChildCount()I</span>
+<span class="">	move-result v3</span>
+<span class="">	:goto_1</span>
+<span class="">	if-ge v1, v3, :cond_1</span>
+<span class="">	invoke-virtual {p2, v1}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	iget-object v5, p0, Landroidx/recyclerview/widget/i;->c:Landroid/graphics/Rect;</span>
+<span class="">	invoke-virtual {p2, v4, v5}, Landroidx/recyclerview/widget/RecyclerView;->i0(Landroid/view/View;Landroid/graphics/Rect;)V</span>
+<span class="">	iget-object v5, p0, Landroidx/recyclerview/widget/i;->c:Landroid/graphics/Rect;</span>
+<span class="">	iget v5, v5, Landroid/graphics/Rect;->bottom:I</span>
+<span class="">	invoke-virtual {v4}, Landroid/view/View;->getTranslationY()F</span>
+<span class="">	move-result v4</span>
+<span class="">	invoke-static {v4}, Ljava/lang/Math;->round(F)I</span>
+<span class="">	move-result v4</span>
+<span class="">	add-int/2addr v5, v4</span>
+<span class="">	iget-object v4, p0, Landroidx/recyclerview/widget/i;->a:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	invoke-virtual {v4}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I</span>
+<span class="">	move-result v4</span>
+<span class="">	sub-int v4, v5, v4</span>
+<span class="">	iget-object v6, p0, Landroidx/recyclerview/widget/i;->a:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	invoke-virtual {v6, v0, v4, v2, v5}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V</span>
+<span class="">	iget-object v4, p0, Landroidx/recyclerview/widget/i;->a:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	invoke-virtual {v4, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V</span>
+.end method
+
+.method public f(I)V
+<span class="">	.locals 1</span>
+
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	if-ne p1, v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	const-string v0, "Invalid orientation. It should be either HORIZONTAL or VERTICAL"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	iput p1, p0, Landroidx/recyclerview/widget/i;->b:I</span>
+.end method
+
+.method public getItemOffsets(Landroid/graphics/Rect;Landroid/view/View;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$a0;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object p2, p0, Landroidx/recyclerview/widget/i;->a:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	const/4 p3, 0x0</span>
+<span class="">	if-nez p2, :cond_0</span>
+<span class="">	invoke-virtual {p1, p3, p3, p3, p3}, Landroid/graphics/Rect;->set(IIII)V</span>
+<span class="">	iget p4, p0, Landroidx/recyclerview/widget/i;->b:I</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	if-ne p4, v0, :cond_1</span>
+<span class="">	invoke-virtual {p2}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p1, p3, p3, p3, p2}, Landroid/graphics/Rect;->set(IIII)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-virtual {p2}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p1, p3, p3, p2, p3}, Landroid/graphics/Rect;->set(IIII)V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public onDraw(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$a0;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p2}, Landroidx/recyclerview/widget/RecyclerView;->getLayoutManager()Landroidx/recyclerview/widget/RecyclerView$o;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	if-eqz p3, :cond_2</span>
+<span class="">	iget-object p3, p0, Landroidx/recyclerview/widget/i;->a:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	if-nez p3, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget p3, p0, Landroidx/recyclerview/widget/i;->b:I</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	if-ne p3, v0, :cond_1</span>
+<span class="">	invoke-direct {p0, p1, p2}, Landroidx/recyclerview/widget/i;->e(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {p0, p1, p2}, Landroidx/recyclerview/widget/i;->d(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	:goto_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

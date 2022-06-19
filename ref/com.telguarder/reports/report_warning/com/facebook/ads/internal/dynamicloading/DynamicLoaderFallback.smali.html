@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.ads.internal.dynamicloading</a></li>
+        <li><i class="ico ico-class"></i> DynamicLoaderFallback.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback;
+.super Ljava/lang/Object;
+.source "DynamicLoaderFallback.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;
+}
+.end annotation
+
+.field private static final sApiProxyToAdListenersMap:Ljava/util/WeakHashMap;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/WeakHashMap<",
+"Ljava/lang/Object;",
+"Lcom/facebook/ads/AdListener;",
+">;"
+}
+.end annotation
+.end field
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Ljava/util/WeakHashMap;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/WeakHashMap;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback;->sApiProxyToAdListenersMap:Ljava/util/WeakHashMap;</span>
+.end method
+
+.method constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method static synthetic access$100(Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;)Z
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback;->equalsMethods(Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;)Z</span>
+<span class="">	move-result p0</span>
+.end method
+
+.method static synthetic access$200(Ljava/lang/Object;Ljava/util/Map;)Z
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback;->reportError(Ljava/lang/Object;Ljava/util/Map;)Z</span>
+<span class="">	move-result p0</span>
+.end method
+
+.method static synthetic access$300()Ljava/util/WeakHashMap;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback;->sApiProxyToAdListenersMap:Ljava/util/WeakHashMap;</span>
+.end method
+
+.method private static equalsMethodParams(Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;)Z
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0}, Ljava/lang/reflect/Method;->getParameterTypes()[Ljava/lang/Class;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/reflect/Method;->getParameterTypes()[Ljava/lang/Class;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p0, p1}, Ljava/util/Arrays;->equals([Ljava/lang/Object;[Ljava/lang/Object;)Z</span>
+<span class="">	move-result p0</span>
+.end method
+
+.method private static equalsMethods(Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;)Z
+<span class="">	.locals 2</span>
+
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/reflect/Method;->getDeclaringClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/reflect/Method;->getDeclaringClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/reflect/Method;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/reflect/Method;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback;->equalsMethodParams(Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	const/4 p0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method static makeFallbackLoader()Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;
+<span class="">	.locals 16</span>
+
+<span class="">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v3, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v4, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v4}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v6, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v6}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v7, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v2, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v2}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	new-instance v5, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v5}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	new-instance v0, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	invoke-direct {v0, v8}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;-><init>(Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$1;)V</span>
+<span class="">	const-class v9, Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;</span>
+<span class="">	invoke-virtual {v0, v9}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->mock(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	check-cast v9, Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;</span>
+<span class="">	invoke-interface {v9, v8, v8, v8}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;->createInterstitialAd(Landroid/content/Context;Ljava/lang/String;Lcom/facebook/ads/InterstitialAd;)Lcom/facebook/ads/internal/api/InterstitialAdApi;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	invoke-interface {v7, v10}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-interface {v9, v8, v8, v8}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;->createRewardedVideoAd(Landroid/content/Context;Ljava/lang/String;Lcom/facebook/ads/RewardedVideoAd;)Lcom/facebook/ads/internal/api/RewardedVideoAdApi;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	invoke-interface {v7, v10}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	move-object v13, v8</span>
+<span class="">	check-cast v13, Lcom/facebook/ads/AdSize;</span>
+<span class="">	const/4 v11, 0x0</span>
+<span class="">	const/4 v12, 0x0</span>
+<span class="">	const/4 v14, 0x0</span>
+<span class="">	const/4 v15, 0x0</span>
+<span class="">	move-object v10, v9</span>
+<span class="">	invoke-interface/range {v10 .. v15}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;->createAdViewApi(Landroid/content/Context;Ljava/lang/String;Lcom/facebook/ads/AdSize;Lcom/facebook/ads/internal/api/AdViewParentApi;Lcom/facebook/ads/AdView;)Lcom/facebook/ads/internal/api/AdViewApi;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	invoke-interface {v7, v10}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	const/4 v11, 0x0</span>
+<span class="">	const/4 v12, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-object v13, v8</span>
+<span class="">	check-cast v13, Ljava/lang/String;</span>
+<span class="">	const/4 v14, 0x0</span>
+<span class="">	const/4 v15, 0x0</span>
+<span class="">	move-object v10, v9</span>
+<span class="">	invoke-interface/range {v10 .. v15}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;->createAdViewApi(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/facebook/ads/internal/api/AdViewParentApi;Lcom/facebook/ads/AdView;)Lcom/facebook/ads/internal/api/AdViewApi;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	invoke-interface {v7, v10}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-interface {v9, v8, v8}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;->createNativeAdApi(Lcom/facebook/ads/NativeAd;Lcom/facebook/ads/internal/api/NativeAdBaseApi;)Lcom/facebook/ads/internal/api/NativeAdApi;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	invoke-interface {v9, v8, v8}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;->createNativeBannerAdApi(Lcom/facebook/ads/NativeBannerAd;Lcom/facebook/ads/internal/api/NativeAdBaseApi;)Lcom/facebook/ads/internal/api/NativeBannerAdApi;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	const-class v11, Lcom/facebook/ads/internal/api/NativeAdBaseApi;</span>
+<span class="">	invoke-virtual {v0, v11}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->mock(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	check-cast v11, Lcom/facebook/ads/internal/api/NativeAdBaseApi;</span>
+<span class="">	invoke-interface {v11}, Lcom/facebook/ads/internal/api/NativeAdBaseApi;->loadAd()V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	invoke-interface {v1, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	move-object v12, v8</span>
+<span class="">	check-cast v12, Lcom/facebook/ads/NativeAdBase$NativeLoadAdConfig;</span>
+<span class="">	invoke-interface {v11, v12}, Lcom/facebook/ads/internal/api/NativeAdBaseApi;->loadAd(Lcom/facebook/ads/NativeAdBase$NativeLoadAdConfig;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	invoke-interface {v3, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-interface {v11, v8}, Lcom/facebook/ads/internal/api/NativeAdBaseApi;->buildLoadAdConfig(Lcom/facebook/ads/NativeAdBase;)Lcom/facebook/ads/NativeAdBase$NativeAdLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-interface {v6, v11}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	const-class v11, Lcom/facebook/ads/internal/api/InterstitialAdApi;</span>
+<span class="">	invoke-virtual {v0, v11}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->mock(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	check-cast v11, Lcom/facebook/ads/internal/api/InterstitialAdApi;</span>
+<span class="">	invoke-interface {v11}, Lcom/facebook/ads/internal/api/InterstitialAdApi;->loadAd()V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	invoke-interface {v1, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	move-object v12, v8</span>
+<span class="">	check-cast v12, Lcom/facebook/ads/InterstitialAd$InterstitialLoadAdConfig;</span>
+<span class="">	invoke-interface {v11, v12}, Lcom/facebook/ads/internal/api/InterstitialAdApi;->loadAd(Lcom/facebook/ads/InterstitialAd$InterstitialLoadAdConfig;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	invoke-interface {v3, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-interface {v11}, Lcom/facebook/ads/internal/api/InterstitialAdApi;->buildLoadAdConfig()Lcom/facebook/ads/InterstitialAd$InterstitialAdLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-interface {v6, v11}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	const-class v11, Lcom/facebook/ads/internal/api/RewardedVideoAdApi;</span>
+<span class="">	invoke-virtual {v0, v11}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->mock(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	check-cast v11, Lcom/facebook/ads/internal/api/RewardedVideoAdApi;</span>
+<span class="">	invoke-interface {v11}, Lcom/facebook/ads/internal/api/RewardedVideoAdApi;->loadAd()V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	invoke-interface {v1, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-interface {v11, v8}, Lcom/facebook/ads/internal/api/RewardedVideoAdApi;->loadAd(Lcom/facebook/ads/RewardedVideoAd$RewardedVideoLoadAdConfig;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	invoke-interface {v3, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-interface {v11}, Lcom/facebook/ads/internal/api/RewardedVideoAdApi;->buildLoadAdConfig()Lcom/facebook/ads/RewardedVideoAd$RewardedVideoAdLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-interface {v6, v11}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	const-class v11, Lcom/facebook/ads/internal/api/AdViewApi;</span>
+<span class="">	invoke-virtual {v0, v11}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->mock(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	check-cast v11, Lcom/facebook/ads/internal/api/AdViewApi;</span>
+<span class="">	invoke-interface {v11}, Lcom/facebook/ads/internal/api/AdViewApi;->loadAd()V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	invoke-interface {v1, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-interface {v11, v8}, Lcom/facebook/ads/internal/api/AdViewApi;->loadAd(Lcom/facebook/ads/AdView$AdViewLoadConfig;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	invoke-interface {v3, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-interface {v11}, Lcom/facebook/ads/internal/api/AdViewApi;->buildLoadAdConfig()Lcom/facebook/ads/AdView$AdViewLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-interface {v6, v11}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	const-class v11, Lcom/facebook/ads/AdView$AdViewLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0, v11}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->mock(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	check-cast v11, Lcom/facebook/ads/AdView$AdViewLoadConfigBuilder;</span>
+<span class="">	invoke-interface {v11, v8}, Lcom/facebook/ads/AdView$AdViewLoadConfigBuilder;->withAdListener(Lcom/facebook/ads/AdListener;)Lcom/facebook/ads/AdView$AdViewLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-interface {v4, v11}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	const-class v11, Lcom/facebook/ads/NativeAdBase$NativeAdLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0, v11}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->mock(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	check-cast v11, Lcom/facebook/ads/NativeAdBase$NativeAdLoadConfigBuilder;</span>
+<span class="">	invoke-interface {v11, v8}, Lcom/facebook/ads/NativeAdBase$NativeAdLoadConfigBuilder;->withAdListener(Lcom/facebook/ads/NativeAdListener;)Lcom/facebook/ads/NativeAdBase$NativeAdLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-interface {v4, v11}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	const-class v11, Lcom/facebook/ads/InterstitialAd$InterstitialAdLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0, v11}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->mock(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	check-cast v11, Lcom/facebook/ads/InterstitialAd$InterstitialAdLoadConfigBuilder;</span>
+<span class="">	invoke-interface {v11, v8}, Lcom/facebook/ads/InterstitialAd$InterstitialAdLoadConfigBuilder;->withAdListener(Lcom/facebook/ads/InterstitialAdListener;)Lcom/facebook/ads/InterstitialAd$InterstitialAdLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-interface {v4, v11}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	const-class v11, Lcom/facebook/ads/RewardedVideoAd$RewardedVideoAdLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0, v11}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->mock(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	check-cast v11, Lcom/facebook/ads/RewardedVideoAd$RewardedVideoAdLoadConfigBuilder;</span>
+<span class="">	invoke-interface {v11, v8}, Lcom/facebook/ads/RewardedVideoAd$RewardedVideoAdLoadConfigBuilder;->withAdListener(Lcom/facebook/ads/RewardedVideoAdListener;)Lcom/facebook/ads/RewardedVideoAd$RewardedVideoAdLoadConfigBuilder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$SimpleMethodCaptor;->getLastMethod()Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v4, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	new-instance v11, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$1;</span>
+<span class="">	move-object v0, v11</span>
+<span class="">	move-object v8, v10</span>
+<span class="">	invoke-direct/range {v0 .. v9}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$1;-><init>(Ljava/util/List;Ljava/util/Map;Ljava/util/List;Ljava/util/List;Ljava/util/Map;Ljava/util/List;Ljava/util/List;Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;)V</span>
+<span class="">	const-class v0, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Class;->getClassLoader()Ljava/lang/ClassLoader;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Class;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const-class v3, Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;</span>
+<span class="">	aput-object v3, v1, v2</span>
+<span class="">	invoke-static {v0, v1, v11}, Ljava/lang/reflect/Proxy;->newProxyInstance(Ljava/lang/ClassLoader;[Ljava/lang/Class;Ljava/lang/reflect/InvocationHandler;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/facebook/ads/internal/dynamicloading/DynamicLoader;</span>
+.end method
+
+.method private static reportError(Ljava/lang/Object;Ljava/util/Map;)Z
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	"Lcom/facebook/ads/Ad;",</span>
+<span class="">	">;)Z"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	if-nez p0, :cond_0</span>
+<span class="">	sget-object v1, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback;->sApiProxyToAdListenersMap:Ljava/util/WeakHashMap;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v1, p0}, Ljava/util/WeakHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/facebook/ads/AdListener;</span>
+<span class="">	invoke-interface {p1, p0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Lcom/facebook/ads/Ad;</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	new-instance p1, Landroid/os/Handler;</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V</span>
+<span class="">	new-instance v0, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$2;</span>
+<span class="">	invoke-direct {v0, v1, p0}, Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFallback$2;-><init>(Lcom/facebook/ads/AdListener;Lcom/facebook/ads/Ad;)V</span>
+<span class="">	const-wide/16 v1, 0x1f4</span>
+<span class="">	invoke-virtual {p1, v0, v1, v2}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z</span>
+<span class="">	const/4 p0, 0x1</span>
+<span class="">	:cond_1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.internal</a></li>
+        <li><i class="ico ico-class"></i> FileLruCache$BufferFile.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class final Lcom/facebook/internal/FileLruCache$BufferFile;
+.super Ljava/lang/Object;
+.source "FileLruCache.kt"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lcom/facebook/internal/FileLruCache;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x1a
+name = "BufferFile"
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000(\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0008\u0002\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0004\u0008\u00c2\u0002\u0018\u00002\u00020\u0001B\u0007\u0008\u0002\u00a2\u0006\u0002\u0010\u0002J\u000e\u0010\u0008\u001a\u00020\t2\u0006\u0010\n\u001a\u00020\u000bJ\u0006\u0010\u000c\u001a\u00020\u0006J\u0006\u0010\r\u001a\u00020\u0006J\u0010\u0010\u000e\u001a\u00020\u000b2\u0008\u0010\n\u001a\u0004\u0018\u00010\u000bR\u000e\u0010\u0003\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\u0006X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u000f"
+}
+d2 = {
+"Lcom/facebook/internal/FileLruCache$BufferFile;",
+"",
+"()V",
+"FILE_NAME_PREFIX",
+"",
+"filterExcludeBufferFiles",
+"Ljava/io/FilenameFilter;",
+"filterExcludeNonBufferFiles",
+"deleteAll",
+"",
+"root",
+"Ljava/io/File;",
+"excludeBufferFiles",
+"excludeNonBufferFiles",
+"newFile",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field private static final FILE_NAME_PREFIX:Ljava/lang/String; = "buffer"
+.field public static final INSTANCE:Lcom/facebook/internal/FileLruCache$BufferFile;
+.field private static final filterExcludeBufferFiles:Ljava/io/FilenameFilter;
+.field private static final filterExcludeNonBufferFiles:Ljava/io/FilenameFilter;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FileLruCache$BufferFile;</span>
+<span class="">	invoke-direct {v0}, Lcom/facebook/internal/FileLruCache$BufferFile;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/facebook/internal/FileLruCache$BufferFile;->INSTANCE:Lcom/facebook/internal/FileLruCache$BufferFile;</span>
+<span class="">	sget-object v0, Lcom/facebook/internal/FileLruCache$BufferFile$filterExcludeBufferFiles$1;->INSTANCE:Lcom/facebook/internal/FileLruCache$BufferFile$filterExcludeBufferFiles$1;</span>
+<span class="">	check-cast v0, Ljava/io/FilenameFilter;</span>
+<span class="">	sput-object v0, Lcom/facebook/internal/FileLruCache$BufferFile;->filterExcludeBufferFiles:Ljava/io/FilenameFilter;</span>
+<span class="">	sget-object v0, Lcom/facebook/internal/FileLruCache$BufferFile$filterExcludeNonBufferFiles$1;->INSTANCE:Lcom/facebook/internal/FileLruCache$BufferFile$filterExcludeNonBufferFiles$1;</span>
+<span class="">	check-cast v0, Ljava/io/FilenameFilter;</span>
+<span class="">	sput-object v0, Lcom/facebook/internal/FileLruCache$BufferFile;->filterExcludeNonBufferFiles:Ljava/io/FilenameFilter;</span>
+.end method
+
+.method private constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public final deleteAll(Ljava/io/File;)V
+<span class="">	.locals 3</span>
+
+<span class="">	const-string v0, "root"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/internal/FileLruCache$BufferFile;->excludeNonBufferFiles()Ljava/io/FilenameFilter;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/io/File;->listFiles(Ljava/io/FilenameFilter;)[Ljava/io/File;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	array-length v0, p1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v1, v0, :cond_0</span>
+<span class="">	aget-object v2, p1, v1</span>
+<span class="">	invoke-virtual {v2}, Ljava/io/File;->delete()Z</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public final excludeBufferFiles()Ljava/io/FilenameFilter;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/FileLruCache$BufferFile;->filterExcludeBufferFiles:Ljava/io/FilenameFilter;</span>
+.end method
+
+.method public final excludeNonBufferFiles()Ljava/io/FilenameFilter;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/FileLruCache$BufferFile;->filterExcludeNonBufferFiles:Ljava/io/FilenameFilter;</span>
+.end method
+
+.method public final newFile(Ljava/io/File;)Ljava/io/File;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "buffer"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-static {}, Lcom/facebook/internal/FileLruCache;->access$getBufferIndex$cp()Ljava/util/concurrent/atomic/AtomicLong;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicLong;->incrementAndGet()J</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	invoke-static {v1, v2}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Ljava/io/File;</span>
+<span class="">	invoke-direct {v1, p1, v0}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

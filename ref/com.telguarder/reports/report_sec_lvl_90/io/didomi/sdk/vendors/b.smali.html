@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">io.didomi.sdk.vendors</a></li>
+        <li><i class="ico ico-class"></i> b.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lio/didomi/sdk/vendors/b;
+.super Lio/didomi/sdk/vendors/a;
+.source "SourceFile"
+
+.annotation runtime Ljavax/inject/Singleton;
+.end annotation
+
+.field private final n:Lio/didomi/sdk/t2;
+
+
+.method public constructor <init>(Lio/didomi/sdk/c0;Lio/didomi/sdk/t2;Lio/didomi/sdk/e5;Lio/didomi/sdk/b9;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljavax/inject/Inject;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "configurationRepository"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "languagesHelper"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "resourcesHelper"</span>
+<span class="">	invoke-static {p3, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string/jumbo v0, "vendorRepository"</span>
+<span class="">	invoke-static {p4, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0, p1, p2, p3, p4}, Lio/didomi/sdk/vendors/a;-><init>(Lio/didomi/sdk/c0;Lio/didomi/sdk/t2;Lio/didomi/sdk/e5;Lio/didomi/sdk/b9;)V</span>
+<span class="">	iput-object p2, p0, Lio/didomi/sdk/vendors/b;->n:Lio/didomi/sdk/t2;</span>
+.end method
+
+.method public a(Lio/didomi/sdk/models/DeviceStorageDisclosure;)Ljava/lang/String;
+<span class="">	.locals 12</span>
+
+<span class="">	const-string v0, "disclosure"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/models/DeviceStorageDisclosure;->getIdentifier()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const-string v4, ": "</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v1}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result v5</span>
+<span class="">	if-lez v5, :cond_1</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v5, :cond_2</span>
+<span class="">	iget-object v6, p0, Lio/didomi/sdk/vendors/b;->n:Lio/didomi/sdk/t2;</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	const/4 v9, 0x0</span>
+<span class="">	const/4 v10, 0x6</span>
+<span class="">	const/4 v11, 0x0</span>
+<span class="">	const-string v7, "name"</span>
+<span class="">	invoke-static/range {v6 .. v11}, Lio/didomi/sdk/t2;->a(Lio/didomi/sdk/t2;Ljava/lang/String;Lio/didomi/sdk/o5;Ljava/util/Map;ILjava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	new-instance v6, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {p0, p1}, Lio/didomi/sdk/vendors/a;->g(Lio/didomi/sdk/models/DeviceStorageDisclosure;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_3</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-interface {v1}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result v5</span>
+<span class="">	if-lez v5, :cond_4</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_4</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	:goto_2</span>
+<span class="">	if-eqz v5, :cond_5</span>
+<span class="">	iget-object v6, p0, Lio/didomi/sdk/vendors/b;->n:Lio/didomi/sdk/t2;</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	const/4 v9, 0x0</span>
+<span class="">	const/4 v10, 0x6</span>
+<span class="">	const/4 v11, 0x0</span>
+<span class="">	const-string v7, "type"</span>
+<span class="">	invoke-static/range {v6 .. v11}, Lio/didomi/sdk/t2;->a(Lio/didomi/sdk/t2;Ljava/lang/String;Lio/didomi/sdk/o5;Ljava/util/Map;ILjava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	new-instance v6, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:goto_3</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/models/DeviceStorageDisclosure;->getDomain()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_6</span>
+<span class="">	goto :goto_5</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-interface {v1}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result v5</span>
+<span class="">	if-lez v5, :cond_7</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:cond_7</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	:goto_4</span>
+<span class="">	if-eqz v5, :cond_8</span>
+<span class="">	iget-object v6, p0, Lio/didomi/sdk/vendors/b;->n:Lio/didomi/sdk/t2;</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	const/4 v9, 0x0</span>
+<span class="">	const/4 v10, 0x6</span>
+<span class="">	const/4 v11, 0x0</span>
+<span class="">	const-string v7, "domain"</span>
+<span class="">	invoke-static/range {v6 .. v11}, Lio/didomi/sdk/t2;->a(Lio/didomi/sdk/t2;Ljava/lang/String;Lio/didomi/sdk/o5;Ljava/util/Map;ILjava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	new-instance v6, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:goto_5</span>
+<span class="">	:cond_8</span>
+<span class="">	invoke-virtual {p0, p1}, Lio/didomi/sdk/vendors/a;->c(Lio/didomi/sdk/models/DeviceStorageDisclosure;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_9</span>
+<span class="">	goto :goto_6</span>
+<span class="">	:cond_9</span>
+<span class="">	iget-object v5, p0, Lio/didomi/sdk/vendors/b;->n:Lio/didomi/sdk/t2;</span>
+<span class="">	const/4 v7, 0x0</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	const/4 v9, 0x6</span>
+<span class="">	const/4 v10, 0x0</span>
+<span class="">	const-string v6, "expiration"</span>
+<span class="">	invoke-static/range {v5 .. v10}, Lio/didomi/sdk/t2;->a(Lio/didomi/sdk/t2;Ljava/lang/String;Lio/didomi/sdk/o5;Ljava/util/Map;ILjava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	new-instance v6, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:goto_6</span>
+<span class="">	invoke-virtual {p0, p1}, Lio/didomi/sdk/vendors/b;->f(Lio/didomi/sdk/models/DeviceStorageDisclosure;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-lez v1, :cond_a</span>
+<span class="">	goto :goto_7</span>
+<span class="">	:cond_a</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_7</span>
+<span class="">	if-eqz v2, :cond_b</span>
+<span class="">	iget-object v5, p0, Lio/didomi/sdk/vendors/b;->n:Lio/didomi/sdk/t2;</span>
+<span class="">	const/4 v7, 0x0</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	const/4 v9, 0x6</span>
+<span class="">	const/4 v10, 0x0</span>
+<span class="">	const-string/jumbo v6, "used_for_purposes"</span>
+<span class="">	invoke-static/range {v5 .. v10}, Lio/didomi/sdk/t2;->a(Lio/didomi/sdk/t2;Ljava/lang/String;Lio/didomi/sdk/o5;Ljava/util/Map;ILjava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:cond_b</span>
+<span class="">	const/4 p1, 0x2</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-static {v0, v1, p1, v1}, Lio/didomi/sdk/r2;->b(Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public f(Lio/didomi/sdk/models/DeviceStorageDisclosure;)Ljava/lang/String;
+<span class="">	.locals 11</span>
+
+<span class="">	const-string v0, "disclosure"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0, p1}, Lio/didomi/sdk/vendors/a;->e(Lio/didomi/sdk/models/DeviceStorageDisclosure;)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	const/16 v1, 0xa</span>
+<span class="">	invoke-static {p1, v1}, Lkotlin/collections/CollectionsKt;->collectionSizeOrDefault(Ljava/lang/Iterable;I)I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lio/didomi/sdk/Purpose;</span>
+<span class="">	iget-object v2, p0, Lio/didomi/sdk/vendors/b;->n:Lio/didomi/sdk/t2;</span>
+<span class="">	invoke-virtual {v1}, Lio/didomi/sdk/Purpose;->getTranslationKeyForName()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	const/16 v7, 0xe</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	invoke-static/range {v2 .. v8}, Lio/didomi/sdk/t2;->a(Lio/didomi/sdk/t2;Ljava/lang/String;Lio/didomi/sdk/o5;Ljava/util/Map;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v0}, Lkotlin/collections/CollectionsKt;->sorted(Ljava/lang/Iterable;)Ljava/util/List;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	const/4 v7, 0x0</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	const/16 v9, 0x3e</span>
+<span class="">	const/4 v10, 0x0</span>
+<span class="">	const-string v3, ", "</span>
+<span class="">	invoke-static/range {v2 .. v10}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public final w()Ljava/lang/String;
+<span class="">	.locals 7</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/vendors/b;->n:Lio/didomi/sdk/t2;</span>
+<span class="">	sget-object v2, Lio/didomi/sdk/o5;->b:Lio/didomi/sdk/o5;</span>
+<span class="">	const-string v1, "device_storage"</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	const/16 v5, 0xc</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	invoke-static/range {v0 .. v6}, Lio/didomi/sdk/t2;->a(Lio/didomi/sdk/t2;Ljava/lang/String;Lio/didomi/sdk/o5;Ljava/util/Map;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0}, Lio/didomi/sdk/vendors/a;->n()Lio/didomi/sdk/models/DeviceStorageDisclosure;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v1}, Lio/didomi/sdk/models/DeviceStorageDisclosure;->getIdentifier()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_0</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v0, ": "</span>
+<span class="">	invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

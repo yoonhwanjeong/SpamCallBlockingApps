@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.work</a></li>
+        <li><i class="ico ico-class"></i> ListenableWorker.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Landroidx/work/ListenableWorker;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/work/ListenableWorker$a;
+}
+.end annotation
+
+.field private f:Landroid/content/Context;
+.field private g:Landroidx/work/WorkerParameters;
+.field private volatile h:Z
+.field private i:Z
+.field private j:Z
+
+
+.method public constructor <init>(Landroid/content/Context;Landroidx/work/WorkerParameters;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation build Landroidx/annotation/Keep;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	iput-object p1, p0, Landroidx/work/ListenableWorker;->f:Landroid/content/Context;</span>
+<span class="">	iput-object p2, p0, Landroidx/work/ListenableWorker;->g:Landroidx/work/WorkerParameters;</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p2, "WorkerParameters is null"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string p2, "Application Context is null"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public final a()Landroid/content/Context;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/ListenableWorker;->f:Landroid/content/Context;</span>
+.end method
+
+.method public c()Ljava/util/concurrent/Executor;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/ListenableWorker;->g:Landroidx/work/WorkerParameters;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/work/WorkerParameters;->a()Ljava/util/concurrent/Executor;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public final d()Ljava/util/UUID;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/ListenableWorker;->g:Landroidx/work/WorkerParameters;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/work/WorkerParameters;->b()Ljava/util/UUID;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public final e()Landroidx/work/e;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/ListenableWorker;->g:Landroidx/work/WorkerParameters;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/work/WorkerParameters;->c()Landroidx/work/e;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public g()Landroidx/work/impl/utils/o/a;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/ListenableWorker;->g:Landroidx/work/WorkerParameters;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/work/WorkerParameters;->d()Landroidx/work/impl/utils/o/a;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public h()Landroidx/work/y;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/ListenableWorker;->g:Landroidx/work/WorkerParameters;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/work/WorkerParameters;->e()Landroidx/work/y;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public i()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Landroidx/work/ListenableWorker;->j:Z</span>
+.end method
+
+.method public final j()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Landroidx/work/ListenableWorker;->h:Z</span>
+.end method
+
+.method public final k()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Landroidx/work/ListenableWorker;->i:Z</span>
+.end method
+
+.method public l()V
+<span class="">	.locals 0</span>
+
+.end method
+
+.method public final m()V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	iput-boolean v0, p0, Landroidx/work/ListenableWorker;->i:Z</span>
+.end method
+
+.method public abstract n()Lcom/google/common/util/concurrent/c;
+<span class="">	</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lcom/google/common/util/concurrent/c<",</span>
+<span class="">	"Landroidx/work/ListenableWorker$a;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method public final o()V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	iput-boolean v0, p0, Landroidx/work/ListenableWorker;->h:Z</span>
+<span class="">	invoke-virtual {p0}, Landroidx/work/ListenableWorker;->l()V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

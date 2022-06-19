@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.internal.instrument.errorreport</a></li>
+        <li><i class="ico ico-class"></i> ErrorReportHandler.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler;
+.super Ljava/lang/Object;
+.source "ErrorReportHandler.kt"
+
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000,\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0008\u0002\n\u0002\u0010\u0008\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0018\u0002\n\u0002\u0008\u0003\n\u0002\u0010\u000e\n\u0002\u0008\u0002\u0008\u00c7\u0002\u0018\u00002\u00020\u0001B\u0007\u0008\u0002\u00a2\u0006\u0002\u0010\u0002J\u0008\u0010\u0005\u001a\u00020\u0006H\u0007J\u0013\u0010\u0007\u001a\u0008\u0012\u0004\u0012\u00020\t0\u0008H\u0007\u00a2\u0006\u0002\u0010\nJ\u0012\u0010\u000b\u001a\u00020\u00062\u0008\u0010\u000c\u001a\u0004\u0018\u00010\rH\u0007J\u0008\u0010\u000e\u001a\u00020\u0006H\u0007R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u000f"
+}
+d2 = {
+"Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler;",
+"",
+"()V",
+"MAX_ERROR_REPORT_NUM",
+"",
+"enable",
+"",
+"listErrorReportFiles",
+"",
+"Ljava/io/File;",
+"()[Ljava/io/File;",
+"save",
+"msg",
+"",
+"sendErrorReports",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field public static final INSTANCE:Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler;
+.field private static final MAX_ERROR_REPORT_NUM:I = 0x3e8
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler;</span>
+<span class="">	invoke-direct {v0}, Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler;->INSTANCE:Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler;</span>
+.end method
+
+.method private constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public static final enable()V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getAutoLogAppEventsEnabled()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler;->sendErrorReports()V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public static final listErrorReportFiles()[Ljava/io/File;
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/internal/instrument/InstrumentUtility;->getInstrumentReportDir()Ljava/io/File;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	sget-object v1, Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler$listErrorReportFiles$1;->INSTANCE:Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler$listErrorReportFiles$1;</span>
+<span class="">	check-cast v1, Ljava/io/FilenameFilter;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/io/File;->listFiles(Ljava/io/FilenameFilter;)[Ljava/io/File;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "reportDir.listFiles { di\u2026OR_REPORT_PREFIX)))\n    }"</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-array v0, v0, [Ljava/io/File;</span>
+.end method
+
+.method public static final save(Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v0, Lcom/facebook/internal/instrument/errorreport/ErrorReportData;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/internal/instrument/errorreport/ErrorReportData;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/internal/instrument/errorreport/ErrorReportData;->save()V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:catch_0</span>
+.end method
+
+.method public static final sendErrorReports()V
+<span class="">	.locals 7</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/internal/Utility;->isDataProcessingRestricted()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler;->listErrorReportFiles()[Ljava/io/File;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	array-length v2, v0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	if-ge v4, v2, :cond_2</span>
+<span class="">	:goto_0</span>
+<span class="">	aget-object v5, v0, v4</span>
+<span class="">	new-instance v6, Lcom/facebook/internal/instrument/errorreport/ErrorReportData;</span>
+<span class="">	invoke-direct {v6, v5}, Lcom/facebook/internal/instrument/errorreport/ErrorReportData;-><init>(Ljava/io/File;)V</span>
+<span class="">	invoke-virtual {v6}, Lcom/facebook/internal/instrument/errorreport/ErrorReportData;->isValid()Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_1</span>
+<span class="">	invoke-virtual {v1, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z</span>
+<span class="">	add-int/lit8 v4, v4, 0x1</span>
+<span class="">	:cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	:cond_2</span>
+<span class="">	check-cast v0, Ljava/util/List;</span>
+<span class="">	sget-object v2, Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler$sendErrorReports$1;->INSTANCE:Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler$sendErrorReports$1;</span>
+<span class="">	check-cast v2, Ljava/util/Comparator;</span>
+<span class="">	invoke-static {v0, v2}, Lkotlin/collections/CollectionsKt;->sortWith(Ljava/util/List;Ljava/util/Comparator;)V</span>
+<span class="">	new-instance v0, Lorg/json/JSONArray;</span>
+<span class="">	invoke-direct {v0}, Lorg/json/JSONArray;-><init>()V</span>
+<span class="">	invoke-virtual {v1}, Ljava/util/ArrayList;->size()I</span>
+<span class="">	:goto_1</span>
+<span class="">	move-result v2</span>
+<span class="">	if-ge v3, v2, :cond_3</span>
+<span class="">	const/16 v2, 0x3e8</span>
+<span class="">	if-ge v3, v2, :cond_3</span>
+<span class="">	invoke-virtual {v1, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v0, v2}, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	new-instance v2, Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler$sendErrorReports$2;</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-direct {v2, v1}, Lcom/facebook/internal/instrument/errorreport/ErrorReportHandler$sendErrorReports$2;-><init>(Ljava/util/ArrayList;)V</span>
+<span class="">	check-cast v2, Lcom/facebook/GraphRequest$Callback;</span>
+<span class="">	const-string v1, "error_reports"</span>
+<span class="">	invoke-static {v1, v0, v2}, Lcom/facebook/internal/instrument/InstrumentUtility;->sendReports(Ljava/lang/String;Lorg/json/JSONArray;Lcom/facebook/GraphRequest$Callback;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

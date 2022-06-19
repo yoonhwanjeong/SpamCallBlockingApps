@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.measurement.internal</a></li>
+        <li><i class="ico ico-class"></i> t3.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/android/gms/measurement/internal/t3;
+.super Lcom/google/android/gms/measurement/internal/d9;
+.source "SourceFile"
+
+
+.field private final d:Ljavax/net/ssl/SSLSocketFactory;
+
+
+.method public constructor <init>(Lcom/google/android/gms/measurement/internal/m9;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/android/gms/measurement/internal/d9;-><init>(Lcom/google/android/gms/measurement/internal/m9;)V</span>
+<span class="">	sget p1, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v0, 0x13</span>
+<span class="">	if-ge p1, v0, :cond_0</span>
+<span class="">	new-instance p1, Lcom/google/android/gms/measurement/internal/v9;</span>
+<span class="">	invoke-static {}, Ljavax/net/ssl/HttpsURLConnection;->getDefaultSSLSocketFactory()Ljavax/net/ssl/SSLSocketFactory;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Lcom/google/android/gms/measurement/internal/v9;-><init>(Ljavax/net/ssl/SSLSocketFactory;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/measurement/internal/t3;->d:Ljavax/net/ssl/SSLSocketFactory;</span>
+.end method
+
+.method protected final l()Z
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+.end method
+
+.method public final m()Z
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/android/gms/measurement/internal/d9;->j()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/measurement/internal/l5;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/measurement/internal/r4;->b()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "connectivity"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroid/net/ConnectivityManager;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/net/ConnectivityManager;->getActiveNetworkInfo()Landroid/net/NetworkInfo;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	nop</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Landroid/net/NetworkInfo;->isConnected()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method protected final n(Ljava/net/URL;)Ljava/net/HttpURLConnection;
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p1}, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	instance-of v0, p1, Ljava/net/HttpURLConnection;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/measurement/internal/t3;->d:Ljavax/net/ssl/SSLSocketFactory;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	instance-of v1, p1, Ljavax/net/ssl/HttpsURLConnection;</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	move-object v1, p1</span>
+<span class="">	check-cast v1, Ljavax/net/ssl/HttpsURLConnection;</span>
+<span class="">	invoke-virtual {v1, v0}, Ljavax/net/ssl/HttpsURLConnection;->setSSLSocketFactory(Ljavax/net/ssl/SSLSocketFactory;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	check-cast p1, Ljava/net/HttpURLConnection;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/net/HttpURLConnection;->setDefaultUseCaches(Z)V</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/measurement/internal/l5;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/android/gms/measurement/internal/r4;->z()Lcom/google/android/gms/measurement/internal/f;</span>
+<span class="">	const v1, 0xea60</span>
+<span class="">	invoke-virtual {p1, v1}, Ljava/net/HttpURLConnection;->setConnectTimeout(I)V</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/measurement/internal/l5;->a:Lcom/google/android/gms/measurement/internal/r4;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/android/gms/measurement/internal/r4;->z()Lcom/google/android/gms/measurement/internal/f;</span>
+<span class="">	const v1, 0xee48</span>
+<span class="">	invoke-virtual {p1, v1}, Ljava/net/HttpURLConnection;->setReadTimeout(I)V</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/net/HttpURLConnection;->setInstanceFollowRedirects(Z)V</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/net/HttpURLConnection;->setDoInput(Z)V</span>
+<span class="">	new-instance p1, Ljava/io/IOException;</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v0, "Failed to obtain HTTP connection"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

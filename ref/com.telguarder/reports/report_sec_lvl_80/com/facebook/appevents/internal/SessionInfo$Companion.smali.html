@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.appevents.internal</a></li>
+        <li><i class="ico ico-class"></i> SessionInfo$Companion.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/appevents/internal/SessionInfo$Companion;
+.super Ljava/lang/Object;
+.source "SessionInfo.kt"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lcom/facebook/appevents/internal/SessionInfo;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x19
+name = "Companion"
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000 \n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0008\u0002\n\u0002\u0010\u000e\n\u0002\u0008\u0004\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\u0008\u0086\u0003\u0018\u00002\u00020\u0001B\u0007\u0008\u0002\u00a2\u0006\u0002\u0010\u0002J\u0008\u0010\u0008\u001a\u00020\tH\u0007J\n\u0010\n\u001a\u0004\u0018\u00010\u000bH\u0007R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u000c"
+}
+d2 = {
+"Lcom/facebook/appevents/internal/SessionInfo$Companion;",
+"",
+"()V",
+"INTERRUPTION_COUNT_KEY",
+"",
+"LAST_SESSION_INFO_END_KEY",
+"LAST_SESSION_INFO_START_KEY",
+"SESSION_ID_KEY",
+"clearSavedSessionFromDisk",
+"",
+"getStoredSessionInfo",
+"Lcom/facebook/appevents/internal/SessionInfo;",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+
+
+<span class="cov">.method private constructor &lt;init&gt;()V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public synthetic constructor &lt;init&gt;(Lkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/facebook/appevents/internal/SessionInfo$Companion;-><init>()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public final clearSavedSessionFromDisk()V
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "com.facebook.appevents.SessionInfo.sessionStartTime"</span>
+<span class="">	invoke-interface {v0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	const-string v1, "com.facebook.appevents.SessionInfo.sessionEndTime"</span>
+<span class="">	invoke-interface {v0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	const-string v1, "com.facebook.appevents.SessionInfo.interruptionCount"</span>
+<span class="">	invoke-interface {v0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	const-string v1, "com.facebook.appevents.SessionInfo.sessionId"</span>
+<span class="">	invoke-interface {v0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+<span class="">	sget-object v0, Lcom/facebook/appevents/internal/SourceApplicationInfo;->Companion:Lcom/facebook/appevents/internal/SourceApplicationInfo$Companion;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/appevents/internal/SourceApplicationInfo$Companion;->clearSavedSourceApplicationInfoFromDisk()V</span>
+.end method
+
+<span class="cov">.method public final getStoredSessionInfo()Lcom/facebook/appevents/internal/SessionInfo;</span>
+<span class="">	.locals 16</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-static {v0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "com.facebook.appevents.SessionInfo.sessionStartTime"</span>
+<span class="cov">	const-wide/16 v2, 0x0</span>
+<span class="exec">	invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="cov">	move-result-wide v4</span>
+<span class="cov">	const-string v1, "com.facebook.appevents.SessionInfo.sessionEndTime"</span>
+<span class="exec">	invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="cov">	move-result-wide v6</span>
+<span class="cov">	const-string v1, "com.facebook.appevents.SessionInfo.sessionId"</span>
+<span class="cov">	const/4 v8, 0x0</span>
+<span class="exec">	invoke-interface {v0, v1, v8}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	cmp-long v9, v4, v2</span>
+<span class="">	if-eqz v9, :cond_1</span>
+<span class="">	cmp-long v9, v6, v2</span>
+<span class="">	if-eqz v9, :cond_1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v2, Lcom/facebook/appevents/internal/SessionInfo;</span>
+<span class="">	invoke-static {v4, v5}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-static {v6, v7}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	const/4 v13, 0x0</span>
+<span class="">	const/4 v14, 0x4</span>
+<span class="">	const/4 v15, 0x0</span>
+<span class="">	move-object v10, v2</span>
+<span class="">	invoke-direct/range {v10 .. v15}, Lcom/facebook/appevents/internal/SessionInfo;-><init>(Ljava/lang/Long;Ljava/lang/Long;Ljava/util/UUID;ILkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const-string v4, "com.facebook.appevents.SessionInfo.interruptionCount"</span>
+<span class="">	invoke-interface {v0, v4, v3}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-static {v2, v0}, Lcom/facebook/appevents/internal/SessionInfo;->access$setInterruptionCount$p(Lcom/facebook/appevents/internal/SessionInfo;I)V</span>
+<span class="">	sget-object v0, Lcom/facebook/appevents/internal/SourceApplicationInfo;->Companion:Lcom/facebook/appevents/internal/SourceApplicationInfo$Companion;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/appevents/internal/SourceApplicationInfo$Companion;->getStoredSourceApplicatioInfo()Lcom/facebook/appevents/internal/SourceApplicationInfo;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v2, v0}, Lcom/facebook/appevents/internal/SessionInfo;->setSourceApplicationInfo(Lcom/facebook/appevents/internal/SourceApplicationInfo;)V</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	invoke-static {v3, v4}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v2, v0}, Lcom/facebook/appevents/internal/SessionInfo;->setDiskRestoreTime(Ljava/lang/Long;)V</span>
+<span class="">	invoke-static {v1}, Ljava/util/UUID;->fromString(Ljava/lang/String;)Ljava/util/UUID;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "UUID.fromString(sessionIDStr)"</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v2, v0}, Lcom/facebook/appevents/internal/SessionInfo;->setSessionId(Ljava/util/UUID;)V</span>
+<span class="exec">	return-object v8</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	:goto_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.api.zipkin.reporter</a></li>
+        <li><i class="ico ico-class"></i> ZipkinCustomHiyaSender.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;
+.super Lzipkin2/reporter/a;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$BufferRequestBody;,
+Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$OkHttpSenderThreadFactory;,
+Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;
+}
+.end annotation
+
+.field final client:Lm/c0;
+.field volatile closeCalled:Z
+.field final compressionEnabled:Z
+.field final encoder:Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;
+.field final encoding:Lu/h/b;
+.field final endpoint:Lm/y;
+.field final maxRequests:I
+.field final messageMaxBytes:I
+
+
+<span class="cov">.method constructor &lt;init&gt;(Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;)V</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	invoke-direct {p0}, Lzipkin2/reporter/a;-><init>()V</span>
+<span class="cov">	iget-object v0, p1, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;->endpoint:Lm/y;</span>
+<span class="cov">	const-string v1, "endpoint == null"</span>
+<span class="cov">	invoke-static {v0, v1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="cov">	iput-object v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->endpoint:Lm/y;</span>
+<span class="cov">	iget-object v0, p1, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;->encoding:Lu/h/b;</span>
+<span class="cov">	iput-object v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->encoding:Lu/h/b;</span>
+<span class="cov">	sget-object v1, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$1;->$SwitchMap$zipkin2$codec$Encoding:[I</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Enum;->ordinal()I</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	aget v1, v1, v2</span>
+<span class="cov">	const/4 v2, 0x1</span>
+<span class="">	if-eq v1, v2, :cond_2</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	if-eq v1, v2, :cond_1</span>
+<span class="">	const/4 v2, 0x3</span>
+<span class="">	if-ne v1, v2, :cond_0</span>
+<span class="">	sget-object v0, Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;->PROTO3:Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;</span>
+<span class="">	iput-object v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->encoder:Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/UnsupportedOperationException;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Unsupported encoding: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Enum;->name()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v0, Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;->THRIFT:Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;</span>
+<span class="">	iput-object v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->encoder:Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	sget-object v0, Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;->JSON:Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;</span>
+<span class="cov">	iput-object v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->encoder:Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	iget v0, p1, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;->maxRequests:I</span>
+<span class="cov">	iput v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->maxRequests:I</span>
+<span class="cov">	iget v1, p1, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;->messageMaxBytes:I</span>
+<span class="cov">	iput v1, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->messageMaxBytes:I</span>
+<span class="cov">	iget-boolean v1, p1, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;->compressionEnabled:Z</span>
+<span class="cov">	iput-boolean v1, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->compressionEnabled:Z</span>
+<span class="exec">	invoke-static {v0}, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->newDispatcher(I)Lm/r;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, p1, v0}, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->getOkHttpClient(Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;Lm/r;)Lm/c0;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	iput-object p1, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->client:Lm/c0;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static create(Ljava/lang/String;Lm/c0$a;)Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;</span>
+<span class="">	.locals 0</span>
+
+<span class="exec">	invoke-static {p1}, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->newBuilder(Lm/c0$a;)Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1, p0}, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;->endpoint(Ljava/lang/String;)Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;->build()Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method private getOkHttpClient(Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;Lm/r;)Lm/c0;</span>
+<span class="">	.locals 0</span>
+
+<span class="exec">	invoke-virtual {p1}, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;->clientBuilder()Lm/c0$a;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1}, Lm/c0$a;->c()Lm/c0;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1}, Lm/c0;->z()Lm/c0$a;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-virtual {p1, p2}, Lm/c0$a;->h(Lm/r;)Lm/c0$a;</span>
+<span class="exec">	invoke-virtual {p1}, Lm/c0$a;->c()Lm/c0;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public static newBuilder(Lm/c0$a;)Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;</span>
+<span class="cov">	invoke-direct {v0, p0}, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;-><init>(Lm/c0$a;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method static newDispatcher(I)Lm/r;</span>
+<span class="">	.locals 9</span>
+
+<span class="cov">	new-instance v8, Ljava/util/concurrent/ThreadPoolExecutor;</span>
+<span class="cov">	sget-object v5, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="cov">	new-instance v6, Ljava/util/concurrent/SynchronousQueue;</span>
+<span class="cov">	invoke-direct {v6}, Ljava/util/concurrent/SynchronousQueue;-><init>()V</span>
+<span class="cov">	sget-object v7, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$OkHttpSenderThreadFactory;->INSTANCE:Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$OkHttpSenderThreadFactory;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	const-wide/16 v3, 0x3c</span>
+<span class="cov">	move-object v0, v8</span>
+<span class="cov">	move v2, p0</span>
+<span class="cov">	invoke-direct/range {v0 .. v7}, Ljava/util/concurrent/ThreadPoolExecutor;-><init>(IIJLjava/util/concurrent/TimeUnit;Ljava/util/concurrent/BlockingQueue;Ljava/util/concurrent/ThreadFactory;)V</span>
+<span class="cov">	new-instance v0, Lm/r;</span>
+<span class="cov">	invoke-direct {v0, v8}, Lm/r;-><init>(Ljava/util/concurrent/ExecutorService;)V</span>
+<span class="cov">	invoke-virtual {v0, p0}, Lm/r;->l(I)V</span>
+<span class="cov">	invoke-virtual {v0, p0}, Lm/r;->m(I)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public check()Lu/d;
+<span class="">	.locals 4</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v0, Lm/e0$a;</span>
+<span class="">	invoke-direct {v0}, Lm/e0$a;-><init>()V</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->endpoint:Lm/y;</span>
+<span class="">	invoke-virtual {v0, v1}, Lm/e0$a;->l(Lm/y;)Lm/e0$a;</span>
+<span class="">	const-string v1, "application/json"</span>
+<span class="">	invoke-static {v1}, Lm/a0;->h(Ljava/lang/String;)Lm/a0;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "[]"</span>
+<span class="">	invoke-static {v1, v2}, Lm/f0;->create(Lm/a0;Ljava/lang/String;)Lm/f0;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lm/e0$a;->h(Lm/f0;)Lm/e0$a;</span>
+<span class="">	invoke-virtual {v0}, Lm/e0$a;->b()Lm/e0;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->client:Lm/c0;</span>
+<span class="">	invoke-virtual {v1, v0}, Lm/c0;->a(Lm/e0;)Lm/f;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Lm/f;->execute()Lm/g0;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	invoke-virtual {v0}, Lm/g0;->y()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	new-instance v1, Ljava/lang/RuntimeException;</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v3, "check response failed: "</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {v1, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {v1}, Lu/d;->a(Ljava/lang/Throwable;)Lu/d;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	:try_start_2</span>
+<span class="">	invoke-virtual {v0}, Lm/g0;->close()V</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v0}, Lm/g0;->close()V</span>
+<span class="">	sget-object v0, Lu/d;->c:Lu/d;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-exception v1</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0</span>
+<span class="">	throw v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v2</span>
+<span class="">	:try_start_3</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_1</span>
+<span class="">	:catchall_1</span>
+<span class="">	invoke-virtual {v0}, Lm/g0;->close()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:try_start_4</span>
+<span class="">	move-exception v0</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_2</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V</span>
+<span class="">	:catchall_2</span>
+<span class="">	throw v2</span>
+<span class="">	:try_start_5</span>
+<span class="">	move-exception v0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-static {v0}, Lu/d;->a(Ljava/lang/Throwable;)Lu/d;</span>
+<span class="">	:try_end_5</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public declared-synchronized close()V
+<span class="">	.locals 5</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-boolean v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->closeCalled:Z</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	:cond_0</span>
+<span class="">	iput-boolean v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->closeCalled:Z</span>
+<span class="">	:try_start_1</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->client:Lm/c0;</span>
+<span class="">	invoke-virtual {v0}, Lm/c0;->p()Lm/r;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lm/r;->d()Ljava/util/concurrent/ExecutorService;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v1}, Ljava/util/concurrent/ExecutorService;->shutdown()V</span>
+<span class="">	invoke-virtual {v0}, Lm/r;->d()Ljava/util/concurrent/ExecutorService;</span>
+<span class="">	:try_start_2</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-wide/16 v2, 0x1</span>
+<span class="">	sget-object v4, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-interface {v1, v2, v3, v4}, Ljava/util/concurrent/ExecutorService;->awaitTermination(JLjava/util/concurrent/TimeUnit;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	invoke-virtual {v0}, Lm/r;->a()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catch Ljava/lang/InterruptedException; {:try_start_2 .. :try_end_2} :catch_0</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="">	invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;</span>
+<span class="">	:try_start_3</span>
+<span class="">	:catch_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Thread;->interrupt()V</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_0</span>
+<span class="">	:cond_1</span>
+<span class="">	move-exception v0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public encoding()Lu/h/b;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->encoding:Lu/h/b;</span>
+.end method
+
+.method public messageMaxBytes()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->messageMaxBytes:I</span>
+.end method
+
+.method public messageSizeInBytes(I)I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->encoding:Lu/h/b;</span>
+<span class="">	invoke-virtual {v0, p1}, Lu/h/b;->listSizeInBytes(I)I</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public messageSizeInBytes(Ljava/util/List;)I
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"[B>;)I"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->encoding:Lu/h/b;</span>
+<span class="">	invoke-virtual {v0, p1}, Lu/h/b;->listSizeInBytes(Ljava/util/List;)I</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method  newRequest(Lm/f0;)Lm/e0;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lm/e0$a;</span>
+<span class="">	invoke-direct {v0}, Lm/e0$a;-><init>()V</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->endpoint:Lm/y;</span>
+<span class="">	invoke-virtual {v0, v1}, Lm/e0$a;->l(Lm/y;)Lm/e0$a;</span>
+<span class="">	const-string v1, "b3"</span>
+<span class="">	const-string v2, "0"</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lm/e0$a;->a(Ljava/lang/String;Ljava/lang/String;)Lm/e0$a;</span>
+<span class="">	iget-boolean v1, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->compressionEnabled:Z</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const-string v1, "Content-Encoding"</span>
+<span class="">	const-string v2, "gzip"</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lm/e0$a;->a(Ljava/lang/String;Ljava/lang/String;)Lm/e0$a;</span>
+<span class="">	new-instance v1, Ln/f;</span>
+<span class="">	invoke-direct {v1}, Ln/f;-><init>()V</span>
+<span class="">	new-instance v2, Ln/n;</span>
+<span class="">	invoke-direct {v2, v1}, Ln/n;-><init>(Ln/b0;)V</span>
+<span class="">	invoke-static {v2}, Ln/r;->c(Ln/b0;)Ln/g;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {p1, v2}, Lm/f0;->writeTo(Ln/g;)V</span>
+<span class="">	invoke-interface {v2}, Ln/b0;->close()V</span>
+<span class="">	new-instance v2, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$BufferRequestBody;</span>
+<span class="">	invoke-virtual {p1}, Lm/f0;->contentType()Lm/a0;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {v2, p1, v1}, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$BufferRequestBody;-><init>(Lm/a0;Ln/f;)V</span>
+<span class="">	move-object p1, v2</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0, p1}, Lm/e0$a;->h(Lm/f0;)Lm/e0$a;</span>
+<span class="">	invoke-virtual {v0}, Lm/e0$a;->b()Lm/e0;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public sendSpans(Ljava/util/List;)Lu/b;
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"[B>;)",</span>
+<span class="">	"Lu/b<",</span>
+<span class="">	"Ljava/lang/Void;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->closeCalled:Z</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->encoder:Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/hiya/api/zipkin/reporter/RequestBodyMessageEncoder;->encode(Ljava/util/List;)Lm/f0;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance v0, Ljava/io/ByteArrayOutputStream;</span>
+<span class="">	invoke-direct {v0}, Ljava/io/ByteArrayOutputStream;-><init>()V</span>
+<span class="">	invoke-static {v0}, Ln/r;->h(Ljava/io/OutputStream;)Ln/b0;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Ln/r;->c(Ln/b0;)Ln/g;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p1, v0}, Lm/f0;->writeTo(Ln/g;)V</span>
+<span class="">	invoke-interface {v0}, Ln/g;->flush()V</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->newRequest(Lm/f0;)Lm/e0;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	new-instance v0, Lcom/hiya/api/zipkin/reporter/HttpCall;</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->client:Lm/c0;</span>
+<span class="">	invoke-virtual {v1, p1}, Lm/c0;->a(Lm/e0;)Lm/f;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/hiya/api/zipkin/reporter/HttpCall;-><init>(Lm/f;)V</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-static {}, Lcom/hiya/api/zipkin/reporter/Platform;->get()Lcom/hiya/api/zipkin/reporter/Platform;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/hiya/api/zipkin/reporter/Platform;->uncheckedIOException(Ljava/io/IOException;)Ljava/lang/RuntimeException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Lzipkin2/reporter/ClosedSenderException;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p1}, Lzipkin2/reporter/ClosedSenderException;-><init>()V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public final toBuilder()Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender$Builder;-><init>(Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;)V</span>
+.end method
+
+.method public final toString()Ljava/lang/String;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "ZipkinCustomHiyaSender{"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/api/zipkin/reporter/ZipkinCustomHiyaSender;->endpoint:Lm/y;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "}"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

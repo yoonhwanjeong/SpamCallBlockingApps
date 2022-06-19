@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.q.b</a></li>
+        <li><i class="ico ico-class"></i> j.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/hiya/stingray/q/b/j;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private a:Lcom/hiya/stingray/q/b/v;
+
+
+<span class="cov">.method public constructor &lt;init&gt;(Lcom/hiya/stingray/q/b/v;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lcom/hiya/stingray/q/b/j;->a:Lcom/hiya/stingray/q/b/v;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private c(Z)Lg/g/a/a/c;
+<span class="">	.locals 0</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	sget-object p1, Lg/g/a/a/c;->ADD_DENY_LIST_ITEM:Lg/g/a/a/c;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object p1, Lg/g/a/a/c;->ADD_ALLOW_LIST_ITEM:Lg/g/a/a/c;</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public a(ZLjava/util/List;)Li/c/b0/b/v;
+<span class="">	.locals 10</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(Z",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/hiya/stingray/q/c/i/a;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Li/c/b0/b/v<",</span>
+<span class="">	"Lretrofit2/Response<",</span>
+<span class="">	"Ljava/lang/Void;",</span>
+<span class="">	">;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "blacklist"</span>
+<span class="">	const-string v1, "whitelist"</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-interface {p2}, Ljava/util/List;->isEmpty()Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-nez v4, :cond_0</span>
+<span class="">	const/4 v4, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v4}, Lcom/google/common/base/m;->d(Z)V</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v5, p0, Lcom/hiya/stingray/q/b/j;->a:Lcom/hiya/stingray/q/b/v;</span>
+<span class="">	invoke-virtual {v5}, Lcom/hiya/stingray/q/b/v;->a()Lio/realm/y;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_3</span>
+<span class="">	.catch Lio/realm/exceptions/RealmException; {:try_start_0 .. :try_end_0} :catch_2</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_1</span>
+<span class="">	if-nez v5, :cond_2</span>
+<span class="">	:try_start_1</span>
+<span class="">	new-instance p2, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string v4, "Realm is null when removing block items."</span>
+<span class="">	invoke-direct {p2, v4}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p2}, Li/c/b0/b/v;->error(Ljava/lang/Throwable;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/IllegalArgumentException; {:try_start_1 .. :try_end_1} :catch_1</span>
+<span class="">	.catch Lio/realm/exceptions/RealmException; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	if-eqz v5, :cond_1</span>
+<span class="">	invoke-virtual {v5}, Lio/realm/y;->close()V</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-interface {p2}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	:try_start_2</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-interface {p2}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	move-result v6</span>
+<span class="">	if-eqz v6, :cond_5</span>
+<span class="">	invoke-interface {p2}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	check-cast v6, Lcom/hiya/stingray/q/c/i/a;</span>
+<span class="">	if-nez v6, :cond_4</span>
+<span class="">	goto :goto_1</span>
+<span class="">	const-class v7, Lcom/hiya/stingray/q/c/i/a;</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {v5, v7}, Lio/realm/y;->A1(Ljava/lang/Class;)Lio/realm/RealmQuery;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	const-string v8, "isFullNumberType"</span>
+<span class="">	invoke-virtual {v6}, Lcom/hiya/stingray/q/c/i/a;->Q0()Z</span>
+<span class="">	move-result v9</span>
+<span class="">	invoke-static {v9}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	invoke-virtual {v7, v8, v9}, Lio/realm/RealmQuery;->g(Ljava/lang/String;Ljava/lang/Boolean;)Lio/realm/RealmQuery;</span>
+<span class="">	const-string v8, "isBlacklistItem"</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	invoke-virtual {v7, v8, v9}, Lio/realm/RealmQuery;->g(Ljava/lang/String;Ljava/lang/Boolean;)Lio/realm/RealmQuery;</span>
+<span class="">	const-string v8, "phone"</span>
+<span class="">	invoke-virtual {v6}, Lcom/hiya/stingray/q/c/i/a;->P0()Ljava/lang/String;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	invoke-virtual {v7, v8, v9}, Lio/realm/RealmQuery;->i(Ljava/lang/String;Ljava/lang/String;)Lio/realm/RealmQuery;</span>
+<span class="">	invoke-virtual {v7}, Lio/realm/RealmQuery;->o()Ljava/lang/Object;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	check-cast v7, Lcom/hiya/stingray/q/c/i/a;</span>
+<span class="">	if-nez v7, :cond_3</span>
+<span class="">	invoke-virtual {v5}, Lio/realm/y;->beginTransaction()V</span>
+<span class="">	new-array v7, v3, [Lio/realm/n;</span>
+<span class="">	invoke-virtual {v5, v6, v7}, Lio/realm/y;->I0(Lio/realm/e0;[Lio/realm/n;)Lio/realm/e0;</span>
+<span class="">	invoke-virtual {v5}, Lio/realm/y;->j()V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catch Ljava/lang/IllegalArgumentException; {:try_start_2 .. :try_end_2} :catch_1</span>
+<span class="">	.catch Lio/realm/exceptions/RealmException; {:try_start_2 .. :try_end_2} :catch_0</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="">	if-eqz v5, :cond_6</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-virtual {v5}, Lio/realm/y;->close()V</span>
+<span class="">	invoke-static {v4}, Lretrofit2/Response;->success(Ljava/lang/Object;)Lretrofit2/Response;</span>
+<span class="">	:cond_6</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Li/c/b0/b/v;->just(Ljava/lang/Object;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	move-exception p1</span>
+<span class="">	move-object v4, v5</span>
+<span class="">	:catchall_0</span>
+<span class="">	goto :goto_6</span>
+<span class="">	move-exception p2</span>
+<span class="">	move-object v4, v5</span>
+<span class="">	:catch_0</span>
+<span class="">	goto :goto_2</span>
+<span class="">	move-exception p2</span>
+<span class="">	move-object v4, v5</span>
+<span class="">	:catch_1</span>
+<span class="">	goto :goto_4</span>
+<span class="">	move-exception p1</span>
+<span class="">	goto :goto_6</span>
+<span class="">	:catchall_1</span>
+<span class="">	move-exception p2</span>
+<span class="">	new-instance v5, Lcom/hiya/stingray/exception/HiyaDbException;</span>
+<span class="">	:catch_2</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/hiya/stingray/q/b/j;->c(Z)Lg/g/a/a/c;</span>
+<span class="">	:try_start_3</span>
+<span class="">	:goto_2</span>
+<span class="">	move-result-object v6</span>
+<span class="">	const-string v7, "Try to add a duplicate block item of list type: %s"</span>
+<span class="">	new-array v2, v2, [Ljava/lang/Object;</span>
+<span class="">	if-eqz p1, :cond_7</span>
+<span class="">	goto :goto_3</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	aput-object v0, v2, v3</span>
+<span class="">	:cond_7</span>
+<span class="">	invoke-static {v7, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	:goto_3</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sget-object v0, Lcom/hiya/stingray/exception/a;->SYSTEM_ERROR:Lcom/hiya/stingray/exception/a;</span>
+<span class="">	invoke-direct {v5, v6, p1, v0, p2}, Lcom/hiya/stingray/exception/HiyaDbException;-><init>(Lg/g/a/a/b;Ljava/lang/String;Lcom/hiya/stingray/exception/a;Ljava/lang/Throwable;)V</span>
+<span class="">	invoke-static {v5}, Li/c/b0/b/v;->error(Ljava/lang/Throwable;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz v4, :cond_8</span>
+<span class="">	invoke-virtual {v4}, Lio/realm/y;->close()V</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_1</span>
+<span class="">	move-exception p2</span>
+<span class="">	new-instance v5, Lcom/hiya/stingray/exception/HiyaDbException;</span>
+<span class="">	:cond_8</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/hiya/stingray/q/b/j;->c(Z)Lg/g/a/a/c;</span>
+<span class="">	:catch_3</span>
+<span class="">	move-result-object v6</span>
+<span class="">	:try_start_4</span>
+<span class="">	:goto_4</span>
+<span class="">	const-string v7, "Try to add a null block item of list type: %s"</span>
+<span class="">	new-array v2, v2, [Ljava/lang/Object;</span>
+<span class="">	if-eqz p1, :cond_9</span>
+<span class="">	goto :goto_5</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	aput-object v0, v2, v3</span>
+<span class="">	invoke-static {v7, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	:cond_9</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_5</span>
+<span class="">	sget-object v0, Lcom/hiya/stingray/exception/a;->SYSTEM_ERROR:Lcom/hiya/stingray/exception/a;</span>
+<span class="">	invoke-direct {v5, v6, p1, v0, p2}, Lcom/hiya/stingray/exception/HiyaDbException;-><init>(Lg/g/a/a/b;Ljava/lang/String;Lcom/hiya/stingray/exception/a;Ljava/lang/Throwable;)V</span>
+<span class="">	invoke-static {v5}, Li/c/b0/b/v;->error(Ljava/lang/Throwable;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz v4, :cond_a</span>
+<span class="">	invoke-virtual {v4}, Lio/realm/y;->close()V</span>
+<span class="">	if-eqz v4, :cond_b</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_1</span>
+<span class="">	invoke-virtual {v4}, Lio/realm/y;->close()V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_a</span>
+<span class="">	:goto_6</span>
+<span class="">	:cond_b</span>
+.end method
+
+<span class="cov">.method public b()Li/c/b0/b/v;</span>
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Li/c/b0/b/v<",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/hiya/stingray/q/c/i/a;",</span>
+<span class="">	">;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/q/b/j;->a:Lcom/hiya/stingray/q/b/v;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/hiya/stingray/q/b/v;->a()Lio/realm/y;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-static {}, Li/c/b0/b/v;->empty()Li/c/b0/b/v;</span>
+<span class="">	move-result-object v0</span>
+<span class="cov">	const-class v1, Lcom/hiya/stingray/q/c/i/a;</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-virtual {v0, v1}, Lio/realm/y;->A1(Ljava/lang/Class;)Lio/realm/RealmQuery;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	sget-object v2, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;</span>
+<span class="cov">	const-string v3, "isBlacklistItem"</span>
+<span class="cov">	invoke-virtual {v1, v3, v2}, Lio/realm/RealmQuery;->g(Ljava/lang/String;Ljava/lang/Boolean;)Lio/realm/RealmQuery;</span>
+<span class="exec">	invoke-virtual {v1}, Lio/realm/RealmQuery;->n()Lio/realm/i0;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v0, v1}, Lio/realm/y;->u0(Ljava/lang/Iterable;)Ljava/util/List;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-virtual {v0}, Lio/realm/y;->close()V</span>
+<span class="exec">	invoke-static {v1}, Li/c/b0/b/v;->just(Ljava/lang/Object;)Li/c/b0/b/v;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public d()Li/c/b0/b/v;</span>
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Li/c/b0/b/v<",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/hiya/stingray/q/c/i/a;",</span>
+<span class="">	">;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/q/b/j;->a:Lcom/hiya/stingray/q/b/v;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/hiya/stingray/q/b/v;->a()Lio/realm/y;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-static {}, Li/c/b0/b/v;->empty()Li/c/b0/b/v;</span>
+<span class="">	move-result-object v0</span>
+<span class="cov">	const-class v1, Lcom/hiya/stingray/q/c/i/a;</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-virtual {v0, v1}, Lio/realm/y;->A1(Ljava/lang/Class;)Lio/realm/RealmQuery;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	sget-object v2, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;</span>
+<span class="cov">	const-string v3, "isBlacklistItem"</span>
+<span class="cov">	invoke-virtual {v1, v3, v2}, Lio/realm/RealmQuery;->g(Ljava/lang/String;Ljava/lang/Boolean;)Lio/realm/RealmQuery;</span>
+<span class="exec">	invoke-virtual {v1}, Lio/realm/RealmQuery;->n()Lio/realm/i0;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v0, v1}, Lio/realm/y;->u0(Ljava/lang/Iterable;)Ljava/util/List;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-virtual {v0}, Lio/realm/y;->close()V</span>
+<span class="exec">	invoke-static {v1}, Li/c/b0/b/v;->just(Ljava/lang/Object;)Li/c/b0/b/v;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public e(ZLjava/util/List;)Li/c/b0/b/v;
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(Z",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lg/g/a/a/i/c;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Li/c/b0/b/v<",</span>
+<span class="">	"Lretrofit2/Response<",</span>
+<span class="">	"Ljava/lang/Void;",</span>
+<span class="">	">;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-interface {p2}, Ljava/util/List;->isEmpty()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v2}, Lcom/google/common/base/m;->d(Z)V</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v3, p0, Lcom/hiya/stingray/q/b/j;->a:Lcom/hiya/stingray/q/b/v;</span>
+<span class="">	invoke-virtual {v3}, Lcom/hiya/stingray/q/b/v;->a()Lio/realm/y;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_1</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_1</span>
+<span class="">	if-nez v3, :cond_2</span>
+<span class="">	:try_start_1</span>
+<span class="">	new-instance p2, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string v2, "Realm is null when removing block items."</span>
+<span class="">	invoke-direct {p2, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p2}, Li/c/b0/b/v;->error(Ljava/lang/Throwable;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/IllegalArgumentException; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	invoke-virtual {v3}, Lio/realm/y;->close()V</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-interface {p2}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	:try_start_2</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-interface {p2}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_6</span>
+<span class="">	invoke-interface {p2}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	check-cast v4, Lg/g/a/a/i/c;</span>
+<span class="">	invoke-virtual {v4}, Lg/g/a/a/i/c;->getPhone()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	if-eqz v5, :cond_4</span>
+<span class="">	invoke-virtual {v4}, Lg/g/a/a/i/c;->getPhone()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	goto :goto_2</span>
+<span class="">	invoke-virtual {v4}, Lg/g/a/a/i/c;->getBeginsWith()Ljava/lang/String;</span>
+<span class="">	:cond_4</span>
+<span class="">	move-result-object v5</span>
+<span class="">	const-class v6, Lcom/hiya/stingray/q/c/i/a;</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-virtual {v3, v6}, Lio/realm/y;->A1(Ljava/lang/Class;)Lio/realm/RealmQuery;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	const-string v7, "isFullNumberType"</span>
+<span class="">	invoke-virtual {v4}, Lg/g/a/a/i/c;->getPhone()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	if-eqz v4, :cond_5</span>
+<span class="">	const/4 v4, 0x1</span>
+<span class="">	goto :goto_3</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;</span>
+<span class="">	:goto_3</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v6, v7, v4}, Lio/realm/RealmQuery;->g(Ljava/lang/String;Ljava/lang/Boolean;)Lio/realm/RealmQuery;</span>
+<span class="">	const-string v4, "isBlacklistItem"</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	invoke-virtual {v6, v4, v7}, Lio/realm/RealmQuery;->g(Ljava/lang/String;Ljava/lang/Boolean;)Lio/realm/RealmQuery;</span>
+<span class="">	const-string v4, "phone"</span>
+<span class="">	invoke-virtual {v6, v4, v5}, Lio/realm/RealmQuery;->i(Ljava/lang/String;Ljava/lang/String;)Lio/realm/RealmQuery;</span>
+<span class="">	invoke-virtual {v6}, Lio/realm/RealmQuery;->o()Ljava/lang/Object;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	check-cast v4, Lcom/hiya/stingray/q/c/i/a;</span>
+<span class="">	if-eqz v4, :cond_3</span>
+<span class="">	new-instance v5, Lcom/hiya/stingray/q/b/j$a;</span>
+<span class="">	invoke-direct {v5, p0, v4}, Lcom/hiya/stingray/q/b/j$a;-><init>(Lcom/hiya/stingray/q/b/j;Lcom/hiya/stingray/q/c/i/a;)V</span>
+<span class="">	invoke-virtual {v3, v5}, Lio/realm/y;->Z0(Lio/realm/y$b;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catch Ljava/lang/IllegalArgumentException; {:try_start_2 .. :try_end_2} :catch_0</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="">	if-eqz v3, :cond_7</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-virtual {v3}, Lio/realm/y;->close()V</span>
+<span class="">	invoke-static {v2}, Lretrofit2/Response;->success(Ljava/lang/Object;)Lretrofit2/Response;</span>
+<span class="">	:cond_7</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Li/c/b0/b/v;->just(Ljava/lang/Object;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	move-exception p1</span>
+<span class="">	move-object v2, v3</span>
+<span class="">	:catchall_0</span>
+<span class="">	goto :goto_7</span>
+<span class="">	move-exception p2</span>
+<span class="">	move-object v2, v3</span>
+<span class="">	:catch_0</span>
+<span class="">	goto :goto_4</span>
+<span class="">	move-exception p1</span>
+<span class="">	goto :goto_7</span>
+<span class="">	:catchall_1</span>
+<span class="">	move-exception p2</span>
+<span class="">	new-instance v3, Lcom/hiya/stingray/exception/HiyaDbException;</span>
+<span class="">	:catch_1</span>
+<span class="">	if-eqz p1, :cond_8</span>
+<span class="">	:try_start_3</span>
+<span class="">	:goto_4</span>
+<span class="">	sget-object v4, Lg/g/a/a/c;->REMOVE_DENY_LIST_ITEM:Lg/g/a/a/c;</span>
+<span class="">	goto :goto_5</span>
+<span class="">	sget-object v4, Lg/g/a/a/c;->REMOVE_ALLOW_LIST_ITEM:Lg/g/a/a/c;</span>
+<span class="">	const-string v5, "Try to remove a null block item of item type: %s"</span>
+<span class="">	:cond_8</span>
+<span class="">	new-array v0, v0, [Ljava/lang/Object;</span>
+<span class="">	:goto_5</span>
+<span class="">	if-eqz p1, :cond_9</span>
+<span class="">	const-string p1, "blacklist"</span>
+<span class="">	goto :goto_6</span>
+<span class="">	const-string p1, "whitelist"</span>
+<span class="">	aput-object p1, v0, v1</span>
+<span class="">	:cond_9</span>
+<span class="">	invoke-static {v5, v0}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	:goto_6</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sget-object v0, Lcom/hiya/stingray/exception/a;->SYSTEM_ERROR:Lcom/hiya/stingray/exception/a;</span>
+<span class="">	invoke-direct {v3, v4, p1, v0, p2}, Lcom/hiya/stingray/exception/HiyaDbException;-><init>(Lg/g/a/a/b;Ljava/lang/String;Lcom/hiya/stingray/exception/a;Ljava/lang/Throwable;)V</span>
+<span class="">	invoke-static {v3}, Li/c/b0/b/v;->error(Ljava/lang/Throwable;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz v2, :cond_a</span>
+<span class="">	invoke-virtual {v2}, Lio/realm/y;->close()V</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_1</span>
+<span class="">	if-eqz v2, :cond_b</span>
+<span class="">	invoke-virtual {v2}, Lio/realm/y;->close()V</span>
+<span class="">	:cond_a</span>
+<span class="">	throw p1</span>
+<span class="">	:goto_7</span>
+<span class="">	:cond_b</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

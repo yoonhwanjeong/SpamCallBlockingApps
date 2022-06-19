@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.datatransport.cct</a></li>
+        <li><i class="ico ico-class"></i> CCTDestination.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/android/datatransport/cct/CCTDestination;
+.super Ljava/lang/Object;
+.source "CCTDestination.java"
+.implements Lcom/google/android/datatransport/runtime/EncodedDestination;
+
+
+.field private static final DEFAULT_API_KEY:Ljava/lang/String;
+.field static final DEFAULT_END_POINT:Ljava/lang/String;
+.field static final DESTINATION_NAME:Ljava/lang/String; = "cct"
+.field private static final EXTRAS_DELIMITER:Ljava/lang/String; = "\\"
+.field private static final EXTRAS_VERSION_MARKER:Ljava/lang/String; = "1$"
+.field public static final INSTANCE:Lcom/google/android/datatransport/cct/CCTDestination;
+.field static final LEGACY_END_POINT:Ljava/lang/String;
+.field public static final LEGACY_INSTANCE:Lcom/google/android/datatransport/cct/CCTDestination;
+.field private static final SUPPORTED_ENCODINGS:Ljava/util/Set;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Set<",
+"Lcom/google/android/datatransport/Encoding;",
+">;"
+}
+.end annotation
+.end field
+.field private final apiKey:Ljava/lang/String;
+.field private final endPoint:Ljava/lang/String;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 7</span>
+
+<span class="cov">	const-string v0, "hts/frbslgiggolai.o/0clgbthfra=snpoo"</span>
+<span class="cov">	const-string v1, "tp:/ieaeogn.ogepscmvc/o/ac?omtjo_rt3"</span>
+<span class="exec">	invoke-static {v0, v1}, Lcom/google/android/datatransport/cct/StringMerger;->mergeStrings(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sput-object v0, Lcom/google/android/datatransport/cct/CCTDestination;->DEFAULT_END_POINT:Ljava/lang/String;</span>
+<span class="cov">	const-string v1, "hts/frbslgigp.ogepscmv/ieo/eaybtho"</span>
+<span class="cov">	const-string v2, "tp:/ieaeogn-agolai.o/1frlglgc/aclg"</span>
+<span class="exec">	invoke-static {v1, v2}, Lcom/google/android/datatransport/cct/StringMerger;->mergeStrings(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	sput-object v1, Lcom/google/android/datatransport/cct/CCTDestination;->LEGACY_END_POINT:Ljava/lang/String;</span>
+<span class="cov">	const-string v2, "AzSCki82AwsLzKd5O8zo"</span>
+<span class="cov">	const-string v3, "IayckHiZRO1EFl1aGoK"</span>
+<span class="exec">	invoke-static {v2, v3}, Lcom/google/android/datatransport/cct/StringMerger;->mergeStrings(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	sput-object v2, Lcom/google/android/datatransport/cct/CCTDestination;->DEFAULT_API_KEY:Ljava/lang/String;</span>
+<span class="cov">	new-instance v3, Ljava/util/HashSet;</span>
+<span class="cov">	const/4 v4, 0x2</span>
+<span class="cov">	new-array v4, v4, [Lcom/google/android/datatransport/Encoding;</span>
+<span class="cov">	const-string v5, "proto"</span>
+<span class="exec">	invoke-static {v5}, Lcom/google/android/datatransport/Encoding;->of(Ljava/lang/String;)Lcom/google/android/datatransport/Encoding;</span>
+<span class="cov">	move-result-object v5</span>
+<span class="cov">	const/4 v6, 0x0</span>
+<span class="cov">	aput-object v5, v4, v6</span>
+<span class="cov">	const-string v5, "json"</span>
+<span class="exec">	invoke-static {v5}, Lcom/google/android/datatransport/Encoding;->of(Ljava/lang/String;)Lcom/google/android/datatransport/Encoding;</span>
+<span class="cov">	move-result-object v5</span>
+<span class="cov">	const/4 v6, 0x1</span>
+<span class="cov">	aput-object v5, v4, v6</span>
+<span class="exec">	invoke-static {v4}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="cov">	invoke-direct {v3, v4}, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V</span>
+<span class="exec">	invoke-static {v3}, Ljava/util/Collections;->unmodifiableSet(Ljava/util/Set;)Ljava/util/Set;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	sput-object v3, Lcom/google/android/datatransport/cct/CCTDestination;->SUPPORTED_ENCODINGS:Ljava/util/Set;</span>
+<span class="cov">	new-instance v3, Lcom/google/android/datatransport/cct/CCTDestination;</span>
+<span class="cov">	const/4 v4, 0x0</span>
+<span class="cov">	invoke-direct {v3, v0, v4}, Lcom/google/android/datatransport/cct/CCTDestination;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	sput-object v3, Lcom/google/android/datatransport/cct/CCTDestination;->INSTANCE:Lcom/google/android/datatransport/cct/CCTDestination;</span>
+<span class="cov">	new-instance v0, Lcom/google/android/datatransport/cct/CCTDestination;</span>
+<span class="cov">	invoke-direct {v0, v1, v2}, Lcom/google/android/datatransport/cct/CCTDestination;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	sput-object v0, Lcom/google/android/datatransport/cct/CCTDestination;->LEGACY_INSTANCE:Lcom/google/android/datatransport/cct/CCTDestination;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lcom/google/android/datatransport/cct/CCTDestination;->endPoint:Ljava/lang/String;</span>
+<span class="cov">	iput-object p2, p0, Lcom/google/android/datatransport/cct/CCTDestination;->apiKey:Ljava/lang/String;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method static decodeExtras([B)Ljava/lang/String;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/lang/String;</span>
+<span class="">	const-string v1, "UTF-8"</span>
+<span class="">	invoke-static {v1}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, p0, v1}, Ljava/lang/String;-><init>([BLjava/nio/charset/Charset;)V</span>
+.end method
+
+.method static encodeString(Ljava/lang/String;)[B
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "UTF-8"</span>
+<span class="">	invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0, v0}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static fromByteArray([B)Lcom/google/android/datatransport/cct/CCTDestination;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Ljava/lang/String;</span>
+<span class="">	const-string v1, "UTF-8"</span>
+<span class="">	invoke-static {v1}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, p0, v1}, Ljava/lang/String;-><init>([BLjava/nio/charset/Charset;)V</span>
+<span class="">	const-string p0, "1$"</span>
+<span class="">	invoke-virtual {v0, p0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_3</span>
+<span class="">	const/4 p0, 0x2</span>
+<span class="">	invoke-virtual {v0, p0}, Ljava/lang/String;->substring(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "\\"</span>
+<span class="">	invoke-static {v1}, Ljava/util/regex/Pattern;->quote(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1, p0}, Ljava/lang/String;->split(Ljava/lang/String;I)[Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	array-length v1, v0</span>
+<span class="">	if-ne v1, p0, :cond_2</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	aget-object p0, v0, p0</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/String;->isEmpty()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	aget-object v0, v0, v1</span>
+<span class="">	new-instance v1, Lcom/google/android/datatransport/cct/CCTDestination;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v1, p0, v0}, Lcom/google/android/datatransport/cct/CCTDestination;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	new-instance p0, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v0, "Missing endpoint in CCTDestination extras"</span>
+<span class="">	invoke-direct {p0, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+<span class="">	new-instance p0, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string v0, "Extra is not a valid encoded LegacyFlgDestination"</span>
+<span class="">	invoke-direct {p0, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+<span class="">	new-instance p0, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_3</span>
+<span class="">	const-string v0, "Version marker missing from extras"</span>
+<span class="">	invoke-direct {p0, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+.end method
+
+<span class="cov">.method public asByteArray()[B</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/android/datatransport/cct/CCTDestination;->apiKey:Ljava/lang/String;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/datatransport/cct/CCTDestination;->endPoint:Ljava/lang/String;</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="cov">	const/4 v1, 0x4</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="cov">	const-string v3, "1$"</span>
+<span class="cov">	aput-object v3, v1, v2</span>
+<span class="cov">	const/4 v2, 0x1</span>
+<span class="cov">	iget-object v3, p0, Lcom/google/android/datatransport/cct/CCTDestination;->endPoint:Ljava/lang/String;</span>
+<span class="cov">	aput-object v3, v1, v2</span>
+<span class="cov">	const/4 v2, 0x2</span>
+<span class="cov">	const-string v3, "\\"</span>
+<span class="cov">	aput-object v3, v1, v2</span>
+<span class="cov">	const/4 v2, 0x3</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	const-string v0, ""</span>
+<span class="cov">	aput-object v0, v1, v2</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	const-string v0, "%s%s%s%s"</span>
+<span class="exec">	invoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "UTF-8"</span>
+<span class="exec">	invoke-static {v1}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v0, v1}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public getAPIKey()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/datatransport/cct/CCTDestination;->apiKey:Ljava/lang/String;</span>
+.end method
+
+.method public getEndPoint()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/datatransport/cct/CCTDestination;->endPoint:Ljava/lang/String;</span>
+.end method
+
+<span class="cov">.method public getExtras()[B</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/google/android/datatransport/cct/CCTDestination;->asByteArray()[B</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public getName()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const-string v0, "cct"</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public getSupportedEncodings()Ljava/util/Set;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/Set<",</span>
+<span class="">	"Lcom/google/android/datatransport/Encoding;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	sget-object v0, Lcom/google/android/datatransport/cct/CCTDestination;->SUPPORTED_ENCODINGS:Ljava/util/Set;</span>
+<span class="exec">	return-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

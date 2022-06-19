@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.android.volley.toolbox</a></li>
+        <li><i class="ico ico-class"></i> NetworkImageView.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/android/volley/toolbox/NetworkImageView;
+.super Landroid/widget/ImageView;
+.source "NetworkImageView.java"
+
+
+.field private mDefaultImageBitmap:Landroid/graphics/Bitmap;
+.field private mDefaultImageDrawable:Landroid/graphics/drawable/Drawable;
+.field private mDefaultImageId:I
+.field private mErrorImageBitmap:Landroid/graphics/Bitmap;
+.field private mErrorImageDrawable:Landroid/graphics/drawable/Drawable;
+.field private mErrorImageId:I
+.field private mImageContainer:Lcom/android/volley/toolbox/ImageLoader$ImageContainer;
+.field private mImageLoader:Lcom/android/volley/toolbox/ImageLoader;
+.field private mUrl:Ljava/lang/String;
+
+
+.method public constructor <init>(Landroid/content/Context;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {p0, p1, v0}, Lcom/android/volley/toolbox/NetworkImageView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V</span>
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {p0, p1, p2, v0}, Lcom/android/volley/toolbox/NetworkImageView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V</span>
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1, p2, p3}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V</span>
+.end method
+
+.method static synthetic access$000(Lcom/android/volley/toolbox/NetworkImageView;)I
+<span class="">	.locals 0</span>
+
+<span class="">	iget p0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageId:I</span>
+.end method
+
+.method static synthetic access$100(Lcom/android/volley/toolbox/NetworkImageView;)Landroid/graphics/drawable/Drawable;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageDrawable:Landroid/graphics/drawable/Drawable;</span>
+.end method
+
+.method static synthetic access$200(Lcom/android/volley/toolbox/NetworkImageView;)Landroid/graphics/Bitmap;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageBitmap:Landroid/graphics/Bitmap;</span>
+.end method
+
+.method static synthetic access$300(Lcom/android/volley/toolbox/NetworkImageView;)I
+<span class="">	.locals 0</span>
+
+<span class="">	iget p0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageId:I</span>
+.end method
+
+.method static synthetic access$400(Lcom/android/volley/toolbox/NetworkImageView;)Landroid/graphics/drawable/Drawable;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageDrawable:Landroid/graphics/drawable/Drawable;</span>
+.end method
+
+.method static synthetic access$500(Lcom/android/volley/toolbox/NetworkImageView;)Landroid/graphics/Bitmap;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageBitmap:Landroid/graphics/Bitmap;</span>
+.end method
+
+.method private setDefaultImageOrNull()V
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageId:I</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/android/volley/toolbox/NetworkImageView;->setImageResource(I)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageDrawable:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/android/volley/toolbox/NetworkImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageBitmap:Landroid/graphics/Bitmap;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/android/volley/toolbox/NetworkImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/android/volley/toolbox/NetworkImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method protected drawableStateChanged()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0}, Landroid/widget/ImageView;->drawableStateChanged()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/android/volley/toolbox/NetworkImageView;->invalidate()V</span>
+.end method
+
+.method  loadImageIfNecessary(Z)V
+<span class="">	.locals 8</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/android/volley/toolbox/NetworkImageView;->getWidth()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/android/volley/toolbox/NetworkImageView;->getHeight()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {p0}, Lcom/android/volley/toolbox/NetworkImageView;->getScaleType()Landroid/widget/ImageView$ScaleType;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	invoke-virtual {p0}, Lcom/android/volley/toolbox/NetworkImageView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/android/volley/toolbox/NetworkImageView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	iget v2, v2, Landroid/view/ViewGroup$LayoutParams;->width:I</span>
+<span class="">	const/4 v5, -0x2</span>
+<span class="">	if-ne v2, v5, :cond_0</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/android/volley/toolbox/NetworkImageView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	iget v6, v6, Landroid/view/ViewGroup$LayoutParams;->height:I</span>
+<span class="">	if-ne v6, v5, :cond_2</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	if-eqz v2, :cond_3</span>
+<span class="">	if-eqz v5, :cond_3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:goto_2</span>
+<span class="">	if-nez v0, :cond_4</span>
+<span class="">	if-nez v1, :cond_4</span>
+<span class="">	if-nez v3, :cond_4</span>
+<span class="">	iget-object v3, p0, Lcom/android/volley/toolbox/NetworkImageView;->mUrl:Ljava/lang/String;</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_6</span>
+<span class="">	iget-object p1, p0, Lcom/android/volley/toolbox/NetworkImageView;->mImageContainer:Lcom/android/volley/toolbox/ImageLoader$ImageContainer;</span>
+<span class="">	if-eqz p1, :cond_5</span>
+<span class="">	invoke-virtual {p1}, Lcom/android/volley/toolbox/ImageLoader$ImageContainer;->cancelRequest()V</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput-object p1, p0, Lcom/android/volley/toolbox/NetworkImageView;->mImageContainer:Lcom/android/volley/toolbox/ImageLoader$ImageContainer;</span>
+<span class="">	invoke-direct {p0}, Lcom/android/volley/toolbox/NetworkImageView;->setDefaultImageOrNull()V</span>
+<span class="">	:cond_5</span>
+<span class="">	iget-object v3, p0, Lcom/android/volley/toolbox/NetworkImageView;->mImageContainer:Lcom/android/volley/toolbox/ImageLoader$ImageContainer;</span>
+<span class="">	if-eqz v3, :cond_8</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-virtual {v3}, Lcom/android/volley/toolbox/ImageLoader$ImageContainer;->getRequestUrl()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	if-eqz v3, :cond_8</span>
+<span class="">	iget-object v3, p0, Lcom/android/volley/toolbox/NetworkImageView;->mImageContainer:Lcom/android/volley/toolbox/ImageLoader$ImageContainer;</span>
+<span class="">	invoke-virtual {v3}, Lcom/android/volley/toolbox/ImageLoader$ImageContainer;->getRequestUrl()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iget-object v6, p0, Lcom/android/volley/toolbox/NetworkImageView;->mUrl:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v3, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_7</span>
+<span class="">	iget-object v3, p0, Lcom/android/volley/toolbox/NetworkImageView;->mImageContainer:Lcom/android/volley/toolbox/ImageLoader$ImageContainer;</span>
+<span class="">	invoke-virtual {v3}, Lcom/android/volley/toolbox/ImageLoader$ImageContainer;->cancelRequest()V</span>
+<span class="">	invoke-direct {p0}, Lcom/android/volley/toolbox/NetworkImageView;->setDefaultImageOrNull()V</span>
+<span class="">	:cond_7</span>
+<span class="">	if-eqz v2, :cond_9</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	if-eqz v5, :cond_a</span>
+<span class="">	:cond_8</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_9</span>
+<span class="">	move v6, v1</span>
+<span class="">	iget-object v2, p0, Lcom/android/volley/toolbox/NetworkImageView;->mImageLoader:Lcom/android/volley/toolbox/ImageLoader;</span>
+<span class="">	iget-object v3, p0, Lcom/android/volley/toolbox/NetworkImageView;->mUrl:Ljava/lang/String;</span>
+<span class="">	:cond_a</span>
+<span class="">	new-instance v4, Lcom/android/volley/toolbox/NetworkImageView$1;</span>
+<span class="">	:goto_3</span>
+<span class="">	invoke-direct {v4, p0, p1}, Lcom/android/volley/toolbox/NetworkImageView$1;-><init>(Lcom/android/volley/toolbox/NetworkImageView;Z)V</span>
+<span class="">	move v5, v0</span>
+<span class="">	invoke-virtual/range {v2 .. v7}, Lcom/android/volley/toolbox/ImageLoader;->get(Ljava/lang/String;Lcom/android/volley/toolbox/ImageLoader$ImageListener;IILandroid/widget/ImageView$ScaleType;)Lcom/android/volley/toolbox/ImageLoader$ImageContainer;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/android/volley/toolbox/NetworkImageView;->mImageContainer:Lcom/android/volley/toolbox/ImageLoader$ImageContainer;</span>
+.end method
+
+.method protected onDetachedFromWindow()V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mImageContainer:Lcom/android/volley/toolbox/ImageLoader$ImageContainer;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/android/volley/toolbox/ImageLoader$ImageContainer;->cancelRequest()V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/android/volley/toolbox/NetworkImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V</span>
+<span class="">	iput-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mImageContainer:Lcom/android/volley/toolbox/ImageLoader$ImageContainer;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-super {p0}, Landroid/widget/ImageView;->onDetachedFromWindow()V</span>
+.end method
+
+.method protected onLayout(ZIIII)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super/range {p0 .. p5}, Landroid/widget/ImageView;->onLayout(ZIIII)V</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/android/volley/toolbox/NetworkImageView;->loadImageIfNecessary(Z)V</span>
+.end method
+
+.method public setDefaultImageBitmap(Landroid/graphics/Bitmap;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageId:I</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageDrawable:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	iput-object p1, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageBitmap:Landroid/graphics/Bitmap;</span>
+.end method
+
+.method public setDefaultImageDrawable(Landroid/graphics/drawable/Drawable;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageId:I</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageBitmap:Landroid/graphics/Bitmap;</span>
+<span class="">	iput-object p1, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageDrawable:Landroid/graphics/drawable/Drawable;</span>
+.end method
+
+.method public setDefaultImageResId(I)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageBitmap:Landroid/graphics/Bitmap;</span>
+<span class="">	iput-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageDrawable:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	iput p1, p0, Lcom/android/volley/toolbox/NetworkImageView;->mDefaultImageId:I</span>
+.end method
+
+.method public setErrorImageBitmap(Landroid/graphics/Bitmap;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageId:I</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageDrawable:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	iput-object p1, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageBitmap:Landroid/graphics/Bitmap;</span>
+.end method
+
+.method public setErrorImageDrawable(Landroid/graphics/drawable/Drawable;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageId:I</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageBitmap:Landroid/graphics/Bitmap;</span>
+<span class="">	iput-object p1, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageDrawable:Landroid/graphics/drawable/Drawable;</span>
+.end method
+
+.method public setErrorImageResId(I)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageBitmap:Landroid/graphics/Bitmap;</span>
+<span class="">	iput-object v0, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageDrawable:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	iput p1, p0, Lcom/android/volley/toolbox/NetworkImageView;->mErrorImageId:I</span>
+.end method
+
+.method public setImageUrl(Ljava/lang/String;Lcom/android/volley/toolbox/ImageLoader;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {}, Lcom/android/volley/toolbox/Threads;->throwIfNotOnMainThread()V</span>
+<span class="">	iput-object p1, p0, Lcom/android/volley/toolbox/NetworkImageView;->mUrl:Ljava/lang/String;</span>
+<span class="">	iput-object p2, p0, Lcom/android/volley/toolbox/NetworkImageView;->mImageLoader:Lcom/android/volley/toolbox/ImageLoader;</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/android/volley/toolbox/NetworkImageView;->loadImageIfNecessary(Z)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

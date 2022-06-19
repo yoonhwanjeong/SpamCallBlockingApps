@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.appsflyer</a></li>
+        <li><i class="ico ico-class"></i> AFHelper.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/appsflyer/AFHelper;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public static toJsonObject(Ljava/util/Map;)Lorg/json/JSONObject;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"*>;)",</span>
+<span class="">	"Lorg/json/JSONObject;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Map;->entrySet()Ljava/util/Set;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/util/Map$Entry;</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2}, Lcom/appsflyer/AFHelper;->Ι(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	nop</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private static Ι(Ljava/lang/Object;)Ljava/lang/Object;
+<span class="">	.locals 4</span>
+
+<span class="">	if-nez p0, :cond_0</span>
+<span class="">	sget-object p0, Lorg/json/JSONObject;->NULL:Ljava/lang/Object;</span>
+<span class="">	instance-of v0, p0, Lorg/json/JSONArray;</span>
+<span class="">	:cond_0</span>
+<span class="">	if-nez v0, :cond_a</span>
+<span class="">	instance-of v0, p0, Lorg/json/JSONObject;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	goto/16 :goto_3</span>
+<span class="">	sget-object v0, Lorg/json/JSONObject;->NULL:Ljava/lang/Object;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p0, v0}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	instance-of v0, p0, Ljava/util/Collection;</span>
+<span class="">	if-eqz v0, :cond_4</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_2</span>
+<span class="">	new-instance v0, Lorg/json/JSONArray;</span>
+<span class="">	invoke-direct {v0}, Lorg/json/JSONArray;-><init>()V</span>
+<span class="">	check-cast p0, Ljava/util/Collection;</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v1}, Lcom/appsflyer/AFHelper;->Ι(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Class;->isArray()Z</span>
+<span class="">	:cond_4</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_6</span>
+<span class="">	invoke-static {p0}, Ljava/lang/reflect/Array;->getLength(Ljava/lang/Object;)I</span>
+<span class="">	move-result v0</span>
+<span class="">	new-instance v1, Lorg/json/JSONArray;</span>
+<span class="">	invoke-direct {v1}, Lorg/json/JSONArray;-><init>()V</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-ge v2, v0, :cond_5</span>
+<span class="">	invoke-static {p0, v2}, Ljava/lang/reflect/Array;->get(Ljava/lang/Object;I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-static {v3}, Lcom/appsflyer/AFHelper;->Ι(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v1, v3}, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	instance-of v0, p0, Ljava/util/Map;</span>
+<span class="">	if-eqz v0, :cond_7</span>
+<span class="">	check-cast p0, Ljava/util/Map;</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-static {p0}, Lcom/appsflyer/AFHelper;->toJsonObject(Ljava/util/Map;)Lorg/json/JSONObject;</span>
+<span class="">	:cond_6</span>
+<span class="">	move-result-object p0</span>
+<span class="">	instance-of v0, p0, Ljava/lang/Boolean;</span>
+<span class="">	if-nez v0, :cond_9</span>
+<span class="">	instance-of v0, p0, Ljava/lang/Byte;</span>
+<span class="">	if-nez v0, :cond_9</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	instance-of v0, p0, Ljava/lang/Character;</span>
+<span class="">	:cond_7</span>
+<span class="">	if-nez v0, :cond_9</span>
+<span class="">	instance-of v0, p0, Ljava/lang/Double;</span>
+<span class="">	if-nez v0, :cond_9</span>
+<span class="">	instance-of v0, p0, Ljava/lang/Float;</span>
+<span class="">	if-nez v0, :cond_9</span>
+<span class="">	instance-of v0, p0, Ljava/lang/Integer;</span>
+<span class="">	if-nez v0, :cond_9</span>
+<span class="">	instance-of v0, p0, Ljava/lang/Long;</span>
+<span class="">	if-nez v0, :cond_9</span>
+<span class="">	instance-of v0, p0, Ljava/lang/Short;</span>
+<span class="">	if-nez v0, :cond_9</span>
+<span class="">	instance-of v0, p0, Ljava/lang/String;</span>
+<span class="">	if-eqz v0, :cond_8</span>
+<span class="">	goto :goto_2</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	sget-object p0, Lorg/json/JSONObject;->NULL:Ljava/lang/Object;</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_8</span>
+<span class="">	:goto_2</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	:cond_9</span>
+<span class="">	:catch_0</span>
+<span class="">	:goto_3</span>
+<span class="">	:cond_a</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

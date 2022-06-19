@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot.xy</a></li>
+        <li><i class="ico ico-class"></i> LTTBSampler.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/androidplot/xy/LTTBSampler;
+.super Ljava/lang/Object;
+.source "LTTBSampler.java"
+.implements Lcom/androidplot/xy/Sampler;
+
+
+
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public run(Lcom/androidplot/xy/XYSeries;Lcom/androidplot/xy/EditableXYSeries;)Lcom/androidplot/xy/RectRegion;
+<span class="">	.locals 30</span>
+
+<span class="">	move-object/from16 v6, p1</span>
+<span class="">	new-instance v7, Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	invoke-direct {v7}, Lcom/androidplot/xy/RectRegion;-><init>()V</span>
+<span class="">	invoke-interface/range {p2 .. p2}, Lcom/androidplot/xy/EditableXYSeries;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-interface/range {p1 .. p1}, Lcom/androidplot/xy/XYSeries;->size()I</span>
+<span class="">	move-result v8</span>
+<span class="">	if-ge v0, v8, :cond_8</span>
+<span class="">	if-eqz v0, :cond_8</span>
+<span class="">	add-int/lit8 v1, v8, -0x2</span>
+<span class="">	int-to-double v1, v1</span>
+<span class="">	add-int/lit8 v9, v0, -0x2</span>
+<span class="">	int-to-double v3, v9</span>
+<span class="">	div-double v10, v1, v3</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	move-object/from16 v0, p0</span>
+<span class="">	move-object/from16 v1, p1</span>
+<span class="">	move-object/from16 v2, p2</span>
+<span class="">	move-object v5, v7</span>
+<span class="">	invoke-virtual/range {v0 .. v5}, Lcom/androidplot/xy/LTTBSampler;->setSample(Lcom/androidplot/xy/XYSeries;Lcom/androidplot/xy/EditableXYSeries;IILcom/androidplot/xy/RectRegion;)V</span>
+<span class="">	const/4 v12, 0x0</span>
+<span class="">	const/4 v13, 0x1</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v14, 0x1</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v0, v9, :cond_7</span>
+<span class="">	add-int/lit8 v15, v0, 0x1</span>
+<span class="">	int-to-double v3, v15</span>
+<span class="">	mul-double v3, v3, v10</span>
+<span class="">	move/from16 v16, v14</span>
+<span class="">	move/from16 v17, v15</span>
+<span class="">	invoke-static {v3, v4}, Ljava/lang/Math;->floor(D)D</span>
+<span class="">	move-result-wide v14</span>
+<span class="">	double-to-int v5, v14</span>
+<span class="">	add-int/2addr v5, v13</span>
+<span class="">	add-int/lit8 v14, v0, 0x2</span>
+<span class="">	int-to-double v14, v14</span>
+<span class="">	mul-double v14, v14, v10</span>
+<span class="">	invoke-static {v14, v15}, Ljava/lang/Math;->floor(D)D</span>
+<span class="">	move-result-wide v14</span>
+<span class="">	double-to-int v14, v14</span>
+<span class="">	add-int/2addr v14, v13</span>
+<span class="">	if-ge v14, v8, :cond_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	move v14, v8</span>
+<span class="">	:goto_1</span>
+<span class="">	sub-int v15, v14, v5</span>
+<span class="">	const-wide/16 v18, 0x0</span>
+<span class="">	move-wide/from16 v20, v18</span>
+<span class="">	:goto_2</span>
+<span class="">	if-ge v5, v14, :cond_3</span>
+<span class="">	add-int/lit8 v13, v5, 0x0</span>
+<span class="">	invoke-interface {v6, v13}, Lcom/androidplot/xy/XYSeries;->getX(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v22</span>
+<span class="">	if-eqz v22, :cond_1</span>
+<span class="">	invoke-interface {v6, v13}, Lcom/androidplot/xy/XYSeries;->getX(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v22</span>
+<span class="">	invoke-virtual/range {v22 .. v22}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v22</span>
+<span class="">	add-double v18, v18, v22</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-interface {v6, v13}, Lcom/androidplot/xy/XYSeries;->getY(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v22</span>
+<span class="">	if-eqz v22, :cond_2</span>
+<span class="">	invoke-interface {v6, v13}, Lcom/androidplot/xy/XYSeries;->getY(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v13</span>
+<span class="">	invoke-virtual {v13}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v22</span>
+<span class="">	add-double v20, v20, v22</span>
+<span class="">	:cond_2</span>
+<span class="">	add-int/lit8 v5, v5, 0x1</span>
+<span class="">	const/4 v13, 0x1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	int-to-double v13, v15</span>
+<span class="">	div-double v18, v18, v13</span>
+<span class="">	div-double v20, v20, v13</span>
+<span class="">	add-int/2addr v1, v12</span>
+<span class="">	invoke-interface {v6, v1}, Lcom/androidplot/xy/XYSeries;->getX(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v5}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v13</span>
+<span class="">	invoke-interface {v6, v1}, Lcom/androidplot/xy/XYSeries;->getY(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v22</span>
+<span class="">	add-int/lit8 v0, v0, 0x0</span>
+<span class="">	int-to-double v0, v0</span>
+<span class="">	mul-double v0, v0, v10</span>
+<span class="">	invoke-static {v0, v1}, Ljava/lang/Math;->floor(D)D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	double-to-int v0, v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	add-int/2addr v0, v1</span>
+<span class="">	invoke-static {v3, v4}, Ljava/lang/Math;->floor(D)D</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	double-to-int v3, v3</span>
+<span class="">	add-int/2addr v3, v1</span>
+<span class="">	const-wide/high16 v4, -0x4010000000000000L    # -1.0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	move v15, v2</span>
+<span class="">	:goto_3</span>
+<span class="">	if-ge v0, v3, :cond_6</span>
+<span class="">	sub-double v24, v13, v18</span>
+<span class="">	add-int/lit8 v2, v0, 0x0</span>
+<span class="">	invoke-interface {v6, v2}, Lcom/androidplot/xy/XYSeries;->getY(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v26</span>
+<span class="">	invoke-virtual/range {v26 .. v26}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v26</span>
+<span class="">	sub-double v26, v26, v22</span>
+<span class="">	mul-double v24, v24, v26</span>
+<span class="">	invoke-interface {v6, v2}, Lcom/androidplot/xy/XYSeries;->getX(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v26</span>
+<span class="">	invoke-virtual/range {v26 .. v26}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v26</span>
+<span class="">	sub-double v26, v13, v26</span>
+<span class="">	sub-double v28, v20, v22</span>
+<span class="">	mul-double v26, v26, v28</span>
+<span class="">	sub-double v24, v24, v26</span>
+<span class="">	invoke-static/range {v24 .. v25}, Ljava/lang/Math;->abs(D)D</span>
+<span class="">	move-result-wide v24</span>
+<span class="">	const-wide/high16 v26, 0x3fe0000000000000L    # 0.5</span>
+<span class="">	mul-double v24, v24, v26</span>
+<span class="">	cmpl-double v26, v24, v4</span>
+<span class="">	if-lez v26, :cond_5</span>
+<span class="">	invoke-interface {v6, v2}, Lcom/androidplot/xy/XYSeries;->getY(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_4</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v4, "Null value encountered in raw data at index: "</span>
+<span class="">	invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v4, "LTTB"</span>
+<span class="">	invoke-static {v4, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_4</span>
+<span class="">	new-instance v1, Lcom/androidplot/xy/XYCoords;</span>
+<span class="">	invoke-interface {v6, v2}, Lcom/androidplot/xy/XYSeries;->getX(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-interface {v6, v2}, Lcom/androidplot/xy/XYSeries;->getY(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {v1, v4, v2}, Lcom/androidplot/xy/XYCoords;-><init>(Ljava/lang/Number;Ljava/lang/Number;)V</span>
+<span class="">	move v15, v0</span>
+<span class="">	move-wide/from16 v4, v24</span>
+<span class="">	:cond_5</span>
+<span class="">	add-int/lit8 v0, v0, 0x1</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_6</span>
+<span class="">	iget-object v2, v1, Lcom/androidplot/xy/XYCoords;->x:Ljava/lang/Number;</span>
+<span class="">	iget-object v3, v1, Lcom/androidplot/xy/XYCoords;->y:Ljava/lang/Number;</span>
+<span class="">	move-object/from16 v0, p0</span>
+<span class="">	move-object/from16 v1, p2</span>
+<span class="">	move/from16 v4, v16</span>
+<span class="">	move-object v5, v7</span>
+<span class="">	invoke-virtual/range {v0 .. v5}, Lcom/androidplot/xy/LTTBSampler;->setSample(Lcom/androidplot/xy/EditableXYSeries;Ljava/lang/Number;Ljava/lang/Number;ILcom/androidplot/xy/RectRegion;)V</span>
+<span class="">	add-int/lit8 v14, v16, 0x1</span>
+<span class="">	move v1, v15</span>
+<span class="">	move v2, v1</span>
+<span class="">	move/from16 v0, v17</span>
+<span class="">	const/4 v13, 0x1</span>
+<span class="">	goto/16 :goto_0</span>
+<span class="">	:cond_7</span>
+<span class="">	move/from16 v16, v14</span>
+<span class="">	add-int/2addr v8, v12</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	add-int/lit8 v3, v8, -0x1</span>
+<span class="">	move-object/from16 v0, p0</span>
+<span class="">	move-object/from16 v1, p1</span>
+<span class="">	move-object/from16 v2, p2</span>
+<span class="">	move/from16 v4, v16</span>
+<span class="">	move-object v5, v7</span>
+<span class="">	invoke-virtual/range {v0 .. v5}, Lcom/androidplot/xy/LTTBSampler;->setSample(Lcom/androidplot/xy/XYSeries;Lcom/androidplot/xy/EditableXYSeries;IILcom/androidplot/xy/RectRegion;)V</span>
+<span class="">	new-instance v0, Ljava/lang/RuntimeException;</span>
+<span class="">	:cond_8</span>
+<span class="">	const-string v1, "Shouldnt be here!"</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method protected setSample(Lcom/androidplot/xy/EditableXYSeries;Ljava/lang/Number;Ljava/lang/Number;ILcom/androidplot/xy/RectRegion;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p5, p2, p3}, Lcom/androidplot/xy/RectRegion;->union(Ljava/lang/Number;Ljava/lang/Number;)V</span>
+<span class="">	invoke-interface {p1, p2, p4}, Lcom/androidplot/xy/EditableXYSeries;->setX(Ljava/lang/Number;I)V</span>
+<span class="">	invoke-interface {p1, p3, p4}, Lcom/androidplot/xy/EditableXYSeries;->setY(Ljava/lang/Number;I)V</span>
+.end method
+
+.method protected setSample(Lcom/androidplot/xy/XYSeries;Lcom/androidplot/xy/EditableXYSeries;IILcom/androidplot/xy/RectRegion;)V
+<span class="">	.locals 6</span>
+
+<span class="">	invoke-interface {p1, p3}, Lcom/androidplot/xy/XYSeries;->getX(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {p1, p3}, Lcom/androidplot/xy/XYSeries;->getY(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	move-object v1, p2</span>
+<span class="">	move v4, p4</span>
+<span class="">	move-object v5, p5</span>
+<span class="">	invoke-virtual/range {v0 .. v5}, Lcom/androidplot/xy/LTTBSampler;->setSample(Lcom/androidplot/xy/EditableXYSeries;Ljava/lang/Number;Ljava/lang/Number;ILcom/androidplot/xy/RectRegion;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.internal.firebase-auth-api</a></li>
+        <li><i class="ico ico-class"></i> cd.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/android/gms/internal/firebase-auth-api/cd;
+.super Ljava/lang/Object;
+.source "SourceFile"
+.implements Lcom/google/android/gms/internal/firebase-auth-api/i6;
+
+
+.field private final a:Ljavax/crypto/SecretKey;
+.field private final b:[B
+.field private final c:[B
+
+
+.method public constructor <init>([B)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/security/GeneralSecurityException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	array-length v0, p1</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/internal/firebase-auth-api/kd;->a(I)V</span>
+<span class="">	new-instance v0, Ljavax/crypto/spec/SecretKeySpec;</span>
+<span class="">	const-string v1, "AES"</span>
+<span class="">	invoke-direct {v0, p1, v1}, Ljavax/crypto/spec/SecretKeySpec;-><init>([BLjava/lang/String;)V</span>
+<span class="">	iput-object v0, p0, Lcom/google/android/gms/internal/firebase-auth-api/cd;->a:Ljavax/crypto/SecretKey;</span>
+<span class="">	invoke-static {}, Lcom/google/android/gms/internal/firebase-auth-api/cd;->b()Ljavax/crypto/Cipher;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-virtual {p1, v1, v0}, Ljavax/crypto/Cipher;->init(ILjava/security/Key;)V</span>
+<span class="">	const/16 v0, 0x10</span>
+<span class="">	new-array v0, v0, [B</span>
+<span class="">	invoke-virtual {p1, v0}, Ljavax/crypto/Cipher;->doFinal([B)[B</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/internal/firebase-auth-api/gc;->a([B)[B</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/internal/firebase-auth-api/cd;->b:[B</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/internal/firebase-auth-api/gc;->a([B)[B</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/internal/firebase-auth-api/cd;->c:[B</span>
+.end method
+
+.method private static b()Ljavax/crypto/Cipher;
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/security/GeneralSecurityException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/google/android/gms/internal/firebase-auth-api/sc;->e:Lcom/google/android/gms/internal/firebase-auth-api/sc;</span>
+<span class="">	const-string v1, "AES/ECB/NoPadding"</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/android/gms/internal/firebase-auth-api/sc;->a(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljavax/crypto/Cipher;</span>
+.end method
+
+.method public final a([BI)[B
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/security/GeneralSecurityException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/16 v0, 0x10</span>
+<span class="">	if-gt p2, v0, :cond_2</span>
+<span class="">	invoke-static {}, Lcom/google/android/gms/internal/firebase-auth-api/cd;->b()Ljavax/crypto/Cipher;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iget-object v2, p0, Lcom/google/android/gms/internal/firebase-auth-api/cd;->a:Ljavax/crypto/SecretKey;</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	invoke-virtual {v1, v3, v2}, Ljavax/crypto/Cipher;->init(ILjava/security/Key;)V</span>
+<span class="">	array-length v2, p1</span>
+<span class="">	int-to-double v4, v2</span>
+<span class="">	const-wide/high16 v6, 0x4030000000000000L    # 16.0</span>
+<span class="">	div-double/2addr v4, v6</span>
+<span class="">	invoke-static {v4, v5}, Ljava/lang/Math;->ceil(D)D</span>
+<span class="">	move-result-wide v4</span>
+<span class="">	double-to-int v4, v4</span>
+<span class="">	invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I</span>
+<span class="">	move-result v3</span>
+<span class="">	mul-int/lit8 v4, v3, 0x10</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	if-ne v4, v2, :cond_0</span>
+<span class="">	add-int/lit8 v2, v3, -0x1</span>
+<span class="">	mul-int/lit8 v2, v2, 0x10</span>
+<span class="">	iget-object v4, p0, Lcom/google/android/gms/internal/firebase-auth-api/cd;->b:[B</span>
+<span class="">	invoke-static {p1, v2, v4, v5, v0}, Lcom/google/android/gms/internal/firebase-auth-api/hc;->c([BI[BII)[B</span>
+<span class="">	move-result-object v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	add-int/lit8 v4, v3, -0x1</span>
+<span class="">	mul-int/lit8 v4, v4, 0x10</span>
+<span class="">	invoke-static {p1, v4, v2}, Ljava/util/Arrays;->copyOfRange([BII)[B</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2}, Lcom/google/android/gms/internal/firebase-auth-api/gc;->b([B)[B</span>
+<span class="">	move-result-object v2</span>
+<span class="">	iget-object v4, p0, Lcom/google/android/gms/internal/firebase-auth-api/cd;->c:[B</span>
+<span class="">	invoke-static {v2, v4}, Lcom/google/android/gms/internal/firebase-auth-api/hc;->e([B[B)[B</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:goto_0</span>
+<span class="">	new-array v4, v0, [B</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	add-int/lit8 v7, v3, -0x1</span>
+<span class="">	if-ge v6, v7, :cond_1</span>
+<span class="">	mul-int/lit8 v7, v6, 0x10</span>
+<span class="">	invoke-static {v4, v5, p1, v7, v0}, Lcom/google/android/gms/internal/firebase-auth-api/hc;->c([BI[BII)[B</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v1, v4}, Ljavax/crypto/Cipher;->doFinal([B)[B</span>
+<span class="">	move-result-object v4</span>
+<span class="">	add-int/lit8 v6, v6, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {v2, v4}, Lcom/google/android/gms/internal/firebase-auth-api/hc;->e([B[B)[B</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v1, p1}, Ljavax/crypto/Cipher;->doFinal([B)[B</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1, p2}, Ljava/util/Arrays;->copyOf([BI)[B</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p1, Ljava/security/InvalidAlgorithmParameterException;</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string p2, "outputLength too large, max is 16 bytes"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/security/InvalidAlgorithmParameterException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

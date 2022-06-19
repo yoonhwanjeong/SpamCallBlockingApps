@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.ui.common.error</a></li>
+        <li><i class="ico ico-class"></i> DebugErrorDetailAlertDialog.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;
+.super Lcom/hiya/stingray/ui/common/g;
+.source "SourceFile"
+
+
+.field private A:Lg/g/a/a/e;
+.field private B:Ljava/lang/String;
+.field private C:Ljava/lang/String;
+.field  errorDebuggerAction:Landroid/widget/TextView;
+.annotation runtime Lbutterknife/BindView;
+value = 0x7f09019c
+.end annotation
+.end field
+.field  errorDebuggerCode:Landroid/widget/TextView;
+.annotation runtime Lbutterknife/BindView;
+value = 0x7f09019d
+.end annotation
+.end field
+.field  errorDebuggerErrorBody:Landroid/widget/TextView;
+.annotation runtime Lbutterknife/BindView;
+value = 0x7f09019f
+.end annotation
+.end field
+.field  errorDebuggerErrorConjecture:Landroid/widget/TextView;
+.annotation runtime Lbutterknife/BindView;
+value = 0x7f0901a0
+.end annotation
+.end field
+.field  errorDebuggerReason:Landroid/widget/TextView;
+.annotation runtime Lbutterknife/BindView;
+value = 0x7f0901a1
+.end annotation
+.end field
+.field  toolbar:Landroidx/appcompat/widget/Toolbar;
+.annotation runtime Lbutterknife/BindView;
+value = 0x7f09019e
+.end annotation
+.end field
+.field private z:Lcom/hiya/stingray/exception/a;
+
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/hiya/stingray/ui/common/g;-><init>()V</span>
+.end method
+
+.method public static t1(Lcom/hiya/stingray/exception/a;Lg/g/a/a/e;)Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;</span>
+<span class="">	invoke-direct {v0}, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;-><init>()V</span>
+<span class="">	new-instance v1, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v1}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Enum;->name()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v2, "ERROR_ALERT_TYPE_KEY"</span>
+<span class="">	invoke-virtual {v1, v2, p0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Enum;->name()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string p1, "ERROR_ALERT_API_ACTION_KEY"</span>
+<span class="">	invoke-virtual {v1, p1, p0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/fragment/app/Fragment;->setArguments(Landroid/os/Bundle;)V</span>
+.end method
+
+.method private u1(Lg/g/a/a/b;Lcom/hiya/stingray/exception/a;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+
+<span class="">	const-string p1, "?"</span>
+.end method
+
+.method private v1()V
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->errorDebuggerAction:Landroid/widget/TextView;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Action: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->A:Lg/g/a/a/e;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Enum;->name()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->errorDebuggerReason:Landroid/widget/TextView;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Reason: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->z:Lcom/hiya/stingray/exception/a;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Enum;->name()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->errorDebuggerCode:Landroid/widget/TextView;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Code: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->C:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->errorDebuggerErrorConjecture:Landroid/widget/TextView;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Initial Diagnosis "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->A:Lg/g/a/a/e;</span>
+<span class="">	iget-object v3, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->z:Lcom/hiya/stingray/exception/a;</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->u1(Lg/g/a/a/b;Lcom/hiya/stingray/exception/a;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->errorDebuggerErrorBody:Landroid/widget/TextView;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Error Body: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->B:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V</span>
+.end method
+
+.method public g1(Landroid/os/Bundle;)Landroid/app/Dialog;
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0, p1}, Landroidx/fragment/app/d;->g1(Landroid/os/Bundle;)Landroid/app/Dialog;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/view/Window;->requestFeature(I)Z</span>
+.end method
+
+.method public onCreate(Landroid/os/Bundle;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0, p1}, Lcom/hiya/stingray/ui/common/g;->onCreate(Landroid/os/Bundle;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/hiya/stingray/ui/common/g;->q1()Lcom/hiya/stingray/s/d/a;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1, p0}, Lcom/hiya/stingray/s/d/a;->T(Lcom/hiya/stingray/ui/common/g;)V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getArguments()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "ERROR_ALERT_TYPE_KEY"</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/hiya/stingray/exception/a;->valueOf(Ljava/lang/String;)Lcom/hiya/stingray/exception/a;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->z:Lcom/hiya/stingray/exception/a;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getArguments()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "ERROR_ALERT_API_ACTION_KEY"</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lg/g/a/a/e;->valueOf(Ljava/lang/String;)Lg/g/a/a/e;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->A:Lg/g/a/a/e;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getArguments()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "ERROR_ALERT_CODE_KEY"</span>
+<span class="">	const-string v1, ""</span>
+<span class="">	invoke-virtual {p1, v0, v1}, Landroid/os/Bundle;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->C:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getArguments()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "ERROR_ALERT_BODY_KEY"</span>
+<span class="">	invoke-virtual {p1, v0, v1}, Landroid/os/Bundle;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->B:Ljava/lang/String;</span>
+.end method
+
+.method public onCreateView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
+<span class="">	.locals 1</span>
+
+<span class="">	const p3, 0x7f0c006e</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p1, p3, p2, v0}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p0, p1}, Lbutterknife/ButterKnife;->bind(Ljava/lang/Object;Landroid/view/View;)Lbutterknife/Unbinder;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/d;->e1()Landroid/app/Dialog;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const/4 p3, 0x7</span>
+<span class="">	iput p3, p2, Landroid/view/WindowManager$LayoutParams;->gravity:I</span>
+<span class="">	iget-object p2, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->toolbar:Landroidx/appcompat/widget/Toolbar;</span>
+<span class="">	new-instance p3, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog$a;</span>
+<span class="">	invoke-direct {p3, p0}, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog$a;-><init>(Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;)V</span>
+<span class="">	invoke-virtual {p2, p3}, Landroidx/appcompat/widget/Toolbar;->setNavigationOnClickListener(Landroid/view/View$OnClickListener;)V</span>
+<span class="">	iget-object p2, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->toolbar:Landroidx/appcompat/widget/Toolbar;</span>
+<span class="">	const p3, 0x7f1103f7</span>
+<span class="">	invoke-virtual {p2, p3}, Landroidx/appcompat/widget/Toolbar;->setNavigationContentDescription(I)V</span>
+<span class="">	iget-object p2, p0, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->toolbar:Landroidx/appcompat/widget/Toolbar;</span>
+<span class="">	const/16 p3, 0x8</span>
+<span class="">	invoke-virtual {p2, p3}, Landroid/view/ViewGroup;->sendAccessibilityEvent(I)V</span>
+<span class="">	invoke-direct {p0}, Lcom/hiya/stingray/ui/common/error/DebugErrorDetailAlertDialog;->v1()V</span>
+.end method
+
+.method public onStart()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0}, Lcom/hiya/stingray/ui/common/g;->onStart()V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/d;->e1()Landroid/app/Dialog;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, -0x1</span>
+<span class="">	invoke-virtual {v0, v1, v1}, Landroid/view/Window;->setLayout(II)V</span>
+<span class="">	:cond_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

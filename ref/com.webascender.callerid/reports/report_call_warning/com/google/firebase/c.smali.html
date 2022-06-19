@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase</a></li>
+        <li><i class="ico ico-class"></i> c.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/firebase/c;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/google/firebase/c$d;,
+Lcom/google/firebase/c$c;,
+Lcom/google/firebase/c$e;,
+Lcom/google/firebase/c$b;
+}
+.end annotation
+
+.field private static final i:Ljava/lang/Object;
+.field private static final j:Ljava/util/concurrent/Executor;
+.field static final k:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Lcom/google/firebase/c;",
+">;"
+}
+.end annotation
+.end field
+.field private final a:Landroid/content/Context;
+.field private final b:Ljava/lang/String;
+.field private final c:Lcom/google/firebase/i;
+.field private final d:Lcom/google/firebase/components/n;
+.field private final e:Ljava/util/concurrent/atomic/AtomicBoolean;
+.field private final f:Ljava/util/concurrent/atomic/AtomicBoolean;
+.field private final g:Lcom/google/firebase/components/t;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/firebase/components/t<",
+"Lcom/google/firebase/n/a;",
+">;"
+}
+.end annotation
+.end field
+.field private final h:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Lcom/google/firebase/c$b;",
+">;"
+}
+.end annotation
+.end field
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Ljava/lang/Object;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	sput-object v0, Lcom/google/firebase/c;->i:Ljava/lang/Object;</span>
+<span class="cov">	new-instance v0, Lcom/google/firebase/c$d;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/google/firebase/c$d;-><init>(Lcom/google/firebase/c$a;)V</span>
+<span class="cov">	sput-object v0, Lcom/google/firebase/c;->j:Ljava/util/concurrent/Executor;</span>
+<span class="cov">	new-instance v0, Lf/e/a;</span>
+<span class="cov">	invoke-direct {v0}, Lf/e/a;-><init>()V</span>
+<span class="cov">	sput-object v0, Lcom/google/firebase/c;->k:Ljava/util/Map;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method protected constructor &lt;init&gt;(Landroid/content/Context;Ljava/lang/String;Lcom/google/firebase/i;)V</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/firebase/c;->e:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="cov">	new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/firebase/c;->f:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="cov">	new-instance v0, Ljava/util/concurrent/CopyOnWriteArrayList;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/concurrent/CopyOnWriteArrayList;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/firebase/c;->h:Ljava/util/List;</span>
+<span class="cov">	new-instance v0, Ljava/util/concurrent/CopyOnWriteArrayList;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/concurrent/CopyOnWriteArrayList;-><init>()V</span>
+<span class="cov">	invoke-static {p1}, Lcom/google/android/gms/common/internal/r;->k(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-object v0, p1</span>
+<span class="cov">	check-cast v0, Landroid/content/Context;</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/firebase/c;->a:Landroid/content/Context;</span>
+<span class="cov">	invoke-static {p2}, Lcom/google/android/gms/common/internal/r;->g(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	iput-object p2, p0, Lcom/google/firebase/c;->b:Ljava/lang/String;</span>
+<span class="cov">	invoke-static {p3}, Lcom/google/android/gms/common/internal/r;->k(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-object p2, p3</span>
+<span class="cov">	check-cast p2, Lcom/google/firebase/i;</span>
+<span class="cov">	iput-object p2, p0, Lcom/google/firebase/c;->c:Lcom/google/firebase/i;</span>
+<span class="cov">	const-class p2, Lcom/google/firebase/components/ComponentDiscoveryService;</span>
+<span class="exec">	invoke-static {p1, p2}, Lcom/google/firebase/components/g;->b(Landroid/content/Context;Ljava/lang/Class;)Lcom/google/firebase/components/g;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="exec">	invoke-virtual {p2}, Lcom/google/firebase/components/g;->a()Ljava/util/List;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="cov">	sget-object v0, Lcom/google/firebase/c;->j:Ljava/util/concurrent/Executor;</span>
+<span class="exec">	invoke-static {v0}, Lcom/google/firebase/components/n;->e(Ljava/util/concurrent/Executor;)Lcom/google/firebase/components/n$b;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	invoke-virtual {v0, p2}, Lcom/google/firebase/components/n$b;->c(Ljava/util/Collection;)Lcom/google/firebase/components/n$b;</span>
+<span class="cov">	new-instance p2, Lcom/google/firebase/FirebaseCommonRegistrar;</span>
+<span class="cov">	invoke-direct {p2}, Lcom/google/firebase/FirebaseCommonRegistrar;-><init>()V</span>
+<span class="cov">	invoke-virtual {v0, p2}, Lcom/google/firebase/components/n$b;->b(Lcom/google/firebase/components/i;)Lcom/google/firebase/components/n$b;</span>
+<span class="cov">	const-class p2, Landroid/content/Context;</span>
+<span class="cov">	new-array v2, v1, [Ljava/lang/Class;</span>
+<span class="exec">	invoke-static {p1, p2, v2}, Lcom/google/firebase/components/d;->n(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lcom/google/firebase/components/d;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="cov">	invoke-virtual {v0, p2}, Lcom/google/firebase/components/n$b;->a(Lcom/google/firebase/components/d;)Lcom/google/firebase/components/n$b;</span>
+<span class="cov">	const-class p2, Lcom/google/firebase/c;</span>
+<span class="cov">	new-array v2, v1, [Ljava/lang/Class;</span>
+<span class="exec">	invoke-static {p0, p2, v2}, Lcom/google/firebase/components/d;->n(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lcom/google/firebase/components/d;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="cov">	invoke-virtual {v0, p2}, Lcom/google/firebase/components/n$b;->a(Lcom/google/firebase/components/d;)Lcom/google/firebase/components/n$b;</span>
+<span class="cov">	const-class p2, Lcom/google/firebase/i;</span>
+<span class="cov">	new-array v1, v1, [Ljava/lang/Class;</span>
+<span class="exec">	invoke-static {p3, p2, v1}, Lcom/google/firebase/components/d;->n(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lcom/google/firebase/components/d;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="cov">	invoke-virtual {v0, p2}, Lcom/google/firebase/components/n$b;->a(Lcom/google/firebase/components/d;)Lcom/google/firebase/components/n$b;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/components/n$b;->d()Lcom/google/firebase/components/n;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="cov">	iput-object p2, p0, Lcom/google/firebase/c;->d:Lcom/google/firebase/components/n;</span>
+<span class="cov">	new-instance p2, Lcom/google/firebase/components/t;</span>
+<span class="exec">	invoke-static {p0, p1}, Lcom/google/firebase/b;->a(Lcom/google/firebase/c;Landroid/content/Context;)Lcom/google/firebase/m/b;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-direct {p2, p1}, Lcom/google/firebase/components/t;-><init>(Lcom/google/firebase/m/b;)V</span>
+<span class="cov">	iput-object p2, p0, Lcom/google/firebase/c;->g:Lcom/google/firebase/components/t;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method static synthetic a()Ljava/lang/Object;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/google/firebase/c;->i:Ljava/lang/Object;</span>
+.end method
+
+.method static synthetic b(Lcom/google/firebase/c;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/c;->n()V</span>
+.end method
+
+.method static synthetic c(Lcom/google/firebase/c;)Ljava/util/concurrent/atomic/AtomicBoolean;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/google/firebase/c;->e:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+.end method
+
+.method static synthetic d(Lcom/google/firebase/c;Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/c;->v(Z)V</span>
+.end method
+
+<span class="cov">.method private e()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/c;->f:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	xor-int/lit8 v0, v0, 0x1</span>
+<span class="cov">	const-string v1, "FirebaseApp was deleted"</span>
+<span class="cov">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/r;->o(ZLjava/lang/Object;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private static g()Ljava/util/List;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	sget-object v1, Lcom/google/firebase/c;->i:Ljava/lang/Object;</span>
+<span class="">	monitor-enter v1</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v2, Lcom/google/firebase/c;->k:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v2}, Ljava/util/Map;->values()Ljava/util/Collection;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Lcom/google/firebase/c;</span>
+<span class="">	invoke-virtual {v3}, Lcom/google/firebase/c;->k()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-interface {v0, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	monitor-exit v1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {v0}, Ljava/util/Collections;->sort(Ljava/util/List;)V</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v1</span>
+<span class="">	:try_start_1</span>
+<span class="">	throw v0</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+.end method
+
+<span class="cov">.method public static i()Lcom/google/firebase/c;</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	sget-object v0, Lcom/google/firebase/c;->i:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	sget-object v1, Lcom/google/firebase/c;->k:Ljava/util/Map;</span>
+<span class="cov">	const-string v2, "[DEFAULT]"</span>
+<span class="exec">	invoke-interface {v1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	check-cast v1, Lcom/google/firebase/c;</span>
+<span class="cov">	if-eqz v1, :cond_0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-object v1</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v1, Ljava/lang/IllegalStateException;</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v3, "Default FirebaseApp is not initialized in this process "</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-static {}, Lcom/google/android/gms/common/util/n;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v3, ". Make sure to call FirebaseApp.initializeApp(Context) first."</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {v1, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw v1</span>
+.end method
+
+.method public static j(Ljava/lang/String;)Lcom/google/firebase/c;
+<span class="">	.locals 5</span>
+
+<span class="">	sget-object v0, Lcom/google/firebase/c;->i:Ljava/lang/Object;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/google/firebase/c;->k:Ljava/util/Map;</span>
+<span class="">	invoke-static {p0}, Lcom/google/firebase/c;->u(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/google/firebase/c;</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/c;->g()Ljava/util/List;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v1}, Ljava/util/List;->isEmpty()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	const-string v1, ""</span>
+<span class="">	goto :goto_0</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v3, "Available app names: "</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v3, ", "</span>
+<span class="">	invoke-static {v3, v1}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "FirebaseApp with name %s doesn\'t exist. %s"</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 v3, 0x2</span>
+<span class="">	new-array v3, v3, [Ljava/lang/Object;</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	aput-object p0, v3, v4</span>
+<span class="">	const/4 p0, 0x1</span>
+<span class="">	aput-object v1, v3, p0</span>
+<span class="">	invoke-static {v2, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	new-instance v1, Ljava/lang/IllegalStateException;</span>
+<span class="">	invoke-direct {v1, p0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v1</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+.end method
+
+<span class="cov">.method private n()V</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/c;->a:Landroid/content/Context;</span>
+<span class="exec">	invoke-static {v0}, Landroidx/core/os/i;->a(Landroid/content/Context;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	xor-int/lit8 v0, v0, 0x1</span>
+<span class="cov">	const-string v1, "FirebaseApp"</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Device in Direct Boot Mode: postponing initialization of Firebase APIs for app "</span>
+<span class="">	invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/firebase/c;->k()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v1, v0}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/c;->a:Landroid/content/Context;</span>
+<span class="">	invoke-static {v0}, Lcom/google/firebase/c$e;->a(Landroid/content/Context;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="cov">	const-string v2, "Device unlocked: initializing all Firebase APIs for app "</span>
+<span class="cov">	invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/c;->k()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	invoke-static {v1, v0}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/c;->d:Lcom/google/firebase/components/n;</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/c;->s()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	invoke-virtual {v0, v1}, Lcom/google/firebase/components/n;->h(Z)V</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static o(Landroid/content/Context;)Lcom/google/firebase/c;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	sget-object v0, Lcom/google/firebase/c;->i:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	sget-object v1, Lcom/google/firebase/c;->k:Ljava/util/Map;</span>
+<span class="cov">	const-string v2, "[DEFAULT]"</span>
+<span class="exec">	invoke-interface {v1, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	if-eqz v1, :cond_0</span>
+<span class="exec">	invoke-static {}, Lcom/google/firebase/c;->i()Lcom/google/firebase/c;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-object p0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-static {p0}, Lcom/google/firebase/i;->a(Landroid/content/Context;)Lcom/google/firebase/i;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	const-string p0, "FirebaseApp"</span>
+<span class="">	const-string v1, "Default FirebaseApp failed to initialize because no default options were found. This usually means that com.google.gms:google-services was not applied to your gradle project."</span>
+<span class="">	invoke-static {p0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	monitor-exit v0</span>
+<span class="exec">	invoke-static {p0, v1}, Lcom/google/firebase/c;->p(Landroid/content/Context;Lcom/google/firebase/i;)Lcom/google/firebase/c;</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-object p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+.end method
+
+<span class="cov">.method public static p(Landroid/content/Context;Lcom/google/firebase/i;)Lcom/google/firebase/c;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const-string v0, "[DEFAULT]"</span>
+<span class="exec">	invoke-static {p0, p1, v0}, Lcom/google/firebase/c;->q(Landroid/content/Context;Lcom/google/firebase/i;Ljava/lang/String;)Lcom/google/firebase/c;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method public static q(Landroid/content/Context;Lcom/google/firebase/i;Ljava/lang/String;)Lcom/google/firebase/c;</span>
+<span class="">	.locals 5</span>
+
+<span class="cov">	invoke-static {p0}, Lcom/google/firebase/c$c;->b(Landroid/content/Context;)V</span>
+<span class="exec">	invoke-static {p2}, Lcom/google/firebase/c;->u(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="exec">	invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	sget-object v0, Lcom/google/firebase/c;->i:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	sget-object v1, Lcom/google/firebase/c;->k:Ljava/util/Map;</span>
+<span class="exec">	invoke-interface {v1, p2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-nez v2, :cond_1</span>
+<span class="cov">	const/4 v2, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="cov">	:goto_1</span>
+<span class="cov">	new-instance v3, Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="cov">	const-string v4, "FirebaseApp name "</span>
+<span class="cov">	invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-virtual {v3, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	const-string v4, " already exists!"</span>
+<span class="cov">	invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	invoke-static {v2, v3}, Lcom/google/android/gms/common/internal/r;->o(ZLjava/lang/Object;)V</span>
+<span class="cov">	const-string v2, "Application context cannot be null."</span>
+<span class="cov">	invoke-static {p0, v2}, Lcom/google/android/gms/common/internal/r;->l(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	new-instance v2, Lcom/google/firebase/c;</span>
+<span class="cov">	invoke-direct {v2, p0, p2, p1}, Lcom/google/firebase/c;-><init>(Landroid/content/Context;Ljava/lang/String;Lcom/google/firebase/i;)V</span>
+<span class="cov">	invoke-interface {v1, p2, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	invoke-direct {v2}, Lcom/google/firebase/c;->n()V</span>
+<span class="exec">	return-object v2</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_start_1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	throw p0</span>
+.end method
+
+<span class="cov">.method static synthetic t(Lcom/google/firebase/c;Landroid/content/Context;)Lcom/google/firebase/n/a;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	new-instance v0, Lcom/google/firebase/n/a;</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/c;->m()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	iget-object p0, p0, Lcom/google/firebase/c;->d:Lcom/google/firebase/components/n;</span>
+<span class="cov">	const-class v2, Lcom/google/firebase/k/c;</span>
+<span class="exec">	invoke-virtual {p0, v2}, Lcom/google/firebase/components/n;->a(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	check-cast p0, Lcom/google/firebase/k/c;</span>
+<span class="cov">	invoke-direct {v0, p1, v1, p0}, Lcom/google/firebase/n/a;-><init>(Landroid/content/Context;Ljava/lang/String;Lcom/google/firebase/k/c;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method private static u(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	.locals 0</span>
+
+<span class="exec">	invoke-virtual {p0}, Ljava/lang/String;->trim()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+.method private v(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	const-string v0, "FirebaseApp"</span>
+<span class="">	const-string v1, "Notifying background state change listeners."</span>
+<span class="">	invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/c;->h:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/google/firebase/c$b;</span>
+<span class="">	invoke-interface {v1, p1}, Lcom/google/firebase/c$b;->a(Z)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public equals(Ljava/lang/Object;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	instance-of v0, p1, Lcom/google/firebase/c;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/c;->b:Ljava/lang/String;</span>
+<span class="">	:cond_0</span>
+<span class="">	check-cast p1, Lcom/google/firebase/c;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/c;->k()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+<span class="cov">.method public f(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<T:",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">(",</span>
+<span class="">	"Ljava/lang/Class<",</span>
+<span class="">	"TT;>;)TT;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/google/firebase/c;->e()V</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/c;->d:Lcom/google/firebase/components/n;</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/components/n;->a(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public h()Landroid/content/Context;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/google/firebase/c;->e()V</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/c;->a:Landroid/content/Context;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public hashCode()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/c;->b:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->hashCode()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+<span class="cov">.method public k()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/google/firebase/c;->e()V</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/c;->b:Ljava/lang/String;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public l()Lcom/google/firebase/i;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/google/firebase/c;->e()V</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/c;->c:Lcom/google/firebase/i;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public m()Ljava/lang/String;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/c;->k()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-static {}, Ljava/nio/charset/Charset;->defaultCharset()Ljava/nio/charset/Charset;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v1, v2}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-static {v1}, Lcom/google/android/gms/common/util/c;->e([B)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	const-string v1, "+"</span>
+<span class="cov">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/c;->l()Lcom/google/firebase/i;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/i;->c()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-static {}, Ljava/nio/charset/Charset;->defaultCharset()Ljava/nio/charset/Charset;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v1, v2}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-static {v1}, Lcom/google/android/gms/common/util/c;->e([B)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public r()Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/google/firebase/c;->e()V</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/c;->g:Lcom/google/firebase/components/t;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/components/t;->get()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Lcom/google/firebase/n/a;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/n/a;->b()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+.end method
+
+<span class="cov">.method public s()Z</span>
+<span class="">	.locals 2</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/c;->k()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "[DEFAULT]"</span>
+<span class="exec">	invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+.end method
+
+.method public toString()Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/common/internal/p;->c(Ljava/lang/Object;)Lcom/google/android/gms/common/internal/p$a;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/c;->b:Ljava/lang/String;</span>
+<span class="">	const-string v2, "name"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Lcom/google/android/gms/common/internal/p$a;->a(Ljava/lang/String;Ljava/lang/Object;)Lcom/google/android/gms/common/internal/p$a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/c;->c:Lcom/google/firebase/i;</span>
+<span class="">	const-string v2, "options"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Lcom/google/android/gms/common/internal/p$a;->a(Ljava/lang/String;Ljava/lang/Object;)Lcom/google/android/gms/common/internal/p$a;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/common/internal/p$a;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

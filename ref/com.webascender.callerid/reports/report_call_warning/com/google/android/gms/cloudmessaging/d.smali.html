@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.cloudmessaging</a></li>
+        <li><i class="ico ico-class"></i> d.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/android/gms/cloudmessaging/d;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private static h:I
+.field private static i:Landroid/app/PendingIntent;
+.field private static final j:Ljava/util/concurrent/Executor;
+.field private final a:Lf/e/g;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lf/e/g<",
+"Ljava/lang/String;",
+"Lcom/google/android/gms/tasks/h<",
+"Landroid/os/Bundle;",
+">;>;"
+}
+.end annotation
+.end field
+.field private final b:Landroid/content/Context;
+.field private final c:Lcom/google/android/gms/cloudmessaging/u;
+.field private final d:Ljava/util/concurrent/ScheduledExecutorService;
+.field private e:Landroid/os/Messenger;
+.field private f:Landroid/os/Messenger;
+.field private g:Lcom/google/android/gms/cloudmessaging/e;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	sget-object v0, Lcom/google/android/gms/cloudmessaging/c0;->f:Ljava/util/concurrent/Executor;</span>
+<span class="cov">	sput-object v0, Lcom/google/android/gms/cloudmessaging/d;->j:Ljava/util/concurrent/Executor;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;)V</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	new-instance v0, Lf/e/g;</span>
+<span class="cov">	invoke-direct {v0}, Lf/e/g;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/android/gms/cloudmessaging/d;->a:Lf/e/g;</span>
+<span class="cov">	iput-object p1, p0, Lcom/google/android/gms/cloudmessaging/d;->b:Landroid/content/Context;</span>
+<span class="cov">	new-instance v0, Lcom/google/android/gms/cloudmessaging/u;</span>
+<span class="cov">	invoke-direct {v0, p1}, Lcom/google/android/gms/cloudmessaging/u;-><init>(Landroid/content/Context;)V</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/android/gms/cloudmessaging/d;->c:Lcom/google/android/gms/cloudmessaging/u;</span>
+<span class="cov">	new-instance p1, Landroid/os/Messenger;</span>
+<span class="cov">	new-instance v0, Lcom/google/android/gms/cloudmessaging/b0;</span>
+<span class="exec">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-direct {v0, p0, v1}, Lcom/google/android/gms/cloudmessaging/b0;-><init>(Lcom/google/android/gms/cloudmessaging/d;Landroid/os/Looper;)V</span>
+<span class="cov">	invoke-direct {p1, v0}, Landroid/os/Messenger;-><init>(Landroid/os/Handler;)V</span>
+<span class="cov">	iput-object p1, p0, Lcom/google/android/gms/cloudmessaging/d;->e:Landroid/os/Messenger;</span>
+<span class="cov">	new-instance p1, Ljava/util/concurrent/ScheduledThreadPoolExecutor;</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="cov">	invoke-direct {p1, v0}, Ljava/util/concurrent/ScheduledThreadPoolExecutor;-><init>(I)V</span>
+<span class="cov">	sget-object v1, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="cov">	const-wide/16 v2, 0x3c</span>
+<span class="cov">	invoke-virtual {p1, v2, v3, v1}, Ljava/util/concurrent/ScheduledThreadPoolExecutor;->setKeepAliveTime(JLjava/util/concurrent/TimeUnit;)V</span>
+<span class="cov">	invoke-virtual {p1, v0}, Ljava/util/concurrent/ScheduledThreadPoolExecutor;->allowCoreThreadTimeOut(Z)V</span>
+<span class="cov">	iput-object p1, p0, Lcom/google/android/gms/cloudmessaging/d;->d:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method static final synthetic b(Lcom/google/android/gms/tasks/g;)Landroid/os/Bundle;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/lang/Exception;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/android/gms/tasks/g;->s()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/android/gms/tasks/g;->o()Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Landroid/os/Bundle;</span>
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v1, "Rpc"</span>
+<span class="">	invoke-static {v1, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/android/gms/tasks/g;->n()Ljava/lang/Exception;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	add-int/lit8 v2, v2, 0x16</span>
+<span class="">	new-instance v3, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v3, v2}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	const-string v2, "Error making request: "</span>
+<span class="">	invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	new-instance v0, Ljava/io/IOException;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/android/gms/tasks/g;->n()Ljava/lang/Exception;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v1, "SERVICE_NOT_AVAILABLE"</span>
+<span class="">	invoke-direct {v0, v1, p0}, Ljava/io/IOException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method static final synthetic c(Landroid/os/Bundle;)Lcom/google/android/gms/tasks/g;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/lang/Exception;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/cloudmessaging/d;->l(Landroid/os/Bundle;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/tasks/j;->e(Ljava/lang/Object;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/tasks/j;->e(Ljava/lang/Object;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method private static declared-synchronized e()Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/google/android/gms/cloudmessaging/d;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget v1, Lcom/google/android/gms/cloudmessaging/d;->h:I</span>
+<span class="">	add-int/lit8 v2, v1, 0x1</span>
+<span class="">	sput v2, Lcom/google/android/gms/cloudmessaging/d;->h:I</span>
+<span class="">	invoke-static {v1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw v1</span>
+.end method
+
+.method private static declared-synchronized f(Landroid/content/Context;Landroid/content/Intent;)V
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/google/android/gms/cloudmessaging/d;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/google/android/gms/cloudmessaging/d;->i:Landroid/app/PendingIntent;</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	new-instance v1, Landroid/content/Intent;</span>
+<span class="">	invoke-direct {v1}, Landroid/content/Intent;-><init>()V</span>
+<span class="">	const-string v2, "com.google.example.invalidpackage"</span>
+<span class="">	invoke-virtual {v1, v2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-static {p0, v2, v1, v2}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	sput-object p0, Lcom/google/android/gms/cloudmessaging/d;->i:Landroid/app/PendingIntent;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p0, "app"</span>
+<span class="">	sget-object v1, Lcom/google/android/gms/cloudmessaging/d;->i:Landroid/app/PendingIntent;</span>
+<span class="">	invoke-virtual {p1, p0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+.end method
+
+.method private final g(Landroid/os/Message;)V
+<span class="">	.locals 8</span>
+
+<span class="">	if-eqz p1, :cond_14</span>
+<span class="">	iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;</span>
+<span class="">	instance-of v1, v0, Landroid/content/Intent;</span>
+<span class="">	if-eqz v1, :cond_14</span>
+<span class="">	check-cast v0, Landroid/content/Intent;</span>
+<span class="">	new-instance v1, Lcom/google/android/gms/cloudmessaging/e$a;</span>
+<span class="">	invoke-direct {v1}, Lcom/google/android/gms/cloudmessaging/e$a;-><init>()V</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/content/Intent;->setExtrasClassLoader(Ljava/lang/ClassLoader;)V</span>
+<span class="">	const-string v1, "google.messenger"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	const-string v1, "google.messenger"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v1, v0, Lcom/google/android/gms/cloudmessaging/e;</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	move-object v1, v0</span>
+<span class="">	check-cast v1, Lcom/google/android/gms/cloudmessaging/e;</span>
+<span class="">	iput-object v1, p0, Lcom/google/android/gms/cloudmessaging/d;->g:Lcom/google/android/gms/cloudmessaging/e;</span>
+<span class="">	:cond_0</span>
+<span class="">	instance-of v1, v0, Landroid/os/Messenger;</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	check-cast v0, Landroid/os/Messenger;</span>
+<span class="">	iput-object v0, p0, Lcom/google/android/gms/cloudmessaging/d;->f:Landroid/os/Messenger;</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object p1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;</span>
+<span class="">	check-cast p1, Landroid/content/Intent;</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getAction()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "com.google.android.c2dm.intent.REGISTRATION"</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x3</span>
+<span class="">	if-nez v1, :cond_4</span>
+<span class="">	const-string p1, "Rpc"</span>
+<span class="">	invoke-static {p1, v2}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_3</span>
+<span class="">	const-string p1, "Rpc"</span>
+<span class="">	const-string v1, "Unexpected response action: "</span>
+<span class="">	invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	new-instance v0, Ljava/lang/String;</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/String;-><init>(Ljava/lang/String;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_3</span>
+<span class="">	const-string v0, "registration_id"</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_5</span>
+<span class="">	const-string v0, "unregistered"</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x2</span>
+<span class="">	:cond_5</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	if-nez v0, :cond_f</span>
+<span class="">	const-string v0, "error"</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_6</span>
+<span class="">	const-string v0, "Rpc"</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v1</span>
+<span class="">	add-int/lit8 v1, v1, 0x31</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2, v1}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	const-string v1, "Unexpected response, no error or registration id "</span>
+<span class="">	invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v0, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	const-string v4, "Rpc"</span>
+<span class="">	invoke-static {v4, v2}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	:cond_6</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_8</span>
+<span class="">	const-string v4, "Rpc"</span>
+<span class="">	const-string v5, "Received InstanceID error "</span>
+<span class="">	invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v7</span>
+<span class="">	if-eqz v7, :cond_7</span>
+<span class="">	invoke-virtual {v5, v6}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	goto :goto_1</span>
+<span class="">	new-instance v6, Ljava/lang/String;</span>
+<span class="">	invoke-direct {v6, v5}, Ljava/lang/String;-><init>(Ljava/lang/String;)V</span>
+<span class="">	:cond_7</span>
+<span class="">	move-object v5, v6</span>
+<span class="">	invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	const-string v4, "|"</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {v0, v4}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z</span>
+<span class="">	:cond_8</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_d</span>
+<span class="">	const-string v4, "\\|"</span>
+<span class="">	invoke-virtual {v0, v4}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	array-length v5, v4</span>
+<span class="">	if-le v5, v1, :cond_b</span>
+<span class="">	const-string v5, "ID"</span>
+<span class="">	aget-object v6, v4, v3</span>
+<span class="">	invoke-virtual {v5, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-nez v5, :cond_9</span>
+<span class="">	goto :goto_2</span>
+<span class="">	aget-object v0, v4, v1</span>
+<span class="">	aget-object v1, v4, v2</span>
+<span class="">	:cond_9</span>
+<span class="">	const-string v2, ":"</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_a</span>
+<span class="">	invoke-virtual {v1, v3}, Ljava/lang/String;->substring(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "error"</span>
+<span class="">	invoke-virtual {p1, v2, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	:cond_a</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/android/gms/cloudmessaging/d;->j(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	const-string p1, "Rpc"</span>
+<span class="">	const-string v1, "Unexpected structured response "</span>
+<span class="">	invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_b</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_c</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_3</span>
+<span class="">	new-instance v0, Ljava/lang/String;</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/String;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_c</span>
+<span class="">	iget-object v4, p0, Lcom/google/android/gms/cloudmessaging/d;->a:Lf/e/g;</span>
+<span class="">	monitor-enter v4</span>
+<span class="">	:goto_3</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/cloudmessaging/d;->a:Lf/e/g;</span>
+<span class="">	:cond_d</span>
+<span class="">	invoke-virtual {v1}, Lf/e/g;->size()I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-ge v0, v1, :cond_e</span>
+<span class="">	:try_start_0</span>
+<span class="">	:goto_4</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/cloudmessaging/d;->a:Lf/e/g;</span>
+<span class="">	invoke-virtual {v1, v0}, Lf/e/g;->j(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {p0, v1, v2}, Lcom/google/android/gms/cloudmessaging/d;->j(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	add-int/lit8 v0, v0, 0x1</span>
+<span class="">	goto :goto_4</span>
+<span class="">	monitor-exit v4</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit v4</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_e</span>
+<span class="">	const-string v4, "\\|ID\\|([^|]+)\\|:?+(.*)"</span>
+<span class="">	invoke-static {v4}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v4, v0}, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	move-result-object v4</span>
+<span class="">	:cond_f</span>
+<span class="">	invoke-virtual {v4}, Ljava/util/regex/Matcher;->matches()Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-nez v5, :cond_12</span>
+<span class="">	const-string p1, "Rpc"</span>
+<span class="">	invoke-static {p1, v2}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_11</span>
+<span class="">	const-string p1, "Rpc"</span>
+<span class="">	const-string v1, "Unexpected response string: "</span>
+<span class="">	invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_10</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_5</span>
+<span class="">	new-instance v0, Ljava/lang/String;</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/String;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	invoke-virtual {v4, v3}, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_10</span>
+<span class="">	invoke-virtual {v4, v1}, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_5</span>
+<span class="">	if-eqz v0, :cond_13</span>
+<span class="">	:cond_11</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	:cond_12</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v2, "registration_id"</span>
+<span class="">	invoke-virtual {p1, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/android/gms/cloudmessaging/d;->j(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	const-string p1, "Rpc"</span>
+<span class="">	const-string v0, "Dropping invalid message"</span>
+<span class="">	invoke-static {p1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_13</span>
+<span class="">	:cond_14</span>
+.end method
+
+.method static synthetic h(Lcom/google/android/gms/cloudmessaging/d;Landroid/os/Message;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/android/gms/cloudmessaging/d;->g(Landroid/os/Message;)V</span>
+.end method
+
+.method static final synthetic i(Lcom/google/android/gms/tasks/h;)V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/io/IOException;</span>
+<span class="">	const-string v1, "TIMEOUT"</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/google/android/gms/tasks/h;->d(Ljava/lang/Exception;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	const-string p0, "Rpc"</span>
+<span class="">	const-string v0, "No response"</span>
+<span class="">	invoke-static {p0, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private final j(Ljava/lang/String;Landroid/os/Bundle;)V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/cloudmessaging/d;->a:Lf/e/g;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/cloudmessaging/d;->a:Lf/e/g;</span>
+<span class="">	invoke-virtual {v1, p1}, Lf/e/g;->remove(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/google/android/gms/tasks/h;</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	const-string p2, "Rpc"</span>
+<span class="">	const-string v1, "Missing callback for "</span>
+<span class="">	invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/String;</span>
+<span class="">	invoke-direct {p1, v1}, Ljava/lang/String;-><init>(Ljava/lang/String;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {p2, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	invoke-virtual {v1, p2}, Lcom/google/android/gms/tasks/h;->c(Ljava/lang/Object;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+.end method
+
+.method private static l(Landroid/os/Bundle;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	const-string v0, "google.messenger"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	const/4 p0, 0x1</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private final m(Landroid/os/Bundle;)Lcom/google/android/gms/tasks/g;
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/os/Bundle;",</span>
+<span class="">	")",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Landroid/os/Bundle;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Lcom/google/android/gms/cloudmessaging/d;->e()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Lcom/google/android/gms/tasks/h;</span>
+<span class="">	invoke-direct {v1}, Lcom/google/android/gms/tasks/h;-><init>()V</span>
+<span class="">	iget-object v2, p0, Lcom/google/android/gms/cloudmessaging/d;->a:Lf/e/g;</span>
+<span class="">	monitor-enter v2</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v3, p0, Lcom/google/android/gms/cloudmessaging/d;->a:Lf/e/g;</span>
+<span class="">	invoke-virtual {v3, v0, v1}, Lf/e/g;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	monitor-exit v2</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	new-instance v2, Landroid/content/Intent;</span>
+<span class="">	invoke-direct {v2}, Landroid/content/Intent;-><init>()V</span>
+<span class="">	const-string v3, "com.google.android.gms"</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	iget-object v3, p0, Lcom/google/android/gms/cloudmessaging/d;->c:Lcom/google/android/gms/cloudmessaging/u;</span>
+<span class="">	invoke-virtual {v3}, Lcom/google/android/gms/cloudmessaging/u;->a()I</span>
+<span class="">	move-result v3</span>
+<span class="">	const/4 v4, 0x2</span>
+<span class="">	if-ne v3, v4, :cond_0</span>
+<span class="">	const-string v3, "com.google.iid.TOKEN_REQUEST"</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v3, "com.google.android.c2dm.intent.REGISTER"</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {v2, p1}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/cloudmessaging/d;->b:Landroid/content/Context;</span>
+<span class="">	invoke-static {p1, v2}, Lcom/google/android/gms/cloudmessaging/d;->f(Landroid/content/Context;Landroid/content/Intent;)V</span>
+<span class="">	const-string p1, "kid"</span>
+<span class="">	invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v3</span>
+<span class="">	add-int/lit8 v3, v3, 0x5</span>
+<span class="">	new-instance v5, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v5, v3}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	const-string v3, "|ID|"</span>
+<span class="">	invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v3, "|"</span>
+<span class="">	invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v2, p1, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	const-string p1, "Rpc"</span>
+<span class="">	const/4 v3, 0x3</span>
+<span class="">	invoke-static {p1, v3}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	const-string p1, "Rpc"</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-static {v5}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-static {v5}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v6</span>
+<span class="">	add-int/lit8 v6, v6, 0x8</span>
+<span class="">	new-instance v7, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v7, v6}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	const-string v6, "Sending "</span>
+<span class="">	invoke-virtual {v7, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v7, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-static {p1, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string p1, "google.messenger"</span>
+<span class="">	iget-object v5, p0, Lcom/google/android/gms/cloudmessaging/d;->e:Landroid/os/Messenger;</span>
+<span class="">	invoke-virtual {v2, p1, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/cloudmessaging/d;->f:Landroid/os/Messenger;</span>
+<span class="">	if-nez p1, :cond_2</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/cloudmessaging/d;->g:Lcom/google/android/gms/cloudmessaging/e;</span>
+<span class="">	if-eqz p1, :cond_4</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object v2, p1, Landroid/os/Message;->obj:Ljava/lang/Object;</span>
+<span class="">	:try_start_1</span>
+<span class="">	iget-object v5, p0, Lcom/google/android/gms/cloudmessaging/d;->f:Landroid/os/Messenger;</span>
+<span class="">	if-eqz v5, :cond_3</span>
+<span class="">	invoke-virtual {v5, p1}, Landroid/os/Messenger;->send(Landroid/os/Message;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	iget-object v5, p0, Lcom/google/android/gms/cloudmessaging/d;->g:Lcom/google/android/gms/cloudmessaging/e;</span>
+<span class="">	invoke-virtual {v5, p1}, Lcom/google/android/gms/cloudmessaging/e;->b(Landroid/os/Message;)V</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catch_0</span>
+<span class="">	nop</span>
+<span class="">	const-string p1, "Rpc"</span>
+<span class="">	invoke-static {p1, v3}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_4</span>
+<span class="">	const-string p1, "Rpc"</span>
+<span class="">	const-string v3, "Messenger failed, fallback to startService"</span>
+<span class="">	invoke-static {p1, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_4</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/cloudmessaging/d;->c:Lcom/google/android/gms/cloudmessaging/u;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/android/gms/cloudmessaging/u;->a()I</span>
+<span class="">	move-result p1</span>
+<span class="">	if-ne p1, v4, :cond_5</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/cloudmessaging/d;->b:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {p1, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_5</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/cloudmessaging/d;->b:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {p1, v2}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;</span>
+<span class="">	:goto_1</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/cloudmessaging/d;->d:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	new-instance v2, Lcom/google/android/gms/cloudmessaging/x;</span>
+<span class="">	invoke-direct {v2, v1}, Lcom/google/android/gms/cloudmessaging/x;-><init>(Lcom/google/android/gms/tasks/h;)V</span>
+<span class="">	const-wide/16 v3, 0x1e</span>
+<span class="">	sget-object v5, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-interface {p1, v2, v3, v4, v5}, Ljava/util/concurrent/ScheduledExecutorService;->schedule(Ljava/lang/Runnable;JLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/android/gms/tasks/h;->a()Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	sget-object v3, Lcom/google/android/gms/cloudmessaging/d;->j:Ljava/util/concurrent/Executor;</span>
+<span class="">	new-instance v4, Lcom/google/android/gms/cloudmessaging/a0;</span>
+<span class="">	invoke-direct {v4, p0, v0, p1}, Lcom/google/android/gms/cloudmessaging/a0;-><init>(Lcom/google/android/gms/cloudmessaging/d;Ljava/lang/String;Ljava/util/concurrent/ScheduledFuture;)V</span>
+<span class="">	invoke-virtual {v2, v3, v4}, Lcom/google/android/gms/tasks/g;->e(Ljava/util/concurrent/Executor;Lcom/google/android/gms/tasks/c;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/android/gms/tasks/h;->a()Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v2</span>
+<span class="">	:try_start_2</span>
+<span class="">	throw p1</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+.end method
+
+.method public a(Landroid/os/Bundle;)Lcom/google/android/gms/tasks/g;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/os/Bundle;",</span>
+<span class="">	")",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Landroid/os/Bundle;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/cloudmessaging/d;->c:Lcom/google/android/gms/cloudmessaging/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/cloudmessaging/u;->c()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	const v2, 0xb71b00</span>
+<span class="">	if-lt v0, v2, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/cloudmessaging/d;->b:Landroid/content/Context;</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/cloudmessaging/i;->c(Landroid/content/Context;)Lcom/google/android/gms/cloudmessaging/i;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v1, p1}, Lcom/google/android/gms/cloudmessaging/i;->f(ILandroid/os/Bundle;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sget-object v0, Lcom/google/android/gms/cloudmessaging/d;->j:Ljava/util/concurrent/Executor;</span>
+<span class="">	sget-object v1, Lcom/google/android/gms/cloudmessaging/w;->a:Lcom/google/android/gms/tasks/a;</span>
+<span class="">	invoke-virtual {p1, v0, v1}, Lcom/google/android/gms/tasks/g;->k(Ljava/util/concurrent/Executor;Lcom/google/android/gms/tasks/a;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/cloudmessaging/d;->c:Lcom/google/android/gms/cloudmessaging/u;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/cloudmessaging/u;->a()I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	if-nez v1, :cond_2</span>
+<span class="">	:goto_0</span>
+<span class="">	new-instance p1, Ljava/io/IOException;</span>
+<span class="">	const-string v0, "MISSING_INSTANCEID_SERVICE"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/tasks/j;->d(Ljava/lang/Exception;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/android/gms/cloudmessaging/d;->m(Landroid/os/Bundle;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_2</span>
+<span class="">	sget-object v1, Lcom/google/android/gms/cloudmessaging/d;->j:Ljava/util/concurrent/Executor;</span>
+<span class="">	new-instance v2, Lcom/google/android/gms/cloudmessaging/y;</span>
+<span class="">	invoke-direct {v2, p0, p1}, Lcom/google/android/gms/cloudmessaging/y;-><init>(Lcom/google/android/gms/cloudmessaging/d;Landroid/os/Bundle;)V</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/tasks/g;->m(Ljava/util/concurrent/Executor;Lcom/google/android/gms/tasks/a;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method final synthetic d(Landroid/os/Bundle;Lcom/google/android/gms/tasks/g;)Lcom/google/android/gms/tasks/g;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/lang/Exception;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p2}, Lcom/google/android/gms/tasks/g;->s()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Lcom/google/android/gms/tasks/g;->o()Ljava/lang/Object;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroid/os/Bundle;</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/cloudmessaging/d;->l(Landroid/os/Bundle;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/android/gms/cloudmessaging/d;->m(Landroid/os/Bundle;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object p2, Lcom/google/android/gms/cloudmessaging/d;->j:Ljava/util/concurrent/Executor;</span>
+<span class="">	sget-object v0, Lcom/google/android/gms/cloudmessaging/z;->a:Lcom/google/android/gms/tasks/f;</span>
+<span class="">	invoke-virtual {p1, p2, v0}, Lcom/google/android/gms/tasks/g;->u(Ljava/util/concurrent/Executor;Lcom/google/android/gms/tasks/f;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method final synthetic k(Ljava/lang/String;Ljava/util/concurrent/ScheduledFuture;Lcom/google/android/gms/tasks/g;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object p3, p0, Lcom/google/android/gms/cloudmessaging/d;->a:Lf/e/g;</span>
+<span class="">	monitor-enter p3</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/cloudmessaging/d;->a:Lf/e/g;</span>
+<span class="">	invoke-virtual {v0, p1}, Lf/e/g;->remove(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	monitor-exit p3</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-interface {p2, p1}, Ljava/util/concurrent/ScheduledFuture;->cancel(Z)Z</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p3</span>
+<span class="">	:try_start_1</span>
+<span class="">	throw p1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

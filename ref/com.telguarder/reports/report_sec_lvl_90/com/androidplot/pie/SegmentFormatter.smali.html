@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot.pie</a></li>
+        <li><i class="ico ico-class"></i> SegmentFormatter.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/androidplot/pie/SegmentFormatter;
+.super Lcom/androidplot/ui/Formatter;
+.source "SegmentFormatter.java"
+
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/androidplot/ui/Formatter<",
+"Lcom/androidplot/pie/PieChart;",
+">;"
+}
+.end annotation
+
+.field private static final DEFAULT_EDGE_COLOR:I = -0x1000000
+.field private static final DEFAULT_EDGE_THICKNESS:F = 3.0f
+.field private static final DEFAULT_FILL_COLOR:I = 0x0
+.field private static final DEFAULT_LABEL_COLOR:I = -0x1
+.field private static final DEFAULT_LABEL_FONT_SIZE:F = 18.0f
+.field private static final DEFAULT_LABEL_MARKER_THICKNESS:F = 3.0f
+.field private fillPaint:Landroid/graphics/Paint;
+.field private innerEdgePaint:Landroid/graphics/Paint;
+.field private innerInset:F
+.field private labelMarkerPaint:Landroid/graphics/Paint;
+.field private labelPaint:Landroid/graphics/Paint;
+.field private offset:F
+.field private outerEdgePaint:Landroid/graphics/Paint;
+.field private outerInset:F
+.field private radialEdgePaint:Landroid/graphics/Paint;
+.field private radialInset:F
+
+
+.method public constructor <init>(Landroid/content/Context;I)V
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-direct {p0}, Lcom/androidplot/ui/Formatter;-><init>()V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setFillPaint(Landroid/graphics/Paint;)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setOuterEdgePaint(Landroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getOuterEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v1, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getOuterEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/high16 v1, 0x40400000    # 3.0f</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getOuterEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setInnerEdgePaint(Landroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getInnerEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v3, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getInnerEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getInnerEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setRadialEdgePaint(Landroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getRadialEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v3, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getRadialEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getRadialEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setLabelPaint(Landroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v3, -0x1</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/high16 v4, 0x41900000    # 18.0f</span>
+<span class="">	invoke-virtual {v0, v4}, Landroid/graphics/Paint;->setTextSize(F)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v2, Landroid/graphics/Paint$Align;->CENTER:Landroid/graphics/Paint$Align;</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setTextAlign(Landroid/graphics/Paint$Align;)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setLabelMarkerPaint(Landroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelMarkerPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelMarkerPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Lcom/androidplot/pie/SegmentFormatter;->configure(Landroid/content/Context;I)V</span>
+.end method
+
+.method public constructor <init>(Ljava/lang/Integer;)V
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-direct {p0}, Lcom/androidplot/ui/Formatter;-><init>()V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setFillPaint(Landroid/graphics/Paint;)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setOuterEdgePaint(Landroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getOuterEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v1, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getOuterEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/high16 v1, 0x40400000    # 3.0f</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getOuterEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setInnerEdgePaint(Landroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getInnerEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v3, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getInnerEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getInnerEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setRadialEdgePaint(Landroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getRadialEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v3, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getRadialEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getRadialEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setLabelPaint(Landroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v3, -0x1</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/high16 v4, 0x41900000    # 18.0f</span>
+<span class="">	invoke-virtual {v0, v4}, Landroid/graphics/Paint;->setTextSize(F)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v2, Landroid/graphics/Paint$Align;->CENTER:Landroid/graphics/Paint$Align;</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setTextAlign(Landroid/graphics/Paint$Align;)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/pie/SegmentFormatter;->setLabelMarkerPaint(Landroid/graphics/Paint;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelMarkerPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getLabelMarkerPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getFillPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Integer;->intValue()I</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {v0, p1}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getFillPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public constructor <init>(Ljava/lang/Integer;Ljava/lang/Integer;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/androidplot/pie/SegmentFormatter;-><init>(Ljava/lang/Integer;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getInnerEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Integer;->intValue()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getOuterEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Integer;->intValue()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getRadialEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Integer;->intValue()I</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/graphics/Paint;->setColor(I)V</span>
+.end method
+
+.method public constructor <init>(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/androidplot/pie/SegmentFormatter;-><init>(Ljava/lang/Integer;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getOuterEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/high16 v0, -0x1000000</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getOuterEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Integer;->intValue()I</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {p1}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/pie/SegmentFormatter;->outerEdgePaint:Landroid/graphics/Paint;</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getOuterEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getInnerEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getInnerEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Integer;->intValue()I</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance p1, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {p1}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/pie/SegmentFormatter;->outerEdgePaint:Landroid/graphics/Paint;</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getInnerEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getRadialEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getRadialEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p4}, Ljava/lang/Integer;->intValue()I</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	new-instance p1, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {p1}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/pie/SegmentFormatter;->radialEdgePaint:Landroid/graphics/Paint;</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/pie/SegmentFormatter;->getRadialEdgePaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	:goto_2</span>
+.end method
+
+.method public bridge synthetic doGetRendererInstance(Lcom/androidplot/Plot;)Lcom/androidplot/ui/SeriesRenderer;
+<span class="">	.locals 0</span>
+
+<span class="">	check-cast p1, Lcom/androidplot/pie/PieChart;</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/pie/SegmentFormatter;->doGetRendererInstance(Lcom/androidplot/pie/PieChart;)Lcom/androidplot/ui/SeriesRenderer;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public doGetRendererInstance(Lcom/androidplot/pie/PieChart;)Lcom/androidplot/ui/SeriesRenderer;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/androidplot/pie/PieRenderer;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/androidplot/pie/PieRenderer;-><init>(Lcom/androidplot/pie/PieChart;)V</span>
+.end method
+
+.method public getFillPaint()Landroid/graphics/Paint;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/pie/SegmentFormatter;->fillPaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public getInnerEdgePaint()Landroid/graphics/Paint;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/pie/SegmentFormatter;->innerEdgePaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public getInnerInset()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/androidplot/pie/SegmentFormatter;->innerInset:F</span>
+.end method
+
+.method public getLabelMarkerPaint()Landroid/graphics/Paint;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/pie/SegmentFormatter;->labelMarkerPaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public getLabelPaint()Landroid/graphics/Paint;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/pie/SegmentFormatter;->labelPaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public getOffset()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/androidplot/pie/SegmentFormatter;->offset:F</span>
+.end method
+
+.method public getOuterEdgePaint()Landroid/graphics/Paint;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/pie/SegmentFormatter;->outerEdgePaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public getOuterInset()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/androidplot/pie/SegmentFormatter;->outerInset:F</span>
+.end method
+
+.method public getRadialEdgePaint()Landroid/graphics/Paint;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/pie/SegmentFormatter;->radialEdgePaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public getRadialInset()F
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/androidplot/pie/SegmentFormatter;->radialInset:F</span>
+.end method
+
+.method public getRendererClass()Ljava/lang/Class;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/lang/Class<",</span>
+<span class="">	"+",</span>
+<span class="">	"Lcom/androidplot/ui/SeriesRenderer;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/androidplot/pie/PieRenderer;</span>
+.end method
+
+.method public setFillPaint(Landroid/graphics/Paint;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/pie/SegmentFormatter;->fillPaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public setInnerEdgePaint(Landroid/graphics/Paint;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/pie/SegmentFormatter;->innerEdgePaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public setInnerInset(F)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput p1, p0, Lcom/androidplot/pie/SegmentFormatter;->innerInset:F</span>
+.end method
+
+.method public setLabelMarkerPaint(Landroid/graphics/Paint;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/pie/SegmentFormatter;->labelMarkerPaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public setLabelPaint(Landroid/graphics/Paint;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/pie/SegmentFormatter;->labelPaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public setOffset(F)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput p1, p0, Lcom/androidplot/pie/SegmentFormatter;->offset:F</span>
+.end method
+
+.method public setOuterEdgePaint(Landroid/graphics/Paint;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/pie/SegmentFormatter;->outerEdgePaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public setOuterInset(F)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput p1, p0, Lcom/androidplot/pie/SegmentFormatter;->outerInset:F</span>
+.end method
+
+.method public setRadialEdgePaint(Landroid/graphics/Paint;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/pie/SegmentFormatter;->radialEdgePaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public setRadialInset(F)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput p1, p0, Lcom/androidplot/pie/SegmentFormatter;->radialInset:F</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

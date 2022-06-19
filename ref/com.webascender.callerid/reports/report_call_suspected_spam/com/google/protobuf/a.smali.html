@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.protobuf</a></li>
+        <li><i class="ico ico-class"></i> a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Lcom/google/protobuf/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+.implements Lcom/google/protobuf/r0;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/google/protobuf/a$a;
+}
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"<MessageType:",
+"Lcom/google/protobuf/a<",
+"TMessageType;TBuilderType;>;BuilderType:",
+"Lcom/google/protobuf/a$a<",
+"TMessageType;TBuilderType;>;>",
+"Ljava/lang/Object;",
+"Lcom/google/protobuf/r0;"
+}
+.end annotation
+
+.field protected memoizedHashCode:I
+
+
+<span class="cov">.method public constructor &lt;init&gt;()V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	iput v0, p0, Lcom/google/protobuf/a;->memoizedHashCode:I</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method protected static j(Ljava/lang/Iterable;Ljava/util/List;)V</span>
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<T:",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">(",</span>
+<span class="">	"Ljava/lang/Iterable<",</span>
+<span class="">	"TT;>;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"-TT;>;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	invoke-static {p0, p1}, Lcom/google/protobuf/a$a;->s(Ljava/lang/Iterable;Ljava/util/List;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private u(Ljava/lang/String;)Ljava/lang/String;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "Serializing "</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, " to a "</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, " threw an IOException (should never happen)."</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public e(Ljava/io/OutputStream;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-interface {p0}, Lcom/google/protobuf/r0;->m()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/protobuf/CodedOutputStream;->I(I)I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-static {p1, v0}, Lcom/google/protobuf/CodedOutputStream;->f0(Ljava/io/OutputStream;I)Lcom/google/protobuf/CodedOutputStream;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p0, p1}, Lcom/google/protobuf/r0;->f(Lcom/google/protobuf/CodedOutputStream;)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/protobuf/CodedOutputStream;->c0()V</span>
+.end method
+
+<span class="cov">.method public i()Lcom/google/protobuf/i;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	:try_start_0</span>
+<span class="exec">	invoke-interface {p0}, Lcom/google/protobuf/r0;->m()I</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	invoke-static {v0}, Lcom/google/protobuf/i;->q(I)Lcom/google/protobuf/i$g;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/protobuf/i$g;->b()Lcom/google/protobuf/CodedOutputStream;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-interface {p0, v1}, Lcom/google/protobuf/r0;->f(Lcom/google/protobuf/CodedOutputStream;)V</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/protobuf/i$g;->a()Lcom/google/protobuf/i;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="exec">	return-object v0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	new-instance v1, Ljava/lang/RuntimeException;</span>
+<span class="">	const-string v2, "ByteString"</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/protobuf/a;->u(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {v1, v2, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	throw v1</span>
+.end method
+
+<span class="cov">.method public o()[B</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	:try_start_0</span>
+<span class="exec">	invoke-interface {p0}, Lcom/google/protobuf/r0;->m()I</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	new-array v0, v0, [B</span>
+<span class="exec">	invoke-static {v0}, Lcom/google/protobuf/CodedOutputStream;->g0([B)Lcom/google/protobuf/CodedOutputStream;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-interface {p0, v1}, Lcom/google/protobuf/r0;->f(Lcom/google/protobuf/CodedOutputStream;)V</span>
+<span class="cov">	invoke-virtual {v1}, Lcom/google/protobuf/CodedOutputStream;->c()V</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="exec">	return-object v0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	new-instance v1, Ljava/lang/RuntimeException;</span>
+<span class="">	const-string v2, "byte array"</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/protobuf/a;->u(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {v1, v2, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	throw v1</span>
+.end method
+
+.method  s()I
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Ljava/lang/UnsupportedOperationException;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/UnsupportedOperationException;-><init>()V</span>
+<span class="">	throw v0</span>
+.end method
+
+<span class="cov">.method  t(Lcom/google/protobuf/g1;)I</span>
+<span class="">	.locals 2</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/google/protobuf/a;->s()I</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	const/4 v1, -0x1</span>
+<span class="cov">	if-ne v0, v1, :cond_0</span>
+<span class="exec">	invoke-interface {p1, p0}, Lcom/google/protobuf/g1;->h(Ljava/lang/Object;)I</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	invoke-virtual {p0, v0}, Lcom/google/protobuf/a;->w(I)V</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return v0</span>
+.end method
+
+.method  v()Lcom/google/protobuf/UninitializedMessageException;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/google/protobuf/UninitializedMessageException;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/google/protobuf/UninitializedMessageException;-><init>(Lcom/google/protobuf/r0;)V</span>
+.end method
+
+.method  w(I)V
+<span class="">	.locals 0</span>
+
+<span class="">	new-instance p1, Ljava/lang/UnsupportedOperationException;</span>
+<span class="">	invoke-direct {p1}, Ljava/lang/UnsupportedOperationException;-><init>()V</span>
+<span class="">	throw p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

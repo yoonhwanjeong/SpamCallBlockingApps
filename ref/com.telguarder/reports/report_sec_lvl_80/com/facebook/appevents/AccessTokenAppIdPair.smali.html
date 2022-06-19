@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.appevents</a></li>
+        <li><i class="ico ico-class"></i> AccessTokenAppIdPair.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/appevents/AccessTokenAppIdPair;
+.super Ljava/lang/Object;
+.source "AccessTokenAppIdPair.kt"
+.implements Ljava/io/Serializable;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/appevents/AccessTokenAppIdPair$SerializationProxyV1;,
+Lcom/facebook/appevents/AccessTokenAppIdPair$Companion;
+}
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000.\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0010\u000e\n\u0002\u0008\u0006\n\u0002\u0010\u000b\n\u0000\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0008\n\u0002\u0008\u0004\u0008\u0007\u0018\u0000 \u00132\u00020\u0001:\u0002\u0013\u0014B\u000f\u0008\u0016\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004B\u0017\u0012\u0008\u0010\u0005\u001a\u0004\u0018\u00010\u0006\u0012\u0006\u0010\u0007\u001a\u00020\u0006\u00a2\u0006\u0002\u0010\u0008J\u0013\u0010\u000c\u001a\u00020\r2\u0008\u0010\u000e\u001a\u0004\u0018\u00010\u000fH\u0096\u0002J\u0008\u0010\u0010\u001a\u00020\u0011H\u0016J\u0008\u0010\u0012\u001a\u00020\u000fH\u0002R\u0013\u0010\u0005\u001a\u0004\u0018\u00010\u0006\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008\t\u0010\nR\u0011\u0010\u0007\u001a\u00020\u0006\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008\u000b\u0010\n\u00a8\u0006\u0015"
+}
+d2 = {
+"Lcom/facebook/appevents/AccessTokenAppIdPair;",
+"Ljava/io/Serializable;",
+"accessToken",
+"Lcom/facebook/AccessToken;",
+"(Lcom/facebook/AccessToken;)V",
+"accessTokenString",
+"",
+"applicationId",
+"(Ljava/lang/String;Ljava/lang/String;)V",
+"getAccessTokenString",
+"()Ljava/lang/String;",
+"getApplicationId",
+"equals",
+"",
+"o",
+"",
+"hashCode",
+"",
+"writeReplace",
+"Companion",
+"SerializationProxyV1",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field public static final Companion:Lcom/facebook/appevents/AccessTokenAppIdPair$Companion;
+.field private static final serialVersionUID:J = 0x1L
+.field private final accessTokenString:Ljava/lang/String;
+.field private final applicationId:Ljava/lang/String;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lcom/facebook/appevents/AccessTokenAppIdPair$Companion;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/facebook/appevents/AccessTokenAppIdPair$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/appevents/AccessTokenAppIdPair;->Companion:Lcom/facebook/appevents/AccessTokenAppIdPair$Companion;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public constructor <init>(Lcom/facebook/AccessToken;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "accessToken"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/AccessToken;->getToken()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationId()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p0, p1, v0}, Lcom/facebook/appevents/AccessTokenAppIdPair;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const-string v0, "applicationId"</span>
+<span class="cov">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p2, p0, Lcom/facebook/appevents/AccessTokenAppIdPair;->applicationId:Ljava/lang/String;</span>
+<span class="exec">	invoke-static {p1}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result p2</span>
+<span class="cov">	if-eqz p2, :cond_0</span>
+<span class="cov">	const/4 p1, 0x0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	iput-object p1, p0, Lcom/facebook/appevents/AccessTokenAppIdPair;->accessTokenString:Ljava/lang/String;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private final writeReplace()Ljava/lang/Object;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/ObjectStreamException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/appevents/AccessTokenAppIdPair$SerializationProxyV1;</span>
+<span class="">	iget-object v1, p0, Lcom/facebook/appevents/AccessTokenAppIdPair;->accessTokenString:Ljava/lang/String;</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/appevents/AccessTokenAppIdPair;->applicationId:Ljava/lang/String;</span>
+<span class="">	invoke-direct {v0, v1, v2}, Lcom/facebook/appevents/AccessTokenAppIdPair$SerializationProxyV1;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+.end method
+
+.method public equals(Ljava/lang/Object;)Z
+<span class="">	.locals 3</span>
+
+<span class="">	instance-of v0, p1, Lcom/facebook/appevents/AccessTokenAppIdPair;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	check-cast p1, Lcom/facebook/appevents/AccessTokenAppIdPair;</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p1, Lcom/facebook/appevents/AccessTokenAppIdPair;->accessTokenString:Ljava/lang/String;</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/appevents/AccessTokenAppIdPair;->accessTokenString:Ljava/lang/String;</span>
+<span class="">	invoke-static {v0, v2}, Lcom/facebook/internal/Utility;->areObjectsEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	iget-object p1, p1, Lcom/facebook/appevents/AccessTokenAppIdPair;->applicationId:Ljava/lang/String;</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/AccessTokenAppIdPair;->applicationId:Ljava/lang/String;</span>
+<span class="">	invoke-static {p1, v0}, Lcom/facebook/internal/Utility;->areObjectsEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	:cond_1</span>
+.end method
+
+<span class="cov">.method public final getAccessTokenString()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/appevents/AccessTokenAppIdPair;->accessTokenString:Ljava/lang/String;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public final getApplicationId()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/appevents/AccessTokenAppIdPair;->applicationId:Ljava/lang/String;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public hashCode()I</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/appevents/AccessTokenAppIdPair;->accessTokenString:Ljava/lang/String;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->hashCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	iget-object v1, p0, Lcom/facebook/appevents/AccessTokenAppIdPair;->applicationId:Ljava/lang/String;</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/lang/String;->hashCode()I</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	xor-int/2addr v0, v1</span>
+<span class="exec">	return v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

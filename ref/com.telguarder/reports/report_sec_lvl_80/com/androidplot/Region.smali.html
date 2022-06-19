@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot</a></li>
+        <li><i class="ico ico-class"></i> Region.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/androidplot/Region;
+.super Ljava/lang/Object;
+.source "Region.java"
+
+
+.field private cachedLength:Lcom/androidplot/util/FastNumber;
+.field private defaults:Lcom/androidplot/Region;
+.field private max:Lcom/androidplot/util/FastNumber;
+.field private min:Lcom/androidplot/util/FastNumber;
+
+
+<span class="cov">.method public constructor &lt;init&gt;()V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p0, p0, Lcom/androidplot/Region;->defaults:Lcom/androidplot/Region;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Ljava/lang/Number;Ljava/lang/Number;)V</span>
+<span class="">	.locals 5</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p0, p0, Lcom/androidplot/Region;->defaults:Lcom/androidplot/Region;</span>
+<span class="cov">	if-eqz p1, :cond_0</span>
+<span class="cov">	if-eqz p2, :cond_0</span>
+<span class="exec">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	invoke-virtual {p2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="cov">	cmpg-double v4, v0, v2</span>
+<span class="cov">	if-gez v4, :cond_0</span>
+<span class="cov">	invoke-virtual {p0, p1}, Lcom/androidplot/Region;->setMin(Ljava/lang/Number;)V</span>
+<span class="cov">	invoke-virtual {p0, p2}, Lcom/androidplot/Region;->setMax(Ljava/lang/Number;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0, p2}, Lcom/androidplot/Region;->setMin(Ljava/lang/Number;)V</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/Region;->setMax(Ljava/lang/Number;)V</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public static measure(Ljava/lang/Number;Ljava/lang/Number;)Ljava/lang/Number;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/androidplot/Region;</span>
+<span class="">	invoke-direct {v0, p0, p1}, Lcom/androidplot/Region;-><init>(Ljava/lang/Number;Ljava/lang/Number;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/Region;->length()Ljava/lang/Number;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+<span class="cov">.method public static withDefaults(Lcom/androidplot/Region;)Lcom/androidplot/Region;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	if-eqz p0, :cond_0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->isDefined()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	new-instance v0, Lcom/androidplot/Region;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/androidplot/Region;-><init>()V</span>
+<span class="cov">	iput-object p0, v0, Lcom/androidplot/Region;->defaults:Lcom/androidplot/Region;</span>
+<span class="exec">	return-object v0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p0, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	const-string v0, "When specifying default min and max must both be non-null values"</span>
+<span class="">	invoke-direct {p0, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+.end method
+
+.method public center()Ljava/lang/Number;
+<span class="">	.locals 6</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Region;->length()Ljava/lang/Number;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	const-wide/high16 v4, 0x4000000000000000L    # 2.0</span>
+<span class="">	div-double/2addr v2, v4</span>
+<span class="">	sub-double/2addr v0, v2</span>
+<span class="">	invoke-static {v0, v1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public contains(Ljava/lang/Number;)Z
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	cmpl-double v4, v0, v2</span>
+<span class="">	if-ltz v4, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	cmpg-double p1, v0, v2</span>
+<span class="">	if-gtz p1, :cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+<span class="cov">.method public getMax()Ljava/lang/Number;</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->isMaxSet()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->max:Lcom/androidplot/util/FastNumber;</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->defaults:Lcom/androidplot/Region;</span>
+<span class="cov">	iget-object v0, v0, Lcom/androidplot/Region;->max:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public getMin()Ljava/lang/Number;</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->isMinSet()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->min:Lcom/androidplot/util/FastNumber;</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->defaults:Lcom/androidplot/Region;</span>
+<span class="cov">	iget-object v0, v0, Lcom/androidplot/Region;->min:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public intersect(Lcom/androidplot/Region;)V
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	cmpg-double v4, v0, v2</span>
+<span class="">	if-gez v4, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/Region;->setMin(Ljava/lang/Number;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	cmpl-double v4, v0, v2</span>
+<span class="">	if-lez v4, :cond_1</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/Region;->setMax(Ljava/lang/Number;)V</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public intersects(Lcom/androidplot/Region;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Lcom/androidplot/Region;->intersects(Ljava/lang/Number;Ljava/lang/Number;)Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public intersects(Ljava/lang/Number;Ljava/lang/Number;)Z
+<span class="">	.locals 6</span>
+
+<span class="">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	const/4 v4, 0x1</span>
+<span class="">	cmpg-double v5, v0, v2</span>
+<span class="">	if-gtz v5, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	cmpl-double v5, v0, v2</span>
+<span class="">	if-ltz v5, :cond_0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/Region;->contains(Ljava/lang/Number;)Z</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_2</span>
+<span class="">	invoke-virtual {p0, p2}, Lcom/androidplot/Region;->contains(Ljava/lang/Number;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	:cond_2</span>
+<span class="">	:goto_0</span>
+.end method
+
+<span class="cov">.method public isDefined()Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->min:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->max:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return v0</span>
+.end method
+
+<span class="cov">.method public isMaxSet()Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->max:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return v0</span>
+.end method
+
+<span class="cov">.method public isMinSet()Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->min:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return v0</span>
+.end method
+
+<span class="cov">.method public length()Ljava/lang/Number;</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->cachedLength:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	if-nez v0, :cond_2</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	if-eqz v0, :cond_1</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="cov">	sub-double/2addr v0, v2</span>
+<span class="exec">	invoke-static {v0, v1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="cov">	:goto_1</span>
+<span class="cov">	if-eqz v0, :cond_2</span>
+<span class="exec">	invoke-static {v0}, Lcom/androidplot/util/FastNumber;->orNull(Ljava/lang/Number;)Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Region;->cachedLength:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->cachedLength:Lcom/androidplot/util/FastNumber;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public ratio(DD)D</span>
+<span class="">	.locals 2</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->length()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="cov">	sub-double/2addr p3, p1</span>
+<span class="cov">	div-double/2addr v0, p3</span>
+<span class="exec">	return-wide v0</span>
+.end method
+
+<span class="cov">.method public ratio(Lcom/androidplot/Region;)Ljava/lang/Number;</span>
+<span class="">	.locals 4</span>
+
+<span class="exec">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="exec">	invoke-virtual {p0, v0, v1, v2, v3}, Lcom/androidplot/Region;->ratio(DD)D</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	invoke-static {v0, v1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public setMax(Ljava/lang/Number;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Region;->cachedLength:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	if-nez p1, :cond_0</span>
+<span class="cov">	iget-object p1, p0, Lcom/androidplot/Region;->defaults:Lcom/androidplot/Region;</span>
+<span class="cov">	const-string v1, "Region values can never be null unless defaults have been set."</span>
+<span class="cov">	invoke-static {p1, v1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Region;->max:Lcom/androidplot/util/FastNumber;</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->max:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	if-eqz v0, :cond_1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/androidplot/util/FastNumber;->equals(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-nez v0, :cond_2</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-static {p1}, Lcom/androidplot/util/FastNumber;->orNull(Ljava/lang/Number;)Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	iput-object p1, p0, Lcom/androidplot/Region;->max:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public setMin(Ljava/lang/Number;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Region;->cachedLength:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	if-nez p1, :cond_0</span>
+<span class="cov">	iget-object p1, p0, Lcom/androidplot/Region;->defaults:Lcom/androidplot/Region;</span>
+<span class="cov">	const-string v1, "Region values cannot be null unless defaults have been set."</span>
+<span class="cov">	invoke-static {p1, v1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/Region;->min:Lcom/androidplot/util/FastNumber;</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/Region;->min:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	if-eqz v0, :cond_1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/androidplot/util/FastNumber;->equals(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="">	if-nez v0, :cond_2</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-static {p1}, Lcom/androidplot/util/FastNumber;->orNull(Ljava/lang/Number;)Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	iput-object p1, p0, Lcom/androidplot/Region;->min:Lcom/androidplot/util/FastNumber;</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public setMinMax(Lcom/androidplot/Region;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/Region;->setMin(Ljava/lang/Number;)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/Region;->setMax(Ljava/lang/Number;)V</span>
+.end method
+
+.method public toString()Ljava/lang/String;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "Region{"</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	const-string v1, "min="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Region;->min:Lcom/androidplot/util/FastNumber;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, ", max="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Region;->max:Lcom/androidplot/util/FastNumber;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, ", cachedLength="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Region;->cachedLength:Lcom/androidplot/util/FastNumber;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, ", defaults="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/Region;->defaults:Lcom/androidplot/Region;</span>
+<span class="">	if-eq v1, p0, :cond_0</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v1, "this"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	:goto_0</span>
+<span class="">	const/16 v1, 0x7d</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+<span class="cov">.method public transform(DDDZ)D</span>
+<span class="">	.locals 4</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->length()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="cov">	sub-double v2, p5, p3</span>
+<span class="cov">	div-double/2addr v2, v0</span>
+<span class="cov">	if-nez p7, :cond_0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object p5</span>
+<span class="exec">	invoke-virtual {p5}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide p5</span>
+<span class="cov">	sub-double/2addr p1, p5</span>
+<span class="cov">	mul-double v2, v2, p1</span>
+<span class="cov">	add-double/2addr p3, v2</span>
+<span class="exec">	return-wide p3</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object p3</span>
+<span class="exec">	invoke-virtual {p3}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide p3</span>
+<span class="cov">	sub-double/2addr p1, p3</span>
+<span class="cov">	mul-double v2, v2, p1</span>
+<span class="cov">	sub-double/2addr p5, v2</span>
+<span class="exec">	return-wide p5</span>
+.end method
+
+.method public transform(DLcom/androidplot/Region;)Ljava/lang/Number;
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p0, p1, p2, p3, v0}, Lcom/androidplot/Region;->transform(DLcom/androidplot/Region;Z)Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public transform(DLcom/androidplot/Region;Z)Ljava/lang/Number;
+<span class="">	.locals 9</span>
+
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v4</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v6</span>
+<span class="">	move-object v1, p0</span>
+<span class="">	move-wide v2, p1</span>
+<span class="">	move v8, p4</span>
+<span class="">	invoke-virtual/range {v1 .. v8}, Lcom/androidplot/Region;->transform(DDDZ)D</span>
+<span class="">	move-result-wide p1</span>
+<span class="">	invoke-static {p1, p2}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public union(Lcom/androidplot/Region;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/Region;->union(Ljava/lang/Number;)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/Region;->union(Ljava/lang/Number;)V</span>
+.end method
+
+<span class="cov">.method public union(Ljava/lang/Number;)V</span>
+<span class="">	.locals 5</span>
+
+<span class="">	if-nez p1, :cond_0</span>
+<span class="exec">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	if-eqz v2, :cond_1</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="cov">	cmpg-double v4, v0, v2</span>
+<span class="">	if-gez v4, :cond_2</span>
+<span class="cov">	invoke-virtual {p0, p1}, Lcom/androidplot/Region;->setMin(Ljava/lang/Number;)V</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	if-eqz v2, :cond_3</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="cov">	cmpl-double v4, v0, v2</span>
+<span class="cov">	if-lez v4, :cond_4</span>
+<span class="cov">	invoke-virtual {p0, p1}, Lcom/androidplot/Region;->setMax(Ljava/lang/Number;)V</span>
+<span class="cov">	:cond_3</span>
+<span class="exec">	return-void</span>
+<span class="cov">	:cond_4</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

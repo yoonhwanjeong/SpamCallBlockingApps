@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.internal</a></li>
+        <li><i class="ico ico-class"></i> FetchedAppSettings.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/internal/FetchedAppSettings;
+.super Ljava/lang/Object;
+.source "FetchedAppSettings.kt"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/internal/FetchedAppSettings$DialogFeatureConfig;,
+Lcom/facebook/internal/FetchedAppSettings$Companion;
+}
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000D\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0010\u000e\n\u0002\u0008\u0002\n\u0002\u0010\u0008\n\u0000\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010$\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0005\n\u0002\u0018\u0002\n\u0002\u0008#\u0018\u0000 82\u00020\u0001:\u000289B\u00c3\u0001\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\u0006\u0010\u0006\u001a\u00020\u0003\u0012\u0006\u0010\u0007\u001a\u00020\u0008\u0012\u000c\u0010\t\u001a\u0008\u0012\u0004\u0012\u00020\u000b0\n\u0012\u001e\u0010\u000c\u001a\u001a\u0012\u0004\u0012\u00020\u0005\u0012\u0010\u0012\u000e\u0012\u0004\u0012\u00020\u0005\u0012\u0004\u0012\u00020\u000e0\r0\r\u0012\u0006\u0010\u000f\u001a\u00020\u0003\u0012\u0006\u0010\u0010\u001a\u00020\u0011\u0012\u0006\u0010\u0012\u001a\u00020\u0005\u0012\u0006\u0010\u0013\u001a\u00020\u0005\u0012\u0006\u0010\u0014\u001a\u00020\u0003\u0012\u0006\u0010\u0015\u001a\u00020\u0003\u0012\u0008\u0010\u0016\u001a\u0004\u0018\u00010\u0017\u0012\u0006\u0010\u0018\u001a\u00020\u0005\u0012\u0006\u0010\u0019\u001a\u00020\u0003\u0012\u0006\u0010\u001a\u001a\u00020\u0003\u0012\u0008\u0010\u001b\u001a\u0004\u0018\u00010\u0005\u0012\u0008\u0010\u001c\u001a\u0004\u0018\u00010\u0005\u0012\u0008\u0010\u001d\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\u0002\u0010\u001eJ\u0006\u0010\u0002\u001a\u00020\u0003R\u0011\u0010\u000f\u001a\u00020\u0003\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008\u001f\u0010 R\u0011\u0010\u0015\u001a\u00020\u0003\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008!\u0010 R)\u0010\u000c\u001a\u001a\u0012\u0004\u0012\u00020\u0005\u0012\u0010\u0012\u000e\u0012\u0004\u0012\u00020\u0005\u0012\u0004\u0012\u00020\u000e0\r0\r\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008\"\u0010#R\u0011\u0010\u0010\u001a\u00020\u0011\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008$\u0010%R\u0013\u0010\u0016\u001a\u0004\u0018\u00010\u0017\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008&\u0010\'R\u0011\u0010\u0014\u001a\u00020\u0003\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008(\u0010 R\u0011\u0010\u001a\u001a\u00020\u0003\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008)\u0010 R\u0011\u0010\u0004\u001a\u00020\u0005\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008*\u0010+R\u0011\u0010\u0006\u001a\u00020\u0003\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008,\u0010 R\u0013\u0010\u001b\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008-\u0010+R\u0013\u0010\u001d\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008.\u0010+R\u0011\u0010\u0018\u001a\u00020\u0005\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008/\u0010+R\u0011\u0010\u0007\u001a\u00020\u0008\u00a2\u0006\u0008\n\u0000\u001a\u0004\u00080\u00101R\u0011\u0010\u0012\u001a\u00020\u0005\u00a2\u0006\u0008\n\u0000\u001a\u0004\u00082\u0010+R\u0011\u0010\u0013\u001a\u00020\u0005\u00a2\u0006\u0008\n\u0000\u001a\u0004\u00083\u0010+R\u0017\u0010\t\u001a\u0008\u0012\u0004\u0012\u00020\u000b0\n\u00a2\u0006\u0008\n\u0000\u001a\u0004\u00084\u00105R\u0013\u0010\u001c\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\u0008\n\u0000\u001a\u0004\u00086\u0010+R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0011\u0010\u0019\u001a\u00020\u0003\u00a2\u0006\u0008\n\u0000\u001a\u0004\u00087\u0010 \u00a8\u0006:"
+}
+d2 = {
+"Lcom/facebook/internal/FetchedAppSettings;",
+"",
+"supportsImplicitLogging",
+"",
+"nuxContent",
+"",
+"nuxEnabled",
+"sessionTimeoutInSeconds",
+"",
+"smartLoginOptions",
+"Ljava/util/EnumSet;",
+"Lcom/facebook/internal/SmartLoginOption;",
+"dialogConfigurations",
+"",
+"Lcom/facebook/internal/FetchedAppSettings$DialogFeatureConfig;",
+"automaticLoggingEnabled",
+"errorClassification",
+"Lcom/facebook/internal/FacebookRequestErrorClassification;",
+"smartLoginBookmarkIconURL",
+"smartLoginMenuIconURL",
+"iAPAutomaticLoggingEnabled",
+"codelessEventsEnabled",
+"eventBindings",
+"Lorg/json/JSONArray;",
+"sdkUpdateMessage",
+"trackUninstallEnabled",
+"monitorViaDialogEnabled",
+"rawAamRules",
+"suggestedEventsSetting",
+"restrictiveDataSetting",
+"(ZLjava/lang/String;ZILjava/util/EnumSet;Ljava/util/Map;ZLcom/facebook/internal/FacebookRequestErrorClassification;Ljava/lang/String;Ljava/lang/String;ZZLorg/json/JSONArray;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+"getAutomaticLoggingEnabled",
+"()Z",
+"getCodelessEventsEnabled",
+"getDialogConfigurations",
+"()Ljava/util/Map;",
+"getErrorClassification",
+"()Lcom/facebook/internal/FacebookRequestErrorClassification;",
+"getEventBindings",
+"()Lorg/json/JSONArray;",
+"getIAPAutomaticLoggingEnabled",
+"getMonitorViaDialogEnabled",
+"getNuxContent",
+"()Ljava/lang/String;",
+"getNuxEnabled",
+"getRawAamRules",
+"getRestrictiveDataSetting",
+"getSdkUpdateMessage",
+"getSessionTimeoutInSeconds",
+"()I",
+"getSmartLoginBookmarkIconURL",
+"getSmartLoginMenuIconURL",
+"getSmartLoginOptions",
+"()Ljava/util/EnumSet;",
+"getSuggestedEventsSetting",
+"getTrackUninstallEnabled",
+"Companion",
+"DialogFeatureConfig",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field public static final Companion:Lcom/facebook/internal/FetchedAppSettings$Companion;
+.field private final automaticLoggingEnabled:Z
+.field private final codelessEventsEnabled:Z
+.field private final dialogConfigurations:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Lcom/facebook/internal/FetchedAppSettings$DialogFeatureConfig;",
+">;>;"
+}
+.end annotation
+.end field
+.field private final errorClassification:Lcom/facebook/internal/FacebookRequestErrorClassification;
+.field private final eventBindings:Lorg/json/JSONArray;
+.field private final iAPAutomaticLoggingEnabled:Z
+.field private final monitorViaDialogEnabled:Z
+.field private final nuxContent:Ljava/lang/String;
+.field private final nuxEnabled:Z
+.field private final rawAamRules:Ljava/lang/String;
+.field private final restrictiveDataSetting:Ljava/lang/String;
+.field private final sdkUpdateMessage:Ljava/lang/String;
+.field private final sessionTimeoutInSeconds:I
+.field private final smartLoginBookmarkIconURL:Ljava/lang/String;
+.field private final smartLoginMenuIconURL:Ljava/lang/String;
+.field private final smartLoginOptions:Ljava/util/EnumSet;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/EnumSet<",
+"Lcom/facebook/internal/SmartLoginOption;",
+">;"
+}
+.end annotation
+.end field
+.field private final suggestedEventsSetting:Ljava/lang/String;
+.field private final supportsImplicitLogging:Z
+.field private final trackUninstallEnabled:Z
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lcom/facebook/internal/FetchedAppSettings$Companion;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/facebook/internal/FetchedAppSettings$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/internal/FetchedAppSettings;->Companion:Lcom/facebook/internal/FetchedAppSettings$Companion;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(ZLjava/lang/String;ZILjava/util/EnumSet;Ljava/util/Map;ZLcom/facebook/internal/FacebookRequestErrorClassification;Ljava/lang/String;Ljava/lang/String;ZZLorg/json/JSONArray;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	.locals 9</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(Z",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"ZI",</span>
+<span class="">	"Ljava/util/EnumSet<",</span>
+<span class="">	"Lcom/facebook/internal/SmartLoginOption;",</span>
+<span class="">	">;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"+",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Lcom/facebook/internal/FetchedAppSettings$DialogFeatureConfig;",</span>
+<span class="">	">;>;Z",</span>
+<span class="">	"Lcom/facebook/internal/FacebookRequestErrorClassification;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"ZZ",</span>
+<span class="">	"Lorg/json/JSONArray;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"ZZ",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	move-object v0, p0</span>
+<span class="cov">	move-object v1, p2</span>
+<span class="cov">	move-object v2, p5</span>
+<span class="cov">	move-object v3, p6</span>
+<span class="cov">	move-object/from16 v4, p8</span>
+<span class="cov">	move-object/from16 v5, p9</span>
+<span class="cov">	move-object/from16 v6, p10</span>
+<span class="cov">	move-object/from16 v7, p14</span>
+<span class="cov">	const-string v8, "nuxContent"</span>
+<span class="cov">	invoke-static {p2, v8}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v8, "smartLoginOptions"</span>
+<span class="cov">	invoke-static {p5, v8}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v8, "dialogConfigurations"</span>
+<span class="cov">	invoke-static {p6, v8}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v8, "errorClassification"</span>
+<span class="cov">	invoke-static {v4, v8}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v8, "smartLoginBookmarkIconURL"</span>
+<span class="cov">	invoke-static {v5, v8}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v8, "smartLoginMenuIconURL"</span>
+<span class="cov">	invoke-static {v6, v8}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v8, "sdkUpdateMessage"</span>
+<span class="cov">	invoke-static {v7, v8}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	move v8, p1</span>
+<span class="cov">	iput-boolean v8, v0, Lcom/facebook/internal/FetchedAppSettings;->supportsImplicitLogging:Z</span>
+<span class="cov">	iput-object v1, v0, Lcom/facebook/internal/FetchedAppSettings;->nuxContent:Ljava/lang/String;</span>
+<span class="cov">	move v1, p3</span>
+<span class="cov">	iput-boolean v1, v0, Lcom/facebook/internal/FetchedAppSettings;->nuxEnabled:Z</span>
+<span class="cov">	move v1, p4</span>
+<span class="cov">	iput v1, v0, Lcom/facebook/internal/FetchedAppSettings;->sessionTimeoutInSeconds:I</span>
+<span class="cov">	iput-object v2, v0, Lcom/facebook/internal/FetchedAppSettings;->smartLoginOptions:Ljava/util/EnumSet;</span>
+<span class="cov">	iput-object v3, v0, Lcom/facebook/internal/FetchedAppSettings;->dialogConfigurations:Ljava/util/Map;</span>
+<span class="cov">	move/from16 v1, p7</span>
+<span class="cov">	iput-boolean v1, v0, Lcom/facebook/internal/FetchedAppSettings;->automaticLoggingEnabled:Z</span>
+<span class="cov">	iput-object v4, v0, Lcom/facebook/internal/FetchedAppSettings;->errorClassification:Lcom/facebook/internal/FacebookRequestErrorClassification;</span>
+<span class="cov">	iput-object v5, v0, Lcom/facebook/internal/FetchedAppSettings;->smartLoginBookmarkIconURL:Ljava/lang/String;</span>
+<span class="cov">	iput-object v6, v0, Lcom/facebook/internal/FetchedAppSettings;->smartLoginMenuIconURL:Ljava/lang/String;</span>
+<span class="cov">	move/from16 v1, p11</span>
+<span class="cov">	iput-boolean v1, v0, Lcom/facebook/internal/FetchedAppSettings;->iAPAutomaticLoggingEnabled:Z</span>
+<span class="cov">	move/from16 v1, p12</span>
+<span class="cov">	iput-boolean v1, v0, Lcom/facebook/internal/FetchedAppSettings;->codelessEventsEnabled:Z</span>
+<span class="cov">	move-object/from16 v1, p13</span>
+<span class="cov">	iput-object v1, v0, Lcom/facebook/internal/FetchedAppSettings;->eventBindings:Lorg/json/JSONArray;</span>
+<span class="cov">	iput-object v7, v0, Lcom/facebook/internal/FetchedAppSettings;->sdkUpdateMessage:Ljava/lang/String;</span>
+<span class="cov">	move/from16 v1, p15</span>
+<span class="cov">	iput-boolean v1, v0, Lcom/facebook/internal/FetchedAppSettings;->trackUninstallEnabled:Z</span>
+<span class="cov">	move/from16 v1, p16</span>
+<span class="cov">	iput-boolean v1, v0, Lcom/facebook/internal/FetchedAppSettings;->monitorViaDialogEnabled:Z</span>
+<span class="cov">	move-object/from16 v1, p17</span>
+<span class="cov">	iput-object v1, v0, Lcom/facebook/internal/FetchedAppSettings;->rawAamRules:Ljava/lang/String;</span>
+<span class="cov">	move-object/from16 v1, p18</span>
+<span class="cov">	iput-object v1, v0, Lcom/facebook/internal/FetchedAppSettings;->suggestedEventsSetting:Ljava/lang/String;</span>
+<span class="cov">	move-object/from16 v1, p19</span>
+<span class="cov">	iput-object v1, v0, Lcom/facebook/internal/FetchedAppSettings;->restrictiveDataSetting:Ljava/lang/String;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public static final getDialogFeatureConfig(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/facebook/internal/FetchedAppSettings$DialogFeatureConfig;
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/FetchedAppSettings;->Companion:Lcom/facebook/internal/FetchedAppSettings$Companion;</span>
+<span class="">	invoke-virtual {v0, p0, p1, p2}, Lcom/facebook/internal/FetchedAppSettings$Companion;->getDialogFeatureConfig(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/facebook/internal/FetchedAppSettings$DialogFeatureConfig;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public final getAutomaticLoggingEnabled()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/internal/FetchedAppSettings;->automaticLoggingEnabled:Z</span>
+.end method
+
+<span class="cov">.method public final getCodelessEventsEnabled()Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-boolean v0, p0, Lcom/facebook/internal/FetchedAppSettings;->codelessEventsEnabled:Z</span>
+<span class="exec">	return v0</span>
+.end method
+
+.method public final getDialogConfigurations()Ljava/util/Map;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Lcom/facebook/internal/FetchedAppSettings$DialogFeatureConfig;",</span>
+<span class="">	">;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->dialogConfigurations:Ljava/util/Map;</span>
+.end method
+
+.method public final getErrorClassification()Lcom/facebook/internal/FacebookRequestErrorClassification;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->errorClassification:Lcom/facebook/internal/FacebookRequestErrorClassification;</span>
+.end method
+
+.method public final getEventBindings()Lorg/json/JSONArray;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->eventBindings:Lorg/json/JSONArray;</span>
+.end method
+
+.method public final getIAPAutomaticLoggingEnabled()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/internal/FetchedAppSettings;->iAPAutomaticLoggingEnabled:Z</span>
+.end method
+
+.method public final getMonitorViaDialogEnabled()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/internal/FetchedAppSettings;->monitorViaDialogEnabled:Z</span>
+.end method
+
+.method public final getNuxContent()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->nuxContent:Ljava/lang/String;</span>
+.end method
+
+.method public final getNuxEnabled()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/internal/FetchedAppSettings;->nuxEnabled:Z</span>
+.end method
+
+<span class="cov">.method public final getRawAamRules()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->rawAamRules:Ljava/lang/String;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public final getRestrictiveDataSetting()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->restrictiveDataSetting:Ljava/lang/String;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public final getSdkUpdateMessage()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->sdkUpdateMessage:Ljava/lang/String;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public final getSessionTimeoutInSeconds()I</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget v0, p0, Lcom/facebook/internal/FetchedAppSettings;->sessionTimeoutInSeconds:I</span>
+<span class="exec">	return v0</span>
+.end method
+
+.method public final getSmartLoginBookmarkIconURL()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->smartLoginBookmarkIconURL:Ljava/lang/String;</span>
+.end method
+
+.method public final getSmartLoginMenuIconURL()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->smartLoginMenuIconURL:Ljava/lang/String;</span>
+.end method
+
+.method public final getSmartLoginOptions()Ljava/util/EnumSet;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/EnumSet<",</span>
+<span class="">	"Lcom/facebook/internal/SmartLoginOption;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->smartLoginOptions:Ljava/util/EnumSet;</span>
+.end method
+
+.method public final getSuggestedEventsSetting()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/FetchedAppSettings;->suggestedEventsSetting:Ljava/lang/String;</span>
+.end method
+
+.method public final getTrackUninstallEnabled()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/internal/FetchedAppSettings;->trackUninstallEnabled:Z</span>
+.end method
+
+<span class="cov">.method public final supportsImplicitLogging()Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-boolean v0, p0, Lcom/facebook/internal/FetchedAppSettings;->supportsImplicitLogging:Z</span>
+<span class="exec">	return v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

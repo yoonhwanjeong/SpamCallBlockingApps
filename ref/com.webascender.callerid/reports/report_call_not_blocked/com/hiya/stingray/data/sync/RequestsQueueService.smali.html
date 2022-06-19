@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.data.sync</a></li>
+        <li><i class="ico ico-class"></i> RequestsQueueService.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/hiya/stingray/data/sync/RequestsQueueService;
+.super Lcom/hiya/stingray/data/sync/a;
+.source "SourceFile"
+.implements Lcom/hiya/stingray/data/sync/c;
+
+
+.field  g:Lcom/hiya/stingray/data/sync/f;
+.field  h:Lcom/hiya/stingray/q/d/a;
+
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/hiya/stingray/data/sync/a;-><init>()V</span>
+.end method
+
+.method public a(Landroid/app/job/JobParameters;Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p1, p2}, Landroid/app/job/JobService;->jobFinished(Landroid/app/job/JobParameters;Z)V</span>
+.end method
+
+.method public onCreate()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-super {p0}, Landroid/app/job/JobService;->onCreate()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/hiya/stingray/data/sync/a;->c()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/hiya/stingray/data/sync/a;->b()Lcom/hiya/stingray/s/d/i;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0, p0}, Lcom/hiya/stingray/s/d/i;->c(Lcom/hiya/stingray/data/sync/RequestsQueueService;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/data/sync/RequestsQueueService;->g:Lcom/hiya/stingray/data/sync/f;</span>
+<span class="">	invoke-virtual {v0, p0}, Lcom/hiya/stingray/data/sync/f;->f(Lcom/hiya/stingray/data/sync/c;)V</span>
+.end method
+
+.method public onStartJob(Landroid/app/job/JobParameters;)Z
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/data/sync/RequestsQueueService;->h:Lcom/hiya/stingray/q/d/a;</span>
+<span class="">	const-string v1, "request_queue_last_job_schedule_time"</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/hiya/stingray/q/d/a;->w0(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	:cond_0</span>
+<span class="">	new-array v0, v0, [Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/job/JobParameters;->getJobId()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	aput-object v2, v0, v1</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	aput-object v2, v0, v1</span>
+<span class="">	const-string v1, "onStart Job with id: %d, RequestsQueueService time: %d"</span>
+<span class="">	invoke-static {v1, v0}, Lr/a/a;->h(Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/data/sync/RequestsQueueService;->g:Lcom/hiya/stingray/data/sync/f;</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/hiya/stingray/data/sync/f;->g(Landroid/app/job/JobParameters;)Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public onStopJob(Landroid/app/job/JobParameters;)Z
+<span class="">	.locals 3</span>
+
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	new-array v0, v0, [Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/job/JobParameters;->getJobId()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	aput-object v1, v0, v2</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	aput-object v1, v0, v2</span>
+<span class="">	const-string v1, "Stopping job - %d with time %d"</span>
+<span class="">	invoke-static {v1, v0}, Lr/a/a;->h(Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/data/sync/RequestsQueueService;->g:Lcom/hiya/stingray/data/sync/f;</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/hiya/stingray/data/sync/f;->h(Landroid/app/job/JobParameters;)Z</span>
+<span class="">	move-result p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

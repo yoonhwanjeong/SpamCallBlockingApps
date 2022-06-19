@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.common</a></li>
+        <li><i class="ico ico-class"></i> x.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/android/gms/common/x;
+.super Lcom/google/android/gms/common/internal/safeparcel/a;
+.source "SourceFile"
+
+
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Landroid/os/Parcelable$Creator<",
+"Lcom/google/android/gms/common/x;",
+">;"
+}
+.end annotation
+.end field
+.field private final f:Ljava/lang/String;
+.field private final g:Lcom/google/android/gms/common/r;
+.field private final h:Z
+.field private final i:Z
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/google/android/gms/common/a0;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/android/gms/common/a0;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/google/android/gms/common/x;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+.end method
+
+.method constructor <init>(Ljava/lang/String;Landroid/os/IBinder;ZZ)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/android/gms/common/internal/safeparcel/a;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/x;->f:Ljava/lang/String;</span>
+<span class="">	invoke-static {p2}, Lcom/google/android/gms/common/x;->y1(Landroid/os/IBinder;)Lcom/google/android/gms/common/r;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/x;->g:Lcom/google/android/gms/common/r;</span>
+<span class="">	iput-boolean p3, p0, Lcom/google/android/gms/common/x;->h:Z</span>
+<span class="">	iput-boolean p4, p0, Lcom/google/android/gms/common/x;->i:Z</span>
+.end method
+
+.method constructor <init>(Ljava/lang/String;Lcom/google/android/gms/common/r;ZZ)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/android/gms/common/internal/safeparcel/a;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/x;->f:Ljava/lang/String;</span>
+<span class="">	iput-object p2, p0, Lcom/google/android/gms/common/x;->g:Lcom/google/android/gms/common/r;</span>
+<span class="">	iput-boolean p3, p0, Lcom/google/android/gms/common/x;->h:Z</span>
+<span class="">	iput-boolean p4, p0, Lcom/google/android/gms/common/x;->i:Z</span>
+.end method
+
+.method private static y1(Landroid/os/IBinder;)Lcom/google/android/gms/common/r;
+<span class="">	.locals 3</span>
+
+<span class="">	const-string v0, "Could not unwrap certificate"</span>
+<span class="">	const-string v1, "GoogleCertificatesQuery"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-nez p0, :cond_0</span>
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/common/internal/y0;->w(Landroid/os/IBinder;)Lcom/google/android/gms/common/internal/w0;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {p0}, Lcom/google/android/gms/common/internal/w0;->a()Lcom/google/android/gms/dynamic/b;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-nez p0, :cond_1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-object p0, v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-static {p0}, Lcom/google/android/gms/dynamic/d;->B(Lcom/google/android/gms/dynamic/b;)Ljava/lang/Object;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, [B</span>
+<span class="">	if-eqz p0, :cond_2</span>
+<span class="">	:goto_0</span>
+<span class="">	new-instance v2, Lcom/google/android/gms/common/u;</span>
+<span class="">	invoke-direct {v2, p0}, Lcom/google/android/gms/common/u;-><init>([B)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	invoke-static {v1, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_2</span>
+<span class="">	move-exception p0</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-static {v1, v0, p0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:catch_0</span>
+.end method
+
+.method public final writeToParcel(Landroid/os/Parcel;I)V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/common/internal/safeparcel/b;->a(Landroid/os/Parcel;)I</span>
+<span class="">	move-result p2</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/x;->f:Ljava/lang/String;</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-static {p1, v1, v0, v2}, Lcom/google/android/gms/common/internal/safeparcel/b;->q(Landroid/os/Parcel;ILjava/lang/String;Z)V</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/x;->g:Lcom/google/android/gms/common/r;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-string v0, "GoogleCertificatesQuery"</span>
+<span class="">	const-string v1, "certificate binder is null"</span>
+<span class="">	invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0}, Lg/f/a/d/c/g/a;->asBinder()Landroid/os/IBinder;</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 v1, 0x2</span>
+<span class="">	invoke-static {p1, v1, v0, v2}, Lcom/google/android/gms/common/internal/safeparcel/b;->l(Landroid/os/Parcel;ILandroid/os/IBinder;Z)V</span>
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	iget-boolean v1, p0, Lcom/google/android/gms/common/x;->h:Z</span>
+<span class="">	invoke-static {p1, v0, v1}, Lcom/google/android/gms/common/internal/safeparcel/b;->c(Landroid/os/Parcel;IZ)V</span>
+<span class="">	const/4 v0, 0x4</span>
+<span class="">	iget-boolean v1, p0, Lcom/google/android/gms/common/x;->i:Z</span>
+<span class="">	invoke-static {p1, v0, v1}, Lcom/google/android/gms/common/internal/safeparcel/b;->c(Landroid/os/Parcel;IZ)V</span>
+<span class="">	invoke-static {p1, p2}, Lcom/google/android/gms/common/internal/safeparcel/b;->b(Landroid/os/Parcel;I)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

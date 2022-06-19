@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">g.f.b.b</a></li>
+        <li><i class="ico ico-class"></i> a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lg/f/b/b/a;
+.super Lg/f/b/b/b;
+.source "SourceFile"
+
+
+
+
+.method public static a(III)I
+<span class="">	.locals 2</span>
+
+<span class="">	if-gt p1, p2, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	const-string v1, "min (%s) must be less than or equal to max (%s)"</span>
+<span class="">	invoke-static {v0, v1, p1, p2}, Lcom/google/common/base/m;->i(ZLjava/lang/String;II)V</span>
+<span class="">	invoke-static {p0, p1}, Ljava/lang/Math;->max(II)I</span>
+<span class="">	move-result p0</span>
+<span class="">	invoke-static {p0, p2}, Ljava/lang/Math;->min(II)I</span>
+<span class="">	move-result p0</span>
+.end method
+
+<span class="cov">.method public static b(J)I</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	const-wide/32 v0, 0x7fffffff</span>
+<span class="cov">	cmp-long v2, p0, v0</span>
+<span class="">	if-lez v2, :cond_0</span>
+<span class="">	const p0, 0x7fffffff</span>
+<span class="cov">	const-wide/32 v0, -0x80000000</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	cmp-long v2, p0, v0</span>
+<span class="">	if-gez v2, :cond_1</span>
+<span class="">	const/high16 p0, -0x80000000</span>
+<span class="cov">	long-to-int p1, p0</span>
+<span class="exec">	return p1</span>
+<span class="cov">	:cond_1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

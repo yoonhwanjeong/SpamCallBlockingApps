@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">g.g.b.a.k</a></li>
+        <li><i class="ico ico-class"></i> h.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lg/g/b/a/k/h;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private static final b:Ljava/lang/String; = "h"
+.field private a:Ljava/io/File;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 0</span>
+
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getFilesDir()Ljava/io/File;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	iput-object p1, p0, Lg/g/b/a/k/h;->a:Ljava/io/File;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public a(Ljava/lang/String;)Ljava/io/File;
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p1}, Lcom/google/common/base/r;->b(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	new-instance v0, Ljava/io/File;</span>
+<span class="">	iget-object v1, p0, Lg/g/b/a/k/h;->a:Ljava/io/File;</span>
+<span class="">	invoke-direct {v0, v1, p1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/File;->exists()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/File;->createNewFile()Z</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v0, "FileName cannot be empty."</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public b(Lm/h0;Ljava/lang/String;I)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p2}, Lg/g/b/a/k/h;->a(Ljava/lang/String;)Ljava/io/File;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-static {p2}, Ln/r;->f(Ljava/io/File;)Ln/b0;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-static {p2}, Ln/r;->c(Ln/b0;)Ln/g;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p1}, Lm/h0;->source()Ln/h;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, p2, p1, p3}, Lg/g/b/a/k/h;->c(Ln/g;Ln/h;I)V</span>
+<span class="">	invoke-interface {p1}, Ln/d0;->close()V</span>
+<span class="">	invoke-interface {p2}, Ln/b0;->close()V</span>
+.end method
+
+.method public c(Ln/g;Ln/h;I)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	if-ltz p3, :cond_0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v1}, Lcom/google/common/base/m;->d(Z)V</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-interface {p2}, Ln/h;->S()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_3</span>
+<span class="">	if-ne v1, p3, :cond_1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-interface {p2}, Ln/h;->c0()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-interface {p1, v2}, Ln/g;->n0(Ljava/lang/String;)Ln/g;</span>
+<span class="">	const-string v2, "\n"</span>
+<span class="">	invoke-interface {p1, v2}, Ln/g;->n0(Ljava/lang/String;)Ln/g;</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	sget-object p1, Lg/g/b/a/k/h;->b:Ljava/lang/String;</span>
+<span class="">	new-array p2, v0, [Ljava/lang/Object;</span>
+<span class="">	const-string p3, "WriteToFile BufferedSource is returning null value"</span>
+<span class="">	invoke-static {p1, p3, p2}, Lcom/hiya/client/support/logging/d;->i(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_3</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

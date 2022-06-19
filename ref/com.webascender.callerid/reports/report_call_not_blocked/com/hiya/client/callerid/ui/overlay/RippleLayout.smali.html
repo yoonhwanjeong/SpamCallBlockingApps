@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.client.callerid.ui.overlay</a></li>
+        <li><i class="ico ico-class"></i> RippleLayout.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/hiya/client/callerid/ui/overlay/RippleLayout;
+.super Landroid/widget/FrameLayout;
+.source "SourceFile"
+
+
+.field private final f:Landroid/view/animation/Animation;
+.field private g:Landroid/animation/Animator;
+.field private h:Landroid/os/Handler;
+.field private i:Ljava/lang/Runnable;
+.field private j:Z
+
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;Landroid/util/AttributeSet;)V</span>
+<span class="">	.locals 7</span>
+
+<span class="cov">	const/4 v3, 0x0</span>
+<span class="cov">	const/4 v4, 0x0</span>
+<span class="cov">	const/16 v5, 0xc</span>
+<span class="cov">	const/4 v6, 0x0</span>
+<span class="cov">	move-object v0, p0</span>
+<span class="cov">	move-object v1, p1</span>
+<span class="cov">	move-object v2, p2</span>
+<span class="cov">	invoke-direct/range {v0 .. v6}, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;IIILkotlin/w/c/g;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;Landroid/util/AttributeSet;II)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const-string v0, "context"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0, p1, p2, p3, p4}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V</span>
+<span class="cov">	sget p2, Lcom/hiya/client/callerid/ui/k;->a:I</span>
+<span class="exec">	invoke-static {p1, p2}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const-string p2, "AnimationUtils.loadAnima\u2026R.anim.ripple_alpha_anim)"</span>
+<span class="cov">	invoke-static {p1, p2}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	iput-object p1, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->f:Landroid/view/animation/Animation;</span>
+<span class="cov">	new-instance p1, Landroid/os/Handler;</span>
+<span class="exec">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="cov">	invoke-direct {p1, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V</span>
+<span class="cov">	iput-object p1, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->h:Landroid/os/Handler;</span>
+<span class="cov">	sget p1, Lcom/hiya/client/callerid/ui/o;->x:I</span>
+<span class="cov">	invoke-virtual {p0, p1}, Landroid/widget/FrameLayout;->setBackgroundResource(I)V</span>
+<span class="cov">	const/4 p1, 0x4</span>
+<span class="cov">	invoke-virtual {p0, p1}, Landroid/widget/FrameLayout;->setVisibility(I)V</span>
+<span class="cov">	const/4 p1, 0x1</span>
+<span class="cov">	iput-boolean p1, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->j:Z</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public synthetic constructor &lt;init&gt;(Landroid/content/Context;Landroid/util/AttributeSet;IIILkotlin/w/c/g;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	and-int/lit8 p6, p5, 0x2</span>
+<span class="">	if-eqz p6, :cond_0</span>
+<span class="">	const/4 p2, 0x0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	and-int/lit8 p6, p5, 0x4</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	if-eqz p6, :cond_1</span>
+<span class="cov">	const/4 p3, 0x0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	and-int/lit8 p5, p5, 0x8</span>
+<span class="cov">	if-eqz p5, :cond_2</span>
+<span class="cov">	const/4 p4, 0x0</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	invoke-direct {p0, p1, p2, p3, p4}, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static final synthetic a(Lcom/hiya/client/callerid/ui/overlay/RippleLayout;)Landroid/view/animation/Animation;</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	iget-object p0, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->f:Landroid/view/animation/Animation;</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method public static final synthetic b(Lcom/hiya/client/callerid/ui/overlay/RippleLayout;)Landroid/os/Handler;</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	iget-object p0, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->h:Landroid/os/Handler;</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method public static final synthetic c(Lcom/hiya/client/callerid/ui/overlay/RippleLayout;)Ljava/lang/Runnable;</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	iget-object p0, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->i:Ljava/lang/Runnable;</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method public static final synthetic d(Lcom/hiya/client/callerid/ui/overlay/RippleLayout;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->e()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private final e()V</span>
+<span class="">	.locals 3</span>
+
+<span class="exec">	invoke-virtual {p0}, Landroid/widget/FrameLayout;->isAttachedToWindow()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-virtual {p0}, Landroid/widget/FrameLayout;->getWidth()I</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	int-to-float v1, v1</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="exec">	invoke-static {p0, v2, v2, v0, v1}, Landroid/view/ViewAnimationUtils;->createCircularReveal(Landroid/view/View;IIFF)Landroid/animation/Animator;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	new-instance v1, Lcom/hiya/client/callerid/ui/overlay/RippleLayout$a;</span>
+<span class="cov">	invoke-direct {v1, p0}, Lcom/hiya/client/callerid/ui/overlay/RippleLayout$a;-><init>(Lcom/hiya/client/callerid/ui/overlay/RippleLayout;)V</span>
+<span class="cov">	invoke-virtual {v0, v1}, Landroid/animation/Animator;->addListener(Landroid/animation/Animator$AnimatorListener;)V</span>
+<span class="cov">	const-string v1, "this"</span>
+<span class="cov">	invoke-static {v0, v1}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-wide/16 v1, 0x1f4</span>
+<span class="cov">	invoke-virtual {v0, v1, v2}, Landroid/animation/Animator;->setStartDelay(J)V</span>
+<span class="cov">	const-wide/16 v1, 0x190</span>
+<span class="cov">	invoke-virtual {v0, v1, v2}, Landroid/animation/Animator;->setDuration(J)Landroid/animation/Animator;</span>
+<span class="cov">	invoke-virtual {v0}, Landroid/animation/Animator;->start()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->g:Landroid/animation/Animator;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private final f()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout$b;</span>
+<span class="cov">	invoke-direct {v0, p0}, Lcom/hiya/client/callerid/ui/overlay/RippleLayout$b;-><init>(Lcom/hiya/client/callerid/ui/overlay/RippleLayout;)V</span>
+<span class="cov">	iput-object v0, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->i:Ljava/lang/Runnable;</span>
+<span class="cov">	iget-object v1, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->h:Landroid/os/Handler;</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	invoke-virtual {v1, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z</span>
+<span class="exec">	return-void</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {}, Lkotlin/w/c/k;->o()V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	throw v0</span>
+.end method
+
+<span class="cov">.method private final g()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->i:Ljava/lang/Runnable;</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	iget-object v1, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->h:Landroid/os/Handler;</span>
+<span class="cov">	invoke-virtual {v1, v0}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->g:Landroid/animation/Animator;</span>
+<span class="cov">	if-eqz v0, :cond_1</span>
+<span class="cov">	invoke-virtual {v0}, Landroid/animation/Animator;->removeAllListeners()V</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public final getEnableRipple()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->j:Z</span>
+.end method
+
+<span class="cov">.method protected onAttachedToWindow()V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-super {p0}, Landroid/widget/FrameLayout;->onAttachedToWindow()V</span>
+<span class="cov">	iget-boolean v0, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->j:Z</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	invoke-direct {p0}, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->f()V</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method protected onDetachedFromWindow()V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-super {p0}, Landroid/widget/FrameLayout;->onDetachedFromWindow()V</span>
+<span class="cov">	invoke-direct {p0}, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->g()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public final setEnableRipple(Z)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-boolean v0, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->j:Z</span>
+<span class="cov">	if-ne p1, v0, :cond_0</span>
+<span class="exec">	return-void</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroid/widget/FrameLayout;->isAttachedToWindow()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-direct {p0}, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->f()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	if-nez p1, :cond_2</span>
+<span class="">	invoke-direct {p0}, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->g()V</span>
+<span class="">	:cond_2</span>
+<span class="">	:goto_0</span>
+<span class="">	iput-boolean p1, p0, Lcom/hiya/client/callerid/ui/overlay/RippleLayout;->j:Z</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

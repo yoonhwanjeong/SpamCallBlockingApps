@@ -1,0 +1,1366 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.share.internal</a></li>
+        <li><i class="ico ico-class"></i> LikeActionController.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/share/internal/LikeActionController;
+.super Ljava/lang/Object;
+.source "LikeActionController.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/share/internal/LikeActionController$CreateLikeActionControllerWorkItem;,
+Lcom/facebook/share/internal/LikeActionController$SerializeToDiskWorkItem;,
+Lcom/facebook/share/internal/LikeActionController$MRUCacheWorkItem;,
+Lcom/facebook/share/internal/LikeActionController$AbstractRequestWrapper;,
+Lcom/facebook/share/internal/LikeActionController$RequestWrapper;,
+Lcom/facebook/share/internal/LikeActionController$GetEngagementRequestWrapper;,
+Lcom/facebook/share/internal/LikeActionController$GetOGObjectLikesRequestWrapper;,
+Lcom/facebook/share/internal/LikeActionController$GetPageLikesRequestWrapper;,
+Lcom/facebook/share/internal/LikeActionController$LikeRequestWrapper;,
+Lcom/facebook/share/internal/LikeActionController$PublishUnlikeRequestWrapper;,
+Lcom/facebook/share/internal/LikeActionController$PublishLikeRequestWrapper;,
+Lcom/facebook/share/internal/LikeActionController$GetPageIdRequestWrapper;,
+Lcom/facebook/share/internal/LikeActionController$GetOGObjectIdRequestWrapper;,
+Lcom/facebook/share/internal/LikeActionController$RequestCompletionCallback;,
+Lcom/facebook/share/internal/LikeActionController$CreationCallback;
+}
+.end annotation
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+.field public static final ACTION_LIKE_ACTION_CONTROLLER_DID_ERROR:Ljava/lang/String; = "com.facebook.sdk.LikeActionController.DID_ERROR"
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+.end field
+.field public static final ACTION_LIKE_ACTION_CONTROLLER_DID_RESET:Ljava/lang/String; = "com.facebook.sdk.LikeActionController.DID_RESET"
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+.end field
+.field public static final ACTION_LIKE_ACTION_CONTROLLER_UPDATED:Ljava/lang/String; = "com.facebook.sdk.LikeActionController.UPDATED"
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+.end field
+.field public static final ACTION_OBJECT_ID_KEY:Ljava/lang/String; = "com.facebook.sdk.LikeActionController.OBJECT_ID"
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+.end field
+.field private static final ERROR_CODE_OBJECT_ALREADY_LIKED:I = 0xdad
+.field public static final ERROR_INVALID_OBJECT_ID:Ljava/lang/String; = "Invalid Object Id"
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+.end field
+.field public static final ERROR_PUBLISH_ERROR:Ljava/lang/String; = "Unable to publish the like/unlike action"
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+.end field
+.field private static final JSON_BOOL_IS_OBJECT_LIKED_KEY:Ljava/lang/String; = "is_object_liked"
+.field private static final JSON_BUNDLE_FACEBOOK_DIALOG_ANALYTICS_BUNDLE:Ljava/lang/String; = "facebook_dialog_analytics_bundle"
+.field private static final JSON_INT_OBJECT_TYPE_KEY:Ljava/lang/String; = "object_type"
+.field private static final JSON_INT_VERSION_KEY:Ljava/lang/String; = "com.facebook.share.internal.LikeActionController.version"
+.field private static final JSON_STRING_LIKE_COUNT_WITHOUT_LIKE_KEY:Ljava/lang/String; = "like_count_string_without_like"
+.field private static final JSON_STRING_LIKE_COUNT_WITH_LIKE_KEY:Ljava/lang/String; = "like_count_string_with_like"
+.field private static final JSON_STRING_OBJECT_ID_KEY:Ljava/lang/String; = "object_id"
+.field private static final JSON_STRING_SOCIAL_SENTENCE_WITHOUT_LIKE_KEY:Ljava/lang/String; = "social_sentence_without_like"
+.field private static final JSON_STRING_SOCIAL_SENTENCE_WITH_LIKE_KEY:Ljava/lang/String; = "social_sentence_with_like"
+.field private static final JSON_STRING_UNLIKE_TOKEN_KEY:Ljava/lang/String; = "unlike_token"
+.field private static final LIKE_ACTION_CONTROLLER_STORE:Ljava/lang/String; = "com.facebook.LikeActionController.CONTROLLER_STORE_KEY"
+.field private static final LIKE_ACTION_CONTROLLER_STORE_OBJECT_SUFFIX_KEY:Ljava/lang/String; = "OBJECT_SUFFIX"
+.field private static final LIKE_ACTION_CONTROLLER_STORE_PENDING_OBJECT_ID_KEY:Ljava/lang/String; = "PENDING_CONTROLLER_KEY"
+.field private static final LIKE_ACTION_CONTROLLER_VERSION:I = 0x3
+.field private static final LIKE_DIALOG_RESPONSE_LIKE_COUNT_STRING_KEY:Ljava/lang/String; = "like_count_string"
+.field private static final LIKE_DIALOG_RESPONSE_OBJECT_IS_LIKED_KEY:Ljava/lang/String; = "object_is_liked"
+.field private static final LIKE_DIALOG_RESPONSE_SOCIAL_SENTENCE_KEY:Ljava/lang/String; = "social_sentence"
+.field private static final LIKE_DIALOG_RESPONSE_UNLIKE_TOKEN_KEY:Ljava/lang/String; = "unlike_token"
+.field private static final MAX_CACHE_SIZE:I = 0x80
+.field private static final MAX_OBJECT_SUFFIX:I = 0x3e8
+.field private static final TAG:Ljava/lang/String; = "LikeActionController"
+.field private static accessTokenTracker:Lcom/facebook/AccessTokenTracker;
+.field private static final cache:Ljava/util/concurrent/ConcurrentHashMap;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/concurrent/ConcurrentHashMap<",
+"Ljava/lang/String;",
+"Lcom/facebook/share/internal/LikeActionController;",
+">;"
+}
+.end annotation
+.end field
+.field private static controllerDiskCache:Lcom/facebook/internal/FileLruCache;
+.field private static diskIOWorkQueue:Lcom/facebook/internal/WorkQueue;
+.field private static handler:Landroid/os/Handler;
+.field private static isInitialized:Z
+.field private static mruCacheWorkQueue:Lcom/facebook/internal/WorkQueue;
+.field private static objectIdForPendingController:Ljava/lang/String;
+.field private static volatile objectSuffix:I
+.field private facebookDialogAnalyticsBundle:Landroid/os/Bundle;
+.field private isObjectLiked:Z
+.field private isObjectLikedOnServer:Z
+.field private isPendingLikeOrUnlike:Z
+.field private likeCountStringWithLike:Ljava/lang/String;
+.field private likeCountStringWithoutLike:Ljava/lang/String;
+.field private logger:Lcom/facebook/appevents/InternalAppEventsLogger;
+.field private objectId:Ljava/lang/String;
+.field private objectIsPage:Z
+.field private objectType:Lcom/facebook/share/widget/LikeView$ObjectType;
+.field private socialSentenceWithLike:Ljava/lang/String;
+.field private socialSentenceWithoutLike:Ljava/lang/String;
+.field private unlikeToken:Ljava/lang/String;
+.field private verifiedObjectId:Ljava/lang/String;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/facebook/share/internal/LikeActionController;->cache:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="">	new-instance v0, Lcom/facebook/internal/WorkQueue;</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/internal/WorkQueue;-><init>(I)V</span>
+<span class="">	sput-object v0, Lcom/facebook/share/internal/LikeActionController;->mruCacheWorkQueue:Lcom/facebook/internal/WorkQueue;</span>
+<span class="">	new-instance v0, Lcom/facebook/internal/WorkQueue;</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/internal/WorkQueue;-><init>(I)V</span>
+<span class="">	sput-object v0, Lcom/facebook/share/internal/LikeActionController;->diskIOWorkQueue:Lcom/facebook/internal/WorkQueue;</span>
+.end method
+
+.method private constructor <init>(Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+<span class="">	iput-object p2, p0, Lcom/facebook/share/internal/LikeActionController;->objectType:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+.end method
+
+.method static synthetic access$000(Lcom/facebook/share/internal/LikeActionController;IILandroid/content/Intent;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1, p2, p3}, Lcom/facebook/share/internal/LikeActionController;->onActivityResult(IILandroid/content/Intent;)V</span>
+.end method
+
+.method static synthetic access$100()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->TAG:Ljava/lang/String;</span>
+.end method
+
+.method static synthetic access$1000(Lcom/facebook/share/internal/LikeActionController;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithoutLike:Ljava/lang/String;</span>
+.end method
+
+.method static synthetic access$1100(Lcom/facebook/share/internal/LikeActionController;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->unlikeToken:Ljava/lang/String;</span>
+.end method
+
+.method static synthetic access$1102(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/share/internal/LikeActionController;->unlikeToken:Ljava/lang/String;</span>
+.end method
+
+.method static synthetic access$1200(Lcom/facebook/share/internal/LikeActionController;)Lcom/facebook/appevents/InternalAppEventsLogger;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/internal/LikeActionController;->getAppEventsLogger()Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method static synthetic access$1300(Lcom/facebook/share/internal/LikeActionController;ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct/range {p0 .. p6}, Lcom/facebook/share/internal/LikeActionController;->updateState(ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V</span>
+.end method
+
+.method static synthetic access$1400(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;Landroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1, p2}, Lcom/facebook/share/internal/LikeActionController;->logAppEventForError(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+.end method
+
+.method static synthetic access$1500(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;Landroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1, p2}, Lcom/facebook/share/internal/LikeActionController;->broadcastAction(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;Landroid/os/Bundle;)V</span>
+.end method
+
+.method static synthetic access$1600(Lcom/facebook/share/internal/LikeActionController;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->verifiedObjectId:Ljava/lang/String;</span>
+.end method
+
+.method static synthetic access$1602(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/share/internal/LikeActionController;->verifiedObjectId:Ljava/lang/String;</span>
+.end method
+
+.method static synthetic access$1700(Lcom/facebook/share/internal/LikeActionController;)Lcom/facebook/share/widget/LikeView$ObjectType;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->objectType:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+.end method
+
+.method static synthetic access$1802(Lcom/facebook/share/internal/LikeActionController;Z)Z
+<span class="">	.locals 0</span>
+
+<span class="">	iput-boolean p1, p0, Lcom/facebook/share/internal/LikeActionController;->isPendingLikeOrUnlike:Z</span>
+.end method
+
+.method static synthetic access$1900(Lcom/facebook/share/internal/LikeActionController;Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/share/internal/LikeActionController;->publishDidError(Z)V</span>
+.end method
+
+.method static synthetic access$200(Lcom/facebook/share/internal/LikeActionController;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/internal/LikeActionController;->refreshStatusAsync()V</span>
+.end method
+
+.method static synthetic access$2002(Lcom/facebook/share/internal/LikeActionController;Z)Z
+<span class="">	.locals 0</span>
+
+<span class="">	iput-boolean p1, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLikedOnServer:Z</span>
+.end method
+
+.method static synthetic access$2100(Lcom/facebook/share/internal/LikeActionController;Landroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/share/internal/LikeActionController;->publishAgainIfNeeded(Landroid/os/Bundle;)V</span>
+.end method
+
+.method static synthetic access$2200(Lcom/facebook/share/internal/LikeActionController;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+.end method
+
+.method static synthetic access$2302(Lcom/facebook/share/internal/LikeActionController;Z)Z
+<span class="">	.locals 0</span>
+
+<span class="">	iput-boolean p1, p0, Lcom/facebook/share/internal/LikeActionController;->objectIsPage:Z</span>
+.end method
+
+.method static synthetic access$2400(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;Lcom/facebook/FacebookRequestError;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1, p2}, Lcom/facebook/share/internal/LikeActionController;->logAppEventForError(Ljava/lang/String;Lcom/facebook/FacebookRequestError;)V</span>
+.end method
+
+.method static synthetic access$2500(Lcom/facebook/share/internal/LikeActionController;)Z
+<span class="">	.locals 0</span>
+
+<span class="">	iget-boolean p0, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+.end method
+
+.method static synthetic access$2600(Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/LikeActionController;->serializeToDiskSynchronously(Ljava/lang/String;Ljava/lang/String;)V</span>
+.end method
+
+.method static synthetic access$2700(Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/internal/LikeActionController$CreationCallback;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1, p2}, Lcom/facebook/share/internal/LikeActionController;->createControllerForObjectIdAndType(Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/internal/LikeActionController$CreationCallback;)V</span>
+.end method
+
+.method static synthetic access$300()I
+<span class="">	.locals 1</span>
+
+<span class="">	sget v0, Lcom/facebook/share/internal/LikeActionController;->objectSuffix:I</span>
+.end method
+
+.method static synthetic access$302(I)I
+<span class="">	.locals 0</span>
+
+<span class="">	sput p0, Lcom/facebook/share/internal/LikeActionController;->objectSuffix:I</span>
+.end method
+
+.method static synthetic access$400()Ljava/util/concurrent/ConcurrentHashMap;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->cache:Ljava/util/concurrent/ConcurrentHashMap;</span>
+.end method
+
+.method static synthetic access$500()Lcom/facebook/internal/FileLruCache;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->controllerDiskCache:Lcom/facebook/internal/FileLruCache;</span>
+.end method
+
+.method static synthetic access$600(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/LikeActionController;->broadcastAction(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;)V</span>
+.end method
+
+.method static synthetic access$700(Lcom/facebook/share/internal/LikeActionController;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithLike:Ljava/lang/String;</span>
+.end method
+
+.method static synthetic access$800(Lcom/facebook/share/internal/LikeActionController;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithoutLike:Ljava/lang/String;</span>
+.end method
+
+.method static synthetic access$900(Lcom/facebook/share/internal/LikeActionController;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithLike:Ljava/lang/String;</span>
+.end method
+
+.method private static broadcastAction(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-static {p0, p1, v0}, Lcom/facebook/share/internal/LikeActionController;->broadcastAction(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;Landroid/os/Bundle;)V</span>
+.end method
+
+.method private static broadcastAction(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;Landroid/os/Bundle;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroid/content/Intent;</span>
+<span class="">	invoke-direct {v0, p1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	if-nez p2, :cond_0</span>
+<span class="">	new-instance p1, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {p1}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	move-object p2, p1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/internal/LikeActionController;->getObjectId()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string p1, "com.facebook.sdk.LikeActionController.OBJECT_ID"</span>
+<span class="">	invoke-virtual {p2, p1, p0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz p2, :cond_2</span>
+<span class="">	invoke-virtual {v0, p2}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Landroidx/localbroadcastmanager/content/LocalBroadcastManager;->getInstance(Landroid/content/Context;)Landroidx/localbroadcastmanager/content/LocalBroadcastManager;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, v0}, Landroidx/localbroadcastmanager/content/LocalBroadcastManager;->sendBroadcast(Landroid/content/Intent;)Z</span>
+.end method
+
+.method private canUseOGPublish()Z
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/AccessToken;->getCurrentAccessToken()Lcom/facebook/AccessToken;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-boolean v1, p0, Lcom/facebook/share/internal/LikeActionController;->objectIsPage:Z</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	iget-object v1, p0, Lcom/facebook/share/internal/LikeActionController;->verifiedObjectId:Ljava/lang/String;</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/AccessToken;->isCurrentAccessTokenActive()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/AccessToken;->getPermissions()Ljava/util/Set;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/AccessToken;->getPermissions()Ljava/util/Set;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "publish_actions"</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private clearState()V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->facebookDialogAnalyticsBundle:Landroid/os/Bundle;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/share/internal/LikeActionController;->storeObjectIdForPendingController(Ljava/lang/String;)V</span>
+.end method
+
+.method private static createControllerForObjectIdAndType(Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/internal/LikeActionController$CreationCallback;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/LikeActionController;->getControllerFromInMemoryCache(Ljava/lang/String;)Lcom/facebook/share/internal/LikeActionController;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-static {v0, p1, p2}, Lcom/facebook/share/internal/LikeActionController;->verifyControllerAndInvokeCallback(Lcom/facebook/share/internal/LikeActionController;Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/internal/LikeActionController$CreationCallback;)V</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/LikeActionController;->deserializeFromDiskSynchronously(Ljava/lang/String;)Lcom/facebook/share/internal/LikeActionController;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	new-instance v0, Lcom/facebook/share/internal/LikeActionController;</span>
+<span class="">	invoke-direct {v0, p0, p1}, Lcom/facebook/share/internal/LikeActionController;-><init>(Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;)V</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/share/internal/LikeActionController;->serializeToDiskAsync(Lcom/facebook/share/internal/LikeActionController;)V</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/share/internal/LikeActionController;->putControllerInMemoryCache(Ljava/lang/String;Lcom/facebook/share/internal/LikeActionController;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object p0, Lcom/facebook/share/internal/LikeActionController;->handler:Landroid/os/Handler;</span>
+<span class="">	new-instance p1, Lcom/facebook/share/internal/LikeActionController$2;</span>
+<span class="">	invoke-direct {p1, v0}, Lcom/facebook/share/internal/LikeActionController$2;-><init>(Lcom/facebook/share/internal/LikeActionController;)V</span>
+<span class="">	invoke-virtual {p0, p1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	invoke-static {p2, v0, p0}, Lcom/facebook/share/internal/LikeActionController;->invokeCallbackWithController(Lcom/facebook/share/internal/LikeActionController$CreationCallback;Lcom/facebook/share/internal/LikeActionController;Lcom/facebook/FacebookException;)V</span>
+.end method
+
+.method private static deserializeFromDiskSynchronously(Ljava/lang/String;)Lcom/facebook/share/internal/LikeActionController;
+<span class="">	.locals 5</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/LikeActionController;->getCacheKeyForObjectId(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/internal/LikeActionController;->controllerDiskCache:Lcom/facebook/internal/FileLruCache;</span>
+<span class="">	invoke-virtual {v1, p0}, Lcom/facebook/internal/FileLruCache;->get(Ljava/lang/String;)Ljava/io/InputStream;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_1</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	:try_start_1</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/Utility;->readStreamToString(Ljava/io/InputStream;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/share/internal/LikeActionController;->deserializeFromJson(Ljava/lang/String;)Lcom/facebook/share/internal/LikeActionController;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/Utility;->closeQuietly(Ljava/io/Closeable;)V</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	move-object v4, v0</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	move-object p0, v4</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:catch_1</span>
+<span class="">	move-exception v1</span>
+<span class="">	move-object p0, v0</span>
+<span class="">	:goto_2</span>
+<span class="">	:try_start_2</span>
+<span class="">	sget-object v2, Lcom/facebook/share/internal/LikeActionController;->TAG:Ljava/lang/String;</span>
+<span class="">	const-string v3, "Unable to deserialize controller from disk"</span>
+<span class="">	invoke-static {v2, v3, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_1</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:goto_3</span>
+<span class="">	:cond_1</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catchall_1</span>
+<span class="">	if-eqz p0, :cond_2</span>
+<span class="">	:goto_4</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/Utility;->closeQuietly(Ljava/io/Closeable;)V</span>
+<span class="">	throw v0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private static deserializeFromJson(Ljava/lang/String;)Lcom/facebook/share/internal/LikeActionController;
+<span class="">	.locals 4</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v1, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v1, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V</span>
+<span class="">	const-string p0, "com.facebook.share.internal.LikeActionController.version"</span>
+<span class="">	const/4 v2, -0x1</span>
+<span class="">	invoke-virtual {v1, p0, v2}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result p0</span>
+<span class="">	const/4 v2, 0x3</span>
+<span class="">	if-eq p0, v2, :cond_0</span>
+<span class="">	const-string p0, "object_id"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v1, p0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v2, "object_type"</span>
+<span class="">	sget-object v3, Lcom/facebook/share/widget/LikeView$ObjectType;->UNKNOWN:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	invoke-virtual {v3}, Lcom/facebook/share/widget/LikeView$ObjectType;->getValue()I</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v2</span>
+<span class="">	new-instance v3, Lcom/facebook/share/internal/LikeActionController;</span>
+<span class="">	invoke-static {v2}, Lcom/facebook/share/widget/LikeView$ObjectType;->fromInt(I)Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {v3, p0, v2}, Lcom/facebook/share/internal/LikeActionController;-><init>(Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;)V</span>
+<span class="">	const-string p0, "like_count_string_with_like"</span>
+<span class="">	invoke-virtual {v1, p0, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v3, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithLike:Ljava/lang/String;</span>
+<span class="">	const-string p0, "like_count_string_without_like"</span>
+<span class="">	invoke-virtual {v1, p0, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v3, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithoutLike:Ljava/lang/String;</span>
+<span class="">	const-string p0, "social_sentence_with_like"</span>
+<span class="">	invoke-virtual {v1, p0, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v3, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithLike:Ljava/lang/String;</span>
+<span class="">	const-string p0, "social_sentence_without_like"</span>
+<span class="">	invoke-virtual {v1, p0, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v3, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithoutLike:Ljava/lang/String;</span>
+<span class="">	const-string p0, "is_object_liked"</span>
+<span class="">	invoke-virtual {v1, p0}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	iput-boolean p0, v3, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+<span class="">	const-string p0, "unlike_token"</span>
+<span class="">	invoke-virtual {v1, p0, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v3, Lcom/facebook/share/internal/LikeActionController;->unlikeToken:Ljava/lang/String;</span>
+<span class="">	const-string p0, "facebook_dialog_analytics_bundle"</span>
+<span class="">	invoke-virtual {v1, p0}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/BundleJSONConverter;->convertToBundle(Lorg/json/JSONObject;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v3, Lcom/facebook/share/internal/LikeActionController;->facebookDialogAnalyticsBundle:Landroid/os/Bundle;</span>
+<span class="">	move-object v0, v3</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catch_0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/internal/LikeActionController;->TAG:Ljava/lang/String;</span>
+<span class="">	const-string v2, "Unable to deserialize controller from JSON"</span>
+<span class="">	invoke-static {v1, v2, p0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private fetchVerifiedObjectId(Lcom/facebook/share/internal/LikeActionController$RequestCompletionCallback;)V
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->verifiedObjectId:Ljava/lang/String;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-interface {p1}, Lcom/facebook/share/internal/LikeActionController$RequestCompletionCallback;->onComplete()V</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v0, Lcom/facebook/share/internal/LikeActionController$GetOGObjectIdRequestWrapper;</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object v1, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->objectType:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	invoke-direct {v0, p0, v1, v2}, Lcom/facebook/share/internal/LikeActionController$GetOGObjectIdRequestWrapper;-><init>(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;)V</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/LikeActionController$GetPageIdRequestWrapper;</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+<span class="">	iget-object v3, p0, Lcom/facebook/share/internal/LikeActionController;->objectType:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	invoke-direct {v1, p0, v2, v3}, Lcom/facebook/share/internal/LikeActionController$GetPageIdRequestWrapper;-><init>(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;)V</span>
+<span class="">	new-instance v2, Lcom/facebook/GraphRequestBatch;</span>
+<span class="">	invoke-direct {v2}, Lcom/facebook/GraphRequestBatch;-><init>()V</span>
+<span class="">	invoke-virtual {v0, v2}, Lcom/facebook/share/internal/LikeActionController$GetOGObjectIdRequestWrapper;->addToBatch(Lcom/facebook/GraphRequestBatch;)V</span>
+<span class="">	invoke-virtual {v1, v2}, Lcom/facebook/share/internal/LikeActionController$GetPageIdRequestWrapper;->addToBatch(Lcom/facebook/GraphRequestBatch;)V</span>
+<span class="">	new-instance v3, Lcom/facebook/share/internal/LikeActionController$11;</span>
+<span class="">	invoke-direct {v3, p0, v0, v1, p1}, Lcom/facebook/share/internal/LikeActionController$11;-><init>(Lcom/facebook/share/internal/LikeActionController;Lcom/facebook/share/internal/LikeActionController$GetOGObjectIdRequestWrapper;Lcom/facebook/share/internal/LikeActionController$GetPageIdRequestWrapper;Lcom/facebook/share/internal/LikeActionController$RequestCompletionCallback;)V</span>
+<span class="">	invoke-virtual {v2, v3}, Lcom/facebook/GraphRequestBatch;->addCallback(Lcom/facebook/GraphRequestBatch$Callback;)V</span>
+<span class="">	invoke-virtual {v2}, Lcom/facebook/GraphRequestBatch;->executeAsync()Lcom/facebook/GraphRequestAsyncTask;</span>
+.end method
+
+.method private getAppEventsLogger()Lcom/facebook/appevents/InternalAppEventsLogger;
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->logger:Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-instance v0, Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/appevents/InternalAppEventsLogger;-><init>(Landroid/content/Context;)V</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->logger:Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->logger:Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+.end method
+
+.method private static getCacheKeyForObjectId(Ljava/lang/String;)Ljava/lang/String;
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/AccessToken;->getCurrentAccessToken()Lcom/facebook/AccessToken;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Lcom/facebook/AccessToken;->isCurrentAccessTokenActive()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/AccessToken;->getToken()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/Utility;->md5hash(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v1, Ljava/util/Locale;->ROOT:Ljava/util/Locale;</span>
+<span class="">	const/4 v2, 0x3</span>
+<span class="">	new-array v2, v2, [Ljava/lang/Object;</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	aput-object p0, v2, v3</span>
+<span class="">	const/4 p0, 0x1</span>
+<span class="">	const-string v3, ""</span>
+<span class="">	invoke-static {v0, v3}, Lcom/facebook/internal/Utility;->coerceValueIfNullOrEmpty(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	aput-object v0, v2, p0</span>
+<span class="">	const/4 p0, 0x2</span>
+<span class="">	sget v0, Lcom/facebook/share/internal/LikeActionController;->objectSuffix:I</span>
+<span class="">	invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	aput-object v0, v2, p0</span>
+<span class="">	const-string p0, "%s|%s|com.fb.sdk.like|%d"</span>
+<span class="">	invoke-static {v1, p0, v2}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static getControllerForObjectId(Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/internal/LikeActionController$CreationCallback;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-boolean v0, Lcom/facebook/share/internal/LikeActionController;->isInitialized:Z</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/share/internal/LikeActionController;->performFirstInitialize()V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/LikeActionController;->getControllerFromInMemoryCache(Ljava/lang/String;)Lcom/facebook/share/internal/LikeActionController;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-static {v0, p1, p2}, Lcom/facebook/share/internal/LikeActionController;->verifyControllerAndInvokeCallback(Lcom/facebook/share/internal/LikeActionController;Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/internal/LikeActionController$CreationCallback;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->diskIOWorkQueue:Lcom/facebook/internal/WorkQueue;</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/LikeActionController$CreateLikeActionControllerWorkItem;</span>
+<span class="">	invoke-direct {v1, p0, p1, p2}, Lcom/facebook/share/internal/LikeActionController$CreateLikeActionControllerWorkItem;-><init>(Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/internal/LikeActionController$CreationCallback;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/facebook/internal/WorkQueue;->addActiveWorkItem(Ljava/lang/Runnable;)Lcom/facebook/internal/WorkQueue$WorkItem;</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private static getControllerFromInMemoryCache(Ljava/lang/String;)Lcom/facebook/share/internal/LikeActionController;
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/LikeActionController;->getCacheKeyForObjectId(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->cache:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="">	invoke-virtual {v0, p0}, Ljava/util/concurrent/ConcurrentHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/facebook/share/internal/LikeActionController;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/internal/LikeActionController;->mruCacheWorkQueue:Lcom/facebook/internal/WorkQueue;</span>
+<span class="">	new-instance v2, Lcom/facebook/share/internal/LikeActionController$MRUCacheWorkItem;</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-direct {v2, p0, v3}, Lcom/facebook/share/internal/LikeActionController$MRUCacheWorkItem;-><init>(Ljava/lang/String;Z)V</span>
+<span class="">	invoke-virtual {v1, v2}, Lcom/facebook/internal/WorkQueue;->addActiveWorkItem(Ljava/lang/Runnable;)Lcom/facebook/internal/WorkQueue$WorkItem;</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private getResultProcessor(Landroid/os/Bundle;)Lcom/facebook/share/internal/ResultProcessor;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/internal/LikeActionController$6;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {v0, p0, v1, p1}, Lcom/facebook/share/internal/LikeActionController$6;-><init>(Lcom/facebook/share/internal/LikeActionController;Lcom/facebook/FacebookCallback;Landroid/os/Bundle;)V</span>
+.end method
+
+.method public static handleOnActivityResult(IILandroid/content/Intent;)Z
+<span class="">	.locals 4</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->objectIdForPendingController:Ljava/lang/String;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "com.facebook.LikeActionController.CONTROLLER_STORE_KEY"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const-string v3, "PENDING_CONTROLLER_KEY"</span>
+<span class="">	invoke-interface {v0, v3, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sput-object v0, Lcom/facebook/share/internal/LikeActionController;->objectIdForPendingController:Ljava/lang/String;</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->objectIdForPendingController:Ljava/lang/String;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->objectIdForPendingController:Ljava/lang/String;</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v1, Lcom/facebook/share/widget/LikeView$ObjectType;->UNKNOWN:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	new-instance v2, Lcom/facebook/share/internal/LikeActionController$1;</span>
+<span class="">	invoke-direct {v2, p0, p1, p2}, Lcom/facebook/share/internal/LikeActionController$1;-><init>(IILandroid/content/Intent;)V</span>
+<span class="">	invoke-static {v0, v1, v2}, Lcom/facebook/share/internal/LikeActionController;->getControllerForObjectId(Ljava/lang/String;Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/internal/LikeActionController$CreationCallback;)V</span>
+<span class="">	const/4 p0, 0x1</span>
+.end method
+
+.method private static invokeCallbackWithController(Lcom/facebook/share/internal/LikeActionController$CreationCallback;Lcom/facebook/share/internal/LikeActionController;Lcom/facebook/FacebookException;)V
+<span class="">	.locals 2</span>
+
+<span class="">	if-nez p0, :cond_0</span>
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->handler:Landroid/os/Handler;</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/LikeActionController$4;</span>
+<span class="">	invoke-direct {v1, p0, p1, p2}, Lcom/facebook/share/internal/LikeActionController$4;-><init>(Lcom/facebook/share/internal/LikeActionController$CreationCallback;Lcom/facebook/share/internal/LikeActionController;Lcom/facebook/FacebookException;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z</span>
+.end method
+
+.method private logAppEventForError(Ljava/lang/String;Landroid/os/Bundle;)V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v0, p2}, Landroid/os/Bundle;-><init>(Landroid/os/Bundle;)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+<span class="">	const-string v1, "object_id"</span>
+<span class="">	invoke-virtual {v0, v1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/share/internal/LikeActionController;->objectType:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	invoke-virtual {p2}, Lcom/facebook/share/widget/LikeView$ObjectType;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const-string v1, "object_type"</span>
+<span class="">	invoke-virtual {v0, v1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string p2, "current_action"</span>
+<span class="">	invoke-virtual {v0, p2, p1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/internal/LikeActionController;->getAppEventsLogger()Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string p2, "fb_like_control_error"</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {p1, p2, v1, v0}, Lcom/facebook/appevents/InternalAppEventsLogger;->logEventImplicitly(Ljava/lang/String;Ljava/lang/Double;Landroid/os/Bundle;)V</span>
+.end method
+
+.method private logAppEventForError(Ljava/lang/String;Lcom/facebook/FacebookRequestError;)V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v0}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Lcom/facebook/FacebookRequestError;->getRequestResult()Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const-string v1, "error"</span>
+<span class="">	invoke-virtual {v0, v1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0, p1, v0}, Lcom/facebook/share/internal/LikeActionController;->logAppEventForError(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+.end method
+
+.method private onActivityResult(IILandroid/content/Intent;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->facebookDialogAnalyticsBundle:Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/share/internal/LikeActionController;->getResultProcessor(Landroid/os/Bundle;)Lcom/facebook/share/internal/ResultProcessor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {p1, p2, p3, v0}, Lcom/facebook/share/internal/ShareInternalUtility;->handleActivityResult(IILandroid/content/Intent;Lcom/facebook/share/internal/ResultProcessor;)Z</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/internal/LikeActionController;->clearState()V</span>
+.end method
+
+.method private static declared-synchronized performFirstInitialize()V
+<span class="">	.locals 5</span>
+
+<span class="">	const-class v0, Lcom/facebook/share/internal/LikeActionController;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-boolean v1, Lcom/facebook/share/internal/LikeActionController;->isInitialized:Z</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	new-instance v1, Landroid/os/Handler;</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {v1, v2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V</span>
+<span class="">	sput-object v1, Lcom/facebook/share/internal/LikeActionController;->handler:Landroid/os/Handler;</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "com.facebook.LikeActionController.CONTROLLER_STORE_KEY"</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "OBJECT_SUFFIX"</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v1</span>
+<span class="">	sput v1, Lcom/facebook/share/internal/LikeActionController;->objectSuffix:I</span>
+<span class="">	new-instance v1, Lcom/facebook/internal/FileLruCache;</span>
+<span class="">	sget-object v2, Lcom/facebook/share/internal/LikeActionController;->TAG:Ljava/lang/String;</span>
+<span class="">	new-instance v4, Lcom/facebook/internal/FileLruCache$Limits;</span>
+<span class="">	invoke-direct {v4}, Lcom/facebook/internal/FileLruCache$Limits;-><init>()V</span>
+<span class="">	invoke-direct {v1, v2, v4}, Lcom/facebook/internal/FileLruCache;-><init>(Ljava/lang/String;Lcom/facebook/internal/FileLruCache$Limits;)V</span>
+<span class="">	sput-object v1, Lcom/facebook/share/internal/LikeActionController;->controllerDiskCache:Lcom/facebook/internal/FileLruCache;</span>
+<span class="">	invoke-static {}, Lcom/facebook/share/internal/LikeActionController;->registerAccessTokenTracker()V</span>
+<span class="">	sget-object v1, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->Like:Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;</span>
+<span class="">	invoke-virtual {v1}, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->toRequestCode()I</span>
+<span class="">	move-result v1</span>
+<span class="">	new-instance v2, Lcom/facebook/share/internal/LikeActionController$3;</span>
+<span class="">	invoke-direct {v2}, Lcom/facebook/share/internal/LikeActionController$3;-><init>()V</span>
+<span class="">	invoke-static {v1, v2}, Lcom/facebook/internal/CallbackManagerImpl;->registerStaticCallback(ILcom/facebook/internal/CallbackManagerImpl$Callback;)V</span>
+<span class="">	sput-boolean v3, Lcom/facebook/share/internal/LikeActionController;->isInitialized:Z</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw v1</span>
+.end method
+
+.method private presentLikeDialog(Landroid/app/Activity;Lcom/facebook/internal/FragmentWrapper;Landroid/os/Bundle;)V
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/share/internal/LikeDialog;->canShowNativeDialog()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const-string v1, "fb_like_control_did_present_dialog"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	move-object v2, v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/share/internal/LikeDialog;->canShowWebFallback()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	const-string v2, "fb_like_control_did_present_fallback_dialog"</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v0, "present_dialog"</span>
+<span class="">	invoke-direct {p0, v0, p3}, Lcom/facebook/share/internal/LikeActionController;->logAppEventForError(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->TAG:Ljava/lang/String;</span>
+<span class="">	const-string v3, "Cannot show the Like Dialog on this device."</span>
+<span class="">	invoke-static {v0, v3}, Lcom/facebook/internal/Utility;->logd(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "com.facebook.sdk.LikeActionController.UPDATED"</span>
+<span class="">	invoke-static {v2, v0}, Lcom/facebook/share/internal/LikeActionController;->broadcastAction(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v2, :cond_4</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->objectType:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/share/widget/LikeView$ObjectType;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	sget-object v0, Lcom/facebook/share/widget/LikeView$ObjectType;->UNKNOWN:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/share/widget/LikeView$ObjectType;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_1</span>
+<span class="">	new-instance v2, Lcom/facebook/share/internal/LikeContent$Builder;</span>
+<span class="">	invoke-direct {v2}, Lcom/facebook/share/internal/LikeContent$Builder;-><init>()V</span>
+<span class="">	iget-object v3, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v2, v3}, Lcom/facebook/share/internal/LikeContent$Builder;->setObjectId(Ljava/lang/String;)Lcom/facebook/share/internal/LikeContent$Builder;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2, v0}, Lcom/facebook/share/internal/LikeContent$Builder;->setObjectType(Ljava/lang/String;)Lcom/facebook/share/internal/LikeContent$Builder;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/share/internal/LikeContent$Builder;->build()Lcom/facebook/share/internal/LikeContent;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz p2, :cond_3</span>
+<span class="">	new-instance p1, Lcom/facebook/share/internal/LikeDialog;</span>
+<span class="">	invoke-direct {p1, p2}, Lcom/facebook/share/internal/LikeDialog;-><init>(Lcom/facebook/internal/FragmentWrapper;)V</span>
+<span class="">	invoke-virtual {p1, v0}, Lcom/facebook/share/internal/LikeDialog;->show(Lcom/facebook/share/internal/LikeContent;)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	new-instance p2, Lcom/facebook/share/internal/LikeDialog;</span>
+<span class="">	invoke-direct {p2, p1}, Lcom/facebook/share/internal/LikeDialog;-><init>(Landroid/app/Activity;)V</span>
+<span class="">	invoke-virtual {p2, v0}, Lcom/facebook/share/internal/LikeDialog;->show(Lcom/facebook/share/internal/LikeContent;)V</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-direct {p0, p3}, Lcom/facebook/share/internal/LikeActionController;->saveState(Landroid/os/Bundle;)V</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/internal/LikeActionController;->getAppEventsLogger()Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, v1, p3}, Lcom/facebook/appevents/InternalAppEventsLogger;->logEventImplicitly(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	:cond_4</span>
+.end method
+
+.method private publishAgainIfNeeded(Landroid/os/Bundle;)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+<span class="">	iget-boolean v1, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLikedOnServer:Z</span>
+<span class="">	if-eq v0, v1, :cond_0</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/facebook/share/internal/LikeActionController;->publishLikeOrUnlikeAsync(ZLandroid/os/Bundle;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	iget-boolean p1, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+<span class="">	xor-int/lit8 p1, p1, 0x1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/share/internal/LikeActionController;->publishDidError(Z)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private publishDidError(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/share/internal/LikeActionController;->updateLikeState(Z)V</span>
+<span class="">	new-instance p1, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {p1}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	const-string v0, "com.facebook.platform.status.ERROR_DESCRIPTION"</span>
+<span class="">	const-string v1, "Unable to publish the like/unlike action"</span>
+<span class="">	invoke-virtual {p1, v0, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "com.facebook.sdk.LikeActionController.DID_ERROR"</span>
+<span class="">	invoke-static {p0, v0, p1}, Lcom/facebook/share/internal/LikeActionController;->broadcastAction(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;Landroid/os/Bundle;)V</span>
+.end method
+
+.method private publishLikeAsync(Landroid/os/Bundle;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	iput-boolean v0, p0, Lcom/facebook/share/internal/LikeActionController;->isPendingLikeOrUnlike:Z</span>
+<span class="">	new-instance v0, Lcom/facebook/share/internal/LikeActionController$7;</span>
+<span class="">	invoke-direct {v0, p0, p1}, Lcom/facebook/share/internal/LikeActionController$7;-><init>(Lcom/facebook/share/internal/LikeActionController;Landroid/os/Bundle;)V</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/share/internal/LikeActionController;->fetchVerifiedObjectId(Lcom/facebook/share/internal/LikeActionController$RequestCompletionCallback;)V</span>
+.end method
+
+.method private publishLikeOrUnlikeAsync(ZLandroid/os/Bundle;)Z
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/internal/LikeActionController;->canUseOGPublish()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-direct {p0, p2}, Lcom/facebook/share/internal/LikeActionController;->publishLikeAsync(Landroid/os/Bundle;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object p1, p0, Lcom/facebook/share/internal/LikeActionController;->unlikeToken:Ljava/lang/String;</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_1</span>
+<span class="">	invoke-direct {p0, p2}, Lcom/facebook/share/internal/LikeActionController;->publishUnlikeAsync(Landroid/os/Bundle;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private publishUnlikeAsync(Landroid/os/Bundle;)V
+<span class="">	.locals 3</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	iput-boolean v0, p0, Lcom/facebook/share/internal/LikeActionController;->isPendingLikeOrUnlike:Z</span>
+<span class="">	new-instance v0, Lcom/facebook/GraphRequestBatch;</span>
+<span class="">	invoke-direct {v0}, Lcom/facebook/GraphRequestBatch;-><init>()V</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/LikeActionController$PublishUnlikeRequestWrapper;</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->unlikeToken:Ljava/lang/String;</span>
+<span class="">	invoke-direct {v1, p0, v2}, Lcom/facebook/share/internal/LikeActionController$PublishUnlikeRequestWrapper;-><init>(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v1, v0}, Lcom/facebook/share/internal/LikeActionController$PublishUnlikeRequestWrapper;->addToBatch(Lcom/facebook/GraphRequestBatch;)V</span>
+<span class="">	new-instance v2, Lcom/facebook/share/internal/LikeActionController$8;</span>
+<span class="">	invoke-direct {v2, p0, v1, p1}, Lcom/facebook/share/internal/LikeActionController$8;-><init>(Lcom/facebook/share/internal/LikeActionController;Lcom/facebook/share/internal/LikeActionController$PublishUnlikeRequestWrapper;Landroid/os/Bundle;)V</span>
+<span class="">	invoke-virtual {v0, v2}, Lcom/facebook/GraphRequestBatch;->addCallback(Lcom/facebook/GraphRequestBatch$Callback;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/GraphRequestBatch;->executeAsync()Lcom/facebook/GraphRequestAsyncTask;</span>
+.end method
+
+.method private static putControllerInMemoryCache(Ljava/lang/String;Lcom/facebook/share/internal/LikeActionController;)V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/LikeActionController;->getCacheKeyForObjectId(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->mruCacheWorkQueue:Lcom/facebook/internal/WorkQueue;</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/LikeActionController$MRUCacheWorkItem;</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-direct {v1, p0, v2}, Lcom/facebook/share/internal/LikeActionController$MRUCacheWorkItem;-><init>(Ljava/lang/String;Z)V</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/facebook/internal/WorkQueue;->addActiveWorkItem(Ljava/lang/Runnable;)Lcom/facebook/internal/WorkQueue$WorkItem;</span>
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->cache:Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="">	invoke-virtual {v0, p0, p1}, Ljava/util/concurrent/ConcurrentHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+.end method
+
+.method private refreshStatusAsync()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/AccessToken;->isCurrentAccessTokenActive()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/internal/LikeActionController;->refreshStatusViaService()V</span>
+<span class="">	new-instance v0, Lcom/facebook/share/internal/LikeActionController$9;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/share/internal/LikeActionController$9;-><init>(Lcom/facebook/share/internal/LikeActionController;)V</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/share/internal/LikeActionController;->fetchVerifiedObjectId(Lcom/facebook/share/internal/LikeActionController$RequestCompletionCallback;)V</span>
+.end method
+
+.method private refreshStatusViaService()V
+<span class="">	.locals 4</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/internal/LikeStatusClient;</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationId()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	iget-object v3, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+<span class="">	invoke-direct {v0, v1, v2, v3}, Lcom/facebook/share/internal/LikeStatusClient;-><init>(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/share/internal/LikeStatusClient;->start()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	new-instance v1, Lcom/facebook/share/internal/LikeActionController$10;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v1, p0}, Lcom/facebook/share/internal/LikeActionController$10;-><init>(Lcom/facebook/share/internal/LikeActionController;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/facebook/share/internal/LikeStatusClient;->setCompletedListener(Lcom/facebook/internal/PlatformServiceClient$CompletedListener;)V</span>
+.end method
+
+.method private static registerAccessTokenTracker()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/internal/LikeActionController$5;</span>
+<span class="">	invoke-direct {v0}, Lcom/facebook/share/internal/LikeActionController$5;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/facebook/share/internal/LikeActionController;->accessTokenTracker:Lcom/facebook/AccessTokenTracker;</span>
+.end method
+
+.method private saveState(Landroid/os/Bundle;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/share/internal/LikeActionController;->storeObjectIdForPendingController(Ljava/lang/String;)V</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/share/internal/LikeActionController;->facebookDialogAnalyticsBundle:Landroid/os/Bundle;</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/LikeActionController;->serializeToDiskAsync(Lcom/facebook/share/internal/LikeActionController;)V</span>
+.end method
+
+.method private static serializeToDiskAsync(Lcom/facebook/share/internal/LikeActionController;)V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/LikeActionController;->serializeToJson(Lcom/facebook/share/internal/LikeActionController;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/LikeActionController;->getCacheKeyForObjectId(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/internal/LikeActionController;->diskIOWorkQueue:Lcom/facebook/internal/WorkQueue;</span>
+<span class="">	new-instance v2, Lcom/facebook/share/internal/LikeActionController$SerializeToDiskWorkItem;</span>
+<span class="">	invoke-direct {v2, p0, v0}, Lcom/facebook/share/internal/LikeActionController$SerializeToDiskWorkItem;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v1, v2}, Lcom/facebook/internal/WorkQueue;->addActiveWorkItem(Ljava/lang/Runnable;)Lcom/facebook/internal/WorkQueue$WorkItem;</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private static serializeToDiskSynchronously(Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/facebook/share/internal/LikeActionController;->controllerDiskCache:Lcom/facebook/internal/FileLruCache;</span>
+<span class="">	invoke-virtual {v1, p0}, Lcom/facebook/internal/FileLruCache;->openPutStream(Ljava/lang/String;)Ljava/io/OutputStream;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/String;->getBytes()[B</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {v0, p0}, Ljava/io/OutputStream;->write([B)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/Utility;->closeQuietly(Ljava/io/Closeable;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_start_1</span>
+<span class="">	sget-object p1, Lcom/facebook/share/internal/LikeActionController;->TAG:Ljava/lang/String;</span>
+<span class="">	const-string v1, "Unable to serialize controller to disk"</span>
+<span class="">	invoke-static {p1, v1, p0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/Utility;->closeQuietly(Ljava/io/Closeable;)V</span>
+<span class="">	throw p0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method private static serializeToJson(Lcom/facebook/share/internal/LikeActionController;)Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v1, "com.facebook.share.internal.LikeActionController.version"</span>
+<span class="">	const/4 v2, 0x3</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;</span>
+<span class="">	const-string v1, "object_id"</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v1, "object_type"</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->objectType:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	invoke-virtual {v2}, Lcom/facebook/share/widget/LikeView$ObjectType;->getValue()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;</span>
+<span class="">	const-string v1, "like_count_string_with_like"</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithLike:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v1, "like_count_string_without_like"</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithoutLike:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v1, "social_sentence_with_like"</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithLike:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v1, "social_sentence_without_like"</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithoutLike:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v1, "is_object_liked"</span>
+<span class="">	iget-boolean v2, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Z)Lorg/json/JSONObject;</span>
+<span class="">	const-string v1, "unlike_token"</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->unlikeToken:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->facebookDialogAnalyticsBundle:Landroid/os/Bundle;</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/BundleJSONConverter;->convertToJSON(Landroid/os/Bundle;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	const-string v1, "facebook_dialog_analytics_bundle"</span>
+<span class="">	invoke-virtual {v0, v1, p0}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catch_0</span>
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->TAG:Ljava/lang/String;</span>
+<span class="">	const-string v1, "Unable to serialize controller to JSON"</span>
+<span class="">	invoke-static {v0, v1, p0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	const/4 p0, 0x0</span>
+.end method
+
+.method private static storeObjectIdForPendingController(Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+
+<span class="">	sput-object p0, Lcom/facebook/share/internal/LikeActionController;->objectIdForPendingController:Ljava/lang/String;</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "com.facebook.LikeActionController.CONTROLLER_STORE_KEY"</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	sget-object v0, Lcom/facebook/share/internal/LikeActionController;->objectIdForPendingController:Ljava/lang/String;</span>
+<span class="">	const-string v1, "PENDING_CONTROLLER_KEY"</span>
+<span class="">	invoke-interface {p0, v1, v0}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method private updateLikeState(Z)V
+<span class="">	.locals 7</span>
+
+<span class="">	iget-object v2, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithLike:Ljava/lang/String;</span>
+<span class="">	iget-object v3, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithoutLike:Ljava/lang/String;</span>
+<span class="">	iget-object v4, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithLike:Ljava/lang/String;</span>
+<span class="">	iget-object v5, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithoutLike:Ljava/lang/String;</span>
+<span class="">	iget-object v6, p0, Lcom/facebook/share/internal/LikeActionController;->unlikeToken:Ljava/lang/String;</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	move v1, p1</span>
+<span class="">	invoke-direct/range {v0 .. v6}, Lcom/facebook/share/internal/LikeActionController;->updateState(ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V</span>
+.end method
+
+.method private updateState(ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-static {p2, v0}, Lcom/facebook/internal/Utility;->coerceValueIfNullOrEmpty(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-static {p3, v0}, Lcom/facebook/internal/Utility;->coerceValueIfNullOrEmpty(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-static {p4, v0}, Lcom/facebook/internal/Utility;->coerceValueIfNullOrEmpty(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p4</span>
+<span class="">	invoke-static {p5, v0}, Lcom/facebook/internal/Utility;->coerceValueIfNullOrEmpty(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p5</span>
+<span class="">	invoke-static {p6, v0}, Lcom/facebook/internal/Utility;->coerceValueIfNullOrEmpty(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p6</span>
+<span class="">	iget-boolean v0, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+<span class="">	if-ne p1, v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithLike:Ljava/lang/String;</span>
+<span class="">	invoke-static {p2, v0}, Lcom/facebook/internal/Utility;->areObjectsEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithoutLike:Ljava/lang/String;</span>
+<span class="">	invoke-static {p3, v0}, Lcom/facebook/internal/Utility;->areObjectsEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithLike:Ljava/lang/String;</span>
+<span class="">	invoke-static {p4, v0}, Lcom/facebook/internal/Utility;->areObjectsEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithoutLike:Ljava/lang/String;</span>
+<span class="">	invoke-static {p5, v0}, Lcom/facebook/internal/Utility;->areObjectsEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->unlikeToken:Ljava/lang/String;</span>
+<span class="">	invoke-static {p6, v0}, Lcom/facebook/internal/Utility;->areObjectsEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	:goto_1</span>
+<span class="">	if-nez v0, :cond_2</span>
+<span class="">	iput-boolean p1, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+<span class="">	:cond_2</span>
+<span class="">	iput-object p2, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithLike:Ljava/lang/String;</span>
+<span class="">	iput-object p3, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithoutLike:Ljava/lang/String;</span>
+<span class="">	iput-object p4, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithLike:Ljava/lang/String;</span>
+<span class="">	iput-object p5, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithoutLike:Ljava/lang/String;</span>
+<span class="">	iput-object p6, p0, Lcom/facebook/share/internal/LikeActionController;->unlikeToken:Ljava/lang/String;</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/share/internal/LikeActionController;->serializeToDiskAsync(Lcom/facebook/share/internal/LikeActionController;)V</span>
+<span class="">	const-string p1, "com.facebook.sdk.LikeActionController.UPDATED"</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/LikeActionController;->broadcastAction(Lcom/facebook/share/internal/LikeActionController;Ljava/lang/String;)V</span>
+.end method
+
+.method private static verifyControllerAndInvokeCallback(Lcom/facebook/share/internal/LikeActionController;Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/internal/LikeActionController$CreationCallback;)V
+<span class="">	.locals 5</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->objectType:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	invoke-static {p1, v0}, Lcom/facebook/share/internal/ShareInternalUtility;->getMostSpecificObjectType(Lcom/facebook/share/widget/LikeView$ObjectType;Lcom/facebook/share/widget/LikeView$ObjectType;)Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-instance v0, Lcom/facebook/FacebookException;</span>
+<span class="">	const/4 v2, 0x3</span>
+<span class="">	new-array v2, v2, [Ljava/lang/Object;</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	iget-object v4, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+<span class="">	aput-object v4, v2, v3</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	iget-object p0, p0, Lcom/facebook/share/internal/LikeActionController;->objectType:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/LikeView$ObjectType;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	aput-object p0, v2, v3</span>
+<span class="">	const/4 p0, 0x2</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/share/widget/LikeView$ObjectType;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	aput-object p1, v2, p0</span>
+<span class="">	const-string p0, "Object with id:\"%s\" is already marked as type:\"%s\". Cannot change the type to:\"%s\""</span>
+<span class="">	invoke-direct {v0, p0, v2}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	move-object p0, v1</span>
+<span class="">	move-object v1, v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->objectType:Lcom/facebook/share/widget/LikeView$ObjectType;</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {p2, p0, v1}, Lcom/facebook/share/internal/LikeActionController;->invokeCallbackWithController(Lcom/facebook/share/internal/LikeActionController$CreationCallback;Lcom/facebook/share/internal/LikeActionController;Lcom/facebook/FacebookException;)V</span>
+.end method
+
+.method public getLikeCountString()Ljava/lang/String;
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithLike:Ljava/lang/String;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->likeCountStringWithoutLike:Ljava/lang/String;</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public getObjectId()Ljava/lang/String;
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->objectId:Ljava/lang/String;</span>
+.end method
+
+.method public getSocialSentence()Ljava/lang/String;
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithLike:Ljava/lang/String;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/internal/LikeActionController;->socialSentenceWithoutLike:Ljava/lang/String;</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public isObjectLiked()Z
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+.end method
+
+.method public shouldEnableView()Z
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+.end method
+
+.method public toggleLike(Landroid/app/Activity;Lcom/facebook/internal/FragmentWrapper;Landroid/os/Bundle;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/share/internal/LikeActionController;->isObjectLiked:Z</span>
+<span class="">	xor-int/lit8 v0, v0, 0x1</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/internal/LikeActionController;->canUseOGPublish()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/share/internal/LikeActionController;->updateLikeState(Z)V</span>
+<span class="">	iget-boolean v1, p0, Lcom/facebook/share/internal/LikeActionController;->isPendingLikeOrUnlike:Z</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/internal/LikeActionController;->getAppEventsLogger()Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string p2, "fb_like_control_did_undo_quickly"</span>
+<span class="">	invoke-virtual {p1, p2, p3}, Lcom/facebook/appevents/InternalAppEventsLogger;->logEventImplicitly(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0, v0, p3}, Lcom/facebook/share/internal/LikeActionController;->publishLikeOrUnlikeAsync(ZLandroid/os/Bundle;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_2</span>
+<span class="">	xor-int/lit8 v0, v0, 0x1</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/share/internal/LikeActionController;->updateLikeState(Z)V</span>
+<span class="">	invoke-direct {p0, p1, p2, p3}, Lcom/facebook/share/internal/LikeActionController;->presentLikeDialog(Landroid/app/Activity;Lcom/facebook/internal/FragmentWrapper;Landroid/os/Bundle;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {p0, p1, p2, p3}, Lcom/facebook/share/internal/LikeActionController;->presentLikeDialog(Landroid/app/Activity;Lcom/facebook/internal/FragmentWrapper;Landroid/os/Bundle;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	:goto_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,1573 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.perf.d</a></li>
+        <li><i class="ico ico-class"></i> a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/firebase/perf/d/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private static final d:Lcom/google/firebase/perf/g/a;
+.field private static volatile e:Lcom/google/firebase/perf/d/a;
+.field private a:Lcom/google/firebase/perf/i/d;
+.field private b:Lcom/google/firebase/perf/internal/RemoteConfigManager;
+.field private c:Lcom/google/firebase/perf/d/u;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/g/a;->e()Lcom/google/firebase/perf/g/a;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sput-object v0, Lcom/google/firebase/perf/d/a;->d:Lcom/google/firebase/perf/g/a;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Lcom/google/firebase/perf/internal/RemoteConfigManager;Lcom/google/firebase/perf/i/d;Lcom/google/firebase/perf/d/u;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	if-nez p1, :cond_0</span>
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/internal/RemoteConfigManager;->getInstance()Lcom/google/firebase/perf/internal/RemoteConfigManager;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	iput-object p1, p0, Lcom/google/firebase/perf/d/a;->b:Lcom/google/firebase/perf/internal/RemoteConfigManager;</span>
+<span class="cov">	if-nez p2, :cond_1</span>
+<span class="cov">	new-instance p2, Lcom/google/firebase/perf/i/d;</span>
+<span class="cov">	invoke-direct {p2}, Lcom/google/firebase/perf/i/d;-><init>()V</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	iput-object p2, p0, Lcom/google/firebase/perf/d/a;->a:Lcom/google/firebase/perf/i/d;</span>
+<span class="cov">	if-nez p3, :cond_2</span>
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/u;->d()Lcom/google/firebase/perf/d/u;</span>
+<span class="cov">	move-result-object p3</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	iput-object p3, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private F(J)Z</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	const-wide/16 v0, 0x0</span>
+<span class="cov">	cmp-long v2, p1, v0</span>
+<span class="cov">	if-ltz v2, :cond_0</span>
+<span class="cov">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return p1</span>
+.end method
+
+<span class="cov">.method private G(Ljava/lang/String;)Z</span>
+<span class="">	.locals 5</span>
+
+<span class="exec">	invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="exec">	return v1</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, ";"</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	array-length v0, p1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v2, v0, :cond_2</span>
+<span class="">	aget-object v3, p1, v2</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/String;->trim()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	sget-object v4, Lcom/google/firebase/perf/a;->b:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	:cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private H(J)Z
+<span class="">	.locals 3</span>
+
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	cmp-long v2, p1, v0</span>
+<span class="">	if-ltz v2, :cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+<span class="cov">.method private J(F)Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	cmpg-float v0, v0, p1</span>
+<span class="cov">	if-gtz v0, :cond_0</span>
+<span class="cov">	const/high16 v0, 0x3f800000    # 1.0f</span>
+<span class="cov">	cmpg-float p1, p1, v0</span>
+<span class="cov">	if-gtz p1, :cond_0</span>
+<span class="cov">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return p1</span>
+.end method
+
+.method private K(J)Z
+<span class="">	.locals 3</span>
+
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	cmp-long v2, p1, v0</span>
+<span class="">	if-lez v2, :cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+<span class="cov">.method private L(J)Z</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	const-wide/16 v0, 0x0</span>
+<span class="cov">	cmp-long v2, p1, v0</span>
+<span class="cov">	if-lez v2, :cond_0</span>
+<span class="cov">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return p1</span>
+.end method
+
+<span class="cov">.method private b(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/d/u;->a(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method private c(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/Float;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/Float;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/d/u;->c(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method private d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/Long;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/Long;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/d/u;->e(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method private e(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/d/u;->f(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public static declared-synchronized f()Lcom/google/firebase/perf/d/a;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	const-class v0, Lcom/google/firebase/perf/d/a;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	sget-object v1, Lcom/google/firebase/perf/d/a;->e:Lcom/google/firebase/perf/d/a;</span>
+<span class="cov">	if-nez v1, :cond_0</span>
+<span class="cov">	new-instance v1, Lcom/google/firebase/perf/d/a;</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="cov">	invoke-direct {v1, v2, v2, v2}, Lcom/google/firebase/perf/d/a;-><init>(Lcom/google/firebase/perf/internal/RemoteConfigManager;Lcom/google/firebase/perf/i/d;Lcom/google/firebase/perf/d/u;)V</span>
+<span class="cov">	sput-object v1, Lcom/google/firebase/perf/d/a;->e:Lcom/google/firebase/perf/d/a;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	sget-object v1, Lcom/google/firebase/perf/d/a;->e:Lcom/google/firebase/perf/d/a;</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-object v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw v1</span>
+.end method
+
+<span class="cov">.method private i()Z</span>
+<span class="">	.locals 4</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/j;->e()Lcom/google/firebase/perf/d/j;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->s(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_1</span>
+<span class="cov">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->b:Lcom/google/firebase/perf/internal/RemoteConfigManager;</span>
+<span class="exec">	invoke-virtual {v2}, Lcom/google/firebase/perf/internal/RemoteConfigManager;->isLastFetchFailed()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="cov">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/j;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, Ljava/lang/Boolean;</span>
+<span class="exec">	invoke-virtual {v3}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	invoke-virtual {v2, v0, v3}, Lcom/google/firebase/perf/d/u;->k(Ljava/lang/String;Z)Z</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Ljava/lang/Boolean;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->b(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_2</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Ljava/lang/Boolean;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/j;->d()Ljava/lang/Boolean;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+<span class="cov">.method private j()Z</span>
+<span class="">	.locals 4</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/i;->e()Lcom/google/firebase/perf/d/i;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->v(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="cov">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/i;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, Ljava/lang/String;</span>
+<span class="cov">	invoke-virtual {v2, v0, v3}, Lcom/google/firebase/perf/d/u;->j(Ljava/lang/String;Ljava/lang/String;)Z</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Ljava/lang/String;</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->G(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->e(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Ljava/lang/String;</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->G(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/i;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->G(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+<span class="cov">.method private l(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->a:Lcom/google/firebase/perf/i/d;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->b()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/i/d;->b(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method private m(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/Float;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/Float;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->a:Lcom/google/firebase/perf/i/d;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->b()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/i/d;->c(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method private n(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/Long;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/Long;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->a:Lcom/google/firebase/perf/i/d;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->b()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/i/d;->e(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method private s(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->b:Lcom/google/firebase/perf/internal/RemoteConfigManager;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->c()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/internal/RemoteConfigManager;->getBoolean(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method private t(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/Float;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/Float;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->b:Lcom/google/firebase/perf/internal/RemoteConfigManager;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->c()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/internal/RemoteConfigManager;->getFloat(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method private u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/Long;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/Long;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->b:Lcom/google/firebase/perf/internal/RemoteConfigManager;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->c()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/internal/RemoteConfigManager;->getLong(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method private v(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/perf/d/t<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/google/firebase/perf/i/e<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->b:Lcom/google/firebase/perf/internal/RemoteConfigManager;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/perf/d/t;->c()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/internal/RemoteConfigManager;->getString(Ljava/lang/String;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+.method public A()J
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-static {}, Lcom/google/firebase/perf/d/o;->e()Lcom/google/firebase/perf/d/o;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->n(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/o;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	invoke-virtual {v2, v0, v3, v4}, Lcom/google/firebase/perf/d/u;->i(Ljava/lang/String;J)Z</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/o;->d()Ljava/lang/Long;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+<span class="cov">.method public B()F</span>
+<span class="">	.locals 4</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/p;->e()Lcom/google/firebase/perf/d/p;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->m(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v1</span>
+<span class="">	const/high16 v2, 0x42c80000    # 100.0f</span>
+<span class="">	div-float/2addr v1, v2</span>
+<span class="">	invoke-direct {p0, v1}, Lcom/google/firebase/perf/d/a;->J(F)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->t(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/firebase/perf/d/a;->J(F)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/p;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-virtual {v2, v0, v3}, Lcom/google/firebase/perf/d/u;->h(Ljava/lang/String;F)Z</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->c(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_2</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	check-cast v2, Ljava/lang/Float;</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/Float;->floatValue()F</span>
+<span class="cov">	move-result v2</span>
+<span class="exec">	invoke-direct {p0, v2}, Lcom/google/firebase/perf/d/a;->J(F)Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_2</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Ljava/lang/Float;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Float;->floatValue()F</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/p;->d()Ljava/lang/Float;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+<span class="cov">.method public C()J</span>
+<span class="">	.locals 5</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/q;->e()Lcom/google/firebase/perf/d/q;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	check-cast v2, Ljava/lang/Long;</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="exec">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->F(J)Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="cov">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/q;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, Ljava/lang/Long;</span>
+<span class="exec">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v3</span>
+<span class="cov">	invoke-virtual {v2, v0, v3, v4}, Lcom/google/firebase/perf/d/u;->i(Ljava/lang/String;J)Z</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Ljava/lang/Long;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	return-wide v0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->F(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/q;->d()Ljava/lang/Long;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+<span class="cov">.method public D()J</span>
+<span class="">	.locals 5</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/r;->e()Lcom/google/firebase/perf/d/r;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	check-cast v2, Ljava/lang/Long;</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="exec">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->F(J)Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="cov">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/r;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, Ljava/lang/Long;</span>
+<span class="exec">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v3</span>
+<span class="cov">	invoke-virtual {v2, v0, v3, v4}, Lcom/google/firebase/perf/d/u;->i(Ljava/lang/String;J)Z</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Ljava/lang/Long;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	return-wide v0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->F(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/r;->d()Ljava/lang/Long;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+<span class="cov">.method public E()F</span>
+<span class="">	.locals 4</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/s;->e()Lcom/google/firebase/perf/d/s;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->t(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	check-cast v2, Ljava/lang/Float;</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/Float;->floatValue()F</span>
+<span class="cov">	move-result v2</span>
+<span class="exec">	invoke-direct {p0, v2}, Lcom/google/firebase/perf/d/a;->J(F)Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="cov">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/s;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, Ljava/lang/Float;</span>
+<span class="exec">	invoke-virtual {v3}, Ljava/lang/Float;->floatValue()F</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	invoke-virtual {v2, v0, v3}, Lcom/google/firebase/perf/d/u;->h(Ljava/lang/String;F)Z</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Ljava/lang/Float;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Float;->floatValue()F</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->c(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/firebase/perf/d/a;->J(F)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/s;->d()Ljava/lang/Float;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+<span class="cov">.method public I()Z</span>
+<span class="">	.locals 2</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/perf/d/a;->h()Ljava/lang/Boolean;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const/4 v1, 0x1</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-ne v0, v1, :cond_1</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/perf/d/a;->k()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-eqz v0, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return v1</span>
+.end method
+
+<span class="cov">.method public M(Landroid/content/Context;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	sget-object v0, Lcom/google/firebase/perf/d/a;->d:Lcom/google/firebase/perf/g/a;</span>
+<span class="exec">	invoke-static {p1}, Lcom/google/firebase/perf/i/j;->b(Landroid/content/Context;)Z</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/g/a;->h(Z)V</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="cov">	invoke-virtual {v0, p1}, Lcom/google/firebase/perf/d/u;->g(Landroid/content/Context;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public N(Landroid/content/Context;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-virtual {p0, p1}, Lcom/google/firebase/perf/d/a;->M(Landroid/content/Context;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public O(Lcom/google/firebase/perf/i/d;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	iput-object p1, p0, Lcom/google/firebase/perf/d/a;->a:Lcom/google/firebase/perf/i/d;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public a()Ljava/lang/String;</span>
+<span class="">	.locals 5</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/d;->e()Lcom/google/firebase/perf/d/d;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sget-object v1, Lcom/google/firebase/perf/a;->a:Ljava/lang/Boolean;</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/d;->c()Ljava/lang/String;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-wide/16 v2, -0x1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	iget-object v4, p0, Lcom/google/firebase/perf/d/a;->b:Lcom/google/firebase/perf/internal/RemoteConfigManager;</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v4, v1, v2}, Lcom/google/firebase/perf/internal/RemoteConfigManager;->getRemoteConfigValueOrDefault(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	check-cast v1, Ljava/lang/Long;</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/d;->a()Ljava/lang/String;</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-static {v2, v3}, Lcom/google/firebase/perf/d/d;->g(J)Z</span>
+<span class="cov">	move-result v4</span>
+<span class="cov">	if-eqz v4, :cond_2</span>
+<span class="exec">	invoke-static {v2, v3}, Lcom/google/firebase/perf/d/d;->f(J)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	if-eqz v2, :cond_2</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="cov">	invoke-virtual {v0, v1, v2}, Lcom/google/firebase/perf/d/u;->j(Ljava/lang/String;Ljava/lang/String;)Z</span>
+<span class="exec">	return-object v2</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->e(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_3</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_3</span>
+.end method
+
+<span class="cov">.method public g()Ljava/lang/Boolean;</span>
+<span class="">	.locals 3</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/b;->e()Lcom/google/firebase/perf/d/b;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->l(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Boolean;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/b;->d()Ljava/lang/Boolean;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public h()Ljava/lang/Boolean;</span>
+<span class="">	.locals 3</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/perf/d/a;->g()Ljava/lang/Boolean;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	sget-object v0, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;</span>
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/c;->d()Lcom/google/firebase/perf/d/c;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->b(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Boolean;</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->l(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Boolean;</span>
+<span class="cov">	sget-object v0, Lcom/google/firebase/perf/d/a;->d:Lcom/google/firebase/perf/g/a;</span>
+<span class="cov">	const-string v1, "CollectionEnabled metadata key unknown or value not found in manifest."</span>
+<span class="cov">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/g/a;->a(Ljava/lang/String;)V</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public k()Z</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-direct {p0}, Lcom/google/firebase/perf/d/a;->i()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="exec">	invoke-direct {p0}, Lcom/google/firebase/perf/d/a;->j()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-nez v0, :cond_0</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return v0</span>
+.end method
+
+<span class="cov">.method public o()J</span>
+<span class="">	.locals 5</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/e;->e()Lcom/google/firebase/perf/d/e;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->F(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/e;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	invoke-virtual {v2, v0, v3, v4}, Lcom/google/firebase/perf/d/u;->i(Ljava/lang/String;J)Z</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->F(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/e;->d()Ljava/lang/Long;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	return-wide v0</span>
+.end method
+
+<span class="cov">.method public p()J</span>
+<span class="">	.locals 5</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/f;->e()Lcom/google/firebase/perf/d/f;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->F(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/f;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	invoke-virtual {v2, v0, v3, v4}, Lcom/google/firebase/perf/d/u;->i(Ljava/lang/String;J)Z</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->F(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/f;->d()Ljava/lang/Long;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	return-wide v0</span>
+.end method
+
+.method public q()F
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-static {}, Lcom/google/firebase/perf/d/g;->e()Lcom/google/firebase/perf/d/g;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->t(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/firebase/perf/d/a;->J(F)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/g;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-virtual {v2, v0, v3}, Lcom/google/firebase/perf/d/u;->h(Ljava/lang/String;F)Z</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->c(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/firebase/perf/d/a;->J(F)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Float;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/g;->d()Ljava/lang/Float;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Float;->floatValue()F</span>
+<span class="">	move-result v0</span>
+.end method
+
+<span class="cov">.method public r()J</span>
+<span class="">	.locals 5</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/h;->e()Lcom/google/firebase/perf/d/h;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	check-cast v2, Ljava/lang/Long;</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="exec">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->L(J)Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="cov">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/h;->a()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, Ljava/lang/Long;</span>
+<span class="exec">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v3</span>
+<span class="cov">	invoke-virtual {v2, v0, v3, v4}, Lcom/google/firebase/perf/d/u;->i(Ljava/lang/String;J)Z</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Ljava/lang/Long;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	return-wide v0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->L(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/h;->d()Ljava/lang/Long;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public w()J
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-static {}, Lcom/google/firebase/perf/d/k;->e()Lcom/google/firebase/perf/d/k;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->n(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/k;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	invoke-virtual {v2, v0, v3, v4}, Lcom/google/firebase/perf/d/u;->i(Ljava/lang/String;J)Z</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/k;->d()Ljava/lang/Long;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public x()J
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-static {}, Lcom/google/firebase/perf/d/l;->e()Lcom/google/firebase/perf/d/l;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->n(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/l;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	invoke-virtual {v2, v0, v3, v4}, Lcom/google/firebase/perf/d/u;->i(Ljava/lang/String;J)Z</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/l;->d()Ljava/lang/Long;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+<span class="cov">.method public y()J</span>
+<span class="">	.locals 5</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/perf/d/m;->e()Lcom/google/firebase/perf/d/m;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->n(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->K(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->K(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/m;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	invoke-virtual {v2, v0, v3, v4}, Lcom/google/firebase/perf/d/u;->i(Ljava/lang/String;J)Z</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="exec">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->K(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/m;->d()Ljava/lang/Long;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	return-wide v0</span>
+.end method
+
+.method public z()J
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-static {}, Lcom/google/firebase/perf/d/n;->e()Lcom/google/firebase/perf/d/n;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->n(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->u(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/d/a;->c:Lcom/google/firebase/perf/d/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/n;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	invoke-virtual {v2, v0, v3, v4}, Lcom/google/firebase/perf/d/u;->i(Ljava/lang/String;J)Z</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/perf/d/a;->d(Lcom/google/firebase/perf/d/t;)Lcom/google/firebase/perf/i/e;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->d()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-direct {p0, v2, v3}, Lcom/google/firebase/perf/d/a;->H(J)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/e;->c()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/d/n;->d()Ljava/lang/Long;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-wide v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

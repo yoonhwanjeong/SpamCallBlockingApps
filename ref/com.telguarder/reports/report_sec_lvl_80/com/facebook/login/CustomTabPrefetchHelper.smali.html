@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.login</a></li>
+        <li><i class="ico ico-class"></i> CustomTabPrefetchHelper.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/login/CustomTabPrefetchHelper;
+.super Landroidx/browser/customtabs/CustomTabsServiceConnection;
+.source "CustomTabPrefetchHelper.java"
+
+
+.field private static client:Landroidx/browser/customtabs/CustomTabsClient;
+.field private static session:Landroidx/browser/customtabs/CustomTabsSession;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 0</span>
+
+.end method
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/browser/customtabs/CustomTabsServiceConnection;-><init>()V</span>
+.end method
+
+.method public static getPreparedSessionOnce()Landroidx/browser/customtabs/CustomTabsSession;
+<span class="">	.locals 2</span>
+
+<span class="">	sget-object v0, Lcom/facebook/login/CustomTabPrefetchHelper;->session:Landroidx/browser/customtabs/CustomTabsSession;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	sput-object v1, Lcom/facebook/login/CustomTabPrefetchHelper;->session:Landroidx/browser/customtabs/CustomTabsSession;</span>
+.end method
+
+.method public static mayLaunchUrl(Landroid/net/Uri;)V
+<span class="">	.locals 2</span>
+
+<span class="">	sget-object v0, Lcom/facebook/login/CustomTabPrefetchHelper;->session:Landroidx/browser/customtabs/CustomTabsSession;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/login/CustomTabPrefetchHelper;->prepareSession()V</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v0, Lcom/facebook/login/CustomTabPrefetchHelper;->session:Landroidx/browser/customtabs/CustomTabsSession;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {v0, p0, v1, v1}, Landroidx/browser/customtabs/CustomTabsSession;->mayLaunchUrl(Landroid/net/Uri;Landroid/os/Bundle;Ljava/util/List;)Z</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method private static prepareSession()V
+<span class="">	.locals 2</span>
+
+<span class="">	sget-object v0, Lcom/facebook/login/CustomTabPrefetchHelper;->session:Landroidx/browser/customtabs/CustomTabsSession;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	sget-object v0, Lcom/facebook/login/CustomTabPrefetchHelper;->client:Landroidx/browser/customtabs/CustomTabsClient;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/browser/customtabs/CustomTabsClient;->newSession(Landroidx/browser/customtabs/CustomTabsCallback;)Landroidx/browser/customtabs/CustomTabsSession;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sput-object v0, Lcom/facebook/login/CustomTabPrefetchHelper;->session:Landroidx/browser/customtabs/CustomTabsSession;</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public onCustomTabsServiceConnected(Landroid/content/ComponentName;Landroidx/browser/customtabs/CustomTabsClient;)V
+<span class="">	.locals 2</span>
+
+<span class="">	sput-object p2, Lcom/facebook/login/CustomTabPrefetchHelper;->client:Landroidx/browser/customtabs/CustomTabsClient;</span>
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	invoke-virtual {p2, v0, v1}, Landroidx/browser/customtabs/CustomTabsClient;->warmup(J)Z</span>
+<span class="">	invoke-static {}, Lcom/facebook/login/CustomTabPrefetchHelper;->prepareSession()V</span>
+.end method
+
+.method public onServiceDisconnected(Landroid/content/ComponentName;)V
+<span class="">	.locals 0</span>
+
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

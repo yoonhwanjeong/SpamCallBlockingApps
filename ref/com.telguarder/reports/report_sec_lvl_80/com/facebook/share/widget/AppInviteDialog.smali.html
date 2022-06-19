@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.share.widget</a></li>
+        <li><i class="ico ico-class"></i> AppInviteDialog.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/share/widget/AppInviteDialog;
+.super Lcom/facebook/internal/FacebookDialogBase;
+.source "AppInviteDialog.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/share/widget/AppInviteDialog$WebFallbackHandler;,
+Lcom/facebook/share/widget/AppInviteDialog$NativeHandler;,
+Lcom/facebook/share/widget/AppInviteDialog$Result;
+}
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/facebook/internal/FacebookDialogBase<",
+"Lcom/facebook/share/model/AppInviteContent;",
+"Lcom/facebook/share/widget/AppInviteDialog$Result;",
+">;"
+}
+.end annotation
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+.field private static final DEFAULT_REQUEST_CODE:I
+.field private static final TAG:Ljava/lang/String; = "AppInviteDialog"
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->AppInvite:Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->toRequestCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	sput v0, Lcom/facebook/share/widget/AppInviteDialog;->DEFAULT_REQUEST_CODE:I</span>
+.end method
+
+.method public constructor <init>(Landroid/app/Activity;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget v0, Lcom/facebook/share/widget/AppInviteDialog;->DEFAULT_REQUEST_CODE:I</span>
+<span class="">	invoke-direct {p0, p1, v0}, Lcom/facebook/internal/FacebookDialogBase;-><init>(Landroid/app/Activity;I)V</span>
+.end method
+
+.method public constructor <init>(Landroid/app/Fragment;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroid/app/Fragment;)V</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/share/widget/AppInviteDialog;-><init>(Lcom/facebook/internal/FragmentWrapper;)V</span>
+.end method
+
+.method public constructor <init>(Landroidx/fragment/app/Fragment;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroidx/fragment/app/Fragment;)V</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/share/widget/AppInviteDialog;-><init>(Lcom/facebook/internal/FragmentWrapper;)V</span>
+.end method
+
+.method private constructor <init>(Lcom/facebook/internal/FragmentWrapper;)V
+<span class="">	.locals 1</span>
+
+<span class="">	sget v0, Lcom/facebook/share/widget/AppInviteDialog;->DEFAULT_REQUEST_CODE:I</span>
+<span class="">	invoke-direct {p0, p1, v0}, Lcom/facebook/internal/FacebookDialogBase;-><init>(Lcom/facebook/internal/FragmentWrapper;I)V</span>
+.end method
+
+.method static synthetic access$200(Lcom/facebook/share/model/AppInviteContent;)Landroid/os/Bundle;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0}, Lcom/facebook/share/widget/AppInviteDialog;->createParameters(Lcom/facebook/share/model/AppInviteContent;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method static synthetic access$300()Lcom/facebook/internal/DialogFeature;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {}, Lcom/facebook/share/widget/AppInviteDialog;->getFeature()Lcom/facebook/internal/DialogFeature;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public static canShow()Z
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+.end method
+
+.method private static canShowNativeDialog()Z
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+.end method
+
+.method private static canShowWebFallback()Z
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+.end method
+
+.method private static createParameters(Lcom/facebook/share/model/AppInviteContent;)Landroid/os/Bundle;
+<span class="">	.locals 6</span>
+
+<span class="">	const-string v0, "promo_text"</span>
+<span class="">	const-string v1, "promo_code"</span>
+<span class="">	new-instance v2, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v2}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/AppInviteContent;->getApplinkUrl()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const-string v4, "app_link_url"</span>
+<span class="">	invoke-virtual {v2, v4, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/AppInviteContent;->getPreviewImageUrl()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const-string v4, "preview_image_url"</span>
+<span class="">	invoke-virtual {v2, v4, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/AppInviteContent;->getDestination()Lcom/facebook/share/model/AppInviteContent$Builder$Destination;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Lcom/facebook/share/model/AppInviteContent$Builder$Destination;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const-string v4, "destination"</span>
+<span class="">	invoke-virtual {v2, v4, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/AppInviteContent;->getPromotionCode()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v3, ""</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/AppInviteContent;->getPromotionText()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-nez v4, :cond_1</span>
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v4, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v4}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	invoke-virtual {v4, v1, v3}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	invoke-virtual {v4, v0, p0}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v5, "deeplink_context"</span>
+<span class="">	invoke-virtual {v4}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v2, v5, v4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v2, v1, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v2, v0, p0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catch_0</span>
+<span class="">	const-string p0, "AppInviteDialog"</span>
+<span class="">	const-string v0, "Json Exception in creating deeplink context"</span>
+<span class="">	invoke-static {p0, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method private static getFeature()Lcom/facebook/internal/DialogFeature;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/share/internal/AppInviteDialogFeature;->APP_INVITES_DIALOG:Lcom/facebook/share/internal/AppInviteDialogFeature;</span>
+.end method
+
+.method public static show(Landroid/app/Activity;Lcom/facebook/share/model/AppInviteContent;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/widget/AppInviteDialog;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/share/widget/AppInviteDialog;-><init>(Landroid/app/Activity;)V</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/facebook/share/widget/AppInviteDialog;->show(Lcom/facebook/share/model/AppInviteContent;)V</span>
+.end method
+
+.method public static show(Landroid/app/Fragment;Lcom/facebook/share/model/AppInviteContent;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroid/app/Fragment;)V</span>
+<span class="">	invoke-static {v0, p1}, Lcom/facebook/share/widget/AppInviteDialog;->show(Lcom/facebook/internal/FragmentWrapper;Lcom/facebook/share/model/AppInviteContent;)V</span>
+.end method
+
+.method public static show(Landroidx/fragment/app/Fragment;Lcom/facebook/share/model/AppInviteContent;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroidx/fragment/app/Fragment;)V</span>
+<span class="">	invoke-static {v0, p1}, Lcom/facebook/share/widget/AppInviteDialog;->show(Lcom/facebook/internal/FragmentWrapper;Lcom/facebook/share/model/AppInviteContent;)V</span>
+.end method
+
+.method private static show(Lcom/facebook/internal/FragmentWrapper;Lcom/facebook/share/model/AppInviteContent;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/widget/AppInviteDialog;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/share/widget/AppInviteDialog;-><init>(Lcom/facebook/internal/FragmentWrapper;)V</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/facebook/share/widget/AppInviteDialog;->show(Lcom/facebook/share/model/AppInviteContent;)V</span>
+.end method
+
+.method protected createBaseAppCall()Lcom/facebook/internal/AppCall;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/AppCall;</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/AppInviteDialog;->getRequestCode()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/internal/AppCall;-><init>(I)V</span>
+.end method
+
+.method protected getOrderedModeHandlers()Ljava/util/List;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/facebook/internal/FacebookDialogBase<",</span>
+<span class="">	"Lcom/facebook/share/model/AppInviteContent;",</span>
+<span class="">	"Lcom/facebook/share/widget/AppInviteDialog$Result;",</span>
+<span class="">	">.ModeHandler;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	new-instance v1, Lcom/facebook/share/widget/AppInviteDialog$NativeHandler;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-direct {v1, p0, v2}, Lcom/facebook/share/widget/AppInviteDialog$NativeHandler;-><init>(Lcom/facebook/share/widget/AppInviteDialog;Lcom/facebook/share/widget/AppInviteDialog$1;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z</span>
+<span class="">	new-instance v1, Lcom/facebook/share/widget/AppInviteDialog$WebFallbackHandler;</span>
+<span class="">	invoke-direct {v1, p0, v2}, Lcom/facebook/share/widget/AppInviteDialog$WebFallbackHandler;-><init>(Lcom/facebook/share/widget/AppInviteDialog;Lcom/facebook/share/widget/AppInviteDialog$1;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z</span>
+.end method
+
+.method protected registerCallbackImpl(Lcom/facebook/internal/CallbackManagerImpl;Lcom/facebook/FacebookCallback;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/internal/CallbackManagerImpl;",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/widget/AppInviteDialog$Result;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	if-nez p2, :cond_0</span>
+<span class="">	const/4 p2, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v0, Lcom/facebook/share/widget/AppInviteDialog$1;</span>
+<span class="">	invoke-direct {v0, p0, p2, p2}, Lcom/facebook/share/widget/AppInviteDialog$1;-><init>(Lcom/facebook/share/widget/AppInviteDialog;Lcom/facebook/FacebookCallback;Lcom/facebook/FacebookCallback;)V</span>
+<span class="">	move-object p2, v0</span>
+<span class="">	:goto_0</span>
+<span class="">	new-instance v0, Lcom/facebook/share/widget/AppInviteDialog$2;</span>
+<span class="">	invoke-direct {v0, p0, p2}, Lcom/facebook/share/widget/AppInviteDialog$2;-><init>(Lcom/facebook/share/widget/AppInviteDialog;Lcom/facebook/share/internal/ResultProcessor;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/AppInviteDialog;->getRequestCode()I</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p1, p2, v0}, Lcom/facebook/internal/CallbackManagerImpl;->registerCallback(ILcom/facebook/internal/CallbackManagerImpl$Callback;)V</span>
+.end method
+
+.method public show(Lcom/facebook/share/model/AppInviteContent;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method public bridge synthetic show(Ljava/lang/Object;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	check-cast p1, Lcom/facebook/share/model/AppInviteContent;</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/facebook/share/widget/AppInviteDialog;->show(Lcom/facebook/share/model/AppInviteContent;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

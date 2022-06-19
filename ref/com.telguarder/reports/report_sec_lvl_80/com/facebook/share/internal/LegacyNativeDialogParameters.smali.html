@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.share.internal</a></li>
+        <li><i class="ico ico-class"></i> LegacyNativeDialogParameters.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/share/internal/LegacyNativeDialogParameters;
+.super Ljava/lang/Object;
+.source "LegacyNativeDialogParameters.java"
+
+
+
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method private static create(Lcom/facebook/share/model/ShareLinkContent;Z)Landroid/os/Bundle;
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/LegacyNativeDialogParameters;->createBaseParameters(Lcom/facebook/share/model/ShareContent;Z)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareLinkContent;->getContentTitle()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "com.facebook.platform.extra.TITLE"</span>
+<span class="">	invoke-static {p1, v1, v0}, Lcom/facebook/internal/Utility;->putNonEmptyString(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareLinkContent;->getContentDescription()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "com.facebook.platform.extra.DESCRIPTION"</span>
+<span class="">	invoke-static {p1, v1, v0}, Lcom/facebook/internal/Utility;->putNonEmptyString(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareLinkContent;->getImageUrl()Landroid/net/Uri;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "com.facebook.platform.extra.IMAGE"</span>
+<span class="">	invoke-static {p1, v0, p0}, Lcom/facebook/internal/Utility;->putUri(Landroid/os/Bundle;Ljava/lang/String;Landroid/net/Uri;)V</span>
+.end method
+
+.method private static create(Lcom/facebook/share/model/ShareOpenGraphContent;Lorg/json/JSONObject;Z)Landroid/os/Bundle;
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-static {p0, p2}, Lcom/facebook/share/internal/LegacyNativeDialogParameters;->createBaseParameters(Lcom/facebook/share/model/ShareContent;Z)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareOpenGraphContent;->getPreviewPropertyName()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "com.facebook.platform.extra.PREVIEW_PROPERTY_NAME"</span>
+<span class="">	invoke-static {p2, v1, v0}, Lcom/facebook/internal/Utility;->putNonEmptyString(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareOpenGraphContent;->getAction()Lcom/facebook/share/model/ShareOpenGraphAction;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareOpenGraphAction;->getActionType()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "com.facebook.platform.extra.ACTION_TYPE"</span>
+<span class="">	invoke-static {p2, v0, p0}, Lcom/facebook/internal/Utility;->putNonEmptyString(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string p1, "com.facebook.platform.extra.ACTION"</span>
+<span class="">	invoke-static {p2, p1, p0}, Lcom/facebook/internal/Utility;->putNonEmptyString(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)V</span>
+.end method
+
+.method private static create(Lcom/facebook/share/model/SharePhotoContent;Ljava/util/List;Z)Landroid/os/Bundle;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/share/model/SharePhotoContent;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;Z)",</span>
+<span class="">	"Landroid/os/Bundle;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0, p2}, Lcom/facebook/share/internal/LegacyNativeDialogParameters;->createBaseParameters(Lcom/facebook/share/model/ShareContent;Z)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	new-instance p2, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p2, p1}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V</span>
+<span class="">	const-string p1, "com.facebook.platform.extra.PHOTOS"</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Landroid/os/Bundle;->putStringArrayList(Ljava/lang/String;Ljava/util/ArrayList;)V</span>
+.end method
+
+.method private static create(Lcom/facebook/share/model/ShareVideoContent;Z)Landroid/os/Bundle;
+<span class="">	.locals 0</span>
+
+<span class="">	const/4 p0, 0x0</span>
+.end method
+
+.method public static create(Ljava/util/UUID;Lcom/facebook/share/model/ShareContent;Z)Landroid/os/Bundle;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "shareContent"</span>
+<span class="">	invoke-static {p1, v0}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "callId"</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	instance-of v0, p1, Lcom/facebook/share/model/ShareLinkContent;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	check-cast p1, Lcom/facebook/share/model/ShareLinkContent;</span>
+<span class="">	invoke-static {p1, p2}, Lcom/facebook/share/internal/LegacyNativeDialogParameters;->create(Lcom/facebook/share/model/ShareLinkContent;Z)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	instance-of v0, p1, Lcom/facebook/share/model/SharePhotoContent;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	check-cast p1, Lcom/facebook/share/model/SharePhotoContent;</span>
+<span class="">	invoke-static {p1, p0}, Lcom/facebook/share/internal/ShareInternalUtility;->getPhotoUrls(Lcom/facebook/share/model/SharePhotoContent;Ljava/util/UUID;)Ljava/util/List;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p1, p0, p2}, Lcom/facebook/share/internal/LegacyNativeDialogParameters;->create(Lcom/facebook/share/model/SharePhotoContent;Ljava/util/List;Z)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	instance-of v0, p1, Lcom/facebook/share/model/ShareVideoContent;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	check-cast p1, Lcom/facebook/share/model/ShareVideoContent;</span>
+<span class="">	invoke-static {p1, p2}, Lcom/facebook/share/internal/LegacyNativeDialogParameters;->create(Lcom/facebook/share/model/ShareVideoContent;Z)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	instance-of v0, p1, Lcom/facebook/share/model/ShareOpenGraphContent;</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	check-cast p1, Lcom/facebook/share/model/ShareOpenGraphContent;</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/share/internal/ShareInternalUtility;->toJSONObjectForCall(Ljava/util/UUID;Lcom/facebook/share/model/ShareOpenGraphContent;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p1, p0, p2}, Lcom/facebook/share/internal/LegacyNativeDialogParameters;->create(Lcom/facebook/share/model/ShareOpenGraphContent;Lorg/json/JSONObject;Z)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	new-instance p1, Lcom/facebook/FacebookException;</span>
+<span class="">	new-instance p2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v0, "Unable to create a JSON Object from the provided ShareOpenGraphContent: "</span>
+<span class="">	invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p0}, Lorg/json/JSONException;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-direct {p1, p0}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_3</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private static createBaseParameters(Lcom/facebook/share/model/ShareContent;Z)Landroid/os/Bundle;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v0}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareContent;->getContentUrl()Landroid/net/Uri;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "com.facebook.platform.extra.LINK"</span>
+<span class="">	invoke-static {v0, v2, v1}, Lcom/facebook/internal/Utility;->putUri(Landroid/os/Bundle;Ljava/lang/String;Landroid/net/Uri;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareContent;->getPlaceId()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "com.facebook.platform.extra.PLACE"</span>
+<span class="">	invoke-static {v0, v2, v1}, Lcom/facebook/internal/Utility;->putNonEmptyString(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareContent;->getRef()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "com.facebook.platform.extra.REF"</span>
+<span class="">	invoke-static {v0, v2, v1}, Lcom/facebook/internal/Utility;->putNonEmptyString(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string v1, "com.facebook.platform.extra.DATA_FAILURES_FATAL"</span>
+<span class="">	invoke-virtual {v0, v1, p1}, Landroid/os/Bundle;->putBoolean(Ljava/lang/String;Z)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/model/ShareContent;->getPeopleIds()Ljava/util/List;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/util/Collection;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	new-instance p1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p1, p0}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V</span>
+<span class="">	const-string p0, "com.facebook.platform.extra.FRIENDS"</span>
+<span class="">	invoke-virtual {v0, p0, p1}, Landroid/os/Bundle;->putStringArrayList(Ljava/lang/String;Ljava/util/ArrayList;)V</span>
+<span class="">	:cond_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.recyclerview.widget</a></li>
+        <li><i class="ico ico-class"></i> RecyclerView$l.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Landroidx/recyclerview/widget/RecyclerView$l;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Landroidx/recyclerview/widget/RecyclerView;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x409
+name = "l"
+.end annotation
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/recyclerview/widget/RecyclerView$l$c;,
+Landroidx/recyclerview/widget/RecyclerView$l$a;,
+Landroidx/recyclerview/widget/RecyclerView$l$b;
+}
+.end annotation
+
+.field private mAddDuration:J
+.field private mChangeDuration:J
+.field private mFinishedListeners:Ljava/util/ArrayList;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/ArrayList<",
+"Landroidx/recyclerview/widget/RecyclerView$l$a;",
+">;"
+}
+.end annotation
+.end field
+.field private mListener:Landroidx/recyclerview/widget/RecyclerView$l$b;
+.field private mMoveDuration:J
+.field private mRemoveDuration:J
+
+
+.method public constructor <init>()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mListener:Landroidx/recyclerview/widget/RecyclerView$l$b;</span>
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mFinishedListeners:Ljava/util/ArrayList;</span>
+<span class="">	const-wide/16 v0, 0x78</span>
+<span class="">	iput-wide v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mAddDuration:J</span>
+<span class="">	iput-wide v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mRemoveDuration:J</span>
+<span class="">	const-wide/16 v0, 0xfa</span>
+<span class="">	iput-wide v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mMoveDuration:J</span>
+<span class="">	iput-wide v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mChangeDuration:J</span>
+.end method
+
+.method static buildAdapterChangeFlagsForAnimations(Landroidx/recyclerview/widget/RecyclerView$d0;)I
+<span class="">	.locals 3</span>
+
+<span class="">	iget v0, p0, Landroidx/recyclerview/widget/RecyclerView$d0;->mFlags:I</span>
+<span class="">	and-int/lit8 v0, v0, 0xe</span>
+<span class="">	invoke-virtual {p0}, Landroidx/recyclerview/widget/RecyclerView$d0;->isInvalid()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const/4 p0, 0x4</span>
+<span class="">	and-int/lit8 v1, v0, 0x4</span>
+<span class="">	:cond_0</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/recyclerview/widget/RecyclerView$d0;->getOldPosition()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/recyclerview/widget/RecyclerView$d0;->getAdapterPosition()I</span>
+<span class="">	move-result p0</span>
+<span class="">	const/4 v2, -0x1</span>
+<span class="">	if-eq v1, v2, :cond_1</span>
+<span class="">	if-eq p0, v2, :cond_1</span>
+<span class="">	if-eq v1, p0, :cond_1</span>
+<span class="">	or-int/lit16 v0, v0, 0x800</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public abstract animateAppearance(Landroidx/recyclerview/widget/RecyclerView$d0;Landroidx/recyclerview/widget/RecyclerView$l$c;Landroidx/recyclerview/widget/RecyclerView$l$c;)Z
+<span class="">	</span>
+
+.end method
+
+.method public abstract animateChange(Landroidx/recyclerview/widget/RecyclerView$d0;Landroidx/recyclerview/widget/RecyclerView$d0;Landroidx/recyclerview/widget/RecyclerView$l$c;Landroidx/recyclerview/widget/RecyclerView$l$c;)Z
+<span class="">	</span>
+
+.end method
+
+.method public abstract animateDisappearance(Landroidx/recyclerview/widget/RecyclerView$d0;Landroidx/recyclerview/widget/RecyclerView$l$c;Landroidx/recyclerview/widget/RecyclerView$l$c;)Z
+<span class="">	</span>
+
+.end method
+
+.method public abstract animatePersistence(Landroidx/recyclerview/widget/RecyclerView$d0;Landroidx/recyclerview/widget/RecyclerView$l$c;Landroidx/recyclerview/widget/RecyclerView$l$c;)Z
+<span class="">	</span>
+
+.end method
+
+.method public abstract canReuseUpdatedViewHolder(Landroidx/recyclerview/widget/RecyclerView$d0;)Z
+<span class="">	</span>
+
+.end method
+
+.method public canReuseUpdatedViewHolder(Landroidx/recyclerview/widget/RecyclerView$d0;Ljava/util/List;)Z
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroidx/recyclerview/widget/RecyclerView$d0;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">;)Z"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroidx/recyclerview/widget/RecyclerView$l;->canReuseUpdatedViewHolder(Landroidx/recyclerview/widget/RecyclerView$d0;)Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public final dispatchAnimationFinished(Landroidx/recyclerview/widget/RecyclerView$d0;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroidx/recyclerview/widget/RecyclerView$l;->onAnimationFinished(Landroidx/recyclerview/widget/RecyclerView$d0;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mListener:Landroidx/recyclerview/widget/RecyclerView$l$b;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-interface {v0, p1}, Landroidx/recyclerview/widget/RecyclerView$l$b;->a(Landroidx/recyclerview/widget/RecyclerView$d0;)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public final dispatchAnimationsFinished()V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mFinishedListeners:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/ArrayList;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v1, v0, :cond_0</span>
+<span class="">	iget-object v2, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mFinishedListeners:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v2, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroidx/recyclerview/widget/RecyclerView$l$a;</span>
+<span class="">	invoke-interface {v2}, Landroidx/recyclerview/widget/RecyclerView$l$a;->a()V</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mFinishedListeners:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V</span>
+.end method
+
+.method public abstract endAnimation(Landroidx/recyclerview/widget/RecyclerView$d0;)V
+<span class="">	</span>
+
+.end method
+
+.method public abstract endAnimations()V
+<span class="">	</span>
+
+.end method
+
+.method public getAddDuration()J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-wide v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mAddDuration:J</span>
+.end method
+
+.method public getChangeDuration()J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-wide v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mChangeDuration:J</span>
+.end method
+
+.method public getMoveDuration()J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-wide v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mMoveDuration:J</span>
+.end method
+
+.method public getRemoveDuration()J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-wide v0, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mRemoveDuration:J</span>
+.end method
+
+.method public abstract isRunning()Z
+<span class="">	</span>
+
+.end method
+
+.method public obtainHolderInfo()Landroidx/recyclerview/widget/RecyclerView$l$c;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/recyclerview/widget/RecyclerView$l$c;</span>
+<span class="">	invoke-direct {v0}, Landroidx/recyclerview/widget/RecyclerView$l$c;-><init>()V</span>
+.end method
+
+.method public onAnimationFinished(Landroidx/recyclerview/widget/RecyclerView$d0;)V
+<span class="">	.locals 0</span>
+
+.end method
+
+.method public recordPostLayoutInformation(Landroidx/recyclerview/widget/RecyclerView$a0;Landroidx/recyclerview/widget/RecyclerView$d0;)Landroidx/recyclerview/widget/RecyclerView$l$c;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/recyclerview/widget/RecyclerView$l;->obtainHolderInfo()Landroidx/recyclerview/widget/RecyclerView$l$c;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, p2}, Landroidx/recyclerview/widget/RecyclerView$l$c;->a(Landroidx/recyclerview/widget/RecyclerView$d0;)Landroidx/recyclerview/widget/RecyclerView$l$c;</span>
+.end method
+
+.method public recordPreLayoutInformation(Landroidx/recyclerview/widget/RecyclerView$a0;Landroidx/recyclerview/widget/RecyclerView$d0;ILjava/util/List;)Landroidx/recyclerview/widget/RecyclerView$l$c;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroidx/recyclerview/widget/RecyclerView$a0;",</span>
+<span class="">	"Landroidx/recyclerview/widget/RecyclerView$d0;",</span>
+<span class="">	"I",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Landroidx/recyclerview/widget/RecyclerView$l$c;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/recyclerview/widget/RecyclerView$l;->obtainHolderInfo()Landroidx/recyclerview/widget/RecyclerView$l$c;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, p2}, Landroidx/recyclerview/widget/RecyclerView$l$c;->a(Landroidx/recyclerview/widget/RecyclerView$d0;)Landroidx/recyclerview/widget/RecyclerView$l$c;</span>
+.end method
+
+.method public abstract runPendingAnimations()V
+<span class="">	</span>
+
+.end method
+
+.method  setListener(Landroidx/recyclerview/widget/RecyclerView$l$b;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Landroidx/recyclerview/widget/RecyclerView$l;->mListener:Landroidx/recyclerview/widget/RecyclerView$l$b;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

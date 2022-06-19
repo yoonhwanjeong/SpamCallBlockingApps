@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.inappmessaging.display.internal</a></li>
+        <li><i class="ico ico-class"></i> ResizableImageView.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView;
+.super Landroidx/appcompat/widget/n;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;
+}
+.end annotation
+
+.field private h:I
+
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1, p2}, Landroidx/appcompat/widget/n;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView;->e(Landroid/content/Context;)V</span>
+.end method
+
+.method private c(II)Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-virtual {p0}, Landroid/widget/ImageView;->getMaxWidth()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p0}, Landroid/widget/ImageView;->getMaxHeight()I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-le p1, v0, :cond_0</span>
+<span class="">	int-to-float v2, v0</span>
+<span class="">	const-string v3, "Image: capping width"</span>
+<span class="">	invoke-static {v3, v2}, Lcom/google/firebase/inappmessaging/display/internal/k;->c(Ljava/lang/String;F)V</span>
+<span class="">	mul-int p2, p2, v0</span>
+<span class="">	div-int/2addr p2, p1</span>
+<span class="">	move p1, v0</span>
+<span class="">	:cond_0</span>
+<span class="">	if-le p2, v1, :cond_1</span>
+<span class="">	int-to-float v0, v1</span>
+<span class="">	const-string v2, "Image: capping height"</span>
+<span class="">	invoke-static {v2, v0}, Lcom/google/firebase/inappmessaging/display/internal/k;->c(Ljava/lang/String;F)V</span>
+<span class="">	mul-int p1, p1, v1</span>
+<span class="">	div-int/2addr p1, p2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	move v1, p2</span>
+<span class="">	:goto_0</span>
+<span class="">	new-instance p2, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {p2, p1, v1, v0}, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;-><init>(IILcom/google/firebase/inappmessaging/display/internal/ResizableImageView$a;)V</span>
+.end method
+
+.method private d()V
+<span class="">	.locals 10</span>
+
+<span class="">	invoke-virtual {p0}, Landroid/widget/ImageView;->getMinimumWidth()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p0}, Landroid/widget/ImageView;->getSuggestedMinimumWidth()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-static {v0, v1}, Ljava/lang/Math;->max(II)I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p0}, Landroid/widget/ImageView;->getMinimumHeight()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {p0}, Landroid/widget/ImageView;->getSuggestedMinimumHeight()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-static {v1, v2}, Ljava/lang/Math;->max(II)I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {p0}, Landroid/widget/ImageView;->getMeasuredWidth()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {p0}, Landroid/widget/ImageView;->getMeasuredHeight()I</span>
+<span class="">	move-result v3</span>
+<span class="">	int-to-float v4, v0</span>
+<span class="">	int-to-float v5, v1</span>
+<span class="">	const-string v6, "Image: min width, height"</span>
+<span class="">	invoke-static {v6, v4, v5}, Lcom/google/firebase/inappmessaging/display/internal/k;->d(Ljava/lang/String;FF)V</span>
+<span class="">	int-to-float v6, v2</span>
+<span class="">	int-to-float v7, v3</span>
+<span class="">	const-string v8, "Image: actual width, height"</span>
+<span class="">	invoke-static {v8, v6, v7}, Lcom/google/firebase/inappmessaging/display/internal/k;->d(Ljava/lang/String;FF)V</span>
+<span class="">	const/high16 v8, 0x3f800000    # 1.0f</span>
+<span class="">	if-ge v2, v0, :cond_0</span>
+<span class="">	div-float/2addr v4, v6</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/high16 v4, 0x3f800000    # 1.0f</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v3, v1, :cond_1</span>
+<span class="">	div-float v8, v5, v7</span>
+<span class="">	:cond_1</span>
+<span class="">	cmpl-float v0, v4, v8</span>
+<span class="">	if-lez v0, :cond_2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	move v4, v8</span>
+<span class="">	:goto_1</span>
+<span class="">	float-to-double v0, v4</span>
+<span class="">	const-wide/high16 v8, 0x3ff0000000000000L    # 1.0</span>
+<span class="">	cmpl-double v5, v0, v8</span>
+<span class="">	if-lez v5, :cond_3</span>
+<span class="">	mul-float v6, v6, v4</span>
+<span class="">	float-to-double v0, v6</span>
+<span class="">	invoke-static {v0, v1}, Ljava/lang/Math;->ceil(D)D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	double-to-int v0, v0</span>
+<span class="">	mul-float v7, v7, v4</span>
+<span class="">	float-to-double v4, v7</span>
+<span class="">	invoke-static {v4, v5}, Ljava/lang/Math;->ceil(D)D</span>
+<span class="">	move-result-wide v4</span>
+<span class="">	double-to-int v1, v4</span>
+<span class="">	new-instance v4, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v5, "Measured dimension ("</span>
+<span class="">	invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v2, "x"</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v3, ") too small.  Resizing to "</span>
+<span class="">	invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2}, Lcom/google/firebase/inappmessaging/display/internal/k;->a(Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0, v0, v1}, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView;->c(II)Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget v1, v0, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;->a:I</span>
+<span class="">	iget v0, v0, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;->b:I</span>
+<span class="">	invoke-virtual {p0, v1, v0}, Landroid/widget/ImageView;->setMeasuredDimension(II)V</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method private e(Landroid/content/Context;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget p1, p1, Landroid/util/DisplayMetrics;->density:F</span>
+<span class="">	const/high16 v0, 0x43200000    # 160.0f</span>
+<span class="">	mul-float p1, p1, v0</span>
+<span class="">	float-to-int p1, p1</span>
+<span class="">	iput p1, p0, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView;->h:I</span>
+.end method
+
+.method private f(Landroid/graphics/drawable/Drawable;)V
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-virtual {p1}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I</span>
+<span class="">	move-result p1</span>
+<span class="">	int-to-float v1, v0</span>
+<span class="">	int-to-float v2, p1</span>
+<span class="">	const-string v3, "Image: intrinsic width, height"</span>
+<span class="">	invoke-static {v3, v1, v2}, Lcom/google/firebase/inappmessaging/display/internal/k;->d(Ljava/lang/String;FF)V</span>
+<span class="">	iget v1, p0, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView;->h:I</span>
+<span class="">	mul-int v0, v0, v1</span>
+<span class="">	div-int/lit16 v0, v0, 0xa0</span>
+<span class="">	int-to-double v0, v0</span>
+<span class="">	invoke-static {v0, v1}, Ljava/lang/Math;->ceil(D)D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	double-to-int v0, v0</span>
+<span class="">	iget v1, p0, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView;->h:I</span>
+<span class="">	mul-int p1, p1, v1</span>
+<span class="">	div-int/lit16 p1, p1, 0xa0</span>
+<span class="">	int-to-double v1, p1</span>
+<span class="">	invoke-static {v1, v2}, Ljava/lang/Math;->ceil(D)D</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	double-to-int p1, v1</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView;->c(II)Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget v0, p1, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;->a:I</span>
+<span class="">	int-to-float v0, v0</span>
+<span class="">	iget v1, p1, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;->b:I</span>
+<span class="">	int-to-float v1, v1</span>
+<span class="">	const-string v2, "Image: new target dimensions"</span>
+<span class="">	invoke-static {v2, v0, v1}, Lcom/google/firebase/inappmessaging/display/internal/k;->d(Ljava/lang/String;FF)V</span>
+<span class="">	iget v0, p1, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;->a:I</span>
+<span class="">	iget p1, p1, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView$b;->b:I</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Landroid/widget/ImageView;->setMeasuredDimension(II)V</span>
+.end method
+
+.method protected onMeasure(II)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0, p1, p2}, Landroid/widget/ImageView;->onMeasure(II)V</span>
+<span class="">	sget p1, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 p2, 0x10</span>
+<span class="">	if-le p1, p2, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroid/widget/ImageView;->getDrawable()Landroid/graphics/drawable/Drawable;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0}, Landroid/widget/ImageView;->getAdjustViewBounds()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView;->f(Landroid/graphics/drawable/Drawable;)V</span>
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/inappmessaging/display/internal/ResizableImageView;->d()V</span>
+<span class="">	:cond_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

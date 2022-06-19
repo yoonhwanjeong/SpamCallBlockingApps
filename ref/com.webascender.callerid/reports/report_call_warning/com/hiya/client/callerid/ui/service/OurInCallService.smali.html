@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.client.callerid.ui.service</a></li>
+        <li><i class="ico ico-class"></i> OurInCallService.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/hiya/client/callerid/ui/service/OurInCallService;
+.super Landroid/telecom/InCallService;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/hiya/client/callerid/ui/service/OurInCallService$a;
+}
+.end annotation
+
+.field private static i:Lcom/hiya/client/callerid/ui/service/OurInCallService;
+.field public static final j:Lcom/hiya/client/callerid/ui/service/OurInCallService$a;
+.field public f:Lcom/hiya/client/callerid/ui/a0/c;
+.field public g:Lcom/hiya/client/callerid/ui/a0/g;
+.field public h:Lcom/hiya/client/callerid/ui/a0/h;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/hiya/client/callerid/ui/service/OurInCallService$a;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/hiya/client/callerid/ui/service/OurInCallService$a;-><init>(Lkotlin/w/c/g;)V</span>
+<span class="">	sput-object v0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->j:Lcom/hiya/client/callerid/ui/service/OurInCallService$a;</span>
+.end method
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroid/telecom/InCallService;-><init>()V</span>
+.end method
+
+.method public static final synthetic a()Lcom/hiya/client/callerid/ui/service/OurInCallService;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->i:Lcom/hiya/client/callerid/ui/service/OurInCallService;</span>
+.end method
+
+.method public final b()Lcom/hiya/client/callerid/ui/a0/g;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->g:Lcom/hiya/client/callerid/ui/a0/g;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-string v0, "headsUpOverlayManager"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v0}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public final c()Lcom/hiya/client/callerid/ui/a0/h;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->h:Lcom/hiya/client/callerid/ui/a0/h;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-string v0, "multiTaskingOverlayManager"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v0}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public onCallAdded(Landroid/telecom/Call;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-super {p0, p1}, Landroid/telecom/InCallService;->onCallAdded(Landroid/telecom/Call;)V</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->f:Lcom/hiya/client/callerid/ui/a0/c;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/hiya/client/callerid/ui/a0/c;->I(Landroid/telecom/Call;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p1, "callManager"</span>
+<span class="">	invoke-static {p1}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public onCallAudioStateChanged(Landroid/telecom/CallAudioState;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-super {p0, p1}, Landroid/telecom/InCallService;->onCallAudioStateChanged(Landroid/telecom/CallAudioState;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->f:Lcom/hiya/client/callerid/ui/a0/c;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/hiya/client/callerid/ui/a0/c;->J(Landroid/telecom/CallAudioState;)V</span>
+<span class="">	const-string p1, "callManager"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p1}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public onCallRemoved(Landroid/telecom/Call;)V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-super {p0, p1}, Landroid/telecom/InCallService;->onCallRemoved(Landroid/telecom/Call;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->f:Lcom/hiya/client/callerid/ui/a0/c;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const-string v2, "callManager"</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/hiya/client/callerid/ui/a0/c;->k(Landroid/telecom/Call;)Lcom/hiya/client/callerid/ui/a0/c$b;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->f:Lcom/hiya/client/callerid/ui/a0/c;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0, p1}, Lcom/hiya/client/callerid/ui/a0/c;->K(Lcom/hiya/client/callerid/ui/a0/c$b;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v2}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	throw v1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v2}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	throw v1</span>
+.end method
+
+.method public onCreate()V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-super {p0}, Landroid/telecom/InCallService;->onCreate()V</span>
+<span class="">	sget-object v0, Lcom/hiya/client/callerid/ui/z/b;->a:Lcom/hiya/client/callerid/ui/z/b$a;</span>
+<span class="">	invoke-virtual {p0}, Landroid/telecom/InCallService;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "applicationContext"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/hiya/client/callerid/ui/z/b$a;->a(Landroid/content/Context;)Lcom/hiya/client/callerid/ui/z/b;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0, p0}, Lcom/hiya/client/callerid/ui/z/b;->b(Lcom/hiya/client/callerid/ui/service/OurInCallService;)V</span>
+<span class="">	sput-object p0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->i:Lcom/hiya/client/callerid/ui/service/OurInCallService;</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->f:Lcom/hiya/client/callerid/ui/a0/c;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/hiya/client/callerid/ui/a0/c;->C()V</span>
+<span class="">	const-string v0, "callManager"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v0}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public onDestroy()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0}, Landroid/telecom/InCallService;->onDestroy()V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->g:Lcom/hiya/client/callerid/ui/a0/g;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {v0}, Lcom/hiya/client/callerid/ui/a0/g;->d()V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/ui/service/OurInCallService;->h:Lcom/hiya/client/callerid/ui/a0/h;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/hiya/client/callerid/ui/a0/h;->f()V</span>
+<span class="">	sput-object v1, Lcom/hiya/client/callerid/ui/service/OurInCallService;->i:Lcom/hiya/client/callerid/ui/service/OurInCallService;</span>
+<span class="">	const-string v0, "multiTaskingOverlayManager"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v0}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	throw v1</span>
+<span class="">	const-string v0, "headsUpOverlayManager"</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {v0}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	throw v1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

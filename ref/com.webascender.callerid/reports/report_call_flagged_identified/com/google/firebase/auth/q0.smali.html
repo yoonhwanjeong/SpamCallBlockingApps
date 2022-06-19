@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.auth</a></li>
+        <li><i class="ico ico-class"></i> q0.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class final Lcom/google/firebase/auth/q0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+.implements Lcom/google/android/gms/tasks/c;
+
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/lang/Object;",
+"Lcom/google/android/gms/tasks/c<",
+"Lcom/google/firebase/auth/internal/i0;",
+">;"
+}
+.end annotation
+
+.field final synthetic a:Lcom/google/firebase/auth/r;
+.field final synthetic b:Lcom/google/firebase/auth/FirebaseAuth;
+
+
+.method constructor <init>(Lcom/google/firebase/auth/FirebaseAuth;Lcom/google/firebase/auth/r;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/google/firebase/auth/q0;->b:Lcom/google/firebase/auth/FirebaseAuth;</span>
+<span class="">	iput-object p2, p0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public final a(Lcom/google/android/gms/tasks/g;)V
+<span class="">	.locals 17</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Lcom/google/firebase/auth/internal/i0;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	move-object/from16 v0, p0</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lcom/google/android/gms/tasks/g;->s()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lcom/google/android/gms/tasks/g;->n()Ljava/lang/Exception;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v3, "Error while validating application identity: "</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_0</span>
+<span class="">	invoke-virtual {v3, v1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v1, Ljava/lang/String;</span>
+<span class="">	invoke-direct {v1, v3}, Ljava/lang/String;-><init>(Ljava/lang/String;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	const-string v3, "FirebaseAuth"</span>
+<span class="">	invoke-static {v3, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	const-string v1, "Proceeding without any application identifier."</span>
+<span class="">	invoke-static {v3, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	move-object v11, v2</span>
+<span class="">	move-object v12, v11</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lcom/google/android/gms/tasks/g;->o()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/google/firebase/auth/internal/i0;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/auth/internal/i0;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lcom/google/android/gms/tasks/g;->o()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/google/firebase/auth/internal/i0;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/auth/internal/i0;->b()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	move-object v12, v1</span>
+<span class="">	move-object v11, v2</span>
+<span class="">	:goto_1</span>
+<span class="">	iget-object v1, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/auth/r;->d()Ljava/lang/Long;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v7</span>
+<span class="">	iget-object v1, v0, Lcom/google/firebase/auth/q0;->b:Lcom/google/firebase/auth/FirebaseAuth;</span>
+<span class="">	iget-object v2, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/auth/r;->c()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	iget-object v3, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v3}, Lcom/google/firebase/auth/r;->e()Lcom/google/firebase/auth/s$b;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {v1, v2, v3}, Lcom/google/firebase/auth/FirebaseAuth;->n(Lcom/google/firebase/auth/FirebaseAuth;Ljava/lang/String;Lcom/google/firebase/auth/s$b;)Lcom/google/firebase/auth/s$b;</span>
+<span class="">	move-result-object v14</span>
+<span class="">	iget-object v1, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/auth/r;->h()Lcom/google/firebase/auth/o;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	move-object v4, v1</span>
+<span class="">	check-cast v4, Lcom/google/firebase/auth/internal/h;</span>
+<span class="">	invoke-virtual {v4}, Lcom/google/firebase/auth/internal/h;->B1()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	iget-object v1, v0, Lcom/google/firebase/auth/q0;->b:Lcom/google/firebase/auth/FirebaseAuth;</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/auth/FirebaseAuth;->p(Lcom/google/firebase/auth/FirebaseAuth;)Lcom/google/android/gms/internal/firebase-auth-api/vj;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iget-object v5, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v5}, Lcom/google/firebase/auth/r;->c()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	iget-object v6, v0, Lcom/google/firebase/auth/q0;->b:Lcom/google/firebase/auth/FirebaseAuth;</span>
+<span class="">	invoke-static {v6}, Lcom/google/firebase/auth/FirebaseAuth;->o(Lcom/google/firebase/auth/FirebaseAuth;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	iget-object v9, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v9}, Lcom/google/firebase/auth/r;->g()Lcom/google/firebase/auth/s$a;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	if-eqz v9, :cond_2</span>
+<span class="">	const/4 v9, 0x1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 v9, 0x0</span>
+<span class="">	:goto_2</span>
+<span class="">	iget-object v2, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/auth/r;->i()Z</span>
+<span class="">	move-result v10</span>
+<span class="">	invoke-static {}, Lcom/google/android/gms/internal/firebase-auth-api/xj;->a()Z</span>
+<span class="">	move-result v13</span>
+<span class="">	iget-object v2, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/auth/r;->f()Ljava/util/concurrent/Executor;</span>
+<span class="">	move-result-object v15</span>
+<span class="">	iget-object v2, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/auth/r;->j()Landroid/app/Activity;</span>
+<span class="">	move-result-object v16</span>
+<span class="">	move-object v3, v1</span>
+<span class="">	invoke-virtual/range {v3 .. v16}, Lcom/google/android/gms/internal/firebase-auth-api/vj;->f(Lcom/google/firebase/auth/internal/h;Ljava/lang/String;Ljava/lang/String;JZZLjava/lang/String;Ljava/lang/String;ZLcom/google/firebase/auth/s$b;Ljava/util/concurrent/Executor;Landroid/app/Activity;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	iget-object v1, v0, Lcom/google/firebase/auth/q0;->b:Lcom/google/firebase/auth/FirebaseAuth;</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/auth/FirebaseAuth;->p(Lcom/google/firebase/auth/FirebaseAuth;)Lcom/google/android/gms/internal/firebase-auth-api/vj;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iget-object v5, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v5}, Lcom/google/firebase/auth/r;->k()Lcom/google/firebase/auth/t;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	iget-object v6, v0, Lcom/google/firebase/auth/q0;->b:Lcom/google/firebase/auth/FirebaseAuth;</span>
+<span class="">	invoke-static {v6}, Lcom/google/firebase/auth/FirebaseAuth;->o(Lcom/google/firebase/auth/FirebaseAuth;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	iget-object v9, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v9}, Lcom/google/firebase/auth/r;->g()Lcom/google/firebase/auth/s$a;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	if-eqz v9, :cond_4</span>
+<span class="">	const/4 v9, 0x1</span>
+<span class="">	goto :goto_3</span>
+<span class="">	const/4 v9, 0x0</span>
+<span class="">	:cond_4</span>
+<span class="">	iget-object v2, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	:goto_3</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/auth/r;->i()Z</span>
+<span class="">	move-result v10</span>
+<span class="">	invoke-static {}, Lcom/google/android/gms/internal/firebase-auth-api/xj;->a()Z</span>
+<span class="">	move-result v13</span>
+<span class="">	iget-object v2, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/auth/r;->f()Ljava/util/concurrent/Executor;</span>
+<span class="">	move-result-object v15</span>
+<span class="">	iget-object v2, v0, Lcom/google/firebase/auth/q0;->a:Lcom/google/firebase/auth/r;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/auth/r;->j()Landroid/app/Activity;</span>
+<span class="">	move-result-object v16</span>
+<span class="">	move-object v3, v1</span>
+<span class="">	invoke-virtual/range {v3 .. v16}, Lcom/google/android/gms/internal/firebase-auth-api/vj;->g(Lcom/google/firebase/auth/internal/h;Lcom/google/firebase/auth/t;Ljava/lang/String;JZZLjava/lang/String;Ljava/lang/String;ZLcom/google/firebase/auth/s$b;Ljava/util/concurrent/Executor;Landroid/app/Activity;)Lcom/google/android/gms/tasks/g;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">io.didomi.sdk</a></li>
+        <li><i class="ico ico-class"></i> s5.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lio/didomi/sdk/s5;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private final a:Lio/didomi/sdk/n0;
+.field private final b:Lio/didomi/sdk/apiEvents/a;
+.field private final c:Lio/didomi/sdk/events/a;
+.field private final d:Lio/didomi/sdk/remote/a;
+.field private final e:Lio/didomi/sdk/g3;
+.field private final f:Lkotlinx/coroutines/CoroutineDispatcher;
+.field private final g:Lcom/google/gson/Gson;
+
+
+.method public constructor <init>(Lio/didomi/sdk/n0;Lio/didomi/sdk/apiEvents/a;Lio/didomi/sdk/events/a;Lio/didomi/sdk/remote/a;Lio/didomi/sdk/g3;Lkotlinx/coroutines/CoroutineDispatcher;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "consentRepository"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "apiEventsRepository"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "eventsRepository"</span>
+<span class="">	invoke-static {p3, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "httpRequestHelper"</span>
+<span class="">	invoke-static {p4, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "organizationUserRepository"</span>
+<span class="">	invoke-static {p5, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "coroutineDispatcher"</span>
+<span class="">	invoke-static {p6, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lio/didomi/sdk/s5;->a:Lio/didomi/sdk/n0;</span>
+<span class="">	iput-object p2, p0, Lio/didomi/sdk/s5;->b:Lio/didomi/sdk/apiEvents/a;</span>
+<span class="">	iput-object p3, p0, Lio/didomi/sdk/s5;->c:Lio/didomi/sdk/events/a;</span>
+<span class="">	iput-object p4, p0, Lio/didomi/sdk/s5;->d:Lio/didomi/sdk/remote/a;</span>
+<span class="">	iput-object p5, p0, Lio/didomi/sdk/s5;->e:Lio/didomi/sdk/g3;</span>
+<span class="">	iput-object p6, p0, Lio/didomi/sdk/s5;->f:Lkotlinx/coroutines/CoroutineDispatcher;</span>
+<span class="">	new-instance p1, Lcom/google/gson/Gson;</span>
+<span class="">	invoke-direct {p1}, Lcom/google/gson/Gson;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lio/didomi/sdk/s5;->g:Lcom/google/gson/Gson;</span>
+.end method
+
+.method public static final synthetic a(Lio/didomi/sdk/s5;)Lcom/google/gson/Gson;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lio/didomi/sdk/s5;->g:Lcom/google/gson/Gson;</span>
+.end method
+
+.method private final f()V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/s5;->a:Lio/didomi/sdk/n0;</span>
+<span class="">	sget-object v1, Lio/didomi/sdk/h1;->a:Lio/didomi/sdk/h1;</span>
+<span class="">	invoke-virtual {v1}, Lio/didomi/sdk/h1;->a()Ljava/util/Date;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lio/didomi/sdk/n0;->a(Ljava/util/Date;)V</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/s5;->a:Lio/didomi/sdk/n0;</span>
+<span class="">	invoke-virtual {v0}, Lio/didomi/sdk/n0;->l()V</span>
+<span class="">	const-string v0, "Syncing done"</span>
+<span class="">	invoke-static {v0}, Lio/didomi/sdk/a8;->a(Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/s5;->c:Lio/didomi/sdk/events/a;</span>
+<span class="">	new-instance v1, Lio/didomi/sdk/events/SyncDoneEvent;</span>
+<span class="">	iget-object v2, p0, Lio/didomi/sdk/s5;->e:Lio/didomi/sdk/g3;</span>
+<span class="">	invoke-virtual {v2}, Lio/didomi/sdk/g3;->a()Lio/didomi/sdk/i8;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v2}, Lio/didomi/sdk/i8;->getId()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-direct {v1, v2}, Lio/didomi/sdk/events/SyncDoneEvent;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Lio/didomi/sdk/events/a;->c(Lio/didomi/sdk/events/Event;)V</span>
+.end method
+
+.method public final a()Lio/didomi/sdk/apiEvents/a;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/s5;->b:Lio/didomi/sdk/apiEvents/a;</span>
+.end method
+
+.method public final a(Lio/didomi/sdk/user/sync/model/a;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lio/didomi/sdk/user/sync/model/a;",</span>
+<span class="">	"Lkotlin/coroutines/Continuation<",</span>
+<span class="">	"-",</span>
+<span class="">	"Lkotlin/Unit;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Ljava/lang/Object;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	instance-of v0, p2, Lio/didomi/sdk/s5$b;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	move-object v0, p2</span>
+<span class="">	check-cast v0, Lio/didomi/sdk/s5$b;</span>
+<span class="">	iget v1, v0, Lio/didomi/sdk/s5$b;->d:I</span>
+<span class="">	const/high16 v2, -0x80000000</span>
+<span class="">	and-int v3, v1, v2</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	sub-int/2addr v1, v2</span>
+<span class="">	iput v1, v0, Lio/didomi/sdk/s5$b;->d:I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v0, Lio/didomi/sdk/s5$b;</span>
+<span class="">	invoke-direct {v0, p0, p2}, Lio/didomi/sdk/s5$b;-><init>(Lio/didomi/sdk/s5;Lkotlin/coroutines/Continuation;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	iget-object p2, v0, Lio/didomi/sdk/s5$b;->b:Ljava/lang/Object;</span>
+<span class="">	invoke-static {}, Lkotlin/coroutines/intrinsics/IntrinsicsKt;->getCOROUTINE_SUSPENDED()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iget v2, v0, Lio/didomi/sdk/s5$b;->d:I</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	if-ne v2, v3, :cond_1</span>
+<span class="">	iget-object p1, v0, Lio/didomi/sdk/s5$b;->a:Ljava/lang/Object;</span>
+<span class="">	check-cast p1, Lio/didomi/sdk/s5;</span>
+<span class="">	invoke-static {p2}, Lkotlin/ResultKt;->throwOnFailure(Ljava/lang/Object;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string p2, "call to \'resume\' before \'invoke\' with coroutine"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {p2}, Lkotlin/ResultKt;->throwOnFailure(Ljava/lang/Object;)V</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/user/sync/model/a;->d()Lio/didomi/sdk/config/app/SyncConfiguration;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Lio/didomi/sdk/config/app/SyncConfiguration;->getEnabled()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/user/sync/model/a;->d()Lio/didomi/sdk/config/app/SyncConfiguration;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Lio/didomi/sdk/config/app/SyncConfiguration;->getFrequency()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/user/sync/model/a;->i()Ljava/util/Date;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {p0, p2, v2, v4}, Lio/didomi/sdk/s5;->a(ZILjava/util/Date;)Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-nez p2, :cond_3</span>
+<span class="">	sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;</span>
+<span class="">	const-string p2, "Syncing user status from server"</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-static {p2}, Lio/didomi/sdk/a8;->a(Ljava/lang/String;)V</span>
+<span class="">	iput-object p0, v0, Lio/didomi/sdk/s5$b;->a:Ljava/lang/Object;</span>
+<span class="">	iput v3, v0, Lio/didomi/sdk/s5$b;->d:I</span>
+<span class="">	invoke-virtual {p0, p1, v0}, Lio/didomi/sdk/s5;->b(Lio/didomi/sdk/user/sync/model/a;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	if-ne p2, v1, :cond_4</span>
+<span class="">	move-object p1, p0</span>
+<span class="">	check-cast p2, Lio/didomi/sdk/y;</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {p2}, Lio/didomi/sdk/y;->c()Z</span>
+<span class="">	:goto_1</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_6</span>
+<span class="">	invoke-virtual {p2}, Lio/didomi/sdk/y;->a()Ljava/lang/Throwable;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v0, v0, Lio/didomi/sdk/t5;</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	const-string p2, "User status is unknown from server (new user). Doing nothing."</span>
+<span class="">	invoke-static {p2}, Lio/didomi/sdk/a8;->a(Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p1}, Lio/didomi/sdk/s5;->f()V</span>
+<span class="">	sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;</span>
+<span class="">	const-string v0, "Failing syncing user status (invalid response). Doing nothing."</span>
+<span class="">	invoke-static {v0}, Lio/didomi/sdk/a8;->a(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/s5;->c()Lio/didomi/sdk/events/a;</span>
+<span class="">	:cond_5</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance v0, Lio/didomi/sdk/events/SyncErrorEvent;</span>
+<span class="">	invoke-virtual {p2}, Lio/didomi/sdk/y;->a()Ljava/lang/Throwable;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-direct {v0, p2}, Lio/didomi/sdk/events/SyncErrorEvent;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1, v0}, Lio/didomi/sdk/events/a;->c(Lio/didomi/sdk/events/Event;)V</span>
+<span class="">	sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;</span>
+<span class="">	invoke-virtual {p2}, Lio/didomi/sdk/y;->b()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lio/didomi/sdk/user/sync/model/SyncResponse;</span>
+<span class="">	invoke-virtual {v0}, Lio/didomi/sdk/user/sync/model/SyncResponse;->getSynced()Ljava/lang/Boolean;</span>
+<span class="">	:cond_6</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v3}, Lkotlin/coroutines/jvm/internal/Boxing;->boxBoolean(Z)Ljava/lang/Boolean;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_7</span>
+<span class="">	const-string p2, "User status is already up to date from server. Doing nothing."</span>
+<span class="">	invoke-static {p2}, Lio/didomi/sdk/a8;->a(Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p1}, Lio/didomi/sdk/s5;->f()V</span>
+<span class="">	goto :goto_4</span>
+<span class="">	invoke-virtual {v0}, Lio/didomi/sdk/user/sync/model/SyncResponse;->getUser()Lio/didomi/sdk/user/sync/model/ResponseUser;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_8</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_7</span>
+<span class="">	invoke-virtual {v1}, Lio/didomi/sdk/user/sync/model/ResponseUser;->getToken()Lio/didomi/sdk/user/sync/model/ResponseToken;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_9</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:cond_8</span>
+<span class="">	goto :goto_3</span>
+<span class="">	invoke-virtual {v1}, Lio/didomi/sdk/user/sync/model/ResponseToken;->getConsents()Lio/didomi/sdk/user/sync/model/ResponseConsents;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_2</span>
+<span class="">	if-eqz v1, :cond_a</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/s5;->b()Lio/didomi/sdk/n0;</span>
+<span class="">	:cond_9</span>
+<span class="">	move-result-object p2</span>
+<span class="">	sget-object v1, Lio/didomi/sdk/r8;->k:Lio/didomi/sdk/r8$a;</span>
+<span class="">	:goto_3</span>
+<span class="">	invoke-virtual {v0}, Lio/didomi/sdk/user/sync/model/SyncResponse;->getUser()Lio/didomi/sdk/user/sync/model/ResponseUser;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lio/didomi/sdk/user/sync/model/ResponseUser;->getToken()Lio/didomi/sdk/user/sync/model/ResponseToken;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lio/didomi/sdk/user/sync/model/ResponseToken;->getConsents()Lio/didomi/sdk/user/sync/model/ResponseConsents;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v1, v0}, Lio/didomi/sdk/r8$a;->a(Lio/didomi/sdk/user/sync/model/ResponseConsents;)Lio/didomi/sdk/r8;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/s5;->a()Lio/didomi/sdk/apiEvents/a;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/s5;->c()Lio/didomi/sdk/events/a;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {p2, v0, v1, v2}, Lio/didomi/sdk/n0;->a(Lio/didomi/sdk/r8;Lio/didomi/sdk/apiEvents/a;Lio/didomi/sdk/events/a;)Z</span>
+<span class="">	const-string p2, "Local user status was updated."</span>
+<span class="">	invoke-static {p2}, Lio/didomi/sdk/a8;->a(Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p1}, Lio/didomi/sdk/s5;->f()V</span>
+<span class="">	goto :goto_4</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "Error syncing user status ("</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	:cond_a</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p2, "). Doing nothing."</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-static {p2}, Lio/didomi/sdk/a8;->a(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/s5;->c()Lio/didomi/sdk/events/a;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p2, Lio/didomi/sdk/events/SyncErrorEvent;</span>
+<span class="">	const-string v0, "Response invalid"</span>
+<span class="">	invoke-direct {p2, v0}, Lio/didomi/sdk/events/SyncErrorEvent;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1, p2}, Lio/didomi/sdk/events/a;->c(Lio/didomi/sdk/events/Event;)V</span>
+<span class="">	sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;</span>
+<span class="">	:goto_4</span>
+.end method
+
+.method public final a(Lio/didomi/sdk/user/sync/model/a;)V
+<span class="">	.locals 2</span>
+
+<span class="">	const-string v0, "params"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	new-instance v0, Lio/didomi/sdk/s5$a;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {v0, p0, p1, v1}, Lio/didomi/sdk/s5$a;-><init>(Lio/didomi/sdk/s5;Lio/didomi/sdk/user/sync/model/a;Lkotlin/coroutines/Continuation;)V</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	invoke-static {v1, v0, p1, v1}, Lkotlinx/coroutines/BuildersKt;->runBlocking$default(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Ljava/lang/Object;</span>
+.end method
+
+.method public final a(ILjava/util/Date;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	if-nez p2, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v0, Lio/didomi/sdk/h1;->a:Lio/didomi/sdk/h1;</span>
+<span class="">	invoke-virtual {v0, p2}, Lio/didomi/sdk/h1;->b(Ljava/util/Date;)I</span>
+<span class="">	move-result p2</span>
+<span class="">	if-lt p2, p1, :cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_1</span>
+.end method
+
+.method public final a(ZILjava/util/Date;)Z
+<span class="">	.locals 2</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz p1, :cond_3</span>
+<span class="">	iget-object p1, p0, Lio/didomi/sdk/s5;->e:Lio/didomi/sdk/g3;</span>
+<span class="">	invoke-virtual {p1}, Lio/didomi/sdk/g3;->a()Lio/didomi/sdk/i8;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {p1}, Lio/didomi/sdk/i8;->getId()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	invoke-static {p1}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	:goto_2</span>
+<span class="">	if-nez p1, :cond_3</span>
+<span class="">	invoke-virtual {p0, p2, p3}, Lio/didomi/sdk/s5;->a(ILjava/util/Date;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_3</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_3</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_3</span>
+.end method
+
+.method public final b()Lio/didomi/sdk/n0;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/s5;->a:Lio/didomi/sdk/n0;</span>
+.end method
+
+.method public final b(Lio/didomi/sdk/user/sync/model/a;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+<span class="">	.locals 18</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lio/didomi/sdk/user/sync/model/a;",</span>
+<span class="">	"Lkotlin/coroutines/Continuation<",</span>
+<span class="">	"-",</span>
+<span class="">	"Lio/didomi/sdk/y<",</span>
+<span class="">	"Lio/didomi/sdk/user/sync/model/SyncResponse;",</span>
+<span class="">	">;>;)",</span>
+<span class="">	"Ljava/lang/Object;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	move-object/from16 v0, p0</span>
+<span class="">	new-instance v1, Lkotlin/coroutines/SafeContinuation;</span>
+<span class="">	invoke-static/range {p2 .. p2}, Lkotlin/coroutines/intrinsics/IntrinsicsKt;->intercepted(Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {v1, v2}, Lkotlin/coroutines/SafeContinuation;-><init>(Lkotlin/coroutines/Continuation;)V</span>
+<span class="">	new-instance v13, Lio/didomi/sdk/user/sync/model/RequestToken;</span>
+<span class="">	sget-object v2, Lio/didomi/sdk/h1;->a:Lio/didomi/sdk/h1;</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->g()Ljava/util/Date;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v2, v3}, Lio/didomi/sdk/h1;->d(Ljava/util/Date;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const-string v10, ""</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	move-object v4, v3</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object v4, v10</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->p()Ljava/util/Date;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v2, v3}, Lio/didomi/sdk/h1;->d(Ljava/util/Date;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	move-object v5, v3</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	move-object v5, v10</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->e()Lio/didomi/sdk/models/ConsentStatus;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->j()Lio/didomi/sdk/models/ConsentStatus;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->f()Lio/didomi/sdk/models/ConsentStatus;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->k()Lio/didomi/sdk/models/ConsentStatus;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	move-object v3, v13</span>
+<span class="">	invoke-direct/range {v3 .. v9}, Lio/didomi/sdk/user/sync/model/RequestToken;-><init>(Ljava/lang/String;Ljava/lang/String;Lio/didomi/sdk/models/ConsentStatus;Lio/didomi/sdk/models/ConsentStatus;Lio/didomi/sdk/models/ConsentStatus;Lio/didomi/sdk/models/ConsentStatus;)V</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->q()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lio/didomi/sdk/s5;->e()Lio/didomi/sdk/g3;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Lio/didomi/sdk/g3;->a()Lio/didomi/sdk/i8;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	if-nez v3, :cond_2</span>
+<span class="">	move-object v3, v5</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-interface {v3}, Lio/didomi/sdk/i8;->getId()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	:goto_2</span>
+<span class="">	if-eqz v3, :cond_3</span>
+<span class="">	move-object v10, v3</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lio/didomi/sdk/s5;->e()Lio/didomi/sdk/g3;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Lio/didomi/sdk/g3;->a()Lio/didomi/sdk/i8;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	instance-of v6, v3, Lio/didomi/sdk/j8;</span>
+<span class="">	if-eqz v6, :cond_4</span>
+<span class="">	check-cast v3, Lio/didomi/sdk/j8;</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_4</span>
+<span class="">	move-object v3, v5</span>
+<span class="">	:goto_3</span>
+<span class="">	if-nez v3, :cond_5</span>
+<span class="">	move-object v6, v5</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-interface {v3}, Lio/didomi/sdk/j8;->getAlgorithm()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	move-object v6, v3</span>
+<span class="">	:goto_4</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lio/didomi/sdk/s5;->e()Lio/didomi/sdk/g3;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Lio/didomi/sdk/g3;->a()Lio/didomi/sdk/i8;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	instance-of v7, v3, Lio/didomi/sdk/j8;</span>
+<span class="">	if-eqz v7, :cond_6</span>
+<span class="">	check-cast v3, Lio/didomi/sdk/j8;</span>
+<span class="">	goto :goto_5</span>
+<span class="">	:cond_6</span>
+<span class="">	move-object v3, v5</span>
+<span class="">	:goto_5</span>
+<span class="">	if-nez v3, :cond_7</span>
+<span class="">	move-object v7, v5</span>
+<span class="">	goto :goto_6</span>
+<span class="">	:cond_7</span>
+<span class="">	invoke-interface {v3}, Lio/didomi/sdk/j8;->getSecretId()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	move-object v7, v3</span>
+<span class="">	:goto_6</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lio/didomi/sdk/s5;->e()Lio/didomi/sdk/g3;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Lio/didomi/sdk/g3;->a()Lio/didomi/sdk/i8;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	instance-of v8, v3, Lio/didomi/sdk/j8;</span>
+<span class="">	if-eqz v8, :cond_8</span>
+<span class="">	check-cast v3, Lio/didomi/sdk/j8;</span>
+<span class="">	goto :goto_7</span>
+<span class="">	:cond_8</span>
+<span class="">	move-object v3, v5</span>
+<span class="">	:goto_7</span>
+<span class="">	if-nez v3, :cond_9</span>
+<span class="">	move-object v11, v5</span>
+<span class="">	goto :goto_8</span>
+<span class="">	:cond_9</span>
+<span class="">	invoke-interface {v3}, Lio/didomi/sdk/j8;->getExpiration()Ljava/lang/Long;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	move-object v11, v3</span>
+<span class="">	:goto_8</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lio/didomi/sdk/s5;->e()Lio/didomi/sdk/g3;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Lio/didomi/sdk/g3;->a()Lio/didomi/sdk/i8;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	instance-of v8, v3, Lio/didomi/sdk/user/UserAuthWithHashParams;</span>
+<span class="">	if-eqz v8, :cond_a</span>
+<span class="">	check-cast v3, Lio/didomi/sdk/user/UserAuthWithHashParams;</span>
+<span class="">	goto :goto_9</span>
+<span class="">	:cond_a</span>
+<span class="">	move-object v3, v5</span>
+<span class="">	:goto_9</span>
+<span class="">	if-nez v3, :cond_b</span>
+<span class="">	move-object v8, v5</span>
+<span class="">	goto :goto_a</span>
+<span class="">	:cond_b</span>
+<span class="">	invoke-virtual {v3}, Lio/didomi/sdk/user/UserAuthWithHashParams;->getSalt()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	move-object v8, v3</span>
+<span class="">	:goto_a</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lio/didomi/sdk/s5;->e()Lio/didomi/sdk/g3;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Lio/didomi/sdk/g3;->a()Lio/didomi/sdk/i8;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	instance-of v9, v3, Lio/didomi/sdk/user/UserAuthWithHashParams;</span>
+<span class="">	if-eqz v9, :cond_c</span>
+<span class="">	check-cast v3, Lio/didomi/sdk/user/UserAuthWithHashParams;</span>
+<span class="">	goto :goto_b</span>
+<span class="">	:cond_c</span>
+<span class="">	move-object v3, v5</span>
+<span class="">	:goto_b</span>
+<span class="">	if-nez v3, :cond_d</span>
+<span class="">	move-object v9, v5</span>
+<span class="">	goto :goto_c</span>
+<span class="">	:cond_d</span>
+<span class="">	invoke-virtual {v3}, Lio/didomi/sdk/user/UserAuthWithHashParams;->getDigest()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	move-object v9, v3</span>
+<span class="">	:goto_c</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lio/didomi/sdk/s5;->e()Lio/didomi/sdk/g3;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Lio/didomi/sdk/g3;->a()Lio/didomi/sdk/i8;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	instance-of v12, v3, Lio/didomi/sdk/user/UserAuthWithEncryptionParams;</span>
+<span class="">	if-eqz v12, :cond_e</span>
+<span class="">	check-cast v3, Lio/didomi/sdk/user/UserAuthWithEncryptionParams;</span>
+<span class="">	goto :goto_d</span>
+<span class="">	:cond_e</span>
+<span class="">	move-object v3, v5</span>
+<span class="">	:goto_d</span>
+<span class="">	if-nez v3, :cond_f</span>
+<span class="">	move-object v12, v5</span>
+<span class="">	goto :goto_e</span>
+<span class="">	:cond_f</span>
+<span class="">	invoke-virtual {v3}, Lio/didomi/sdk/user/UserAuthWithEncryptionParams;->getInitializationVector()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	move-object v12, v3</span>
+<span class="">	:goto_e</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v14</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->n()Ljava/lang/String;</span>
+<span class="">	move-result-object v15</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->o()Ljava/lang/Integer;</span>
+<span class="">	move-result-object v16</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->i()Ljava/util/Date;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v2, v3}, Lio/didomi/sdk/h1;->d(Ljava/util/Date;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	new-instance v5, Lio/didomi/sdk/user/sync/model/RequestUser;</span>
+<span class="">	move-object v3, v5</span>
+<span class="">	move-object/from16 v17, v1</span>
+<span class="">	move-object v1, v5</span>
+<span class="">	move-object v5, v10</span>
+<span class="">	move-object v10, v11</span>
+<span class="">	move-object v11, v12</span>
+<span class="">	move-object v12, v14</span>
+<span class="">	move-object v14, v15</span>
+<span class="">	move-object/from16 v15, v16</span>
+<span class="">	move-object/from16 v16, v2</span>
+<span class="">	invoke-direct/range {v3 .. v16}, Lio/didomi/sdk/user/sync/model/RequestUser;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Lio/didomi/sdk/user/sync/model/RequestToken;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;)V</span>
+<span class="">	new-instance v2, Lio/didomi/sdk/user/sync/model/RequestSource;</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->h()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->c()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->l()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->m()Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-direct {v2, v3, v4, v5, v6}, Lio/didomi/sdk/user/sync/model/RequestSource;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iget-object v3, v0, Lio/didomi/sdk/s5;->g:Lcom/google/gson/Gson;</span>
+<span class="">	new-instance v4, Lio/didomi/sdk/user/sync/model/SyncRequest;</span>
+<span class="">	invoke-direct {v4, v2, v1}, Lio/didomi/sdk/user/sync/model/SyncRequest;-><init>(Lio/didomi/sdk/user/sync/model/RequestSource;Lio/didomi/sdk/user/sync/model/RequestUser;)V</span>
+<span class="">	invoke-virtual {v3, v4}, Lcom/google/gson/Gson;->toJson(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	new-instance v2, Lio/didomi/sdk/s5$c;</span>
+<span class="">	move-object/from16 v3, v17</span>
+<span class="">	invoke-direct {v2, v0, v3, v1}, Lio/didomi/sdk/s5$c;-><init>(Lio/didomi/sdk/s5;Lkotlin/coroutines/Continuation;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual/range {p0 .. p0}, Lio/didomi/sdk/s5;->d()Lio/didomi/sdk/remote/a;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->b()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	new-instance v6, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v5, "sync"</span>
+<span class="">	invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lio/didomi/sdk/user/sync/model/a;->d()Lio/didomi/sdk/config/app/SyncConfiguration;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual {v6}, Lio/didomi/sdk/config/app/SyncConfiguration;->getTimeout()I</span>
+<span class="">	move-result v6</span>
+<span class="">	invoke-virtual {v4, v5, v1, v2, v6}, Lio/didomi/sdk/remote/a;->a(Ljava/lang/String;Ljava/lang/String;Lio/didomi/sdk/k2;I)V</span>
+<span class="">	invoke-virtual {v3}, Lkotlin/coroutines/SafeContinuation;->getOrThrow()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {}, Lkotlin/coroutines/intrinsics/IntrinsicsKt;->getCOROUTINE_SUSPENDED()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-ne v1, v2, :cond_10</span>
+<span class="">	invoke-static/range {p2 .. p2}, Lkotlin/coroutines/jvm/internal/DebugProbesKt;->probeCoroutineSuspended(Lkotlin/coroutines/Continuation;)V</span>
+<span class="">	:cond_10</span>
+.end method
+
+.method public final b(Lio/didomi/sdk/user/sync/model/a;)V
+<span class="">	.locals 7</span>
+
+<span class="">	const-string v0, "params"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/s5;->f:Lkotlinx/coroutines/CoroutineDispatcher;</span>
+<span class="">	invoke-static {v0}, Lkotlinx/coroutines/CoroutineScopeKt;->CoroutineScope(Lkotlin/coroutines/CoroutineContext;)Lkotlinx/coroutines/CoroutineScope;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	new-instance v4, Lio/didomi/sdk/s5$d;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {v4, p0, p1, v0}, Lio/didomi/sdk/s5$d;-><init>(Lio/didomi/sdk/s5;Lio/didomi/sdk/user/sync/model/a;Lkotlin/coroutines/Continuation;)V</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v5, 0x3</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	invoke-static/range {v1 .. v6}, Lkotlinx/coroutines/BuildersKt;->launch$default(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lkotlinx/coroutines/Job;</span>
+.end method
+
+.method public final c()Lio/didomi/sdk/events/a;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/s5;->c:Lio/didomi/sdk/events/a;</span>
+.end method
+
+.method public final d()Lio/didomi/sdk/remote/a;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/s5;->d:Lio/didomi/sdk/remote/a;</span>
+.end method
+
+.method public final e()Lio/didomi/sdk/g3;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/s5;->e:Lio/didomi/sdk/g3;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

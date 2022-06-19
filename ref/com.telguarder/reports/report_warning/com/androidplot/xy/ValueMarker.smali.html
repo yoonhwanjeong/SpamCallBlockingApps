@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot.xy</a></li>
+        <li><i class="ico ico-class"></i> ValueMarker.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Lcom/androidplot/xy/ValueMarker;
+.super Ljava/lang/Object;
+.source "ValueMarker.java"
+
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"<PositionMetricType:",
+"Lcom/androidplot/ui/PositionMetric;",
+">",
+"Ljava/lang/Object;"
+}
+.end annotation
+
+.field private static final MARKER_LABEL_SPACING:I = 0x2
+.field private linePaint:Landroid/graphics/Paint;
+.field private text:Ljava/lang/String;
+.field private textMargin:I
+.field private textOrientation:Lcom/androidplot/ui/TextOrientation;
+.field private textPaint:Landroid/graphics/Paint;
+.field private textPosition:Lcom/androidplot/ui/PositionMetric;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"TPositionMetricType;"
+}
+.end annotation
+.end field
+.field private value:Ljava/lang/Number;
+
+
+.method public constructor <init>(Ljava/lang/Number;Ljava/lang/String;Lcom/androidplot/ui/PositionMetric;)V
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/Number;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"TPositionMetricType;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	iput v0, p0, Lcom/androidplot/xy/ValueMarker;->textMargin:I</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/xy/ValueMarker;->linePaint:Landroid/graphics/Paint;</span>
+<span class="">	const/high16 v1, -0x10000</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/ValueMarker;->linePaint:Landroid/graphics/Paint;</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/ValueMarker;->linePaint:Landroid/graphics/Paint;</span>
+<span class="">	sget-object v3, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V</span>
+<span class="">	new-instance v0, Landroid/graphics/Paint;</span>
+<span class="">	invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/xy/ValueMarker;->textPaint:Landroid/graphics/Paint;</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/graphics/Paint;->setAntiAlias(Z)V</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/ValueMarker;->textPaint:Landroid/graphics/Paint;</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/ValueMarker;->value:Ljava/lang/Number;</span>
+<span class="">	iput-object p3, p0, Lcom/androidplot/xy/ValueMarker;->textPosition:Lcom/androidplot/ui/PositionMetric;</span>
+<span class="">	iput-object p2, p0, Lcom/androidplot/xy/ValueMarker;->text:Ljava/lang/String;</span>
+.end method
+
+.method public constructor <init>(Ljava/lang/Number;Ljava/lang/String;Lcom/androidplot/ui/PositionMetric;II)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/Number;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"TPositionMetricType;II)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0, p1, p2, p3}, Lcom/androidplot/xy/ValueMarker;-><init>(Ljava/lang/Number;Ljava/lang/String;Lcom/androidplot/ui/PositionMetric;)V</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/ValueMarker;->linePaint:Landroid/graphics/Paint;</span>
+<span class="">	invoke-virtual {p1, p4}, Landroid/graphics/Paint;->setColor(I)V</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/ValueMarker;->textPaint:Landroid/graphics/Paint;</span>
+<span class="">	invoke-virtual {p1, p5}, Landroid/graphics/Paint;->setColor(I)V</span>
+.end method
+
+.method public constructor <init>(Ljava/lang/Number;Ljava/lang/String;Lcom/androidplot/ui/PositionMetric;Landroid/graphics/Paint;Landroid/graphics/Paint;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/Number;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"TPositionMetricType;",</span>
+<span class="">	"Landroid/graphics/Paint;",</span>
+<span class="">	"Landroid/graphics/Paint;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0, p1, p2, p3}, Lcom/androidplot/xy/ValueMarker;-><init>(Ljava/lang/Number;Ljava/lang/String;Lcom/androidplot/ui/PositionMetric;)V</span>
+<span class="">	iput-object p4, p0, Lcom/androidplot/xy/ValueMarker;->linePaint:Landroid/graphics/Paint;</span>
+<span class="">	iput-object p5, p0, Lcom/androidplot/xy/ValueMarker;->textPaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public abstract draw(Landroid/graphics/Canvas;Lcom/androidplot/xy/XYPlot;Landroid/graphics/RectF;)V
+<span class="">	</span>
+
+.end method
+
+.method protected drawMarkerText(Landroid/graphics/Canvas;Ljava/lang/String;Landroid/graphics/RectF;FF)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/ValueMarker;->getText()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	const/high16 v0, 0x40000000    # 2.0f</span>
+<span class="">	add-float/2addr p4, v0</span>
+<span class="">	sub-float/2addr p5, v0</span>
+<span class="">	new-instance v0, Landroid/graphics/RectF;</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/ValueMarker;->getTextPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {p2, v1}, Lcom/androidplot/util/FontUtils;->getStringDimensions(Ljava/lang/String;Landroid/graphics/Paint;)Landroid/graphics/Rect;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Landroid/graphics/RectF;-><init>(Landroid/graphics/Rect;)V</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/RectF;->height()F</span>
+<span class="">	move-result v1</span>
+<span class="">	sub-float/2addr p5, v1</span>
+<span class="">	invoke-virtual {v0, p4, p5}, Landroid/graphics/RectF;->offsetTo(FF)V</span>
+<span class="">	iget p4, v0, Landroid/graphics/RectF;->right:F</span>
+<span class="">	iget p5, p3, Landroid/graphics/RectF;->right:F</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	cmpl-float p4, p4, p5</span>
+<span class="">	if-lez p4, :cond_0</span>
+<span class="">	iget p4, v0, Landroid/graphics/RectF;->right:F</span>
+<span class="">	iget p5, p3, Landroid/graphics/RectF;->right:F</span>
+<span class="">	sub-float/2addr p4, p5</span>
+<span class="">	neg-float p4, p4</span>
+<span class="">	invoke-virtual {v0, p4, v1}, Landroid/graphics/RectF;->offset(FF)V</span>
+<span class="">	:cond_0</span>
+<span class="">	iget p4, v0, Landroid/graphics/RectF;->top:F</span>
+<span class="">	iget p5, p3, Landroid/graphics/RectF;->top:F</span>
+<span class="">	cmpg-float p4, p4, p5</span>
+<span class="">	if-gez p4, :cond_1</span>
+<span class="">	iget p3, p3, Landroid/graphics/RectF;->top:F</span>
+<span class="">	iget p4, v0, Landroid/graphics/RectF;->top:F</span>
+<span class="">	sub-float/2addr p3, p4</span>
+<span class="">	invoke-virtual {v0, v1, p3}, Landroid/graphics/RectF;->offset(FF)V</span>
+<span class="">	:cond_1</span>
+<span class="">	iget p3, v0, Landroid/graphics/RectF;->left:F</span>
+<span class="">	iget p4, v0, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/ValueMarker;->getTextPaint()Landroid/graphics/Paint;</span>
+<span class="">	move-result-object p5</span>
+<span class="">	invoke-virtual {p1, p2, p3, p4, p5}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public getLinePaint()Landroid/graphics/Paint;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/ValueMarker;->linePaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public getText()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/ValueMarker;->text:Ljava/lang/String;</span>
+.end method
+
+.method public getTextMargin()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/androidplot/xy/ValueMarker;->textMargin:I</span>
+.end method
+
+.method public getTextOrientation()Lcom/androidplot/ui/TextOrientation;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/ValueMarker;->textOrientation:Lcom/androidplot/ui/TextOrientation;</span>
+.end method
+
+.method public getTextPaint()Landroid/graphics/Paint;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/ValueMarker;->textPaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public getTextPosition()Lcom/androidplot/ui/PositionMetric;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()TPositionMetricType;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/ValueMarker;->textPosition:Lcom/androidplot/ui/PositionMetric;</span>
+.end method
+
+.method public getValue()Ljava/lang/Number;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/ValueMarker;->value:Ljava/lang/Number;</span>
+.end method
+
+.method public setLinePaint(Landroid/graphics/Paint;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/ValueMarker;->linePaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public setText(Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/ValueMarker;->text:Ljava/lang/String;</span>
+.end method
+
+.method public setTextMargin(I)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput p1, p0, Lcom/androidplot/xy/ValueMarker;->textMargin:I</span>
+.end method
+
+.method public setTextOrientation(Lcom/androidplot/ui/TextOrientation;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/ValueMarker;->textOrientation:Lcom/androidplot/ui/TextOrientation;</span>
+.end method
+
+.method public setTextPaint(Landroid/graphics/Paint;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/ValueMarker;->textPaint:Landroid/graphics/Paint;</span>
+.end method
+
+.method public setTextPosition(Lcom/androidplot/ui/PositionMetric;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TPositionMetricType;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/ValueMarker;->textPosition:Lcom/androidplot/ui/PositionMetric;</span>
+.end method
+
+.method public setValue(Ljava/lang/Number;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/ValueMarker;->value:Ljava/lang/Number;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

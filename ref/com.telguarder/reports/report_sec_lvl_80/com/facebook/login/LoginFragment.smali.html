@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.login</a></li>
+        <li><i class="ico ico-class"></i> LoginFragment.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/login/LoginFragment;
+.super Landroidx/fragment/app/Fragment;
+.source "LoginFragment.java"
+
+
+.field static final EXTRA_REQUEST:Ljava/lang/String; = "request"
+.field private static final NULL_CALLING_PKG_ERROR_MSG:Ljava/lang/String; = "Cannot call LoginFragment with a null calling package. This can occur if the launchMode of the caller is singleInstance."
+.field static final REQUEST_KEY:Ljava/lang/String; = "com.facebook.LoginFragment:Request"
+.field static final RESULT_KEY:Ljava/lang/String; = "com.facebook.LoginFragment:Result"
+.field private static final SAVED_LOGIN_CLIENT:Ljava/lang/String; = "loginClient"
+.field private static final TAG:Ljava/lang/String; = "LoginFragment"
+.field private callingPackage:Ljava/lang/String;
+.field private loginClient:Lcom/facebook/login/LoginClient;
+.field private request:Lcom/facebook/login/LoginClient$Request;
+
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/fragment/app/Fragment;-><init>()V</span>
+.end method
+
+.method static synthetic access$000(Lcom/facebook/login/LoginFragment;Lcom/facebook/login/LoginClient$Result;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/login/LoginFragment;->onLoginClientCompleted(Lcom/facebook/login/LoginClient$Result;)V</span>
+.end method
+
+.method private initializeCallingPackage(Landroid/app/Activity;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p1}, Landroid/app/Activity;->getCallingActivity()Landroid/content/ComponentName;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginFragment;->callingPackage:Ljava/lang/String;</span>
+.end method
+
+.method private onLoginClientCompleted(Lcom/facebook/login/LoginClient$Result;)V
+<span class="">	.locals 3</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/login/LoginFragment;->request:Lcom/facebook/login/LoginClient$Request;</span>
+<span class="">	iget-object v0, p1, Lcom/facebook/login/LoginClient$Result;->code:Lcom/facebook/login/LoginClient$Result$Code;</span>
+<span class="">	sget-object v1, Lcom/facebook/login/LoginClient$Result$Code;->CANCEL:Lcom/facebook/login/LoginClient$Result$Code;</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, -0x1</span>
+<span class="">	:goto_0</span>
+<span class="">	new-instance v1, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v1}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	const-string v2, "com.facebook.LoginFragment:Result"</span>
+<span class="">	invoke-virtual {v1, v2, p1}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V</span>
+<span class="">	new-instance p1, Landroid/content/Intent;</span>
+<span class="">	invoke-direct {p1}, Landroid/content/Intent;-><init>()V</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/login/LoginFragment;->isAdded()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/login/LoginFragment;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1, v0, p1}, Landroidx/fragment/app/FragmentActivity;->setResult(ILandroid/content/Intent;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/login/LoginFragment;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroidx/fragment/app/FragmentActivity;->finish()V</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method protected createLoginClient()Lcom/facebook/login/LoginClient;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/login/LoginClient;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/login/LoginClient;-><init>(Landroidx/fragment/app/Fragment;)V</span>
+.end method
+
+.method protected getLayoutResId()I
+<span class="">	.locals 1</span>
+
+<span class="">	sget v0, Lcom/facebook/common/R$layout;->com_facebook_login_fragment:I</span>
+.end method
+
+.method  getLoginClient()Lcom/facebook/login/LoginClient;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginFragment;->loginClient:Lcom/facebook/login/LoginClient;</span>
+.end method
+
+.method public onActivityResult(IILandroid/content/Intent;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-super {p0, p1, p2, p3}, Landroidx/fragment/app/Fragment;->onActivityResult(IILandroid/content/Intent;)V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginFragment;->loginClient:Lcom/facebook/login/LoginClient;</span>
+<span class="">	invoke-virtual {v0, p1, p2, p3}, Lcom/facebook/login/LoginClient;->onActivityResult(IILandroid/content/Intent;)Z</span>
+.end method
+
+.method public onCreate(Landroid/os/Bundle;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-super {p0, p1}, Landroidx/fragment/app/Fragment;->onCreate(Landroid/os/Bundle;)V</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	const-string v0, "loginClient"</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lcom/facebook/login/LoginClient;</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginFragment;->loginClient:Lcom/facebook/login/LoginClient;</span>
+<span class="">	invoke-virtual {p1, p0}, Lcom/facebook/login/LoginClient;->setFragment(Landroidx/fragment/app/Fragment;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/login/LoginFragment;->createLoginClient()Lcom/facebook/login/LoginClient;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginFragment;->loginClient:Lcom/facebook/login/LoginClient;</span>
+<span class="">	:goto_0</span>
+<span class="">	iget-object p1, p0, Lcom/facebook/login/LoginFragment;->loginClient:Lcom/facebook/login/LoginClient;</span>
+<span class="">	new-instance v0, Lcom/facebook/login/LoginFragment$1;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/login/LoginFragment$1;-><init>(Lcom/facebook/login/LoginFragment;)V</span>
+<span class="">	invoke-virtual {p1, v0}, Lcom/facebook/login/LoginClient;->setOnCompletedListener(Lcom/facebook/login/LoginClient$OnCompletedListener;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/login/LoginFragment;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-nez p1, :cond_1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/login/LoginFragment;->initializeCallingPackage(Landroid/app/Activity;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	const-string v0, "com.facebook.LoginFragment:Request"</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/content/Intent;->getBundleExtra(Ljava/lang/String;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	const-string v0, "request"</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lcom/facebook/login/LoginClient$Request;</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginFragment;->request:Lcom/facebook/login/LoginClient$Request;</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public onCreateView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/facebook/login/LoginFragment;->getLayoutResId()I</span>
+<span class="">	move-result p3</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p1, p3, p2, v0}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sget p2, Lcom/facebook/common/R$id;->com_facebook_login_fragment_progress_bar:I</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	iget-object p3, p0, Lcom/facebook/login/LoginFragment;->loginClient:Lcom/facebook/login/LoginClient;</span>
+<span class="">	new-instance v0, Lcom/facebook/login/LoginFragment$2;</span>
+<span class="">	invoke-direct {v0, p0, p2}, Lcom/facebook/login/LoginFragment$2;-><init>(Lcom/facebook/login/LoginFragment;Landroid/view/View;)V</span>
+<span class="">	invoke-virtual {p3, v0}, Lcom/facebook/login/LoginClient;->setBackgroundProcessingListener(Lcom/facebook/login/LoginClient$BackgroundProcessingListener;)V</span>
+.end method
+
+.method public onDestroy()V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginFragment;->loginClient:Lcom/facebook/login/LoginClient;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/login/LoginClient;->cancelCurrentHandler()V</span>
+<span class="">	invoke-super {p0}, Landroidx/fragment/app/Fragment;->onDestroy()V</span>
+.end method
+
+.method public onPause()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0}, Landroidx/fragment/app/Fragment;->onPause()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/login/LoginFragment;->getView()Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/login/LoginFragment;->getView()Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget v1, Lcom/facebook/common/R$id;->com_facebook_login_fragment_progress_bar:I</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	const/16 v1, 0x8</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public onResume()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0}, Landroidx/fragment/app/Fragment;->onResume()V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginFragment;->callingPackage:Ljava/lang/String;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-string v0, "LoginFragment"</span>
+<span class="">	const-string v1, "Cannot call LoginFragment with a null calling package. This can occur if the launchMode of the caller is singleInstance."</span>
+<span class="">	invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/login/LoginFragment;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroidx/fragment/app/FragmentActivity;->finish()V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginFragment;->loginClient:Lcom/facebook/login/LoginClient;</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v1, p0, Lcom/facebook/login/LoginFragment;->request:Lcom/facebook/login/LoginClient$Request;</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/facebook/login/LoginClient;->startOrContinueAuth(Lcom/facebook/login/LoginClient$Request;)V</span>
+.end method
+
+.method public onSaveInstanceState(Landroid/os/Bundle;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0, p1}, Landroidx/fragment/app/Fragment;->onSaveInstanceState(Landroid/os/Bundle;)V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginFragment;->loginClient:Lcom/facebook/login/LoginClient;</span>
+<span class="">	const-string v1, "loginClient"</span>
+<span class="">	invoke-virtual {p1, v1, v0}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

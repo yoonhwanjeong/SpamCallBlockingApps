@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.android.volley</a></li>
+        <li><i class="ico ico-class"></i> AsyncNetwork.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Lcom/android/volley/AsyncNetwork;
+.super Ljava/lang/Object;
+.source "AsyncNetwork.java"
+.implements Lcom/android/volley/Network;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/android/volley/AsyncNetwork$OnRequestComplete;
+}
+.end annotation
+
+.field private mBlockingExecutor:Ljava/util/concurrent/ExecutorService;
+.field private mNonBlockingExecutor:Ljava/util/concurrent/ExecutorService;
+.field private mNonBlockingScheduledExecutor:Ljava/util/concurrent/ScheduledExecutorService;
+
+
+.method protected constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method protected getBlockingExecutor()Ljava/util/concurrent/ExecutorService;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/android/volley/AsyncNetwork;->mBlockingExecutor:Ljava/util/concurrent/ExecutorService;</span>
+.end method
+
+.method protected getNonBlockingExecutor()Ljava/util/concurrent/ExecutorService;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/android/volley/AsyncNetwork;->mNonBlockingExecutor:Ljava/util/concurrent/ExecutorService;</span>
+.end method
+
+.method protected getNonBlockingScheduledExecutor()Ljava/util/concurrent/ScheduledExecutorService;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/android/volley/AsyncNetwork;->mNonBlockingScheduledExecutor:Ljava/util/concurrent/ScheduledExecutorService;</span>
+.end method
+
+.method public performRequest(Lcom/android/volley/Request;)Lcom/android/volley/NetworkResponse;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Lcom/android/volley/VolleyError;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/android/volley/Request<",</span>
+<span class="">	"*>;)",</span>
+<span class="">	"Lcom/android/volley/NetworkResponse;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/concurrent/CountDownLatch;</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/util/concurrent/CountDownLatch;-><init>(I)V</span>
+<span class="">	new-instance v1, Ljava/util/concurrent/atomic/AtomicReference;</span>
+<span class="">	invoke-direct {v1}, Ljava/util/concurrent/atomic/AtomicReference;-><init>()V</span>
+<span class="">	new-instance v2, Ljava/util/concurrent/atomic/AtomicReference;</span>
+<span class="">	invoke-direct {v2}, Ljava/util/concurrent/atomic/AtomicReference;-><init>()V</span>
+<span class="">	new-instance v3, Lcom/android/volley/AsyncNetwork$1;</span>
+<span class="">	invoke-direct {v3, p0, v1, v0, v2}, Lcom/android/volley/AsyncNetwork$1;-><init>(Lcom/android/volley/AsyncNetwork;Ljava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/CountDownLatch;Ljava/util/concurrent/atomic/AtomicReference;)V</span>
+<span class="">	invoke-virtual {p0, p1, v3}, Lcom/android/volley/AsyncNetwork;->performRequest(Lcom/android/volley/Request;Lcom/android/volley/AsyncNetwork$OnRequestComplete;)V</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/concurrent/CountDownLatch;->await()V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lcom/android/volley/NetworkResponse;</span>
+<span class="">	invoke-virtual {v2}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	invoke-virtual {v2}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lcom/android/volley/VolleyError;</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Lcom/android/volley/VolleyError;</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v0, "Neither response entry was set"</span>
+<span class="">	invoke-direct {p1, v0}, Lcom/android/volley/VolleyError;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	new-array v0, v0, [Ljava/lang/Object;</span>
+<span class="">	const-string/jumbo v1, "while waiting for CountDownLatch"</span>
+<span class="">	invoke-static {p1, v1, v0}, Lcom/android/volley/VolleyLog;->e(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Thread;->interrupt()V</span>
+<span class="">	new-instance v0, Lcom/android/volley/VolleyError;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/android/volley/VolleyError;-><init>(Ljava/lang/Throwable;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public abstract performRequest(Lcom/android/volley/Request;Lcom/android/volley/AsyncNetwork$OnRequestComplete;)V
+<span class="">	</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/android/volley/Request<",</span>
+<span class="">	"*>;",</span>
+<span class="">	"Lcom/android/volley/AsyncNetwork$OnRequestComplete;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method public setBlockingExecutor(Ljava/util/concurrent/ExecutorService;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/android/volley/AsyncNetwork;->mBlockingExecutor:Ljava/util/concurrent/ExecutorService;</span>
+.end method
+
+.method public setNonBlockingExecutor(Ljava/util/concurrent/ExecutorService;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/android/volley/AsyncNetwork;->mNonBlockingExecutor:Ljava/util/concurrent/ExecutorService;</span>
+.end method
+
+.method public setNonBlockingScheduledExecutor(Ljava/util/concurrent/ScheduledExecutorService;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/android/volley/AsyncNetwork;->mNonBlockingScheduledExecutor:Ljava/util/concurrent/ScheduledExecutorService;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.common.images</a></li>
+        <li><i class="ico ico-class"></i> ImageManager$ImageReceiver.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class final Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;
+.super Landroid/os/ResultReceiver;
+.source "com.google.android.gms:play-services-base@@18.0.1"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lcom/google/android/gms/common/images/ImageManager;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x12
+name = "ImageReceiver"
+.end annotation
+
+.field final synthetic zaa:Lcom/google/android/gms/common/images/ImageManager;
+.field private final zab:Landroid/net/Uri;
+.field private final zac:Ljava/util/ArrayList;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/ArrayList<",
+"Lcom/google/android/gms/common/images/zag;",
+">;"
+}
+.end annotation
+.end field
+
+
+.method constructor <init>(Lcom/google/android/gms/common/images/ImageManager;Landroid/net/Uri;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;->zaa:Lcom/google/android/gms/common/images/ImageManager;</span>
+<span class="">	new-instance p1, Lcom/google/android/gms/internal/base/zaq;</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p1, v0}, Lcom/google/android/gms/internal/base/zaq;-><init>(Landroid/os/Looper;)V</span>
+<span class="">	invoke-direct {p0, p1}, Landroid/os/ResultReceiver;-><init>(Landroid/os/Handler;)V</span>
+<span class="">	iput-object p2, p0, Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;->zab:Landroid/net/Uri;</span>
+<span class="">	new-instance p1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;->zac:Ljava/util/ArrayList;</span>
+.end method
+
+.method static bridge synthetic zaa(Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;)Ljava/util/ArrayList;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;->zac:Ljava/util/ArrayList;</span>
+.end method
+
+.method public final onReceiveResult(ILandroid/os/Bundle;)V
+<span class="">	.locals 3</span>
+
+<span class="">	const-string p1, "com.google.android.gms.extra.fileDescriptor"</span>
+<span class="">	invoke-virtual {p2, p1}, Landroid/os/Bundle;->getParcelable(Ljava/lang/String;)Landroid/os/Parcelable;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroid/os/ParcelFileDescriptor;</span>
+<span class="">	iget-object p2, p0, Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;->zaa:Lcom/google/android/gms/common/images/ImageManager;</span>
+<span class="">	invoke-static {p2}, Lcom/google/android/gms/common/images/ImageManager;->zai(Lcom/google/android/gms/common/images/ImageManager;)Ljava/util/concurrent/ExecutorService;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Lcom/google/android/gms/common/images/zaa;</span>
+<span class="">	iget-object v2, p0, Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;->zab:Landroid/net/Uri;</span>
+<span class="">	invoke-direct {v1, p2, v2, p1}, Lcom/google/android/gms/common/images/zaa;-><init>(Lcom/google/android/gms/common/images/ImageManager;Landroid/net/Uri;Landroid/os/ParcelFileDescriptor;)V</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/concurrent/ExecutorService;->execute(Ljava/lang/Runnable;)V</span>
+.end method
+
+.method public final zab(Lcom/google/android/gms/common/images/zag;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "ImageReceiver.addImageRequest() must be called in the main thread"</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/common/internal/Asserts;->checkMainThread(Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;->zac:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z</span>
+.end method
+
+.method public final zac(Lcom/google/android/gms/common/images/zag;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "ImageReceiver.removeImageRequest() must be called in the main thread"</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/common/internal/Asserts;->checkMainThread(Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;->zac:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z</span>
+.end method
+
+.method public final zad()V
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Landroid/content/Intent;</span>
+<span class="">	const-string v1, "com.google.android.gms.common.images.LOAD_IMAGE"</span>
+<span class="">	invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V</span>
+<span class="">	const-string v1, "com.google.android.gms"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;->zab:Landroid/net/Uri;</span>
+<span class="">	const-string v2, "com.google.android.gms.extras.uri"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;</span>
+<span class="">	const-string v1, "com.google.android.gms.extras.resultReceiver"</span>
+<span class="">	invoke-virtual {v0, v1, p0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;</span>
+<span class="">	const-string v1, "com.google.android.gms.extras.priority"</span>
+<span class="">	const/4 v2, 0x3</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/common/images/ImageManager$ImageReceiver;->zaa:Lcom/google/android/gms/common/images/ImageManager;</span>
+<span class="">	invoke-static {v1}, Lcom/google/android/gms/common/images/ImageManager;->zaa(Lcom/google/android/gms/common/images/ImageManager;)Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

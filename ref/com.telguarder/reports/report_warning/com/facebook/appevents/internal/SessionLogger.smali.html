@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.appevents.internal</a></li>
+        <li><i class="ico ico-class"></i> SessionLogger.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/appevents/internal/SessionLogger;
+.super Ljava/lang/Object;
+.source "SessionLogger.kt"
+
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000B\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0008\u0002\n\u0002\u0010\u0016\n\u0000\n\u0002\u0010\u000e\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0008\n\u0000\n\u0002\u0010\t\n\u0000\n\u0002\u0010\u0002\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0004\n\u0002\u0018\u0002\n\u0000\u0008\u00c1\u0002\u0018\u00002\u00020\u0001B\u0007\u0008\u0002\u00a2\u0006\u0002\u0010\u0002J\u0010\u0010\u0008\u001a\u0004\u0018\u00010\u00062\u0006\u0010\t\u001a\u00020\nJ\u0010\u0010\u000b\u001a\u00020\u000c2\u0006\u0010\r\u001a\u00020\u000eH\u0007J,\u0010\u000f\u001a\u00020\u00102\u0006\u0010\u0011\u001a\u00020\u00062\u0008\u0010\u0012\u001a\u0004\u0018\u00010\u00132\u0008\u0010\u0014\u001a\u0004\u0018\u00010\u00062\u0006\u0010\t\u001a\u00020\nH\u0007J\u0008\u0010\u0015\u001a\u00020\u0010H\u0002J$\u0010\u0016\u001a\u00020\u00102\u0006\u0010\u0011\u001a\u00020\u00062\u0008\u0010\u0017\u001a\u0004\u0018\u00010\u00182\u0008\u0010\u0014\u001a\u0004\u0018\u00010\u0006H\u0007R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082T\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u0007\u001a\u0004\u0018\u00010\u0006X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u0019"
+}
+d2 = {
+"Lcom/facebook/appevents/internal/SessionLogger;",
+"",
+"()V",
+"INACTIVE_SECONDS_QUANTA",
+"",
+"PACKAGE_CHECKSUM",
+"",
+"TAG",
+"computePackageChecksum",
+"context",
+"Landroid/content/Context;",
+"getQuantaIndex",
+"",
+"timeBetweenSessions",
+"",
+"logActivateApp",
+"",
+"activityName",
+"sourceApplicationInfo",
+"Lcom/facebook/appevents/internal/SourceApplicationInfo;",
+"appId",
+"logClockSkewEvent",
+"logDeactivateApp",
+"sessionInfo",
+"Lcom/facebook/appevents/internal/SessionInfo;",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field private static final INACTIVE_SECONDS_QUANTA:[J
+.field public static final INSTANCE:Lcom/facebook/appevents/internal/SessionLogger;
+.field private static final PACKAGE_CHECKSUM:Ljava/lang/String; = "PCKGCHKSUM"
+.field private static final TAG:Ljava/lang/String;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/facebook/appevents/internal/SessionLogger;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/facebook/appevents/internal/SessionLogger;-><init>()V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/appevents/internal/SessionLogger;->INSTANCE:Lcom/facebook/appevents/internal/SessionLogger;</span>
+<span class="cov">	const-class v0, Lcom/facebook/appevents/internal/SessionLogger;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sput-object v0, Lcom/facebook/appevents/internal/SessionLogger;->TAG:Ljava/lang/String;</span>
+<span class="cov">	const/16 v0, 0x13</span>
+<span class="cov">	new-array v0, v0, [J</span>
+<span class="cov">	fill-array-data v0, :array_0</span>
+<span class="cov">	sput-object v0, Lcom/facebook/appevents/internal/SessionLogger;->INACTIVE_SECONDS_QUANTA:[J</span>
+<span class="exec">	return-void</span>
+<span class="">	nop</span>
+<span class="">	:array_0</span>
+<span class="">	.array-data 8</span>
+<span class="">	0x493e0</span>
+<span class="">	0xdbba0</span>
+<span class="">	0x1b7740</span>
+<span class="">	0x36ee80</span>
+<span class="">	0x1499700</span>
+<span class="">	0x2932e00</span>
+<span class="">	0x5265c00</span>
+<span class="">	0xa4cb800</span>
+<span class="">	0xf731400</span>
+<span class="">	0x240c8400</span>
+<span class="">	0x48190800</span>
+<span class="">	0x6c258c00</span>
+<span class="">	0x90321000L</span>
+<span class="">	0x134fd9000L</span>
+<span class="">	0x1cf7c5800L</span>
+<span class="">	0x269fb2000L</span>
+<span class="">	0x30479e800L</span>
+<span class="">	0x39ef8b000L</span>
+<span class="">	0x757b12c00L</span>
+<span class="">	.end array-data</span>
+.end method
+
+<span class="cov">.method private constructor &lt;init&gt;()V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public static final getQuantaIndex(J)I
+<span class="">	.locals 6</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/appevents/internal/SessionLogger;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v3, Lcom/facebook/appevents/internal/SessionLogger;->INACTIVE_SECONDS_QUANTA:[J</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	array-length v4, v3</span>
+<span class="">	if-ge v1, v4, :cond_1</span>
+<span class="">	aget-wide v4, v3, v1</span>
+<span class="">	cmp-long v3, v4, p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	if-gez v3, :cond_1</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+<span class="cov">.method public static final logActivateApp(Ljava/lang/String;Lcom/facebook/appevents/internal/SourceApplicationInfo;Ljava/lang/String;Landroid/content/Context;)V</span>
+<span class="">	.locals 3</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	const-class v0, Lcom/facebook/appevents/internal/SessionLogger;</span>
+<span class="exec">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="cov">	const-string v1, "activityName"</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	invoke-static {p0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v1, "context"</span>
+<span class="cov">	invoke-static {p3, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/appevents/internal/SourceApplicationInfo;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	const-string p1, "Unclassified"</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	new-instance v1, Landroid/os/Bundle;</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	invoke-direct {v1}, Landroid/os/Bundle;-><init>()V</span>
+<span class="cov">	const-string v2, "fb_mobile_launch_source"</span>
+<span class="cov">	invoke-virtual {v1, v2, p1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	const-string p1, "fb_mobile_pckg_fp"</span>
+<span class="cov">	sget-object v2, Lcom/facebook/appevents/internal/SessionLogger;->INSTANCE:Lcom/facebook/appevents/internal/SessionLogger;</span>
+<span class="exec">	invoke-virtual {v2, p3}, Lcom/facebook/appevents/internal/SessionLogger;->computePackageChecksum(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	invoke-virtual {v1, p1, v2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	const-string p1, "fb_mobile_app_cert_hash"</span>
+<span class="exec">	invoke-static {p3}, Lcom/facebook/internal/security/CertificateUtil;->getCertificateHash(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object p3</span>
+<span class="cov">	invoke-virtual {v1, p1, p3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	new-instance p1, Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+<span class="cov">	const/4 p3, 0x0</span>
+<span class="cov">	invoke-direct {p1, p0, p2, p3}, Lcom/facebook/appevents/InternalAppEventsLogger;-><init>(Ljava/lang/String;Ljava/lang/String;Lcom/facebook/AccessToken;)V</span>
+<span class="cov">	const-string p0, "fb_mobile_activate_app"</span>
+<span class="cov">	invoke-virtual {p1, p0, v1}, Lcom/facebook/appevents/InternalAppEventsLogger;->logEvent(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="cov">	sget-object p0, Lcom/facebook/appevents/InternalAppEventsLogger;->Companion:Lcom/facebook/appevents/InternalAppEventsLogger$Companion;</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/facebook/appevents/InternalAppEventsLogger$Companion;->getFlushBehavior()Lcom/facebook/appevents/AppEventsLogger$FlushBehavior;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	sget-object p2, Lcom/facebook/appevents/AppEventsLogger$FlushBehavior;->EXPLICIT_ONLY:Lcom/facebook/appevents/AppEventsLogger$FlushBehavior;</span>
+<span class="cov">	if-eq p0, p2, :cond_2</span>
+<span class="cov">	invoke-virtual {p1}, Lcom/facebook/appevents/InternalAppEventsLogger;->flush()V</span>
+<span class="exec">	return-void</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	:cond_2</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+.end method
+
+.method private final logClockSkewEvent()V
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	sget-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/facebook/LoggingBehavior;->APP_EVENTS:Lcom/facebook/LoggingBehavior;</span>
+<span class="">	sget-object v2, Lcom/facebook/appevents/internal/SessionLogger;->TAG:Ljava/lang/String;</span>
+<span class="">	invoke-static {v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V</span>
+<span class="">	const-string v3, "Clock skew detected"</span>
+<span class="">	invoke-virtual {v0, v1, v2, v3}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	move-exception v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {v0, p0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static final logDeactivateApp(Ljava/lang/String;Lcom/facebook/appevents/internal/SessionInfo;Ljava/lang/String;)V
+<span class="">	.locals 15</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	move-object v0, p0</span>
+<span class="">	const-class v1, Lcom/facebook/appevents/internal/SessionLogger;</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	const-string v2, "activityName"</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p0, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	if-nez p1, :cond_1</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lcom/facebook/appevents/internal/SessionInfo;->getDiskRestoreTime()Ljava/lang/Long;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:cond_1</span>
+<span class="">	const-wide/16 v3, 0x0</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v5</span>
+<span class="">	goto :goto_1</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lcom/facebook/appevents/internal/SessionInfo;->getSessionLastEventTime()Ljava/lang/Long;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:cond_2</span>
+<span class="">	if-eqz v2, :cond_3</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v5</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-wide v5, v3</span>
+<span class="">	sub-long v5, v3, v5</span>
+<span class="">	:cond_3</span>
+<span class="">	cmp-long v2, v5, v3</span>
+<span class="">	:goto_0</span>
+<span class="">	if-gez v2, :cond_4</span>
+<span class="">	:goto_1</span>
+<span class="">	sget-object v2, Lcom/facebook/appevents/internal/SessionLogger;->INSTANCE:Lcom/facebook/appevents/internal/SessionLogger;</span>
+<span class="">	invoke-direct {v2}, Lcom/facebook/appevents/internal/SessionLogger;->logClockSkewEvent()V</span>
+<span class="">	move-wide v5, v3</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lcom/facebook/appevents/internal/SessionInfo;->getSessionLength()J</span>
+<span class="">	move-result-wide v7</span>
+<span class="">	:cond_4</span>
+<span class="">	cmp-long v2, v7, v3</span>
+<span class="">	if-gez v2, :cond_5</span>
+<span class="">	sget-object v2, Lcom/facebook/appevents/internal/SessionLogger;->INSTANCE:Lcom/facebook/appevents/internal/SessionLogger;</span>
+<span class="">	invoke-direct {v2}, Lcom/facebook/appevents/internal/SessionLogger;->logClockSkewEvent()V</span>
+<span class="">	move-wide v7, v3</span>
+<span class="">	new-instance v2, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v2}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	:cond_5</span>
+<span class="">	const-string v9, "fb_mobile_app_interruptions"</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lcom/facebook/appevents/internal/SessionInfo;->getInterruptionCount()I</span>
+<span class="">	move-result v10</span>
+<span class="">	invoke-virtual {v2, v9, v10}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V</span>
+<span class="">	const-string v9, "fb_mobile_time_between_sessions"</span>
+<span class="">	sget-object v10, Lkotlin/jvm/internal/StringCompanionObject;->INSTANCE:Lkotlin/jvm/internal/StringCompanionObject;</span>
+<span class="">	sget-object v10, Ljava/util/Locale;->ROOT:Ljava/util/Locale;</span>
+<span class="">	const-string v11, "session_quanta_%d"</span>
+<span class="">	const/4 v12, 0x1</span>
+<span class="">	new-array v13, v12, [Ljava/lang/Object;</span>
+<span class="">	const/4 v14, 0x0</span>
+<span class="">	invoke-static {v5, v6}, Lcom/facebook/appevents/internal/SessionLogger;->getQuantaIndex(J)I</span>
+<span class="">	move-result v5</span>
+<span class="">	invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	aput-object v5, v13, v14</span>
+<span class="">	invoke-static {v13, v12}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-static {v10, v11, v5}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	const-string v6, "java.lang.String.format(locale, format, *args)"</span>
+<span class="">	invoke-static {v5, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v2, v9, v5}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lcom/facebook/appevents/internal/SessionInfo;->getSourceApplicationInfo()Lcom/facebook/appevents/internal/SourceApplicationInfo;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	if-eqz v5, :cond_6</span>
+<span class="">	invoke-virtual {v5}, Lcom/facebook/appevents/internal/SourceApplicationInfo;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	if-eqz v5, :cond_6</span>
+<span class="">	goto :goto_2</span>
+<span class="">	const-string v5, "Unclassified"</span>
+<span class="">	const-string v6, "fb_mobile_launch_source"</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-virtual {v2, v6, v5}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:goto_2</span>
+<span class="">	const-string v5, "_logTime"</span>
+<span class="">	invoke-virtual/range {p1 .. p1}, Lcom/facebook/appevents/internal/SessionInfo;->getSessionLastEventTime()Ljava/lang/Long;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	if-eqz v6, :cond_7</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	const/16 v6, 0x3e8</span>
+<span class="">	int-to-long v9, v6</span>
+<span class="">	:cond_7</span>
+<span class="">	div-long/2addr v3, v9</span>
+<span class="">	invoke-virtual {v2, v5, v3, v4}, Landroid/os/Bundle;->putLong(Ljava/lang/String;J)V</span>
+<span class="">	new-instance v3, Lcom/facebook/appevents/InternalAppEventsLogger;</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	move-object/from16 v5, p2</span>
+<span class="">	invoke-direct {v3, p0, v5, v4}, Lcom/facebook/appevents/InternalAppEventsLogger;-><init>(Ljava/lang/String;Ljava/lang/String;Lcom/facebook/AccessToken;)V</span>
+<span class="">	const-string v0, "fb_mobile_deactivate_app"</span>
+<span class="">	long-to-double v4, v7</span>
+<span class="">	const-wide/16 v6, 0x3e8</span>
+<span class="">	long-to-double v6, v6</span>
+<span class="">	div-double/2addr v4, v6</span>
+<span class="">	invoke-virtual {v3, v0, v4, v5, v2}, Lcom/facebook/appevents/InternalAppEventsLogger;->logEvent(Ljava/lang/String;DLandroid/os/Bundle;)V</span>
+<span class="">	move-exception v0</span>
+<span class="">	invoke-static {v0, v1}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+.end method
+
+<span class="cov">.method public final computePackageChecksum(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="">	.locals 8</span>
+
+<span class="exec">	invoke-static {p0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="cov">	const-string v0, "context"</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;</span>
+<span class="cov">	:try_start_1</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	const/4 v3, 0x0</span>
+<span class="exec">	invoke-virtual {v0, v2, v3}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	iget-object v2, v2, Landroid/content/pm/PackageInfo;->versionName:Ljava/lang/String;</span>
+<span class="cov">	new-instance v4, Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="cov">	const-string v5, "PCKGCHKSUM;"</span>
+<span class="cov">	invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	const-string v4, "com.facebook.sdk.appEventPreferences"</span>
+<span class="exec">	invoke-virtual {p1, v4, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="exec">	invoke-interface {v4, v2, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v5</span>
+<span class="cov">	if-eqz v5, :cond_1</span>
+<span class="exec">	invoke-virtual {v5}, Ljava/lang/String;->length()I</span>
+<span class="cov">	move-result v6</span>
+<span class="cov">	const/16 v7, 0x20</span>
+<span class="cov">	if-ne v6, v7, :cond_1</span>
+<span class="exec">	return-object v5</span>
+<span class="">	invoke-static {p1, v1}, Lcom/facebook/appevents/internal/HashUtils;->computeChecksumWithPackageManager(Landroid/content/Context;Ljava/lang/Long;)Ljava/lang/String;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v5</span>
+<span class="">	if-eqz v5, :cond_2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v0, p1, v3}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object p1, p1, Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;</span>
+<span class="">	invoke-static {p1}, Lcom/facebook/appevents/internal/HashUtils;->computeChecksum(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-interface {v4}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	:goto_0</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1, v2, v5}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+<span class="">	move-object v1, v5</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-static {p1, p0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

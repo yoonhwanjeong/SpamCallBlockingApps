@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">io.reactivex.android.plugins</a></li>
+        <li><i class="ico ico-class"></i> RxAndroidPlugins.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lio/reactivex/android/plugins/RxAndroidPlugins;
+.super Ljava/lang/Object;
+.source "RxAndroidPlugins.java"
+
+
+.field private static volatile onInitMainThreadHandler:Lio/reactivex/functions/Function;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lio/reactivex/functions/Function<",
+"Ljava/util/concurrent/Callable<",
+"Lio/reactivex/Scheduler;",
+">;",
+"Lio/reactivex/Scheduler;",
+">;"
+}
+.end annotation
+.end field
+.field private static volatile onMainThreadHandler:Lio/reactivex/functions/Function;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lio/reactivex/functions/Function<",
+"Lio/reactivex/Scheduler;",
+"Lio/reactivex/Scheduler;",
+">;"
+}
+.end annotation
+.end field
+
+
+.method private constructor <init>()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	new-instance v0, Ljava/lang/AssertionError;</span>
+<span class="">	const-string v1, "No instances."</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/AssertionError;-><init>(Ljava/lang/Object;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method static apply(Lio/reactivex/functions/Function;Ljava/lang/Object;)Ljava/lang/Object;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<T:",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	"R:",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">(",</span>
+<span class="">	"Lio/reactivex/functions/Function<",</span>
+<span class="">	"TT;TR;>;TT;)TR;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	invoke-interface {p0, p1}, Lio/reactivex/functions/Function;->apply(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-static {p0}, Lio/reactivex/exceptions/Exceptions;->propagate(Ljava/lang/Throwable;)Ljava/lang/RuntimeException;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	throw p0</span>
+.end method
+
+.method static applyRequireNonNull(Lio/reactivex/functions/Function;Ljava/util/concurrent/Callable;)Lio/reactivex/Scheduler;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lio/reactivex/functions/Function<",</span>
+<span class="">	"Ljava/util/concurrent/Callable<",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;",</span>
+<span class="">	"Ljava/util/concurrent/Callable<",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lio/reactivex/Scheduler;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0, p1}, Lio/reactivex/android/plugins/RxAndroidPlugins;->apply(Lio/reactivex/functions/Function;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Lio/reactivex/Scheduler;</span>
+<span class="">	const-string p1, "Scheduler Callable returned null"</span>
+<span class="">	invoke-static {p0, p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;</span>
+.end method
+
+.method static callRequireNonNull(Ljava/util/concurrent/Callable;)Lio/reactivex/Scheduler;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/concurrent/Callable<",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lio/reactivex/Scheduler;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	invoke-interface {p0}, Ljava/util/concurrent/Callable;->call()Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Lio/reactivex/Scheduler;</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	new-instance p0, Ljava/lang/NullPointerException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, "Scheduler Callable returned null"</span>
+<span class="">	invoke-direct {p0, v0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-static {p0}, Lio/reactivex/exceptions/Exceptions;->propagate(Ljava/lang/Throwable;)Ljava/lang/RuntimeException;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	throw p0</span>
+.end method
+
+.method public static getInitMainThreadSchedulerHandler()Lio/reactivex/functions/Function;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lio/reactivex/functions/Function<",</span>
+<span class="">	"Ljava/util/concurrent/Callable<",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lio/reactivex/android/plugins/RxAndroidPlugins;->onInitMainThreadHandler:Lio/reactivex/functions/Function;</span>
+.end method
+
+.method public static getOnMainThreadSchedulerHandler()Lio/reactivex/functions/Function;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lio/reactivex/functions/Function<",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lio/reactivex/android/plugins/RxAndroidPlugins;->onMainThreadHandler:Lio/reactivex/functions/Function;</span>
+.end method
+
+.method public static initMainThreadScheduler(Ljava/util/concurrent/Callable;)Lio/reactivex/Scheduler;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/concurrent/Callable<",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lio/reactivex/Scheduler;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "scheduler == null"</span>
+<span class="">	invoke-static {p0, v0}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	sget-object v0, Lio/reactivex/android/plugins/RxAndroidPlugins;->onInitMainThreadHandler:Lio/reactivex/functions/Function;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-static {p0}, Lio/reactivex/android/plugins/RxAndroidPlugins;->callRequireNonNull(Ljava/util/concurrent/Callable;)Lio/reactivex/Scheduler;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {v0, p0}, Lio/reactivex/android/plugins/RxAndroidPlugins;->applyRequireNonNull(Lio/reactivex/functions/Function;Ljava/util/concurrent/Callable;)Lio/reactivex/Scheduler;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static onMainThreadScheduler(Lio/reactivex/Scheduler;)Lio/reactivex/Scheduler;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "scheduler == null"</span>
+<span class="">	invoke-static {p0, v0}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	sget-object v0, Lio/reactivex/android/plugins/RxAndroidPlugins;->onMainThreadHandler:Lio/reactivex/functions/Function;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-static {v0, p0}, Lio/reactivex/android/plugins/RxAndroidPlugins;->apply(Lio/reactivex/functions/Function;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Lio/reactivex/Scheduler;</span>
+.end method
+
+.method public static reset()V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-static {v0}, Lio/reactivex/android/plugins/RxAndroidPlugins;->setInitMainThreadSchedulerHandler(Lio/reactivex/functions/Function;)V</span>
+<span class="">	invoke-static {v0}, Lio/reactivex/android/plugins/RxAndroidPlugins;->setMainThreadSchedulerHandler(Lio/reactivex/functions/Function;)V</span>
+.end method
+
+.method public static setInitMainThreadSchedulerHandler(Lio/reactivex/functions/Function;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lio/reactivex/functions/Function<",</span>
+<span class="">	"Ljava/util/concurrent/Callable<",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sput-object p0, Lio/reactivex/android/plugins/RxAndroidPlugins;->onInitMainThreadHandler:Lio/reactivex/functions/Function;</span>
+.end method
+
+.method public static setMainThreadSchedulerHandler(Lio/reactivex/functions/Function;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lio/reactivex/functions/Function<",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	"Lio/reactivex/Scheduler;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sput-object p0, Lio/reactivex/android/plugins/RxAndroidPlugins;->onMainThreadHandler:Lio/reactivex/functions/Function;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

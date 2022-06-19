@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.login</a></li>
+        <li><i class="ico ico-class"></i> LoginClient$Request.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/login/LoginClient$Request;
+.super Ljava/lang/Object;
+.source "LoginClient.java"
+.implements Landroid/os/Parcelable;
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lcom/facebook/login/LoginClient;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x9
+name = "Request"
+.end annotation
+
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Landroid/os/Parcelable$Creator<",
+"Lcom/facebook/login/LoginClient$Request;",
+">;"
+}
+.end annotation
+.end field
+.field private final applicationId:Ljava/lang/String;
+.field private authId:Ljava/lang/String;
+.field private authType:Ljava/lang/String;
+.field private final defaultAudience:Lcom/facebook/login/DefaultAudience;
+.field private deviceAuthTargetUserId:Ljava/lang/String;
+.field private deviceRedirectUriString:Ljava/lang/String;
+.field private isFamilyLogin:Z
+.field private isRerequest:Z
+.field private final loginBehavior:Lcom/facebook/login/LoginBehavior;
+.field private messengerPageId:Ljava/lang/String;
+.field private nonce:Ljava/lang/String;
+.field private permissions:Ljava/util/Set;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Set<",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+.field private resetMessengerState:Z
+.field private shouldSkipAccountDeduplication:Z
+.field private final targetApp:Lcom/facebook/login/LoginTargetApp;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/login/LoginClient$Request$1;</span>
+<span class="">	invoke-direct {v0}, Lcom/facebook/login/LoginClient$Request$1;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/facebook/login/LoginClient$Request;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+.end method
+
+.method private constructor <init>(Landroid/os/Parcel;)V
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->isRerequest:Z</span>
+<span class="">	iput-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->isFamilyLogin:Z</span>
+<span class="">	iput-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->shouldSkipAccountDeduplication:Z</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/login/LoginBehavior;->valueOf(Ljava/lang/String;)Lcom/facebook/login/LoginBehavior;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object v1, v2</span>
+<span class="">	:goto_0</span>
+<span class="">	iput-object v1, p0, Lcom/facebook/login/LoginClient$Request;->loginBehavior:Lcom/facebook/login/LoginBehavior;</span>
+<span class="">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/os/Parcel;->readStringList(Ljava/util/List;)V</span>
+<span class="">	new-instance v3, Ljava/util/HashSet;</span>
+<span class="">	invoke-direct {v3, v1}, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V</span>
+<span class="">	iput-object v3, p0, Lcom/facebook/login/LoginClient$Request;->permissions:Ljava/util/Set;</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/login/DefaultAudience;->valueOf(Ljava/lang/String;)Lcom/facebook/login/DefaultAudience;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	move-object v1, v2</span>
+<span class="">	:goto_1</span>
+<span class="">	iput-object v1, p0, Lcom/facebook/login/LoginClient$Request;->defaultAudience:Lcom/facebook/login/DefaultAudience;</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iput-object v1, p0, Lcom/facebook/login/LoginClient$Request;->applicationId:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iput-object v1, p0, Lcom/facebook/login/LoginClient$Request;->authId:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_2</span>
+<span class="">	iput-boolean v1, p0, Lcom/facebook/login/LoginClient$Request;->isRerequest:Z</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iput-object v1, p0, Lcom/facebook/login/LoginClient$Request;->deviceRedirectUriString:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iput-object v1, p0, Lcom/facebook/login/LoginClient$Request;->authType:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iput-object v1, p0, Lcom/facebook/login/LoginClient$Request;->deviceAuthTargetUserId:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iput-object v1, p0, Lcom/facebook/login/LoginClient$Request;->messengerPageId:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_3</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_3</span>
+<span class="">	iput-boolean v1, p0, Lcom/facebook/login/LoginClient$Request;->resetMessengerState:Z</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_4</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/login/LoginTargetApp;->valueOf(Ljava/lang/String;)Lcom/facebook/login/LoginTargetApp;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:cond_4</span>
+<span class="">	iput-object v2, p0, Lcom/facebook/login/LoginClient$Request;->targetApp:Lcom/facebook/login/LoginTargetApp;</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_5</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:cond_5</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_4</span>
+<span class="">	iput-boolean v1, p0, Lcom/facebook/login/LoginClient$Request;->isFamilyLogin:Z</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_6</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	:cond_6</span>
+<span class="">	iput-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->shouldSkipAccountDeduplication:Z</span>
+<span class="">	invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginClient$Request;->nonce:Ljava/lang/String;</span>
+.end method
+
+.method synthetic constructor <init>(Landroid/os/Parcel;Lcom/facebook/login/LoginClient$1;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/login/LoginClient$Request;-><init>(Landroid/os/Parcel;)V</span>
+.end method
+
+.method constructor <init>(Lcom/facebook/login/LoginBehavior;Ljava/util/Set;Lcom/facebook/login/DefaultAudience;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/login/LoginBehavior;",</span>
+<span class="">	"Ljava/util/Set<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lcom/facebook/login/DefaultAudience;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v7, Lcom/facebook/login/LoginTargetApp;->FACEBOOK:Lcom/facebook/login/LoginTargetApp;</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	move-object v1, p1</span>
+<span class="">	move-object v2, p2</span>
+<span class="">	move-object v3, p3</span>
+<span class="">	move-object v4, p4</span>
+<span class="">	move-object v5, p5</span>
+<span class="">	move-object v6, p6</span>
+<span class="">	invoke-direct/range {v0 .. v7}, Lcom/facebook/login/LoginClient$Request;-><init>(Lcom/facebook/login/LoginBehavior;Ljava/util/Set;Lcom/facebook/login/DefaultAudience;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/facebook/login/LoginTargetApp;)V</span>
+.end method
+
+.method constructor <init>(Lcom/facebook/login/LoginBehavior;Ljava/util/Set;Lcom/facebook/login/DefaultAudience;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/facebook/login/LoginTargetApp;)V
+<span class="">	.locals 9</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/login/LoginBehavior;",</span>
+<span class="">	"Ljava/util/Set<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lcom/facebook/login/DefaultAudience;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Lcom/facebook/login/LoginTargetApp;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	move-object v1, p1</span>
+<span class="">	move-object v2, p2</span>
+<span class="">	move-object v3, p3</span>
+<span class="">	move-object v4, p4</span>
+<span class="">	move-object v5, p5</span>
+<span class="">	move-object v6, p6</span>
+<span class="">	move-object/from16 v7, p7</span>
+<span class="">	invoke-direct/range {v0 .. v8}, Lcom/facebook/login/LoginClient$Request;-><init>(Lcom/facebook/login/LoginBehavior;Ljava/util/Set;Lcom/facebook/login/DefaultAudience;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/facebook/login/LoginTargetApp;Ljava/lang/String;)V</span>
+.end method
+
+.method constructor <init>(Lcom/facebook/login/LoginBehavior;Ljava/util/Set;Lcom/facebook/login/DefaultAudience;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/facebook/login/LoginTargetApp;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/login/LoginBehavior;",</span>
+<span class="">	"Ljava/util/Set<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lcom/facebook/login/DefaultAudience;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Lcom/facebook/login/LoginTargetApp;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->isRerequest:Z</span>
+<span class="">	iput-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->isFamilyLogin:Z</span>
+<span class="">	iput-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->shouldSkipAccountDeduplication:Z</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginClient$Request;->loginBehavior:Lcom/facebook/login/LoginBehavior;</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p2, Ljava/util/HashSet;</span>
+<span class="">	invoke-direct {p2}, Ljava/util/HashSet;-><init>()V</span>
+<span class="">	:goto_0</span>
+<span class="">	iput-object p2, p0, Lcom/facebook/login/LoginClient$Request;->permissions:Ljava/util/Set;</span>
+<span class="">	iput-object p3, p0, Lcom/facebook/login/LoginClient$Request;->defaultAudience:Lcom/facebook/login/DefaultAudience;</span>
+<span class="">	iput-object p4, p0, Lcom/facebook/login/LoginClient$Request;->authType:Ljava/lang/String;</span>
+<span class="">	iput-object p5, p0, Lcom/facebook/login/LoginClient$Request;->applicationId:Ljava/lang/String;</span>
+<span class="">	iput-object p6, p0, Lcom/facebook/login/LoginClient$Request;->authId:Ljava/lang/String;</span>
+<span class="">	iput-object p7, p0, Lcom/facebook/login/LoginClient$Request;->targetApp:Lcom/facebook/login/LoginTargetApp;</span>
+<span class="">	iput-object p8, p0, Lcom/facebook/login/LoginClient$Request;->nonce:Ljava/lang/String;</span>
+.end method
+
+.method public describeContents()I
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+.end method
+
+.method  getApplicationId()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->applicationId:Ljava/lang/String;</span>
+.end method
+
+.method  getAuthId()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->authId:Ljava/lang/String;</span>
+.end method
+
+.method  getAuthType()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->authType:Ljava/lang/String;</span>
+.end method
+
+.method  getDefaultAudience()Lcom/facebook/login/DefaultAudience;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->defaultAudience:Lcom/facebook/login/DefaultAudience;</span>
+.end method
+
+.method  getDeviceAuthTargetUserId()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->deviceAuthTargetUserId:Ljava/lang/String;</span>
+.end method
+
+.method  getDeviceRedirectUriString()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->deviceRedirectUriString:Ljava/lang/String;</span>
+.end method
+
+.method  getLoginBehavior()Lcom/facebook/login/LoginBehavior;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->loginBehavior:Lcom/facebook/login/LoginBehavior;</span>
+.end method
+
+.method  getLoginTargetApp()Lcom/facebook/login/LoginTargetApp;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->targetApp:Lcom/facebook/login/LoginTargetApp;</span>
+.end method
+
+.method public getMessengerPageId()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->messengerPageId:Ljava/lang/String;</span>
+.end method
+
+.method public getNonce()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->nonce:Ljava/lang/String;</span>
+.end method
+
+.method  getPermissions()Ljava/util/Set;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/Set<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->permissions:Ljava/util/Set;</span>
+.end method
+
+.method public getResetMessengerState()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->resetMessengerState:Z</span>
+.end method
+
+.method  hasPublishPermission()Z
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->permissions:Ljava/util/Set;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/lang/String;</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/login/LoginManager;->isPublishPermission(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method  isFamilyLogin()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->isFamilyLogin:Z</span>
+.end method
+
+.method  isInstagramLogin()Z
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/login/LoginClient$Request;->targetApp:Lcom/facebook/login/LoginTargetApp;</span>
+<span class="">	sget-object v1, Lcom/facebook/login/LoginTargetApp;->INSTAGRAM:Lcom/facebook/login/LoginTargetApp;</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method  isRerequest()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->isRerequest:Z</span>
+.end method
+
+.method  setAuthId(Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginClient$Request;->authId:Ljava/lang/String;</span>
+.end method
+
+.method  setAuthType(Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginClient$Request;->authType:Ljava/lang/String;</span>
+.end method
+
+.method  setDeviceAuthTargetUserId(Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginClient$Request;->deviceAuthTargetUserId:Ljava/lang/String;</span>
+.end method
+
+.method  setDeviceRedirectUriString(Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginClient$Request;->deviceRedirectUriString:Ljava/lang/String;</span>
+.end method
+
+.method  setFamilyLogin(Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-boolean p1, p0, Lcom/facebook/login/LoginClient$Request;->isFamilyLogin:Z</span>
+.end method
+
+.method public setMessengerPageId(Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginClient$Request;->messengerPageId:Ljava/lang/String;</span>
+.end method
+
+.method  setPermissions(Ljava/util/Set;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/Set<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "permissions"</span>
+<span class="">	invoke-static {p1, v0}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/login/LoginClient$Request;->permissions:Ljava/util/Set;</span>
+.end method
+
+.method  setRerequest(Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-boolean p1, p0, Lcom/facebook/login/LoginClient$Request;->isRerequest:Z</span>
+.end method
+
+.method public setResetMessengerState(Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-boolean p1, p0, Lcom/facebook/login/LoginClient$Request;->resetMessengerState:Z</span>
+.end method
+
+.method  setShouldSkipAccountDeduplication(Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-boolean p1, p0, Lcom/facebook/login/LoginClient$Request;->shouldSkipAccountDeduplication:Z</span>
+.end method
+
+.method  shouldSkipAccountDeduplication()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/facebook/login/LoginClient$Request;->shouldSkipAccountDeduplication:Z</span>
+.end method
+
+.method public writeToParcel(Landroid/os/Parcel;I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object p2, p0, Lcom/facebook/login/LoginClient$Request;->loginBehavior:Lcom/facebook/login/LoginBehavior;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Lcom/facebook/login/LoginBehavior;->name()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object p2, v0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+<span class="">	new-instance p2, Ljava/util/ArrayList;</span>
+<span class="">	iget-object v1, p0, Lcom/facebook/login/LoginClient$Request;->permissions:Ljava/util/Set;</span>
+<span class="">	invoke-direct {p2, v1}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeStringList(Ljava/util/List;)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/login/LoginClient$Request;->defaultAudience:Lcom/facebook/login/DefaultAudience;</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	invoke-virtual {p2}, Lcom/facebook/login/DefaultAudience;->name()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	move-object p2, v0</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/login/LoginClient$Request;->applicationId:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/login/LoginClient$Request;->authId:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+<span class="">	iget-boolean p2, p0, Lcom/facebook/login/LoginClient$Request;->isRerequest:Z</span>
+<span class="">	int-to-byte p2, p2</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeByte(B)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/login/LoginClient$Request;->deviceRedirectUriString:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/login/LoginClient$Request;->authType:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/login/LoginClient$Request;->deviceAuthTargetUserId:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/login/LoginClient$Request;->messengerPageId:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+<span class="">	iget-boolean p2, p0, Lcom/facebook/login/LoginClient$Request;->resetMessengerState:Z</span>
+<span class="">	int-to-byte p2, p2</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeByte(B)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/login/LoginClient$Request;->targetApp:Lcom/facebook/login/LoginTargetApp;</span>
+<span class="">	if-eqz p2, :cond_2</span>
+<span class="">	invoke-virtual {p2}, Lcom/facebook/login/LoginTargetApp;->name()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+<span class="">	iget-boolean p2, p0, Lcom/facebook/login/LoginClient$Request;->isFamilyLogin:Z</span>
+<span class="">	int-to-byte p2, p2</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeByte(B)V</span>
+<span class="">	iget-boolean p2, p0, Lcom/facebook/login/LoginClient$Request;->shouldSkipAccountDeduplication:Z</span>
+<span class="">	int-to-byte p2, p2</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeByte(B)V</span>
+<span class="">	iget-object p2, p0, Lcom/facebook/login/LoginClient$Request;->nonce:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

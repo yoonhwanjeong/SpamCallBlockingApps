@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.preference</a></li>
+        <li><i class="ico ico-class"></i> EditTextPreferenceDialogFragmentCompat.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Landroidx/preference/EditTextPreferenceDialogFragmentCompat;
+.super Landroidx/preference/PreferenceDialogFragmentCompat;
+.source "EditTextPreferenceDialogFragmentCompat.java"
+
+
+.field private static final SAVE_STATE_TEXT:Ljava/lang/String; = "EditTextPreferenceDialogFragment.text"
+.field private mEditText:Landroid/widget/EditText;
+.field private mText:Ljava/lang/CharSequence;
+
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/preference/PreferenceDialogFragmentCompat;-><init>()V</span>
+.end method
+
+.method private getEditTextPreference()Landroidx/preference/EditTextPreference;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->getPreference()Landroidx/preference/DialogPreference;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/preference/EditTextPreference;</span>
+.end method
+
+.method public static newInstance(Ljava/lang/String;)Landroidx/preference/EditTextPreferenceDialogFragmentCompat;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;</span>
+<span class="">	invoke-direct {v0}, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;-><init>()V</span>
+<span class="">	new-instance v1, Landroid/os/Bundle;</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-direct {v1, v2}, Landroid/os/Bundle;-><init>(I)V</span>
+<span class="">	const-string v2, "key"</span>
+<span class="">	invoke-virtual {v1, v2, p0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->setArguments(Landroid/os/Bundle;)V</span>
+.end method
+
+.method protected needInputMethod()Z
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x1</span>
+.end method
+
+.method protected onBindDialogView(Landroid/view/View;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-super {p0, p1}, Landroidx/preference/PreferenceDialogFragmentCompat;->onBindDialogView(Landroid/view/View;)V</span>
+<span class="">	const v0, 0x1020003</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroid/widget/EditText;</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->mEditText:Landroid/widget/EditText;</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	invoke-virtual {p1}, Landroid/widget/EditText;->requestFocus()Z</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->mEditText:Landroid/widget/EditText;</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->mText:Ljava/lang/CharSequence;</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->mEditText:Landroid/widget/EditText;</span>
+<span class="">	invoke-virtual {p1}, Landroid/widget/EditText;->getText()Landroid/text/Editable;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Landroid/text/Editable;->length()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/widget/EditText;->setSelection(I)V</span>
+<span class="">	invoke-direct {p0}, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->getEditTextPreference()Landroidx/preference/EditTextPreference;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/EditTextPreference;->getOnBindEditTextListener()Landroidx/preference/EditTextPreference$OnBindEditTextListener;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-direct {p0}, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->getEditTextPreference()Landroidx/preference/EditTextPreference;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/EditTextPreference;->getOnBindEditTextListener()Landroidx/preference/EditTextPreference$OnBindEditTextListener;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->mEditText:Landroid/widget/EditText;</span>
+<span class="">	invoke-interface {p1, v0}, Landroidx/preference/EditTextPreference$OnBindEditTextListener;->onBindEditText(Landroid/widget/EditText;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v0, "Dialog view must contain an EditText with id @android:id/edit"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public onCreate(Landroid/os/Bundle;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-super {p0, p1}, Landroidx/preference/PreferenceDialogFragmentCompat;->onCreate(Landroid/os/Bundle;)V</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-direct {p0}, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->getEditTextPreference()Landroidx/preference/EditTextPreference;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/EditTextPreference;->getText()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->mText:Ljava/lang/CharSequence;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, "EditTextPreferenceDialogFragment.text"</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/os/Bundle;->getCharSequence(Ljava/lang/String;)Ljava/lang/CharSequence;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->mText:Ljava/lang/CharSequence;</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public onDialogClosed(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->mEditText:Landroid/widget/EditText;</span>
+<span class="">	invoke-virtual {p1}, Landroid/widget/EditText;->getText()Landroid/text/Editable;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p0}, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->getEditTextPreference()Landroidx/preference/EditTextPreference;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/preference/EditTextPreference;->callChangeListener(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/preference/EditTextPreference;->setText(Ljava/lang/String;)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public onSaveInstanceState(Landroid/os/Bundle;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0, p1}, Landroidx/preference/PreferenceDialogFragmentCompat;->onSaveInstanceState(Landroid/os/Bundle;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->mText:Ljava/lang/CharSequence;</span>
+<span class="">	const-string v1, "EditTextPreferenceDialogFragment.text"</span>
+<span class="">	invoke-virtual {p1, v1, v0}, Landroid/os/Bundle;->putCharSequence(Ljava/lang/String;Ljava/lang/CharSequence;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

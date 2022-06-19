@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.ui.common.error</a></li>
+        <li><i class="ico ico-class"></i> PermissionNeededDialog.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;
+.super Lcom/hiya/stingray/ui/common/g;
+.source "SourceFile"
+
+
+.field private A:[Ljava/lang/String;
+.field  mainText:Landroid/widget/TextView;
+.annotation runtime Lbutterknife/BindView;
+value = 0x7f0902e5
+.end annotation
+.end field
+.field  settingsButton:Landroid/widget/Button;
+.annotation runtime Lbutterknife/BindView;
+value = 0x7f0901d1
+.end annotation
+.end field
+.field  z:Lcom/hiya/stingray/manager/e1;
+
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/hiya/stingray/ui/common/g;-><init>()V</span>
+.end method
+
+.method public static t1(ZLjava/lang/String;[Ljava/lang/String;)Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;</span>
+<span class="">	invoke-direct {v0}, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;-><init>()V</span>
+<span class="">	new-instance v1, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v1}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	const-string v2, "is_dialog_dismissible"</span>
+<span class="">	invoke-virtual {v1, v2, p0}, Landroid/os/Bundle;->putBoolean(Ljava/lang/String;Z)V</span>
+<span class="">	const-string p0, "permission_body_text"</span>
+<span class="">	invoke-virtual {v1, p0, p1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string p0, "permissions"</span>
+<span class="">	invoke-virtual {v1, p0, p2}, Landroid/os/Bundle;->putStringArray(Ljava/lang/String;[Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/fragment/app/Fragment;->setArguments(Landroid/os/Bundle;)V</span>
+.end method
+
+.method private u1(Landroid/content/Context;)Z
+<span class="">	.locals 5</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;->A:[Ljava/lang/String;</span>
+<span class="">	array-length v1, v0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v3, v1, :cond_1</span>
+<span class="">	aget-object v4, v0, v3</span>
+<span class="">	invoke-static {p1, v4}, Landroidx/core/content/a;->a(Landroid/content/Context;Ljava/lang/String;)I</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_0</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	:cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public onActivityCreated(Landroid/os/Bundle;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-super {p0, p1}, Landroidx/fragment/app/Fragment;->onActivityCreated(Landroid/os/Bundle;)V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/d;->e1()Landroid/app/Dialog;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance v0, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog$b;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog$b;-><init>(Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;)V</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/app/Dialog;->setOnKeyListener(Landroid/content/DialogInterface$OnKeyListener;)V</span>
+.end method
+
+.method public onCreate(Landroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0, p1}, Lcom/hiya/stingray/ui/common/g;->onCreate(Landroid/os/Bundle;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/hiya/stingray/ui/common/g;->q1()Lcom/hiya/stingray/s/d/a;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1, p0}, Lcom/hiya/stingray/s/d/a;->a(Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;)V</span>
+.end method
+
+.method public onCreateView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
+<span class="">	.locals 2</span>
+
+<span class="">	const p3, 0x7f0c010a</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p1, p3, p2, v0}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p0, p1}, Lbutterknife/ButterKnife;->bind(Ljava/lang/Object;Landroid/view/View;)Lbutterknife/Unbinder;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getArguments()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const-string p3, "is_dialog_dismissible"</span>
+<span class="">	invoke-virtual {p2, p3}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;)Z</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getArguments()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	const-string v0, "permission_body_text"</span>
+<span class="">	invoke-virtual {p3, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getArguments()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "permissions"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/Bundle;->getStringArray(Ljava/lang/String;)[Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;->A:[Ljava/lang/String;</span>
+<span class="">	invoke-static {p3}, Lcom/google/common/base/r;->b(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;->mainText:Landroid/widget/TextView;</span>
+<span class="">	invoke-virtual {v0, p3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0, p2}, Landroidx/fragment/app/d;->l1(Z)V</span>
+<span class="">	iget-object p2, p0, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;->settingsButton:Landroid/widget/Button;</span>
+<span class="">	new-instance p3, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog$a;</span>
+<span class="">	invoke-direct {p3, p0}, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog$a;-><init>(Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;)V</span>
+<span class="">	invoke-virtual {p2, p3}, Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V</span>
+.end method
+
+.method public onResume()V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-super {p0}, Lcom/hiya/stingray/ui/common/g;->onResume()V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;->u1(Landroid/content/Context;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/d;->e1()Landroid/app/Dialog;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroid/app/Dialog;->cancel()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/common/error/PermissionNeededDialog;->z:Lcom/hiya/stingray/manager/e1;</span>
+<span class="">	new-instance v1, Lcom/hiya/stingray/util/g0/c$a;</span>
+<span class="">	invoke-direct {v1}, Lcom/hiya/stingray/util/g0/c$a;-><init>()V</span>
+<span class="">	const-string v2, "dialog"</span>
+<span class="">	invoke-virtual {v1, v2}, Lcom/hiya/stingray/util/g0/c$a;->m(Ljava/lang/String;)Lcom/hiya/stingray/util/g0/c$a;</span>
+<span class="">	const-string v2, "contacts_access_denied"</span>
+<span class="">	invoke-virtual {v1, v2}, Lcom/hiya/stingray/util/g0/c$a;->h(Ljava/lang/String;)Lcom/hiya/stingray/util/g0/c$a;</span>
+<span class="">	invoke-virtual {v1}, Lcom/hiya/stingray/util/g0/c$a;->a()Lcom/hiya/stingray/util/g0/c;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "user_prompt_view"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Lcom/hiya/stingray/manager/e1;->c(Ljava/lang/String;Lcom/hiya/stingray/util/g0/c;)V</span>
+<span class="">	:goto_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

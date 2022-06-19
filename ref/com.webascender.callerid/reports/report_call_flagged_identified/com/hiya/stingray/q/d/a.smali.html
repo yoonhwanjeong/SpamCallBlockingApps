@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.q.d</a></li>
+        <li><i class="ico ico-class"></i> a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/hiya/stingray/q/d/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private a:Landroid/content/SharedPreferences;
+
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/SharedPreferences;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public A()Lcom/hiya/stingray/t/h1/i;
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "selected_place"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/common/base/r;->b(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const-class v1, Lcom/hiya/stingray/t/h1/i;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {v0, v1}, Lcom/hiya/stingray/util/p;->a(Ljava/lang/String;Ljava/lang/reflect/Type;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/hiya/stingray/t/h1/i;</span>
+<span class="">	move-exception v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lcom/google/gson/JsonSyntaxException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:catch_0</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="">	const-string v3, "Failed to convert Json to SelectablePlace."</span>
+<span class="">	invoke-static {v0, v3, v1}, Lr/a/a;->c(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	invoke-virtual {p0, v2}, Lcom/hiya/stingray/q/d/a;->n0(Lcom/hiya/stingray/t/h1/i;)V</span>
+.end method
+
+.method public B()J
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "SETTINGS_WARNING_DOT_LAST_TIME_CLEARED"</span>
+<span class="">	const-wide/16 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public C()Z
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "SHOWED_SOFT_PAYWALL"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public D()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "SUCCESSFUL_LOOKUPS_COUNT"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public E()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "USER_BLOCKED_NUMBER"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+.end method
+
+<span class="cov">.method public F()J</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="cov">	const-string v1, "USER_PROPERTIES_UPDATED_TIME"</span>
+<span class="cov">	const-wide/16 v2, 0x0</span>
+<span class="exec">	invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="exec">	return-wide v0</span>
+.end method
+
+.method public G()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "USER_REPORTED_NUMBER"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public H()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "USER_SAVED_TO_CONTACT"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+.end method
+
+<span class="cov">.method public I()Z</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="cov">	const-string v1, "HIYA_ACCEPTED_TERMS_AND_SERVICE"</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="exec">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+.end method
+
+.method public J(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "HIYA_ACCEPTED_TERMS_AND_SERVICE"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public K(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "APP_BLOCKED_NUMBER"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public L(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "APP_FLAGGED_NUMBER"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public M(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "APP_IDENTIFIED_NUMBER"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public N(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "BLOCK_NOTIFICATION_COUNT"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public O(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "CSS_ROLE_REQUESTED_DURING_ONBOARDING"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public P(Lcom/hiya/stingray/q/c/c;)Z
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {p1}, Lcom/hiya/stingray/util/p;->b(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v1, "caller_grid_data"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public Q(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "COMPLETED_ONBOARDING_ONCE"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public R(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "COMPLETED_PERMISSIONS_ONBOARDING_ONCE"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public S(J)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "DAILY_JOB_RUN_TIME"</span>
+<span class="">	invoke-interface {v0, v1, p1, p2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public T(J)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "last_call_delete_request"</span>
+<span class="">	invoke-interface {v0, v1, p1, p2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public U(Lcom/hiya/stingray/manager/u2$a;)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Enum;->name()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v1, "FEEDBACK_DIALOG_ACTION_TAKEN_FACE"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public V(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "FEEDBACK_DIALOG_ACTION_TAKEN"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public W(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "remote_config_fetched_once"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public X(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "FIRST_TIME_IDENTIFIED_COUNT"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public Y(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "IN_CALL_UI"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public Z(J)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "jitter_request_queue"</span>
+<span class="">	invoke-interface {v0, v1, p1, p2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public a()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "APP_BLOCKED_NUMBER"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public a0(J)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "force_update_dismiss_version_key"</span>
+<span class="">	invoke-interface {v0, v1, p1, p2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public b()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "APP_FLAGGED_NUMBER"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public b0(Ljava/lang/String;J)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0, p1, p2, p3}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public c()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "APP_IDENTIFIED_NUMBER"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public c0(Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "LAST_NOTIFICATION_PHONE_NUMBER_BLOCKED"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public d()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "BLOCK_NOTIFICATION_COUNT"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public d0(Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "LAST_NOTIFICATION_PHONE_NUMBER_MISSED"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public e()Z
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "CSS_ROLE_REQUESTED_DURING_ONBOARDING"</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public e0(Ljava/util/List;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/hiya/stingray/t/t0;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "lookup_history_entries"</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-interface {v0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {p1}, Lcom/hiya/stingray/util/p;->b(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="">	const-string v2, "Failed to save lookup history entries to shared preferences."</span>
+<span class="">	invoke-static {p1, v2, v1}, Lr/a/a;->c(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public f()Lcom/hiya/stingray/q/c/c;
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "caller_grid_data"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-class v1, Lcom/hiya/stingray/q/c/c;</span>
+<span class="">	invoke-static {v0, v1}, Lcom/hiya/stingray/util/p;->a(Ljava/lang/String;Ljava/lang/reflect/Type;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/hiya/stingray/q/c/c;</span>
+.end method
+
+<span class="cov">.method public f0(I)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="exec">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "MISSED_NOTIFICATION_COUNT"</span>
+<span class="cov">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="cov">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public g()Z
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "COMPLETED_ONBOARDING_ONCE"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public g0(Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "PAYWALL_USER_TYPE"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public h()Z
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "COMPLETED_PERMISSIONS_ONBOARDING_ONCE"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public h0(J)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "period_request_queue"</span>
+<span class="">	invoke-interface {v0, v1, p1, p2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public i()Z
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "FEEDBACK_DIALOG_ACTION_TAKEN"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public i0(J)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "PERMISSION_WARNING_SHOWED_LAST_TIME"</span>
+<span class="">	invoke-interface {v0, v1, p1, p2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+<span class="cov">.method public j()Z</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="cov">	const-string v1, "remote_config_fetched_once"</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="exec">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+.end method
+
+.method public j0(Ljava/util/List;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/hiya/stingray/t/h1/i;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "recent_selected_places"</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-interface {v0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {p1}, Lcom/hiya/stingray/util/p;->b(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="">	const-string v2, "Failed to save recent places to shared preferences."</span>
+<span class="">	invoke-static {p1, v2, v1}, Lr/a/a;->c(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public k()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "FIRST_TIME_IDENTIFIED_COUNT"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public k0(Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "REMOTE_CONFIG_OVERRIDES"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public l()Z
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "IN_CALL_UI"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public l0(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "REPORT_TO_CRASHLYTICS"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public m(Landroid/content/Context;)J
+<span class="">	.locals 3</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const v1, 0x7f110166</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	const-string p1, "jitter_request_queue"</span>
+<span class="">	invoke-interface {v0, p1, v1, v2}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public m0(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "SELECT_SURVEY_SHOWN"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public n()J
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "last_call_delete_request"</span>
+<span class="">	const-wide/16 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public n0(Lcom/hiya/stingray/t/h1/i;)V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "selected_place"</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-interface {v0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {p1}, Lcom/hiya/stingray/util/p;->b(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="">	const-string v2, "Failed to save selected place to shared preferences."</span>
+<span class="">	invoke-static {p1, v2, v1}, Lr/a/a;->c(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public o()J
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "force_update_dismiss_version_key"</span>
+<span class="">	const-wide/32 v2, 0x1adb1</span>
+<span class="">	invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public o0(J)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "SETTINGS_WARNING_DOT_LAST_TIME_CLEARED"</span>
+<span class="">	invoke-interface {v0, v1, p1, p2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public p()Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "LAST_NOTIFICATION_PHONE_NUMBER_BLOCKED"</span>
+<span class="">	const-string v2, ""</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public p0(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "SHOWED_PHONE_VERIFICATION"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public q()Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "LAST_NOTIFICATION_PHONE_NUMBER_MISSED"</span>
+<span class="">	const-string v2, ""</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public q0(Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "SHOWED_SOFT_PAYWALL"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public r()Ljava/util/List;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/hiya/stingray/t/t0;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "lookup_history_entries"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/common/base/r;->b(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Lcom/hiya/stingray/q/d/a$b;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v1, p0}, Lcom/hiya/stingray/q/d/a$b;-><init>(Lcom/hiya/stingray/q/d/a;)V</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/gson/x/a;->getType()Ljava/lang/reflect/Type;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v0, v1}, Lcom/hiya/stingray/util/p;->a(Ljava/lang/String;Ljava/lang/reflect/Type;)Ljava/lang/Object;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/util/List;</span>
+<span class="">	move-exception v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lcom/google/gson/JsonSyntaxException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:catch_0</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="">	const-string v3, "Failed to convert Json to List<LookupHistoryEntry>."</span>
+<span class="">	invoke-static {v0, v3, v1}, Lr/a/a;->c(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	invoke-virtual {p0, v2}, Lcom/hiya/stingray/q/d/a;->e0(Ljava/util/List;)V</span>
+<span class="">	invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public r0(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "SUCCESSFUL_LOOKUPS_COUNT"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+<span class="cov">.method public s()I</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="cov">	const-string v1, "MISSED_NOTIFICATION_COUNT"</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="exec">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+.end method
+
+.method public s0(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "USER_BLOCKED_NUMBER"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+<span class="cov">.method public final t()Ljava/lang/String;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="cov">	const-string v1, "PAYWALL_USER_TYPE"</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="exec">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public t0(J)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "USER_PROPERTIES_UPDATED_TIME"</span>
+<span class="">	invoke-interface {v0, v1, p1, p2}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public u(Landroid/content/Context;)J
+<span class="">	.locals 3</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const v1, 0x7f110260</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	const-string p1, "period_request_queue"</span>
+<span class="">	invoke-interface {v0, p1, v1, v2}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public u0(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "USER_REPORTED_NUMBER"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public v()J
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "PERMISSION_WARNING_SHOWED_LAST_TIME"</span>
+<span class="">	const-wide/16 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public v0(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "USER_SAVED_TO_CONTACT"</span>
+<span class="">	invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+.end method
+
+.method public w()Ljava/util/List;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/hiya/stingray/t/h1/i;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "recent_selected_places"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/common/base/r;->b(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Lcom/hiya/stingray/q/d/a$a;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v1, p0}, Lcom/hiya/stingray/q/d/a$a;-><init>(Lcom/hiya/stingray/q/d/a;)V</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/gson/x/a;->getType()Ljava/lang/reflect/Type;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v0, v1}, Lcom/hiya/stingray/util/p;->a(Ljava/lang/String;Ljava/lang/reflect/Type;)Ljava/lang/Object;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/util/List;</span>
+<span class="">	move-exception v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lcom/google/gson/JsonSyntaxException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:catch_0</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="">	const-string v3, "Failed to convert Json to List<SelectablePlace>."</span>
+<span class="">	invoke-static {v0, v3, v1}, Lr/a/a;->c(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	invoke-virtual {p0, v2}, Lcom/hiya/stingray/q/d/a;->j0(Ljava/util/List;)V</span>
+<span class="">	invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public w0(Ljava/lang/String;)Z
+<span class="">	.locals 4</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-wide/16 v1, 0x0</span>
+<span class="">	invoke-interface {v0, p1, v1, v2}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	const-wide/16 v2, 0x1388</span>
+<span class="">	add-long/2addr v0, v2</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	cmp-long p1, v0, v2</span>
+<span class="">	if-gez p1, :cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+<span class="cov">.method public final x()Ljava/lang/String;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="cov">	const-string v1, "REMOTE_CONFIG_OVERRIDES"</span>
+<span class="cov">	const-string v2, ""</span>
+<span class="exec">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public y()Z
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "REPORT_TO_CRASHLYTICS"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public z()Z
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/q/d/a;->a:Landroid/content/SharedPreferences;</span>
+<span class="">	const-string v1, "SELECT_SURVEY_SHOWN"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

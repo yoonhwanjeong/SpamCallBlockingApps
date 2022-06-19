@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.common.io</a></li>
+        <li><i class="ico ico-class"></i> BaseEncoding$d.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Lcom/google/common/io/BaseEncoding$d;
+.super Lcom/google/common/io/BaseEncoding;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lcom/google/common/io/BaseEncoding;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x8
+name = "d"
+.end annotation
+
+.field final c:Lcom/google/common/io/BaseEncoding$a;
+.field final d:Ljava/lang/Character;
+.field private transient e:Lcom/google/common/io/BaseEncoding;
+
+
+.method constructor <init>(Lcom/google/common/io/BaseEncoding$a;Ljava/lang/Character;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/common/io/BaseEncoding;-><init>()V</span>
+<span class="">	invoke-static {p1}, Lcom/google/common/base/m;->o(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-object v0, p1</span>
+<span class="">	check-cast v0, Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iput-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Character;->charValue()C</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p1, v0}, Lcom/google/common/io/BaseEncoding$a;->g(C)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	:goto_1</span>
+<span class="">	const-string v0, "Padding character %s was already in alphabet"</span>
+<span class="">	invoke-static {p1, v0, p2}, Lcom/google/common/base/m;->k(ZLjava/lang/String;Ljava/lang/Object;)V</span>
+<span class="">	iput-object p2, p0, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+.end method
+
+.method constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Character;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/String;->toCharArray()[C</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-direct {v0, p1, p2}, Lcom/google/common/io/BaseEncoding$a;-><init>(Ljava/lang/String;[C)V</span>
+<span class="">	invoke-direct {p0, v0, p3}, Lcom/google/common/io/BaseEncoding$d;-><init>(Lcom/google/common/io/BaseEncoding$a;Ljava/lang/Character;)V</span>
+.end method
+
+.method  e([BLjava/lang/CharSequence;)I
+<span class="">	.locals 13</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Lcom/google/common/io/BaseEncoding$DecodingException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p1}, Lcom/google/common/base/m;->o(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {p0, p2}, Lcom/google/common/io/BaseEncoding$d;->m(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	invoke-interface {p2}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/common/io/BaseEncoding$a;->f(I)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_4</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {p2}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result v3</span>
+<span class="">	if-ge v1, v3, :cond_3</span>
+<span class="">	const-wide/16 v3, 0x0</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	iget-object v7, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget v8, v7, Lcom/google/common/io/BaseEncoding$a;->e:I</span>
+<span class="">	if-ge v5, v8, :cond_1</span>
+<span class="">	iget v7, v7, Lcom/google/common/io/BaseEncoding$a;->d:I</span>
+<span class="">	shl-long/2addr v3, v7</span>
+<span class="">	add-int v7, v1, v5</span>
+<span class="">	invoke-interface {p2}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result v8</span>
+<span class="">	if-ge v7, v8, :cond_0</span>
+<span class="">	iget-object v7, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	add-int/lit8 v8, v6, 0x1</span>
+<span class="">	add-int/2addr v6, v1</span>
+<span class="">	invoke-interface {p2, v6}, Ljava/lang/CharSequence;->charAt(I)C</span>
+<span class="">	move-result v6</span>
+<span class="">	invoke-virtual {v7, v6}, Lcom/google/common/io/BaseEncoding$a;->b(C)I</span>
+<span class="">	move-result v6</span>
+<span class="">	int-to-long v6, v6</span>
+<span class="">	or-long/2addr v3, v6</span>
+<span class="">	move v6, v8</span>
+<span class="">	:cond_0</span>
+<span class="">	add-int/lit8 v5, v5, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	iget v5, v7, Lcom/google/common/io/BaseEncoding$a;->f:I</span>
+<span class="">	mul-int/lit8 v8, v5, 0x8</span>
+<span class="">	iget v7, v7, Lcom/google/common/io/BaseEncoding$a;->d:I</span>
+<span class="">	mul-int v6, v6, v7</span>
+<span class="">	sub-int/2addr v8, v6</span>
+<span class="">	add-int/lit8 v5, v5, -0x1</span>
+<span class="">	mul-int/lit8 v5, v5, 0x8</span>
+<span class="">	:goto_2</span>
+<span class="">	if-lt v5, v8, :cond_2</span>
+<span class="">	add-int/lit8 v6, v2, 0x1</span>
+<span class="">	ushr-long v9, v3, v5</span>
+<span class="">	const-wide/16 v11, 0xff</span>
+<span class="">	and-long/2addr v9, v11</span>
+<span class="">	long-to-int v7, v9</span>
+<span class="">	int-to-byte v7, v7</span>
+<span class="">	aput-byte v7, p1, v2</span>
+<span class="">	add-int/lit8 v5, v5, -0x8</span>
+<span class="">	move v2, v6</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-object v3, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget v3, v3, Lcom/google/common/io/BaseEncoding$a;->e:I</span>
+<span class="">	add-int/2addr v1, v3</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_3</span>
+<span class="">	new-instance p1, Lcom/google/common/io/BaseEncoding$DecodingException;</span>
+<span class="">	:cond_4</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "Invalid input length "</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-interface {p2}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-direct {p1, p2}, Lcom/google/common/io/BaseEncoding$DecodingException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public equals(Ljava/lang/Object;)Z
+<span class="">	.locals 3</span>
+
+<span class="">	instance-of v0, p1, Lcom/google/common/io/BaseEncoding$d;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	check-cast p1, Lcom/google/common/io/BaseEncoding$d;</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget-object v2, p1, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	invoke-virtual {v0, v2}, Lcom/google/common/io/BaseEncoding$a;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+<span class="">	iget-object p1, p1, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+<span class="">	invoke-static {v0, p1}, Lcom/google/common/base/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method  h(Ljava/lang/Appendable;[BII)V
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p1}, Lcom/google/common/base/m;->o(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	add-int v0, p3, p4</span>
+<span class="">	array-length v1, p2</span>
+<span class="">	invoke-static {p3, v0, v1}, Lcom/google/common/base/m;->t(III)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v0, p4, :cond_0</span>
+<span class="">	add-int v1, p3, v0</span>
+<span class="">	iget-object v2, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget v2, v2, Lcom/google/common/io/BaseEncoding$a;->f:I</span>
+<span class="">	sub-int v3, p4, v0</span>
+<span class="">	invoke-static {v2, v3}, Ljava/lang/Math;->min(II)I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {p0, p1, p2, v1, v2}, Lcom/google/common/io/BaseEncoding$d;->o(Ljava/lang/Appendable;[BII)V</span>
+<span class="">	iget-object v1, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget v1, v1, Lcom/google/common/io/BaseEncoding$a;->f:I</span>
+<span class="">	add-int/2addr v0, v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public hashCode()I
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/common/io/BaseEncoding$a;->hashCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="">	iget-object v2, p0, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	aput-object v2, v1, v3</span>
+<span class="">	invoke-static {v1}, Lcom/google/common/base/i;->b([Ljava/lang/Object;)I</span>
+<span class="">	move-result v1</span>
+<span class="">	xor-int/2addr v0, v1</span>
+.end method
+
+.method  j(I)I
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget v0, v0, Lcom/google/common/io/BaseEncoding$a;->d:I</span>
+<span class="">	int-to-long v0, v0</span>
+<span class="">	int-to-long v2, p1</span>
+<span class="">	mul-long v0, v0, v2</span>
+<span class="">	const-wide/16 v2, 0x7</span>
+<span class="">	add-long/2addr v0, v2</span>
+<span class="">	const-wide/16 v2, 0x8</span>
+<span class="">	div-long/2addr v0, v2</span>
+<span class="">	long-to-int p1, v0</span>
+.end method
+
+.method  k(I)I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget v1, v0, Lcom/google/common/io/BaseEncoding$a;->e:I</span>
+<span class="">	iget v0, v0, Lcom/google/common/io/BaseEncoding$a;->f:I</span>
+<span class="">	sget-object v2, Ljava/math/RoundingMode;->CEILING:Ljava/math/RoundingMode;</span>
+<span class="">	invoke-static {p1, v0, v2}, Lg/f/b/a/a;->a(IILjava/math/RoundingMode;)I</span>
+<span class="">	move-result p1</span>
+<span class="">	mul-int v1, v1, p1</span>
+.end method
+
+.method public l()Lcom/google/common/io/BaseEncoding;
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {p0, v0, v1}, Lcom/google/common/io/BaseEncoding$d;->p(Lcom/google/common/io/BaseEncoding$a;Ljava/lang/Character;)Lcom/google/common/io/BaseEncoding;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method  m(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-static {p1}, Lcom/google/common/base/m;->o(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Character;->charValue()C</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/CharSequence;->length()I</span>
+<span class="">	move-result v1</span>
+<span class="">	add-int/lit8 v1, v1, -0x1</span>
+<span class="">	if-ltz v1, :cond_2</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {p1, v1}, Ljava/lang/CharSequence;->charAt(I)C</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eq v2, v0, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	add-int/lit8 v1, v1, -0x1</span>
+<span class="">	:cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:cond_2</span>
+<span class="">	:goto_1</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	invoke-interface {p1, v0, v1}, Ljava/lang/CharSequence;->subSequence(II)Ljava/lang/CharSequence;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public n()Lcom/google/common/io/BaseEncoding;
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->e:Lcom/google/common/io/BaseEncoding;</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/common/io/BaseEncoding$a;->h()Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+<span class="">	invoke-virtual {p0, v0, v1}, Lcom/google/common/io/BaseEncoding$d;->p(Lcom/google/common/io/BaseEncoding$a;Ljava/lang/Character;)Lcom/google/common/io/BaseEncoding;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+<span class="">	iput-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->e:Lcom/google/common/io/BaseEncoding;</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method  o(Ljava/lang/Appendable;[BII)V
+<span class="">	.locals 7</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p1}, Lcom/google/common/base/m;->o(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	add-int v0, p3, p4</span>
+<span class="">	array-length v1, p2</span>
+<span class="">	invoke-static {p3, v0, v1}, Lcom/google/common/base/m;->t(III)V</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget v0, v0, Lcom/google/common/io/BaseEncoding$a;->f:I</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-gt p4, v0, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v0}, Lcom/google/common/base/m;->d(Z)V</span>
+<span class="">	const-wide/16 v2, 0x0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	const/16 v4, 0x8</span>
+<span class="">	if-ge v0, p4, :cond_1</span>
+<span class="">	add-int v5, p3, v0</span>
+<span class="">	aget-byte v5, p2, v5</span>
+<span class="">	and-int/lit16 v5, v5, 0xff</span>
+<span class="">	int-to-long v5, v5</span>
+<span class="">	or-long/2addr v2, v5</span>
+<span class="">	shl-long/2addr v2, v4</span>
+<span class="">	add-int/lit8 v0, v0, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	add-int/lit8 p2, p4, 0x1</span>
+<span class="">	mul-int/lit8 p2, p2, 0x8</span>
+<span class="">	iget-object p3, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget p3, p3, Lcom/google/common/io/BaseEncoding$a;->d:I</span>
+<span class="">	sub-int/2addr p2, p3</span>
+<span class="">	:goto_2</span>
+<span class="">	mul-int/lit8 p3, p4, 0x8</span>
+<span class="">	if-ge v1, p3, :cond_2</span>
+<span class="">	sub-int p3, p2, v1</span>
+<span class="">	ushr-long v5, v2, p3</span>
+<span class="">	long-to-int p3, v5</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget v5, v0, Lcom/google/common/io/BaseEncoding$a;->c:I</span>
+<span class="">	and-int/2addr p3, v5</span>
+<span class="">	invoke-virtual {v0, p3}, Lcom/google/common/io/BaseEncoding$a;->c(I)C</span>
+<span class="">	move-result p3</span>
+<span class="">	invoke-interface {p1, p3}, Ljava/lang/Appendable;->append(C)Ljava/lang/Appendable;</span>
+<span class="">	iget-object p3, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget p3, p3, Lcom/google/common/io/BaseEncoding$a;->d:I</span>
+<span class="">	add-int/2addr v1, p3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-object p2, p0, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+<span class="">	if-eqz p2, :cond_3</span>
+<span class="">	:goto_3</span>
+<span class="">	iget-object p2, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget p2, p2, Lcom/google/common/io/BaseEncoding$a;->f:I</span>
+<span class="">	mul-int/lit8 p2, p2, 0x8</span>
+<span class="">	if-ge v1, p2, :cond_3</span>
+<span class="">	iget-object p2, p0, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Character;->charValue()C</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-interface {p1, p2}, Ljava/lang/Appendable;->append(C)Ljava/lang/Appendable;</span>
+<span class="">	iget-object p2, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget p2, p2, Lcom/google/common/io/BaseEncoding$a;->d:I</span>
+<span class="">	add-int/2addr v1, p2</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method  p(Lcom/google/common/io/BaseEncoding$a;Ljava/lang/Character;)Lcom/google/common/io/BaseEncoding;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/google/common/io/BaseEncoding$d;</span>
+<span class="">	invoke-direct {v0, p1, p2}, Lcom/google/common/io/BaseEncoding$d;-><init>(Lcom/google/common/io/BaseEncoding$a;Ljava/lang/Character;)V</span>
+.end method
+
+.method public toString()Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "BaseEncoding."</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	iget-object v1, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/common/io/BaseEncoding$a;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/google/common/io/BaseEncoding$d;->c:Lcom/google/common/io/BaseEncoding$a;</span>
+<span class="">	iget v1, v1, Lcom/google/common/io/BaseEncoding$a;->d:I</span>
+<span class="">	const/16 v2, 0x8</span>
+<span class="">	rem-int/2addr v2, v1</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	iget-object v1, p0, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	const-string v1, ".omitPadding()"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v1, ".withPadChar(\'"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/google/common/io/BaseEncoding$d;->d:Ljava/lang/Character;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "\')"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

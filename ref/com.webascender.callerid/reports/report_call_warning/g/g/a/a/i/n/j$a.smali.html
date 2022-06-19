@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">g.g.a.a.i.n</a></li>
+        <li><i class="ico ico-class"></i> j$a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Lg/g/a/a/i/n/j$a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+.implements Lretrofit2/CallAdapter;
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lg/g/a/a/i/n/j;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0xa
+name = "a"
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/lang/Object;",
+"Lretrofit2/CallAdapter<",
+"Li/c/b0/b/v<",
+"*>;",
+"Ljava/lang/Object;",
+">;"
+}
+.end annotation
+
+.field private final retrofit:Lretrofit2/Retrofit;
+.field private final wrapped:Lretrofit2/CallAdapter;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lretrofit2/CallAdapter<",
+"**>;"
+}
+.end annotation
+.end field
+
+
+<span class="cov">.method public constructor &lt;init&gt;(Lretrofit2/Retrofit;Lretrofit2/CallAdapter;)V</span>
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lretrofit2/Retrofit;",</span>
+<span class="">	"Lretrofit2/CallAdapter<",</span>
+<span class="">	"**>;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lg/g/a/a/i/n/j$a;->retrofit:Lretrofit2/Retrofit;</span>
+<span class="cov">	iput-object p2, p0, Lg/g/a/a/i/n/j$a;->wrapped:Lretrofit2/CallAdapter;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private synthetic a(Ljava/lang/Throwable;)Li/c/b0/b/i;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/lang/Throwable;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->asHiyaRetrofitException(Ljava/lang/Throwable;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Li/c/b0/b/e;->r(Ljava/lang/Throwable;)Li/c/b0/b/e;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method private asHiyaRetrofitException(Ljava/lang/Throwable;)Lcom/hiya/api/exception/HiyaRetrofitException;
+<span class="">	.locals 3</span>
+
+<span class="">	instance-of v0, p1, Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	check-cast p1, Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	instance-of v0, p1, Lretrofit2/HttpException;</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	check-cast p1, Lretrofit2/HttpException;</span>
+<span class="">	invoke-virtual {p1}, Lretrofit2/HttpException;->response()Lretrofit2/Response;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Lretrofit2/Response;->raw()Lm/g0;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lm/g0;->M()Lm/e0;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lm/e0;->l()Lm/y;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lm/y;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Lg/g/a/a/i/n/j$a;->retrofit:Lretrofit2/Retrofit;</span>
+<span class="">	invoke-static {v0, p1, v1}, Lcom/hiya/api/exception/HiyaRetrofitException;->d(Ljava/lang/String;Lretrofit2/Response;Lretrofit2/Retrofit;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	instance-of v0, p1, Lcom/hiya/api/exception/HiyaTooManyRequestsException;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	check-cast p1, Lcom/hiya/api/exception/HiyaTooManyRequestsException;</span>
+<span class="">	invoke-virtual {p1}, Lcom/hiya/api/exception/HiyaTooManyRequestsException;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/16 v0, 0x1ad</span>
+<span class="">	const-string v2, ""</span>
+<span class="">	invoke-static {v1, v2}, Lm/h0;->create(Lm/a0;Ljava/lang/String;)Lm/h0;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v0, v1}, Lretrofit2/Response;->error(ILm/h0;)Lretrofit2/Response;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Lg/g/a/a/i/n/j$a;->retrofit:Lretrofit2/Retrofit;</span>
+<span class="">	invoke-static {p1, v0, v1}, Lcom/hiya/api/exception/HiyaRetrofitException;->d(Ljava/lang/String;Lretrofit2/Response;Lretrofit2/Retrofit;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->isNetworkConnectionException(Ljava/lang/Throwable;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {p1}, Lcom/hiya/api/exception/HiyaRetrofitException;->f(Ljava/lang/Throwable;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	instance-of v0, p1, Lcom/hiya/api/exception/v4/HiyaRetirementException;</span>
+<span class="">	if-eqz v0, :cond_4</span>
+<span class="">	check-cast p1, Lcom/hiya/api/exception/v4/HiyaRetirementException;</span>
+<span class="">	invoke-virtual {p1}, Lcom/hiya/api/exception/v4/HiyaRetirementException;->a()Ljava/lang/String;</span>
+<span class="">	:cond_3</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/16 v2, 0x19a</span>
+<span class="">	invoke-virtual {p1}, Ljava/io/IOException;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v1, p1}, Lm/h0;->create(Lm/a0;Ljava/lang/String;)Lm/h0;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v2, p1}, Lretrofit2/Response;->error(ILm/h0;)Lretrofit2/Response;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v0, p1}, Lcom/hiya/api/exception/HiyaRetrofitException;->g(Ljava/lang/String;Lretrofit2/Response;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	instance-of v0, p1, Ljava/io/IOException;</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	check-cast p1, Ljava/io/IOException;</span>
+<span class="">	invoke-static {p1}, Lcom/hiya/api/exception/HiyaRetrofitException;->e(Ljava/io/IOException;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-static {p1}, Lcom/hiya/api/exception/HiyaRetrofitException;->i(Ljava/lang/Throwable;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_5</span>
+.end method
+
+.method private synthetic c(Ljava/lang/Object;)Ljava/lang/Object;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/lang/Throwable;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	check-cast p1, Ljava/lang/Throwable;</span>
+<span class="">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->asHiyaRetrofitException(Ljava/lang/Throwable;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Li/c/b0/b/e0;->k(Ljava/lang/Throwable;)Li/c/b0/b/e0;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method private synthetic e(Ljava/lang/Object;)Ljava/lang/Object;
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/lang/Throwable;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	instance-of v0, p1, Lretrofit2/Response;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	move-object v0, p1</span>
+<span class="">	check-cast v0, Lretrofit2/Response;</span>
+<span class="">	invoke-virtual {v0}, Lretrofit2/Response;->isSuccessful()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	new-instance p1, Lretrofit2/HttpException;</span>
+<span class="">	invoke-direct {p1, v0}, Lretrofit2/HttpException;-><init>(Lretrofit2/Response;)V</span>
+<span class="">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->asHiyaRetrofitException(Ljava/lang/Throwable;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Li/c/b0/b/e0;->k(Ljava/lang/Throwable;)Li/c/b0/b/e0;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Li/c/b0/b/e0;->s(Ljava/lang/Object;)Li/c/b0/b/e0;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method private synthetic g(Ljava/lang/Throwable;)Li/c/b0/b/a0;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/lang/Throwable;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->asHiyaRetrofitException(Ljava/lang/Throwable;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Li/c/b0/b/v;->error(Ljava/lang/Throwable;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+<span class="cov">.method private synthetic i(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/lang/Throwable;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	instance-of v0, p1, Lretrofit2/Response;</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	move-object v0, p1</span>
+<span class="cov">	check-cast v0, Lretrofit2/Response;</span>
+<span class="exec">	invoke-virtual {v0}, Lretrofit2/Response;->isSuccessful()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	new-instance p1, Lretrofit2/HttpException;</span>
+<span class="">	invoke-direct {p1, v0}, Lretrofit2/HttpException;-><init>(Lretrofit2/Response;)V</span>
+<span class="">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->asHiyaRetrofitException(Ljava/lang/Throwable;)Lcom/hiya/api/exception/HiyaRetrofitException;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Li/c/b0/b/v;->error(Ljava/lang/Throwable;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p1</span>
+<span class="exec">	invoke-static {p1}, Li/c/b0/b/v;->just(Ljava/lang/Object;)Li/c/b0/b/v;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+.method private isNetworkConnectionException(Ljava/lang/Throwable;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	instance-of v0, p1, Ljava/net/SocketTimeoutException;</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	instance-of v0, p1, Ljava/net/ConnectException;</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	instance-of p1, p1, Ljava/net/UnknownHostException;</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	:goto_1</span>
+.end method
+
+<span class="cov">.method public adapt(Lretrofit2/Call;)Ljava/lang/Object;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lg/g/a/a/i/n/j$a;->wrapped:Lretrofit2/CallAdapter;</span>
+<span class="exec">	invoke-interface {v0, p1}, Lretrofit2/CallAdapter;->adapt(Lretrofit2/Call;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	instance-of v0, p1, Li/c/b0/b/e;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	check-cast p1, Li/c/b0/b/e;</span>
+<span class="">	new-instance v0, Lg/g/a/a/i/n/d;</span>
+<span class="">	invoke-direct {v0, p0}, Lg/g/a/a/i/n/d;-><init>(Lg/g/a/a/i/n/j$a;)V</span>
+<span class="">	invoke-virtual {p1, v0}, Li/c/b0/b/e;->B(Li/c/b0/d/o;)Li/c/b0/b/e;</span>
+<span class="">	move-result-object p1</span>
+<span class="cov">	instance-of v0, p1, Li/c/b0/b/e0;</span>
+<span class="cov">	:cond_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	check-cast p1, Li/c/b0/b/e0;</span>
+<span class="">	new-instance v0, Lg/g/a/a/i/n/b;</span>
+<span class="">	invoke-direct {v0, p0}, Lg/g/a/a/i/n/b;-><init>(Lg/g/a/a/i/n/j$a;)V</span>
+<span class="">	invoke-virtual {p1, v0}, Li/c/b0/b/e0;->x(Li/c/b0/d/o;)Li/c/b0/b/e0;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance v0, Lg/g/a/a/i/n/e;</span>
+<span class="">	invoke-direct {v0, p0}, Lg/g/a/a/i/n/e;-><init>(Lg/g/a/a/i/n/j$a;)V</span>
+<span class="">	invoke-virtual {p1, v0}, Li/c/b0/b/e0;->m(Li/c/b0/d/o;)Li/c/b0/b/e0;</span>
+<span class="">	move-result-object p1</span>
+<span class="cov">	instance-of v0, p1, Li/c/b0/b/v;</span>
+<span class="cov">	if-eqz v0, :cond_2</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	check-cast p1, Li/c/b0/b/v;</span>
+<span class="cov">	new-instance v0, Lg/g/a/a/i/n/c;</span>
+<span class="cov">	invoke-direct {v0, p0}, Lg/g/a/a/i/n/c;-><init>(Lg/g/a/a/i/n/j$a;)V</span>
+<span class="exec">	invoke-virtual {p1, v0}, Li/c/b0/b/v;->onErrorResumeNext(Li/c/b0/d/o;)Li/c/b0/b/v;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	new-instance v0, Lg/g/a/a/i/n/a;</span>
+<span class="cov">	invoke-direct {v0, p0}, Lg/g/a/a/i/n/a;-><init>(Lg/g/a/a/i/n/j$a;)V</span>
+<span class="exec">	invoke-virtual {p1, v0}, Li/c/b0/b/v;->flatMap(Li/c/b0/d/o;)Li/c/b0/b/v;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+<span class="">	new-instance p1, Ljava/lang/RuntimeException;</span>
+<span class="">	const-string v0, "Rx return type not supported"</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public synthetic b(Ljava/lang/Throwable;)Li/c/b0/b/i;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->a(Ljava/lang/Throwable;)Li/c/b0/b/i;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public synthetic d(Ljava/lang/Object;)Ljava/lang/Object;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->c(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public synthetic f(Ljava/lang/Object;)Ljava/lang/Object;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->e(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public synthetic h(Ljava/lang/Throwable;)Li/c/b0/b/a0;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->g(Ljava/lang/Throwable;)Li/c/b0/b/a0;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+<span class="cov">.method public synthetic j(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	.locals 0</span>
+
+<span class="exec">	invoke-direct {p0, p1}, Lg/g/a/a/i/n/j$a;->i(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public responseType()Ljava/lang/reflect/Type;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lg/g/a/a/i/n/j$a;->wrapped:Lretrofit2/CallAdapter;</span>
+<span class="exec">	invoke-interface {v0}, Lretrofit2/CallAdapter;->responseType()Ljava/lang/reflect/Type;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

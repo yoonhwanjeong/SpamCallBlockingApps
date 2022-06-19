@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot.xy</a></li>
+        <li><i class="ico ico-class"></i> PanZoom.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/androidplot/xy/PanZoom;
+.super Ljava/lang/Object;
+.source "PanZoom.java"
+.implements Landroid/view/View$OnTouchListener;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/androidplot/xy/PanZoom$State;,
+Lcom/androidplot/xy/PanZoom$ZoomLimit;,
+Lcom/androidplot/xy/PanZoom$Zoom;,
+Lcom/androidplot/xy/PanZoom$Pan;,
+Lcom/androidplot/xy/PanZoom$DragState;
+}
+.end annotation
+
+.field protected static final FIRST_FINGER:I = 0x0
+.field protected static final MIN_DIST_2_FING:F = 5.0f
+.field protected static final SECOND_FINGER:I = 0x1
+.field private delegate:Landroid/view/View$OnTouchListener;
+.field private dragState:Lcom/androidplot/xy/PanZoom$DragState;
+.field protected fingersRect:Landroid/graphics/RectF;
+.field private firstFingerPos:Landroid/graphics/PointF;
+.field private isEnabled:Z
+.field private pan:Lcom/androidplot/xy/PanZoom$Pan;
+.field private plot:Lcom/androidplot/xy/XYPlot;
+.field private state:Lcom/androidplot/xy/PanZoom$State;
+.field private zoom:Lcom/androidplot/xy/PanZoom$Zoom;
+.field private zoomLimit:Lcom/androidplot/xy/PanZoom$ZoomLimit;
+
+
+.method protected constructor <init>(Lcom/androidplot/xy/XYPlot;Lcom/androidplot/xy/PanZoom$Pan;Lcom/androidplot/xy/PanZoom$Zoom;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	iput-boolean v0, p0, Lcom/androidplot/xy/PanZoom;->isEnabled:Z</span>
+<span class="">	sget-object v0, Lcom/androidplot/xy/PanZoom$DragState;->NONE:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/xy/PanZoom;->dragState:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	new-instance v0, Lcom/androidplot/xy/PanZoom$State;</span>
+<span class="">	invoke-direct {v0}, Lcom/androidplot/xy/PanZoom$State;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/xy/PanZoom;->state:Lcom/androidplot/xy/PanZoom$State;</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	iput-object p2, p0, Lcom/androidplot/xy/PanZoom;->pan:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="">	iput-object p3, p0, Lcom/androidplot/xy/PanZoom;->zoom:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	sget-object p1, Lcom/androidplot/xy/PanZoom$ZoomLimit;->OUTER:Lcom/androidplot/xy/PanZoom$ZoomLimit;</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->zoomLimit:Lcom/androidplot/xy/PanZoom$ZoomLimit;</span>
+.end method
+
+<span class="cov">.method protected constructor &lt;init&gt;(Lcom/androidplot/xy/XYPlot;Lcom/androidplot/xy/PanZoom$Pan;Lcom/androidplot/xy/PanZoom$Zoom;Lcom/androidplot/xy/PanZoom$ZoomLimit;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="cov">	iput-boolean v0, p0, Lcom/androidplot/xy/PanZoom;->isEnabled:Z</span>
+<span class="cov">	sget-object v0, Lcom/androidplot/xy/PanZoom$DragState;->NONE:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/xy/PanZoom;->dragState:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="cov">	new-instance v0, Lcom/androidplot/xy/PanZoom$State;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/androidplot/xy/PanZoom$State;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/androidplot/xy/PanZoom;->state:Lcom/androidplot/xy/PanZoom$State;</span>
+<span class="cov">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="cov">	iput-object p2, p0, Lcom/androidplot/xy/PanZoom;->pan:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="cov">	iput-object p3, p0, Lcom/androidplot/xy/PanZoom;->zoom:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="cov">	iput-object p4, p0, Lcom/androidplot/xy/PanZoom;->zoomLimit:Lcom/androidplot/xy/PanZoom$ZoomLimit;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public static attach(Lcom/androidplot/xy/XYPlot;)Lcom/androidplot/xy/PanZoom;
+<span class="">	.locals 2</span>
+
+<span class="">	sget-object v0, Lcom/androidplot/xy/PanZoom$Pan;->BOTH:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/PanZoom$Zoom;->SCALE:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	invoke-static {p0, v0, v1}, Lcom/androidplot/xy/PanZoom;->attach(Lcom/androidplot/xy/XYPlot;Lcom/androidplot/xy/PanZoom$Pan;Lcom/androidplot/xy/PanZoom$Zoom;)Lcom/androidplot/xy/PanZoom;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static attach(Lcom/androidplot/xy/XYPlot;Lcom/androidplot/xy/PanZoom$Pan;Lcom/androidplot/xy/PanZoom$Zoom;)Lcom/androidplot/xy/PanZoom;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/androidplot/xy/PanZoom$ZoomLimit;->OUTER:Lcom/androidplot/xy/PanZoom$ZoomLimit;</span>
+<span class="">	invoke-static {p0, p1, p2, v0}, Lcom/androidplot/xy/PanZoom;->attach(Lcom/androidplot/xy/XYPlot;Lcom/androidplot/xy/PanZoom$Pan;Lcom/androidplot/xy/PanZoom$Zoom;Lcom/androidplot/xy/PanZoom$ZoomLimit;)Lcom/androidplot/xy/PanZoom;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+<span class="cov">.method public static attach(Lcom/androidplot/xy/XYPlot;Lcom/androidplot/xy/PanZoom$Pan;Lcom/androidplot/xy/PanZoom$Zoom;Lcom/androidplot/xy/PanZoom$ZoomLimit;)Lcom/androidplot/xy/PanZoom;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/androidplot/xy/PanZoom;</span>
+<span class="cov">	invoke-direct {v0, p0, p1, p2, p3}, Lcom/androidplot/xy/PanZoom;-><init>(Lcom/androidplot/xy/XYPlot;Lcom/androidplot/xy/PanZoom$Pan;Lcom/androidplot/xy/PanZoom$Zoom;Lcom/androidplot/xy/PanZoom$ZoomLimit;)V</span>
+<span class="cov">	invoke-virtual {p0, v0}, Lcom/androidplot/xy/XYPlot;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method protected adjustDomainBoundary(Ljava/lang/Number;Ljava/lang/Number;Lcom/androidplot/xy/BoundaryMode;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->state:Lcom/androidplot/xy/PanZoom$State;</span>
+<span class="">	invoke-virtual {v0, p1, p2, p3}, Lcom/androidplot/xy/PanZoom$State;->setDomainBoundaries(Ljava/lang/Number;Ljava/lang/Number;Lcom/androidplot/xy/BoundaryMode;)V</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/PanZoom;->state:Lcom/androidplot/xy/PanZoom$State;</span>
+<span class="">	iget-object p2, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p1, p2}, Lcom/androidplot/xy/PanZoom$State;->applyDomainBoundaries(Lcom/androidplot/xy/XYPlot;)V</span>
+.end method
+
+.method protected adjustRangeBoundary(Ljava/lang/Number;Ljava/lang/Number;Lcom/androidplot/xy/BoundaryMode;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->state:Lcom/androidplot/xy/PanZoom$State;</span>
+<span class="">	invoke-virtual {v0, p1, p2, p3}, Lcom/androidplot/xy/PanZoom$State;->setRangeBoundaries(Ljava/lang/Number;Ljava/lang/Number;Lcom/androidplot/xy/BoundaryMode;)V</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/PanZoom;->state:Lcom/androidplot/xy/PanZoom$State;</span>
+<span class="">	iget-object p2, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p1, p2}, Lcom/androidplot/xy/PanZoom$State;->applyRangeBoundaries(Lcom/androidplot/xy/XYPlot;)V</span>
+.end method
+
+.method protected calculatePan(Landroid/graphics/PointF;Lcom/androidplot/Region;Z)V
+<span class="">	.locals 2</span>
+
+<span class="">	if-eqz p3, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/XYPlot;->getBounds()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/RectRegion;->getxRegion()Lcom/androidplot/Region;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p2, v0}, Lcom/androidplot/Region;->setMinMax(Lcom/androidplot/Region;)V</span>
+<span class="">	iget p1, p1, Landroid/graphics/PointF;->x:F</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->firstFingerPos:Landroid/graphics/PointF;</span>
+<span class="">	iget v0, v0, Landroid/graphics/PointF;->x:F</span>
+<span class="">	sub-float/2addr p1, v0</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v1</span>
+<span class="">	sub-float/2addr v0, v1</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/xy/XYPlot;->getWidth()I</span>
+<span class="">	move-result v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/XYPlot;->getBounds()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/RectRegion;->getyRegion()Lcom/androidplot/Region;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p2, v0}, Lcom/androidplot/Region;->setMinMax(Lcom/androidplot/Region;)V</span>
+<span class="">	iget p1, p1, Landroid/graphics/PointF;->y:F</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->firstFingerPos:Landroid/graphics/PointF;</span>
+<span class="">	iget v0, v0, Landroid/graphics/PointF;->y:F</span>
+<span class="">	sub-float/2addr p1, v0</span>
+<span class="">	neg-float p1, p1</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v1</span>
+<span class="">	sub-float/2addr v0, v1</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/xy/XYPlot;->getHeight()I</span>
+<span class="">	move-result v1</span>
+<span class="">	:goto_0</span>
+<span class="">	int-to-float v1, v1</span>
+<span class="">	div-float/2addr v0, v1</span>
+<span class="">	mul-float p1, p1, v0</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	add-float/2addr v0, p1</span>
+<span class="">	invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p2, v0}, Lcom/androidplot/Region;->setMin(Ljava/lang/Number;)V</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	add-float/2addr v0, p1</span>
+<span class="">	invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2, p1}, Lcom/androidplot/Region;->setMax(Ljava/lang/Number;)V</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->length()Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p3, :cond_2</span>
+<span class="">	iget-object p3, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/RectRegion;->getxRegion()Lcom/androidplot/Region;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/Region;->isDefined()Z</span>
+<span class="">	move-result p3</span>
+<span class="">	if-eqz p3, :cond_2</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/RectRegion;->getMinX()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	cmpg-float p3, p3, v0</span>
+<span class="">	if-gez p3, :cond_1</span>
+<span class="">	iget-object p3, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/RectRegion;->getMinX()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p2, p3}, Lcom/androidplot/Region;->setMin(Ljava/lang/Number;)V</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	add-float/2addr p3, p1</span>
+<span class="">	invoke-static {p3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p2, p3}, Lcom/androidplot/Region;->setMax(Ljava/lang/Number;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/RectRegion;->getMaxX()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	cmpl-float p3, p3, v0</span>
+<span class="">	if-lez p3, :cond_4</span>
+<span class="">	iget-object p3, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/RectRegion;->getMaxX()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p2, p3}, Lcom/androidplot/Region;->setMax(Ljava/lang/Number;)V</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	sub-float/2addr p3, p1</span>
+<span class="">	invoke-static {p3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2, p1}, Lcom/androidplot/Region;->setMin(Ljava/lang/Number;)V</span>
+<span class="">	goto/16 :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-object p3, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/RectRegion;->getyRegion()Lcom/androidplot/Region;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/Region;->isDefined()Z</span>
+<span class="">	move-result p3</span>
+<span class="">	if-eqz p3, :cond_4</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/RectRegion;->getMinY()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	cmpg-float p3, p3, v0</span>
+<span class="">	if-gez p3, :cond_3</span>
+<span class="">	iget-object p3, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/RectRegion;->getMinY()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p2, p3}, Lcom/androidplot/Region;->setMin(Ljava/lang/Number;)V</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	add-float/2addr p3, p1</span>
+<span class="">	invoke-static {p3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p2, p3}, Lcom/androidplot/Region;->setMax(Ljava/lang/Number;)V</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/RectRegion;->getMaxY()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	cmpl-float p3, p3, v0</span>
+<span class="">	if-lez p3, :cond_4</span>
+<span class="">	iget-object p3, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/RectRegion;->getMaxY()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p2, p3}, Lcom/androidplot/Region;->setMax(Ljava/lang/Number;)V</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	sub-float/2addr p3, p1</span>
+<span class="">	invoke-static {p3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2, p1}, Lcom/androidplot/Region;->setMin(Ljava/lang/Number;)V</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_4</span>
+.end method
+
+.method protected calculateZoom(Landroid/graphics/RectF;FZ)V
+<span class="">	.locals 9</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/XYPlot;->getBounds()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz p3, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/RectRegion;->getMaxX()Ljava/lang/Number;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/RectRegion;->getMinX()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/RectRegion;->getMaxY()Ljava/lang/Number;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0}, Lcom/androidplot/xy/RectRegion;->getMinY()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result v0</span>
+<span class="">	:goto_0</span>
+<span class="">	sub-float v0, v1, v0</span>
+<span class="">	const/high16 v2, 0x40000000    # 2.0f</span>
+<span class="">	div-float v3, v0, v2</span>
+<span class="">	sub-float/2addr v1, v3</span>
+<span class="">	mul-float v0, v0, p2</span>
+<span class="">	div-float p2, v0, v2</span>
+<span class="">	iget-object v2, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/XYPlot;->getOuterLimits()Lcom/androidplot/xy/RectRegion;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-wide/high16 v3, 0x4000000000000000L    # 2.0</span>
+<span class="">	if-eqz p3, :cond_3</span>
+<span class="">	iget-object p3, p0, Lcom/androidplot/xy/PanZoom;->zoomLimit:Lcom/androidplot/xy/PanZoom$ZoomLimit;</span>
+<span class="">	sget-object v5, Lcom/androidplot/xy/PanZoom$ZoomLimit;->MIN_TICKS:Lcom/androidplot/xy/PanZoom$ZoomLimit;</span>
+<span class="">	if-ne p3, v5, :cond_1</span>
+<span class="">	iget-object p3, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/XYPlot;->getDomainStepValue()D</span>
+<span class="">	move-result-wide v5</span>
+<span class="">	float-to-double v7, v0</span>
+<span class="">	cmpl-double p3, v5, v7</span>
+<span class="">	if-lez p3, :cond_1</span>
+<span class="">	iget-object p2, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/xy/XYPlot;->getDomainStepValue()D</span>
+<span class="">	move-result-wide p2</span>
+<span class="">	div-double/2addr p2, v3</span>
+<span class="">	double-to-float p2, p2</span>
+<span class="">	:cond_1</span>
+<span class="">	sub-float p3, v1, p2</span>
+<span class="">	iput p3, p1, Landroid/graphics/RectF;->left:F</span>
+<span class="">	add-float/2addr v1, p2</span>
+<span class="">	iput v1, p1, Landroid/graphics/RectF;->right:F</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/RectRegion;->isFullyDefined()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-eqz p2, :cond_6</span>
+<span class="">	iget p2, p1, Landroid/graphics/RectF;->left:F</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/RectRegion;->getMinX()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	cmpg-float p2, p2, p3</span>
+<span class="">	if-gez p2, :cond_2</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/RectRegion;->getMinX()Ljava/lang/Number;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p2</span>
+<span class="">	iput p2, p1, Landroid/graphics/RectF;->left:F</span>
+<span class="">	:cond_2</span>
+<span class="">	iget p2, p1, Landroid/graphics/RectF;->right:F</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/RectRegion;->getMaxX()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	cmpl-float p2, p2, p3</span>
+<span class="">	if-lez p2, :cond_6</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/RectRegion;->getMaxX()Ljava/lang/Number;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p2</span>
+<span class="">	iput p2, p1, Landroid/graphics/RectF;->right:F</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	iget-object p3, p0, Lcom/androidplot/xy/PanZoom;->zoomLimit:Lcom/androidplot/xy/PanZoom$ZoomLimit;</span>
+<span class="">	sget-object v5, Lcom/androidplot/xy/PanZoom$ZoomLimit;->MIN_TICKS:Lcom/androidplot/xy/PanZoom$ZoomLimit;</span>
+<span class="">	if-ne p3, v5, :cond_4</span>
+<span class="">	iget-object p3, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p3}, Lcom/androidplot/xy/XYPlot;->getRangeStepValue()D</span>
+<span class="">	move-result-wide v5</span>
+<span class="">	float-to-double v7, v0</span>
+<span class="">	cmpl-double p3, v5, v7</span>
+<span class="">	if-lez p3, :cond_4</span>
+<span class="">	iget-object p2, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p2}, Lcom/androidplot/xy/XYPlot;->getRangeStepValue()D</span>
+<span class="">	move-result-wide p2</span>
+<span class="">	div-double/2addr p2, v3</span>
+<span class="">	double-to-float p2, p2</span>
+<span class="">	:cond_4</span>
+<span class="">	sub-float p3, v1, p2</span>
+<span class="">	iput p3, p1, Landroid/graphics/RectF;->top:F</span>
+<span class="">	add-float/2addr v1, p2</span>
+<span class="">	iput v1, p1, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/RectRegion;->isFullyDefined()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-eqz p2, :cond_6</span>
+<span class="">	iget p2, p1, Landroid/graphics/RectF;->top:F</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/RectRegion;->getMinY()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	cmpg-float p2, p2, p3</span>
+<span class="">	if-gez p2, :cond_5</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/RectRegion;->getMinY()Ljava/lang/Number;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p2</span>
+<span class="">	iput p2, p1, Landroid/graphics/RectF;->top:F</span>
+<span class="">	:cond_5</span>
+<span class="">	iget p2, p1, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/RectRegion;->getMaxY()Ljava/lang/Number;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p3</span>
+<span class="">	cmpl-float p2, p2, p3</span>
+<span class="">	if-lez p2, :cond_6</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/RectRegion;->getMaxY()Ljava/lang/Number;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Number;->floatValue()F</span>
+<span class="">	move-result p2</span>
+<span class="">	iput p2, p1, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_6</span>
+.end method
+
+.method protected fingerDistance(FFFF)Landroid/graphics/RectF;
+<span class="">	.locals 2</span>
+
+<span class="">	cmpl-float v0, p1, p3</span>
+<span class="">	if-lez v0, :cond_0</span>
+<span class="">	move v1, p3</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move v1, p1</span>
+<span class="">	:goto_0</span>
+<span class="">	if-lez v0, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	move p1, p3</span>
+<span class="">	:goto_1</span>
+<span class="">	cmpl-float p3, p2, p4</span>
+<span class="">	if-lez p3, :cond_2</span>
+<span class="">	move v0, p4</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	move v0, p2</span>
+<span class="">	:goto_2</span>
+<span class="">	if-lez p3, :cond_3</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_3</span>
+<span class="">	move p2, p4</span>
+<span class="">	:goto_3</span>
+<span class="">	new-instance p3, Landroid/graphics/RectF;</span>
+<span class="">	invoke-direct {p3, v1, v0, p1, p2}, Landroid/graphics/RectF;-><init>(FFFF)V</span>
+.end method
+
+.method protected fingerDistance(Landroid/view/MotionEvent;)Landroid/graphics/RectF;
+<span class="">	.locals 4</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getX(I)F</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/view/MotionEvent;->getY(I)F</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-virtual {p1, v2}, Landroid/view/MotionEvent;->getX(I)F</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-virtual {p1, v2}, Landroid/view/MotionEvent;->getY(I)F</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {p0, v1, v0, v3, p1}, Lcom/androidplot/xy/PanZoom;->fingerDistance(FFFF)Landroid/graphics/RectF;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public getDelegate()Landroid/view/View$OnTouchListener;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->delegate:Landroid/view/View$OnTouchListener;</span>
+.end method
+
+.method protected getFingersRect()Landroid/graphics/RectF;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->fingersRect:Landroid/graphics/RectF;</span>
+.end method
+
+.method public getPan()Lcom/androidplot/xy/PanZoom$Pan;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->pan:Lcom/androidplot/xy/PanZoom$Pan;</span>
+.end method
+
+.method public getState()Lcom/androidplot/xy/PanZoom$State;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->state:Lcom/androidplot/xy/PanZoom$State;</span>
+.end method
+
+.method public getZoom()Lcom/androidplot/xy/PanZoom$Zoom;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->zoom:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+.end method
+
+.method public getZoomLimit()Lcom/androidplot/xy/PanZoom$ZoomLimit;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->zoomLimit:Lcom/androidplot/xy/PanZoom$ZoomLimit;</span>
+.end method
+
+.method public isEnabled()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/androidplot/xy/PanZoom;->isEnabled:Z</span>
+.end method
+
+.method protected isValidScale(F)Z
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-static {p1}, Ljava/lang/Float;->isInfinite(F)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Float;->isNaN(F)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	float-to-double v0, p1</span>
+<span class="">	const-wide v2, -0x40af9db22d0e5604L    # -0.001</span>
+<span class="">	cmpl-double p1, v0, v2</span>
+<span class="">	if-lez p1, :cond_0</span>
+<span class="">	const-wide v2, 0x3f50624dd2f1a9fcL    # 0.001</span>
+<span class="">	cmpg-double p1, v0, v2</span>
+<span class="">	if-ltz p1, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->delegate:Landroid/view/View$OnTouchListener;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-interface {v0, p1, p2}, Landroid/view/View$OnTouchListener;->onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->isEnabled()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	if-eqz v0, :cond_8</span>
+<span class="">	if-nez p1, :cond_8</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/MotionEvent;->getAction()I</span>
+<span class="">	move-result p1</span>
+<span class="">	and-int/lit16 p1, p1, 0xff</span>
+<span class="">	if-eqz p1, :cond_7</span>
+<span class="">	if-eq p1, v1, :cond_6</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	if-eq p1, v0, :cond_4</span>
+<span class="">	const/4 v0, 0x5</span>
+<span class="">	if-eq p1, v0, :cond_2</span>
+<span class="">	const/4 p2, 0x6</span>
+<span class="">	if-eq p1, p2, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object p1, Lcom/androidplot/xy/PanZoom$DragState;->NONE:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->dragState:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {p0, p2}, Lcom/androidplot/xy/PanZoom;->fingerDistance(Landroid/view/MotionEvent;)Landroid/graphics/RectF;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/xy/PanZoom;->setFingersRect(Landroid/graphics/RectF;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->getFingersRect()Landroid/graphics/RectF;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	move-result p1</span>
+<span class="">	const/high16 p2, 0x40a00000    # 5.0f</span>
+<span class="">	cmpl-float p1, p1, p2</span>
+<span class="">	if-gtz p1, :cond_3</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->getFingersRect()Landroid/graphics/RectF;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	move-result p1</span>
+<span class="">	const/high16 p2, -0x3f600000    # -5.0f</span>
+<span class="">	cmpg-float p1, p1, p2</span>
+<span class="">	if-gez p1, :cond_8</span>
+<span class="">	:cond_3</span>
+<span class="">	sget-object p1, Lcom/androidplot/xy/PanZoom$DragState;->TWO_FINGERS:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->dragState:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_4</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/PanZoom;->dragState:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	sget-object v0, Lcom/androidplot/xy/PanZoom$DragState;->ONE_FINGER:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	if-ne p1, v0, :cond_5</span>
+<span class="">	invoke-virtual {p0, p2}, Lcom/androidplot/xy/PanZoom;->pan(Landroid/view/MotionEvent;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_5</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/PanZoom;->dragState:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	sget-object v0, Lcom/androidplot/xy/PanZoom$DragState;->TWO_FINGERS:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	if-ne p1, v0, :cond_8</span>
+<span class="">	invoke-virtual {p0, p2}, Lcom/androidplot/xy/PanZoom;->zoom(Landroid/view/MotionEvent;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->reset()V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_7</span>
+<span class="">	new-instance p1, Landroid/graphics/PointF;</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/MotionEvent;->getX()F</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p2}, Landroid/view/MotionEvent;->getY()F</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-direct {p1, v0, p2}, Landroid/graphics/PointF;-><init>(FF)V</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->firstFingerPos:Landroid/graphics/PointF;</span>
+<span class="">	sget-object p1, Lcom/androidplot/xy/PanZoom$DragState;->ONE_FINGER:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->dragState:Lcom/androidplot/xy/PanZoom$DragState;</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_8</span>
+.end method
+
+.method protected pan(Landroid/view/MotionEvent;)V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->pan:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/PanZoom$Pan;->NONE:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->firstFingerPos:Landroid/graphics/PointF;</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v1, Landroid/graphics/PointF;</span>
+<span class="">	invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-direct {v1, v2, p1}, Landroid/graphics/PointF;-><init>(FF)V</span>
+<span class="">	iput-object v1, p0, Lcom/androidplot/xy/PanZoom;->firstFingerPos:Landroid/graphics/PointF;</span>
+<span class="">	sget-object p1, Lcom/androidplot/xy/PanZoom$Pan;->HORIZONTAL:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/PanZoom$Pan;->BOTH:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="">	invoke-static {p1, v1}, Ljava/util/EnumSet;->of(Ljava/lang/Enum;Ljava/lang/Enum;)Ljava/util/EnumSet;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/xy/PanZoom;->pan:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="">	invoke-virtual {p1, v1}, Ljava/util/EnumSet;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	new-instance p1, Lcom/androidplot/Region;</span>
+<span class="">	invoke-direct {p1}, Lcom/androidplot/Region;-><init>()V</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-virtual {p0, v0, p1, v1}, Lcom/androidplot/xy/PanZoom;->calculatePan(Landroid/graphics/PointF;Lcom/androidplot/Region;Z)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sget-object v2, Lcom/androidplot/xy/BoundaryMode;->FIXED:Lcom/androidplot/xy/BoundaryMode;</span>
+<span class="">	invoke-virtual {p0, v1, p1, v2}, Lcom/androidplot/xy/PanZoom;->adjustDomainBoundary(Ljava/lang/Number;Ljava/lang/Number;Lcom/androidplot/xy/BoundaryMode;)V</span>
+<span class="">	sget-object p1, Lcom/androidplot/xy/PanZoom$Pan;->VERTICAL:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/PanZoom$Pan;->BOTH:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="">	invoke-static {p1, v1}, Ljava/util/EnumSet;->of(Ljava/lang/Enum;Ljava/lang/Enum;)Ljava/util/EnumSet;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/xy/PanZoom;->pan:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="">	invoke-virtual {p1, v1}, Ljava/util/EnumSet;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	new-instance p1, Lcom/androidplot/Region;</span>
+<span class="">	invoke-direct {p1}, Lcom/androidplot/Region;-><init>()V</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {p0, v0, p1, v1}, Lcom/androidplot/xy/PanZoom;->calculatePan(Landroid/graphics/PointF;Lcom/androidplot/Region;Z)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMin()Ljava/lang/Number;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/Region;->getMax()Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/BoundaryMode;->FIXED:Lcom/androidplot/xy/BoundaryMode;</span>
+<span class="">	invoke-virtual {p0, v0, p1, v1}, Lcom/androidplot/xy/PanZoom;->adjustRangeBoundary(Ljava/lang/Number;Ljava/lang/Number;Lcom/androidplot/xy/BoundaryMode;)V</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/xy/XYPlot;->redraw()V</span>
+.end method
+
+.method public reset()V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Lcom/androidplot/xy/PanZoom;->firstFingerPos:Landroid/graphics/PointF;</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/xy/PanZoom;->setFingersRect(Landroid/graphics/RectF;)V</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/xy/PanZoom;->setFingersRect(Landroid/graphics/RectF;)V</span>
+.end method
+
+<span class="cov">.method public setDelegate(Landroid/view/View$OnTouchListener;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->delegate:Landroid/view/View$OnTouchListener;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public setEnabled(Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-boolean p1, p0, Lcom/androidplot/xy/PanZoom;->isEnabled:Z</span>
+.end method
+
+.method protected setFingersRect(Landroid/graphics/RectF;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->fingersRect:Landroid/graphics/RectF;</span>
+.end method
+
+<span class="cov">.method public setPan(Lcom/androidplot/xy/PanZoom$Pan;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->pan:Lcom/androidplot/xy/PanZoom$Pan;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public setState(Lcom/androidplot/xy/PanZoom$State;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->state:Lcom/androidplot/xy/PanZoom$State;</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p1, v0}, Lcom/androidplot/xy/PanZoom$State;->apply(Lcom/androidplot/xy/XYPlot;)V</span>
+.end method
+
+<span class="cov">.method public setZoom(Lcom/androidplot/xy/PanZoom$Zoom;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->zoom:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public setZoomLimit(Lcom/androidplot/xy/PanZoom$ZoomLimit;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/PanZoom;->zoomLimit:Lcom/androidplot/xy/PanZoom$ZoomLimit;</span>
+.end method
+
+.method protected zoom(Landroid/view/MotionEvent;)V
+<span class="">	.locals 7</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/PanZoom;->zoom:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/PanZoom$Zoom;->NONE:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->getFingersRect()Landroid/graphics/RectF;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/xy/PanZoom;->fingerDistance(Landroid/view/MotionEvent;)Landroid/graphics/RectF;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/xy/PanZoom;->setFingersRect(Landroid/graphics/RectF;)V</span>
+<span class="">	if-eqz v0, :cond_d</span>
+<span class="">	invoke-static {v0, p1}, Lcom/androidplot/util/RectFUtils;->areIdentical(Landroid/graphics/RectF;Landroid/graphics/RectF;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	goto/16 :goto_3</span>
+<span class="">	new-instance p1, Landroid/graphics/RectF;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {p1}, Landroid/graphics/RectF;-><init>()V</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/PanZoom$1;->$SwitchMap$com$androidplot$xy$PanZoom$Zoom:[I</span>
+<span class="">	iget-object v2, p0, Lcom/androidplot/xy/PanZoom;->zoom:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/xy/PanZoom$Zoom;->ordinal()I</span>
+<span class="">	move-result v2</span>
+<span class="">	aget v1, v1, v2</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	const/high16 v3, 0x3f800000    # 1.0f</span>
+<span class="">	if-eq v1, v2, :cond_8</span>
+<span class="">	const/4 v4, 0x2</span>
+<span class="">	if-eq v1, v4, :cond_7</span>
+<span class="">	const/4 v4, 0x3</span>
+<span class="">	if-eq v1, v4, :cond_5</span>
+<span class="">	const/4 v4, 0x4</span>
+<span class="">	if-eq v1, v4, :cond_2</span>
+<span class="">	const/high16 v0, 0x3f800000    # 1.0f</span>
+<span class="">	:goto_0</span>
+<span class="">	goto/16 :goto_2</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/RectF;->height()F</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result v1</span>
+<span class="">	float-to-double v3, v1</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	move-result v0</span>
+<span class="">	float-to-double v0, v0</span>
+<span class="">	invoke-static {v3, v4, v0, v1}, Ljava/lang/Math;->hypot(DD)D</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	double-to-float v0, v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->getFingersRect()Landroid/graphics/RectF;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Landroid/graphics/RectF;->height()F</span>
+<span class="">	move-result v1</span>
+<span class="">	float-to-double v3, v1</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->getFingersRect()Landroid/graphics/RectF;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	move-result v1</span>
+<span class="">	float-to-double v5, v1</span>
+<span class="">	invoke-static {v3, v4, v5, v6}, Ljava/lang/Math;->hypot(DD)D</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	double-to-float v1, v3</span>
+<span class="">	div-float v3, v0, v1</span>
+<span class="">	invoke-virtual {p0, v3}, Lcom/androidplot/xy/PanZoom;->isValidScale(F)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_4</span>
+<span class="">	invoke-virtual {p0, v3}, Lcom/androidplot/xy/PanZoom;->isValidScale(F)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_3</span>
+<span class="">	goto :goto_1</span>
+<span class="">	move v0, v3</span>
+<span class="">	:cond_3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_4</span>
+<span class="">	move-result v1</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->getFingersRect()Landroid/graphics/RectF;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	move-result v3</span>
+<span class="">	div-float v3, v1, v3</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/RectF;->height()F</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->getFingersRect()Landroid/graphics/RectF;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Landroid/graphics/RectF;->height()F</span>
+<span class="">	move-result v1</span>
+<span class="">	div-float/2addr v0, v1</span>
+<span class="">	invoke-virtual {p0, v3}, Lcom/androidplot/xy/PanZoom;->isValidScale(F)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_6</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/xy/PanZoom;->isValidScale(F)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_a</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/RectF;->height()F</span>
+<span class="">	move-result v0</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->getFingersRect()Landroid/graphics/RectF;</span>
+<span class="">	:cond_7</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Landroid/graphics/RectF;->height()F</span>
+<span class="">	move-result v1</span>
+<span class="">	div-float/2addr v0, v1</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/xy/PanZoom;->isValidScale(F)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_a</span>
+<span class="">	invoke-virtual {v0}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/xy/PanZoom;->getFingersRect()Landroid/graphics/RectF;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_8</span>
+<span class="">	invoke-virtual {v1}, Landroid/graphics/RectF;->width()F</span>
+<span class="">	move-result v1</span>
+<span class="">	div-float/2addr v0, v1</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/androidplot/xy/PanZoom;->isValidScale(F)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_9</span>
+<span class="">	move v3, v0</span>
+<span class="">	goto/16 :goto_0</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/PanZoom$Zoom;->STRETCH_HORIZONTAL:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	sget-object v4, Lcom/androidplot/xy/PanZoom$Zoom;->STRETCH_BOTH:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	sget-object v5, Lcom/androidplot/xy/PanZoom$Zoom;->SCALE:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	:cond_9</span>
+<span class="">	invoke-static {v1, v4, v5}, Ljava/util/EnumSet;->of(Ljava/lang/Enum;Ljava/lang/Enum;Ljava/lang/Enum;)Ljava/util/EnumSet;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_a</span>
+<span class="">	iget-object v4, p0, Lcom/androidplot/xy/PanZoom;->zoom:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	invoke-virtual {v1, v4}, Ljava/util/EnumSet;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_b</span>
+<span class="">	invoke-virtual {p0, p1, v3, v2}, Lcom/androidplot/xy/PanZoom;->calculateZoom(Landroid/graphics/RectF;FZ)V</span>
+<span class="">	iget v1, p1, Landroid/graphics/RectF;->left:F</span>
+<span class="">	invoke-static {v1}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iget v2, p1, Landroid/graphics/RectF;->right:F</span>
+<span class="">	invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	sget-object v3, Lcom/androidplot/xy/BoundaryMode;->FIXED:Lcom/androidplot/xy/BoundaryMode;</span>
+<span class="">	invoke-virtual {p0, v1, v2, v3}, Lcom/androidplot/xy/PanZoom;->adjustDomainBoundary(Ljava/lang/Number;Ljava/lang/Number;Lcom/androidplot/xy/BoundaryMode;)V</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/PanZoom$Zoom;->STRETCH_VERTICAL:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	sget-object v2, Lcom/androidplot/xy/PanZoom$Zoom;->STRETCH_BOTH:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	sget-object v3, Lcom/androidplot/xy/PanZoom$Zoom;->SCALE:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	invoke-static {v1, v2, v3}, Ljava/util/EnumSet;->of(Ljava/lang/Enum;Ljava/lang/Enum;Ljava/lang/Enum;)Ljava/util/EnumSet;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_b</span>
+<span class="">	iget-object v2, p0, Lcom/androidplot/xy/PanZoom;->zoom:Lcom/androidplot/xy/PanZoom$Zoom;</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/util/EnumSet;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_c</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {p0, p1, v0, v1}, Lcom/androidplot/xy/PanZoom;->calculateZoom(Landroid/graphics/RectF;FZ)V</span>
+<span class="">	iget v0, p1, Landroid/graphics/RectF;->top:F</span>
+<span class="">	invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget p1, p1, Landroid/graphics/RectF;->bottom:F</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sget-object v1, Lcom/androidplot/xy/BoundaryMode;->FIXED:Lcom/androidplot/xy/BoundaryMode;</span>
+<span class="">	invoke-virtual {p0, v0, p1, v1}, Lcom/androidplot/xy/PanZoom;->adjustRangeBoundary(Ljava/lang/Number;Ljava/lang/Number;Lcom/androidplot/xy/BoundaryMode;)V</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/PanZoom;->plot:Lcom/androidplot/xy/XYPlot;</span>
+<span class="">	invoke-virtual {p1}, Lcom/androidplot/xy/XYPlot;->redraw()V</span>
+<span class="">	:cond_c</span>
+<span class="">	:goto_3</span>
+<span class="">	:cond_d</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

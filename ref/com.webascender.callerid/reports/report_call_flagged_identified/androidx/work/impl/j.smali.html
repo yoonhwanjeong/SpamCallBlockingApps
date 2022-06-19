@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.work.impl</a></li>
+        <li><i class="ico ico-class"></i> j.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Landroidx/work/impl/j;
+.super Landroidx/work/w;
+.source "SourceFile"
+
+
+.field private static final k:Ljava/lang/String;
+.field private static l:Landroidx/work/impl/j;
+.field private static m:Landroidx/work/impl/j;
+.field private static final n:Ljava/lang/Object;
+.field private a:Landroid/content/Context;
+.field private b:Landroidx/work/b;
+.field private c:Landroidx/work/impl/WorkDatabase;
+.field private d:Landroidx/work/impl/utils/o/a;
+.field private e:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Landroidx/work/impl/e;",
+">;"
+}
+.end annotation
+.end field
+.field private f:Landroidx/work/impl/d;
+.field private g:Landroidx/work/impl/utils/e;
+.field private h:Z
+.field private i:Landroid/content/BroadcastReceiver$PendingResult;
+.field private volatile j:Landroidx/work/z/a;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const-string v0, "WorkManagerImpl"</span>
+<span class="exec">	invoke-static {v0}, Landroidx/work/m;->f(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sput-object v0, Landroidx/work/impl/j;->k:Ljava/lang/String;</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	sput-object v0, Landroidx/work/impl/j;->l:Landroidx/work/impl/j;</span>
+<span class="cov">	sput-object v0, Landroidx/work/impl/j;->m:Landroidx/work/impl/j;</span>
+<span class="cov">	new-instance v0, Ljava/lang/Object;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	sput-object v0, Landroidx/work/impl/j;->n:Ljava/lang/Object;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sget v1, Landroidx/work/s;->a:I</span>
+<span class="exec">	invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	invoke-direct {p0, p1, p2, p3, v0}, Landroidx/work/impl/j;-><init>(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;Z)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;Landroidx/work/impl/WorkDatabase;)V</span>
+<span class="">	.locals 10</span>
+
+<span class="cov">	invoke-direct {p0}, Landroidx/work/w;-><init>()V</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	new-instance v1, Landroidx/work/m$a;</span>
+<span class="exec">	invoke-virtual {p2}, Landroidx/work/b;->i()I</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	invoke-direct {v1, v2}, Landroidx/work/m$a;-><init>(I)V</span>
+<span class="cov">	invoke-static {v1}, Landroidx/work/m;->e(Landroidx/work/m;)V</span>
+<span class="exec">	invoke-virtual {p0, v0, p2, p3}, Landroidx/work/impl/j;->l(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;)Ljava/util/List;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	new-instance v9, Landroidx/work/impl/d;</span>
+<span class="cov">	move-object v3, v9</span>
+<span class="cov">	move-object v4, p1</span>
+<span class="cov">	move-object v5, p2</span>
+<span class="cov">	move-object v6, p3</span>
+<span class="cov">	move-object v7, p4</span>
+<span class="cov">	move-object v8, v0</span>
+<span class="cov">	invoke-direct/range {v3 .. v8}, Landroidx/work/impl/d;-><init>(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;Landroidx/work/impl/WorkDatabase;Ljava/util/List;)V</span>
+<span class="cov">	move-object v3, p0</span>
+<span class="cov">	invoke-direct/range {v3 .. v9}, Landroidx/work/impl/j;->x(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;Landroidx/work/impl/WorkDatabase;Ljava/util/List;Landroidx/work/impl/d;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;Z)V</span>
+<span class="">	.locals 2</span>
+
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-interface {p3}, Landroidx/work/impl/utils/o/a;->c()Landroidx/work/impl/utils/g;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-static {v0, v1, p4}, Landroidx/work/impl/WorkDatabase;->s(Landroid/content/Context;Ljava/util/concurrent/Executor;Z)Landroidx/work/impl/WorkDatabase;</span>
+<span class="cov">	move-result-object p4</span>
+<span class="cov">	invoke-direct {p0, p1, p2, p3, p4}, Landroidx/work/impl/j;-><init>(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;Landroidx/work/impl/WorkDatabase;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private F()V</span>
+<span class="">	.locals 6</span>
+
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	const/4 v1, 0x1</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	const-string v2, "androidx.work.multiprocess.RemoteWorkManagerClient"</span>
+<span class="">	invoke-static {v2}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/4 v3, 0x2</span>
+<span class="">	new-array v4, v3, [Ljava/lang/Class;</span>
+<span class="">	const-class v5, Landroid/content/Context;</span>
+<span class="">	aput-object v5, v4, v0</span>
+<span class="">	const-class v5, Landroidx/work/impl/j;</span>
+<span class="">	aput-object v5, v4, v1</span>
+<span class="">	invoke-virtual {v2, v4}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	new-array v3, v3, [Ljava/lang/Object;</span>
+<span class="">	iget-object v4, p0, Landroidx/work/impl/j;->a:Landroid/content/Context;</span>
+<span class="">	aput-object v4, v3, v0</span>
+<span class="">	aput-object p0, v3, v1</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroidx/work/z/a;</span>
+<span class="">	iput-object v2, p0, Landroidx/work/impl/j;->j:Landroidx/work/z/a;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="exec">	goto :goto_0</span>
+<span class="">	:catchall_0</span>
+<span class="cov">	move-exception v2</span>
+<span class="exec">	invoke-static {}, Landroidx/work/m;->c()Landroidx/work/m;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	sget-object v4, Landroidx/work/impl/j;->k:Ljava/lang/String;</span>
+<span class="cov">	new-array v1, v1, [Ljava/lang/Throwable;</span>
+<span class="cov">	aput-object v2, v1, v0</span>
+<span class="cov">	const-string v0, "Unable to initialize multi-process support"</span>
+<span class="cov">	invoke-virtual {v3, v4, v0, v1}, Landroidx/work/m;->a(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Throwable;)V</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static j(Landroid/content/Context;Landroidx/work/b;)V</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	sget-object v0, Landroidx/work/impl/j;->n:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	sget-object v1, Landroidx/work/impl/j;->l:Landroidx/work/impl/j;</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	sget-object v2, Landroidx/work/impl/j;->m:Landroidx/work/impl/j;</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p0, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string p1, "WorkManager is already initialized.  Did you try to initialize it manually without disabling WorkManagerInitializer? See WorkManager#initialize(Context, Configuration) or the class level Javadoc for more information."</span>
+<span class="">	invoke-direct {p0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	if-nez v1, :cond_3</span>
+<span class="exec">	invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	sget-object v1, Landroidx/work/impl/j;->m:Landroidx/work/impl/j;</span>
+<span class="cov">	if-nez v1, :cond_2</span>
+<span class="cov">	new-instance v1, Landroidx/work/impl/j;</span>
+<span class="cov">	new-instance v2, Landroidx/work/impl/utils/o/b;</span>
+<span class="exec">	invoke-virtual {p1}, Landroidx/work/b;->k()Ljava/util/concurrent/Executor;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	invoke-direct {v2, v3}, Landroidx/work/impl/utils/o/b;-><init>(Ljava/util/concurrent/Executor;)V</span>
+<span class="cov">	invoke-direct {v1, p0, p1, v2}, Landroidx/work/impl/j;-><init>(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;)V</span>
+<span class="cov">	sput-object v1, Landroidx/work/impl/j;->m:Landroidx/work/impl/j;</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	sget-object p0, Landroidx/work/impl/j;->m:Landroidx/work/impl/j;</span>
+<span class="cov">	sput-object p0, Landroidx/work/impl/j;->l:Landroidx/work/impl/j;</span>
+<span class="cov">	:cond_3</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-void</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw p0</span>
+.end method
+
+<span class="cov">.method public static p()Landroidx/work/impl/j;</span>
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	sget-object v0, Landroidx/work/impl/j;->n:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	sget-object v1, Landroidx/work/impl/j;->l:Landroidx/work/impl/j;</span>
+<span class="cov">	if-eqz v1, :cond_0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-object v1</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v1, Landroidx/work/impl/j;->m:Landroidx/work/impl/j;</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw v1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+.end method
+
+<span class="cov">.method public static q(Landroid/content/Context;)Landroidx/work/impl/j;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	sget-object v0, Landroidx/work/impl/j;->n:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="exec">	invoke-static {}, Landroidx/work/impl/j;->p()Landroidx/work/impl/j;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	instance-of v1, p0, Landroidx/work/b$b;</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	move-object v1, p0</span>
+<span class="">	check-cast v1, Landroidx/work/b$b;</span>
+<span class="">	invoke-interface {v1}, Landroidx/work/b$b;->a()Landroidx/work/b;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {p0, v1}, Landroidx/work/impl/j;->j(Landroid/content/Context;Landroidx/work/b;)V</span>
+<span class="">	invoke-static {p0}, Landroidx/work/impl/j;->q(Landroid/content/Context;)Landroidx/work/impl/j;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p0, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string v1, "WorkManager is not initialized properly.  You have explicitly disabled WorkManagerInitializer in your manifest, have not manually called WorkManager#initialize at this point, and your Application does not implement Configuration.Provider."</span>
+<span class="">	invoke-direct {p0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-object v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw p0</span>
+.end method
+
+<span class="cov">.method private x(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;Landroidx/work/impl/WorkDatabase;Ljava/util/List;Landroidx/work/impl/d;)V</span>
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Landroidx/work/b;",</span>
+<span class="">	"Landroidx/work/impl/utils/o/a;",</span>
+<span class="">	"Landroidx/work/impl/WorkDatabase;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/work/impl/e;",</span>
+<span class="">	">;",</span>
+<span class="">	"Landroidx/work/impl/d;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	iput-object p1, p0, Landroidx/work/impl/j;->a:Landroid/content/Context;</span>
+<span class="cov">	iput-object p2, p0, Landroidx/work/impl/j;->b:Landroidx/work/b;</span>
+<span class="cov">	iput-object p3, p0, Landroidx/work/impl/j;->d:Landroidx/work/impl/utils/o/a;</span>
+<span class="cov">	iput-object p4, p0, Landroidx/work/impl/j;->c:Landroidx/work/impl/WorkDatabase;</span>
+<span class="cov">	iput-object p5, p0, Landroidx/work/impl/j;->e:Ljava/util/List;</span>
+<span class="cov">	iput-object p6, p0, Landroidx/work/impl/j;->f:Landroidx/work/impl/d;</span>
+<span class="cov">	new-instance p2, Landroidx/work/impl/utils/e;</span>
+<span class="cov">	invoke-direct {p2, p4}, Landroidx/work/impl/utils/e;-><init>(Landroidx/work/impl/WorkDatabase;)V</span>
+<span class="cov">	iput-object p2, p0, Landroidx/work/impl/j;->g:Landroidx/work/impl/utils/e;</span>
+<span class="cov">	const/4 p2, 0x0</span>
+<span class="cov">	iput-boolean p2, p0, Landroidx/work/impl/j;->h:Z</span>
+<span class="cov">	sget p2, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="cov">	const/16 p3, 0x18</span>
+<span class="cov">	if-lt p2, p3, :cond_1</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->isDeviceProtectedStorage()Z</span>
+<span class="cov">	move-result p2</span>
+<span class="cov">	if-nez p2, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string p2, "Cannot initialize WorkManager in direct boot mode"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	iget-object p2, p0, Landroidx/work/impl/j;->d:Landroidx/work/impl/utils/o/a;</span>
+<span class="cov">	new-instance p3, Landroidx/work/impl/utils/ForceStopRunnable;</span>
+<span class="cov">	invoke-direct {p3, p1, p0}, Landroidx/work/impl/utils/ForceStopRunnable;-><init>(Landroid/content/Context;Landroidx/work/impl/j;)V</span>
+<span class="cov">	invoke-interface {p2, p3}, Landroidx/work/impl/utils/o/a;->b(Ljava/lang/Runnable;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public A(Landroid/content/BroadcastReceiver$PendingResult;)V
+<span class="">	.locals 2</span>
+
+<span class="">	sget-object v0, Landroidx/work/impl/j;->n:Ljava/lang/Object;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iput-object p1, p0, Landroidx/work/impl/j;->i:Landroid/content/BroadcastReceiver$PendingResult;</span>
+<span class="">	iget-boolean v1, p0, Landroidx/work/impl/j;->h:Z</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/BroadcastReceiver$PendingResult;->finish()V</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput-object p1, p0, Landroidx/work/impl/j;->i:Landroid/content/BroadcastReceiver$PendingResult;</span>
+<span class="">	:cond_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+.end method
+
+.method public B(Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p0, p1, v0}, Landroidx/work/impl/j;->C(Ljava/lang/String;Landroidx/work/WorkerParameters$a;)V</span>
+.end method
+
+.method public C(Ljava/lang/String;Landroidx/work/WorkerParameters$a;)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/impl/j;->d:Landroidx/work/impl/utils/o/a;</span>
+<span class="">	new-instance v1, Landroidx/work/impl/utils/h;</span>
+<span class="">	invoke-direct {v1, p0, p1, p2}, Landroidx/work/impl/utils/h;-><init>(Landroidx/work/impl/j;Ljava/lang/String;Landroidx/work/WorkerParameters$a;)V</span>
+<span class="">	invoke-interface {v0, v1}, Landroidx/work/impl/utils/o/a;->b(Ljava/lang/Runnable;)V</span>
+.end method
+
+.method public D(Ljava/lang/String;)V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/impl/j;->d:Landroidx/work/impl/utils/o/a;</span>
+<span class="">	new-instance v1, Landroidx/work/impl/utils/i;</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-direct {v1, p0, p1, v2}, Landroidx/work/impl/utils/i;-><init>(Landroidx/work/impl/j;Ljava/lang/String;Z)V</span>
+<span class="">	invoke-interface {v0, v1}, Landroidx/work/impl/utils/o/a;->b(Ljava/lang/Runnable;)V</span>
+.end method
+
+.method public E(Ljava/lang/String;)V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/impl/j;->d:Landroidx/work/impl/utils/o/a;</span>
+<span class="">	new-instance v1, Landroidx/work/impl/utils/i;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-direct {v1, p0, p1, v2}, Landroidx/work/impl/utils/i;-><init>(Landroidx/work/impl/j;Ljava/lang/String;Z)V</span>
+<span class="">	invoke-interface {v0, v1}, Landroidx/work/impl/utils/o/a;->b(Ljava/lang/Runnable;)V</span>
+.end method
+
+.method public b(Ljava/lang/String;Landroidx/work/g;Ljava/util/List;)Landroidx/work/u;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Landroidx/work/g;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/work/o;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Landroidx/work/u;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-interface {p3}, Ljava/util/List;->isEmpty()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-instance v0, Landroidx/work/impl/g;</span>
+<span class="">	invoke-direct {v0, p0, p1, p2, p3}, Landroidx/work/impl/g;-><init>(Landroidx/work/impl/j;Ljava/lang/String;Landroidx/work/g;Ljava/util/List;)V</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p2, "beginUniqueWork needs at least one OneTimeWorkRequest."</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public c(Ljava/lang/String;)Landroidx/work/p;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {p1, p0}, Landroidx/work/impl/utils/a;->d(Ljava/lang/String;Landroidx/work/impl/j;)Landroidx/work/impl/utils/a;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v0, p0, Landroidx/work/impl/j;->d:Landroidx/work/impl/utils/o/a;</span>
+<span class="">	invoke-interface {v0, p1}, Landroidx/work/impl/utils/o/a;->b(Ljava/lang/Runnable;)V</span>
+<span class="">	invoke-virtual {p1}, Landroidx/work/impl/utils/a;->e()Landroidx/work/p;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public e(Ljava/util/List;)Landroidx/work/p;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"+",</span>
+<span class="">	"Landroidx/work/x;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Landroidx/work/p;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-interface {p1}, Ljava/util/List;->isEmpty()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-instance v0, Landroidx/work/impl/g;</span>
+<span class="">	invoke-direct {v0, p0, p1}, Landroidx/work/impl/g;-><init>(Landroidx/work/impl/j;Ljava/util/List;)V</span>
+<span class="">	invoke-virtual {v0}, Landroidx/work/impl/g;->a()Landroidx/work/p;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, "enqueue needs at least one WorkRequest."</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+<span class="cov">.method public f(Ljava/lang/String;Landroidx/work/f;Landroidx/work/q;)Landroidx/work/p;</span>
+<span class="">	.locals 0</span>
+
+<span class="exec">	invoke-virtual {p0, p1, p2, p3}, Landroidx/work/impl/j;->m(Ljava/lang/String;Landroidx/work/f;Landroidx/work/q;)Landroidx/work/impl/g;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1}, Landroidx/work/impl/g;->a()Landroidx/work/p;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+.method public h(Ljava/lang/String;Landroidx/work/g;Ljava/util/List;)Landroidx/work/p;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Landroidx/work/g;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/work/o;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Landroidx/work/p;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Landroidx/work/impl/g;</span>
+<span class="">	invoke-direct {v0, p0, p1, p2, p3}, Landroidx/work/impl/g;-><init>(Landroidx/work/impl/j;Ljava/lang/String;Landroidx/work/g;Ljava/util/List;)V</span>
+<span class="">	invoke-virtual {v0}, Landroidx/work/impl/g;->a()Landroidx/work/p;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public k(Ljava/util/UUID;)Landroidx/work/p;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {p1, p0}, Landroidx/work/impl/utils/a;->b(Ljava/util/UUID;Landroidx/work/impl/j;)Landroidx/work/impl/utils/a;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v0, p0, Landroidx/work/impl/j;->d:Landroidx/work/impl/utils/o/a;</span>
+<span class="">	invoke-interface {v0, p1}, Landroidx/work/impl/utils/o/a;->b(Ljava/lang/Runnable;)V</span>
+<span class="">	invoke-virtual {p1}, Landroidx/work/impl/utils/a;->e()Landroidx/work/p;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+<span class="cov">.method public l(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;)Ljava/util/List;</span>
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Landroidx/work/b;",</span>
+<span class="">	"Landroidx/work/impl/utils/o/a;",</span>
+<span class="">	")",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/work/impl/e;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	const/4 v0, 0x2</span>
+<span class="cov">	new-array v0, v0, [Landroidx/work/impl/e;</span>
+<span class="exec">	invoke-static {p1, p0}, Landroidx/work/impl/f;->a(Landroid/content/Context;Landroidx/work/impl/j;)Landroidx/work/impl/e;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="cov">	aput-object v1, v0, v2</span>
+<span class="cov">	new-instance v1, Landroidx/work/impl/l/a/b;</span>
+<span class="cov">	invoke-direct {v1, p1, p2, p3, p0}, Landroidx/work/impl/l/a/b;-><init>(Landroid/content/Context;Landroidx/work/b;Landroidx/work/impl/utils/o/a;Landroidx/work/impl/j;)V</span>
+<span class="cov">	const/4 p1, 0x1</span>
+<span class="cov">	aput-object v1, v0, p1</span>
+<span class="exec">	invoke-static {v0}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public m(Ljava/lang/String;Landroidx/work/f;Landroidx/work/q;)Landroidx/work/impl/g;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	sget-object v0, Landroidx/work/f;->KEEP:Landroidx/work/f;</span>
+<span class="cov">	if-ne p2, v0, :cond_0</span>
+<span class="cov">	sget-object p2, Landroidx/work/g;->KEEP:Landroidx/work/g;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object p2, Landroidx/work/g;->REPLACE:Landroidx/work/g;</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	new-instance v0, Landroidx/work/impl/g;</span>
+<span class="exec">	invoke-static {p3}, Ljava/util/Collections;->singletonList(Ljava/lang/Object;)Ljava/util/List;</span>
+<span class="cov">	move-result-object p3</span>
+<span class="cov">	invoke-direct {v0, p0, p1, p2, p3}, Landroidx/work/impl/g;-><init>(Landroidx/work/impl/j;Ljava/lang/String;Landroidx/work/g;Ljava/util/List;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public n()Landroid/content/Context;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/impl/j;->a:Landroid/content/Context;</span>
+.end method
+
+.method public o()Landroidx/work/b;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/impl/j;->b:Landroidx/work/b;</span>
+.end method
+
+<span class="cov">.method public r()Landroidx/work/impl/utils/e;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Landroidx/work/impl/j;->g:Landroidx/work/impl/utils/e;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public s()Landroidx/work/impl/d;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/impl/j;->f:Landroidx/work/impl/d;</span>
+.end method
+
+<span class="cov">.method public t()Landroidx/work/z/a;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	iget-object v0, p0, Landroidx/work/impl/j;->j:Landroidx/work/z/a;</span>
+<span class="cov">	if-nez v0, :cond_2</span>
+<span class="cov">	sget-object v0, Landroidx/work/impl/j;->n:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	iget-object v1, p0, Landroidx/work/impl/j;->j:Landroidx/work/z/a;</span>
+<span class="cov">	if-nez v1, :cond_1</span>
+<span class="cov">	invoke-direct {p0}, Landroidx/work/impl/j;->F()V</span>
+<span class="cov">	iget-object v1, p0, Landroidx/work/impl/j;->j:Landroidx/work/z/a;</span>
+<span class="cov">	if-nez v1, :cond_1</span>
+<span class="cov">	iget-object v1, p0, Landroidx/work/impl/j;->b:Landroidx/work/b;</span>
+<span class="exec">	invoke-virtual {v1}, Landroidx/work/b;->b()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	if-eqz v1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v1, "Invalid multiprocess configuration. Define an `implementation` dependency on :work:work-multiprocess library"</span>
+<span class="">	new-instance v2, Ljava/lang/IllegalStateException;</span>
+<span class="">	invoke-direct {v2, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v2</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw v1</span>
+<span class="cov">	:goto_1</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	iget-object v0, p0, Landroidx/work/impl/j;->j:Landroidx/work/z/a;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public u()Ljava/util/List;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/work/impl/e;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Landroidx/work/impl/j;->e:Ljava/util/List;</span>
+.end method
+
+<span class="cov">.method public v()Landroidx/work/impl/WorkDatabase;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Landroidx/work/impl/j;->c:Landroidx/work/impl/WorkDatabase;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public w()Landroidx/work/impl/utils/o/a;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Landroidx/work/impl/j;->d:Landroidx/work/impl/utils/o/a;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public y()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	sget-object v0, Landroidx/work/impl/j;->n:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	const/4 v1, 0x1</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	iput-boolean v1, p0, Landroidx/work/impl/j;->h:Z</span>
+<span class="cov">	iget-object v1, p0, Landroidx/work/impl/j;->i:Landroid/content/BroadcastReceiver$PendingResult;</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/content/BroadcastReceiver$PendingResult;->finish()V</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	iput-object v1, p0, Landroidx/work/impl/j;->i:Landroid/content/BroadcastReceiver$PendingResult;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-void</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw v1</span>
+.end method
+
+.method public z()V
+<span class="">	.locals 3</span>
+
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x17</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/work/impl/j;->n()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Landroidx/work/impl/background/systemjob/b;->b(Landroid/content/Context;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/work/impl/j;->v()Landroidx/work/impl/WorkDatabase;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroidx/work/impl/WorkDatabase;->B()Landroidx/work/impl/n/q;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Landroidx/work/impl/n/q;->u()I</span>
+<span class="">	invoke-virtual {p0}, Landroidx/work/impl/j;->o()Landroidx/work/b;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/work/impl/j;->v()Landroidx/work/impl/WorkDatabase;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/work/impl/j;->u()Ljava/util/List;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v0, v1, v2}, Landroidx/work/impl/f;->b(Landroidx/work/b;Landroidx/work/impl/WorkDatabase;Ljava/util/List;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

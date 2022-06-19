@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.core.app</a></li>
+        <li><i class="ico ico-class"></i> g$a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Landroidx/core/app/g$a;
+.super Landroidx/core/app/g$b;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Landroidx/core/app/g;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0xa
+name = "a"
+.end annotation
+
+.field private static e:Landroid/os/HandlerThread;
+.field private static f:Landroid/os/Handler;
+.field  a:I
+.field  b:[Landroid/util/SparseIntArray;
+.field private c:Ljava/util/ArrayList;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/ArrayList<",
+"Ljava/lang/ref/WeakReference<",
+"Landroid/app/Activity;",
+">;>;"
+}
+.end annotation
+.end field
+.field  d:Landroid/view/Window$OnFrameMetricsAvailableListener;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 0</span>
+
+.end method
+
+<span class="cov">.method constructor &lt;init&gt;(I)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Landroidx/core/app/g$b;-><init>()V</span>
+<span class="cov">	const/16 v0, 0x9</span>
+<span class="cov">	new-array v0, v0, [Landroid/util/SparseIntArray;</span>
+<span class="cov">	iput-object v0, p0, Landroidx/core/app/g$a;->b:[Landroid/util/SparseIntArray;</span>
+<span class="cov">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Landroidx/core/app/g$a;->c:Ljava/util/ArrayList;</span>
+<span class="cov">	new-instance v0, Landroidx/core/app/g$a$a;</span>
+<span class="cov">	invoke-direct {v0, p0}, Landroidx/core/app/g$a$a;-><init>(Landroidx/core/app/g$a;)V</span>
+<span class="cov">	iput-object v0, p0, Landroidx/core/app/g$a;->d:Landroid/view/Window$OnFrameMetricsAvailableListener;</span>
+<span class="cov">	iput p1, p0, Landroidx/core/app/g$a;->a:I</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public a(Landroid/app/Activity;)V
+<span class="">	.locals 4</span>
+
+<span class="">	sget-object v0, Landroidx/core/app/g$a;->e:Landroid/os/HandlerThread;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-instance v0, Landroid/os/HandlerThread;</span>
+<span class="">	const-string v1, "FrameMetricsAggregator"</span>
+<span class="">	invoke-direct {v0, v1}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;)V</span>
+<span class="">	sput-object v0, Landroidx/core/app/g$a;->e:Landroid/os/HandlerThread;</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/HandlerThread;->start()V</span>
+<span class="">	new-instance v0, Landroid/os/Handler;</span>
+<span class="">	sget-object v1, Landroidx/core/app/g$a;->e:Landroid/os/HandlerThread;</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V</span>
+<span class="">	sput-object v0, Landroidx/core/app/g$a;->f:Landroid/os/Handler;</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	const/16 v1, 0x8</span>
+<span class="">	if-gt v0, v1, :cond_2</span>
+<span class="">	iget-object v1, p0, Landroidx/core/app/g$a;->b:[Landroid/util/SparseIntArray;</span>
+<span class="">	aget-object v2, v1, v0</span>
+<span class="">	if-nez v2, :cond_1</span>
+<span class="">	iget v2, p0, Landroidx/core/app/g$a;->a:I</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	shl-int/2addr v3, v0</span>
+<span class="">	and-int/2addr v2, v3</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	new-instance v2, Landroid/util/SparseIntArray;</span>
+<span class="">	invoke-direct {v2}, Landroid/util/SparseIntArray;-><init>()V</span>
+<span class="">	aput-object v2, v1, v0</span>
+<span class="">	:cond_1</span>
+<span class="">	add-int/lit8 v0, v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/Activity;->getWindow()Landroid/view/Window;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Landroidx/core/app/g$a;->d:Landroid/view/Window$OnFrameMetricsAvailableListener;</span>
+<span class="">	sget-object v2, Landroidx/core/app/g$a;->f:Landroid/os/Handler;</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Landroid/view/Window;->addOnFrameMetricsAvailableListener(Landroid/view/Window$OnFrameMetricsAvailableListener;Landroid/os/Handler;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/core/app/g$a;->c:Ljava/util/ArrayList;</span>
+<span class="">	new-instance v1, Ljava/lang/ref/WeakReference;</span>
+<span class="">	invoke-direct {v1, p1}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z</span>
+.end method
+
+.method public b(Landroid/app/Activity;)[Landroid/util/SparseIntArray;
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Landroidx/core/app/g$a;->c:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/lang/ref/WeakReference;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-ne v2, p1, :cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/core/app/g$a;->c:Ljava/util/ArrayList;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/Activity;->getWindow()Landroid/view/Window;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v0, p0, Landroidx/core/app/g$a;->d:Landroid/view/Window$OnFrameMetricsAvailableListener;</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/view/Window;->removeOnFrameMetricsAvailableListener(Landroid/view/Window$OnFrameMetricsAvailableListener;)V</span>
+<span class="">	iget-object p1, p0, Landroidx/core/app/g$a;->b:[Landroid/util/SparseIntArray;</span>
+.end method
+
+.method  c(Landroid/util/SparseIntArray;J)V
+<span class="">	.locals 4</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	const-wide/32 v0, 0x7a120</span>
+<span class="">	add-long/2addr v0, p2</span>
+<span class="">	const-wide/32 v2, 0xf4240</span>
+<span class="">	div-long/2addr v0, v2</span>
+<span class="">	long-to-int v1, v0</span>
+<span class="">	const-wide/16 v2, 0x0</span>
+<span class="">	cmp-long v0, p2, v2</span>
+<span class="">	if-ltz v0, :cond_0</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/util/SparseIntArray;->get(I)I</span>
+<span class="">	move-result p2</span>
+<span class="">	add-int/lit8 p2, p2, 0x1</span>
+<span class="">	invoke-virtual {p1, v1, p2}, Landroid/util/SparseIntArray;->put(II)V</span>
+<span class="">	:cond_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

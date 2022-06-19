@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.gamingservices</a></li>
+        <li><i class="ico ico-class"></i> GamingPayload.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/gamingservices/GamingPayload;
+.super Ljava/lang/Object;
+.source "GamingPayload.java"
+
+
+.field private static final KEY_APPLINK_DATA:Ljava/lang/String; = "al_applink_data"
+.field private static final KEY_CONTEXT_TOKEN_ID:Ljava/lang/String; = "context_token_id"
+.field private static final KEY_EXTRAS:Ljava/lang/String; = "extras"
+.field private static final KEY_GAME_REQUEST_ID:Ljava/lang/String; = "game_request_id"
+.field private static final KEY_PAYLOAD:Ljava/lang/String; = "payload"
+.field private static final KEY_TOURNAMENT_ID:Ljava/lang/String; = "tournament_id"
+.field private static final TAG:Ljava/lang/String; = "GamingPayload"
+.field private static payloadData:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 0</span>
+
+.end method
+
+.method private constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public static getGameRequestID()Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->payloadData:Ljava/util/Map;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-string v2, "game_request_id"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->payloadData:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v0, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/String;</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public static getPayload()Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->payloadData:Ljava/util/Map;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-string v2, "payload"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->payloadData:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v0, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/String;</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public static getTournamentId()Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->payloadData:Ljava/util/Map;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-string v2, "tournament_id"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->payloadData:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v0, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/String;</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public static loadPayloadFromCloudGame(Ljava/lang/String;)V
+<span class="">	.locals 5</span>
+
+<span class="">	const-string v0, "tournament_id"</span>
+<span class="">	const-string v1, "payload"</span>
+<span class="">	const-string v2, "game_request_id"</span>
+<span class="">	new-instance v3, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v3}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v4, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v4, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v4, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {v3, v2, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {v4, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {v3, v1, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {v4, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {v3, v0, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	sput-object v3, Lcom/facebook/gamingservices/GamingPayload;->payloadData:Ljava/util/Map;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->TAG:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p0}, Lorg/json/JSONException;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v0, v1, p0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public static loadPayloadFromIntent(Landroid/content/Intent;)V
+<span class="">	.locals 8</span>
+
+<span class="">	new-instance v0, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	if-nez p0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_2</span>
+<span class="">	const-string v1, "al_applink_data"</span>
+<span class="">	invoke-virtual {p0, v1}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {p0, v1}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v1, "extras"</span>
+<span class="">	invoke-virtual {p0, v1}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_2</span>
+<span class="">	const-string v1, "game_request_id"</span>
+<span class="">	invoke-virtual {p0, v1}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "payload"</span>
+<span class="">	invoke-virtual {p0, v3}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	const-string v5, "context_token_id"</span>
+<span class="">	invoke-virtual {p0, v5}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	const-string v6, "tournament_id"</span>
+<span class="">	invoke-virtual {p0, v6}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz v5, :cond_1</span>
+<span class="">	new-instance v7, Lcom/facebook/gamingservices/GamingContext;</span>
+<span class="">	invoke-direct {v7, v5}, Lcom/facebook/gamingservices/GamingContext;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {v7}, Lcom/facebook/gamingservices/GamingContext;->setCurrentGamingContext(Lcom/facebook/gamingservices/GamingContext;)V</span>
+<span class="">	invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-interface {v0, v3, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-interface {v0, v6, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	sput-object v0, Lcom/facebook/gamingservices/GamingPayload;->payloadData:Ljava/util/Map;</span>
+<span class="">	:cond_2</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

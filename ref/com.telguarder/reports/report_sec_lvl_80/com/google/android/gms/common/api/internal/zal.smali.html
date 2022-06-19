@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.common.api.internal</a></li>
+        <li><i class="ico ico-class"></i> zal.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/android/gms/common/api/internal/zal;
+.super Ljava/lang/Object;
+.source "com.google.android.gms:play-services-base@@18.0.1"
+
+
+.field private final zaa:Landroidx/collection/ArrayMap;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Landroidx/collection/ArrayMap<",
+"Lcom/google/android/gms/common/api/internal/ApiKey<",
+"*>;",
+"Lcom/google/android/gms/common/ConnectionResult;",
+">;"
+}
+.end annotation
+.end field
+.field private final zab:Landroidx/collection/ArrayMap;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Landroidx/collection/ArrayMap<",
+"Lcom/google/android/gms/common/api/internal/ApiKey<",
+"*>;",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+.field private final zac:Lcom/google/android/gms/tasks/TaskCompletionSource;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/android/gms/tasks/TaskCompletionSource<",
+"Ljava/util/Map<",
+"Lcom/google/android/gms/common/api/internal/ApiKey<",
+"*>;",
+"Ljava/lang/String;",
+">;>;"
+}
+.end annotation
+.end field
+.field private zad:I
+.field private zae:Z
+
+
+.method public constructor <init>(Ljava/lang/Iterable;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/Iterable<",</span>
+<span class="">	"+",</span>
+<span class="">	"Lcom/google/android/gms/common/api/HasApiKey<",</span>
+<span class="">	"*>;>;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	new-instance v0, Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-direct {v0}, Landroidx/collection/ArrayMap;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/google/android/gms/common/api/internal/zal;->zab:Landroidx/collection/ArrayMap;</span>
+<span class="">	new-instance v0, Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/android/gms/tasks/TaskCompletionSource;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/google/android/gms/common/api/internal/zal;->zac:Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-boolean v0, p0, Lcom/google/android/gms/common/api/internal/zal;->zae:Z</span>
+<span class="">	new-instance v0, Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-direct {v0}, Landroidx/collection/ArrayMap;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/google/android/gms/common/api/internal/zal;->zaa:Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/google/android/gms/common/api/HasApiKey;</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/common/api/internal/zal;->zaa:Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-interface {v0}, Lcom/google/android/gms/common/api/HasApiKey;->getApiKey()Lcom/google/android/gms/common/api/internal/ApiKey;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-virtual {v1, v0, v2}, Landroidx/collection/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/common/api/internal/zal;->zaa:Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/collection/ArrayMap;->keySet()Ljava/util/Set;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Set;->size()I</span>
+<span class="">	move-result p1</span>
+<span class="">	iput p1, p0, Lcom/google/android/gms/common/api/internal/zal;->zad:I</span>
+.end method
+
+.method public final zaa()Lcom/google/android/gms/tasks/Task;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lcom/google/android/gms/tasks/Task<",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/ApiKey<",</span>
+<span class="">	"*>;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/zal;->zac:Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public final zab()Ljava/util/Set;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/Set<",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/ApiKey<",</span>
+<span class="">	"*>;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/zal;->zaa:Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/collection/ArrayMap;->keySet()Ljava/util/Set;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public final zac(Lcom/google/android/gms/common/api/internal/ApiKey;Lcom/google/android/gms/common/ConnectionResult;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/ApiKey<",</span>
+<span class="">	"*>;",</span>
+<span class="">	"Lcom/google/android/gms/common/ConnectionResult;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/zal;->zaa:Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Landroidx/collection/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/internal/zal;->zab:Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-virtual {v0, p1, p3}, Landroidx/collection/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	iget p1, p0, Lcom/google/android/gms/common/api/internal/zal;->zad:I</span>
+<span class="">	add-int/lit8 p1, p1, -0x1</span>
+<span class="">	iput p1, p0, Lcom/google/android/gms/common/api/internal/zal;->zad:I</span>
+<span class="">	invoke-virtual {p2}, Lcom/google/android/gms/common/ConnectionResult;->isSuccess()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	iput-boolean p1, p0, Lcom/google/android/gms/common/api/internal/zal;->zae:Z</span>
+<span class="">	:cond_0</span>
+<span class="">	iget p1, p0, Lcom/google/android/gms/common/api/internal/zal;->zad:I</span>
+<span class="">	if-nez p1, :cond_2</span>
+<span class="">	iget-boolean p1, p0, Lcom/google/android/gms/common/api/internal/zal;->zae:Z</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	new-instance p1, Lcom/google/android/gms/common/api/AvailabilityException;</span>
+<span class="">	iget-object p2, p0, Lcom/google/android/gms/common/api/internal/zal;->zaa:Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-direct {p1, p2}, Lcom/google/android/gms/common/api/AvailabilityException;-><init>(Landroidx/collection/ArrayMap;)V</span>
+<span class="">	iget-object p2, p0, Lcom/google/android/gms/common/api/internal/zal;->zac:Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	invoke-virtual {p2, p1}, Lcom/google/android/gms/tasks/TaskCompletionSource;->setException(Ljava/lang/Exception;)V</span>
+<span class="">	iget-object p1, p0, Lcom/google/android/gms/common/api/internal/zal;->zac:Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object p2, p0, Lcom/google/android/gms/common/api/internal/zal;->zab:Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-virtual {p1, p2}, Lcom/google/android/gms/tasks/TaskCompletionSource;->setResult(Ljava/lang/Object;)V</span>
+<span class="">	:cond_2</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../../.resources/report.js"></script>
+</body>
+</html>

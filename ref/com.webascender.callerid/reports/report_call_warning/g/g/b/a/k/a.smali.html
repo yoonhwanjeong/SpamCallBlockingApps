@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">g.g.b.a.k</a></li>
+        <li><i class="ico ico-class"></i> a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lg/g/b/a/k/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private final a:Landroid/content/Context;
+.field private final b:Lg/g/b/a/k/e;
+
+
+.method public constructor <init>(Landroid/content/Context;Lg/g/b/a/k/e;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "context"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "assetInfo"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lg/g/b/a/k/a;->a:Landroid/content/Context;</span>
+<span class="">	iput-object p2, p0, Lg/g/b/a/k/a;->b:Lg/g/b/a/k/e;</span>
+.end method
+
+.method private final b(Ljava/lang/String;Lg/g/b/c/d;)Ljava/io/File;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/io/File;</span>
+<span class="">	iget-object v1, p0, Lg/g/b/a/k/a;->b:Lg/g/b/a/k/e;</span>
+<span class="">	invoke-virtual {v1, p2}, Lg/g/b/a/k/e;->c(Lg/g/b/c/d;)Ljava/io/File;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-direct {v0, p2, p1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/File;->exists()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/File;->createNewFile()Z</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private final d(Ljava/io/File;Lg/g/b/c/d;)V
+<span class="">	.locals 10</span>
+
+<span class="">	invoke-virtual {p1}, Ljava/io/File;->listFiles()[Ljava/io/File;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-array v0, v1, [Ljava/io/File;</span>
+<span class="">	:goto_0</span>
+<span class="">	array-length v0, v0</span>
+<span class="">	iget-object v2, p0, Lg/g/b/a/k/a;->b:Lg/g/b/a/k/e;</span>
+<span class="">	invoke-virtual {v2, p2}, Lg/g/b/a/k/e;->a(Lg/g/b/c/d;)I</span>
+<span class="">	move-result p2</span>
+<span class="">	if-ge v0, p2, :cond_1</span>
+<span class="">	if-lez v0, :cond_7</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p1}, Ljava/io/File;->listFiles()[Ljava/io/File;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz p2, :cond_6</span>
+<span class="">	aget-object p2, p2, v1</span>
+<span class="">	const-string v3, "dir.listFiles()!![0]"</span>
+<span class="">	invoke-static {p2, v3}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Ljava/io/File;->listFiles()[Ljava/io/File;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_5</span>
+<span class="">	array-length v2, p1</span>
+<span class="">	if-ge v1, v2, :cond_4</span>
+<span class="">	:goto_1</span>
+<span class="">	aget-object v3, p1, v1</span>
+<span class="">	invoke-virtual {p2}, Ljava/io/File;->isFile()Z</span>
+<span class="">	move-result v4</span>
+<span class="">	const-string v5, "file"</span>
+<span class="">	if-eqz v4, :cond_2</span>
+<span class="">	invoke-static {v3, v5}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v3}, Ljava/io/File;->isFile()Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_3</span>
+<span class="">	invoke-virtual {v3}, Ljava/io/File;->lastModified()J</span>
+<span class="">	move-result-wide v6</span>
+<span class="">	invoke-virtual {p2}, Ljava/io/File;->lastModified()J</span>
+<span class="">	move-result-wide v8</span>
+<span class="">	cmp-long v4, v6, v8</span>
+<span class="">	if-gez v4, :cond_3</span>
+<span class="">	invoke-static {v3, v5}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	move-object p2, v3</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	:cond_3</span>
+<span class="">	goto :goto_1</span>
+<span class="">	invoke-virtual {p2}, Ljava/io/File;->delete()Z</span>
+<span class="">	:cond_4</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_7</span>
+<span class="">	invoke-virtual {p2}, Ljava/io/File;->isFile()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_7</span>
+<span class="">	invoke-static {}, Lg/g/b/a/k/b;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p2, Ljava/io/IOException;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Not able to delete file. Number of files: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p2, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p1, p2}, Lcom/hiya/client/support/logging/d;->j(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	invoke-static {}, Lkotlin/w/c/k;->o()V</span>
+<span class="">	:cond_5</span>
+<span class="">	throw v2</span>
+<span class="">	invoke-static {}, Lkotlin/w/c/k;->o()V</span>
+<span class="">	:cond_6</span>
+<span class="">	throw v2</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_7</span>
+.end method
+
+.method private final e(Ljava/io/File;Lg/g/b/c/d;)V
+<span class="">	.locals 11</span>
+
+<span class="">	invoke-virtual {p1}, Ljava/io/File;->listFiles()[Ljava/io/File;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-array v0, v1, [Ljava/io/File;</span>
+<span class="">	:goto_0</span>
+<span class="">	array-length v0, v0</span>
+<span class="">	new-instance v2, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v2}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	invoke-virtual {p1}, Ljava/io/File;->listFiles()[Ljava/io/File;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	new-array p1, v1, [Ljava/io/File;</span>
+<span class="">	:goto_1</span>
+<span class="">	array-length v3, p1</span>
+<span class="">	:goto_2</span>
+<span class="">	if-ge v1, v3, :cond_3</span>
+<span class="">	aget-object v4, p1, v1</span>
+<span class="">	const-string v5, "file"</span>
+<span class="">	invoke-static {v4, v5}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v4}, Ljava/io/File;->isFile()Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_2</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v5</span>
+<span class="">	invoke-virtual {v4}, Ljava/io/File;->lastModified()J</span>
+<span class="">	move-result-wide v7</span>
+<span class="">	iget-object v9, p0, Lg/g/b/a/k/a;->b:Lg/g/b/a/k/e;</span>
+<span class="">	invoke-virtual {v9, p2}, Lg/g/b/a/k/e;->d(Lg/g/b/c/d;)J</span>
+<span class="">	move-result-wide v9</span>
+<span class="">	add-long/2addr v7, v9</span>
+<span class="">	cmp-long v9, v5, v7</span>
+<span class="">	if-lez v9, :cond_2</span>
+<span class="">	invoke-virtual {v4}, Ljava/io/File;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	const-string v6, "file.name"</span>
+<span class="">	invoke-static {v5, v6}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v4}, Ljava/io/File;->delete()Z</span>
+<span class="">	move-result v4</span>
+<span class="">	invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-interface {v2, v5, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_2</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	sget-object p1, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;</span>
+<span class="">	invoke-interface {v2, p1}, Ljava/util/Map;->containsValue(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_4</span>
+<span class="">	invoke-static {}, Lg/g/b/a/k/b;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p2, Ljava/io/IOException;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Not able to delete a file(s). Number of files: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p2, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p1, p2}, Lcom/hiya/client/support/logging/d;->j(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	:cond_4</span>
+.end method
+
+.method private final g(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	sget-object v0, Lkotlin/w/c/t;->a:Lkotlin/w/c/t;</span>
+<span class="">	const/4 v0, 0x5</span>
+<span class="">	new-array v1, v0, [Ljava/lang/Object;</span>
+<span class="">	invoke-static {p1}, Lg/g/b/c/c;->b(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	aput-object p1, v1, v2</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	aput-object p2, v1, p1</span>
+<span class="">	invoke-static {p3}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 p2, 0x2</span>
+<span class="">	aput-object p1, v1, p2</span>
+<span class="">	const/4 p1, 0x3</span>
+<span class="">	aput-object p4, v1, p1</span>
+<span class="">	const/4 p1, 0x4</span>
+<span class="">	aput-object p5, v1, p1</span>
+<span class="">	invoke-static {v1, v0}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string p2, "%s_%s_%s_%s.%s"</span>
+<span class="">	invoke-static {p2, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string p2, "java.lang.String.format(format, *args)"</span>
+<span class="">	invoke-static {p1, p2}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+.end method
+
+.method private final i(Ljava/io/OutputStream;Ljava/io/InputStream;)V
+<span class="">	.locals 3</span>
+
+<span class="">	const/16 v0, 0x1000</span>
+<span class="">	new-array v0, v0, [B</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p2, v0}, Ljava/io/InputStream;->read([B)I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-gez v1, :cond_0</span>
+<span class="">	sget-object v0, Lkotlin/r;->a:Lkotlin/r;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:try_start_1</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	invoke-virtual {p1}, Ljava/io/OutputStream;->flush()V</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_2</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p1, v0, v2, v1}, Ljava/io/OutputStream;->write([BII)V</span>
+<span class="">	:try_start_2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw v0</span>
+<span class="">	:try_start_3</span>
+<span class="">	move-exception v1</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_1</span>
+<span class="">	:catchall_1</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_start_4</span>
+<span class="">	throw v1</span>
+<span class="">	move-exception p2</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_2</span>
+<span class="">	:catchall_2</span>
+<span class="">	throw p2</span>
+<span class="">	:try_start_5</span>
+<span class="">	move-exception v0</span>
+<span class="">	:try_end_5</span>
+<span class="">	.catchall {:try_start_5 .. :try_end_5} :catchall_3</span>
+<span class="">	:catchall_3</span>
+<span class="">	invoke-static {p1, p2}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public final a(Ljava/lang/String;Lg/g/b/c/d;)Ljava/io/File;
+<span class="">	.locals 7</span>
+
+<span class="">	const-string v0, "url"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "type"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-static {p1}, Lg/g/b/c/c;->b(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v0, p0, Lg/g/b/a/k/a;->b:Lg/g/b/a/k/e;</span>
+<span class="">	invoke-virtual {v0, p2}, Lg/g/b/a/k/e;->c(Lg/g/b/c/d;)Ljava/io/File;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Ljava/io/File;->listFiles()[Ljava/io/File;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-array p2, v0, [Ljava/io/File;</span>
+<span class="">	:goto_0</span>
+<span class="">	array-length v1, p2</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	if-ge v2, v1, :cond_2</span>
+<span class="">	aget-object v4, p2, v2</span>
+<span class="">	const-string v5, "it"</span>
+<span class="">	invoke-static {v4, v5}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v4}, Ljava/io/File;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	const-string v6, "it.name"</span>
+<span class="">	invoke-static {v5, v6}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const/4 v6, 0x2</span>
+<span class="">	invoke-static {v5, p1, v0, v6, v3}, Lkotlin/c0/m;->D(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	move-object v3, v4</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_1</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public final c()V
+<span class="">	.locals 7</span>
+
+<span class="">	new-instance v0, Ljava/util/HashSet;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashSet;-><init>()V</span>
+<span class="">	invoke-static {}, Lg/g/b/c/d;->values()[Lg/g/b/c/d;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	array-length v2, v1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v3, v2, :cond_1</span>
+<span class="">	aget-object v4, v1, v3</span>
+<span class="">	iget-object v5, p0, Lg/g/b/a/k/a;->b:Lg/g/b/a/k/e;</span>
+<span class="">	invoke-virtual {v5, v4}, Lg/g/b/a/k/e;->c(Lg/g/b/c/d;)Ljava/io/File;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v0, v5}, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-nez v6, :cond_0</span>
+<span class="">	invoke-direct {p0, v5, v4}, Lg/g/b/a/k/a;->d(Ljava/io/File;Lg/g/b/c/d;)V</span>
+<span class="">	invoke-virtual {v0, v5}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:cond_0</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public final f()V
+<span class="">	.locals 7</span>
+
+<span class="">	new-instance v0, Ljava/util/HashSet;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashSet;-><init>()V</span>
+<span class="">	invoke-static {}, Lg/g/b/c/d;->values()[Lg/g/b/c/d;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	array-length v2, v1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v3, v2, :cond_1</span>
+<span class="">	aget-object v4, v1, v3</span>
+<span class="">	iget-object v5, p0, Lg/g/b/a/k/a;->b:Lg/g/b/a/k/e;</span>
+<span class="">	invoke-virtual {v5, v4}, Lg/g/b/a/k/e;->c(Lg/g/b/c/d;)Ljava/io/File;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v0, v5}, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-nez v6, :cond_0</span>
+<span class="">	invoke-direct {p0, v5, v4}, Lg/g/b/a/k/a;->e(Ljava/io/File;Lg/g/b/c/d;)V</span>
+<span class="">	invoke-virtual {v0, v5}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z</span>
+<span class="">	:cond_0</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public final h(Ljava/io/File;Lg/g/b/c/b;Lg/g/b/c/d;)Ljava/io/File;
+<span class="">	.locals 7</span>
+
+<span class="">	const-string v0, "curFile"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "detail"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "assetType"</span>
+<span class="">	invoke-static {p3, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p2}, Lg/g/b/c/b;->f()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {p2}, Lg/g/b/c/b;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {p2}, Lg/g/b/c/b;->e()Ljava/lang/Long;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {p2}, Lg/g/b/c/b;->c()Lg/g/b/c/a;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lg/g/b/c/a;->b()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {p2}, Lg/g/b/c/b;->c()Lg/g/b/c/a;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Lg/g/b/c/a;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	move-object v1, p0</span>
+<span class="">	invoke-direct/range {v1 .. v6}, Lg/g/b/a/k/a;->g(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-direct {p0, p2, p3}, Lg/g/b/a/k/a;->b(Ljava/lang/String;Lg/g/b/c/d;)Ljava/io/File;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p1, p2}, Ljava/io/File;->renameTo(Ljava/io/File;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p2, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public final j(Ljava/lang/String;Lg/g/b/c/d;)Ljava/io/File;
+<span class="">	.locals 11</span>
+
+<span class="">	const-string v0, "name"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "assetType"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v1, p0, Lg/g/b/a/k/a;->a:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "drawable"</span>
+<span class="">	iget-object v3, p0, Lg/g/b/a/k/a;->a:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v3}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v1, p1, v2, v3}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	new-instance v2, Landroid/util/TypedValue;</span>
+<span class="">	invoke-direct {v2}, Landroid/util/TypedValue;-><init>()V</span>
+<span class="">	iget-object v3, p0, Lg/g/b/a/k/a;->a:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const/4 v4, 0x1</span>
+<span class="">	invoke-virtual {v3, v1, v2, v4}, Landroid/content/res/Resources;->getValue(ILandroid/util/TypedValue;Z)V</span>
+<span class="">	iget-object v2, v2, Landroid/util/TypedValue;->string:Ljava/lang/CharSequence;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "."</span>
+<span class="">	const-string v4, ""</span>
+<span class="">	invoke-static {v2, v3, v4}, Lkotlin/c0/m;->D0(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	const-string v7, ""</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	const-string v9, "image"</span>
+<span class="">	move-object v5, p0</span>
+<span class="">	move-object v6, p1</span>
+<span class="">	invoke-direct/range {v5 .. v10}, Lg/g/b/a/k/a;->g(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p0, p1, p2}, Lg/g/b/a/k/a;->b(Ljava/lang/String;Lg/g/b/c/d;)Ljava/io/File;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1</span>
+<span class="">	new-instance p2, Ljava/io/FileOutputStream;</span>
+<span class="">	invoke-direct {p2, p1}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V</span>
+<span class="">	iget-object v2, p0, Lg/g/b/a/k/a;->a:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2, v1}, Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "context.resources.openRawResource(resId)"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0, p2, v1}, Lg/g/b/a/k/a;->i(Ljava/io/OutputStream;Ljava/io/InputStream;)V</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	invoke-virtual {p1}, Ljava/io/File;->exists()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	move-object v0, p1</span>
+<span class="">	:cond_0</span>
+<span class="">	move-exception p2</span>
+<span class="">	:catch_0</span>
+<span class="">	move-object v0, p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	new-instance p2, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:try_start_2</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "No such resource with file name: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, " was found."</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p2, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p2</span>
+<span class="">	move-exception p2</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1</span>
+<span class="">	:catch_1</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/File;->exists()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	invoke-virtual {v0}, Ljava/io/File;->delete()Z</span>
+<span class="">	throw p2</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public final k(Lm/h0;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Lg/g/b/c/d;Lkotlin/w/b/l;)Ljava/io/File;
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lm/h0;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/Long;",</span>
+<span class="">	"Lg/g/b/c/d;",</span>
+<span class="">	"Lkotlin/w/b/l<",</span>
+<span class="">	"-",</span>
+<span class="">	"Landroid/graphics/Bitmap;",</span>
+<span class="">	"Landroid/graphics/Bitmap;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Ljava/io/File;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "body"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "url"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "eTag"</span>
+<span class="">	invoke-static {p3, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "assetType"</span>
+<span class="">	invoke-static {p5, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "postAction"</span>
+<span class="">	invoke-static {p6, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Lm/h0;->contentType()Lm/a0;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lm/a0;->j()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v0, ""</span>
+<span class="">	:goto_1</span>
+<span class="">	move-object v6, v0</span>
+<span class="">	const-string v7, "png"</span>
+<span class="">	move-object v2, p0</span>
+<span class="">	move-object v3, p2</span>
+<span class="">	move-object v4, p3</span>
+<span class="">	move-object v5, p4</span>
+<span class="">	invoke-direct/range {v2 .. v7}, Lg/g/b/a/k/a;->g(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-direct {p0, p2, p5}, Lg/g/b/a/k/a;->b(Ljava/lang/String;Lg/g/b/c/d;)Ljava/io/File;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1</span>
+<span class="">	invoke-virtual {p1}, Lm/h0;->source()Ln/h;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_start_2</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	invoke-interface {p1}, Ln/h;->v1()Ljava/io/InputStream;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	:try_start_3</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_4</span>
+<span class="">	invoke-static {p3}, Landroid/graphics/BitmapFactory;->decodeStream(Ljava/io/InputStream;)Landroid/graphics/Bitmap;</span>
+<span class="">	move-result-object p4</span>
+<span class="">	const-string p5, "it"</span>
+<span class="">	invoke-static {p4, p5}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p6, p4}, Lkotlin/w/b/l;->invoke(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p4</span>
+<span class="">	check-cast p4, Landroid/graphics/Bitmap;</span>
+<span class="">	new-instance p5, Ljava/io/FileOutputStream;</span>
+<span class="">	invoke-direct {p5, p2}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V</span>
+<span class="">	:try_start_4</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_2</span>
+<span class="">	sget-object p6, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;</span>
+<span class="">	const/16 v0, 0x64</span>
+<span class="">	invoke-virtual {p4, p6, v0, p5}, Landroid/graphics/Bitmap;->compress(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z</span>
+<span class="">	:try_start_5</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_0</span>
+<span class="">	invoke-static {p5, v1}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_start_6</span>
+<span class="">	:try_end_5</span>
+<span class="">	.catchall {:try_start_5 .. :try_end_5} :catchall_2</span>
+<span class="">	invoke-static {p3, v1}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_start_7</span>
+<span class="">	:try_end_6</span>
+<span class="">	.catchall {:try_start_6 .. :try_end_6} :catchall_4</span>
+<span class="">	invoke-static {p1, v1}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_end_7</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_0</span>
+<span class="">	invoke-virtual {p2}, Ljava/io/File;->exists()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	move-object v1, p2</span>
+<span class="">	:cond_2</span>
+<span class="">	move-exception p4</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw p4</span>
+<span class="">	:try_start_8</span>
+<span class="">	move-exception p6</span>
+<span class="">	:catchall_1</span>
+<span class="">	:try_end_8</span>
+<span class="">	.catchall {:try_start_8 .. :try_end_8} :catchall_1</span>
+<span class="">	invoke-static {p5, p4}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_start_9</span>
+<span class="">	throw p6</span>
+<span class="">	move-exception p4</span>
+<span class="">	:catchall_2</span>
+<span class="">	:try_end_9</span>
+<span class="">	.catchall {:try_start_9 .. :try_end_9} :catchall_2</span>
+<span class="">	throw p4</span>
+<span class="">	:try_start_a</span>
+<span class="">	move-exception p5</span>
+<span class="">	:catchall_3</span>
+<span class="">	:try_end_a</span>
+<span class="">	.catchall {:try_start_a .. :try_end_a} :catchall_3</span>
+<span class="">	invoke-static {p3, p4}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_start_b</span>
+<span class="">	throw p5</span>
+<span class="">	move-exception p3</span>
+<span class="">	:catchall_4</span>
+<span class="">	:try_end_b</span>
+<span class="">	.catchall {:try_start_b .. :try_end_b} :catchall_4</span>
+<span class="">	throw p3</span>
+<span class="">	:try_start_c</span>
+<span class="">	move-exception p4</span>
+<span class="">	:catchall_5</span>
+<span class="">	:try_end_c</span>
+<span class="">	.catchall {:try_start_c .. :try_end_c} :catchall_5</span>
+<span class="">	invoke-static {p1, p3}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_start_d</span>
+<span class="">	throw p4</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_0</span>
+<span class="">	:try_end_d</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_d .. :try_end_d} :catch_0</span>
+<span class="">	move-object v1, p2</span>
+<span class="">	goto :goto_2</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_1</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-virtual {v1}, Ljava/io/File;->exists()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-eqz p2, :cond_3</span>
+<span class="">	invoke-virtual {v1}, Ljava/io/File;->delete()Z</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method public final l(Lm/h0;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Lg/g/b/c/d;)Ljava/io/File;
+<span class="">	.locals 9</span>
+
+<span class="">	const-string v0, "body"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "url"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "eTag"</span>
+<span class="">	invoke-static {p3, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "assetType"</span>
+<span class="">	invoke-static {p5, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Lm/h0;->contentType()Lm/a0;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lm/a0;->j()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	:goto_0</span>
+<span class="">	const-string v2, ""</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	move-object v7, v0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	move-object v7, v2</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {p1}, Lm/h0;->contentType()Lm/a0;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {v0}, Lm/a0;->i()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	:goto_2</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	move-object v8, v0</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_3</span>
+<span class="">	move-object v8, v2</span>
+<span class="">	:goto_3</span>
+<span class="">	move-object v3, p0</span>
+<span class="">	move-object v4, p2</span>
+<span class="">	move-object v5, p3</span>
+<span class="">	move-object v6, p4</span>
+<span class="">	invoke-direct/range {v3 .. v8}, Lg/g/b/a/k/a;->g(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-direct {p0, p2, p5}, Lg/g/b/a/k/a;->b(Ljava/lang/String;Lg/g/b/c/d;)Ljava/io/File;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1</span>
+<span class="">	invoke-virtual {p1}, Lm/h0;->source()Ln/h;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_start_2</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	new-instance p3, Ljava/io/FileOutputStream;</span>
+<span class="">	invoke-direct {p3, p2}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V</span>
+<span class="">	invoke-interface {p1}, Ln/h;->v1()Ljava/io/InputStream;</span>
+<span class="">	move-result-object p4</span>
+<span class="">	invoke-direct {p0, p3, p4}, Lg/g/b/a/k/a;->i(Ljava/io/OutputStream;Ljava/io/InputStream;)V</span>
+<span class="">	sget-object p3, Lkotlin/r;->a:Lkotlin/r;</span>
+<span class="">	:try_start_3</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="">	invoke-static {p1, v1}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_0</span>
+<span class="">	invoke-virtual {p2}, Ljava/io/File;->exists()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_4</span>
+<span class="">	move-object v1, p2</span>
+<span class="">	:cond_4</span>
+<span class="">	move-exception p3</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw p3</span>
+<span class="">	:try_start_4</span>
+<span class="">	move-exception p4</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_1</span>
+<span class="">	:catchall_1</span>
+<span class="">	invoke-static {p1, p3}, Lkotlin/io/a;->a(Ljava/io/Closeable;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_start_5</span>
+<span class="">	throw p4</span>
+<span class="">	move-exception p1</span>
+<span class="">	:try_end_5</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-object v1, p2</span>
+<span class="">	goto :goto_4</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_1</span>
+<span class="">	if-eqz v1, :cond_5</span>
+<span class="">	:goto_4</span>
+<span class="">	invoke-virtual {v1}, Ljava/io/File;->exists()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-eqz p2, :cond_5</span>
+<span class="">	invoke-virtual {v1}, Ljava/io/File;->delete()Z</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_5</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

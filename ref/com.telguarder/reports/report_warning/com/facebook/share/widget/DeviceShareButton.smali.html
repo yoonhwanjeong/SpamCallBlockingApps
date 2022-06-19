@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.share.widget</a></li>
+        <li><i class="ico ico-class"></i> DeviceShareButton.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/share/widget/DeviceShareButton;
+.super Lcom/facebook/FacebookButtonBase;
+.source "DeviceShareButton.java"
+
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+.field private dialog:Lcom/facebook/share/DeviceShareDialog;
+.field private enabledExplicitlySet:Z
+.field private requestCode:I
+.field private shareContent:Lcom/facebook/share/model/ShareContent;
+
+
+.method public constructor <init>(Landroid/content/Context;)V
+<span class="">	.locals 2</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {p0, p1, v0, v1}, Lcom/facebook/share/widget/DeviceShareButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V</span>
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {p0, p1, p2, v0}, Lcom/facebook/share/widget/DeviceShareButton;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V</span>
+.end method
+
+.method private constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+<span class="">	.locals 7</span>
+
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	const-string v5, "fb_device_share_button_create"</span>
+<span class="">	const-string v6, "fb_device_share_button_did_tap"</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	move-object v1, p1</span>
+<span class="">	move-object v2, p2</span>
+<span class="">	move v3, p3</span>
+<span class="">	invoke-direct/range {v0 .. v6}, Lcom/facebook/FacebookButtonBase;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;IILjava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput p1, p0, Lcom/facebook/share/widget/DeviceShareButton;->requestCode:I</span>
+<span class="">	iput-boolean p1, p0, Lcom/facebook/share/widget/DeviceShareButton;->enabledExplicitlySet:Z</span>
+<span class="">	const/4 p2, 0x0</span>
+<span class="">	iput-object p2, p0, Lcom/facebook/share/widget/DeviceShareButton;->dialog:Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/DeviceShareButton;->isInEditMode()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	const/4 p2, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getDefaultRequestCode()I</span>
+<span class="">	move-result p2</span>
+<span class="">	:goto_0</span>
+<span class="">	iput p2, p0, Lcom/facebook/share/widget/DeviceShareButton;->requestCode:I</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/share/widget/DeviceShareButton;->internalSetEnabled(Z)V</span>
+.end method
+
+.method static synthetic access$000(Lcom/facebook/share/widget/DeviceShareButton;Landroid/view/View;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p1}, Lcom/facebook/share/widget/DeviceShareButton;->callExternalOnClickListener(Landroid/view/View;)V</span>
+.end method
+
+.method static synthetic access$100(Lcom/facebook/share/widget/DeviceShareButton;)Lcom/facebook/share/DeviceShareDialog;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getDialog()Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method private canShare()Z
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getActivity()Landroid/app/Activity;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/share/DeviceShareDialog;-><init>(Landroid/app/Activity;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getShareContent()Lcom/facebook/share/model/ShareContent;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/facebook/share/DeviceShareDialog;->canShow(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method private getDialog()Lcom/facebook/share/DeviceShareDialog;
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/share/widget/DeviceShareButton;->dialog:Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getFragment()Landroidx/fragment/app/Fragment;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	new-instance v0, Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getFragment()Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/share/DeviceShareDialog;-><init>(Landroidx/fragment/app/Fragment;)V</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/share/widget/DeviceShareButton;->dialog:Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getNativeFragment()Landroid/app/Fragment;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	new-instance v0, Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getNativeFragment()Landroid/app/Fragment;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/share/DeviceShareDialog;-><init>(Landroid/app/Fragment;)V</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/share/widget/DeviceShareButton;->dialog:Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	new-instance v0, Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getActivity()Landroid/app/Activity;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/facebook/share/DeviceShareDialog;-><init>(Landroid/app/Activity;)V</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/share/widget/DeviceShareButton;->dialog:Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/share/widget/DeviceShareButton;->dialog:Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private internalSetEnabled(Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p1}, Lcom/facebook/share/widget/DeviceShareButton;->setEnabled(Z)V</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput-boolean p1, p0, Lcom/facebook/share/widget/DeviceShareButton;->enabledExplicitlySet:Z</span>
+.end method
+
+.method private setRequestCode(I)V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-static {p1}, Lcom/facebook/FacebookSdk;->isFacebookRequestCode(I)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	iput p1, p0, Lcom/facebook/share/widget/DeviceShareButton;->requestCode:I</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v2, "Request code "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, " cannot be within the range reserved by the Facebook SDK."</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {v0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method protected configureButton(Landroid/content/Context;Landroid/util/AttributeSet;II)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0, p1, p2, p3, p4}, Lcom/facebook/FacebookButtonBase;->configureButton(Landroid/content/Context;Landroid/util/AttributeSet;II)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getShareOnClickListener()Landroid/view/View$OnClickListener;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/facebook/share/widget/DeviceShareButton;->setInternalOnClickListener(Landroid/view/View$OnClickListener;)V</span>
+.end method
+
+.method protected getDefaultRequestCode()I
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->Share:Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->toRequestCode()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method protected getDefaultStyleResource()I
+<span class="">	.locals 1</span>
+
+<span class="">	sget v0, Lcom/facebook/share/R$style;->com_facebook_button_share:I</span>
+.end method
+
+.method public getRequestCode()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/facebook/share/widget/DeviceShareButton;->requestCode:I</span>
+.end method
+
+.method public getShareContent()Lcom/facebook/share/model/ShareContent;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/share/widget/DeviceShareButton;->shareContent:Lcom/facebook/share/model/ShareContent;</span>
+.end method
+
+.method protected getShareOnClickListener()Landroid/view/View$OnClickListener;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/share/widget/DeviceShareButton$1;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/facebook/share/widget/DeviceShareButton$1;-><init>(Lcom/facebook/share/widget/DeviceShareButton;)V</span>
+.end method
+
+.method public registerCallback(Lcom/facebook/CallbackManager;Lcom/facebook/FacebookCallback;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/CallbackManager;",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/DeviceShareDialog$Result;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getDialog()Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Lcom/facebook/share/DeviceShareDialog;->registerCallback(Lcom/facebook/CallbackManager;Lcom/facebook/FacebookCallback;)V</span>
+.end method
+
+.method public registerCallback(Lcom/facebook/CallbackManager;Lcom/facebook/FacebookCallback;I)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/CallbackManager;",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/DeviceShareDialog$Result;",</span>
+<span class="">	">;I)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0, p3}, Lcom/facebook/share/widget/DeviceShareButton;->setRequestCode(I)V</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/widget/DeviceShareButton;->getDialog()Lcom/facebook/share/DeviceShareDialog;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, p1, p2, p3}, Lcom/facebook/share/DeviceShareDialog;->registerCallback(Lcom/facebook/CallbackManager;Lcom/facebook/FacebookCallback;I)V</span>
+.end method
+
+.method public setEnabled(Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0, p1}, Lcom/facebook/FacebookButtonBase;->setEnabled(Z)V</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	iput-boolean p1, p0, Lcom/facebook/share/widget/DeviceShareButton;->enabledExplicitlySet:Z</span>
+.end method
+
+.method public setShareContent(Lcom/facebook/share/model/ShareContent;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/share/widget/DeviceShareButton;->shareContent:Lcom/facebook/share/model/ShareContent;</span>
+<span class="">	iget-boolean p1, p0, Lcom/facebook/share/widget/DeviceShareButton;->enabledExplicitlySet:Z</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/share/widget/DeviceShareButton;->canShare()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/facebook/share/widget/DeviceShareButton;->internalSetEnabled(Z)V</span>
+<span class="">	:cond_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

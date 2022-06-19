@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.appevents.internal</a></li>
+        <li><i class="ico ico-class"></i> SessionInfo.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/appevents/internal/SessionInfo;
+.super Ljava/lang/Object;
+.source "SessionInfo.kt"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/appevents/internal/SessionInfo$Companion;
+}
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u00002\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\t\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0008\n\u0002\u0010\u0008\n\u0002\u0008\u000e\n\u0002\u0018\u0002\n\u0002\u0008\u0005\n\u0002\u0010\u0002\n\u0002\u0008\u0003\u0008\u0000\u0018\u0000 &2\u00020\u0001:\u0001&B%\u0008\u0007\u0012\u0008\u0010\u0002\u001a\u0004\u0018\u00010\u0003\u0012\u0008\u0010\u0004\u001a\u0004\u0018\u00010\u0003\u0012\u0008\u0008\u0002\u0010\u0005\u001a\u00020\u0006\u00a2\u0006\u0002\u0010\u0007J\u0006\u0010#\u001a\u00020$J\u0006\u0010%\u001a\u00020$R \u0010\u0008\u001a\u0004\u0018\u00010\u00038FX\u0086\u000e\u00a2\u0006\u0010\n\u0002\u0010\r\u001a\u0004\u0008\t\u0010\n\"\u0004\u0008\u000b\u0010\u000cR\u001e\u0010\u0010\u001a\u00020\u000f2\u0006\u0010\u000e\u001a\u00020\u000f@BX\u0086\u000e\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008\u0011\u0010\u0012R\u001a\u0010\u0005\u001a\u00020\u0006X\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\u0008\u0013\u0010\u0014\"\u0004\u0008\u0015\u0010\u0016R\u001e\u0010\u0004\u001a\u0004\u0018\u00010\u0003X\u0086\u000e\u00a2\u0006\u0010\n\u0002\u0010\r\u001a\u0004\u0008\u0017\u0010\n\"\u0004\u0008\u0018\u0010\u000cR\u0011\u0010\u0019\u001a\u00020\u00038F\u00a2\u0006\u0006\u001a\u0004\u0008\u001a\u0010\u001bR\u0015\u0010\u0002\u001a\u0004\u0018\u00010\u0003\u00a2\u0006\n\n\u0002\u0010\r\u001a\u0004\u0008\u001c\u0010\nR\u001c\u0010\u001d\u001a\u0004\u0018\u00010\u001eX\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\u0008\u001f\u0010 \"\u0004\u0008!\u0010\"\u00a8\u0006\'"
+}
+d2 = {
+"Lcom/facebook/appevents/internal/SessionInfo;",
+"",
+"sessionStartTime",
+"",
+"sessionLastEventTime",
+"sessionId",
+"Ljava/util/UUID;",
+"(Ljava/lang/Long;Ljava/lang/Long;Ljava/util/UUID;)V",
+"diskRestoreTime",
+"getDiskRestoreTime",
+"()Ljava/lang/Long;",
+"setDiskRestoreTime",
+"(Ljava/lang/Long;)V",
+"Ljava/lang/Long;",
+"<set-?>",
+"",
+"interruptionCount",
+"getInterruptionCount",
+"()I",
+"getSessionId",
+"()Ljava/util/UUID;",
+"setSessionId",
+"(Ljava/util/UUID;)V",
+"getSessionLastEventTime",
+"setSessionLastEventTime",
+"sessionLength",
+"getSessionLength",
+"()J",
+"getSessionStartTime",
+"sourceApplicationInfo",
+"Lcom/facebook/appevents/internal/SourceApplicationInfo;",
+"getSourceApplicationInfo",
+"()Lcom/facebook/appevents/internal/SourceApplicationInfo;",
+"setSourceApplicationInfo",
+"(Lcom/facebook/appevents/internal/SourceApplicationInfo;)V",
+"incrementInterruptionCount",
+"",
+"writeSessionToDisk",
+"Companion",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field public static final Companion:Lcom/facebook/appevents/internal/SessionInfo$Companion;
+.field private static final INTERRUPTION_COUNT_KEY:Ljava/lang/String; = "com.facebook.appevents.SessionInfo.interruptionCount"
+.field private static final LAST_SESSION_INFO_END_KEY:Ljava/lang/String; = "com.facebook.appevents.SessionInfo.sessionEndTime"
+.field private static final LAST_SESSION_INFO_START_KEY:Ljava/lang/String; = "com.facebook.appevents.SessionInfo.sessionStartTime"
+.field private static final SESSION_ID_KEY:Ljava/lang/String; = "com.facebook.appevents.SessionInfo.sessionId"
+.field private diskRestoreTime:Ljava/lang/Long;
+.field private interruptionCount:I
+.field private sessionId:Ljava/util/UUID;
+.field private sessionLastEventTime:Ljava/lang/Long;
+.field private final sessionStartTime:Ljava/lang/Long;
+.field private sourceApplicationInfo:Lcom/facebook/appevents/internal/SourceApplicationInfo;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lcom/facebook/appevents/internal/SessionInfo$Companion;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/facebook/appevents/internal/SessionInfo$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/appevents/internal/SessionInfo;->Companion:Lcom/facebook/appevents/internal/SessionInfo$Companion;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public constructor <init>(Ljava/lang/Long;Ljava/lang/Long;)V
+<span class="">	.locals 6</span>
+
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x4</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	move-object v1, p1</span>
+<span class="">	move-object v2, p2</span>
+<span class="">	invoke-direct/range {v0 .. v5}, Lcom/facebook/appevents/internal/SessionInfo;-><init>(Ljava/lang/Long;Ljava/lang/Long;Ljava/util/UUID;ILkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Ljava/lang/Long;Ljava/lang/Long;Ljava/util/UUID;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const-string v0, "sessionId"</span>
+<span class="cov">	invoke-static {p3, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionStartTime:Ljava/lang/Long;</span>
+<span class="cov">	iput-object p2, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionLastEventTime:Ljava/lang/Long;</span>
+<span class="cov">	iput-object p3, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionId:Ljava/util/UUID;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public synthetic constructor &lt;init&gt;(Ljava/lang/Long;Ljava/lang/Long;Ljava/util/UUID;ILkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	and-int/lit8 p4, p4, 0x4</span>
+<span class="cov">	if-eqz p4, :cond_0</span>
+<span class="exec">	invoke-static {}, Ljava/util/UUID;->randomUUID()Ljava/util/UUID;</span>
+<span class="cov">	move-result-object p3</span>
+<span class="cov">	const-string p4, "UUID.randomUUID()"</span>
+<span class="cov">	invoke-static {p3, p4}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	invoke-direct {p0, p1, p2, p3}, Lcom/facebook/appevents/internal/SessionInfo;-><init>(Ljava/lang/Long;Ljava/lang/Long;Ljava/util/UUID;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public static final synthetic access$getInterruptionCount$p(Lcom/facebook/appevents/internal/SessionInfo;)I
+<span class="">	.locals 0</span>
+
+<span class="">	iget p0, p0, Lcom/facebook/appevents/internal/SessionInfo;->interruptionCount:I</span>
+.end method
+
+.method public static final synthetic access$setInterruptionCount$p(Lcom/facebook/appevents/internal/SessionInfo;I)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput p1, p0, Lcom/facebook/appevents/internal/SessionInfo;->interruptionCount:I</span>
+.end method
+
+.method public static final clearSavedSessionFromDisk()V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/facebook/appevents/internal/SessionInfo;->Companion:Lcom/facebook/appevents/internal/SessionInfo$Companion;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/appevents/internal/SessionInfo$Companion;->clearSavedSessionFromDisk()V</span>
+.end method
+
+.method public static final getStoredSessionInfo()Lcom/facebook/appevents/internal/SessionInfo;
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/facebook/appevents/internal/SessionInfo;->Companion:Lcom/facebook/appevents/internal/SessionInfo$Companion;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/appevents/internal/SessionInfo$Companion;->getStoredSessionInfo()Lcom/facebook/appevents/internal/SessionInfo;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public final getDiskRestoreTime()Ljava/lang/Long;
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->diskRestoreTime:Ljava/lang/Long;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public final getInterruptionCount()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->interruptionCount:I</span>
+.end method
+
+<span class="cov">.method public final getSessionId()Ljava/util/UUID;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionId:Ljava/util/UUID;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public final getSessionLastEventTime()Ljava/lang/Long;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionLastEventTime:Ljava/lang/Long;</span>
+.end method
+
+.method public final getSessionLength()J
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionStartTime:Ljava/lang/Long;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionLastEventTime:Ljava/lang/Long;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	check-cast v0, Ljava/lang/Number;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Number;->longValue()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionStartTime:Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	sub-long/2addr v0, v2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string v1, "Required value was null."</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	check-cast v0, Ljava/lang/Throwable;</span>
+<span class="">	throw v0</span>
+<span class="">	:cond_2</span>
+<span class="">	:goto_0</span>
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	:goto_1</span>
+.end method
+
+.method public final getSessionStartTime()Ljava/lang/Long;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionStartTime:Ljava/lang/Long;</span>
+.end method
+
+.method public final getSourceApplicationInfo()Lcom/facebook/appevents/internal/SourceApplicationInfo;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->sourceApplicationInfo:Lcom/facebook/appevents/internal/SourceApplicationInfo;</span>
+.end method
+
+.method public final incrementInterruptionCount()V
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->interruptionCount:I</span>
+<span class="">	add-int/lit8 v0, v0, 0x1</span>
+<span class="">	iput v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->interruptionCount:I</span>
+.end method
+
+.method public final setDiskRestoreTime(Ljava/lang/Long;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/appevents/internal/SessionInfo;->diskRestoreTime:Ljava/lang/Long;</span>
+.end method
+
+.method public final setSessionId(Ljava/util/UUID;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "<set-?>"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionId:Ljava/util/UUID;</span>
+.end method
+
+<span class="cov">.method public final setSessionLastEventTime(Ljava/lang/Long;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	iput-object p1, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionLastEventTime:Ljava/lang/Long;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public final setSourceApplicationInfo(Lcom/facebook/appevents/internal/SourceApplicationInfo;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/appevents/internal/SessionInfo;->sourceApplicationInfo:Lcom/facebook/appevents/internal/SourceApplicationInfo;</span>
+.end method
+
+<span class="cov">.method public final writeSessionToDisk()V</span>
+<span class="">	.locals 6</span>
+
+<span class="exec">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-static {v0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	iget-object v1, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionStartTime:Ljava/lang/Long;</span>
+<span class="cov">	const-wide/16 v2, 0x0</span>
+<span class="cov">	if-eqz v1, :cond_0</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v4</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-wide v4, v2</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	const-string v1, "com.facebook.appevents.SessionInfo.sessionStartTime"</span>
+<span class="cov">	invoke-interface {v0, v1, v4, v5}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="cov">	iget-object v1, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionLastEventTime:Ljava/lang/Long;</span>
+<span class="cov">	if-eqz v1, :cond_1</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	const-string v1, "com.facebook.appevents.SessionInfo.sessionEndTime"</span>
+<span class="cov">	invoke-interface {v0, v1, v2, v3}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;</span>
+<span class="cov">	iget v1, p0, Lcom/facebook/appevents/internal/SessionInfo;->interruptionCount:I</span>
+<span class="cov">	const-string v2, "com.facebook.appevents.SessionInfo.interruptionCount"</span>
+<span class="cov">	invoke-interface {v0, v2, v1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;</span>
+<span class="cov">	iget-object v1, p0, Lcom/facebook/appevents/internal/SessionInfo;->sessionId:Ljava/util/UUID;</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/util/UUID;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "com.facebook.appevents.SessionInfo.sessionId"</span>
+<span class="cov">	invoke-interface {v0, v2, v1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="cov">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+<span class="cov">	iget-object v0, p0, Lcom/facebook/appevents/internal/SessionInfo;->sourceApplicationInfo:Lcom/facebook/appevents/internal/SourceApplicationInfo;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/appevents/internal/SourceApplicationInfo;->writeSourceApplicationInfoToDisk()V</span>
+<span class="cov">	:cond_2</span>
+<span class="exec">	return-void</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

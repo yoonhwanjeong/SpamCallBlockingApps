@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.applinks</a></li>
+        <li><i class="ico ico-class"></i> AppLinkData.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/applinks/AppLinkData;
+.super Ljava/lang/Object;
+.source "AppLinkData.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/applinks/AppLinkData$CompletionHandler;
+}
+.end annotation
+
+.field private static final APPLINK_BRIDGE_ARGS_KEY:Ljava/lang/String; = "bridge_args"
+.field private static final APPLINK_METHOD_ARGS_KEY:Ljava/lang/String; = "method_args"
+.field private static final APPLINK_VERSION_KEY:Ljava/lang/String; = "version"
+.field public static final ARGUMENTS_EXTRAS_KEY:Ljava/lang/String; = "extras"
+.field public static final ARGUMENTS_NATIVE_CLASS_KEY:Ljava/lang/String; = "com.facebook.platform.APPLINK_NATIVE_CLASS"
+.field public static final ARGUMENTS_NATIVE_URL:Ljava/lang/String; = "com.facebook.platform.APPLINK_NATIVE_URL"
+.field public static final ARGUMENTS_REFERER_DATA_KEY:Ljava/lang/String; = "referer_data"
+.field public static final ARGUMENTS_TAPTIME_KEY:Ljava/lang/String; = "com.facebook.platform.APPLINK_TAP_TIME_UTC"
+.field private static final AUTO_APPLINK_FLAG_KEY:Ljava/lang/String; = "is_auto_applink"
+.field private static final BRIDGE_ARGS_METHOD_KEY:Ljava/lang/String; = "method"
+.field private static final BUNDLE_AL_APPLINK_DATA_KEY:Ljava/lang/String; = "al_applink_data"
+.field private static final BUNDLE_APPLINK_ARGS_KEY:Ljava/lang/String; = "com.facebook.platform.APPLINK_ARGS"
+.field private static final DEFERRED_APP_LINK_ARGS_FIELD:Ljava/lang/String; = "applink_args"
+.field private static final DEFERRED_APP_LINK_CLASS_FIELD:Ljava/lang/String; = "applink_class"
+.field private static final DEFERRED_APP_LINK_CLICK_TIME_FIELD:Ljava/lang/String; = "click_time"
+.field private static final DEFERRED_APP_LINK_EVENT:Ljava/lang/String; = "DEFERRED_APP_LINK"
+.field private static final DEFERRED_APP_LINK_PATH:Ljava/lang/String; = "%s/activities"
+.field private static final DEFERRED_APP_LINK_URL_FIELD:Ljava/lang/String; = "applink_url"
+.field private static final EXTRAS_DEEPLINK_CONTEXT_KEY:Ljava/lang/String; = "deeplink_context"
+.field private static final METHOD_ARGS_REF_KEY:Ljava/lang/String; = "ref"
+.field private static final METHOD_ARGS_TARGET_URL_KEY:Ljava/lang/String; = "target_url"
+.field private static final PROMOTION_CODE_KEY:Ljava/lang/String; = "promo_code"
+.field private static final REFERER_DATA_REF_KEY:Ljava/lang/String; = "fb_ref"
+.field private static final TAG:Ljava/lang/String; = "com.facebook.applinks.AppLinkData"
+.field private appLinkData:Lorg/json/JSONObject;
+.field private argumentBundle:Landroid/os/Bundle;
+.field private arguments:Lorg/json/JSONObject;
+.field private promotionCode:Ljava/lang/String;
+.field private ref:Ljava/lang/String;
+.field private targetUri:Landroid/net/Uri;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 0</span>
+
+.end method
+
+.method private constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method static synthetic access$000(Landroid/content/Context;Ljava/lang/String;Lcom/facebook/applinks/AppLinkData$CompletionHandler;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0, p1, p2}, Lcom/facebook/applinks/AppLinkData;->fetchDeferredAppLinkFromServer(Landroid/content/Context;Ljava/lang/String;Lcom/facebook/applinks/AppLinkData$CompletionHandler;)V</span>
+.end method
+
+.method public static createFromActivity(Landroid/app/Activity;)Lcom/facebook/applinks/AppLinkData;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/applinks/AppLinkData;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const-string v1, "activity"</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p0, v1}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-nez p0, :cond_1</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/applinks/AppLinkData;->createFromAlApplinkData(Landroid/content/Intent;)Lcom/facebook/applinks/AppLinkData;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_1</span>
+<span class="">	if-nez v1, :cond_2</span>
+<span class="">	const-string v1, "com.facebook.platform.APPLINK_ARGS"</span>
+<span class="">	invoke-virtual {p0, v1}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/applinks/AppLinkData;->createFromJson(Ljava/lang/String;)Lcom/facebook/applinks/AppLinkData;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_3</span>
+<span class="">	invoke-virtual {p0}, Landroid/content/Intent;->getData()Landroid/net/Uri;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/applinks/AppLinkData;->createFromUri(Landroid/net/Uri;)Lcom/facebook/applinks/AppLinkData;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	move-exception p0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_3</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method public static createFromAlApplinkData(Landroid/content/Intent;)Lcom/facebook/applinks/AppLinkData;
+<span class="">	.locals 6</span>
+
+<span class="">	const-string v0, "promo_code"</span>
+<span class="">	const-class v1, Lcom/facebook/applinks/AppLinkData;</span>
+<span class="">	invoke-static {v1}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	if-nez p0, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v2, "al_applink_data"</span>
+<span class="">	invoke-virtual {p0, v2}, Landroid/content/Intent;->getBundleExtra(Ljava/lang/String;)Landroid/os/Bundle;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-nez v2, :cond_2</span>
+<span class="">	new-instance v4, Lcom/facebook/applinks/AppLinkData;</span>
+<span class="">	invoke-direct {v4}, Lcom/facebook/applinks/AppLinkData;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Landroid/content/Intent;->getData()Landroid/net/Uri;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v4, Lcom/facebook/applinks/AppLinkData;->targetUri:Landroid/net/Uri;</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/applinks/AppLinkData;->getAppLinkData(Landroid/net/Uri;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v4, Lcom/facebook/applinks/AppLinkData;->appLinkData:Lorg/json/JSONObject;</span>
+<span class="">	iget-object p0, v4, Lcom/facebook/applinks/AppLinkData;->targetUri:Landroid/net/Uri;</span>
+<span class="">	if-nez p0, :cond_3</span>
+<span class="">	const-string p0, "target_url"</span>
+<span class="">	invoke-virtual {v2, p0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_3</span>
+<span class="">	invoke-static {p0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v4, Lcom/facebook/applinks/AppLinkData;->targetUri:Landroid/net/Uri;</span>
+<span class="">	iput-object v2, v4, Lcom/facebook/applinks/AppLinkData;->argumentBundle:Landroid/os/Bundle;</span>
+<span class="">	iput-object v3, v4, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	const-string p0, "referer_data"</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {v2, p0}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_4</span>
+<span class="">	const-string v5, "fb_ref"</span>
+<span class="">	invoke-virtual {p0, v5}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v4, Lcom/facebook/applinks/AppLinkData;->ref:Ljava/lang/String;</span>
+<span class="">	const-string p0, "extras"</span>
+<span class="">	invoke-virtual {v2, p0}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:cond_4</span>
+<span class="">	if-eqz p0, :cond_5</span>
+<span class="">	const-string v2, "deeplink_context"</span>
+<span class="">	invoke-virtual {p0, v2}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_5</span>
+<span class="">	new-instance v2, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v2, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {v2, v0}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z</span>
+<span class="">	:try_start_1</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_5</span>
+<span class="">	invoke-virtual {v2, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v4, Lcom/facebook/applinks/AppLinkData;->promotionCode:Ljava/lang/String;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	sget-object v0, Lcom/facebook/applinks/AppLinkData;->TAG:Ljava/lang/String;</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	const-string v2, "Unable to parse deeplink_context JSON"</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-static {v0, v2, p0}, Lcom/facebook/internal/Utility;->logd(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_start_2</span>
+<span class="">	move-exception p0</span>
+<span class="">	invoke-static {p0, v1}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="">	:cond_5</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method private static createFromJson(Ljava/lang/String;)Lcom/facebook/applinks/AppLinkData;
+<span class="">	.locals 12</span>
+
+<span class="">	const-string v0, "promo_code"</span>
+<span class="">	const-string v1, "deeplink_context"</span>
+<span class="">	const-string v2, "extras"</span>
+<span class="">	const-string v3, "fb_ref"</span>
+<span class="">	const-string v4, "target_url"</span>
+<span class="">	const-string v5, "referer_data"</span>
+<span class="">	const-string v6, "ref"</span>
+<span class="">	const-string v7, "Unable to parse AppLink JSON"</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	if-nez p0, :cond_0</span>
+<span class="">	new-instance v9, Lorg/json/JSONObject;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v9, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V</span>
+<span class="">	const-string/jumbo p0, "version"</span>
+<span class="">	invoke-virtual {v9, p0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v10, "bridge_args"</span>
+<span class="">	invoke-virtual {v9, v10}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	const-string v11, "method"</span>
+<span class="">	invoke-virtual {v10, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	const-string v11, "applink"</span>
+<span class="">	invoke-virtual {v10, v11}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v10</span>
+<span class="">	if-eqz v10, :cond_5</span>
+<span class="">	const-string v10, "2"</span>
+<span class="">	invoke-virtual {p0, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_5</span>
+<span class="">	new-instance p0, Lcom/facebook/applinks/AppLinkData;</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/applinks/AppLinkData;-><init>()V</span>
+<span class="">	const-string v10, "method_args"</span>
+<span class="">	invoke-virtual {v9, v10}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	iput-object v9, p0, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	invoke-virtual {v9, v6}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z</span>
+<span class="">	move-result v9</span>
+<span class="">	if-eqz v9, :cond_1</span>
+<span class="">	iget-object v3, p0, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	invoke-virtual {v3, v6}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iput-object v3, p0, Lcom/facebook/applinks/AppLinkData;->ref:Ljava/lang/String;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	iget-object v6, p0, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v6, v5}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-eqz v6, :cond_2</span>
+<span class="">	iget-object v6, p0, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	invoke-virtual {v6, v5}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v5, v3}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-eqz v6, :cond_2</span>
+<span class="">	invoke-virtual {v5, v3}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iput-object v3, p0, Lcom/facebook/applinks/AppLinkData;->ref:Ljava/lang/String;</span>
+<span class="">	iget-object v3, p0, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {v3, v4}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_3</span>
+<span class="">	iget-object v3, p0, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	invoke-virtual {v3, v4}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {v3}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iput-object v3, p0, Lcom/facebook/applinks/AppLinkData;->targetUri:Landroid/net/Uri;</span>
+<span class="">	invoke-static {v3}, Lcom/facebook/applinks/AppLinkData;->getAppLinkData(Landroid/net/Uri;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iput-object v3, p0, Lcom/facebook/applinks/AppLinkData;->appLinkData:Lorg/json/JSONObject;</span>
+<span class="">	iget-object v3, p0, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {v3, v2}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_4</span>
+<span class="">	iget-object v3, p0, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	invoke-virtual {v3, v2}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2, v1}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_4</span>
+<span class="">	invoke-virtual {v2, v1}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1, v0}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_4</span>
+<span class="">	invoke-virtual {v1, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/applinks/AppLinkData;->promotionCode:Ljava/lang/String;</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/applinks/AppLinkData;->toBundle(Lorg/json/JSONObject;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/facebook/applinks/AppLinkData;->argumentBundle:Landroid/os/Bundle;</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_1</span>
+<span class="">	.catch Lcom/facebook/FacebookException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	sget-object v0, Lcom/facebook/applinks/AppLinkData;->TAG:Ljava/lang/String;</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-static {v0, v7, p0}, Lcom/facebook/internal/Utility;->logd(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	move-exception p0</span>
+<span class="">	sget-object v0, Lcom/facebook/applinks/AppLinkData;->TAG:Ljava/lang/String;</span>
+<span class="">	:catch_1</span>
+<span class="">	invoke-static {v0, v7, p0}, Lcom/facebook/internal/Utility;->logd(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_5</span>
+.end method
+
+.method private static createFromUri(Landroid/net/Uri;)Lcom/facebook/applinks/AppLinkData;
+<span class="">	.locals 1</span>
+
+<span class="">	if-nez p0, :cond_0</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	new-instance v0, Lcom/facebook/applinks/AppLinkData;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v0}, Lcom/facebook/applinks/AppLinkData;-><init>()V</span>
+<span class="">	iput-object p0, v0, Lcom/facebook/applinks/AppLinkData;->targetUri:Landroid/net/Uri;</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/applinks/AppLinkData;->getAppLinkData(Landroid/net/Uri;)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	iput-object p0, v0, Lcom/facebook/applinks/AppLinkData;->appLinkData:Lorg/json/JSONObject;</span>
+.end method
+
+.method public static fetchDeferredAppLinkData(Landroid/content/Context;Lcom/facebook/applinks/AppLinkData$CompletionHandler;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-static {p0, v0, p1}, Lcom/facebook/applinks/AppLinkData;->fetchDeferredAppLinkData(Landroid/content/Context;Ljava/lang/String;Lcom/facebook/applinks/AppLinkData$CompletionHandler;)V</span>
+.end method
+
+.method public static fetchDeferredAppLinkData(Landroid/content/Context;Ljava/lang/String;Lcom/facebook/applinks/AppLinkData$CompletionHandler;)V
+<span class="">	.locals 2</span>
+
+<span class="">	const-string v0, "context"</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "completionHandler"</span>
+<span class="">	invoke-static {p2, v0}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/Utility;->getMetadataApplicationId(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, "applicationId"</span>
+<span class="">	invoke-static {p1, v0}, Lcom/facebook/internal/Validate;->notNull(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getExecutor()Ljava/util/concurrent/Executor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Lcom/facebook/applinks/AppLinkData$1;</span>
+<span class="">	invoke-direct {v1, p0, p1, p2}, Lcom/facebook/applinks/AppLinkData$1;-><init>(Landroid/content/Context;Ljava/lang/String;Lcom/facebook/applinks/AppLinkData$CompletionHandler;)V</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V</span>
+.end method
+
+.method private static fetchDeferredAppLinkFromServer(Landroid/content/Context;Ljava/lang/String;Lcom/facebook/applinks/AppLinkData$CompletionHandler;)V
+<span class="">	.locals 7</span>
+
+<span class="">	new-instance v0, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v1, "event"</span>
+<span class="">	const-string v2, "DEFERRED_APP_LINK"</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/internal/AttributionIdentifiers;->getAttributionIdentifiers(Landroid/content/Context;)Lcom/facebook/internal/AttributionIdentifiers;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/appevents/AppEventsLogger;->getAnonymousAppDeviceGUID(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {p0}, Lcom/facebook/FacebookSdk;->getLimitEventAndDataUsage(Landroid/content/Context;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-static {v0, v1, v2, v3, p0}, Lcom/facebook/internal/Utility;->setAppEventAttributionParameters(Lorg/json/JSONObject;Lcom/facebook/internal/AttributionIdentifiers;Ljava/lang/String;ZLandroid/content/Context;)V</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v0, v1}, Lcom/facebook/internal/Utility;->setAppEventExtendedDeviceInfoParameters(Lorg/json/JSONObject;Landroid/content/Context;)V</span>
+<span class="">	const-string v1, "application_package_name"</span>
+<span class="">	invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {v0, v1, p0}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_4</span>
+<span class="">	const/4 p0, 0x1</span>
+<span class="">	new-array p0, p0, [Ljava/lang/Object;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	aput-object p1, p0, v1</span>
+<span class="">	const-string p1, "%s/activities"</span>
+<span class="">	invoke-static {p1, p0}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:try_start_1</span>
+<span class="">	invoke-static {p1, p0, v0, p1}, Lcom/facebook/GraphRequest;->newPostRequest(Lcom/facebook/AccessToken;Ljava/lang/String;Lorg/json/JSONObject;Lcom/facebook/GraphRequest$Callback;)Lcom/facebook/GraphRequest;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/GraphRequest;->executeAndWait()Lcom/facebook/GraphResponse;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/GraphResponse;->getJSONObject()Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_5</span>
+<span class="">	const-string v0, "applink_args"</span>
+<span class="">	invoke-virtual {p0, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "click_time"</span>
+<span class="">	const-wide/16 v2, -0x1</span>
+<span class="">	invoke-virtual {p0, v1, v2, v3}, Lorg/json/JSONObject;->optLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide v4</span>
+<span class="">	const-string v1, "applink_class"</span>
+<span class="">	invoke-virtual {p0, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v6, "applink_url"</span>
+<span class="">	invoke-virtual {p0, v6}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-nez v6, :cond_5</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/applinks/AppLinkData;->createFromJson(Ljava/lang/String;)Lcom/facebook/applinks/AppLinkData;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_3</span>
+<span class="">	if-eqz p1, :cond_5</span>
+<span class="">	cmp-long v0, v4, v2</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	:try_start_2</span>
+<span class="">	iget-object v0, p1, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_2 .. :try_end_2} :catch_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_3</span>
+<span class="">	const-string v2, "com.facebook.platform.APPLINK_TAP_TIME_UTC"</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	:try_start_3</span>
+<span class="">	invoke-virtual {v0, v2, v4, v5}, Lorg/json/JSONObject;->put(Ljava/lang/String;J)Lorg/json/JSONObject;</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p1, Lcom/facebook/applinks/AppLinkData;->argumentBundle:Landroid/os/Bundle;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-static {v4, v5}, Ljava/lang/Long;->toString(J)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_3 .. :try_end_3} :catch_0</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_3</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:try_start_4</span>
+<span class="">	:catch_0</span>
+<span class="">	sget-object v0, Lcom/facebook/applinks/AppLinkData;->TAG:Ljava/lang/String;</span>
+<span class="">	const-string v2, "Unable to put tap time in AppLinkData.arguments"</span>
+<span class="">	invoke-static {v0, v2}, Lcom/facebook/internal/Utility;->logd(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_3</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	:try_start_5</span>
+<span class="">	iget-object v0, p1, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	:try_end_5</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_5 .. :try_end_5} :catch_1</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_3</span>
+<span class="">	const-string v2, "com.facebook.platform.APPLINK_NATIVE_CLASS"</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	:try_start_6</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-object v0, p1, Lcom/facebook/applinks/AppLinkData;->argumentBundle:Landroid/os/Bundle;</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_end_6</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_6 .. :try_end_6} :catch_1</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_3</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:try_start_7</span>
+<span class="">	:catch_1</span>
+<span class="">	sget-object v0, Lcom/facebook/applinks/AppLinkData;->TAG:Ljava/lang/String;</span>
+<span class="">	const-string v1, "Unable to put app link class name in AppLinkData.arguments"</span>
+<span class="">	invoke-static {v0, v1}, Lcom/facebook/internal/Utility;->logd(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_end_7</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_3</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	if-eqz p0, :cond_5</span>
+<span class="">	:try_start_8</span>
+<span class="">	iget-object v0, p1, Lcom/facebook/applinks/AppLinkData;->arguments:Lorg/json/JSONObject;</span>
+<span class="">	:try_end_8</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_8 .. :try_end_8} :catch_2</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_3</span>
+<span class="">	const-string v1, "com.facebook.platform.APPLINK_NATIVE_URL"</span>
+<span class="">	if-eqz v0, :cond_4</span>
+<span class="">	:try_start_9</span>
+<span class="">	invoke-virtual {v0, v1, p0}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	:cond_4</span>
+<span class="">	iget-object v0, p1, Lcom/facebook/applinks/AppLinkData;->argumentBundle:Landroid/os/Bundle;</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	invoke-virtual {v0, v1, p0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_end_9</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_9 .. :try_end_9} :catch_2</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9} :catch_3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:catch_2</span>
+<span class="">	:try_start_a</span>
+<span class="">	sget-object p0, Lcom/facebook/applinks/AppLinkData;->TAG:Ljava/lang/String;</span>
+<span class="">	const-string v0, "Unable to put app link URL in AppLinkData.arguments"</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/Utility;->logd(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_end_a</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_a .. :try_end_a} :catch_3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:catch_3</span>
+<span class="">	sget-object p0, Lcom/facebook/applinks/AppLinkData;->TAG:Ljava/lang/String;</span>
+<span class="">	const-string v0, "Unable to fetch deferred applink from server"</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/Utility;->logd(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-interface {p2, p1}, Lcom/facebook/applinks/AppLinkData$CompletionHandler;->onDeferredAppLinkDataFetched(Lcom/facebook/applinks/AppLinkData;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catch_4</span>
+<span class="">	new-instance p1, Lcom/facebook/FacebookException;</span>
+<span class="">	const-string p2, "An error occurred while preparing deferred app link"</span>
+<span class="">	invoke-direct {p1, p2, p0}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method private static getAppLinkData(Landroid/net/Uri;)Lorg/json/JSONObject;
+<span class="">	.locals 3</span>
+
+<span class="">	const-class v0, Lcom/facebook/applinks/AppLinkData;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-nez p0, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v1, "al_applink_data"</span>
+<span class="">	invoke-virtual {p0, v1}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-nez p0, :cond_2</span>
+<span class="">	new-instance v1, Lorg/json/JSONObject;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-direct {v1, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V</span>
+<span class="">	move-exception p0</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	:catch_0</span>
+<span class="">	:catchall_0</span>
+.end method
+
+.method private static toBundle(Lorg/json/JSONObject;)Landroid/os/Bundle;
+<span class="">	.locals 7</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Lorg/json/JSONException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v0}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_7</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/String;</span>
+<span class="">	invoke-virtual {p0, v2}, Lorg/json/JSONObject;->get(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	instance-of v4, v3, Lorg/json/JSONObject;</span>
+<span class="">	if-eqz v4, :cond_0</span>
+<span class="">	check-cast v3, Lorg/json/JSONObject;</span>
+<span class="">	invoke-static {v3}, Lcom/facebook/applinks/AppLinkData;->toBundle(Lorg/json/JSONObject;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putBundle(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	instance-of v4, v3, Lorg/json/JSONArray;</span>
+<span class="">	if-eqz v4, :cond_6</span>
+<span class="">	check-cast v3, Lorg/json/JSONArray;</span>
+<span class="">	invoke-virtual {v3}, Lorg/json/JSONArray;->length()I</span>
+<span class="">	move-result v4</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	if-nez v4, :cond_1</span>
+<span class="">	new-array v3, v5, [Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putStringArray(Ljava/lang/String;[Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v3, v5}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	instance-of v6, v4, Lorg/json/JSONObject;</span>
+<span class="">	if-eqz v6, :cond_3</span>
+<span class="">	invoke-virtual {v3}, Lorg/json/JSONArray;->length()I</span>
+<span class="">	move-result v4</span>
+<span class="">	new-array v4, v4, [Landroid/os/Bundle;</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {v3}, Lorg/json/JSONArray;->length()I</span>
+<span class="">	move-result v6</span>
+<span class="">	if-ge v5, v6, :cond_2</span>
+<span class="">	invoke-virtual {v3, v5}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-static {v6}, Lcom/facebook/applinks/AppLinkData;->toBundle(Lorg/json/JSONObject;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	aput-object v6, v4, v5</span>
+<span class="">	add-int/lit8 v5, v5, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {v0, v2, v4}, Landroid/os/Bundle;->putParcelableArray(Ljava/lang/String;[Landroid/os/Parcelable;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_3</span>
+<span class="">	instance-of v4, v4, Lorg/json/JSONArray;</span>
+<span class="">	if-nez v4, :cond_5</span>
+<span class="">	invoke-virtual {v3}, Lorg/json/JSONArray;->length()I</span>
+<span class="">	move-result v4</span>
+<span class="">	new-array v4, v4, [Ljava/lang/String;</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-virtual {v3}, Lorg/json/JSONArray;->length()I</span>
+<span class="">	move-result v6</span>
+<span class="">	if-ge v5, v6, :cond_4</span>
+<span class="">	invoke-virtual {v3, v5}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	aput-object v6, v4, v5</span>
+<span class="">	add-int/lit8 v5, v5, 0x1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {v0, v2, v4}, Landroid/os/Bundle;->putStringArray(Ljava/lang/String;[Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_5</span>
+<span class="">	new-instance p0, Lcom/facebook/FacebookException;</span>
+<span class="">	const-string v0, "Nested arrays are not supported."</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v0, v2, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	goto/16 :goto_0</span>
+<span class="">	:cond_7</span>
+.end method
+
+.method public getAppLinkData()Lorg/json/JSONObject;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/applinks/AppLinkData;->appLinkData:Lorg/json/JSONObject;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v0, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public getArgumentBundle()Landroid/os/Bundle;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/applinks/AppLinkData;->argumentBundle:Landroid/os/Bundle;</span>
+.end method
+
+.method public getPromotionCode()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/applinks/AppLinkData;->promotionCode:Ljava/lang/String;</span>
+.end method
+
+.method public getRef()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/applinks/AppLinkData;->ref:Ljava/lang/String;</span>
+.end method
+
+.method public getRefererData()Landroid/os/Bundle;
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/applinks/AppLinkData;->argumentBundle:Landroid/os/Bundle;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-string v1, "referer_data"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public getTargetUri()Landroid/net/Uri;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/applinks/AppLinkData;->targetUri:Landroid/net/Uri;</span>
+.end method
+
+.method public isAutoAppLink()Z
+<span class="">	.locals 7</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/applinks/AppLinkData;->targetUri:Landroid/net/Uri;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/net/Uri;->getHost()Ljava/lang/String;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/applinks/AppLinkData;->targetUri:Landroid/net/Uri;</span>
+<span class="">	invoke-virtual {v2}, Landroid/net/Uri;->getScheme()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	new-array v4, v3, [Ljava/lang/Object;</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationId()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	aput-object v5, v4, v1</span>
+<span class="">	const-string v5, "fb%s"</span>
+<span class="">	invoke-static {v5, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	iget-object v5, p0, Lcom/facebook/applinks/AppLinkData;->appLinkData:Lorg/json/JSONObject;</span>
+<span class="">	if-eqz v5, :cond_1</span>
+<span class="">	const-string v6, "is_auto_applink"</span>
+<span class="">	invoke-virtual {v5, v6}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;)Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_1</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz v5, :cond_2</span>
+<span class="">	:goto_0</span>
+<span class="">	const-string v5, "applinks"</span>
+<span class="">	invoke-virtual {v5, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	:cond_2</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

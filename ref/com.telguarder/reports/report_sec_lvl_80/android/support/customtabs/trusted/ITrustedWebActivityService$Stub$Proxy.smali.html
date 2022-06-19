@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">android.support.customtabs.trusted</a></li>
+        <li><i class="ico ico-class"></i> ITrustedWebActivityService$Stub$Proxy.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub$Proxy;
+.super Ljava/lang/Object;
+.source "ITrustedWebActivityService.java"
+.implements Landroid/support/customtabs/trusted/ITrustedWebActivityService;
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0xa
+name = "Proxy"
+.end annotation
+
+.field public static sDefaultImpl:Landroid/support/customtabs/trusted/ITrustedWebActivityService;
+.field private mRemote:Landroid/os/IBinder;
+
+
+.method constructor <init>(Landroid/os/IBinder;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub$Proxy;->mRemote:Landroid/os/IBinder;</span>
+.end method
+
+.method public areNotificationsEnabled(Landroid/os/Bundle;)Landroid/os/Bundle;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/RemoteException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v2, "android.support.customtabs.trusted.ITrustedWebActivityService"</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V</span>
+<span class="">	invoke-virtual {p1, v0, v2}, Landroid/os/Bundle;->writeToParcel(Landroid/os/Parcel;I)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V</span>
+<span class="">	:goto_0</span>
+<span class="">	iget-object v3, p0, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub$Proxy;->mRemote:Landroid/os/IBinder;</span>
+<span class="">	const/4 v4, 0x6</span>
+<span class="">	invoke-interface {v3, v4, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2, p1}, Landroid/support/customtabs/trusted/ITrustedWebActivityService;->areNotificationsEnabled(Landroid/os/Bundle;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readException()V</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	sget-object p1, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+<span class="">	invoke-interface {p1, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroid/os/Bundle;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	move-exception p1</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public asBinder()Landroid/os/IBinder;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub$Proxy;->mRemote:Landroid/os/IBinder;</span>
+.end method
+
+.method public cancelNotification(Landroid/os/Bundle;)V
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/RemoteException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v2, "android.support.customtabs.trusted.ITrustedWebActivityService"</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V</span>
+<span class="">	invoke-virtual {p1, v0, v2}, Landroid/os/Bundle;->writeToParcel(Landroid/os/Parcel;I)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V</span>
+<span class="">	:goto_0</span>
+<span class="">	iget-object v3, p0, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub$Proxy;->mRemote:Landroid/os/IBinder;</span>
+<span class="">	const/4 v4, 0x3</span>
+<span class="">	invoke-interface {v3, v4, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2, p1}, Landroid/support/customtabs/trusted/ITrustedWebActivityService;->cancelNotification(Landroid/os/Bundle;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readException()V</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	move-exception p1</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public extraCommand(Ljava/lang/String;Landroid/os/Bundle;Landroid/os/IBinder;)Landroid/os/Bundle;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/RemoteException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v2, "android.support.customtabs.trusted.ITrustedWebActivityService"</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V</span>
+<span class="">	invoke-virtual {p2, v0, v2}, Landroid/os/Bundle;->writeToParcel(Landroid/os/Parcel;I)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {v0, p3}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V</span>
+<span class="">	iget-object v3, p0, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub$Proxy;->mRemote:Landroid/os/IBinder;</span>
+<span class="">	const/16 v4, 0x9</span>
+<span class="">	invoke-interface {v3, v4, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2, p1, p2, p3}, Landroid/support/customtabs/trusted/ITrustedWebActivityService;->extraCommand(Ljava/lang/String;Landroid/os/Bundle;Landroid/os/IBinder;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readException()V</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	sget-object p1, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+<span class="">	invoke-interface {p1, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroid/os/Bundle;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	move-exception p1</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public getActiveNotifications()Landroid/os/Bundle;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/RemoteException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v2, "android.support.customtabs.trusted.ITrustedWebActivityService"</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V</span>
+<span class="">	iget-object v2, p0, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub$Proxy;->mRemote:Landroid/os/IBinder;</span>
+<span class="">	const/4 v3, 0x5</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2}, Landroid/support/customtabs/trusted/ITrustedWebActivityService;->getActiveNotifications()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readException()V</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+<span class="">	invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroid/os/Bundle;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	move-exception v2</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	throw v2</span>
+.end method
+
+.method public getInterfaceDescriptor()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "android.support.customtabs.trusted.ITrustedWebActivityService"</span>
+.end method
+
+.method public getSmallIconBitmap()Landroid/os/Bundle;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/RemoteException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v2, "android.support.customtabs.trusted.ITrustedWebActivityService"</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V</span>
+<span class="">	iget-object v2, p0, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub$Proxy;->mRemote:Landroid/os/IBinder;</span>
+<span class="">	const/4 v3, 0x7</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2}, Landroid/support/customtabs/trusted/ITrustedWebActivityService;->getSmallIconBitmap()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readException()V</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	sget-object v2, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+<span class="">	invoke-interface {v2, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroid/os/Bundle;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	move-exception v2</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	throw v2</span>
+.end method
+
+.method public getSmallIconId()I
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/RemoteException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v2, "android.support.customtabs.trusted.ITrustedWebActivityService"</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V</span>
+<span class="">	iget-object v2, p0, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub$Proxy;->mRemote:Landroid/os/IBinder;</span>
+<span class="">	const/4 v3, 0x4</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2}, Landroid/support/customtabs/trusted/ITrustedWebActivityService;->getSmallIconId()I</span>
+<span class="">	move-result v2</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readException()V</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	move-exception v2</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	throw v2</span>
+.end method
+
+.method public notifyNotificationWithChannel(Landroid/os/Bundle;)Landroid/os/Bundle;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/os/RemoteException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v2, "android.support.customtabs.trusted.ITrustedWebActivityService"</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V</span>
+<span class="">	invoke-virtual {p1, v0, v2}, Landroid/os/Bundle;->writeToParcel(Landroid/os/Parcel;I)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V</span>
+<span class="">	:goto_0</span>
+<span class="">	iget-object v3, p0, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub$Proxy;->mRemote:Landroid/os/IBinder;</span>
+<span class="">	const/4 v4, 0x2</span>
+<span class="">	invoke-interface {v3, v4, v0, v1, v2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/support/customtabs/trusted/ITrustedWebActivityService$Stub;->getDefaultImpl()Landroid/support/customtabs/trusted/ITrustedWebActivityService;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2, p1}, Landroid/support/customtabs/trusted/ITrustedWebActivityService;->notifyNotificationWithChannel(Landroid/os/Bundle;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readException()V</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	sget-object p1, Landroid/os/Bundle;->CREATOR:Landroid/os/Parcelable$Creator;</span>
+<span class="">	invoke-interface {p1, v1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroid/os/Bundle;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	move-exception p1</span>
+<span class="">	invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V</span>
+<span class="">	throw p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

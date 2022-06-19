@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.preference</a></li>
+        <li><i class="ico ico-class"></i> PreferenceFragment$DividerDecoration.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Landroidx/preference/PreferenceFragment$DividerDecoration;
+.super Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;
+.source "PreferenceFragment.java"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Landroidx/preference/PreferenceFragment;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x2
+name = "DividerDecoration"
+.end annotation
+
+.field private mAllowDividerAfterLastItem:Z
+.field private mDivider:Landroid/graphics/drawable/Drawable;
+.field private mDividerHeight:I
+.field final synthetic this$0:Landroidx/preference/PreferenceFragment;
+
+
+.method constructor <init>(Landroidx/preference/PreferenceFragment;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->this$0:Landroidx/preference/PreferenceFragment;</span>
+<span class="">	invoke-direct {p0}, Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;-><init>()V</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	iput-boolean p1, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mAllowDividerAfterLastItem:Z</span>
+.end method
+
+.method private shouldDrawDividerBelow(Landroid/view/View;Landroidx/recyclerview/widget/RecyclerView;)Z
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-virtual {p2, p1}, Landroidx/recyclerview/widget/RecyclerView;->getChildViewHolder(Landroid/view/View;)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v1, v0, Landroidx/preference/PreferenceViewHolder;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	check-cast v0, Landroidx/preference/PreferenceViewHolder;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/preference/PreferenceViewHolder;->isDividerAllowedBelow()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	iget-boolean v0, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mAllowDividerAfterLastItem:Z</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p2, p1}, Landroidx/recyclerview/widget/RecyclerView;->indexOfChild(Landroid/view/View;)I</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {p2}, Landroidx/recyclerview/widget/RecyclerView;->getChildCount()I</span>
+<span class="">	move-result v1</span>
+<span class="">	sub-int/2addr v1, v3</span>
+<span class="">	if-ge p1, v1, :cond_3</span>
+<span class="">	add-int/2addr p1, v3</span>
+<span class="">	invoke-virtual {p2, p1}, Landroidx/recyclerview/widget/RecyclerView;->getChildAt(I)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2, p1}, Landroidx/recyclerview/widget/RecyclerView;->getChildViewHolder(Landroid/view/View;)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	instance-of p2, p1, Landroidx/preference/PreferenceViewHolder;</span>
+<span class="">	if-eqz p2, :cond_2</span>
+<span class="">	check-cast p1, Landroidx/preference/PreferenceViewHolder;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/PreferenceViewHolder;->isDividerAllowedAbove()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	move v0, v2</span>
+<span class="">	:cond_2</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method public getItemOffsets(Landroid/graphics/Rect;Landroid/view/View;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$State;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p2, p3}, Landroidx/preference/PreferenceFragment$DividerDecoration;->shouldDrawDividerBelow(Landroid/view/View;Landroidx/recyclerview/widget/RecyclerView;)Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	iget p2, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mDividerHeight:I</span>
+<span class="">	iput p2, p1, Landroid/graphics/Rect;->bottom:I</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public onDrawOver(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$State;)V
+<span class="">	.locals 6</span>
+
+<span class="">	iget-object p3, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mDivider:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	if-nez p3, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Landroidx/recyclerview/widget/RecyclerView;->getChildCount()I</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result p3</span>
+<span class="">	invoke-virtual {p2}, Landroidx/recyclerview/widget/RecyclerView;->getWidth()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-ge v2, p3, :cond_2</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p2, v2}, Landroidx/recyclerview/widget/RecyclerView;->getChildAt(I)Landroid/view/View;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-direct {p0, v3, p2}, Landroidx/preference/PreferenceFragment$DividerDecoration;->shouldDrawDividerBelow(Landroid/view/View;Landroidx/recyclerview/widget/RecyclerView;)Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-eqz v4, :cond_1</span>
+<span class="">	invoke-virtual {v3}, Landroid/view/View;->getY()F</span>
+<span class="">	move-result v4</span>
+<span class="">	float-to-int v4, v4</span>
+<span class="">	invoke-virtual {v3}, Landroid/view/View;->getHeight()I</span>
+<span class="">	move-result v3</span>
+<span class="">	add-int/2addr v4, v3</span>
+<span class="">	iget-object v3, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mDivider:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	iget v5, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mDividerHeight:I</span>
+<span class="">	add-int/2addr v5, v4</span>
+<span class="">	invoke-virtual {v3, v1, v4, v0, v5}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V</span>
+<span class="">	iget-object v3, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mDivider:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	invoke-virtual {v3, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	:cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public setAllowDividerAfterLastItem(Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-boolean p1, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mAllowDividerAfterLastItem:Z</span>
+.end method
+
+.method public setDivider(Landroid/graphics/drawable/Drawable;)V
+<span class="">	.locals 1</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I</span>
+<span class="">	move-result v0</span>
+<span class="">	iput v0, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mDividerHeight:I</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mDividerHeight:I</span>
+<span class="">	:goto_0</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mDivider:Landroid/graphics/drawable/Drawable;</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->this$0:Landroidx/preference/PreferenceFragment;</span>
+<span class="">	iget-object p1, p1, Landroidx/preference/PreferenceFragment;->mList:Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/recyclerview/widget/RecyclerView;->invalidateItemDecorations()V</span>
+.end method
+
+.method public setDividerHeight(I)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput p1, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->mDividerHeight:I</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceFragment$DividerDecoration;->this$0:Landroidx/preference/PreferenceFragment;</span>
+<span class="">	iget-object p1, p1, Landroidx/preference/PreferenceFragment;->mList:Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/recyclerview/widget/RecyclerView;->invalidateItemDecorations()V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

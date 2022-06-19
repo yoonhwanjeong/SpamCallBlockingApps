@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.ui</a></li>
+        <li><i class="ico ico-class"></i> h.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/hiya/stingray/ui/h;
+.super Lcom/hiya/stingray/ui/common/i;
+.source "SourceFile"
+.implements Lcom/hiya/stingray/ui/local/common/g$a;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/hiya/stingray/ui/h$a;
+}
+.end annotation
+
+.field public l:Lcom/hiya/stingray/util/b0;
+.field public m:Lcom/hiya/stingray/ui/i;
+.field private final n:Ljava/lang/String;
+.field private o:Ljava/util/HashMap;
+
+
+.method public constructor <init>()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Lcom/hiya/stingray/ui/common/i;-><init>()V</span>
+<span class="">	const-string v0, "callers_list"</span>
+<span class="">	iput-object v0, p0, Lcom/hiya/stingray/ui/h;->n:Ljava/lang/String;</span>
+.end method
+
+.method private final g1()V
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getUserVisibleHint()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/h;->l:Lcom/hiya/stingray/util/b0;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-class v1, Lcom/hiya/stingray/manager/i2$b;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	sget-object v3, Lcom/hiya/stingray/ui/h$b;->f:Lcom/hiya/stingray/ui/h$b;</span>
+<span class="">	invoke-virtual {v0, v1, v2, v3}, Lcom/hiya/stingray/util/b0;->a(Ljava/lang/Class;ZLkotlin/w/b/l;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/hiya/stingray/manager/i2$b;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getView()Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	sget v1, Lcom/hiya/stingray/o;->S4:I</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/viewpager/widget/ViewPager;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/viewpager/widget/ViewPager;->setCurrentItem(I)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, "sticky"</span>
+<span class="">	invoke-static {v0}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	throw v0</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private final h1(Landroid/view/View;)V
+<span class="">	.locals 7</span>
+
+<span class="">	sget v0, Lcom/hiya/stingray/o;->S4:I</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroidx/viewpager/widget/ViewPager;</span>
+<span class="">	const-string v2, "view.viewpager"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	new-instance v2, Lcom/hiya/stingray/ui/h$a;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	const-string v5, "context!!"</span>
+<span class="">	invoke-static {v3, v5}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getChildFragmentManager()Landroidx/fragment/app/n;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	const-string v6, "childFragmentManager"</span>
+<span class="">	invoke-static {v5, v6}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v6, p0, Lcom/hiya/stingray/ui/h;->m:Lcom/hiya/stingray/ui/i;</span>
+<span class="">	if-eqz v6, :cond_0</span>
+<span class="">	invoke-direct {v2, v3, v5, v6}, Lcom/hiya/stingray/ui/h$a;-><init>(Landroid/content/Context;Landroidx/fragment/app/n;Lcom/hiya/stingray/ui/i;)V</span>
+<span class="">	invoke-virtual {v1, v2}, Landroidx/viewpager/widget/ViewPager;->setAdapter(Landroidx/viewpager/widget/a;)V</span>
+<span class="">	sget v1, Lcom/hiya/stingray/o;->o4:I</span>
+<span class="">	invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/google/android/material/tabs/TabLayout;</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroidx/viewpager/widget/ViewPager;</span>
+<span class="">	invoke-virtual {v1, p1}, Lcom/google/android/material/tabs/TabLayout;->setupWithViewPager(Landroidx/viewpager/widget/ViewPager;)V</span>
+<span class="">	const-string p1, "analytics"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p1}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	throw v4</span>
+<span class="">	invoke-static {}, Lkotlin/w/c/k;->o()V</span>
+<span class="">	:cond_1</span>
+<span class="">	throw v4</span>
+.end method
+
+.method public J()V
+<span class="">	.locals 3</span>
+
+<span class="">	sget v0, Lcom/hiya/stingray/o;->S4:I</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/hiya/stingray/ui/h;->f1(I)Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/hiya/stingray/ui/local/common/SwipeViewPager;</span>
+<span class="">	const-string v1, "viewpager"</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0}, Landroidx/viewpager/widget/ViewPager;->getAdapter()Landroidx/viewpager/widget/a;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v1, v0, Lcom/hiya/stingray/ui/h$a;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	move-object v0, v2</span>
+<span class="">	:cond_0</span>
+<span class="">	check-cast v0, Lcom/hiya/stingray/ui/h$a;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {v0}, Lcom/hiya/stingray/ui/h$a;->w()Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	move-object v0, v2</span>
+<span class="">	:goto_0</span>
+<span class="">	instance-of v1, v0, Lcom/hiya/stingray/ui/local/common/g$a;</span>
+<span class="">	if-nez v1, :cond_2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	move-object v2, v0</span>
+<span class="">	:goto_1</span>
+<span class="">	check-cast v2, Lcom/hiya/stingray/ui/local/common/g$a;</span>
+<span class="">	if-eqz v2, :cond_3</span>
+<span class="">	invoke-interface {v2}, Lcom/hiya/stingray/ui/local/common/g$a;->J()V</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method public M()Z
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getView()Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	sget v2, Lcom/hiya/stingray/o;->S4:I</span>
+<span class="">	invoke-virtual {v0, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/viewpager/widget/ViewPager;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Landroidx/viewpager/widget/ViewPager;->getAdapter()Landroidx/viewpager/widget/a;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	:goto_0</span>
+<span class="">	instance-of v2, v0, Lcom/hiya/stingray/ui/h$a;</span>
+<span class="">	if-nez v2, :cond_1</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	:cond_1</span>
+<span class="">	check-cast v0, Lcom/hiya/stingray/ui/h$a;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {v0}, Lcom/hiya/stingray/ui/h$a;->w()Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	:goto_1</span>
+<span class="">	instance-of v2, v0, Lcom/hiya/stingray/ui/local/common/g$a;</span>
+<span class="">	if-nez v2, :cond_3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	move-object v1, v0</span>
+<span class="">	:goto_2</span>
+<span class="">	check-cast v1, Lcom/hiya/stingray/ui/local/common/g$a;</span>
+<span class="">	if-eqz v1, :cond_4</span>
+<span class="">	invoke-interface {v1}, Lcom/hiya/stingray/ui/local/common/g$a;->M()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_4</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_3</span>
+.end method
+
+.method public Z0()V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/h;->o:Ljava/util/HashMap;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/HashMap;->clear()V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public c1()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/h;->n:Ljava/lang/String;</span>
+.end method
+
+.method public f1(I)Landroid/view/View;
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/h;->o:Ljava/util/HashMap;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	new-instance v0, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/hiya/stingray/ui/h;->o:Ljava/util/HashMap;</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/ui/h;->o:Ljava/util/HashMap;</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroid/view/View;</span>
+<span class="">	if-nez v0, :cond_2</span>
+<span class="">	invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getView()Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-virtual {v0, p1}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/stingray/ui/h;->o:Ljava/util/HashMap;</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v1, p1, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public onCreate(Landroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0, p1}, Lcom/hiya/stingray/ui/common/i;->onCreate(Landroid/os/Bundle;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/hiya/stingray/ui/common/i;->a1()Lcom/hiya/stingray/s/d/a;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1, p0}, Lcom/hiya/stingray/s/d/a;->B(Lcom/hiya/stingray/ui/h;)V</span>
+.end method
+
+.method public onCreateView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string p3, "inflater"</span>
+<span class="">	invoke-static {p1, p3}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const p3, 0x7f0c0077</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p1, p3, p2, v0}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public synthetic onDestroyView()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0}, Lcom/hiya/stingray/ui/common/i;->onDestroyView()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/hiya/stingray/ui/h;->Z0()V</span>
+.end method
+
+.method public onResume()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0}, Lcom/hiya/stingray/ui/common/i;->onResume()V</span>
+<span class="">	invoke-direct {p0}, Lcom/hiya/stingray/ui/h;->g1()V</span>
+.end method
+
+.method public onViewCreated(Landroid/view/View;Landroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+
+<span class="">	const-string p2, "view"</span>
+<span class="">	invoke-static {p1, p2}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/hiya/stingray/ui/h;->h1(Landroid/view/View;)V</span>
+.end method
+
+.method public setUserVisibleHint(Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0, p1}, Landroidx/fragment/app/Fragment;->setUserVisibleHint(Z)V</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-direct {p0}, Lcom/hiya/stingray/ui/h;->g1()V</span>
+<span class="">	:cond_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

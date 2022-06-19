@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.appsflyer.internal</a></li>
+        <li><i class="ico ico-class"></i> x.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/appsflyer/internal/x;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/appsflyer/internal/x$a;
+}
+.end annotation
+
+
+
+.method constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public static ɩ(Landroid/content/ContentResolver;)Lcom/appsflyer/internal/y;
+<span class="">	.locals 4</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	if-nez p0, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerProperties;->getInstance()Lcom/appsflyer/AppsFlyerProperties;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "amazon_aid"</span>
+<span class="">	invoke-virtual {v1, v2}, Lcom/appsflyer/AppsFlyerProperties;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_3</span>
+<span class="">	sget-object v1, Landroid/os/Build;->MANUFACTURER:Ljava/lang/String;</span>
+<span class="">	const-string v2, "Amazon"</span>
+<span class="">	invoke-virtual {v2, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	const-string v1, "limit_ad_tracking"</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	invoke-static {p0, v1, v2}, Landroid/provider/Settings$Secure;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I</span>
+<span class="">	move-result v1</span>
+<span class="">	const-string v3, "advertising_id"</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	invoke-static {p0, v3}, Landroid/provider/Settings$Secure;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	new-instance v0, Lcom/appsflyer/internal/y;</span>
+<span class="">	sget-object v1, Lcom/appsflyer/internal/y$d;->ι:Lcom/appsflyer/internal/y$d;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {v0, p0, v1}, Lcom/appsflyer/internal/y;-><init>(Ljava/lang/String;Z)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	if-ne v1, v2, :cond_2</span>
+<span class="">	:cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	invoke-static {p0, v3}, Landroid/provider/Settings$Secure;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	:try_start_0</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object p0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	const-string v0, "Couldn\'t fetch Amazon Advertising ID (Ad-Tracking is limited!)"</span>
+<span class="">	invoke-static {v0, p0}, Lcom/appsflyer/AFLogger;->afErrorLog(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	const-string p0, ""</span>
+<span class="">	new-instance v0, Lcom/appsflyer/internal/y;</span>
+<span class="">	:goto_0</span>
+<span class="">	sget-object v1, Lcom/appsflyer/internal/y$d;->ι:Lcom/appsflyer/internal/y$d;</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-direct {v0, p0, v1}, Lcom/appsflyer/internal/y;-><init>(Ljava/lang/String;Z)V</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method public static ɩ(Landroid/content/Context;Ljava/util/Map;)V
+<span class="">	.locals 13</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "advertiserIdEnabled"</span>
+<span class="">	const-string v1, "advertiserId"</span>
+<span class="">	const-string v2, "Trying to fetch GAID.."</span>
+<span class="">	invoke-static {v2}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {}, Lcom/google/android/gms/common/e;->r()Lcom/google/android/gms/common/e;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3, p0}, Lcom/google/android/gms/common/e;->i(Landroid/content/Context;)I</span>
+<span class="">	move-result v3</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v3</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-static {v4, v3}, Lcom/appsflyer/AFLogger;->afErrorLog(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	const/4 v3, -0x1</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	const/4 v6, 0x1</span>
+<span class="">	:try_start_1</span>
+<span class="">	const-string v7, "g.f.a.d.a.a.a"</span>
+<span class="">	invoke-static {v7}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;</span>
+<span class="">	invoke-static {p0}, Lg/f/a/d/a/a/a;->b(Landroid/content/Context;)Lg/f/a/d/a/a/a$a;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	if-eqz v7, :cond_2</span>
+<span class="">	invoke-virtual {v7}, Lg/f/a/d/a/a/a$a;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	:try_start_2</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_3</span>
+<span class="">	invoke-virtual {v7}, Lg/f/a/d/a/a/a$a;->b()Z</span>
+<span class="">	move-result v7</span>
+<span class="">	if-nez v7, :cond_0</span>
+<span class="">	const/4 v7, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v7, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-static {v7}, Ljava/lang/Boolean;->toString(Z)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_2</span>
+<span class="">	if-eqz v8, :cond_1</span>
+<span class="">	:try_start_3</span>
+<span class="">	invoke-virtual {v8}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v7</span>
+<span class="">	if-nez v7, :cond_8</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v7, "emptyOrNull |"</span>
+<span class="">	invoke-virtual {v2, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_1</span>
+<span class="">	goto/16 :goto_6</span>
+<span class="">	:catchall_1</span>
+<span class="">	move-exception v7</span>
+<span class="">	const/4 v9, 0x1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:catchall_2</span>
+<span class="">	move-exception v7</span>
+<span class="">	const/4 v9, 0x0</span>
+<span class="">	:goto_2</span>
+<span class="">	move-object v12, v7</span>
+<span class="">	move-object v7, v4</span>
+<span class="">	move-object v4, v8</span>
+<span class="">	move-object v8, v12</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:try_start_4</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string v7, "gpsAdInfo-null |"</span>
+<span class="">	invoke-virtual {v2, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	new-instance v7, Lcom/appsflyer/internal/x$a;</span>
+<span class="">	const-string v8, "GpsAdIndo is null"</span>
+<span class="">	invoke-direct {v7, v8}, Lcom/appsflyer/internal/x$a;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v7</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_3</span>
+<span class="">	:catchall_3</span>
+<span class="">	move-exception v7</span>
+<span class="">	move-object v8, v7</span>
+<span class="">	const/4 v9, 0x0</span>
+<span class="">	move-object v7, v4</span>
+<span class="">	:goto_3</span>
+<span class="">	invoke-virtual {v8}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	invoke-static {v10, v8}, Lcom/appsflyer/AFLogger;->afErrorLog(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	invoke-virtual {v8}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	invoke-virtual {v8}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v8, " |"</span>
+<span class="">	invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v10, "WARNING: Google Play Services is missing."</span>
+<span class="">	invoke-static {v10}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerProperties;->getInstance()Lcom/appsflyer/AppsFlyerProperties;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	const-string v11, "enableGpsFallback"</span>
+<span class="">	invoke-virtual {v10, v11, v6}, Lcom/appsflyer/AppsFlyerProperties;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v10</span>
+<span class="">	if-eqz v10, :cond_7</span>
+<span class="">	:try_start_5</span>
+<span class="">	invoke-static {p0}, Lcom/appsflyer/internal/v;->ǃ(Landroid/content/Context;)Lcom/appsflyer/internal/v$c;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	iget-object v7, v4, Lcom/appsflyer/internal/v$c;->Ι:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v4}, Lcom/appsflyer/internal/v$c;->Ι()Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-nez v4, :cond_3</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-static {v5}, Ljava/lang/Boolean;->toString(Z)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	if-eqz v7, :cond_4</span>
+<span class="">	invoke-virtual {v7}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v5</span>
+<span class="">	if-nez v5, :cond_5</span>
+<span class="">	:cond_4</span>
+<span class="">	const-string v5, "emptyOrNull (bypass) |"</span>
+<span class="">	invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	:try_end_5</span>
+<span class="">	.catchall {:try_start_5 .. :try_end_5} :catchall_4</span>
+<span class="">	:cond_5</span>
+<span class="">	move-object v8, v7</span>
+<span class="">	goto :goto_5</span>
+<span class="">	:catchall_4</span>
+<span class="">	move-exception v4</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-static {v5, v4}, Lcom/appsflyer/AFLogger;->afErrorLog(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v5}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerProperties;->getInstance()Lcom/appsflyer/AppsFlyerProperties;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v5, v1}, Lcom/appsflyer/AppsFlyerProperties;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerProperties;->getInstance()Lcom/appsflyer/AppsFlyerProperties;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v5, v0}, Lcom/appsflyer/AppsFlyerProperties;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/Throwable;->getLocalizedMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	if-eqz v6, :cond_6</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/Throwable;->getLocalizedMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-static {v4}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-static {v4}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	:goto_4</span>
+<span class="">	move-object v4, v5</span>
+<span class="">	goto :goto_5</span>
+<span class="">	:cond_7</span>
+<span class="">	move-object v8, v4</span>
+<span class="">	move-object v4, v7</span>
+<span class="">	:goto_5</span>
+<span class="">	move v6, v9</span>
+<span class="">	:goto_6</span>
+<span class="">	:cond_8</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v5, "android.app.ReceiverRestrictedContext"</span>
+<span class="">	invoke-virtual {p0, v5}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_9</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerProperties;->getInstance()Lcom/appsflyer/AppsFlyerProperties;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, v1}, Lcom/appsflyer/AppsFlyerProperties;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerProperties;->getInstance()Lcom/appsflyer/AppsFlyerProperties;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/appsflyer/AppsFlyerProperties;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	const-string p0, "context = android.app.ReceiverRestrictedContext |"</span>
+<span class="">	invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	:cond_9</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/StringBuilder;->length()I</span>
+<span class="">	move-result p0</span>
+<span class="">	if-lez p0, :cond_a</span>
+<span class="">	new-instance p0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v3, ": "</span>
+<span class="">	invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v2, "gaidError"</span>
+<span class="">	invoke-interface {p1, v2, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_a</span>
+<span class="">	if-eqz v8, :cond_b</span>
+<span class="">	if-eqz v4, :cond_b</span>
+<span class="">	invoke-interface {p1, v1, v8}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-interface {p1, v0, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerProperties;->getInstance()Lcom/appsflyer/AppsFlyerProperties;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, v1, v8}, Lcom/appsflyer/AppsFlyerProperties;->set(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerProperties;->getInstance()Lcom/appsflyer/AppsFlyerProperties;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, v0, v4}, Lcom/appsflyer/AppsFlyerProperties;->set(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-static {v6}, Ljava/lang/String;->valueOf(Z)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "isGaidWithGps"</span>
+<span class="">	invoke-interface {p1, v0, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_b</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

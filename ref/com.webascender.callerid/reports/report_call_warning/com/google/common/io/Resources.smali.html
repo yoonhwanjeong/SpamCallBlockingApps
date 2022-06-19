@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.common.io</a></li>
+        <li><i class="ico ico-class"></i> Resources.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/common/io/Resources;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/google/common/io/Resources$b;
+}
+.end annotation
+
+
+
+.method private constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public static asByteSource(Ljava/net/URL;)Lcom/google/common/io/a;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/google/common/io/Resources$b;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {v0, p0, v1}, Lcom/google/common/io/Resources$b;-><init>(Ljava/net/URL;Lcom/google/common/io/Resources$a;)V</span>
+.end method
+
+.method public static asCharSource(Ljava/net/URL;Ljava/nio/charset/Charset;)Lcom/google/common/io/c;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-static {p0}, Lcom/google/common/io/Resources;->asByteSource(Ljava/net/URL;)Lcom/google/common/io/a;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/common/io/a;->a(Ljava/nio/charset/Charset;)Lcom/google/common/io/c;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static copy(Ljava/net/URL;Ljava/io/OutputStream;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0}, Lcom/google/common/io/Resources;->asByteSource(Ljava/net/URL;)Lcom/google/common/io/a;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/common/io/a;->b(Ljava/io/OutputStream;)J</span>
+.end method
+
+.method public static getResource(Ljava/lang/Class;Ljava/lang/String;)Ljava/net/URL;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/Class<",</span>
+<span class="">	"*>;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")",</span>
+<span class="">	"Ljava/net/URL;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p1}, Ljava/lang/Class;->getResource(Ljava/lang/String;)Ljava/net/URL;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v2, "resource %s relative to %s not found."</span>
+<span class="">	invoke-static {v1, v2, p1, p0}, Lcom/google/common/base/m;->l(ZLjava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V</span>
+.end method
+
+.method public static getResource(Ljava/lang/String;)Ljava/net/URL;
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Thread;->getContextClassLoader()Ljava/lang/ClassLoader;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-class v1, Lcom/google/common/io/Resources;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Class;->getClassLoader()Ljava/lang/ClassLoader;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/common/base/h;->a(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/ClassLoader;</span>
+<span class="">	invoke-virtual {v0, p0}, Ljava/lang/ClassLoader;->getResource(Ljava/lang/String;)Ljava/net/URL;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	const-string v2, "resource %s not found."</span>
+<span class="">	invoke-static {v1, v2, p0}, Lcom/google/common/base/m;->k(ZLjava/lang/String;Ljava/lang/Object;)V</span>
+.end method
+
+.method public static readLines(Ljava/net/URL;Ljava/nio/charset/Charset;Lcom/google/common/io/h;)Ljava/lang/Object;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<T:",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">(",</span>
+<span class="">	"Ljava/net/URL;",</span>
+<span class="">	"Ljava/nio/charset/Charset;",</span>
+<span class="">	"Lcom/google/common/io/h<",</span>
+<span class="">	"TT;>;)TT;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0, p1}, Lcom/google/common/io/Resources;->asCharSource(Ljava/net/URL;Ljava/nio/charset/Charset;)Lcom/google/common/io/c;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, p2}, Lcom/google/common/io/c;->c(Lcom/google/common/io/h;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static readLines(Ljava/net/URL;Ljava/nio/charset/Charset;)Ljava/util/List;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/net/URL;",</span>
+<span class="">	"Ljava/nio/charset/Charset;",</span>
+<span class="">	")",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/google/common/io/Resources$a;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/common/io/Resources$a;-><init>()V</span>
+<span class="">	invoke-static {p0, p1, v0}, Lcom/google/common/io/Resources;->readLines(Ljava/net/URL;Ljava/nio/charset/Charset;Lcom/google/common/io/h;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Ljava/util/List;</span>
+.end method
+
+.method public static toByteArray(Ljava/net/URL;)[B
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0}, Lcom/google/common/io/Resources;->asByteSource(Ljava/net/URL;)Lcom/google/common/io/a;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/common/io/a;->d()[B</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static toString(Ljava/net/URL;Ljava/nio/charset/Charset;)Ljava/lang/String;
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0, p1}, Lcom/google/common/io/Resources;->asCharSource(Ljava/net/URL;Ljava/nio/charset/Charset;)Lcom/google/common/io/c;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/common/io/c;->b()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

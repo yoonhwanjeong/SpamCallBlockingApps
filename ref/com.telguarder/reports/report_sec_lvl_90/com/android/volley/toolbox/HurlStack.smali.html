@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.android.volley.toolbox</a></li>
+        <li><i class="ico ico-class"></i> HurlStack.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/android/volley/toolbox/HurlStack;
+.super Lcom/android/volley/toolbox/BaseHttpStack;
+.source "HurlStack.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/android/volley/toolbox/HurlStack$UrlConnectionInputStream;,
+Lcom/android/volley/toolbox/HurlStack$UrlRewriter;
+}
+.end annotation
+
+.field private static final HTTP_CONTINUE:I = 0x64
+.field private final mSslSocketFactory:Ljavax/net/ssl/SSLSocketFactory;
+.field private final mUrlRewriter:Lcom/android/volley/toolbox/HurlStack$UrlRewriter;
+
+
+<span class="cov">.method public constructor &lt;init&gt;()V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	invoke-direct {p0, v0}, Lcom/android/volley/toolbox/HurlStack;-><init>(Lcom/android/volley/toolbox/HurlStack$UrlRewriter;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Lcom/android/volley/toolbox/HurlStack$UrlRewriter;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	invoke-direct {p0, p1, v0}, Lcom/android/volley/toolbox/HurlStack;-><init>(Lcom/android/volley/toolbox/HurlStack$UrlRewriter;Ljavax/net/ssl/SSLSocketFactory;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Lcom/android/volley/toolbox/HurlStack$UrlRewriter;Ljavax/net/ssl/SSLSocketFactory;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/android/volley/toolbox/BaseHttpStack;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lcom/android/volley/toolbox/HurlStack;->mUrlRewriter:Lcom/android/volley/toolbox/HurlStack$UrlRewriter;</span>
+<span class="cov">	iput-object p2, p0, Lcom/android/volley/toolbox/HurlStack;->mSslSocketFactory:Ljavax/net/ssl/SSLSocketFactory;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method static synthetic access$000(Ljava/net/HttpURLConnection;)Ljava/io/InputStream;</span>
+<span class="">	.locals 0</span>
+
+<span class="exec">	invoke-static {p0}, Lcom/android/volley/toolbox/HurlStack;->inputStreamFromConnection(Ljava/net/HttpURLConnection;)Ljava/io/InputStream;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method private addBody(Ljava/net/HttpURLConnection;Lcom/android/volley/Request;[B)V</span>
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/net/HttpURLConnection;",</span>
+<span class="">	"Lcom/android/volley/Request<",</span>
+<span class="">	"*>;[B)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="cov">	invoke-virtual {p1, v0}, Ljava/net/HttpURLConnection;->setDoOutput(Z)V</span>
+<span class="exec">	invoke-virtual {p1}, Ljava/net/HttpURLConnection;->getRequestProperties()Ljava/util/Map;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "Content-Type"</span>
+<span class="exec">	invoke-interface {v0, v1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-nez v0, :cond_0</span>
+<span class="exec">	invoke-virtual {p2}, Lcom/android/volley/Request;->getBodyContentType()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	invoke-virtual {p1, v1, v0}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	new-instance v0, Ljava/io/DataOutputStream;</span>
+<span class="cov">	array-length v1, p3</span>
+<span class="exec">	invoke-virtual {p0, p2, p1, v1}, Lcom/android/volley/toolbox/HurlStack;->createOutputStream(Lcom/android/volley/Request;Ljava/net/HttpURLConnection;I)Ljava/io/OutputStream;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-direct {v0, p1}, Ljava/io/DataOutputStream;-><init>(Ljava/io/OutputStream;)V</span>
+<span class="cov">	invoke-virtual {v0, p3}, Ljava/io/DataOutputStream;->write([B)V</span>
+<span class="cov">	invoke-virtual {v0}, Ljava/io/DataOutputStream;->close()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private addBodyIfExists(Ljava/net/HttpURLConnection;Lcom/android/volley/Request;)V</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;,</span>
+<span class="">	Lcom/android/volley/AuthFailureError;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/net/HttpURLConnection;",</span>
+<span class="">	"Lcom/android/volley/Request<",</span>
+<span class="">	"*>;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-virtual {p2}, Lcom/android/volley/Request;->getBody()[B</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	if-eqz v0, :cond_0</span>
+<span class="cov">	invoke-direct {p0, p1, p2, v0}, Lcom/android/volley/toolbox/HurlStack;->addBody(Ljava/net/HttpURLConnection;Lcom/android/volley/Request;[B)V</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method static convertHeaders(Ljava/util/Map;)Ljava/util/List;</span>
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;>;)",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/android/volley/Header;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="exec">	invoke-interface {p0}, Ljava/util/Map;->size()I</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V</span>
+<span class="exec">	invoke-interface {p0}, Ljava/util/Map;->entrySet()Ljava/util/Set;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="exec">	invoke-interface {p0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	if-eqz v1, :cond_1</span>
+<span class="exec">	invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	check-cast v1, Ljava/util/Map$Entry;</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	check-cast v2, Ljava/util/List;</span>
+<span class="exec">	invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	if-eqz v3, :cond_0</span>
+<span class="exec">	invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, Ljava/lang/String;</span>
+<span class="cov">	new-instance v4, Lcom/android/volley/Header;</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v5</span>
+<span class="cov">	check-cast v5, Ljava/lang/String;</span>
+<span class="cov">	invoke-direct {v4, v5, v3}, Lcom/android/volley/Header;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-interface {v0, v4}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method private static hasResponseBody(II)Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const/4 v0, 0x4</span>
+<span class="cov">	if-eq p0, v0, :cond_1</span>
+<span class="cov">	const/16 p0, 0x64</span>
+<span class="cov">	if-gt p0, p1, :cond_0</span>
+<span class="cov">	const/16 p0, 0xc8</span>
+<span class="cov">	if-lt p1, p0, :cond_1</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	const/16 p0, 0xcc</span>
+<span class="cov">	if-eq p1, p0, :cond_1</span>
+<span class="cov">	const/16 p0, 0x130</span>
+<span class="cov">	if-eq p1, p0, :cond_1</span>
+<span class="cov">	const/4 p0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return p0</span>
+.end method
+
+<span class="cov">.method private static inputStreamFromConnection(Ljava/net/HttpURLConnection;)Ljava/io/InputStream;</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	:try_start_0</span>
+<span class="exec">	invoke-virtual {p0}, Ljava/net/HttpURLConnection;->getInputStream()Ljava/io/InputStream;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-virtual {p0}, Ljava/net/HttpURLConnection;->getErrorStream()Ljava/io/InputStream;</span>
+<span class="">	move-result-object p0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method private openConnection(Ljava/net/URL;Lcom/android/volley/Request;)Ljava/net/HttpURLConnection;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/net/URL;",</span>
+<span class="">	"Lcom/android/volley/Request<",</span>
+<span class="">	"*>;)",</span>
+<span class="">	"Ljava/net/HttpURLConnection;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-virtual {p0, p1}, Lcom/android/volley/toolbox/HurlStack;->createConnection(Ljava/net/URL;)Ljava/net/HttpURLConnection;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {p2}, Lcom/android/volley/Request;->getTimeoutMs()I</span>
+<span class="cov">	move-result p2</span>
+<span class="cov">	invoke-virtual {v0, p2}, Ljava/net/HttpURLConnection;->setConnectTimeout(I)V</span>
+<span class="cov">	invoke-virtual {v0, p2}, Ljava/net/HttpURLConnection;->setReadTimeout(I)V</span>
+<span class="cov">	const/4 p2, 0x0</span>
+<span class="cov">	invoke-virtual {v0, p2}, Ljava/net/HttpURLConnection;->setUseCaches(Z)V</span>
+<span class="cov">	const/4 p2, 0x1</span>
+<span class="cov">	invoke-virtual {v0, p2}, Ljava/net/HttpURLConnection;->setDoInput(Z)V</span>
+<span class="exec">	invoke-virtual {p1}, Ljava/net/URL;->getProtocol()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const-string p2, "https"</span>
+<span class="exec">	invoke-virtual {p2, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result p1</span>
+<span class="cov">	if-eqz p1, :cond_0</span>
+<span class="cov">	iget-object p1, p0, Lcom/android/volley/toolbox/HurlStack;->mSslSocketFactory:Ljavax/net/ssl/SSLSocketFactory;</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	move-object p2, v0</span>
+<span class="">	check-cast p2, Ljavax/net/ssl/HttpsURLConnection;</span>
+<span class="">	invoke-virtual {p2, p1}, Ljavax/net/ssl/HttpsURLConnection;->setSSLSocketFactory(Ljavax/net/ssl/SSLSocketFactory;)V</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method protected createConnection(Ljava/net/URL;)Ljava/net/HttpURLConnection;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-virtual {p1}, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	check-cast p1, Ljava/net/HttpURLConnection;</span>
+<span class="exec">	invoke-static {}, Ljava/net/HttpURLConnection;->getFollowRedirects()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	invoke-virtual {p1, v0}, Ljava/net/HttpURLConnection;->setInstanceFollowRedirects(Z)V</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method protected createInputStream(Lcom/android/volley/Request;Ljava/net/HttpURLConnection;)Ljava/io/InputStream;</span>
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/android/volley/Request<",</span>
+<span class="">	"*>;",</span>
+<span class="">	"Ljava/net/HttpURLConnection;",</span>
+<span class="">	")",</span>
+<span class="">	"Ljava/io/InputStream;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	new-instance p1, Lcom/android/volley/toolbox/HurlStack$UrlConnectionInputStream;</span>
+<span class="cov">	invoke-direct {p1, p2}, Lcom/android/volley/toolbox/HurlStack$UrlConnectionInputStream;-><init>(Ljava/net/HttpURLConnection;)V</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method protected createOutputStream(Lcom/android/volley/Request;Ljava/net/HttpURLConnection;I)Ljava/io/OutputStream;</span>
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/android/volley/Request<",</span>
+<span class="">	"*>;",</span>
+<span class="">	"Ljava/net/HttpURLConnection;",</span>
+<span class="">	"I)",</span>
+<span class="">	"Ljava/io/OutputStream;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getOutputStream()Ljava/io/OutputStream;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public executeRequest(Lcom/android/volley/Request;Ljava/util/Map;)Lcom/android/volley/toolbox/HttpResponse;</span>
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;,</span>
+<span class="">	Lcom/android/volley/AuthFailureError;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/android/volley/Request<",</span>
+<span class="">	"*>;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Lcom/android/volley/toolbox/HttpResponse;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-virtual {p1}, Lcom/android/volley/Request;->getUrl()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	new-instance v1, Ljava/util/HashMap;</span>
+<span class="cov">	invoke-direct {v1}, Ljava/util/HashMap;-><init>()V</span>
+<span class="cov">	invoke-virtual {v1, p2}, Ljava/util/HashMap;->putAll(Ljava/util/Map;)V</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/android/volley/Request;->getHeaders()Ljava/util/Map;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="cov">	invoke-virtual {v1, p2}, Ljava/util/HashMap;->putAll(Ljava/util/Map;)V</span>
+<span class="cov">	iget-object p2, p0, Lcom/android/volley/toolbox/HurlStack;->mUrlRewriter:Lcom/android/volley/toolbox/HurlStack$UrlRewriter;</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	invoke-interface {p2, v0}, Lcom/android/volley/toolbox/HurlStack$UrlRewriter;->rewriteUrl(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	move-object v0, p2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/io/IOException;</span>
+<span class="">	new-instance p2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "URL blocked by rewriter: "</span>
+<span class="">	invoke-virtual {p2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	new-instance p2, Ljava/net/URL;</span>
+<span class="cov">	invoke-direct {p2, v0}, Ljava/net/URL;-><init>(Ljava/lang/String;)V</span>
+<span class="exec">	invoke-direct {p0, p2, p1}, Lcom/android/volley/toolbox/HurlStack;->openConnection(Ljava/net/URL;Lcom/android/volley/Request;)Ljava/net/HttpURLConnection;</span>
+<span class="cov">	move-result-object p2</span>
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	:try_start_0</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/util/HashMap;->keySet()Ljava/util/Set;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-interface {v2}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	:goto_1</span>
+<span class="exec">	invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	if-eqz v3, :cond_2</span>
+<span class="exec">	invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, Ljava/lang/String;</span>
+<span class="exec">	invoke-virtual {v1, v3}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="cov">	check-cast v4, Ljava/lang/String;</span>
+<span class="cov">	invoke-virtual {p2, v3, v4}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	invoke-virtual {p0, p2, p1}, Lcom/android/volley/toolbox/HurlStack;->setConnectionParametersForRequest(Ljava/net/HttpURLConnection;Lcom/android/volley/Request;)V</span>
+<span class="exec">	invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getResponseCode()I</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	const/4 v2, -0x1</span>
+<span class="cov">	if-eq v1, v2, :cond_4</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/android/volley/Request;->getMethod()I</span>
+<span class="cov">	move-result v2</span>
+<span class="exec">	invoke-static {v2, v1}, Lcom/android/volley/toolbox/HurlStack;->hasResponseBody(II)Z</span>
+<span class="cov">	move-result v2</span>
+<span class="">	if-nez v2, :cond_3</span>
+<span class="">	new-instance p1, Lcom/android/volley/toolbox/HttpResponse;</span>
+<span class="">	invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getHeaderFields()Ljava/util/Map;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2}, Lcom/android/volley/toolbox/HurlStack;->convertHeaders(Ljava/util/Map;)Ljava/util/List;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-direct {p1, v1, v2}, Lcom/android/volley/toolbox/HttpResponse;-><init>(ILjava/util/List;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {p2}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="cov">	:cond_3</span>
+<span class="cov">	new-instance v2, Lcom/android/volley/toolbox/HttpResponse;</span>
+<span class="cov">	:try_start_1</span>
+<span class="exec">	invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getHeaderFields()Ljava/util/Map;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="exec">	invoke-static {v3}, Lcom/android/volley/toolbox/HurlStack;->convertHeaders(Ljava/util/Map;)Ljava/util/List;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="exec">	invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getContentLength()I</span>
+<span class="cov">	move-result v4</span>
+<span class="exec">	invoke-virtual {p0, p1, p2}, Lcom/android/volley/toolbox/HurlStack;->createInputStream(Lcom/android/volley/Request;Ljava/net/HttpURLConnection;)Ljava/io/InputStream;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-direct {v2, v1, v3, v4, p1}, Lcom/android/volley/toolbox/HttpResponse;-><init>(ILjava/util/List;ILjava/io/InputStream;)V</span>
+<span class="exec">	return-object v2</span>
+<span class="">	new-instance p1, Ljava/io/IOException;</span>
+<span class="">	:cond_4</span>
+<span class="">	const-string v1, "Could not retrieve response code from HttpUrlConnection."</span>
+<span class="">	invoke-direct {p1, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	move-exception p1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	:catchall_0</span>
+<span class="">	if-nez v0, :cond_5</span>
+<span class="">	invoke-virtual {p2}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_5</span>
+.end method
+
+<span class="cov">.method  setConnectionParametersForRequest(Ljava/net/HttpURLConnection;Lcom/android/volley/Request;)V</span>
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;,</span>
+<span class="">	Lcom/android/volley/AuthFailureError;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/net/HttpURLConnection;",</span>
+<span class="">	"Lcom/android/volley/Request<",</span>
+<span class="">	"*>;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-virtual {p2}, Lcom/android/volley/Request;->getMethod()I</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	const-string v1, "POST"</span>
+<span class="">	packed-switch v0, :pswitch_data_0</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	const-string p2, "Unknown method type."</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:pswitch_0</span>
+<span class="">	const-string v0, "PATCH"</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0, p1, p2}, Lcom/android/volley/toolbox/HurlStack;->addBodyIfExists(Ljava/net/HttpURLConnection;Lcom/android/volley/Request;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_1</span>
+<span class="">	const-string p2, "TRACE"</span>
+<span class="">	invoke-virtual {p1, p2}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_2</span>
+<span class="">	const-string p2, "OPTIONS"</span>
+<span class="">	invoke-virtual {p1, p2}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_3</span>
+<span class="">	const-string p2, "HEAD"</span>
+<span class="">	invoke-virtual {p1, p2}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_4</span>
+<span class="">	const-string p2, "DELETE"</span>
+<span class="">	invoke-virtual {p1, p2}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_5</span>
+<span class="">	const-string v0, "PUT"</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0, p1, p2}, Lcom/android/volley/toolbox/HurlStack;->addBodyIfExists(Ljava/net/HttpURLConnection;Lcom/android/volley/Request;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:pswitch_6</span>
+<span class="cov">	invoke-virtual {p1, v1}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0, p1, p2}, Lcom/android/volley/toolbox/HurlStack;->addBodyIfExists(Ljava/net/HttpURLConnection;Lcom/android/volley/Request;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_7</span>
+<span class="">	const-string p2, "GET"</span>
+<span class="">	invoke-virtual {p1, p2}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_8</span>
+<span class="">	invoke-virtual {p2}, Lcom/android/volley/Request;->getPostBody()[B</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p1, v1}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0, p1, p2, v0}, Lcom/android/volley/toolbox/HurlStack;->addBody(Ljava/net/HttpURLConnection;Lcom/android/volley/Request;[B)V</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-void</span>
+<span class="">	nop</span>
+<span class="">	:pswitch_data_0</span>
+<span class="">	.packed-switch -0x1</span>
+<span class="">	:pswitch_8</span>
+<span class="">	:pswitch_7</span>
+<span class="">	:pswitch_6</span>
+<span class="">	:pswitch_5</span>
+<span class="">	:pswitch_4</span>
+<span class="">	:pswitch_3</span>
+<span class="">	:pswitch_2</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_0</span>
+<span class="">	.end packed-switch</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

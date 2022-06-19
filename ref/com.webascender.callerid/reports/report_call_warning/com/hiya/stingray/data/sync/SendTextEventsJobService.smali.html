@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.data.sync</a></li>
+        <li><i class="ico ico-class"></i> SendTextEventsJobService.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/hiya/stingray/data/sync/SendTextEventsJobService;
+.super Lcom/hiya/stingray/data/sync/a;
+.source "SourceFile"
+
+
+.field public g:Lcom/hiya/stingray/manager/d4;
+.field public h:Lcom/hiya/stingray/manager/h2;
+.field public i:Lcom/hiya/stingray/manager/h4;
+.field public j:Li/c/b0/c/a;
+.field public k:Lcom/hiya/stingray/manager/o2;
+
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Lcom/hiya/stingray/data/sync/a;-><init>()V</span>
+.end method
+
+.method public static final synthetic d(Lcom/hiya/stingray/data/sync/SendTextEventsJobService;Ljava/util/List;Landroid/app/job/JobParameters;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1, p2}, Lcom/hiya/stingray/data/sync/SendTextEventsJobService;->g(Ljava/util/List;Landroid/app/job/JobParameters;)V</span>
+.end method
+
+.method private final g(Ljava/util/List;Landroid/app/job/JobParameters;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"+",</span>
+<span class="">	"Lcom/hiya/stingray/q/c/d;",</span>
+<span class="">	">;",</span>
+<span class="">	"Landroid/app/job/JobParameters;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	const/16 v1, 0xa</span>
+<span class="">	invoke-static {p1, v1}, Lkotlin/s/k;->q(Ljava/lang/Iterable;I)I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Lcom/hiya/stingray/q/c/d;</span>
+<span class="">	invoke-virtual {v2}, Lcom/hiya/stingray/q/c/d;->e()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v0, v2}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v0}, Lkotlin/s/k;->h0(Ljava/lang/Iterable;)Ljava/util/HashSet;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/stingray/data/sync/SendTextEventsJobService;->g:Lcom/hiya/stingray/manager/d4;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-virtual {v1, v0}, Lcom/hiya/stingray/manager/d4;->a(Ljava/util/Set;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$a;</span>
+<span class="">	invoke-direct {v1, p0, p2}, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$a;-><init>(Lcom/hiya/stingray/data/sync/SendTextEventsJobService;Landroid/app/job/JobParameters;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Li/c/b0/b/v;->doAfterTerminate(Li/c/b0/d/a;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-static {}, Li/c/b0/j/a;->b()Li/c/b0/b/d0;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p2, v0}, Li/c/b0/b/v;->subscribeOn(Li/c/b0/b/d0;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	new-instance v0, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$b;</span>
+<span class="">	invoke-direct {v0, p0, p1}, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$b;-><init>(Lcom/hiya/stingray/data/sync/SendTextEventsJobService;Ljava/util/List;)V</span>
+<span class="">	sget-object p1, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$c;->f:Lcom/hiya/stingray/data/sync/SendTextEventsJobService$c;</span>
+<span class="">	invoke-virtual {p2, v0, p1}, Li/c/b0/b/v;->subscribe(Li/c/b0/d/g;Li/c/b0/d/g;)Li/c/b0/c/c;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string p2, "smsEventManager.getRealm\u2026s, sms event receiver\")})"</span>
+<span class="">	invoke-static {p1, p2}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/hiya/stingray/data/sync/SendTextEventsJobService;->j:Li/c/b0/c/a;</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	invoke-virtual {p2, p1}, Li/c/b0/c/a;->b(Li/c/b0/c/c;)Z</span>
+<span class="">	const-string p1, "compositeDisposable"</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p1}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	throw v2</span>
+<span class="">	const-string p1, "smsEventManager"</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {p1}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	throw v2</span>
+.end method
+
+.method public final e()Lcom/hiya/stingray/manager/h2;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/data/sync/SendTextEventsJobService;->h:Lcom/hiya/stingray/manager/h2;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-string v0, "dataIngestingAgent"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v0}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public final f()Lcom/hiya/stingray/manager/o2;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/data/sync/SendTextEventsJobService;->k:Lcom/hiya/stingray/manager/o2;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-string v0, "deviceUserInfoManager"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v0}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public onCreate()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-super {p0}, Landroid/app/job/JobService;->onCreate()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/hiya/stingray/data/sync/a;->c()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/hiya/stingray/data/sync/a;->b()Lcom/hiya/stingray/s/d/i;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0, p0}, Lcom/hiya/stingray/s/d/i;->d(Lcom/hiya/stingray/data/sync/SendTextEventsJobService;)V</span>
+.end method
+
+.method public onStartJob(Landroid/app/job/JobParameters;)Z
+<span class="">	.locals 5</span>
+
+<span class="">	const-string v0, "jobParams"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/job/JobParameters;->getJobId()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	const/16 v2, 0x232c</span>
+<span class="">	if-eq v0, v2, :cond_0</span>
+<span class="">	new-instance v0, Ljava/lang/UnsupportedOperationException;</span>
+<span class="">	const-string v2, "Unrecognized Job ID for SendTextEventsJobService"</span>
+<span class="">	invoke-direct {v0, v2}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/job/JobParameters;->getJobId()I</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	aput-object p1, v1, v2</span>
+<span class="">	const-string p1, "Job ID %d"</span>
+<span class="">	invoke-static {v0, p1, v1}, Lr/a/a;->f(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/data/sync/SendTextEventsJobService;->g:Lcom/hiya/stingray/manager/d4;</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {v0}, Lcom/hiya/stingray/manager/d4;->b()Li/c/b0/b/v;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v3, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$d;</span>
+<span class="">	invoke-direct {v3, p0, p1}, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$d;-><init>(Lcom/hiya/stingray/data/sync/SendTextEventsJobService;Landroid/app/job/JobParameters;)V</span>
+<span class="">	invoke-virtual {v0, v3}, Li/c/b0/b/v;->takeWhile(Li/c/b0/d/p;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Li/c/b0/j/a;->b()Li/c/b0/b/d0;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v0, v3}, Li/c/b0/b/v;->subscribeOn(Li/c/b0/b/d0;)Li/c/b0/b/v;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v3, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$e;</span>
+<span class="">	invoke-direct {v3, p0, p1}, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$e;-><init>(Lcom/hiya/stingray/data/sync/SendTextEventsJobService;Landroid/app/job/JobParameters;)V</span>
+<span class="">	new-instance v4, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$f;</span>
+<span class="">	invoke-direct {v4, p0, p1}, Lcom/hiya/stingray/data/sync/SendTextEventsJobService$f;-><init>(Lcom/hiya/stingray/data/sync/SendTextEventsJobService;Landroid/app/job/JobParameters;)V</span>
+<span class="">	invoke-virtual {v0, v3, v4}, Li/c/b0/b/v;->subscribe(Li/c/b0/d/g;Li/c/b0/d/g;)Li/c/b0/c/c;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "smsEventManager.getSmsEv\u2026                       })"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/data/sync/SendTextEventsJobService;->j:Li/c/b0/c/a;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {v0, p1}, Li/c/b0/c/a;->b(Li/c/b0/c/c;)Z</span>
+<span class="">	const-string p1, "compositeDisposable"</span>
+<span class="">	invoke-static {p1}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	throw v2</span>
+<span class="">	const-string p1, "smsEventManager"</span>
+<span class="">	invoke-static {p1}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	throw v2</span>
+.end method
+
+.method public onStopJob(Landroid/app/job/JobParameters;)Z
+<span class="">	.locals 3</span>
+
+<span class="">	const-string v0, "params"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	new-array p1, p1, [Ljava/lang/Object;</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	aput-object v0, p1, v1</span>
+<span class="">	const-string v0, "onStop SendTextEventsJobService time: %d"</span>
+<span class="">	invoke-static {v0, p1}, Lr/a/a;->a(Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	iget-object p1, p0, Lcom/hiya/stingray/data/sync/SendTextEventsJobService;->j:Li/c/b0/c/a;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	const-string v2, "compositeDisposable"</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	invoke-virtual {p1}, Li/c/b0/c/a;->isDisposed()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_1</span>
+<span class="">	iget-object p1, p0, Lcom/hiya/stingray/data/sync/SendTextEventsJobService;->j:Li/c/b0/c/a;</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Li/c/b0/c/a;->dispose()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {v2}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v2}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	throw v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

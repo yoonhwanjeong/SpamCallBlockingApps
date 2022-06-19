@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.client.callerid.ui.overlay.g</a></li>
+        <li><i class="ico ico-class"></i> b.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/hiya/client/callerid/ui/overlay/g/b;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+
+
+<span class="cov">.method public constructor &lt;init&gt;()V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public final a(Lg/g/b/c/o;Lg/g/b/c/i;Lg/g/b/c/k;Lg/g/b/c/q;)Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const-string v0, "profileIconType"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v0, "entityType"</span>
+<span class="cov">	invoke-static {p2, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v0, "direction"</span>
+<span class="cov">	invoke-static {p3, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v0, "reputationLevel"</span>
+<span class="cov">	invoke-static {p4, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object v0, Lcom/hiya/client/callerid/ui/overlay/g/a;->b:[I</span>
+<span class="exec">	invoke-virtual {p1}, Ljava/lang/Enum;->ordinal()I</span>
+<span class="cov">	move-result p1</span>
+<span class="cov">	aget p1, v0, p1</span>
+<span class="">	packed-switch p1, :pswitch_data_0</span>
+<span class="">	new-instance p1, Lkotlin/NoWhenBranchMatchedException;</span>
+<span class="">	invoke-direct {p1}, Lkotlin/NoWhenBranchMatchedException;-><init>()V</span>
+<span class="">	throw p1</span>
+<span class="">	:pswitch_0</span>
+<span class="">	sget-object p1, Lg/g/b/c/i;->PERSON:Lg/g/b/c/i;</span>
+<span class="">	if-eq p2, p1, :cond_1</span>
+<span class="">	sget-object p1, Lg/g/b/c/i;->BUSINESS:Lg/g/b/c/i;</span>
+<span class="">	if-ne p2, p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object p1, Lcom/hiya/client/callerid/ui/b0/d;->NOT_IDENTIFIED:Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object p1, Lcom/hiya/client/callerid/ui/b0/d;->IDENTIFIED:Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_1</span>
+<span class="">	sget-object p1, Lg/g/b/c/k;->OUTGOING:Lg/g/b/c/k;</span>
+<span class="">	if-ne p3, p1, :cond_2</span>
+<span class="">	sget-object p1, Lcom/hiya/client/callerid/ui/b0/d;->PREMIUM:Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	sget-object p1, Lcom/hiya/client/callerid/ui/overlay/g/a;->a:[I</span>
+<span class="">	invoke-virtual {p4}, Ljava/lang/Enum;->ordinal()I</span>
+<span class="">	move-result p2</span>
+<span class="">	aget p1, p1, p2</span>
+<span class="">	const/4 p2, 0x1</span>
+<span class="">	if-eq p1, p2, :cond_4</span>
+<span class="">	const/4 p2, 0x2</span>
+<span class="">	if-eq p1, p2, :cond_3</span>
+<span class="">	sget-object p1, Lcom/hiya/client/callerid/ui/b0/d;->IDENTIFIED:Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	sget-object p1, Lcom/hiya/client/callerid/ui/b0/d;->FRAUD:Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_4</span>
+<span class="">	sget-object p1, Lcom/hiya/client/callerid/ui/b0/d;->SPAM:Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_2</span>
+<span class="">	sget-object p1, Lcom/hiya/client/callerid/ui/b0/d;->FRAUD:Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_3</span>
+<span class="">	sget-object p1, Lcom/hiya/client/callerid/ui/b0/d;->IDENTIFIED:Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="">	goto :goto_1</span>
+<span class="cov">	:pswitch_4</span>
+<span class="cov">	sget-object p1, Lcom/hiya/client/callerid/ui/b0/d;->SPAM:Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:pswitch_5</span>
+<span class="">	sget-object p1, Lcom/hiya/client/callerid/ui/b0/d;->IDENTIFIED:Lcom/hiya/client/callerid/ui/b0/d;</span>
+<span class="cov">	:goto_1</span>
+<span class="exec">	return-object p1</span>
+<span class="">	:pswitch_data_0</span>
+<span class="">	.packed-switch 0x1</span>
+<span class="">	:pswitch_5</span>
+<span class="">	:pswitch_4</span>
+<span class="">	:pswitch_3</span>
+<span class="">	:pswitch_2</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_0</span>
+<span class="">	.end packed-switch</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot.xy</a></li>
+        <li><i class="ico ico-class"></i> NormedXYSeries.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/androidplot/xy/NormedXYSeries;
+.super Ljava/lang/Object;
+.source "NormedXYSeries.java"
+.implements Lcom/androidplot/xy/XYSeries;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/androidplot/xy/NormedXYSeries$Norm;
+}
+.end annotation
+
+.field private minMaxX:Lcom/androidplot/Region;
+.field private minMaxY:Lcom/androidplot/Region;
+.field private rawData:Lcom/androidplot/xy/XYSeries;
+.field private transformX:Lcom/androidplot/Region;
+.field private transformY:Lcom/androidplot/Region;
+
+
+.method public constructor <init>(Lcom/androidplot/xy/XYSeries;)V
+<span class="">	.locals 5</span>
+
+<span class="">	new-instance v0, Lcom/androidplot/xy/NormedXYSeries$Norm;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const-wide/16 v2, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	invoke-direct {v0, v1, v2, v3, v4}, Lcom/androidplot/xy/NormedXYSeries$Norm;-><init>(Lcom/androidplot/Region;DZ)V</span>
+<span class="">	invoke-direct {p0, p1, v1, v0}, Lcom/androidplot/xy/NormedXYSeries;-><init>(Lcom/androidplot/xy/XYSeries;Lcom/androidplot/xy/NormedXYSeries$Norm;Lcom/androidplot/xy/NormedXYSeries$Norm;)V</span>
+.end method
+
+.method public constructor <init>(Lcom/androidplot/xy/XYSeries;Lcom/androidplot/xy/NormedXYSeries$Norm;Lcom/androidplot/xy/NormedXYSeries$Norm;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/NormedXYSeries;->rawData:Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	invoke-virtual {p0, p2, p3}, Lcom/androidplot/xy/NormedXYSeries;->normalize(Lcom/androidplot/xy/NormedXYSeries$Norm;Lcom/androidplot/xy/NormedXYSeries$Norm;)V</span>
+.end method
+
+.method protected calculateTransform(Lcom/androidplot/xy/NormedXYSeries$Norm;)Lcom/androidplot/Region;
+<span class="">	.locals 9</span>
+
+<span class="">	iget-boolean v0, p1, Lcom/androidplot/xy/NormedXYSeries$Norm;->useOffsetCompression:Z</span>
+<span class="">	const-wide/high16 v1, 0x3ff0000000000000L    # 1.0</span>
+<span class="">	const-wide/16 v3, 0x0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	new-instance v0, Lcom/androidplot/Region;</span>
+<span class="">	iget-wide v5, p1, Lcom/androidplot/xy/NormedXYSeries$Norm;->offset:D</span>
+<span class="">	cmpl-double v7, v5, v3</span>
+<span class="">	if-lez v7, :cond_0</span>
+<span class="">	iget-wide v5, p1, Lcom/androidplot/xy/NormedXYSeries$Norm;->offset:D</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-wide v5, v3</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-static {v5, v6}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	iget-wide v6, p1, Lcom/androidplot/xy/NormedXYSeries$Norm;->offset:D</span>
+<span class="">	cmpg-double v8, v6, v3</span>
+<span class="">	if-gez v8, :cond_1</span>
+<span class="">	iget-wide v3, p1, Lcom/androidplot/xy/NormedXYSeries$Norm;->offset:D</span>
+<span class="">	add-double/2addr v1, v3</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {v1, v2}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {v0, v5, p1}, Lcom/androidplot/Region;-><init>(Ljava/lang/Number;Ljava/lang/Number;)V</span>
+<span class="">	new-instance v0, Lcom/androidplot/Region;</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-wide v5, p1, Lcom/androidplot/xy/NormedXYSeries$Norm;->offset:D</span>
+<span class="">	add-double/2addr v5, v3</span>
+<span class="">	invoke-static {v5, v6}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iget-wide v4, p1, Lcom/androidplot/xy/NormedXYSeries$Norm;->offset:D</span>
+<span class="">	add-double/2addr v4, v1</span>
+<span class="">	invoke-static {v4, v5}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {v0, v3, p1}, Lcom/androidplot/Region;-><init>(Ljava/lang/Number;Ljava/lang/Number;)V</span>
+.end method
+
+.method public denormalizeXVal(Ljava/lang/Number;)Ljava/lang/Number;
+<span class="">	.locals 3</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/NormedXYSeries;->transformX:Lcom/androidplot/Region;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/NormedXYSeries;->minMaxX:Lcom/androidplot/Region;</span>
+<span class="">	invoke-virtual {v0, v1, v2, p1}, Lcom/androidplot/Region;->transform(DLcom/androidplot/Region;)Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public denormalizeYVal(Ljava/lang/Number;)Ljava/lang/Number;
+<span class="">	.locals 3</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/NormedXYSeries;->transformY:Lcom/androidplot/Region;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/NormedXYSeries;->minMaxY:Lcom/androidplot/Region;</span>
+<span class="">	invoke-virtual {v0, v1, v2, p1}, Lcom/androidplot/Region;->transform(DLcom/androidplot/Region;)Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public getTitle()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/NormedXYSeries;->rawData:Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	invoke-interface {v0}, Lcom/androidplot/xy/XYSeries;->getTitle()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public getX(I)Ljava/lang/Number;
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/NormedXYSeries;->rawData:Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	invoke-interface {v0, p1}, Lcom/androidplot/xy/XYSeries;->getX(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/NormedXYSeries;->transformX:Lcom/androidplot/Region;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/NormedXYSeries;->minMaxX:Lcom/androidplot/Region;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/NormedXYSeries;->transformX:Lcom/androidplot/Region;</span>
+<span class="">	invoke-virtual {v0, v1, v2, p1}, Lcom/androidplot/Region;->transform(DLcom/androidplot/Region;)Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public getY(I)Ljava/lang/Number;
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/NormedXYSeries;->rawData:Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	invoke-interface {v0, p1}, Lcom/androidplot/xy/XYSeries;->getY(I)Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/NormedXYSeries;->transformY:Lcom/androidplot/Region;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/NormedXYSeries;->minMaxY:Lcom/androidplot/Region;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Number;->doubleValue()D</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	iget-object p1, p0, Lcom/androidplot/xy/NormedXYSeries;->transformY:Lcom/androidplot/Region;</span>
+<span class="">	invoke-virtual {v0, v1, v2, p1}, Lcom/androidplot/Region;->transform(DLcom/androidplot/Region;)Ljava/lang/Number;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method protected normalize(Lcom/androidplot/xy/NormedXYSeries$Norm;Lcom/androidplot/xy/NormedXYSeries$Norm;)V
+<span class="">	.locals 4</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	iget-object v2, p1, Lcom/androidplot/xy/NormedXYSeries$Norm;->minMax:Lcom/androidplot/Region;</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	iget-object v2, p1, Lcom/androidplot/xy/NormedXYSeries$Norm;->minMax:Lcom/androidplot/Region;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-array v2, v1, [Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	iget-object v3, p0, Lcom/androidplot/xy/NormedXYSeries;->rawData:Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	aput-object v3, v2, v0</span>
+<span class="">	invoke-static {v2}, Lcom/androidplot/util/SeriesUtils;->minMaxX([Lcom/androidplot/xy/XYSeries;)Lcom/androidplot/Region;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:goto_0</span>
+<span class="">	iput-object v2, p0, Lcom/androidplot/xy/NormedXYSeries;->minMaxX:Lcom/androidplot/Region;</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/androidplot/xy/NormedXYSeries;->calculateTransform(Lcom/androidplot/xy/NormedXYSeries$Norm;)Lcom/androidplot/Region;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/NormedXYSeries;->transformX:Lcom/androidplot/Region;</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz p2, :cond_3</span>
+<span class="">	iget-object p1, p2, Lcom/androidplot/xy/NormedXYSeries$Norm;->minMax:Lcom/androidplot/Region;</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	iget-object p1, p2, Lcom/androidplot/xy/NormedXYSeries$Norm;->minMax:Lcom/androidplot/Region;</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	new-array p1, v1, [Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	iget-object v1, p0, Lcom/androidplot/xy/NormedXYSeries;->rawData:Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	aput-object v1, p1, v0</span>
+<span class="">	invoke-static {p1}, Lcom/androidplot/util/SeriesUtils;->minMaxY([Lcom/androidplot/xy/XYSeries;)Lcom/androidplot/Region;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_1</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/NormedXYSeries;->minMaxY:Lcom/androidplot/Region;</span>
+<span class="">	invoke-virtual {p0, p2}, Lcom/androidplot/xy/NormedXYSeries;->calculateTransform(Lcom/androidplot/xy/NormedXYSeries$Norm;)Lcom/androidplot/Region;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/androidplot/xy/NormedXYSeries;->transformY:Lcom/androidplot/Region;</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method public size()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/androidplot/xy/NormedXYSeries;->rawData:Lcom/androidplot/xy/XYSeries;</span>
+<span class="">	invoke-interface {v0}, Lcom/androidplot/xy/XYSeries;->size()I</span>
+<span class="">	move-result v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

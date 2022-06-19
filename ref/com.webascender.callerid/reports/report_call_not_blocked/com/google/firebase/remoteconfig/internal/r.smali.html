@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.remoteconfig.internal</a></li>
+        <li><i class="ico ico-class"></i> r.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/firebase/remoteconfig/internal/r;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private final a:Lcom/google/firebase/analytics/a/a;
+.field private final b:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+
+
+<span class="cov">.method public constructor &lt;init&gt;(Lcom/google/firebase/analytics/a/a;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	new-instance v0, Ljava/util/HashMap;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/HashMap;-><init>()V</span>
+<span class="exec">	invoke-static {v0}, Ljava/util/Collections;->synchronizedMap(Ljava/util/Map;)Ljava/util/Map;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	iput-object v0, p0, Lcom/google/firebase/remoteconfig/internal/r;->b:Ljava/util/Map;</span>
+<span class="cov">	iput-object p1, p0, Lcom/google/firebase/remoteconfig/internal/r;->a:Lcom/google/firebase/analytics/a/a;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public a(Ljava/lang/String;Lcom/google/firebase/remoteconfig/internal/f;)V</span>
+<span class="">	.locals 4</span>
+
+<span class="exec">	invoke-virtual {p2}, Lcom/google/firebase/remoteconfig/internal/f;->f()Lorg/json/JSONObject;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lorg/json/JSONObject;->length()I</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	const/4 v2, 0x1</span>
+<span class="cov">	if-ge v1, v2, :cond_0</span>
+<span class="exec">	return-void</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p2}, Lcom/google/firebase/remoteconfig/internal/f;->d()Lorg/json/JSONObject;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Lorg/json/JSONObject;->length()I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-ge v1, v2, :cond_1</span>
+<span class="">	invoke-virtual {v0, p1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_2</span>
+<span class="">	const-string v1, "choiceId"</span>
+<span class="">	invoke-virtual {v0, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/String;->isEmpty()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_3</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/remoteconfig/internal/r;->b:Ljava/util/Map;</span>
+<span class="">	monitor-enter v2</span>
+<span class="">	iget-object v3, p0, Lcom/google/firebase/remoteconfig/internal/r;->b:Ljava/util/Map;</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-interface {v3, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_4</span>
+<span class="">	monitor-exit v2</span>
+<span class="">	iget-object v3, p0, Lcom/google/firebase/remoteconfig/internal/r;->b:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v3, p1, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	monitor-exit v2</span>
+<span class="">	new-instance v2, Landroid/os/Bundle;</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-direct {v2}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	const-string v3, "arm_key"</span>
+<span class="">	invoke-virtual {v2, v3, p1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	const-string v3, "arm_value"</span>
+<span class="">	invoke-virtual {p2, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v2, v3, p1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string p1, "personalization_id"</span>
+<span class="">	const-string p2, "personalizationId"</span>
+<span class="">	invoke-virtual {v0, p2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {v2, p1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string p1, "arm_index"</span>
+<span class="">	const-string p2, "armIndex"</span>
+<span class="">	const/4 v3, -0x1</span>
+<span class="">	invoke-virtual {v0, p2, v3}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {v2, p1, p2}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V</span>
+<span class="">	const-string p1, "group"</span>
+<span class="">	const-string p2, "group"</span>
+<span class="">	invoke-virtual {v0, p2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {v2, p1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iget-object p1, p0, Lcom/google/firebase/remoteconfig/internal/r;->a:Lcom/google/firebase/analytics/a/a;</span>
+<span class="">	const-string p2, "fp"</span>
+<span class="">	const-string v0, "personalization_assignment"</span>
+<span class="">	invoke-interface {p1, p2, v0, v2}, Lcom/google/firebase/analytics/a/a;->c(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	new-instance p1, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {p1}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	const-string p2, "_fpid"</span>
+<span class="">	invoke-virtual {p1, p2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	iget-object p2, p0, Lcom/google/firebase/remoteconfig/internal/r;->a:Lcom/google/firebase/analytics/a/a;</span>
+<span class="">	const-string v0, "fp"</span>
+<span class="">	const-string v1, "_fpc"</span>
+<span class="">	invoke-interface {p2, v0, v1, p1}, Lcom/google/firebase/analytics/a/a;->c(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit v2</span>
+<span class="">	throw p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

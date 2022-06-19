@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.messaging</a></li>
+        <li><i class="ico ico-class"></i> s.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/firebase/messaging/s;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private static final a:Lcom/google/firebase/encoders/a;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Lcom/google/firebase/encoders/h/d;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/firebase/encoders/h/d;-><init>()V</span>
+<span class="">	new-instance v1, Lcom/google/firebase/messaging/o$c;</span>
+<span class="">	invoke-direct {v1}, Lcom/google/firebase/messaging/o$c;-><init>()V</span>
+<span class="">	const-class v2, Lcom/google/firebase/messaging/o$b;</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Lcom/google/firebase/encoders/h/d;->l(Ljava/lang/Class;Lcom/google/firebase/encoders/c;)Lcom/google/firebase/encoders/h/d;</span>
+<span class="">	new-instance v1, Lcom/google/firebase/messaging/o$a;</span>
+<span class="">	invoke-direct {v1}, Lcom/google/firebase/messaging/o$a;-><init>()V</span>
+<span class="">	const-class v2, Lcom/google/firebase/messaging/o;</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Lcom/google/firebase/encoders/h/d;->l(Ljava/lang/Class;Lcom/google/firebase/encoders/c;)Lcom/google/firebase/encoders/h/d;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/encoders/h/d;->f()Lcom/google/firebase/encoders/a;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sput-object v0, Lcom/google/firebase/messaging/s;->a:Lcom/google/firebase/encoders/a;</span>
+.end method
+
+.method public static A(Landroid/content/Intent;)Z
+<span class="">	.locals 0</span>
+
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	invoke-static {p0}, Lcom/google/firebase/messaging/s;->s(Landroid/content/Intent;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/messaging/s;->a()Z</span>
+<span class="">	move-result p0</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public static B(Landroid/content/Intent;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	invoke-static {p0}, Lcom/google/firebase/messaging/s;->s(Landroid/content/Intent;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v0, "google.c.a.e"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "1"</span>
+<span class="">	invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method static a()Z
+<span class="">	.locals 6</span>
+
+<span class="">	const-string v0, "delivery_metrics_exported_to_big_query_enabled"</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/c;->i()Lcom/google/firebase/c;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/IllegalStateException; {:try_start_0 .. :try_end_0} :catch_1</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/c;->i()Lcom/google/firebase/c;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/c;->h()Landroid/content/Context;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "com.google.firebase.messaging"</span>
+<span class="">	invoke-virtual {v2, v3, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const-string v4, "export_to_big_query"</span>
+<span class="">	invoke-interface {v3, v4}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_0</span>
+<span class="">	invoke-interface {v3, v4, v1}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/16 v4, 0x80</span>
+<span class="">	invoke-virtual {v3, v2, v4}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	iget-object v3, v2, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	invoke-virtual {v3, v0}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	iget-object v2, v2, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;</span>
+<span class="">	invoke-virtual {v2, v0, v1}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const-string v0, "FirebaseMessaging"</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	const-string v2, "FirebaseApp has not being initialized. Device might be in direct boot mode. Skip exporting delivery metrics to Big Query"</span>
+<span class="">	:catch_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {v0, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:catch_1</span>
+.end method
+
+.method static b(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "collapse_key"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method static c(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "google.c.a.c_id"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method static d(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "google.c.a.c_l"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method static e()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {}, Lcom/google/firebase/c;->i()Lcom/google/firebase/c;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/firebase/iid/FirebaseInstanceId;->getInstance(Lcom/google/firebase/c;)Lcom/google/firebase/iid/FirebaseInstanceId;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/iid/FirebaseInstanceId;->g()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method static f(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "google.c.a.m_c"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method static g(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "google.message_id"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const-string v0, "message_id"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method static h(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "google.c.a.m_l"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method private static i(Ljava/lang/String;)I
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "high"</span>
+<span class="">	invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 p0, 0x1</span>
+<span class="">	const-string v0, "normal"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	const/4 p0, 0x2</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method static j(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "google.c.a.ts"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method static k(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Lcom/google/firebase/messaging/t;->t(Landroid/os/Bundle;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	const-string p0, "DISPLAY_NOTIFICATION"</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p0, "DATA_MESSAGE"</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method static l(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Lcom/google/firebase/messaging/t;->t(Landroid/os/Bundle;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	const-string p0, "display"</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p0, "data"</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method static m()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {}, Lcom/google/firebase/c;->i()Lcom/google/firebase/c;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/c;->h()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method static n(Landroid/content/Intent;)I
+<span class="">	.locals 2</span>
+
+<span class="">	const-string v0, "google.delivered_priority"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	const-string v0, "google.priority_reduced"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "1"</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 p0, 0x2</span>
+<span class="">	const-string v0, "google.priority"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/firebase/messaging/s;->i(Ljava/lang/String;)I</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result p0</span>
+.end method
+
+.method static o()Ljava/lang/String;
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-static {}, Lcom/google/firebase/c;->i()Lcom/google/firebase/c;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/c;->l()Lcom/google/firebase/i;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/i;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/c;->l()Lcom/google/firebase/i;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/i;->c()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "1:"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	const-string v1, ":"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	array-length v1, v0</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	if-ge v1, v2, :cond_2</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	aget-object v0, v0, v1</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method static p(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "from"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	const-string v0, "/topics/"</span>
+<span class="">	invoke-virtual {p0, v0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method static q(Landroid/content/Intent;)I
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "google.ttl"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/os/Bundle;->get(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	instance-of v0, p0, Ljava/lang/Integer;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	check-cast p0, Ljava/lang/Integer;</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Integer;->intValue()I</span>
+<span class="">	move-result p0</span>
+<span class="">	instance-of v0, p0, Ljava/lang/String;</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	check-cast v0, Ljava/lang/String;</span>
+<span class="">	invoke-static {v0}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I</span>
+<span class="">	move-result p0</span>
+<span class="">	invoke-static {p0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-static {p0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v0</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	add-int/lit8 v0, v0, 0xd</span>
+<span class="">	invoke-direct {v1, v0}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	const-string v0, "Invalid TTL: "</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "FirebaseMessaging"</span>
+<span class="">	invoke-static {v0, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method static r(Landroid/content/Intent;)Ljava/lang/String;
+<span class="">	.locals 2</span>
+
+<span class="">	const-string v0, "google.c.a.udt"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->hasExtra(Ljava/lang/String;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private static s(Landroid/content/Intent;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0}, Landroid/content/Intent;->getAction()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "com.google.firebase.messaging.RECEIVE_DIRECT_BOOT"</span>
+<span class="">	invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p0</span>
+.end method
+
+.method public static t(Landroid/content/Intent;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "_nd"</span>
+<span class="">	invoke-static {v0, p0}, Lcom/google/firebase/messaging/s;->y(Ljava/lang/String;Landroid/content/Intent;)V</span>
+.end method
+
+.method public static u(Landroid/content/Intent;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "_nf"</span>
+<span class="">	invoke-static {v0, p0}, Lcom/google/firebase/messaging/s;->y(Ljava/lang/String;Landroid/content/Intent;)V</span>
+.end method
+
+.method public static v(Landroid/content/Intent;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {p0}, Lcom/google/firebase/messaging/s;->z(Landroid/content/Intent;)V</span>
+<span class="">	const-string v0, "_no"</span>
+<span class="">	invoke-static {v0, p0}, Lcom/google/firebase/messaging/s;->y(Ljava/lang/String;Landroid/content/Intent;)V</span>
+.end method
+
+.method public static w(Landroid/content/Intent;)V
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-static {p0}, Lcom/google/firebase/messaging/s;->B(Landroid/content/Intent;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const-string v0, "_nr"</span>
+<span class="">	invoke-static {v0, p0}, Lcom/google/firebase/messaging/s;->y(Ljava/lang/String;Landroid/content/Intent;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p0}, Lcom/google/firebase/messaging/s;->A(Landroid/content/Intent;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/messaging/FirebaseMessaging;->d()Lg/f/a/b/g;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	const-class v1, Ljava/lang/String;</span>
+<span class="">	const-string v2, "json"</span>
+<span class="">	invoke-static {v2}, Lg/f/a/b/b;->b(Ljava/lang/String;)Lg/f/a/b/b;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	sget-object v3, Lcom/google/firebase/messaging/r;->a:Lg/f/a/b/e;</span>
+<span class="">	const-string v4, "FCM_CLIENT_EVENT_LOGGING"</span>
+<span class="">	invoke-interface {v0, v4, v1, v2, v3}, Lg/f/a/b/g;->b(Ljava/lang/String;Ljava/lang/Class;Lg/f/a/b/b;Lg/f/a/b/e;)Lg/f/a/b/f;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "MESSAGE_DELIVERED"</span>
+<span class="">	invoke-static {v1, p0, v0}, Lcom/google/firebase/messaging/s;->x(Ljava/lang/String;Landroid/content/Intent;Lg/f/a/b/f;)V</span>
+<span class="">	const-string p0, "FirebaseMessaging"</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v0, "TransportFactory is null. Skip exporting message delivery metrics to Big Query"</span>
+<span class="">	invoke-static {p0, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private static x(Ljava/lang/String;Landroid/content/Intent;Lg/f/a/b/f;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Landroid/content/Intent;",</span>
+<span class="">	"Lg/f/a/b/f<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance p0, Lcom/google/firebase/messaging/o;</span>
+<span class="">	const-string v0, "MESSAGE_DELIVERED"</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/firebase/messaging/o;-><init>(Ljava/lang/String;Landroid/content/Intent;)V</span>
+<span class="">	new-instance p1, Lcom/google/firebase/messaging/o$b;</span>
+<span class="">	invoke-direct {p1, p0}, Lcom/google/firebase/messaging/o$b;-><init>(Lcom/google/firebase/messaging/o;)V</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object p0, Lcom/google/firebase/messaging/s;->a:Lcom/google/firebase/encoders/a;</span>
+<span class="">	invoke-interface {p0, p1}, Lcom/google/firebase/encoders/a;->encode(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Lg/f/a/b/c;->e(Ljava/lang/Object;)Lg/f/a/b/c;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {p2, p0}, Lg/f/a/b/f;->a(Lg/f/a/b/c;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lcom/google/firebase/encoders/EncodingException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	const-string p0, "FirebaseMessaging"</span>
+<span class="">	:catch_0</span>
+<span class="">	const-string p1, "Failed to encode big query analytics payload. Skip sending"</span>
+<span class="">	invoke-static {p0, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+.end method
+
+.method static y(Ljava/lang/String;Landroid/content/Intent;)V
+<span class="">	.locals 5</span>
+
+<span class="">	new-instance v0, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v0}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/messaging/s;->c(Landroid/content/Intent;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	const-string v2, "_nmid"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/messaging/s;->d(Landroid/content/Intent;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	const-string v2, "_nmn"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/messaging/s;->h(Landroid/content/Intent;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_2</span>
+<span class="">	const-string v2, "label"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/messaging/s;->f(Landroid/content/Intent;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_3</span>
+<span class="">	const-string v2, "message_channel"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/messaging/s;->p(Landroid/content/Intent;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_4</span>
+<span class="">	const-string v2, "_nt"</span>
+<span class="">	invoke-virtual {v0, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/messaging/s;->j(Landroid/content/Intent;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "FirebaseMessaging"</span>
+<span class="">	if-eqz v1, :cond_5</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string v3, "_nmt"</span>
+<span class="">	invoke-static {v1}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0, v3, v1}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception v1</span>
+<span class="">	const-string v3, "Error while parsing timestamp in GCM event"</span>
+<span class="">	invoke-static {v2, v3, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/messaging/s;->r(Landroid/content/Intent;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_6</span>
+<span class="">	:try_start_1</span>
+<span class="">	const-string v3, "_ndt"</span>
+<span class="">	invoke-static {v1}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0, v3, v1}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/NumberFormatException; {:try_start_1 .. :try_end_1} :catch_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catch_1</span>
+<span class="">	move-exception v1</span>
+<span class="">	const-string v3, "Error while parsing use_device_time in GCM event"</span>
+<span class="">	invoke-static {v2, v3, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/messaging/s;->l(Landroid/content/Intent;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v1, "_nr"</span>
+<span class="">	invoke-virtual {v1, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_7</span>
+<span class="">	const-string v1, "_nf"</span>
+<span class="">	invoke-virtual {v1, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_8</span>
+<span class="">	:cond_7</span>
+<span class="">	const-string v1, "_nmc"</span>
+<span class="">	invoke-virtual {v0, v1, p1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:cond_8</span>
+<span class="">	const/4 p1, 0x3</span>
+<span class="">	invoke-static {v2, p1}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_9</span>
+<span class="">	invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v3</span>
+<span class="">	new-instance v4, Ljava/lang/StringBuilder;</span>
+<span class="">	add-int/lit8 v1, v1, 0x25</span>
+<span class="">	add-int/2addr v1, v3</span>
+<span class="">	invoke-direct {v4, v1}, Ljava/lang/StringBuilder;-><init>(I)V</span>
+<span class="">	const-string v1, "Logging to scion event="</span>
+<span class="">	invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, " scionPayload="</span>
+<span class="">	invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v2, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_9</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/c;->i()Lcom/google/firebase/c;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-class v1, Lcom/google/firebase/analytics/a/a;</span>
+<span class="">	invoke-virtual {p1, v1}, Lcom/google/firebase/c;->f(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lcom/google/firebase/analytics/a/a;</span>
+<span class="">	if-eqz p1, :cond_a</span>
+<span class="">	const-string v1, "fcm"</span>
+<span class="">	invoke-interface {p1, v1, p0, v0}, Lcom/google/firebase/analytics/a/a;->c(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	const-string p0, "Unable to log event: analytics library is missing"</span>
+<span class="">	:cond_a</span>
+<span class="">	invoke-static {v2, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+.end method
+
+.method private static z(Landroid/content/Intent;)V
+<span class="">	.locals 5</span>
+
+<span class="">	if-nez p0, :cond_0</span>
+<span class="">	const-string v0, "google.c.a.tc"</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "1"</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x3</span>
+<span class="">	const-string v2, "FirebaseMessaging"</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/c;->i()Lcom/google/firebase/c;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-class v3, Lcom/google/firebase/analytics/a/a;</span>
+<span class="">	invoke-virtual {v0, v3}, Lcom/google/firebase/c;->f(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/google/firebase/analytics/a/a;</span>
+<span class="">	invoke-static {v2, v1}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	const-string v1, "Received event with track-conversion=true. Setting user property and reengagement event"</span>
+<span class="">	invoke-static {v2, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v1, "google.c.a.c_id"</span>
+<span class="">	invoke-virtual {p0, v1}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v1, "fcm"</span>
+<span class="">	const-string v2, "_ln"</span>
+<span class="">	invoke-interface {v0, v1, v2, p0}, Lcom/google/firebase/analytics/a/a;->f(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V</span>
+<span class="">	new-instance v2, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v2}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	const-string v3, "source"</span>
+<span class="">	const-string v4, "Firebase"</span>
+<span class="">	invoke-virtual {v2, v3, v4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string v3, "medium"</span>
+<span class="">	const-string v4, "notification"</span>
+<span class="">	invoke-virtual {v2, v3, v4}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string v3, "campaign"</span>
+<span class="">	invoke-virtual {v2, v3, p0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string p0, "_cmp"</span>
+<span class="">	invoke-interface {v0, v1, p0, v2}, Lcom/google/firebase/analytics/a/a;->c(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	const-string p0, "Unable to set user property for conversion tracking:  analytics library is missing"</span>
+<span class="">	invoke-static {v2, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {v2, v1}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	if-eqz p0, :cond_4</span>
+<span class="">	:cond_3</span>
+<span class="">	const-string p0, "Received event with track-conversion=false. Do not set user property"</span>
+<span class="">	invoke-static {v2, p0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_4</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

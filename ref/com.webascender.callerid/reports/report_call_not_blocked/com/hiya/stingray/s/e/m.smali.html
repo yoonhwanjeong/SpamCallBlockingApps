@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.s.e</a></li>
+        <li><i class="ico ico-class"></i> m.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/hiya/stingray/s/e/m;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field protected final a:Landroid/app/Application;
+
+
+<span class="cov">.method public constructor &lt;init&gt;(Landroid/app/Application;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lcom/hiya/stingray/s/e/m;->a:Landroid/app/Application;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method  A()Landroid/content/SharedPreferences;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/s/e/m;->a:Landroid/app/Application;</span>
+<span class="exec">	invoke-static {v0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  B()Lcom/hiya/stingray/util/b0;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/util/b0;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/hiya/stingray/util/b0;-><init>()V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  C(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	const-string v0, "phone"</span>
+<span class="exec">	invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	check-cast p1, Landroid/telephony/TelephonyManager;</span>
+<span class="cov">	const-string v0, ""</span>
+<span class="cov">	if-eqz p1, :cond_0</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/telephony/TelephonyManager;->getVoiceMailNumber()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object p1, v0</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	invoke-static {p1}, Lcom/google/common/base/r;->b(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	if-nez v1, :cond_1</span>
+<span class="cov">	move-object v0, p1</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  D(Landroid/content/Context;)Landroid/app/job/JobInfo$Builder;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	new-instance v0, Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	new-instance v1, Landroid/content/ComponentName;</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const-class v2, Lcom/hiya/stingray/data/sync/RemoteConfigSyncService;</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	invoke-direct {v1, p1, v2}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	const/16 p1, 0x2329</span>
+<span class="cov">	invoke-direct {v0, p1, v1}, Landroid/app/job/JobInfo$Builder;-><init>(ILandroid/content/ComponentName;)V</span>
+<span class="cov">	sget p1, Lcom/hiya/stingray/util/m;->a:I</span>
+<span class="cov">	mul-int/lit16 p1, p1, 0x3e8</span>
+<span class="cov">	int-to-long v1, p1</span>
+<span class="exec">	invoke-virtual {v0, v1, v2}, Landroid/app/job/JobInfo$Builder;->setPeriodic(J)Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="exec">	invoke-virtual {p1, v0}, Landroid/app/job/JobInfo$Builder;->setPersisted(Z)Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1, v0}, Landroid/app/job/JobInfo$Builder;->setRequiredNetworkType(I)Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method  E(Landroid/content/Context;Lcom/hiya/stingray/manager/x3;)Landroid/app/job/JobInfo$Builder;</span>
+<span class="">	.locals 5</span>
+
+<span class="cov">	const-string v0, "jitter_request_queue_min"</span>
+<span class="exec">	invoke-virtual {p2, v0}, Lcom/hiya/stingray/manager/x3;->l(Ljava/lang/String;)J</span>
+<span class="cov">	move-result-wide v0</span>
+<span class="cov">	long-to-int v1, v0</span>
+<span class="cov">	const-string v0, "period_request_queue_hrs"</span>
+<span class="exec">	invoke-virtual {p2, v0}, Lcom/hiya/stingray/manager/x3;->l(Ljava/lang/String;)J</span>
+<span class="cov">	move-result-wide v2</span>
+<span class="cov">	long-to-int p2, v2</span>
+<span class="cov">	new-instance v0, Ljava/util/Random;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/Random;-><init>()V</span>
+<span class="exec">	invoke-virtual {v0, v1}, Ljava/util/Random;->nextInt(I)I</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	const v1, 0xea60</span>
+<span class="cov">	mul-int v0, v0, v1</span>
+<span class="cov">	int-to-long v0, v0</span>
+<span class="cov">	new-instance v2, Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	new-instance v3, Landroid/content/ComponentName;</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const-class v4, Lcom/hiya/stingray/data/sync/RequestsQueueService;</span>
+<span class="exec">	invoke-virtual {v4}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="cov">	invoke-direct {v3, p1, v4}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	const/16 p1, 0x232a</span>
+<span class="cov">	invoke-direct {v2, p1, v3}, Landroid/app/job/JobInfo$Builder;-><init>(ILandroid/content/ComponentName;)V</span>
+<span class="cov">	const p1, 0x36ee80</span>
+<span class="cov">	mul-int p2, p2, p1</span>
+<span class="cov">	int-to-long p1, p2</span>
+<span class="cov">	add-long/2addr p1, v0</span>
+<span class="exec">	invoke-virtual {v2, p1, p2}, Landroid/app/job/JobInfo$Builder;->setPeriodic(J)Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const/4 p2, 0x1</span>
+<span class="exec">	invoke-virtual {p1, p2}, Landroid/app/job/JobInfo$Builder;->setPersisted(Z)Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1, p2}, Landroid/app/job/JobInfo$Builder;->setRequiredNetworkType(I)Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method  a()Li/c/b0/c/a;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Li/c/b0/c/a;</span>
+<span class="cov">	invoke-direct {v0}, Li/c/b0/c/a;-><init>()V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  b()Landroid/app/Application;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/s/e/m;->a:Landroid/app/Application;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  c(Landroid/content/Context;)Landroid/app/job/JobInfo$Builder;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	new-instance v0, Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	new-instance v1, Landroid/content/ComponentName;</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const-class v2, Lcom/hiya/stingray/data/sync/CallerGridRankingService;</span>
+<span class="exec">	invoke-virtual {v2}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	invoke-direct {v1, p1, v2}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	const/16 p1, 0x232d</span>
+<span class="cov">	invoke-direct {v0, p1, v1}, Landroid/app/job/JobInfo$Builder;-><init>(ILandroid/content/ComponentName;)V</span>
+<span class="cov">	sget p1, Lcom/hiya/stingray/util/m;->c:I</span>
+<span class="cov">	mul-int/lit16 p1, p1, 0x3e8</span>
+<span class="cov">	int-to-long v1, p1</span>
+<span class="exec">	invoke-virtual {v0, v1, v2}, Landroid/app/job/JobInfo$Builder;->setPeriodic(J)Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="exec">	invoke-virtual {p1, v0}, Landroid/app/job/JobInfo$Builder;->setPersisted(Z)Landroid/app/job/JobInfo$Builder;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method  d()Lcom/hiya/stingray/manager/v1;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/manager/v1;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/hiya/stingray/manager/v1;-><init>()V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  e()Lg/g/b/a/a;</span>
+<span class="">	.locals 8</span>
+
+<span class="cov">	new-instance v7, Lg/g/b/a/a;</span>
+<span class="exec">	invoke-static {}, Lcom/hiya/stingray/util/p;->k()Ljava/util/Locale;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/util/Locale;->toLanguageTag()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	sget-object v5, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;</span>
+<span class="cov">	new-instance v6, Lg/g/b/a/g/b/a;</span>
+<span class="cov">	sget-object v0, Lg/g/b/a/g/b/a$a;->WIFI_ONLY:Lg/g/b/a/g/b/a$a;</span>
+<span class="cov">	const/4 v2, 0x1</span>
+<span class="cov">	invoke-direct {v6, v2, v0}, Lg/g/b/a/g/b/a;-><init>(ZLg/g/b/a/g/b/a$a;)V</span>
+<span class="cov">	const/4 v3, 0x1</span>
+<span class="cov">	const/4 v4, 0x1</span>
+<span class="cov">	move-object v0, v7</span>
+<span class="cov">	invoke-direct/range {v0 .. v6}, Lg/g/b/a/a;-><init>(Ljava/lang/String;ZZZLjava/lang/Boolean;Lg/g/b/a/g/b/a;)V</span>
+<span class="exec">	return-object v7</span>
+.end method
+
+<span class="cov">.method  f()Landroid/content/Context;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/s/e/m;->a:Landroid/app/Application;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  g(Lcom/hiya/stingray/manager/n2;)Lcom/hiya/stingray/manager/b2;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/manager/b2;</span>
+<span class="cov">	invoke-direct {v0, p1}, Lcom/hiya/stingray/manager/b2;-><init>(Lcom/hiya/stingray/manager/n2;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  h()Lcom/hiya/stingray/q/b/w;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/q/b/w;</span>
+<span class="cov">	iget-object v1, p0, Lcom/hiya/stingray/s/e/m;->a:Landroid/app/Application;</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/hiya/stingray/q/b/w;-><init>(Landroid/content/Context;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  i(Lcom/hiya/stingray/q/d/f;)Lcom/hiya/stingray/manager/o2;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/manager/o2;</span>
+<span class="cov">	invoke-direct {v0, p1}, Lcom/hiya/stingray/manager/o2;-><init>(Lcom/hiya/stingray/q/d/f;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  j(Landroid/app/Application;)Lcom/hiya/stingray/manager/n2;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/manager/n2;</span>
+<span class="cov">	invoke-direct {v0, p1}, Lcom/hiya/stingray/manager/n2;-><init>(Landroid/app/Application;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  k(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const-string v0, "phone"</span>
+<span class="exec">	invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	check-cast p1, Landroid/telephony/TelephonyManager;</span>
+<span class="cov">	if-eqz p1, :cond_0</span>
+<span class="exec">	invoke-virtual {p1}, Landroid/telephony/TelephonyManager;->getSimCountryIso()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1}, Ljava/lang/String;->toUpperCase()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p1, ""</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	invoke-static {p1}, Lcom/google/common/base/r;->b(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-static {}, Lcom/hiya/stingray/util/p;->l()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method  l(Landroid/content/Context;)Lcom/hiya/stingray/q/d/e;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="cov">	const/16 v1, 0x17</span>
+<span class="cov">	if-lt v0, v1, :cond_0</span>
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/q/d/e;</span>
+<span class="cov">	new-instance v1, Lcom/hiya/stingray/q/d/b;</span>
+<span class="cov">	invoke-direct {v1, p1}, Lcom/hiya/stingray/q/d/b;-><init>(Landroid/content/Context;)V</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/hiya/stingray/q/d/e;-><init>(Lcom/hiya/stingray/q/d/c;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v0, Lcom/hiya/stingray/q/d/e;</span>
+<span class="">	new-instance v1, Lcom/hiya/stingray/q/d/d;</span>
+<span class="">	invoke-direct {v1, p1}, Lcom/hiya/stingray/q/d/d;-><init>(Landroid/content/Context;)V</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/hiya/stingray/q/d/e;-><init>(Lcom/hiya/stingray/q/d/c;)V</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  m()Lcom/hiya/stingray/q/a/k;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/q/a/l;</span>
+<span class="exec">	invoke-static {}, Lcom/google/firebase/auth/FirebaseAuth;->getInstance()Lcom/google/firebase/auth/FirebaseAuth;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/hiya/stingray/q/a/l;-><init>(Lcom/google/firebase/auth/FirebaseAuth;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method  n(Lcom/hiya/stingray/manager/x3;)Lcom/hiya/stingray/h;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/hiya/stingray/h;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/hiya/stingray/h;-><init>(Lcom/hiya/stingray/manager/x3;)V</span>
+.end method
+
+.method  o()Lcom/google/android/gms/location/a;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/s/e/m;->a:Landroid/app/Application;</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/location/d;->a(Landroid/content/Context;)Lcom/google/android/gms/location/a;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method  p()Landroid/location/Geocoder;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Landroid/location/Geocoder;</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/stingray/s/e/m;->a:Landroid/app/Application;</span>
+<span class="">	invoke-direct {v0, v1}, Landroid/location/Geocoder;-><init>(Landroid/content/Context;)V</span>
+.end method
+
+<span class="cov">.method  q(Landroid/content/Context;Lcom/hiya/stingray/j;Lg/g/b/a/a;)Lg/g/b/a/b;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	sget-object v0, Lg/g/b/a/b;->o:Lg/g/b/a/b$a;</span>
+<span class="exec">	invoke-virtual {v0, p1, p2}, Lg/g/b/a/b$a;->a(Landroid/content/Context;Lg/g/a/b/j1/c;)Lg/g/b/a/b;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-virtual {p1, p3}, Lg/g/b/a/b;->H(Lg/g/b/a/a;)V</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method  r()Lcom/hiya/stingray/j;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/j;</span>
+<span class="cov">	iget-object v1, p0, Lcom/hiya/stingray/s/e/m;->a:Landroid/app/Application;</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/hiya/stingray/j;-><init>(Landroid/content/Context;)V</span>
+<span class="exec">	invoke-virtual {v1}, Landroid/app/Application;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	check-cast v1, Lcom/hiya/stingray/HiyaApplication;</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/hiya/stingray/HiyaApplication;->c()Lcom/hiya/stingray/s/d/h;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-interface {v1, v0}, Lcom/hiya/stingray/s/d/h;->q(Lcom/hiya/stingray/j;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  s(Landroid/app/job/JobInfo$Builder;Landroid/app/job/JobInfo$Builder;)Ljava/util/Map;</span>
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/app/job/JobInfo$Builder;",</span>
+<span class="">	"Landroid/app/job/JobInfo$Builder;",</span>
+<span class="">	")",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/Integer;",</span>
+<span class="">	"Landroid/app/job/JobInfo$Builder;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/common/collect/g0;->e()Ljava/util/HashMap;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const/16 v1, 0x232a</span>
+<span class="exec">	invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-interface {v0, v1, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	const/16 p1, 0x2329</span>
+<span class="exec">	invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  t(Landroid/content/Context;Lcom/hiya/stingray/q/d/a;Lcom/hiya/stingray/manager/x3;Ljava/util/Map;Landroid/app/job/JobScheduler;Lcom/hiya/stingray/util/a0;Lcom/hiya/stingray/manager/i1;)Lcom/hiya/stingray/manager/v2;</span>
+<span class="">	.locals 9</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Lcom/hiya/stingray/q/d/a;",</span>
+<span class="">	"Lcom/hiya/stingray/manager/x3;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/Integer;",</span>
+<span class="">	"Landroid/app/job/JobInfo$Builder;",</span>
+<span class="">	">;",</span>
+<span class="">	"Landroid/app/job/JobScheduler;",</span>
+<span class="">	"Lcom/hiya/stingray/util/a0;",</span>
+<span class="">	"Lcom/hiya/stingray/manager/i1;",</span>
+<span class="">	")",</span>
+<span class="">	"Lcom/hiya/stingray/manager/v2;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	new-instance v8, Lcom/hiya/stingray/manager/v2;</span>
+<span class="cov">	move-object v0, v8</span>
+<span class="cov">	move-object v1, p1</span>
+<span class="cov">	move-object v2, p2</span>
+<span class="cov">	move-object v3, p3</span>
+<span class="cov">	move-object v4, p4</span>
+<span class="cov">	move-object v5, p5</span>
+<span class="cov">	move-object v6, p6</span>
+<span class="cov">	move-object/from16 v7, p7</span>
+<span class="cov">	invoke-direct/range {v0 .. v7}, Lcom/hiya/stingray/manager/v2;-><init>(Landroid/content/Context;Lcom/hiya/stingray/q/d/a;Lcom/hiya/stingray/manager/x3;Ljava/util/Map;Landroid/app/job/JobScheduler;Lcom/hiya/stingray/util/a0;Lcom/hiya/stingray/manager/i1;)V</span>
+<span class="exec">	return-object v8</span>
+.end method
+
+<span class="cov">.method  u()Landroid/app/job/JobScheduler;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/hiya/stingray/s/e/m;->a:Landroid/app/Application;</span>
+<span class="cov">	const-string v1, "jobscheduler"</span>
+<span class="exec">	invoke-virtual {v0, v1}, Landroid/app/Application;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Landroid/app/job/JobScheduler;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method  v()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {}, Lcom/hiya/stingray/util/p;->m()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+<span class="cov">.method  w()Lcom/hiya/stingray/manager/i3;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/manager/i3;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/hiya/stingray/manager/i3;-><init>()V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method  x(Landroid/content/Context;)Lcom/squareup/picasso/Picasso;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/squareup/picasso/Picasso$b;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/squareup/picasso/Picasso$b;-><init>(Landroid/content/Context;)V</span>
+<span class="">	new-instance v1, Lcom/squareup/picasso/s;</span>
+<span class="">	invoke-direct {v1, p1}, Lcom/squareup/picasso/s;-><init>(Landroid/content/Context;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/squareup/picasso/Picasso$b;->c(Lcom/squareup/picasso/j;)Lcom/squareup/picasso/Picasso$b;</span>
+<span class="">	invoke-virtual {v0}, Lcom/squareup/picasso/Picasso$b;->a()Lcom/squareup/picasso/Picasso;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+<span class="cov">.method  y(Landroid/content/Context;Lcom/hiya/stingray/q/d/a;Lcom/hiya/stingray/util/a0;)Lcom/hiya/stingray/manager/x3;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/manager/x3;</span>
+<span class="cov">	invoke-direct {v0, p1, p2, p3}, Lcom/hiya/stingray/manager/x3;-><init>(Landroid/content/Context;Lcom/hiya/stingray/q/d/a;Lcom/hiya/stingray/util/a0;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  z()Lcom/hiya/stingray/util/a0;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Lcom/hiya/stingray/util/a0;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/hiya/stingray/util/a0;-><init>()V</span>
+<span class="exec">	return-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

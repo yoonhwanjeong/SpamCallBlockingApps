@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.activity</a></li>
+        <li><i class="ico ico-class"></i> ComponentActivity.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Landroidx/activity/ComponentActivity;
+.super Landroidx/core/app/f;
+.source "SourceFile"
+.implements Landroidx/lifecycle/n;
+.implements Landroidx/lifecycle/g0;
+.implements Landroidx/lifecycle/g;
+.implements Landroidx/savedstate/c;
+.implements Landroidx/activity/c;
+.implements Landroidx/activity/result/e;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/activity/ComponentActivity$c;
+}
+.end annotation
+
+.field private mActivityResultRegistry:Landroidx/activity/result/d;
+.field private mContentLayoutId:I
+.field final mContextAwareHelper:Landroidx/activity/d/a;
+.field private mDefaultFactory:Landroidx/lifecycle/d0$b;
+.field private final mLifecycleRegistry:Landroidx/lifecycle/o;
+.field private final mOnBackPressedDispatcher:Landroidx/activity/OnBackPressedDispatcher;
+.field final mSavedStateRegistryController:Landroidx/savedstate/b;
+.field private mViewModelStore:Landroidx/lifecycle/f0;
+
+
+.method public constructor <init>()V
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/core/app/f;-><init>()V</span>
+<span class="">	new-instance v0, Landroidx/activity/d/a;</span>
+<span class="">	invoke-direct {v0}, Landroidx/activity/d/a;-><init>()V</span>
+<span class="">	iput-object v0, p0, Landroidx/activity/ComponentActivity;->mContextAwareHelper:Landroidx/activity/d/a;</span>
+<span class="">	new-instance v0, Landroidx/lifecycle/o;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/lifecycle/o;-><init>(Landroidx/lifecycle/n;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/activity/ComponentActivity;->mLifecycleRegistry:Landroidx/lifecycle/o;</span>
+<span class="">	invoke-static {p0}, Landroidx/savedstate/b;->a(Landroidx/savedstate/c;)Landroidx/savedstate/b;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Landroidx/activity/ComponentActivity;->mSavedStateRegistryController:Landroidx/savedstate/b;</span>
+<span class="">	new-instance v0, Landroidx/activity/OnBackPressedDispatcher;</span>
+<span class="">	new-instance v1, Landroidx/activity/ComponentActivity$a;</span>
+<span class="">	invoke-direct {v1, p0}, Landroidx/activity/ComponentActivity$a;-><init>(Landroidx/activity/ComponentActivity;)V</span>
+<span class="">	invoke-direct {v0, v1}, Landroidx/activity/OnBackPressedDispatcher;-><init>(Ljava/lang/Runnable;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/activity/ComponentActivity;->mOnBackPressedDispatcher:Landroidx/activity/OnBackPressedDispatcher;</span>
+<span class="">	new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>()V</span>
+<span class="">	new-instance v0, Landroidx/activity/ComponentActivity$b;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/activity/ComponentActivity$b;-><init>(Landroidx/activity/ComponentActivity;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/activity/ComponentActivity;->mActivityResultRegistry:Landroidx/activity/result/d;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/activity/ComponentActivity;->getLifecycle()Landroidx/lifecycle/h;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x13</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/activity/ComponentActivity;->getLifecycle()Landroidx/lifecycle/h;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	new-instance v3, Landroidx/activity/ComponentActivity$3;</span>
+<span class="">	invoke-direct {v3, p0}, Landroidx/activity/ComponentActivity$3;-><init>(Landroidx/activity/ComponentActivity;)V</span>
+<span class="">	invoke-virtual {v2, v3}, Landroidx/lifecycle/h;->a(Landroidx/lifecycle/m;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/activity/ComponentActivity;->getLifecycle()Landroidx/lifecycle/h;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	new-instance v3, Landroidx/activity/ComponentActivity$4;</span>
+<span class="">	invoke-direct {v3, p0}, Landroidx/activity/ComponentActivity$4;-><init>(Landroidx/activity/ComponentActivity;)V</span>
+<span class="">	invoke-virtual {v2, v3}, Landroidx/lifecycle/h;->a(Landroidx/lifecycle/m;)V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/activity/ComponentActivity;->getLifecycle()Landroidx/lifecycle/h;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	new-instance v3, Landroidx/activity/ComponentActivity$5;</span>
+<span class="">	invoke-direct {v3, p0}, Landroidx/activity/ComponentActivity$5;-><init>(Landroidx/activity/ComponentActivity;)V</span>
+<span class="">	invoke-virtual {v2, v3}, Landroidx/lifecycle/h;->a(Landroidx/lifecycle/m;)V</span>
+<span class="">	if-gt v1, v0, :cond_1</span>
+<span class="">	const/16 v1, 0x17</span>
+<span class="">	if-gt v0, v1, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/activity/ComponentActivity;->getLifecycle()Landroidx/lifecycle/h;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Landroidx/activity/ImmLeaksCleaner;</span>
+<span class="">	invoke-direct {v1, p0}, Landroidx/activity/ImmLeaksCleaner;-><init>(Landroid/app/Activity;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/lifecycle/h;->a(Landroidx/lifecycle/m;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string v1, "getLifecycle() returned null in ComponentActivity\'s constructor. Please make sure you are lazily constructing your Lifecycle in the first call to getLifecycle() rather than relying on field initialization."</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method static synthetic access$001(Landroidx/activity/ComponentActivity;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0}, Landroid/app/Activity;->onBackPressed()V</span>
+.end method
+
+.method private initViewTreeOwners()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0, p0}, Landroidx/lifecycle/h0;->a(Landroid/view/View;Landroidx/lifecycle/n;)V</span>
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0, p0}, Landroidx/lifecycle/i0;->a(Landroid/view/View;Landroidx/lifecycle/g0;)V</span>
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0, p0}, Landroidx/savedstate/d;->a(Landroid/view/View;Landroidx/savedstate/c;)V</span>
+.end method
+
+.method public addContentView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/activity/ComponentActivity;->initViewTreeOwners()V</span>
+<span class="">	invoke-super {p0, p1, p2}, Landroid/app/Activity;->addContentView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V</span>
+.end method
+
+.method public final addOnContextAvailableListener(Landroidx/activity/d/b;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mContextAwareHelper:Landroidx/activity/d/a;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/activity/d/a;->a(Landroidx/activity/d/b;)V</span>
+.end method
+
+.method  ensureViewModelStore()V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mViewModelStore:Landroidx/lifecycle/f0;</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getLastNonConfigurationInstance()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/activity/ComponentActivity$c;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, v0, Landroidx/activity/ComponentActivity$c;->b:Landroidx/lifecycle/f0;</span>
+<span class="">	iput-object v0, p0, Landroidx/activity/ComponentActivity;->mViewModelStore:Landroidx/lifecycle/f0;</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mViewModelStore:Landroidx/lifecycle/f0;</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	new-instance v0, Landroidx/lifecycle/f0;</span>
+<span class="">	invoke-direct {v0}, Landroidx/lifecycle/f0;-><init>()V</span>
+<span class="">	iput-object v0, p0, Landroidx/activity/ComponentActivity;->mViewModelStore:Landroidx/lifecycle/f0;</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public final getActivityResultRegistry()Landroidx/activity/result/d;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mActivityResultRegistry:Landroidx/activity/result/d;</span>
+.end method
+
+.method public getDefaultViewModelProviderFactory()Landroidx/lifecycle/d0$b;
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getApplication()Landroid/app/Application;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mDefaultFactory:Landroidx/lifecycle/d0$b;</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	new-instance v0, Landroidx/lifecycle/z;</span>
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getApplication()Landroid/app/Application;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-direct {v0, v1, p0, v2}, Landroidx/lifecycle/z;-><init>(Landroid/app/Application;Landroidx/savedstate/c;Landroid/os/Bundle;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/activity/ComponentActivity;->mDefaultFactory:Landroidx/lifecycle/d0$b;</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mDefaultFactory:Landroidx/lifecycle/d0$b;</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string v1, "Your activity is not yet attached to the Application instance. You can\'t request ViewModel before onCreate call."</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public getLifecycle()Landroidx/lifecycle/h;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mLifecycleRegistry:Landroidx/lifecycle/o;</span>
+.end method
+
+.method public final getOnBackPressedDispatcher()Landroidx/activity/OnBackPressedDispatcher;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mOnBackPressedDispatcher:Landroidx/activity/OnBackPressedDispatcher;</span>
+.end method
+
+.method public final getSavedStateRegistry()Landroidx/savedstate/SavedStateRegistry;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mSavedStateRegistryController:Landroidx/savedstate/b;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/savedstate/b;->b()Landroidx/savedstate/SavedStateRegistry;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public getViewModelStore()Landroidx/lifecycle/f0;
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getApplication()Landroid/app/Application;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/activity/ComponentActivity;->ensureViewModelStore()V</span>
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mViewModelStore:Landroidx/lifecycle/f0;</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v1, "Your activity is not yet attached to the Application instance. You can\'t request ViewModel before onCreate call."</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method protected onActivityResult(IILandroid/content/Intent;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mActivityResultRegistry:Landroidx/activity/result/d;</span>
+<span class="">	invoke-virtual {v0, p1, p2, p3}, Landroidx/activity/result/d;->b(IILandroid/content/Intent;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	invoke-super {p0, p1, p2, p3}, Landroid/app/Activity;->onActivityResult(IILandroid/content/Intent;)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public onBackPressed()V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mOnBackPressedDispatcher:Landroidx/activity/OnBackPressedDispatcher;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/activity/OnBackPressedDispatcher;->c()V</span>
+.end method
+
+.method protected onCreate(Landroid/os/Bundle;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mSavedStateRegistryController:Landroidx/savedstate/b;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/savedstate/b;->c(Landroid/os/Bundle;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mContextAwareHelper:Landroidx/activity/d/a;</span>
+<span class="">	invoke-virtual {v0, p0}, Landroidx/activity/d/a;->c(Landroid/content/Context;)V</span>
+<span class="">	invoke-super {p0, p1}, Landroidx/core/app/f;->onCreate(Landroid/os/Bundle;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mActivityResultRegistry:Landroidx/activity/result/d;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/activity/result/d;->g(Landroid/os/Bundle;)V</span>
+<span class="">	invoke-static {p0}, Landroidx/lifecycle/x;->g(Landroid/app/Activity;)V</span>
+<span class="">	iget p1, p0, Landroidx/activity/ComponentActivity;->mContentLayoutId:I</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/activity/ComponentActivity;->setContentView(I)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public onRequestPermissionsResult(I[Ljava/lang/String;[I)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mActivityResultRegistry:Landroidx/activity/result/d;</span>
+<span class="">	new-instance v1, Landroid/content/Intent;</span>
+<span class="">	invoke-direct {v1}, Landroid/content/Intent;-><init>()V</span>
+<span class="">	const-string v2, "androidx.activity.result.contract.extra.PERMISSIONS"</span>
+<span class="">	invoke-virtual {v1, v2, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "androidx.activity.result.contract.extra.PERMISSION_GRANT_RESULTS"</span>
+<span class="">	invoke-virtual {v1, v2, p3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[I)Landroid/content/Intent;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, -0x1</span>
+<span class="">	invoke-virtual {v0, p1, v2, v1}, Landroidx/activity/result/d;->b(IILandroid/content/Intent;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x17</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	invoke-super {p0, p1, p2, p3}, Landroid/app/Activity;->onRequestPermissionsResult(I[Ljava/lang/String;[I)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public onRetainCustomNonConfigurationInstance()Ljava/lang/Object;
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+.end method
+
+.method public final onRetainNonConfigurationInstance()Ljava/lang/Object;
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/activity/ComponentActivity;->onRetainCustomNonConfigurationInstance()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Landroidx/activity/ComponentActivity;->mViewModelStore:Landroidx/lifecycle/f0;</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getLastNonConfigurationInstance()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroidx/activity/ComponentActivity$c;</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	iget-object v1, v2, Landroidx/activity/ComponentActivity$c;->b:Landroidx/lifecycle/f0;</span>
+<span class="">	:cond_0</span>
+<span class="">	if-nez v1, :cond_1</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	new-instance v2, Landroidx/activity/ComponentActivity$c;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v2}, Landroidx/activity/ComponentActivity$c;-><init>()V</span>
+<span class="">	iput-object v0, v2, Landroidx/activity/ComponentActivity$c;->a:Ljava/lang/Object;</span>
+<span class="">	iput-object v1, v2, Landroidx/activity/ComponentActivity$c;->b:Landroidx/lifecycle/f0;</span>
+.end method
+
+.method protected onSaveInstanceState(Landroid/os/Bundle;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/activity/ComponentActivity;->getLifecycle()Landroidx/lifecycle/h;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v1, v0, Landroidx/lifecycle/o;</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	check-cast v0, Landroidx/lifecycle/o;</span>
+<span class="">	sget-object v1, Landroidx/lifecycle/h$c;->CREATED:Landroidx/lifecycle/h$c;</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/lifecycle/o;->o(Landroidx/lifecycle/h$c;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-super {p0, p1}, Landroidx/core/app/f;->onSaveInstanceState(Landroid/os/Bundle;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mSavedStateRegistryController:Landroidx/savedstate/b;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/savedstate/b;->d(Landroid/os/Bundle;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/activity/ComponentActivity;->mActivityResultRegistry:Landroidx/activity/result/d;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/activity/result/d;->h(Landroid/os/Bundle;)V</span>
+.end method
+
+.method public reportFullyDrawn()V
+<span class="">	.locals 2</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	invoke-static {}, Lf/u/a;->d()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "reportFullyDrawn() for "</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p0}, Landroid/app/Activity;->getComponentName()Landroid/content/ComponentName;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lf/u/a;->a(Ljava/lang/String;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x13</span>
+<span class="">	if-le v0, v1, :cond_1</span>
+<span class="">	invoke-super {p0}, Landroid/app/Activity;->reportFullyDrawn()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	if-ne v0, v1, :cond_2</span>
+<span class="">	const-string v0, "android.permission.UPDATE_DEVICE_STATS"</span>
+<span class="">	invoke-static {p0, v0}, Landroidx/core/content/a;->a(Landroid/content/Context;Ljava/lang/String;)I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_2</span>
+<span class="">	invoke-super {p0}, Landroid/app/Activity;->reportFullyDrawn()V</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-static {}, Lf/u/a;->b()V</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-static {}, Lf/u/a;->b()V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public setContentView(I)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/activity/ComponentActivity;->initViewTreeOwners()V</span>
+<span class="">	invoke-super {p0, p1}, Landroid/app/Activity;->setContentView(I)V</span>
+.end method
+
+.method public setContentView(Landroid/view/View;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/activity/ComponentActivity;->initViewTreeOwners()V</span>
+<span class="">	invoke-super {p0, p1}, Landroid/app/Activity;->setContentView(Landroid/view/View;)V</span>
+.end method
+
+.method public setContentView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/activity/ComponentActivity;->initViewTreeOwners()V</span>
+<span class="">	invoke-super {p0, p1, p2}, Landroid/app/Activity;->setContentView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V</span>
+.end method
+
+.method public startActivityForResult(Landroid/content/Intent;I)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-super {p0, p1, p2}, Landroid/app/Activity;->startActivityForResult(Landroid/content/Intent;I)V</span>
+.end method
+
+.method public startActivityForResult(Landroid/content/Intent;ILandroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-super {p0, p1, p2, p3}, Landroid/app/Activity;->startActivityForResult(Landroid/content/Intent;ILandroid/os/Bundle;)V</span>
+.end method
+
+.method public startIntentSenderForResult(Landroid/content/IntentSender;ILandroid/content/Intent;III)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/content/IntentSender$SendIntentException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-super/range {p0 .. p6}, Landroid/app/Activity;->startIntentSenderForResult(Landroid/content/IntentSender;ILandroid/content/Intent;III)V</span>
+.end method
+
+.method public startIntentSenderForResult(Landroid/content/IntentSender;ILandroid/content/Intent;IIILandroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Landroid/content/IntentSender$SendIntentException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-super/range {p0 .. p7}, Landroid/app/Activity;->startIntentSenderForResult(Landroid/content/IntentSender;ILandroid/content/Intent;IIILandroid/os/Bundle;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

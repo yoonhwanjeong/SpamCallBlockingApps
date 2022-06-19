@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.palette.graphics</a></li>
+        <li><i class="ico ico-class"></i> ColorCutQuantizer.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class final Landroidx/palette/graphics/ColorCutQuantizer;
+.super Ljava/lang/Object;
+.source "ColorCutQuantizer.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/palette/graphics/ColorCutQuantizer$Vbox;
+}
+.end annotation
+
+.field static final COMPONENT_BLUE:I = -0x1
+.field static final COMPONENT_GREEN:I = -0x2
+.field static final COMPONENT_RED:I = -0x3
+.field private static final LOG_TAG:Ljava/lang/String; = "ColorCutQuantizer"
+.field private static final LOG_TIMINGS:Z = false
+.field private static final QUANTIZE_WORD_MASK:I = 0x1f
+.field private static final QUANTIZE_WORD_WIDTH:I = 0x5
+.field private static final VBOX_COMPARATOR_VOLUME:Ljava/util/Comparator;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Comparator<",
+"Landroidx/palette/graphics/ColorCutQuantizer$Vbox;",
+">;"
+}
+.end annotation
+.end field
+.field final mColors:[I
+.field final mFilters:[Landroidx/palette/graphics/Palette$Filter;
+.field final mHistogram:[I
+.field final mQuantizedColors:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Landroidx/palette/graphics/Palette$Swatch;",
+">;"
+}
+.end annotation
+.end field
+.field private final mTempHsl:[F
+.field final mTimingLogger:Landroid/util/TimingLogger;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/palette/graphics/ColorCutQuantizer$1;</span>
+<span class="">	invoke-direct {v0}, Landroidx/palette/graphics/ColorCutQuantizer$1;-><init>()V</span>
+<span class="">	sput-object v0, Landroidx/palette/graphics/ColorCutQuantizer;->VBOX_COMPARATOR_VOLUME:Ljava/util/Comparator;</span>
+.end method
+
+.method constructor <init>([II[Landroidx/palette/graphics/Palette$Filter;)V
+<span class="">	.locals 6</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	new-array v0, v0, [F</span>
+<span class="">	iput-object v0, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mTempHsl:[F</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mTimingLogger:Landroid/util/TimingLogger;</span>
+<span class="">	iput-object p3, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mFilters:[Landroidx/palette/graphics/Palette$Filter;</span>
+<span class="">	const p3, 0x8000</span>
+<span class="">	new-array v0, p3, [I</span>
+<span class="">	iput-object v0, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mHistogram:[I</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	array-length v3, p1</span>
+<span class="">	if-ge v2, v3, :cond_0</span>
+<span class="">	aget v3, p1, v2</span>
+<span class="">	invoke-static {v3}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizeFromRgb888(I)I</span>
+<span class="">	move-result v3</span>
+<span class="">	aput v3, p1, v2</span>
+<span class="">	aget v4, v0, v3</span>
+<span class="">	add-int/lit8 v4, v4, 0x1</span>
+<span class="">	aput v4, v0, v3</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	if-ge p1, p3, :cond_3</span>
+<span class="">	aget v3, v0, p1</span>
+<span class="">	if-lez v3, :cond_1</span>
+<span class="">	invoke-direct {p0, p1}, Landroidx/palette/graphics/ColorCutQuantizer;->shouldIgnoreColor(I)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_1</span>
+<span class="">	aput v1, v0, p1</span>
+<span class="">	:cond_1</span>
+<span class="">	aget v3, v0, p1</span>
+<span class="">	if-lez v3, :cond_2</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	:cond_2</span>
+<span class="">	add-int/lit8 p1, p1, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	new-array p1, v2, [I</span>
+<span class="">	iput-object p1, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mColors:[I</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	:goto_2</span>
+<span class="">	if-ge v3, p3, :cond_5</span>
+<span class="">	aget v5, v0, v3</span>
+<span class="">	if-lez v5, :cond_4</span>
+<span class="">	add-int/lit8 v5, v4, 0x1</span>
+<span class="">	aput v3, p1, v4</span>
+<span class="">	move v4, v5</span>
+<span class="">	:cond_4</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_5</span>
+<span class="">	if-gt v2, p2, :cond_6</span>
+<span class="">	new-instance p2, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p2}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object p2, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mQuantizedColors:Ljava/util/List;</span>
+<span class="">	:goto_3</span>
+<span class="">	if-ge v1, v2, :cond_7</span>
+<span class="">	aget p2, p1, v1</span>
+<span class="">	iget-object p3, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mQuantizedColors:Ljava/util/List;</span>
+<span class="">	new-instance v3, Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	invoke-static {p2}, Landroidx/palette/graphics/ColorCutQuantizer;->approximateToRgb888(I)I</span>
+<span class="">	move-result v4</span>
+<span class="">	aget p2, v0, p2</span>
+<span class="">	invoke-direct {v3, v4, p2}, Landroidx/palette/graphics/Palette$Swatch;-><init>(II)V</span>
+<span class="">	invoke-interface {p3, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-direct {p0, p2}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizePixels(I)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mQuantizedColors:Ljava/util/List;</span>
+<span class="">	:cond_7</span>
+.end method
+
+.method private static approximateToRgb888(I)I
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-static {p0}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedRed(I)I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-static {p0}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedGreen(I)I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-static {p0}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedBlue(I)I</span>
+<span class="">	move-result p0</span>
+<span class="">	invoke-static {v0, v1, p0}, Landroidx/palette/graphics/ColorCutQuantizer;->approximateToRgb888(III)I</span>
+<span class="">	move-result p0</span>
+.end method
+
+.method static approximateToRgb888(III)I
+<span class="">	.locals 2</span>
+
+<span class="">	const/4 v0, 0x5</span>
+<span class="">	const/16 v1, 0x8</span>
+<span class="">	invoke-static {p0, v0, v1}, Landroidx/palette/graphics/ColorCutQuantizer;->modifyWordWidth(III)I</span>
+<span class="">	move-result p0</span>
+<span class="">	invoke-static {p1, v0, v1}, Landroidx/palette/graphics/ColorCutQuantizer;->modifyWordWidth(III)I</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-static {p2, v0, v1}, Landroidx/palette/graphics/ColorCutQuantizer;->modifyWordWidth(III)I</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-static {p0, p1, p2}, Landroid/graphics/Color;->rgb(III)I</span>
+<span class="">	move-result p0</span>
+.end method
+
+.method private generateAverageColors(Ljava/util/Collection;)Ljava/util/List;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/Collection<",</span>
+<span class="">	"Landroidx/palette/graphics/ColorCutQuantizer$Vbox;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/palette/graphics/Palette$Swatch;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Collection;->size()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;</span>
+<span class="">	invoke-virtual {v1}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->getAverageColor()Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {p0, v1}, Landroidx/palette/graphics/ColorCutQuantizer;->shouldIgnoreColor(Landroidx/palette/graphics/Palette$Swatch;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_0</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method static modifySignificantOctet([IIII)V
+<span class="">	.locals 2</span>
+
+<span class="">	const/4 v0, -0x2</span>
+<span class="">	if-eq p1, v0, :cond_1</span>
+<span class="">	const/4 v0, -0x1</span>
+<span class="">	if-eq p1, v0, :cond_0</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	if-gt p2, p3, :cond_2</span>
+<span class="">	aget p1, p0, p2</span>
+<span class="">	invoke-static {p1}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedBlue(I)I</span>
+<span class="">	move-result v0</span>
+<span class="">	shl-int/lit8 v0, v0, 0xa</span>
+<span class="">	invoke-static {p1}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedGreen(I)I</span>
+<span class="">	move-result v1</span>
+<span class="">	shl-int/lit8 v1, v1, 0x5</span>
+<span class="">	or-int/2addr v0, v1</span>
+<span class="">	invoke-static {p1}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedRed(I)I</span>
+<span class="">	move-result p1</span>
+<span class="">	or-int/2addr p1, v0</span>
+<span class="">	aput p1, p0, p2</span>
+<span class="">	add-int/lit8 p2, p2, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	if-gt p2, p3, :cond_2</span>
+<span class="">	aget p1, p0, p2</span>
+<span class="">	invoke-static {p1}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedGreen(I)I</span>
+<span class="">	move-result v0</span>
+<span class="">	shl-int/lit8 v0, v0, 0xa</span>
+<span class="">	invoke-static {p1}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedRed(I)I</span>
+<span class="">	move-result v1</span>
+<span class="">	shl-int/lit8 v1, v1, 0x5</span>
+<span class="">	or-int/2addr v0, v1</span>
+<span class="">	invoke-static {p1}, Landroidx/palette/graphics/ColorCutQuantizer;->quantizedBlue(I)I</span>
+<span class="">	move-result p1</span>
+<span class="">	or-int/2addr p1, v0</span>
+<span class="">	aput p1, p0, p2</span>
+<span class="">	add-int/lit8 p2, p2, 0x1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private static modifyWordWidth(III)I
+<span class="">	.locals 0</span>
+
+<span class="">	if-le p2, p1, :cond_0</span>
+<span class="">	sub-int p1, p2, p1</span>
+<span class="">	shl-int/2addr p0, p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sub-int/2addr p1, p2</span>
+<span class="">	shr-int/2addr p0, p1</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	shl-int p2, p1, p2</span>
+<span class="">	sub-int/2addr p2, p1</span>
+<span class="">	and-int/2addr p0, p2</span>
+.end method
+
+.method private static quantizeFromRgb888(I)I
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-static {p0}, Landroid/graphics/Color;->red(I)I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/16 v1, 0x8</span>
+<span class="">	const/4 v2, 0x5</span>
+<span class="">	invoke-static {v0, v1, v2}, Landroidx/palette/graphics/ColorCutQuantizer;->modifyWordWidth(III)I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-static {p0}, Landroid/graphics/Color;->green(I)I</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-static {v3, v1, v2}, Landroidx/palette/graphics/ColorCutQuantizer;->modifyWordWidth(III)I</span>
+<span class="">	move-result v3</span>
+<span class="">	invoke-static {p0}, Landroid/graphics/Color;->blue(I)I</span>
+<span class="">	move-result p0</span>
+<span class="">	invoke-static {p0, v1, v2}, Landroidx/palette/graphics/ColorCutQuantizer;->modifyWordWidth(III)I</span>
+<span class="">	move-result p0</span>
+<span class="">	shl-int/lit8 v0, v0, 0xa</span>
+<span class="">	shl-int/lit8 v1, v3, 0x5</span>
+<span class="">	or-int/2addr v0, v1</span>
+<span class="">	or-int/2addr p0, v0</span>
+.end method
+
+.method private quantizePixels(I)Ljava/util/List;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(I)",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/palette/graphics/Palette$Swatch;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/PriorityQueue;</span>
+<span class="">	sget-object v1, Landroidx/palette/graphics/ColorCutQuantizer;->VBOX_COMPARATOR_VOLUME:Ljava/util/Comparator;</span>
+<span class="">	invoke-direct {v0, p1, v1}, Ljava/util/PriorityQueue;-><init>(ILjava/util/Comparator;)V</span>
+<span class="">	new-instance v1, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;</span>
+<span class="">	iget-object v2, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mColors:[I</span>
+<span class="">	array-length v2, v2</span>
+<span class="">	add-int/lit8 v2, v2, -0x1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	invoke-direct {v1, p0, v3, v2}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;-><init>(Landroidx/palette/graphics/ColorCutQuantizer;II)V</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/util/PriorityQueue;->offer(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-direct {p0, v0, p1}, Landroidx/palette/graphics/ColorCutQuantizer;->splitBoxes(Ljava/util/PriorityQueue;I)V</span>
+<span class="">	invoke-direct {p0, v0}, Landroidx/palette/graphics/ColorCutQuantizer;->generateAverageColors(Ljava/util/Collection;)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method static quantizedBlue(I)I
+<span class="">	.locals 0</span>
+
+<span class="">	and-int/lit8 p0, p0, 0x1f</span>
+.end method
+
+.method static quantizedGreen(I)I
+<span class="">	.locals 0</span>
+
+<span class="">	shr-int/lit8 p0, p0, 0x5</span>
+<span class="">	and-int/lit8 p0, p0, 0x1f</span>
+.end method
+
+.method static quantizedRed(I)I
+<span class="">	.locals 0</span>
+
+<span class="">	shr-int/lit8 p0, p0, 0xa</span>
+<span class="">	and-int/lit8 p0, p0, 0x1f</span>
+.end method
+
+.method private shouldIgnoreColor(I)Z
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {p1}, Landroidx/palette/graphics/ColorCutQuantizer;->approximateToRgb888(I)I</span>
+<span class="">	move-result p1</span>
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mTempHsl:[F</span>
+<span class="">	invoke-static {p1, v0}, Landroidx/core/graphics/ColorUtils;->colorToHSL(I[F)V</span>
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mTempHsl:[F</span>
+<span class="">	invoke-direct {p0, p1, v0}, Landroidx/palette/graphics/ColorCutQuantizer;->shouldIgnoreColor(I[F)Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method private shouldIgnoreColor(I[F)Z
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mFilters:[Landroidx/palette/graphics/Palette$Filter;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	array-length v2, v0</span>
+<span class="">	if-lez v2, :cond_1</span>
+<span class="">	array-length v0, v0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v2, v0, :cond_1</span>
+<span class="">	iget-object v3, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mFilters:[Landroidx/palette/graphics/Palette$Filter;</span>
+<span class="">	aget-object v3, v3, v2</span>
+<span class="">	invoke-interface {v3, p1, p2}, Landroidx/palette/graphics/Palette$Filter;->isAllowed(I[F)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-nez v3, :cond_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	:cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method private shouldIgnoreColor(Landroidx/palette/graphics/Palette$Swatch;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p1}, Landroidx/palette/graphics/Palette$Swatch;->getRgb()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p1}, Landroidx/palette/graphics/Palette$Swatch;->getHsl()[F</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {p0, v0, p1}, Landroidx/palette/graphics/ColorCutQuantizer;->shouldIgnoreColor(I[F)Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method private splitBoxes(Ljava/util/PriorityQueue;I)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/PriorityQueue<",</span>
+<span class="">	"Landroidx/palette/graphics/ColorCutQuantizer$Vbox;",</span>
+<span class="">	">;I)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p1}, Ljava/util/PriorityQueue;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-ge v0, p2, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Ljava/util/PriorityQueue;->poll()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->canSplit()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Landroidx/palette/graphics/ColorCutQuantizer$Vbox;->splitBox()Landroidx/palette/graphics/ColorCutQuantizer$Vbox;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1, v1}, Ljava/util/PriorityQueue;->offer(Ljava/lang/Object;)Z</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/util/PriorityQueue;->offer(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method  getQuantizedColors()Ljava/util/List;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/palette/graphics/Palette$Swatch;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/ColorCutQuantizer;->mQuantizedColors:Ljava/util/List;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

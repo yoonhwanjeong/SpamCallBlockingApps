@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.palette.graphics</a></li>
+        <li><i class="ico ico-class"></i> Palette.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Landroidx/palette/graphics/Palette;
+.super Ljava/lang/Object;
+.source "Palette.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/palette/graphics/Palette$Filter;,
+Landroidx/palette/graphics/Palette$Builder;,
+Landroidx/palette/graphics/Palette$Swatch;,
+Landroidx/palette/graphics/Palette$PaletteAsyncListener;
+}
+.end annotation
+
+.field static final DEFAULT_CALCULATE_NUMBER_COLORS:I = 0x10
+.field static final DEFAULT_FILTER:Landroidx/palette/graphics/Palette$Filter;
+.field static final DEFAULT_RESIZE_BITMAP_AREA:I = 0x3100
+.field static final LOG_TAG:Ljava/lang/String; = "Palette"
+.field static final LOG_TIMINGS:Z = false
+.field static final MIN_CONTRAST_BODY_TEXT:F = 4.5f
+.field static final MIN_CONTRAST_TITLE_TEXT:F = 3.0f
+.field private final mDominantSwatch:Landroidx/palette/graphics/Palette$Swatch;
+.field private final mSelectedSwatches:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Landroidx/palette/graphics/Target;",
+"Landroidx/palette/graphics/Palette$Swatch;",
+">;"
+}
+.end annotation
+.end field
+.field private final mSwatches:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Landroidx/palette/graphics/Palette$Swatch;",
+">;"
+}
+.end annotation
+.end field
+.field private final mTargets:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Landroidx/palette/graphics/Target;",
+">;"
+}
+.end annotation
+.end field
+.field private final mUsedColors:Landroid/util/SparseBooleanArray;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/palette/graphics/Palette$1;</span>
+<span class="">	invoke-direct {v0}, Landroidx/palette/graphics/Palette$1;-><init>()V</span>
+<span class="">	sput-object v0, Landroidx/palette/graphics/Palette;->DEFAULT_FILTER:Landroidx/palette/graphics/Palette$Filter;</span>
+.end method
+
+.method constructor <init>(Ljava/util/List;Ljava/util/List;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/palette/graphics/Palette$Swatch;",</span>
+<span class="">	">;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/palette/graphics/Target;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroidx/palette/graphics/Palette;->mSwatches:Ljava/util/List;</span>
+<span class="">	iput-object p2, p0, Landroidx/palette/graphics/Palette;->mTargets:Ljava/util/List;</span>
+<span class="">	new-instance p1, Landroid/util/SparseBooleanArray;</span>
+<span class="">	invoke-direct {p1}, Landroid/util/SparseBooleanArray;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroidx/palette/graphics/Palette;->mUsedColors:Landroid/util/SparseBooleanArray;</span>
+<span class="">	new-instance p1, Landroidx/collection/ArrayMap;</span>
+<span class="">	invoke-direct {p1}, Landroidx/collection/ArrayMap;-><init>()V</span>
+<span class="">	iput-object p1, p0, Landroidx/palette/graphics/Palette;->mSelectedSwatches:Ljava/util/Map;</span>
+<span class="">	invoke-direct {p0}, Landroidx/palette/graphics/Palette;->findDominantSwatch()Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Landroidx/palette/graphics/Palette;->mDominantSwatch:Landroidx/palette/graphics/Palette$Swatch;</span>
+.end method
+
+.method private findDominantSwatch()Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 6</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/Palette;->mSwatches:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/high16 v1, -0x80000000</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v3, v0, :cond_1</span>
+<span class="">	iget-object v4, p0, Landroidx/palette/graphics/Palette;->mSwatches:Ljava/util/List;</span>
+<span class="">	invoke-interface {v4, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	check-cast v4, Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	invoke-virtual {v4}, Landroidx/palette/graphics/Palette$Swatch;->getPopulation()I</span>
+<span class="">	move-result v5</span>
+<span class="">	if-le v5, v1, :cond_0</span>
+<span class="">	invoke-virtual {v4}, Landroidx/palette/graphics/Palette$Swatch;->getPopulation()I</span>
+<span class="">	move-result v1</span>
+<span class="">	move-object v2, v4</span>
+<span class="">	:cond_0</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public static from(Landroid/graphics/Bitmap;)Landroidx/palette/graphics/Palette$Builder;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/palette/graphics/Palette$Builder;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/palette/graphics/Palette$Builder;-><init>(Landroid/graphics/Bitmap;)V</span>
+.end method
+
+.method public static from(Ljava/util/List;)Landroidx/palette/graphics/Palette;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/palette/graphics/Palette$Swatch;",</span>
+<span class="">	">;)",</span>
+<span class="">	"Landroidx/palette/graphics/Palette;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Landroidx/palette/graphics/Palette$Builder;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/palette/graphics/Palette$Builder;-><init>(Ljava/util/List;)V</span>
+<span class="">	invoke-virtual {v0}, Landroidx/palette/graphics/Palette$Builder;->generate()Landroidx/palette/graphics/Palette;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static generate(Landroid/graphics/Bitmap;)Landroidx/palette/graphics/Palette;
+<span class="">	.locals 0</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0}, Landroidx/palette/graphics/Palette;->from(Landroid/graphics/Bitmap;)Landroidx/palette/graphics/Palette$Builder;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/palette/graphics/Palette$Builder;->generate()Landroidx/palette/graphics/Palette;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static generate(Landroid/graphics/Bitmap;I)Landroidx/palette/graphics/Palette;
+<span class="">	.locals 0</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0}, Landroidx/palette/graphics/Palette;->from(Landroid/graphics/Bitmap;)Landroidx/palette/graphics/Palette$Builder;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/palette/graphics/Palette$Builder;->maximumColorCount(I)Landroidx/palette/graphics/Palette$Builder;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/palette/graphics/Palette$Builder;->generate()Landroidx/palette/graphics/Palette;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static generateAsync(Landroid/graphics/Bitmap;ILandroidx/palette/graphics/Palette$PaletteAsyncListener;)Landroid/os/AsyncTask;
+<span class="">	.locals 0</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/graphics/Bitmap;",</span>
+<span class="">	"I",</span>
+<span class="">	"Landroidx/palette/graphics/Palette$PaletteAsyncListener;",</span>
+<span class="">	")",</span>
+<span class="">	"Landroid/os/AsyncTask<",</span>
+<span class="">	"Landroid/graphics/Bitmap;",</span>
+<span class="">	"Ljava/lang/Void;",</span>
+<span class="">	"Landroidx/palette/graphics/Palette;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0}, Landroidx/palette/graphics/Palette;->from(Landroid/graphics/Bitmap;)Landroidx/palette/graphics/Palette$Builder;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/palette/graphics/Palette$Builder;->maximumColorCount(I)Landroidx/palette/graphics/Palette$Builder;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, p2}, Landroidx/palette/graphics/Palette$Builder;->generate(Landroidx/palette/graphics/Palette$PaletteAsyncListener;)Landroid/os/AsyncTask;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method public static generateAsync(Landroid/graphics/Bitmap;Landroidx/palette/graphics/Palette$PaletteAsyncListener;)Landroid/os/AsyncTask;
+<span class="">	.locals 0</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/graphics/Bitmap;",</span>
+<span class="">	"Landroidx/palette/graphics/Palette$PaletteAsyncListener;",</span>
+<span class="">	")",</span>
+<span class="">	"Landroid/os/AsyncTask<",</span>
+<span class="">	"Landroid/graphics/Bitmap;",</span>
+<span class="">	"Ljava/lang/Void;",</span>
+<span class="">	"Landroidx/palette/graphics/Palette;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p0}, Landroidx/palette/graphics/Palette;->from(Landroid/graphics/Bitmap;)Landroidx/palette/graphics/Palette$Builder;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/palette/graphics/Palette$Builder;->generate(Landroidx/palette/graphics/Palette$PaletteAsyncListener;)Landroid/os/AsyncTask;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method private generateScore(Landroidx/palette/graphics/Palette$Swatch;Landroidx/palette/graphics/Target;)F
+<span class="">	.locals 7</span>
+
+<span class="">	invoke-virtual {p1}, Landroidx/palette/graphics/Palette$Swatch;->getHsl()[F</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Landroidx/palette/graphics/Palette;->mDominantSwatch:Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Landroidx/palette/graphics/Palette$Swatch;->getPopulation()I</span>
+<span class="">	move-result v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getSaturationWeight()F</span>
+<span class="">	move-result v3</span>
+<span class="">	const/high16 v4, 0x3f800000    # 1.0f</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	cmpl-float v3, v3, v5</span>
+<span class="">	if-lez v3, :cond_1</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getSaturationWeight()F</span>
+<span class="">	move-result v3</span>
+<span class="">	aget v2, v0, v2</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getTargetSaturation()F</span>
+<span class="">	move-result v6</span>
+<span class="">	sub-float/2addr v2, v6</span>
+<span class="">	invoke-static {v2}, Ljava/lang/Math;->abs(F)F</span>
+<span class="">	move-result v2</span>
+<span class="">	sub-float v2, v4, v2</span>
+<span class="">	mul-float v3, v3, v2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getLightnessWeight()F</span>
+<span class="">	move-result v2</span>
+<span class="">	cmpl-float v2, v2, v5</span>
+<span class="">	if-lez v2, :cond_2</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getLightnessWeight()F</span>
+<span class="">	move-result v2</span>
+<span class="">	const/4 v6, 0x2</span>
+<span class="">	aget v0, v0, v6</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getTargetLightness()F</span>
+<span class="">	move-result v6</span>
+<span class="">	sub-float/2addr v0, v6</span>
+<span class="">	invoke-static {v0}, Ljava/lang/Math;->abs(F)F</span>
+<span class="">	move-result v0</span>
+<span class="">	sub-float/2addr v4, v0</span>
+<span class="">	mul-float v2, v2, v4</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getPopulationWeight()F</span>
+<span class="">	move-result v0</span>
+<span class="">	cmpl-float v0, v0, v5</span>
+<span class="">	if-lez v0, :cond_3</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getPopulationWeight()F</span>
+<span class="">	move-result p2</span>
+<span class="">	invoke-virtual {p1}, Landroidx/palette/graphics/Palette$Swatch;->getPopulation()I</span>
+<span class="">	move-result p1</span>
+<span class="">	int-to-float p1, p1</span>
+<span class="">	int-to-float v0, v1</span>
+<span class="">	div-float/2addr p1, v0</span>
+<span class="">	mul-float v5, p2, p1</span>
+<span class="">	:cond_3</span>
+<span class="">	add-float/2addr v3, v2</span>
+<span class="">	add-float/2addr v3, v5</span>
+.end method
+
+.method private generateScoredTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-direct {p0, p1}, Landroidx/palette/graphics/Palette;->getMaxScoredSwatchForTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroidx/palette/graphics/Target;->isExclusive()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	iget-object p1, p0, Landroidx/palette/graphics/Palette;->mUsedColors:Landroid/util/SparseBooleanArray;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/palette/graphics/Palette$Swatch;->getRgb()I</span>
+<span class="">	move-result v1</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	invoke-virtual {p1, v1, v2}, Landroid/util/SparseBooleanArray;->append(IZ)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private getMaxScoredSwatchForTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 7</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/Palette;->mSwatches:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v3, v0, :cond_2</span>
+<span class="">	iget-object v4, p0, Landroidx/palette/graphics/Palette;->mSwatches:Ljava/util/List;</span>
+<span class="">	invoke-interface {v4, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	check-cast v4, Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	invoke-direct {p0, v4, p1}, Landroidx/palette/graphics/Palette;->shouldBeScoredForTarget(Landroidx/palette/graphics/Palette$Swatch;Landroidx/palette/graphics/Target;)Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_1</span>
+<span class="">	invoke-direct {p0, v4, p1}, Landroidx/palette/graphics/Palette;->generateScore(Landroidx/palette/graphics/Palette$Swatch;Landroidx/palette/graphics/Target;)F</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	cmpl-float v6, v5, v1</span>
+<span class="">	if-lez v6, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object v2, v4</span>
+<span class="">	move v1, v5</span>
+<span class="">	:cond_1</span>
+<span class="">	add-int/lit8 v3, v3, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private shouldBeScoredForTarget(Landroidx/palette/graphics/Palette$Swatch;Landroidx/palette/graphics/Target;)Z
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-virtual {p1}, Landroidx/palette/graphics/Palette$Swatch;->getHsl()[F</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	aget v2, v0, v1</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getMinimumSaturation()F</span>
+<span class="">	move-result v3</span>
+<span class="">	cmpl-float v2, v2, v3</span>
+<span class="">	if-ltz v2, :cond_0</span>
+<span class="">	aget v2, v0, v1</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getMaximumSaturation()F</span>
+<span class="">	move-result v3</span>
+<span class="">	cmpg-float v2, v2, v3</span>
+<span class="">	if-gtz v2, :cond_0</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	aget v3, v0, v2</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getMinimumLightness()F</span>
+<span class="">	move-result v4</span>
+<span class="">	cmpl-float v3, v3, v4</span>
+<span class="">	if-ltz v3, :cond_0</span>
+<span class="">	aget v0, v0, v2</span>
+<span class="">	invoke-virtual {p2}, Landroidx/palette/graphics/Target;->getMaximumLightness()F</span>
+<span class="">	move-result p2</span>
+<span class="">	cmpg-float p2, v0, p2</span>
+<span class="">	if-gtz p2, :cond_0</span>
+<span class="">	iget-object p2, p0, Landroidx/palette/graphics/Palette;->mUsedColors:Landroid/util/SparseBooleanArray;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/palette/graphics/Palette$Swatch;->getRgb()I</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {p2, p1}, Landroid/util/SparseBooleanArray;->get(I)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method  generate()V
+<span class="">	.locals 5</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/Palette;->mTargets:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v1, v0, :cond_0</span>
+<span class="">	iget-object v2, p0, Landroidx/palette/graphics/Palette;->mTargets:Ljava/util/List;</span>
+<span class="">	invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {v2}, Landroidx/palette/graphics/Target;->normalizeWeights()V</span>
+<span class="">	iget-object v3, p0, Landroidx/palette/graphics/Palette;->mSelectedSwatches:Ljava/util/Map;</span>
+<span class="">	invoke-direct {p0, v2}, Landroidx/palette/graphics/Palette;->generateScoredTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-interface {v3, v2, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	add-int/lit8 v1, v1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/Palette;->mUsedColors:Landroid/util/SparseBooleanArray;</span>
+<span class="">	invoke-virtual {v0}, Landroid/util/SparseBooleanArray;->clear()V</span>
+.end method
+
+.method public getColorForTarget(Landroidx/palette/graphics/Target;I)I
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroidx/palette/graphics/Palette;->getSwatchForTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroidx/palette/graphics/Palette$Swatch;->getRgb()I</span>
+<span class="">	move-result p2</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public getDarkMutedColor(I)I
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->DARK_MUTED:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Landroidx/palette/graphics/Palette;->getColorForTarget(Landroidx/palette/graphics/Target;I)I</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public getDarkMutedSwatch()Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->DARK_MUTED:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0}, Landroidx/palette/graphics/Palette;->getSwatchForTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public getDarkVibrantColor(I)I
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->DARK_VIBRANT:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Landroidx/palette/graphics/Palette;->getColorForTarget(Landroidx/palette/graphics/Target;I)I</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public getDarkVibrantSwatch()Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->DARK_VIBRANT:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0}, Landroidx/palette/graphics/Palette;->getSwatchForTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public getDominantColor(I)I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/Palette;->mDominantSwatch:Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Landroidx/palette/graphics/Palette$Swatch;->getRgb()I</span>
+<span class="">	move-result p1</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public getDominantSwatch()Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/Palette;->mDominantSwatch:Landroidx/palette/graphics/Palette$Swatch;</span>
+.end method
+
+.method public getLightMutedColor(I)I
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->LIGHT_MUTED:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Landroidx/palette/graphics/Palette;->getColorForTarget(Landroidx/palette/graphics/Target;I)I</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public getLightMutedSwatch()Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->LIGHT_MUTED:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0}, Landroidx/palette/graphics/Palette;->getSwatchForTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public getLightVibrantColor(I)I
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->LIGHT_VIBRANT:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Landroidx/palette/graphics/Palette;->getColorForTarget(Landroidx/palette/graphics/Target;I)I</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public getLightVibrantSwatch()Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->LIGHT_VIBRANT:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0}, Landroidx/palette/graphics/Palette;->getSwatchForTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public getMutedColor(I)I
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->MUTED:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Landroidx/palette/graphics/Palette;->getColorForTarget(Landroidx/palette/graphics/Target;I)I</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public getMutedSwatch()Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->MUTED:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0}, Landroidx/palette/graphics/Palette;->getSwatchForTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public getSwatchForTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/Palette;->mSelectedSwatches:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroidx/palette/graphics/Palette$Swatch;</span>
+.end method
+
+.method public getSwatches()Ljava/util/List;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/palette/graphics/Palette$Swatch;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/Palette;->mSwatches:Ljava/util/List;</span>
+<span class="">	invoke-static {v0}, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public getTargets()Ljava/util/List;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Landroidx/palette/graphics/Target;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Landroidx/palette/graphics/Palette;->mTargets:Ljava/util/List;</span>
+<span class="">	invoke-static {v0}, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public getVibrantColor(I)I
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->VIBRANT:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0, p1}, Landroidx/palette/graphics/Palette;->getColorForTarget(Landroidx/palette/graphics/Target;I)I</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public getVibrantSwatch()Landroidx/palette/graphics/Palette$Swatch;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Landroidx/palette/graphics/Target;->VIBRANT:Landroidx/palette/graphics/Target;</span>
+<span class="">	invoke-virtual {p0, v0}, Landroidx/palette/graphics/Palette;->getSwatchForTarget(Landroidx/palette/graphics/Target;)Landroidx/palette/graphics/Palette$Swatch;</span>
+<span class="">	move-result-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

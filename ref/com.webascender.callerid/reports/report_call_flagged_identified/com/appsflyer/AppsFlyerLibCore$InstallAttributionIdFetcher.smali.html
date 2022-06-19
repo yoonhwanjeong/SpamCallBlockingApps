@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.appsflyer</a></li>
+        <li><i class="ico ico-class"></i> AppsFlyerLibCore$InstallAttributionIdFetcher.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;
+.super Ljava/lang/Object;
+.source "SourceFile"
+.implements Ljava/lang/Runnable;
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lcom/appsflyer/AppsFlyerLibCore;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x9
+name = "InstallAttributionIdFetcher"
+.end annotation
+
+.field private static ı:Ljava/lang/String; = "https://%sgcdsdk.%s/install_data/v4.0/"
+.field private static final ɩ:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+.field private final Ɩ:Ljava/util/concurrent/atomic/AtomicInteger;
+.field private final ǃ:Ljava/lang/String;
+.field private final Ι:Landroid/app/Application;
+.field final ι:Ljava/util/concurrent/ScheduledExecutorService;
+.field private і:Lcom/appsflyer/AppsFlyerLibCore;
+.field private final Ӏ:I
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 3</span>
+
+<span class="">	const-string v0, "googleplay"</span>
+<span class="">	const-string v1, "playstore"</span>
+<span class="">	const-string v2, "googleplaystore"</span>
+<span class="">	filled-new-array {v0, v1, v2}, [Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sput-object v0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ɩ:Ljava/util/List;</span>
+.end method
+
+.method private constructor <init>(Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AFExecutor;->getInstance()Lcom/appsflyer/AFExecutor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/appsflyer/AFExecutor;->Ι()Ljava/util/concurrent/ScheduledThreadPoolExecutor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ι:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>(I)V</span>
+<span class="">	iput-object v0, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ɩ:Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	iget-object v0, p1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->і:Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	iput-object v0, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->і:Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	iget-object v0, p1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	iput-object v0, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	iget-object v0, p1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ǃ:Ljava/lang/String;</span>
+<span class="">	iput-object v0, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ǃ:Ljava/lang/String;</span>
+<span class="">	iget p1, p1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ӏ:I</span>
+<span class="">	add-int/lit8 p1, p1, 0x1</span>
+<span class="">	iput p1, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ӏ:I</span>
+.end method
+
+.method private constructor <init>(Lcom/appsflyer/AppsFlyerLibCore;Landroid/app/Application;Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AFExecutor;->getInstance()Lcom/appsflyer/AFExecutor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/appsflyer/AFExecutor;->Ι()Ljava/util/concurrent/ScheduledThreadPoolExecutor;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ι:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>(I)V</span>
+<span class="">	iput-object v0, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ɩ:Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	iput-object p1, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->і:Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	iput-object p2, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	iput-object p3, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ǃ:Ljava/lang/String;</span>
+<span class="">	iput v1, p0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ӏ:I</span>
+.end method
+
+.method synthetic constructor <init>(Lcom/appsflyer/AppsFlyerLibCore;Landroid/app/Application;Ljava/lang/String;B)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1, p2, p3}, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;-><init>(Lcom/appsflyer/AppsFlyerLibCore;Landroid/app/Application;Ljava/lang/String;)V</span>
+.end method
+
+.method public static setUrl(Ljava/util/Map;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-interface {p0}, Ljava/util/Map;->entrySet()Ljava/util/Set;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/util/Map$Entry;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "gcdsdk"</span>
+<span class="">	invoke-virtual {v2, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/String;</span>
+<span class="">	sput-object v0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ı:Ljava/lang/String;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method static synthetic ǃ(Ljava/util/Map;)V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "[GCD-A02] Calling onConversionDataSuccess with:\n"</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0, p0}, Lcom/appsflyer/AppsFlyerConversionListener;->onConversionDataSuccess(Ljava/util/Map;)V</span>
+.end method
+
+.method static synthetic ι(Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-static {p0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "[GCD-A02] Calling onConversionFailure with:\n"</span>
+<span class="">	invoke-virtual {v1, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0, p0}, Lcom/appsflyer/AppsFlyerConversionListener;->onConversionDataFail(Ljava/lang/String;)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public run()V
+<span class="">	.locals 17</span>
+
+<span class="">	move-object/from16 v1, p0</span>
+<span class="">	const-string v0, "is_first_launch"</span>
+<span class="">	const-string v2, "af_siteid"</span>
+<span class="">	iget-object v3, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ǃ:Ljava/lang/String;</span>
+<span class="">	const-string v4, "[GCD-A02] Calling onConversionFailure with:\n"</span>
+<span class="">	if-eqz v3, :cond_17</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v3</span>
+<span class="">	if-nez v3, :cond_0</span>
+<span class="">	goto/16 :goto_9</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v3, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->і:Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	invoke-virtual {v3}, Lcom/appsflyer/AppsFlyerLib;->isStopped()Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_2</span>
+<span class="">	const-string v0, "[GCD-E03] \'isStopTracking\' enabled"</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "\'isStopTracking\' enabled"</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v4, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2, v0}, Lcom/appsflyer/AppsFlyerConversionListener;->onConversionDataFail(Ljava/lang/String;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object v3, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ɩ:Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {v3}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v5, 0x2</span>
+<span class="">	iget-object v6, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	:try_start_0</span>
+<span class="">	if-nez v6, :cond_4</span>
+<span class="">	const-string v0, "[GCD-E06] Context null"</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "Context null"</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_3</span>
+<span class="">	invoke-virtual {v4, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2, v0}, Lcom/appsflyer/AppsFlyerConversionListener;->onConversionDataFail(Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ɩ:Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_1</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->decrementAndGet()I</span>
+<span class="">	iget-object v7, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->і:Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	invoke-virtual {v7, v6}, Lcom/appsflyer/AppsFlyerLibCore;->getConfiguredChannel(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="">	:try_start_1</span>
+<span class="">	:cond_4</span>
+<span class="">	move-result-object v7</span>
+<span class="">	invoke-static {v6, v7}, Lcom/appsflyer/AppsFlyerLibCore;->Ι(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	const-string v7, ""</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_1</span>
+<span class="">	const/4 v9, 0x1</span>
+<span class="">	if-eqz v6, :cond_6</span>
+<span class="">	sget-object v10, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ɩ:Ljava/util/List;</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;</span>
+<span class="">	:try_start_2</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-interface {v10, v11}, Ljava/util/List;->contains(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v10</span>
+<span class="">	if-nez v10, :cond_5</span>
+<span class="">	const-string v10, "-"</span>
+<span class="">	invoke-static {v6}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual {v10, v6}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const-string v10, "AF detected using redundant Google-Play channel for attribution - %s. Using without channel postfix."</span>
+<span class="">	new-array v11, v9, [Ljava/lang/Object;</span>
+<span class="">	:cond_5</span>
+<span class="">	aput-object v6, v11, v8</span>
+<span class="">	invoke-static {v10, v11}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-static {v6}, Lcom/appsflyer/AFLogger;->afWarnLog(Ljava/lang/String;)V</span>
+<span class="">	move-object v6, v7</span>
+<span class="">	new-instance v10, Ljava/lang/StringBuilder;</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	:goto_0</span>
+<span class="">	sget-object v11, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ı:Ljava/lang/String;</span>
+<span class="">	invoke-static {v11}, Lcom/appsflyer/ServerConfigHandler;->getUrl(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v11, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	invoke-virtual {v11}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object v11</span>
+<span class="">	invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v10, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v6, "?devkey="</span>
+<span class="">	invoke-virtual {v10, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v6, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ǃ:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v10, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v6, "&device_id="</span>
+<span class="">	invoke-virtual {v10, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	new-instance v6, Ljava/lang/ref/WeakReference;</span>
+<span class="">	iget-object v11, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	invoke-direct {v6, v11}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V</span>
+<span class="">	invoke-static {v6}, Lcom/appsflyer/internal/ac;->ı(Ljava/lang/ref/WeakReference;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual {v10, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v10}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/internal/af;->Ι()Lcom/appsflyer/internal/af;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	const-string v11, "server_request"</span>
+<span class="">	filled-new-array {v7}, [Ljava/lang/String;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	invoke-virtual {v10, v11, v6, v7}, Lcom/appsflyer/internal/af;->ı(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V</span>
+<span class="">	const-string v7, "[GCD-B01] URL: "</span>
+<span class="">	invoke-static {v6}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	invoke-virtual {v7, v10}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	invoke-static {v7}, Lcom/appsflyer/internal/ah;->ı(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v10</span>
+<span class="">	new-instance v7, Ljava/net/URL;</span>
+<span class="">	invoke-direct {v7, v6}, Ljava/net/URL;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v7}, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	check-cast v7, Ljava/net/HttpURLConnection;</span>
+<span class="">	const-string v3, "GET"</span>
+<span class="">	invoke-virtual {v7, v3}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="">	:try_start_3</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_1</span>
+<span class="">	const/16 v3, 0x2710</span>
+<span class="">	invoke-virtual {v7, v3}, Ljava/net/URLConnection;->setConnectTimeout(I)V</span>
+<span class="">	const-string v3, "Connection"</span>
+<span class="">	const-string v12, "close"</span>
+<span class="">	invoke-virtual {v7, v3, v12}, Ljava/net/URLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v7}, Ljava/net/URLConnection;->connect()V</span>
+<span class="">	invoke-virtual {v7}, Ljava/net/HttpURLConnection;->getResponseCode()I</span>
+<span class="">	move-result v3</span>
+<span class="">	iget-object v12, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->і:Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	invoke-virtual {v12, v7}, Lcom/appsflyer/AppsFlyerLibCore;->ǃ(Ljava/net/HttpURLConnection;)Ljava/lang/String;</span>
+<span class="">	move-result-object v12</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/internal/af;->Ι()Lcom/appsflyer/internal/af;</span>
+<span class="">	move-result-object v13</span>
+<span class="">	const-string v14, "server_response"</span>
+<span class="">	new-array v15, v5, [Ljava/lang/String;</span>
+<span class="">	invoke-static {v3}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v16</span>
+<span class="">	aput-object v16, v15, v8</span>
+<span class="">	aput-object v12, v15, v9</span>
+<span class="">	invoke-virtual {v13, v14, v6, v15}, Lcom/appsflyer/internal/af;->ı(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V</span>
+<span class="">	const/16 v6, 0xc8</span>
+<span class="">	const/16 v13, 0x194</span>
+<span class="">	if-eq v3, v6, :cond_a</span>
+<span class="">	if-ne v3, v13, :cond_7</span>
+<span class="">	goto :goto_1</span>
+<span class="">	const/16 v0, 0x193</span>
+<span class="">	if-eq v3, v0, :cond_8</span>
+<span class="">	:cond_7</span>
+<span class="">	const/16 v0, 0x1f4</span>
+<span class="">	if-lt v3, v0, :cond_9</span>
+<span class="">	iget v0, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ӏ:I</span>
+<span class="">	if-ge v0, v5, :cond_9</span>
+<span class="">	:cond_8</span>
+<span class="">	new-instance v0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;</span>
+<span class="">	invoke-direct {v0, v1}, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;-><init>(Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;)V</span>
+<span class="">	iget-object v2, v0, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ι:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	sget-object v3, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-static {v2, v0, v3}, Lcom/appsflyer/AppsFlyerLibCore;->Ι(Ljava/util/concurrent/ScheduledExecutorService;Ljava/lang/Runnable;Ljava/util/concurrent/TimeUnit;)V</span>
+<span class="">	goto/16 :goto_5</span>
+<span class="">	const-string v0, "Error connection to server: "</span>
+<span class="">	invoke-static {v3}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;</span>
+<span class="">	:cond_9</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v0, v2}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_12</span>
+<span class="">	invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v4, v2}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2, v0}, Lcom/appsflyer/AppsFlyerConversionListener;->onConversionDataFail(Ljava/lang/String;)V</span>
+<span class="">	goto/16 :goto_5</span>
+<span class="">	new-instance v6, Lcom/appsflyer/internal/EventDataCollector;</span>
+<span class="">	iget-object v14, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_a</span>
+<span class="">	invoke-direct {v6, v14}, Lcom/appsflyer/internal/EventDataCollector;-><init>(Landroid/content/Context;)V</span>
+<span class="">	const-string v14, "gcd_networking"</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v15</span>
+<span class="">	sub-long v10, v15, v10</span>
+<span class="">	invoke-virtual {v6, v14, v10, v11}, Lcom/appsflyer/internal/EventDataCollector;->set(Ljava/lang/String;J)V</span>
+<span class="">	const-string v10, "gcd_retries"</span>
+<span class="">	iget v11, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ӏ:I</span>
+<span class="">	int-to-long v14, v11</span>
+<span class="">	invoke-virtual {v6, v10, v14, v15}, Lcom/appsflyer/internal/EventDataCollector;->set(Ljava/lang/String;J)V</span>
+<span class="">	const-string v6, "Attribution data: "</span>
+<span class="">	invoke-static {v12}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	invoke-virtual {v6, v10}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-static {v6}, Lcom/appsflyer/internal/ah;->ı(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v12}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v6</span>
+<span class="">	if-lez v6, :cond_12</span>
+<span class="">	invoke-static {v12}, Lcom/appsflyer/AppsFlyerLibCore;->ǃ(Ljava/lang/String;)Ljava/util/Map;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	const-string v10, "iscache"</span>
+<span class="">	invoke-interface {v6, v10}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	check-cast v10, Ljava/lang/Boolean;</span>
+<span class="">	if-ne v3, v13, :cond_b</span>
+<span class="">	const-string v3, "error_reason"</span>
+<span class="">	invoke-interface {v6, v3}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v3, "status_code"</span>
+<span class="">	invoke-interface {v6, v3}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v3, "af_status"</span>
+<span class="">	const-string v11, "Organic"</span>
+<span class="">	invoke-interface {v6, v3, v11}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v3, "af_message"</span>
+<span class="">	const-string v11, "organic install"</span>
+<span class="">	invoke-interface {v6, v3, v11}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	if-eqz v10, :cond_c</span>
+<span class="">	invoke-virtual {v10}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="">	:cond_b</span>
+<span class="">	move-result v3</span>
+<span class="">	if-nez v3, :cond_c</span>
+<span class="">	iget-object v3, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	const-string v10, "appsflyerConversionDataCacheExpiration"</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v13</span>
+<span class="">	invoke-static {v3, v10, v13, v14}, Lcom/appsflyer/AppsFlyerLibCore;->ı(Landroid/content/Context;Ljava/lang/String;J)V</span>
+<span class="">	invoke-interface {v6, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	:cond_c</span>
+<span class="">	const-string v10, "[Invite] Detected App-Invite via channel: "</span>
+<span class="">	const-string v11, "af_channel"</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_0</span>
+<span class="">	if-eqz v3, :cond_e</span>
+<span class="">	invoke-interface {v6, v11}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	:try_start_4</span>
+<span class="">	if-eqz v3, :cond_d</span>
+<span class="">	new-instance v3, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v3, v10}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {v6, v11}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v13</span>
+<span class="">	invoke-virtual {v3, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {v3}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	const-string v3, "[CrossPromotion] App was installed via %s\'s Cross Promotion"</span>
+<span class="">	new-array v13, v9, [Ljava/lang/Object;</span>
+<span class="">	:cond_d</span>
+<span class="">	invoke-interface {v6, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v14</span>
+<span class="">	aput-object v14, v13, v8</span>
+<span class="">	invoke-static {v3, v13}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {v3}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {v6, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_e</span>
+<span class="">	if-eqz v2, :cond_f</span>
+<span class="">	new-instance v2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v2, v10}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {v6, v11}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	sget-object v2, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;</span>
+<span class="">	invoke-interface {v6, v0, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_f</span>
+<span class="">	new-instance v2, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v2, v6}, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V</span>
+<span class="">	invoke-virtual {v2}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "attributionId"</span>
+<span class="">	if-eqz v2, :cond_10</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_0</span>
+<span class="">	iget-object v10, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	invoke-static {v10, v3, v2}, Lcom/appsflyer/AppsFlyerLibCore;->ι(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_start_5</span>
+<span class="">	goto :goto_3</span>
+<span class="">	iget-object v2, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	invoke-static {v2, v3, v12}, Lcom/appsflyer/AppsFlyerLibCore;->ι(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:cond_10</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:goto_3</span>
+<span class="">	if-eqz v2, :cond_12</span>
+<span class="">	iget-object v2, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ɩ:Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Number;->intValue()I</span>
+<span class="">	move-result v2</span>
+<span class="">	if-gt v2, v9, :cond_12</span>
+<span class="">	iget-object v2, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	:try_end_5</span>
+<span class="">	.catchall {:try_start_5 .. :try_end_5} :catchall_0</span>
+<span class="">	invoke-static {v2}, Lcom/appsflyer/AppsFlyerLibCore;->ǃ(Landroid/content/Context;)Ljava/util/Map;</span>
+<span class="">	:try_start_6</span>
+<span class="">	move-result-object v2</span>
+<span class="">	iget-object v3, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ι:Landroid/app/Application;</span>
+<span class="">	invoke-static {v3}, Lcom/appsflyer/AppsFlyerLibCore;->getSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const-string v9, "sixtyDayConversionData"</span>
+<span class="">	invoke-interface {v3, v9, v8}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-nez v3, :cond_11</span>
+<span class="">	sget-object v3, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;</span>
+<span class="">	invoke-interface {v2, v0, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-object v6, v2</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:try_end_6</span>
+<span class="">	.catch Lcom/appsflyer/internal/u; {:try_start_6 .. :try_end_6} :catch_0</span>
+<span class="">	.catchall {:try_start_6 .. :try_end_6} :catchall_0</span>
+<span class="">	:cond_11</span>
+<span class="">	move-exception v0</span>
+<span class="">	const-string v2, "Exception while trying to fetch attribution data. "</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-static {v2, v0}, Lcom/appsflyer/AFLogger;->afErrorLog(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	:try_start_7</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v2, "[GCD-A02] Calling onConversionDataSuccess with:\n"</span>
+<span class="">	:goto_4</span>
+<span class="">	invoke-direct {v0, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0, v6}, Lcom/appsflyer/AppsFlyerConversionListener;->onConversionDataSuccess(Ljava/util/Map;)V</span>
+<span class="">	iget-object v0, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ɩ:Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->decrementAndGet()I</span>
+<span class="">	:try_end_7</span>
+<span class="">	.catchall {:try_start_7 .. :try_end_7} :catchall_0</span>
+<span class="">	:goto_5</span>
+<span class="">	:cond_12</span>
+<span class="">	if-eqz v7, :cond_15</span>
+<span class="">	invoke-virtual {v7}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	goto :goto_8</span>
+<span class="">	move-exception v0</span>
+<span class="">	move-object v3, v7</span>
+<span class="">	:catchall_0</span>
+<span class="">	goto :goto_6</span>
+<span class="">	move-exception v0</span>
+<span class="">	iget v2, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ӏ:I</span>
+<span class="">	:catchall_1</span>
+<span class="">	if-ge v2, v5, :cond_13</span>
+<span class="">	:goto_6</span>
+<span class="">	:try_start_8</span>
+<span class="">	new-instance v2, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;</span>
+<span class="">	invoke-direct {v2, v1}, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;-><init>(Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;)V</span>
+<span class="">	iget-object v4, v2, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ι:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	sget-object v5, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-static {v4, v2, v5}, Lcom/appsflyer/AppsFlyerLibCore;->Ι(Ljava/util/concurrent/ScheduledExecutorService;Ljava/lang/Runnable;Ljava/util/concurrent/TimeUnit;)V</span>
+<span class="">	goto :goto_7</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:cond_13</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	if-eqz v5, :cond_14</span>
+<span class="">	invoke-static {v2}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v4, v5}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-static {v4}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-interface {v4, v2}, Lcom/appsflyer/AppsFlyerConversionListener;->onConversionDataFail(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:goto_7</span>
+<span class="">	:cond_14</span>
+<span class="">	invoke-static {v2, v0}, Lcom/appsflyer/AFLogger;->afErrorLog(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	iget-object v0, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ɩ:Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->decrementAndGet()I</span>
+<span class="">	:try_end_8</span>
+<span class="">	.catchall {:try_start_8 .. :try_end_8} :catchall_2</span>
+<span class="">	if-eqz v3, :cond_15</span>
+<span class="">	invoke-virtual {v3}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	iget-object v0, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->ι:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/concurrent/ScheduledExecutorService;->shutdown()V</span>
+<span class="">	:goto_8</span>
+<span class="">	:cond_15</span>
+<span class="">	const-string v0, "[GCD-A03] Server retrieving attempt finished"</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	move-exception v0</span>
+<span class="">	iget-object v2, v1, Lcom/appsflyer/AppsFlyerLibCore$InstallAttributionIdFetcher;->Ɩ:Ljava/util/concurrent/atomic/AtomicInteger;</span>
+<span class="">	invoke-virtual {v2}, Ljava/util/concurrent/atomic/AtomicInteger;->decrementAndGet()I</span>
+<span class="">	:catchall_2</span>
+<span class="">	if-eqz v3, :cond_16</span>
+<span class="">	invoke-virtual {v3}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	throw v0</span>
+<span class="">	const-string v0, "[GCD-E05] AppsFlyer dev key is missing"</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	:cond_16</span>
+<span class="">	const-string v0, "AppsFlyer dev key is missing"</span>
+<span class="">	:cond_17</span>
+<span class="">	:goto_9</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_18</span>
+<span class="">	invoke-virtual {v4, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->ɩ()Lcom/appsflyer/AppsFlyerConversionListener;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v2, v0}, Lcom/appsflyer/AppsFlyerConversionListener;->onConversionDataFail(Ljava/lang/String;)V</span>
+<span class="">	:cond_18</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

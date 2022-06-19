@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.share</a></li>
+        <li><i class="ico ico-class"></i> DeviceShareDialog.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/facebook/share/DeviceShareDialog;
+.super Lcom/facebook/internal/FacebookDialogBase;
+.source "DeviceShareDialog.java"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/share/DeviceShareDialog$Result;
+}
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/facebook/internal/FacebookDialogBase<",
+"Lcom/facebook/share/model/ShareContent;",
+"Lcom/facebook/share/DeviceShareDialog$Result;",
+">;"
+}
+.end annotation
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+.field private static final DEFAULT_REQUEST_CODE:I
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->DeviceShare:Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/internal/CallbackManagerImpl$RequestCodeOffset;->toRequestCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	sput v0, Lcom/facebook/share/DeviceShareDialog;->DEFAULT_REQUEST_CODE:I</span>
+.end method
+
+.method public constructor <init>(Landroid/app/Activity;)V
+<span class="">	.locals 1</span>
+
+<span class="">	sget v0, Lcom/facebook/share/DeviceShareDialog;->DEFAULT_REQUEST_CODE:I</span>
+<span class="">	invoke-direct {p0, p1, v0}, Lcom/facebook/internal/FacebookDialogBase;-><init>(Landroid/app/Activity;I)V</span>
+.end method
+
+.method public constructor <init>(Landroid/app/Fragment;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroid/app/Fragment;)V</span>
+<span class="">	sget p1, Lcom/facebook/share/DeviceShareDialog;->DEFAULT_REQUEST_CODE:I</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/facebook/internal/FacebookDialogBase;-><init>(Lcom/facebook/internal/FragmentWrapper;I)V</span>
+.end method
+
+.method public constructor <init>(Landroidx/fragment/app/Fragment;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/FragmentWrapper;</span>
+<span class="">	invoke-direct {v0, p1}, Lcom/facebook/internal/FragmentWrapper;-><init>(Landroidx/fragment/app/Fragment;)V</span>
+<span class="">	sget p1, Lcom/facebook/share/DeviceShareDialog;->DEFAULT_REQUEST_CODE:I</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/facebook/internal/FacebookDialogBase;-><init>(Lcom/facebook/internal/FragmentWrapper;I)V</span>
+.end method
+
+.method protected canShowImpl(Lcom/facebook/share/model/ShareContent;Ljava/lang/Object;)Z
+<span class="">	.locals 0</span>
+
+<span class="">	instance-of p2, p1, Lcom/facebook/share/model/ShareLinkContent;</span>
+<span class="">	if-nez p2, :cond_1</span>
+<span class="">	instance-of p1, p1, Lcom/facebook/share/model/ShareOpenGraphContent;</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	:goto_1</span>
+.end method
+
+.method protected bridge synthetic canShowImpl(Ljava/lang/Object;Ljava/lang/Object;)Z
+<span class="">	.locals 0</span>
+
+<span class="">	check-cast p1, Lcom/facebook/share/model/ShareContent;</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Lcom/facebook/share/DeviceShareDialog;->canShowImpl(Lcom/facebook/share/model/ShareContent;Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method protected createBaseAppCall()Lcom/facebook/internal/AppCall;
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+.end method
+
+.method protected getOrderedModeHandlers()Ljava/util/List;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/facebook/internal/FacebookDialogBase<",</span>
+<span class="">	"Lcom/facebook/share/model/ShareContent;",</span>
+<span class="">	"Lcom/facebook/share/DeviceShareDialog$Result;",</span>
+<span class="">	">.ModeHandler;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+.end method
+
+.method protected registerCallbackImpl(Lcom/facebook/internal/CallbackManagerImpl;Lcom/facebook/FacebookCallback;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/facebook/internal/CallbackManagerImpl;",</span>
+<span class="">	"Lcom/facebook/FacebookCallback<",</span>
+<span class="">	"Lcom/facebook/share/DeviceShareDialog$Result;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/DeviceShareDialog;->getRequestCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	new-instance v1, Lcom/facebook/share/DeviceShareDialog$1;</span>
+<span class="">	invoke-direct {v1, p0, p2}, Lcom/facebook/share/DeviceShareDialog$1;-><init>(Lcom/facebook/share/DeviceShareDialog;Lcom/facebook/FacebookCallback;)V</span>
+<span class="">	invoke-virtual {p1, v0, v1}, Lcom/facebook/internal/CallbackManagerImpl;->registerCallback(ILcom/facebook/internal/CallbackManagerImpl$Callback;)V</span>
+.end method
+
+.method protected showImpl(Lcom/facebook/share/model/ShareContent;Ljava/lang/Object;)V
+<span class="">	.locals 2</span>
+
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	instance-of p2, p1, Lcom/facebook/share/model/ShareLinkContent;</span>
+<span class="">	if-nez p2, :cond_1</span>
+<span class="">	instance-of p2, p1, Lcom/facebook/share/model/ShareOpenGraphContent;</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Lcom/facebook/FacebookException;</span>
+<span class="">	new-instance p2, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v0, " only supports ShareLinkContent or ShareOpenGraphContent"</span>
+<span class="">	invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-direct {p1, p2}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	new-instance p2, Landroid/content/Intent;</span>
+<span class="">	invoke-direct {p2}, Landroid/content/Intent;-><init>()V</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-class v1, Lcom/facebook/FacebookActivity;</span>
+<span class="">	invoke-virtual {p2, v0, v1}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;</span>
+<span class="">	const-string v0, "DeviceShareDialogFragment"</span>
+<span class="">	invoke-virtual {p2, v0}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	const-string v0, "content"</span>
+<span class="">	invoke-virtual {p2, v0, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;</span>
+<span class="">	invoke-virtual {p0}, Lcom/facebook/share/DeviceShareDialog;->getRequestCode()I</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {p0, p2, p1}, Lcom/facebook/share/DeviceShareDialog;->startActivityForResult(Landroid/content/Intent;I)V</span>
+<span class="">	new-instance p1, Lcom/facebook/FacebookException;</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string p2, "Must provide non-null content to share"</span>
+<span class="">	invoke-direct {p1, p2}, Lcom/facebook/FacebookException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method protected bridge synthetic showImpl(Ljava/lang/Object;Ljava/lang/Object;)V
+<span class="">	.locals 0</span>
+
+<span class="">	check-cast p1, Lcom/facebook/share/model/ShareContent;</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Lcom/facebook/share/DeviceShareDialog;->showImpl(Lcom/facebook/share/model/ShareContent;Ljava/lang/Object;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">g.g.b.a.k</a></li>
+        <li><i class="ico ico-class"></i> i.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lg/g/b/a/k/i;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+
+
+.method public static final a(Lm/x;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "$this$getETagFromCacheHeader"</span>
+<span class="">	invoke-static {p0, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "ETag"</span>
+<span class="">	invoke-virtual {p0, v0}, Lm/x;->c(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string p0, ""</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public static final b(Lm/x;)J
+<span class="">	.locals 15</span>
+
+<span class="">	const-string v0, "$this$getTTLFromCacheHeaderInMillis"</span>
+<span class="">	invoke-static {p0, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "Cache-Control"</span>
+<span class="">	invoke-virtual {p0, v0}, Lm/x;->c(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v1}, Lcom/google/common/base/r;->b(Ljava/lang/String;)Z</span>
+<span class="">	move-result p0</span>
+<span class="">	const-wide/16 v7, 0x0</span>
+<span class="">	if-nez p0, :cond_5</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	const-string v0, ","</span>
+<span class="">	filled-new-array {v0}, [Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	const/4 v5, 0x6</span>
+<span class="">	const/4 v6, 0x0</span>
+<span class="">	invoke-static/range {v1 .. v6}, Lkotlin/c0/m;->r0(Ljava/lang/CharSequence;[Ljava/lang/String;ZIILjava/lang/Object;)Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="">	const/16 v2, 0xa</span>
+<span class="">	invoke-static {v0, v2}, Lkotlin/s/k;->q(Ljava/lang/Iterable;I)I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-direct {v1, v2}, Ljava/util/ArrayList;-><init>(I)V</span>
+<span class="">	invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/String;</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-static {v2}, Lkotlin/c0/m;->K0(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v1, v2}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p0, Lkotlin/TypeCastException;</span>
+<span class="">	const-string v0, "null cannot be cast to non-null type kotlin.CharSequence"</span>
+<span class="">	invoke-direct {p0, v0}, Lkotlin/TypeCastException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+<span class="">	:cond_1</span>
+<span class="">	move-object v1, p0</span>
+<span class="">	:cond_2</span>
+<span class="">	if-eqz v1, :cond_6</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-interface {v1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_6</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Ljava/lang/String;</span>
+<span class="">	const-string v3, "max-age="</span>
+<span class="">	const/4 v4, 0x2</span>
+<span class="">	invoke-static {v2, v3, v0, v4, p0}, Lkotlin/c0/m;->I(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_3</span>
+<span class="">	const-string v10, "max-age="</span>
+<span class="">	const/4 v11, 0x0</span>
+<span class="">	const/4 v12, 0x0</span>
+<span class="">	const/4 v13, 0x6</span>
+<span class="">	const/4 v14, 0x0</span>
+<span class="">	move-object v9, v2</span>
+<span class="">	invoke-static/range {v9 .. v14}, Lkotlin/c0/m;->T(Ljava/lang/CharSequence;Ljava/lang/String;IZILjava/lang/Object;)I</span>
+<span class="">	move-result v3</span>
+<span class="">	add-int/lit8 v3, v3, 0x8</span>
+<span class="">	if-eqz v2, :cond_4</span>
+<span class="">	invoke-virtual {v2, v3}, Ljava/lang/String;->substring(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "(this as java.lang.String).substring(startIndex)"</span>
+<span class="">	invoke-static {v2, v3}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-static {v2}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	const-wide/16 v4, 0x3e8</span>
+<span class="">	mul-long v7, v2, v4</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_4</span>
+<span class="">	new-instance p0, Lkotlin/TypeCastException;</span>
+<span class="">	const-string v1, "null cannot be cast to non-null type java.lang.String"</span>
+<span class="">	invoke-direct {p0, v1}, Lkotlin/TypeCastException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	new-array v0, v0, [Ljava/lang/Object;</span>
+<span class="">	const-string v1, "HeadersExt"</span>
+<span class="">	const-string v2, "Cache-Control:max-age is not parsable"</span>
+<span class="">	invoke-static {v1, p0, v2, v0}, Lcom/hiya/client/support/logging/d;->k(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_5</span>
+<span class="">	const-wide/16 v7, -0x1</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_6</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

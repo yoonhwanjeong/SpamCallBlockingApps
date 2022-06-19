@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.ads.internal.dynamicloading</a></li>
+        <li><i class="ico ico-class"></i> DexLoadErrorReporter$1.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Lcom/facebook/ads/internal/dynamicloading/DexLoadErrorReporter$1;
+.super Ljava/lang/Thread;
+.source "DexLoadErrorReporter.java"
+
+.annotation system Ldalvik/annotation/EnclosingMethod;
+value = Lcom/facebook/ads/internal/dynamicloading/DexLoadErrorReporter;->reportDexLoadingIssue(Landroid/content/Context;Ljava/lang/String;D)V
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x0
+name = null
+.end annotation
+
+.field final synthetic val$context:Landroid/content/Context;
+.field final synthetic val$error:Ljava/lang/String;
+
+
+.method constructor <init>(Landroid/content/Context;Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/facebook/ads/internal/dynamicloading/DexLoadErrorReporter$1;->val$context:Landroid/content/Context;</span>
+<span class="">	iput-object p2, p0, Lcom/facebook/ads/internal/dynamicloading/DexLoadErrorReporter$1;->val$error:Ljava/lang/String;</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/Thread;-><init>()V</span>
+.end method
+
+.method public run()V
+<span class="">	.locals 22</span>
+
+<span class="">	move-object/from16 v1, p0</span>
+<span class="">	const-string v0, "data"</span>
+<span class="">	const-string v2, ""</span>
+<span class="">	const-string v3, "0"</span>
+<span class="">	const-string v4, "attempt"</span>
+<span class="">	const-string v5, "UTF-8"</span>
+<span class="">	const-string v6, "Can\'t close connection."</span>
+<span class="">	const-string v7, "FBAudienceNetwork"</span>
+<span class="">	invoke-super/range {p0 .. p0}, Ljava/lang/Thread;->run()V</span>
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v9, Ljava/net/URL;</span>
+<span class="">	const-string v10, "https://www.facebook.com/adnw_logging/"</span>
+<span class="">	invoke-direct {v9, v10}, Ljava/net/URL;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v9}, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	check-cast v9, Ljava/net/HttpURLConnection;</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_4</span>
+<span class="">	const-string v10, "POST"</span>
+<span class="">	invoke-virtual {v9, v10}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+<span class="">	const-string v10, "Content-Type"</span>
+<span class="">	const-string v11, "application/x-www-form-urlencoded;charset=UTF-8"</span>
+<span class="">	invoke-virtual {v9, v10, v11}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string v10, "Accept"</span>
+<span class="">	const-string v11, "application/json"</span>
+<span class="">	invoke-virtual {v9, v10, v11}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string v10, "Accept-Charset"</span>
+<span class="">	invoke-virtual {v9, v10, v5}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const-string/jumbo v10, "user-agent"</span>
+<span class="">	const-string v11, "[FBAN/AudienceNetworkForAndroid;FBSN/Android]"</span>
+<span class="">	invoke-virtual {v9, v10, v11}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	const/4 v10, 0x1</span>
+<span class="">	invoke-virtual {v9, v10}, Ljava/net/HttpURLConnection;->setDoOutput(Z)V</span>
+<span class="">	invoke-virtual {v9, v10}, Ljava/net/HttpURLConnection;->setDoInput(Z)V</span>
+<span class="">	invoke-virtual {v9}, Ljava/net/HttpURLConnection;->connect()V</span>
+<span class="">	invoke-static {}, Ljava/util/UUID;->randomUUID()Ljava/util/UUID;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	invoke-virtual {v10}, Ljava/util/UUID;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v10</span>
+<span class="">	new-instance v11, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v11}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	invoke-virtual {v11, v4, v3}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	iget-object v12, v1, Lcom/facebook/ads/internal/dynamicloading/DexLoadErrorReporter$1;->val$context:Landroid/content/Context;</span>
+<span class="">	invoke-static {v12, v11, v10}, Lcom/facebook/ads/internal/dynamicloading/DexLoadErrorReporter;->access$000(Landroid/content/Context;Lorg/json/JSONObject;Ljava/lang/String;)V</span>
+<span class="">	new-instance v12, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v12}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	const-string v13, "subtype"</span>
+<span class="">	const-string v14, "generic"</span>
+<span class="">	invoke-virtual {v12, v13, v14}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v13, "subtype_code"</span>
+<span class="">	const-string v14, "1320"</span>
+<span class="">	invoke-virtual {v12, v13, v14}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v13, "caught_exception"</span>
+<span class="">	const-string v14, "1"</span>
+<span class="">	invoke-virtual {v12, v13, v14}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v13, "stacktrace"</span>
+<span class="">	iget-object v14, v1, Lcom/facebook/ads/internal/dynamicloading/DexLoadErrorReporter$1;->val$error:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v12, v13, v14}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	new-instance v13, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v13}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	const-string v14, "id"</span>
+<span class="">	invoke-static {}, Ljava/util/UUID;->randomUUID()Ljava/util/UUID;</span>
+<span class="">	move-result-object v15</span>
+<span class="">	invoke-virtual {v15}, Ljava/util/UUID;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v15</span>
+<span class="">	invoke-virtual {v13, v14, v15}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v14, "type"</span>
+<span class="">	const-string v15, "debug"</span>
+<span class="">	invoke-virtual {v13, v14, v15}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v14, "session_time"</span>
+<span class="">	new-instance v15, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v15}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v15, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v16</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_3</span>
+<span class="">	const-wide/16 v18, 0x3e8</span>
+<span class="">	move-object/from16 v21, v9</span>
+<span class="">	:try_start_2</span>
+<span class="">	div-long v8, v16, v18</span>
+<span class="">	invoke-virtual {v15, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v15}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	invoke-virtual {v13, v14, v8}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v8, "time"</span>
+<span class="">	new-instance v9, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-virtual {v9, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v14</span>
+<span class="">	div-long v14, v14, v18</span>
+<span class="">	invoke-virtual {v9, v14, v15}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v13, v8, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v2, "session_id"</span>
+<span class="">	invoke-virtual {v13, v2, v10}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	invoke-virtual {v13, v0, v12}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	invoke-virtual {v13, v4, v3}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	iget-object v2, v1, Lcom/facebook/ads/internal/dynamicloading/DexLoadErrorReporter$1;->val$context:Landroid/content/Context;</span>
+<span class="">	invoke-static {v2, v12, v10}, Lcom/facebook/ads/internal/dynamicloading/DexLoadErrorReporter;->access$000(Landroid/content/Context;Lorg/json/JSONObject;Ljava/lang/String;)V</span>
+<span class="">	new-instance v2, Lorg/json/JSONArray;</span>
+<span class="">	invoke-direct {v2}, Lorg/json/JSONArray;-><init>()V</span>
+<span class="">	invoke-virtual {v2, v13}, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;</span>
+<span class="">	new-instance v3, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v3}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	invoke-virtual {v3, v0, v11}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	const-string v0, "events"</span>
+<span class="">	invoke-virtual {v3, v0, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;</span>
+<span class="">	invoke-virtual {v3}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v2, Ljava/io/DataOutputStream;</span>
+<span class="">	invoke-virtual/range {v21 .. v21}, Ljava/net/HttpURLConnection;->getOutputStream()Ljava/io/OutputStream;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-direct {v2, v3}, Ljava/io/DataOutputStream;-><init>(Ljava/io/OutputStream;)V</span>
+<span class="">	:try_start_3</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_2</span>
+<span class="">	new-instance v3, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v4, "payload="</span>
+<span class="">	invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-static {v0, v5}, Ljava/net/URLEncoder;->encode(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v2, v0}, Ljava/io/DataOutputStream;->writeBytes(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v2}, Ljava/io/DataOutputStream;->flush()V</span>
+<span class="">	const/16 v0, 0x4000</span>
+<span class="">	new-array v0, v0, [B</span>
+<span class="">	new-instance v3, Ljava/io/ByteArrayOutputStream;</span>
+<span class="">	invoke-direct {v3}, Ljava/io/ByteArrayOutputStream;-><init>()V</span>
+<span class="">	invoke-virtual/range {v21 .. v21}, Ljava/net/HttpURLConnection;->getInputStream()Ljava/io/InputStream;</span>
+<span class="">	move-result-object v8</span>
+<span class="">	:try_start_4</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {v8, v0}, Ljava/io/InputStream;->read([B)I</span>
+<span class="">	move-result v4</span>
+<span class="">	const/4 v5, -0x1</span>
+<span class="">	if-eq v4, v5, :cond_0</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	invoke-virtual {v3, v0, v5, v4}, Ljava/io/ByteArrayOutputStream;->write([BII)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v3}, Ljava/io/ByteArrayOutputStream;->flush()V</span>
+<span class="">	:try_start_5</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_0</span>
+<span class="">	invoke-virtual {v2}, Ljava/io/DataOutputStream;->close()V</span>
+<span class="">	:try_end_5</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	move-object v2, v0</span>
+<span class="">	invoke-static {v7, v6, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:goto_1</span>
+<span class="">	if-eqz v8, :cond_1</span>
+<span class="">	:try_start_6</span>
+<span class="">	invoke-virtual {v8}, Ljava/io/InputStream;->close()V</span>
+<span class="">	:try_end_6</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:catch_1</span>
+<span class="">	move-exception v0</span>
+<span class="">	move-object v2, v0</span>
+<span class="">	invoke-static {v7, v6, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz v21, :cond_4</span>
+<span class="">	goto :goto_8</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	move-object/from16 v20, v8</span>
+<span class="">	move-object v8, v2</span>
+<span class="">	goto :goto_5</span>
+<span class="">	:catchall_1</span>
+<span class="">	move-exception v0</span>
+<span class="">	move-object v8, v2</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:catchall_2</span>
+<span class="">	move-exception v0</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:catchall_3</span>
+<span class="">	move-exception v0</span>
+<span class="">	move-object/from16 v21, v9</span>
+<span class="">	:goto_3</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	:goto_4</span>
+<span class="">	const/16 v20, 0x0</span>
+<span class="">	goto :goto_5</span>
+<span class="">	:catchall_4</span>
+<span class="">	move-exception v0</span>
+<span class="">	const/4 v8, 0x0</span>
+<span class="">	const/16 v20, 0x0</span>
+<span class="">	const/16 v21, 0x0</span>
+<span class="">	:try_start_7</span>
+<span class="">	:goto_5</span>
+<span class="">	const-string v2, "Can\'t send error."</span>
+<span class="">	invoke-static {v7, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:try_end_7</span>
+<span class="">	.catchall {:try_start_7 .. :try_end_7} :catchall_5</span>
+<span class="">	if-eqz v8, :cond_2</span>
+<span class="">	:try_start_8</span>
+<span class="">	invoke-virtual {v8}, Ljava/io/DataOutputStream;->close()V</span>
+<span class="">	:try_end_8</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_2</span>
+<span class="">	goto :goto_6</span>
+<span class="">	:catch_2</span>
+<span class="">	move-exception v0</span>
+<span class="">	move-object v2, v0</span>
+<span class="">	invoke-static {v7, v6, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:goto_6</span>
+<span class="">	:cond_2</span>
+<span class="">	if-eqz v20, :cond_3</span>
+<span class="">	:try_start_9</span>
+<span class="">	invoke-virtual/range {v20 .. v20}, Ljava/io/InputStream;->close()V</span>
+<span class="">	:try_end_9</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9} :catch_3</span>
+<span class="">	goto :goto_7</span>
+<span class="">	:catch_3</span>
+<span class="">	move-exception v0</span>
+<span class="">	move-object v2, v0</span>
+<span class="">	invoke-static {v7, v6, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	:goto_7</span>
+<span class="">	:cond_3</span>
+<span class="">	if-eqz v21, :cond_4</span>
+<span class="">	:goto_8</span>
+<span class="">	invoke-virtual/range {v21 .. v21}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	:cond_4</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catchall_5</span>
+<span class="">	move-object v2, v0</span>
+<span class="">	if-eqz v8, :cond_5</span>
+<span class="">	invoke-virtual {v8}, Ljava/io/DataOutputStream;->close()V</span>
+<span class="">	:try_start_a</span>
+<span class="">	goto :goto_9</span>
+<span class="">	:try_end_a</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_a .. :try_end_a} :catch_4</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_4</span>
+<span class="">	move-object v3, v0</span>
+<span class="">	invoke-static {v7, v6, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	if-eqz v20, :cond_6</span>
+<span class="">	:cond_5</span>
+<span class="">	:goto_9</span>
+<span class="">	invoke-virtual/range {v20 .. v20}, Ljava/io/InputStream;->close()V</span>
+<span class="">	:try_start_b</span>
+<span class="">	goto :goto_a</span>
+<span class="">	:try_end_b</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_b .. :try_end_b} :catch_5</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_5</span>
+<span class="">	move-object v3, v0</span>
+<span class="">	invoke-static {v7, v6, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I</span>
+<span class="">	if-eqz v21, :cond_7</span>
+<span class="">	:cond_6</span>
+<span class="">	:goto_a</span>
+<span class="">	invoke-virtual/range {v21 .. v21}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	throw v2</span>
+<span class="">	:cond_7</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

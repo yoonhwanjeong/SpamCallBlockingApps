@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.android.gms.common.api</a></li>
+        <li><i class="ico ico-class"></i> GoogleApi.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Lcom/google/android/gms/common/api/GoogleApi;
+.super Ljava/lang/Object;
+.source "com.google.android.gms:play-services-base@@18.0.1"
+.implements Lcom/google/android/gms/common/api/HasApiKey;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/google/android/gms/common/api/GoogleApi$Settings;
+}
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"<O::",
+"Lcom/google/android/gms/common/api/Api$ApiOptions;",
+">",
+"Ljava/lang/Object;",
+"Lcom/google/android/gms/common/api/HasApiKey<",
+"TO;>;"
+}
+.end annotation
+
+.field protected final zaa:Lcom/google/android/gms/common/api/internal/GoogleApiManager;
+.field private final zab:Landroid/content/Context;
+.field private final zac:Ljava/lang/String;
+.field private final zad:Lcom/google/android/gms/common/api/Api;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/android/gms/common/api/Api<",
+"TO;>;"
+}
+.end annotation
+.end field
+.field private final zae:Lcom/google/android/gms/common/api/Api$ApiOptions;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"TO;"
+}
+.end annotation
+.end field
+.field private final zaf:Lcom/google/android/gms/common/api/internal/ApiKey;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Lcom/google/android/gms/common/api/internal/ApiKey<",
+"TO;>;"
+}
+.end annotation
+.end field
+.field private final zag:Landroid/os/Looper;
+.field private final zah:I
+.field private final zai:Lcom/google/android/gms/common/api/GoogleApiClient;
+.annotation runtime Lorg/checkerframework/checker/initialization/qual/NotOnlyInitialized;
+.end annotation
+.end field
+.field private final zaj:Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;
+
+
+.method public constructor <init>(Landroid/app/Activity;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Lcom/google/android/gms/common/api/GoogleApi$Settings;)V
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/app/Activity;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api<",</span>
+<span class="">	"TO;>;TO;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/GoogleApi$Settings;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	move-object v0, p0</span>
+<span class="">	move-object v1, p1</span>
+<span class="">	move-object v2, p1</span>
+<span class="">	move-object v3, p2</span>
+<span class="">	move-object v4, p3</span>
+<span class="">	move-object v5, p4</span>
+<span class="">	invoke-direct/range {v0 .. v5}, Lcom/google/android/gms/common/api/GoogleApi;-><init>(Landroid/content/Context;Landroid/app/Activity;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Lcom/google/android/gms/common/api/GoogleApi$Settings;)V</span>
+.end method
+
+.method public constructor <init>(Landroid/app/Activity;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/app/Activity;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api<",</span>
+<span class="">	"TO;>;TO;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;-><init>()V</span>
+<span class="">	invoke-virtual {v0, p4}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;->setMapper(Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;)Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/Activity;->getMainLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object p4</span>
+<span class="">	invoke-virtual {v0, p4}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;->setLooper(Landroid/os/Looper;)Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;->build()Lcom/google/android/gms/common/api/GoogleApi$Settings;</span>
+<span class="">	move-result-object p4</span>
+<span class="">	invoke-direct {p0, p1, p2, p3, p4}, Lcom/google/android/gms/common/api/GoogleApi;-><init>(Landroid/app/Activity;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Lcom/google/android/gms/common/api/GoogleApi$Settings;)V</span>
+.end method
+
+.method private constructor <init>(Landroid/content/Context;Landroid/app/Activity;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Lcom/google/android/gms/common/api/GoogleApi$Settings;)V
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Landroid/app/Activity;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api<",</span>
+<span class="">	"TO;>;TO;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/GoogleApi$Settings;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const-string v0, "Null context is not permitted."</span>
+<span class="">	invoke-static {p1, v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v0, "Api must not be null."</span>
+<span class="">	invoke-static {p3, v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v0, "Settings must not be null; use Settings.DEFAULT_SETTINGS instead."</span>
+<span class="">	invoke-static {p5, v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zab:Landroid/content/Context;</span>
+<span class="">	invoke-static {}, Lcom/google/android/gms/common/util/PlatformVersion;->isAtLeastR()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-class v0, Landroid/content/Context;</span>
+<span class="">	const-string v2, "getAttributionTag"</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	new-array v4, v3, [Ljava/lang/Class;</span>
+<span class="">	invoke-virtual {v0, v2, v4}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-array v2, v3, [Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {v0, p1, v2}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Ljava/lang/String;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/NoSuchMethodException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	.catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	.catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-object v1, p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	nop</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iput-object v1, p0, Lcom/google/android/gms/common/api/GoogleApi;->zac:Ljava/lang/String;</span>
+<span class="">	iput-object p3, p0, Lcom/google/android/gms/common/api/GoogleApi;->zad:Lcom/google/android/gms/common/api/Api;</span>
+<span class="">	iput-object p4, p0, Lcom/google/android/gms/common/api/GoogleApi;->zae:Lcom/google/android/gms/common/api/Api$ApiOptions;</span>
+<span class="">	iget-object p1, p5, Lcom/google/android/gms/common/api/GoogleApi$Settings;->zab:Landroid/os/Looper;</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/api/GoogleApi;->zag:Landroid/os/Looper;</span>
+<span class="">	invoke-static {p3, p4, v1}, Lcom/google/android/gms/common/api/internal/ApiKey;->zaa(Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Ljava/lang/String;)Lcom/google/android/gms/common/api/internal/ApiKey;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iput-object p1, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaf:Lcom/google/android/gms/common/api/internal/ApiKey;</span>
+<span class="">	new-instance p3, Lcom/google/android/gms/common/api/internal/zabv;</span>
+<span class="">	invoke-direct {p3, p0}, Lcom/google/android/gms/common/api/internal/zabv;-><init>(Lcom/google/android/gms/common/api/GoogleApi;)V</span>
+<span class="">	iput-object p3, p0, Lcom/google/android/gms/common/api/GoogleApi;->zai:Lcom/google/android/gms/common/api/GoogleApiClient;</span>
+<span class="">	iget-object p3, p0, Lcom/google/android/gms/common/api/GoogleApi;->zab:Landroid/content/Context;</span>
+<span class="">	invoke-static {p3}, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zam(Landroid/content/Context;)Lcom/google/android/gms/common/api/internal/GoogleApiManager;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	iput-object p3, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaa:Lcom/google/android/gms/common/api/internal/GoogleApiManager;</span>
+<span class="">	invoke-virtual {p3}, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zaa()I</span>
+<span class="">	move-result p4</span>
+<span class="">	iput p4, p0, Lcom/google/android/gms/common/api/GoogleApi;->zah:I</span>
+<span class="">	iget-object p4, p5, Lcom/google/android/gms/common/api/GoogleApi$Settings;->zaa:Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;</span>
+<span class="">	iput-object p4, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaj:Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	instance-of p4, p2, Lcom/google/android/gms/common/api/GoogleApiActivity;</span>
+<span class="">	if-nez p4, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->myLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object p4</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object p5</span>
+<span class="">	if-ne p4, p5, :cond_1</span>
+<span class="">	invoke-static {p2, p3, p1}, Lcom/google/android/gms/common/api/internal/zaae;->zad(Landroid/app/Activity;Lcom/google/android/gms/common/api/internal/GoogleApiManager;Lcom/google/android/gms/common/api/internal/ApiKey;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p3, p0}, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zaB(Lcom/google/android/gms/common/api/GoogleApi;)V</span>
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Landroid/os/Looper;Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api<",</span>
+<span class="">	"TO;>;TO;",</span>
+<span class="">	"Landroid/os/Looper;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;-><init>()V</span>
+<span class="">	invoke-virtual {v0, p4}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;->setLooper(Landroid/os/Looper;)Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;</span>
+<span class="">	invoke-virtual {v0, p5}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;->setMapper(Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;)Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;->build()Lcom/google/android/gms/common/api/GoogleApi$Settings;</span>
+<span class="">	move-result-object p4</span>
+<span class="">	invoke-direct {p0, p1, p2, p3, p4}, Lcom/google/android/gms/common/api/GoogleApi;-><init>(Landroid/content/Context;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Lcom/google/android/gms/common/api/GoogleApi$Settings;)V</span>
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Lcom/google/android/gms/common/api/GoogleApi$Settings;)V
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api<",</span>
+<span class="">	"TO;>;TO;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/GoogleApi$Settings;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	move-object v0, p0</span>
+<span class="">	move-object v1, p1</span>
+<span class="">	move-object v3, p2</span>
+<span class="">	move-object v4, p3</span>
+<span class="">	move-object v5, p4</span>
+<span class="">	invoke-direct/range {v0 .. v5}, Lcom/google/android/gms/common/api/GoogleApi;-><init>(Landroid/content/Context;Landroid/app/Activity;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Lcom/google/android/gms/common/api/GoogleApi$Settings;)V</span>
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api<",</span>
+<span class="">	"TO;>;TO;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;-><init>()V</span>
+<span class="">	invoke-virtual {v0, p4}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;->setMapper(Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;)Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/common/api/GoogleApi$Settings$Builder;->build()Lcom/google/android/gms/common/api/GoogleApi$Settings;</span>
+<span class="">	move-result-object p4</span>
+<span class="">	invoke-direct {p0, p1, p2, p3, p4}, Lcom/google/android/gms/common/api/GoogleApi;-><init>(Landroid/content/Context;Lcom/google/android/gms/common/api/Api;Lcom/google/android/gms/common/api/Api$ApiOptions;Lcom/google/android/gms/common/api/GoogleApi$Settings;)V</span>
+.end method
+
+.method private final zad(ILcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<A::",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	"T:",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl<",</span>
+<span class="">	"+",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Result;",</span>
+<span class="">	"TA;>;>(ITT;)TT;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p2}, Lcom/google/android/gms/common/api/internal/BasePendingResult;->zak()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaa:Lcom/google/android/gms/common/api/internal/GoogleApiManager;</span>
+<span class="">	invoke-virtual {v0, p0, p1, p2}, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zaw(Lcom/google/android/gms/common/api/GoogleApi;ILcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)V</span>
+.end method
+
+.method private final zae(ILcom/google/android/gms/common/api/internal/TaskApiCall;)Lcom/google/android/gms/tasks/Task;
+<span class="">	.locals 7</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<TResult:",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	"A::",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	">(I",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/TaskApiCall<",</span>
+<span class="">	"TA;TTResult;>;)",</span>
+<span class="">	"Lcom/google/android/gms/tasks/Task<",</span>
+<span class="">	"TTResult;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v6, Lcom/google/android/gms/tasks/TaskCompletionSource;</span>
+<span class="">	invoke-direct {v6}, Lcom/google/android/gms/tasks/TaskCompletionSource;-><init>()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaa:Lcom/google/android/gms/common/api/internal/GoogleApiManager;</span>
+<span class="">	iget-object v5, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaj:Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;</span>
+<span class="">	move-object v1, p0</span>
+<span class="">	move v2, p1</span>
+<span class="">	move-object v3, p2</span>
+<span class="">	move-object v4, v6</span>
+<span class="">	invoke-virtual/range {v0 .. v5}, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zax(Lcom/google/android/gms/common/api/GoogleApi;ILcom/google/android/gms/common/api/internal/TaskApiCall;Lcom/google/android/gms/tasks/TaskCompletionSource;Lcom/google/android/gms/common/api/internal/StatusExceptionMapper;)V</span>
+<span class="">	invoke-virtual {v6}, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public asGoogleApiClient()Lcom/google/android/gms/common/api/GoogleApiClient;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zai:Lcom/google/android/gms/common/api/GoogleApiClient;</span>
+.end method
+
+.method protected createClientSettingsBuilder()Lcom/google/android/gms/common/internal/ClientSettings$Builder;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Lcom/google/android/gms/common/internal/ClientSettings$Builder;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/android/gms/common/internal/ClientSettings$Builder;-><init>()V</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/common/api/GoogleApi;->zae:Lcom/google/android/gms/common/api/Api$ApiOptions;</span>
+<span class="">	instance-of v2, v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	check-cast v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;</span>
+<span class="">	invoke-interface {v1}, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;->getGoogleSignInAccount()Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->getAccount()Landroid/accounts/Account;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/common/api/GoogleApi;->zae:Lcom/google/android/gms/common/api/Api$ApiOptions;</span>
+<span class="">	instance-of v2, v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasAccountOptions;</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	check-cast v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasAccountOptions;</span>
+<span class="">	invoke-interface {v1}, Lcom/google/android/gms/common/api/Api$ApiOptions$HasAccountOptions;->getAccount()Landroid/accounts/Account;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->zab(Landroid/accounts/Account;)Lcom/google/android/gms/common/internal/ClientSettings$Builder;</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/common/api/GoogleApi;->zae:Lcom/google/android/gms/common/api/Api$ApiOptions;</span>
+<span class="">	instance-of v2, v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;</span>
+<span class="">	if-eqz v2, :cond_3</span>
+<span class="">	check-cast v1, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;</span>
+<span class="">	invoke-interface {v1}, Lcom/google/android/gms/common/api/Api$ApiOptions$HasGoogleSignInAccountOptions;->getGoogleSignInAccount()Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-nez v1, :cond_2</span>
+<span class="">	invoke-static {}, Ljava/util/Collections;->emptySet()Ljava/util/Set;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->getRequestedScopes()Ljava/util/Set;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-static {}, Ljava/util/Collections;->emptySet()Ljava/util/Set;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->zaa(Ljava/util/Collection;)Lcom/google/android/gms/common/internal/ClientSettings$Builder;</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/common/api/GoogleApi;->zab:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->zac(Ljava/lang/String;)Lcom/google/android/gms/common/internal/ClientSettings$Builder;</span>
+<span class="">	iget-object v1, p0, Lcom/google/android/gms/common/api/GoogleApi;->zab:Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->setRealClientPackageName(Ljava/lang/String;)Lcom/google/android/gms/common/internal/ClientSettings$Builder;</span>
+.end method
+
+.method protected disconnectService()Lcom/google/android/gms/tasks/Task;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lcom/google/android/gms/tasks/Task<",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaa:Lcom/google/android/gms/common/api/internal/GoogleApiManager;</span>
+<span class="">	invoke-virtual {v0, p0}, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zap(Lcom/google/android/gms/common/api/GoogleApi;)Lcom/google/android/gms/tasks/Task;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public doBestEffortWrite(Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<A::",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	"T:",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl<",</span>
+<span class="">	"+",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Result;",</span>
+<span class="">	"TA;>;>(TT;)TT;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/android/gms/common/api/GoogleApi;->zad(ILcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;</span>
+.end method
+
+.method public doBestEffortWrite(Lcom/google/android/gms/common/api/internal/TaskApiCall;)Lcom/google/android/gms/tasks/Task;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<TResult:",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	"A::",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	">(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/TaskApiCall<",</span>
+<span class="">	"TA;TTResult;>;)",</span>
+<span class="">	"Lcom/google/android/gms/tasks/Task<",</span>
+<span class="">	"TTResult;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/android/gms/common/api/GoogleApi;->zae(ILcom/google/android/gms/common/api/internal/TaskApiCall;)Lcom/google/android/gms/tasks/Task;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public doRead(Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<A::",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	"T:",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl<",</span>
+<span class="">	"+",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Result;",</span>
+<span class="">	"TA;>;>(TT;)TT;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/android/gms/common/api/GoogleApi;->zad(ILcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;</span>
+.end method
+
+.method public doRead(Lcom/google/android/gms/common/api/internal/TaskApiCall;)Lcom/google/android/gms/tasks/Task;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<TResult:",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	"A::",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	">(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/TaskApiCall<",</span>
+<span class="">	"TA;TTResult;>;)",</span>
+<span class="">	"Lcom/google/android/gms/tasks/Task<",</span>
+<span class="">	"TTResult;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/android/gms/common/api/GoogleApi;->zae(ILcom/google/android/gms/common/api/internal/TaskApiCall;)Lcom/google/android/gms/tasks/Task;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public doRegisterEventListener(Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;Lcom/google/android/gms/common/api/internal/UnregisterListenerMethod;)Lcom/google/android/gms/tasks/Task;
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<A::",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	"T:",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/RegisterListenerMethod<",</span>
+<span class="">	"TA;*>;U:",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/UnregisterListenerMethod<",</span>
+<span class="">	"TA;*>;>(TT;TU;)",</span>
+<span class="">	"Lcom/google/android/gms/tasks/Task<",</span>
+<span class="">	"Ljava/lang/Void;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-static {p2}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;->getListenerKey()Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "Listener has already been released."</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {p2}, Lcom/google/android/gms/common/api/internal/UnregisterListenerMethod;->getListenerKey()Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;->getListenerKey()Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p2}, Lcom/google/android/gms/common/api/internal/UnregisterListenerMethod;->getListenerKey()Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/Objects;->equal(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	const-string v1, "Listener registration and unregistration methods must be constructed with the same ListenerHolder."</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(ZLjava/lang/Object;)V</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaa:Lcom/google/android/gms/common/api/internal/GoogleApiManager;</span>
+<span class="">	sget-object v1, Lcom/google/android/gms/common/api/zad;->zaa:Lcom/google/android/gms/common/api/zad;</span>
+<span class="">	invoke-virtual {v0, p0, p1, p2, v1}, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zaq(Lcom/google/android/gms/common/api/GoogleApi;Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;Lcom/google/android/gms/common/api/internal/UnregisterListenerMethod;Ljava/lang/Runnable;)Lcom/google/android/gms/tasks/Task;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public doRegisterEventListener(Lcom/google/android/gms/common/api/internal/RegistrationMethods;)Lcom/google/android/gms/tasks/Task;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<A::",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	">(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/RegistrationMethods<",</span>
+<span class="">	"TA;*>;)",</span>
+<span class="">	"Lcom/google/android/gms/tasks/Task<",</span>
+<span class="">	"Ljava/lang/Void;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	iget-object v0, p1, Lcom/google/android/gms/common/api/internal/RegistrationMethods;->register:Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;->getListenerKey()Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "Listener has already been released."</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	iget-object v0, p1, Lcom/google/android/gms/common/api/internal/RegistrationMethods;->zaa:Lcom/google/android/gms/common/api/internal/UnregisterListenerMethod;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/common/api/internal/UnregisterListenerMethod;->getListenerKey()Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaa:Lcom/google/android/gms/common/api/internal/GoogleApiManager;</span>
+<span class="">	iget-object v1, p1, Lcom/google/android/gms/common/api/internal/RegistrationMethods;->register:Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;</span>
+<span class="">	iget-object v2, p1, Lcom/google/android/gms/common/api/internal/RegistrationMethods;->zaa:Lcom/google/android/gms/common/api/internal/UnregisterListenerMethod;</span>
+<span class="">	iget-object p1, p1, Lcom/google/android/gms/common/api/internal/RegistrationMethods;->zab:Ljava/lang/Runnable;</span>
+<span class="">	invoke-virtual {v0, p0, v1, v2, p1}, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zaq(Lcom/google/android/gms/common/api/GoogleApi;Lcom/google/android/gms/common/api/internal/RegisterListenerMethod;Lcom/google/android/gms/common/api/internal/UnregisterListenerMethod;Ljava/lang/Runnable;)Lcom/google/android/gms/tasks/Task;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public doUnregisterEventListener(Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;)Lcom/google/android/gms/tasks/Task;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey<",</span>
+<span class="">	"*>;)",</span>
+<span class="">	"Lcom/google/android/gms/tasks/Task<",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p0, p1, v0}, Lcom/google/android/gms/common/api/GoogleApi;->doUnregisterEventListener(Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;I)Lcom/google/android/gms/tasks/Task;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public doUnregisterEventListener(Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;I)Lcom/google/android/gms/tasks/Task;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey<",</span>
+<span class="">	"*>;I)",</span>
+<span class="">	"Lcom/google/android/gms/tasks/Task<",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "Listener key cannot be null."</span>
+<span class="">	invoke-static {p1, v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaa:Lcom/google/android/gms/common/api/internal/GoogleApiManager;</span>
+<span class="">	invoke-virtual {v0, p0, p1, p2}, Lcom/google/android/gms/common/api/internal/GoogleApiManager;->zar(Lcom/google/android/gms/common/api/GoogleApi;Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;I)Lcom/google/android/gms/tasks/Task;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public doWrite(Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<A::",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	"T:",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl<",</span>
+<span class="">	"+",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Result;",</span>
+<span class="">	"TA;>;>(TT;)TT;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/android/gms/common/api/GoogleApi;->zad(ILcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;)Lcom/google/android/gms/common/api/internal/BaseImplementation$ApiMethodImpl;</span>
+.end method
+
+.method public doWrite(Lcom/google/android/gms/common/api/internal/TaskApiCall;)Lcom/google/android/gms/tasks/Task;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<TResult:",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	"A::",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$AnyClient;",</span>
+<span class="">	">(",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/TaskApiCall<",</span>
+<span class="">	"TA;TTResult;>;)",</span>
+<span class="">	"Lcom/google/android/gms/tasks/Task<",</span>
+<span class="">	"TTResult;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/android/gms/common/api/GoogleApi;->zae(ILcom/google/android/gms/common/api/internal/TaskApiCall;)Lcom/google/android/gms/tasks/Task;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public final getApiKey()Lcom/google/android/gms/common/api/internal/ApiKey;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/ApiKey<",</span>
+<span class="">	"TO;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zaf:Lcom/google/android/gms/common/api/internal/ApiKey;</span>
+.end method
+
+.method public getApiOptions()Lcom/google/android/gms/common/api/Api$ApiOptions;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()TO;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zae:Lcom/google/android/gms/common/api/Api$ApiOptions;</span>
+.end method
+
+.method public getApplicationContext()Landroid/content/Context;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zab:Landroid/content/Context;</span>
+.end method
+
+.method protected getContextAttributionTag()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zac:Ljava/lang/String;</span>
+.end method
+
+.method protected getContextFeatureId()Ljava/lang/String;
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Ljava/lang/Deprecated;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zac:Ljava/lang/String;</span>
+.end method
+
+.method public getLooper()Landroid/os/Looper;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zag:Landroid/os/Looper;</span>
+.end method
+
+.method public registerListener(Ljava/lang/Object;Ljava/lang/String;)Lcom/google/android/gms/common/api/internal/ListenerHolder;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<",</span>
+<span class="">	"L:Ljava/lang/Object;",</span>
+<span class="">	">(T",</span>
+<span class="">	"L;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/ListenerHolder<",</span>
+<span class="">	"T",</span>
+<span class="">	"L;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zag:Landroid/os/Looper;</span>
+<span class="">	invoke-static {p1, v0, p2}, Lcom/google/android/gms/common/api/internal/ListenerHolders;->createListenerHolder(Ljava/lang/Object;Landroid/os/Looper;Ljava/lang/String;)Lcom/google/android/gms/common/api/internal/ListenerHolder;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public final zaa()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zah:I</span>
+.end method
+
+.method public final zab(Landroid/os/Looper;Lcom/google/android/gms/common/api/internal/zabq;)Lcom/google/android/gms/common/api/Api$Client;
+<span class="">	.locals 8</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/os/Looper;",</span>
+<span class="">	"Lcom/google/android/gms/common/api/internal/zabq<",</span>
+<span class="">	"TO;>;)",</span>
+<span class="">	"Lcom/google/android/gms/common/api/Api$Client;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0}, Lcom/google/android/gms/common/api/GoogleApi;->createClientSettingsBuilder()Lcom/google/android/gms/common/internal/ClientSettings$Builder;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->build()Lcom/google/android/gms/common/internal/ClientSettings;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	iget-object v0, p0, Lcom/google/android/gms/common/api/GoogleApi;->zad:Lcom/google/android/gms/common/api/Api;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/common/api/Api;->zaa()Lcom/google/android/gms/common/api/Api$AbstractClientBuilder;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	move-object v1, v0</span>
+<span class="">	check-cast v1, Lcom/google/android/gms/common/api/Api$AbstractClientBuilder;</span>
+<span class="">	iget-object v2, p0, Lcom/google/android/gms/common/api/GoogleApi;->zab:Landroid/content/Context;</span>
+<span class="">	iget-object v5, p0, Lcom/google/android/gms/common/api/GoogleApi;->zae:Lcom/google/android/gms/common/api/Api$ApiOptions;</span>
+<span class="">	move-object v3, p1</span>
+<span class="">	move-object v6, p2</span>
+<span class="">	move-object v7, p2</span>
+<span class="">	invoke-virtual/range {v1 .. v7}, Lcom/google/android/gms/common/api/Api$AbstractClientBuilder;->buildClient(Landroid/content/Context;Landroid/os/Looper;Lcom/google/android/gms/common/internal/ClientSettings;Ljava/lang/Object;Lcom/google/android/gms/common/api/GoogleApiClient$ConnectionCallbacks;Lcom/google/android/gms/common/api/GoogleApiClient$OnConnectionFailedListener;)Lcom/google/android/gms/common/api/Api$Client;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/android/gms/common/api/GoogleApi;->getContextAttributionTag()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	instance-of v0, p1, Lcom/google/android/gms/common/internal/BaseGmsClient;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	move-object v0, p1</span>
+<span class="">	check-cast v0, Lcom/google/android/gms/common/internal/BaseGmsClient;</span>
+<span class="">	invoke-virtual {v0, p2}, Lcom/google/android/gms/common/internal/BaseGmsClient;->setAttributionTag(Ljava/lang/String;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	instance-of v0, p1, Lcom/google/android/gms/common/api/internal/NonGmsServiceBrokerClient;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	move-object v0, p1</span>
+<span class="">	check-cast v0, Lcom/google/android/gms/common/api/internal/NonGmsServiceBrokerClient;</span>
+<span class="">	invoke-virtual {v0, p2}, Lcom/google/android/gms/common/api/internal/NonGmsServiceBrokerClient;->zac(Ljava/lang/String;)V</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public final zac(Landroid/content/Context;Landroid/os/Handler;)Lcom/google/android/gms/common/api/internal/zact;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Lcom/google/android/gms/common/api/internal/zact;</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/android/gms/common/api/GoogleApi;->createClientSettingsBuilder()Lcom/google/android/gms/common/internal/ClientSettings$Builder;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/android/gms/common/internal/ClientSettings$Builder;->build()Lcom/google/android/gms/common/internal/ClientSettings;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, p1, p2, v1}, Lcom/google/android/gms/common/api/internal/zact;-><init>(Landroid/content/Context;Landroid/os/Handler;Lcom/google/android/gms/common/internal/ClientSettings;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

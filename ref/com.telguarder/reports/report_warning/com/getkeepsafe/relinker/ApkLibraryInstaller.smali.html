@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.getkeepsafe.relinker</a></li>
+        <li><i class="ico ico-class"></i> ApkLibraryInstaller.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/getkeepsafe/relinker/ApkLibraryInstaller;
+.super Ljava/lang/Object;
+.source "ApkLibraryInstaller.java"
+.implements Lcom/getkeepsafe/relinker/ReLinker$LibraryInstaller;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;
+}
+.end annotation
+
+.field private static final COPY_BUFFER_SIZE:I = 0x1000
+.field private static final MAX_TRIES:I = 0x5
+
+
+<span class="cov">.method public constructor &lt;init&gt;()V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private closeSilently(Ljava/io/Closeable;)V
+<span class="">	.locals 0</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-interface {p1}, Ljava/io/Closeable;->close()V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	:cond_0</span>
+<span class="">	:catch_0</span>
+.end method
+
+.method private copy(Ljava/io/InputStream;Ljava/io/OutputStream;)J
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const/16 v0, 0x1000</span>
+<span class="">	new-array v0, v0, [B</span>
+<span class="">	const-wide/16 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/io/InputStream;->read([B)I</span>
+<span class="">	move-result v3</span>
+<span class="">	const/4 v4, -0x1</span>
+<span class="">	if-ne v3, v4, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Ljava/io/OutputStream;->flush()V</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p2, v0, v4, v3}, Ljava/io/OutputStream;->write([BII)V</span>
+<span class="">	int-to-long v3, v3</span>
+<span class="">	add-long/2addr v1, v3</span>
+<span class="">	goto :goto_0</span>
+.end method
+
+.method private findAPKWithLibrary(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;Lcom/getkeepsafe/relinker/ReLinkerInstance;)Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;
+<span class="">	.locals 16</span>
+
+<span class="">	move-object/from16 v0, p2</span>
+<span class="">	invoke-direct/range {p0 .. p1}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->sourceDirectories(Landroid/content/Context;)[Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	array-length v2, v1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 v5, 0x0</span>
+<span class="">	if-ge v4, v2, :cond_5</span>
+<span class="">	aget-object v6, v1, v4</span>
+<span class="">	const/4 v7, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	add-int/lit8 v8, v7, 0x1</span>
+<span class="">	const/4 v9, 0x5</span>
+<span class="">	const/4 v10, 0x1</span>
+<span class="">	if-ge v7, v9, :cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v7, Ljava/util/zip/ZipFile;</span>
+<span class="">	new-instance v11, Ljava/io/File;</span>
+<span class="">	invoke-direct {v11, v6}, Ljava/io/File;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {v7, v11, v10}, Ljava/util/zip/ZipFile;-><init>(Ljava/io/File;I)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-object v5, v7</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:catch_0</span>
+<span class="">	move v7, v8</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_0</span>
+<span class="">	if-nez v5, :cond_1</span>
+<span class="">	move-object/from16 v12, p3</span>
+<span class="">	move-object/from16 v3, p4</span>
+<span class="">	goto :goto_5</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v7, 0x0</span>
+<span class="">	:goto_3</span>
+<span class="">	add-int/lit8 v8, v7, 0x1</span>
+<span class="">	if-ge v7, v9, :cond_4</span>
+<span class="">	array-length v7, v0</span>
+<span class="">	const/4 v11, 0x0</span>
+<span class="">	:goto_4</span>
+<span class="">	if-ge v11, v7, :cond_3</span>
+<span class="">	aget-object v12, v0, v11</span>
+<span class="">	new-instance v13, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v13}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v14, "lib"</span>
+<span class="">	invoke-virtual {v13, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	sget-char v14, Ljava/io/File;->separatorChar:C</span>
+<span class="">	invoke-virtual {v13, v14}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v13, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	sget-char v12, Ljava/io/File;->separatorChar:C</span>
+<span class="">	invoke-virtual {v13, v12}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;</span>
+<span class="">	move-object/from16 v12, p3</span>
+<span class="">	invoke-virtual {v13, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v13}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v13</span>
+<span class="">	const/4 v14, 0x2</span>
+<span class="">	new-array v14, v14, [Ljava/lang/Object;</span>
+<span class="">	aput-object v13, v14, v3</span>
+<span class="">	aput-object v6, v14, v10</span>
+<span class="">	const-string v15, "Looking for %s in APK %s..."</span>
+<span class="">	move-object/from16 v3, p4</span>
+<span class="">	invoke-virtual {v3, v15, v14}, Lcom/getkeepsafe/relinker/ReLinkerInstance;->log(Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	invoke-virtual {v5, v13}, Ljava/util/zip/ZipFile;->getEntry(Ljava/lang/String;)Ljava/util/zip/ZipEntry;</span>
+<span class="">	move-result-object v13</span>
+<span class="">	if-eqz v13, :cond_2</span>
+<span class="">	new-instance v0, Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;</span>
+<span class="">	invoke-direct {v0, v5, v13}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;-><init>(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;)V</span>
+<span class="">	add-int/lit8 v11, v11, 0x1</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	goto :goto_4</span>
+<span class="">	move-object/from16 v12, p3</span>
+<span class="">	:cond_3</span>
+<span class="">	move-object/from16 v3, p4</span>
+<span class="">	move v7, v8</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	goto :goto_3</span>
+<span class="">	move-object/from16 v12, p3</span>
+<span class="">	:cond_4</span>
+<span class="">	move-object/from16 v3, p4</span>
+<span class="">	invoke-virtual {v5}, Ljava/util/zip/ZipFile;->close()V</span>
+<span class="">	:try_start_1</span>
+<span class="">	add-int/lit8 v4, v4, 0x1</span>
+<span class="">	:goto_5</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1</span>
+<span class="">	:catch_1</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_5</span>
+.end method
+
+.method private getSupportedABIs(Landroid/content/Context;Ljava/lang/String;)[Ljava/lang/String;
+<span class="">	.locals 7</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "lib"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	sget-char v1, Ljava/io/File;->separatorChar:C</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "([^\\"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	sget-char v1, Ljava/io/File;->separatorChar:C</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "]*)"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	sget-char v1, Ljava/io/File;->separatorChar:C</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-static {p2}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	new-instance v0, Ljava/util/HashSet;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/HashSet;-><init>()V</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->sourceDirectories(Landroid/content/Context;)[Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	array-length v1, p1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-ge v2, v1, :cond_2</span>
+<span class="">	aget-object v3, p1, v2</span>
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v4, Ljava/util/zip/ZipFile;</span>
+<span class="">	new-instance v5, Ljava/io/File;</span>
+<span class="">	invoke-direct {v5, v3}, Ljava/io/File;-><init>(Ljava/lang/String;)V</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	invoke-direct {v4, v5, v3}, Ljava/util/zip/ZipFile;-><init>(Ljava/io/File;I)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	invoke-virtual {v4}, Ljava/util/zip/ZipFile;->entries()Ljava/util/Enumeration;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v4}, Ljava/util/Enumeration;->hasMoreElements()Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_1</span>
+<span class="">	invoke-interface {v4}, Ljava/util/Enumeration;->nextElement()Ljava/lang/Object;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	check-cast v5, Ljava/util/zip/ZipEntry;</span>
+<span class="">	invoke-virtual {v5}, Ljava/util/zip/ZipEntry;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {p2, v5}, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual {v5}, Ljava/util/regex/Matcher;->matches()Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-eqz v6, :cond_0</span>
+<span class="">	invoke-virtual {v5, v3}, Ljava/util/regex/Matcher;->group(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-interface {v0, v5}, Ljava/util/Set;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:catch_0</span>
+<span class="">	:cond_1</span>
+<span class="">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Set;->size()I</span>
+<span class="">	move-result p1</span>
+<span class="">	new-array p1, p1, [Ljava/lang/String;</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/Set;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, [Ljava/lang/String;</span>
+.end method
+
+.method private sourceDirectories(Landroid/content/Context;)[Ljava/lang/String;
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-virtual {p1}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	const/16 v3, 0x15</span>
+<span class="">	if-lt v0, v3, :cond_0</span>
+<span class="">	iget-object v0, p1, Landroid/content/pm/ApplicationInfo;->splitSourceDirs:[Ljava/lang/String;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p1, Landroid/content/pm/ApplicationInfo;->splitSourceDirs:[Ljava/lang/String;</span>
+<span class="">	array-length v0, v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p1, Landroid/content/pm/ApplicationInfo;->splitSourceDirs:[Ljava/lang/String;</span>
+<span class="">	array-length v0, v0</span>
+<span class="">	add-int/2addr v0, v2</span>
+<span class="">	new-array v0, v0, [Ljava/lang/String;</span>
+<span class="">	iget-object v3, p1, Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;</span>
+<span class="">	aput-object v3, v0, v1</span>
+<span class="">	iget-object v3, p1, Landroid/content/pm/ApplicationInfo;->splitSourceDirs:[Ljava/lang/String;</span>
+<span class="">	iget-object p1, p1, Landroid/content/pm/ApplicationInfo;->splitSourceDirs:[Ljava/lang/String;</span>
+<span class="">	array-length p1, p1</span>
+<span class="">	invoke-static {v3, v1, v0, v2, p1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V</span>
+<span class="">	new-array v0, v2, [Ljava/lang/String;</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object p1, p1, Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;</span>
+<span class="">	aput-object p1, v0, v1</span>
+.end method
+
+.method public installLibrary(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Lcom/getkeepsafe/relinker/ReLinkerInstance;)V
+<span class="">	.locals 10</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-direct {p0, p1, p2, p3, p5}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->findAPKWithLibrary(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;Lcom/getkeepsafe/relinker/ReLinkerInstance;)Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_4</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	if-eqz v1, :cond_5</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	add-int/lit8 p2, p1, 0x1</span>
+<span class="">	const/4 v4, 0x5</span>
+<span class="">	if-ge p1, v4, :cond_3</span>
+<span class="">	:try_start_1</span>
+<span class="">	const-string p1, "Found %s! Extracting..."</span>
+<span class="">	new-array v4, v3, [Ljava/lang/Object;</span>
+<span class="">	aput-object p3, v4, v2</span>
+<span class="">	invoke-virtual {p5, p1, v4}, Lcom/getkeepsafe/relinker/ReLinkerInstance;->log(Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	:try_start_2</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_3</span>
+<span class="">	invoke-virtual {p4}, Ljava/io/File;->exists()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	invoke-virtual {p4}, Ljava/io/File;->createNewFile()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_7</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_3</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	goto/16 :goto_6</span>
+<span class="">	:try_start_3</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object p1, v1, Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;->zipFile:Ljava/util/zip/ZipFile;</span>
+<span class="">	iget-object v4, v1, Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;->zipEntry:Ljava/util/zip/ZipEntry;</span>
+<span class="">	invoke-virtual {p1, v4}, Ljava/util/zip/ZipFile;->getInputStream(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_start_4</span>
+<span class="">	:try_end_3</span>
+<span class="">	.catch Ljava/io/FileNotFoundException; {:try_start_3 .. :try_end_3} :catch_5</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_3</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_2</span>
+<span class="">	new-instance v4, Ljava/io/FileOutputStream;</span>
+<span class="">	invoke-direct {v4, p4}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V</span>
+<span class="">	:try_start_5</span>
+<span class="">	:try_end_4</span>
+<span class="">	.catch Ljava/io/FileNotFoundException; {:try_start_4 .. :try_end_4} :catch_2</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_1</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_1</span>
+<span class="">	invoke-direct {p0, p1, v4}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->copy(Ljava/io/InputStream;Ljava/io/OutputStream;)J</span>
+<span class="">	move-result-wide v5</span>
+<span class="">	invoke-virtual {v4}, Ljava/io/FileOutputStream;->getFD()Ljava/io/FileDescriptor;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	invoke-virtual {v7}, Ljava/io/FileDescriptor;->sync()V</span>
+<span class="">	invoke-virtual {p4}, Ljava/io/File;->length()J</span>
+<span class="">	move-result-wide v7</span>
+<span class="">	:try_end_5</span>
+<span class="">	.catch Ljava/io/FileNotFoundException; {:try_start_5 .. :try_end_5} :catch_6</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_4</span>
+<span class="">	.catchall {:try_start_5 .. :try_end_5} :catchall_0</span>
+<span class="">	cmp-long v9, v5, v7</span>
+<span class="">	if-eqz v9, :cond_1</span>
+<span class="">	:try_start_6</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->closeSilently(Ljava/io/Closeable;)V</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-direct {p0, v4}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->closeSilently(Ljava/io/Closeable;)V</span>
+<span class="">	goto :goto_6</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->closeSilently(Ljava/io/Closeable;)V</span>
+<span class="">	invoke-direct {p0, v4}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->closeSilently(Ljava/io/Closeable;)V</span>
+<span class="">	invoke-virtual {p4, v3, v2}, Ljava/io/File;->setReadable(ZZ)Z</span>
+<span class="">	invoke-virtual {p4, v3, v2}, Ljava/io/File;->setExecutable(ZZ)Z</span>
+<span class="">	invoke-virtual {p4, v3}, Ljava/io/File;->setWritable(Z)Z</span>
+<span class="">	:try_end_6</span>
+<span class="">	.catchall {:try_start_6 .. :try_end_6} :catchall_3</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	:try_start_7</span>
+<span class="">	iget-object p1, v1, Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;->zipFile:Ljava/util/zip/ZipFile;</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	iget-object p1, v1, Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;->zipFile:Ljava/util/zip/ZipFile;</span>
+<span class="">	invoke-virtual {p1}, Ljava/util/zip/ZipFile;->close()V</span>
+<span class="">	:try_end_7</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_0</span>
+<span class="">	:catch_0</span>
+<span class="">	:cond_2</span>
+<span class="">	move-exception p2</span>
+<span class="">	:catchall_0</span>
+<span class="">	goto :goto_2</span>
+<span class="">	move-exception p2</span>
+<span class="">	:catchall_1</span>
+<span class="">	move-object v4, v0</span>
+<span class="">	move-object v0, p1</span>
+<span class="">	:goto_2</span>
+<span class="">	goto :goto_3</span>
+<span class="">	move-object v4, v0</span>
+<span class="">	:catch_1</span>
+<span class="">	goto :goto_4</span>
+<span class="">	move-object v4, v0</span>
+<span class="">	:catch_2</span>
+<span class="">	goto :goto_5</span>
+<span class="">	move-exception p2</span>
+<span class="">	:catchall_2</span>
+<span class="">	move-object v4, v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->closeSilently(Ljava/io/Closeable;)V</span>
+<span class="">	:goto_3</span>
+<span class="">	:try_start_8</span>
+<span class="">	invoke-direct {p0, v4}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->closeSilently(Ljava/io/Closeable;)V</span>
+<span class="">	throw p2</span>
+<span class="">	move-object p1, v0</span>
+<span class="">	:catch_3</span>
+<span class="">	move-object v4, p1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->closeSilently(Ljava/io/Closeable;)V</span>
+<span class="">	:goto_4</span>
+<span class="">	:catch_4</span>
+<span class="">	goto :goto_1</span>
+<span class="">	move-object p1, v0</span>
+<span class="">	:catch_5</span>
+<span class="">	move-object v4, p1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->closeSilently(Ljava/io/Closeable;)V</span>
+<span class="">	:goto_5</span>
+<span class="">	:catch_6</span>
+<span class="">	goto :goto_1</span>
+<span class="">	move p1, p2</span>
+<span class="">	:goto_6</span>
+<span class="">	:catch_7</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const-string p1, "FATAL! Couldn\'t extract the library from the APK!"</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {p5, p1}, Lcom/getkeepsafe/relinker/ReLinkerInstance;->log(Ljava/lang/String;)V</span>
+<span class="">	if-eqz v1, :cond_4</span>
+<span class="">	:try_end_8</span>
+<span class="">	.catchall {:try_start_8 .. :try_end_8} :catchall_3</span>
+<span class="">	iget-object p1, v1, Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;->zipFile:Ljava/util/zip/ZipFile;</span>
+<span class="">	:try_start_9</span>
+<span class="">	if-eqz p1, :cond_4</span>
+<span class="">	iget-object p1, v1, Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;->zipFile:Ljava/util/zip/ZipFile;</span>
+<span class="">	invoke-virtual {p1}, Ljava/util/zip/ZipFile;->close()V</span>
+<span class="">	invoke-direct {p0, p1, p3}, Lcom/getkeepsafe/relinker/ApkLibraryInstaller;->getSupportedABIs(Landroid/content/Context;Ljava/lang/String;)[Ljava/lang/String;</span>
+<span class="">	:cond_4</span>
+<span class="">	:try_end_9</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_9 .. :try_end_9} :catch_8</span>
+<span class="">	:catch_8</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_5</span>
+<span class="">	:try_start_a</span>
+<span class="">	goto :goto_7</span>
+<span class="">	move-exception p1</span>
+<span class="">	:try_end_a</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_a .. :try_end_a} :catch_9</span>
+<span class="">	.catchall {:try_start_a .. :try_end_a} :catchall_3</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	:catchall_3</span>
+<span class="">	goto :goto_8</span>
+<span class="">	move-exception p1</span>
+<span class="">	new-array p4, v3, [Ljava/lang/String;</span>
+<span class="">	:catch_9</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Exception;->toString()Ljava/lang/String;</span>
+<span class="">	:try_start_b</span>
+<span class="">	move-result-object p1</span>
+<span class="">	aput-object p1, p4, v2</span>
+<span class="">	move-object p1, p4</span>
+<span class="">	new-instance p4, Lcom/getkeepsafe/relinker/MissingLibraryException;</span>
+<span class="">	invoke-direct {p4, p3, p2, p1}, Lcom/getkeepsafe/relinker/MissingLibraryException;-><init>(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V</span>
+<span class="">	:goto_7</span>
+<span class="">	throw p4</span>
+<span class="">	move-exception p1</span>
+<span class="">	if-eqz v0, :cond_6</span>
+<span class="">	:catchall_4</span>
+<span class="">	:try_end_b</span>
+<span class="">	.catchall {:try_start_b .. :try_end_b} :catchall_3</span>
+<span class="">	iget-object p2, v0, Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;->zipFile:Ljava/util/zip/ZipFile;</span>
+<span class="">	:goto_8</span>
+<span class="">	if-eqz p2, :cond_6</span>
+<span class="">	:try_start_c</span>
+<span class="">	iget-object p2, v0, Lcom/getkeepsafe/relinker/ApkLibraryInstaller$ZipFileInZipEntry;->zipFile:Ljava/util/zip/ZipFile;</span>
+<span class="">	invoke-virtual {p2}, Ljava/util/zip/ZipFile;->close()V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_6</span>
+<span class="">	:try_end_c</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_c .. :try_end_c} :catch_a</span>
+<span class="">	:catch_a</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

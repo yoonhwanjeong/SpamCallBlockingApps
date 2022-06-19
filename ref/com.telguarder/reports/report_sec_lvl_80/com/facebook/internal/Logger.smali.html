@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.internal</a></li>
+        <li><i class="ico ico-class"></i> Logger.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/internal/Logger;
+.super Ljava/lang/Object;
+.source "Logger.kt"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/internal/Logger$Companion;
+}
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000B\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0008\n\u0002\u0008\u0006\n\u0002\u0010\u0002\n\u0002\u0008\u0003\n\u0002\u0010\u0011\n\u0002\u0008\u0008\n\u0002\u0010\u000b\n\u0002\u0008\u0002\u0018\u0000  2\u00020\u0001:\u0001 B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u00a2\u0006\u0002\u0010\u0006J\u000e\u0010\u0011\u001a\u00020\u00122\u0006\u0010\u0013\u001a\u00020\u0005J\'\u0010\u0011\u001a\u00020\u00122\u0006\u0010\u0014\u001a\u00020\u00052\u0012\u0010\u0015\u001a\n\u0012\u0006\u0008\u0001\u0012\u00020\u00010\u0016\"\u00020\u0001\u00a2\u0006\u0002\u0010\u0017J\u0012\u0010\u0011\u001a\u00020\u00122\n\u0010\u0018\u001a\u00060\u0008j\u0002`\tJ\u0016\u0010\u0019\u001a\u00020\u00122\u0006\u0010\u001a\u001a\u00020\u00052\u0006\u0010\n\u001a\u00020\u0001J\u0006\u0010\u001b\u001a\u00020\u0005J\u0006\u0010\u001c\u001a\u00020\u0012J\u000e\u0010\u001d\u001a\u00020\u00122\u0006\u0010\u0013\u001a\u00020\u0005J\u0008\u0010\u001e\u001a\u00020\u001fH\u0002R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0012\u0010\u0007\u001a\u00060\u0008j\u0002`\tX\u0082\u000e\u00a2\u0006\u0002\n\u0000R$\u0010\u000c\u001a\u00020\u000b2\u0006\u0010\n\u001a\u00020\u000b@FX\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\u0008\r\u0010\u000e\"\u0004\u0008\u000f\u0010\u0010R\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006!"
+}
+d2 = {
+"Lcom/facebook/internal/Logger;",
+"",
+"behavior",
+"Lcom/facebook/LoggingBehavior;",
+"tag",
+"",
+"(Lcom/facebook/LoggingBehavior;Ljava/lang/String;)V",
+"contents",
+"Ljava/lang/StringBuilder;",
+"Lkotlin/text/StringBuilder;",
+"value",
+"",
+"priority",
+"getPriority",
+"()I",
+"setPriority",
+"(I)V",
+"append",
+"",
+"string",
+"format",
+"args",
+"",
+"(Ljava/lang/String;[Ljava/lang/Object;)V",
+"stringBuilder",
+"appendKeyValue",
+"key",
+"getContents",
+"log",
+"logString",
+"shouldLog",
+"",
+"Companion",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field public static final Companion:Lcom/facebook/internal/Logger$Companion;
+.field public static final LOG_TAG_BASE:Ljava/lang/String; = "FacebookSDK."
+.field private static final stringsToReplace:Ljava/util/HashMap;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/HashMap<",
+"Ljava/lang/String;",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+.field private final behavior:Lcom/facebook/LoggingBehavior;
+.field private contents:Ljava/lang/StringBuilder;
+.field private priority:I
+.field private final tag:Ljava/lang/String;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lcom/facebook/internal/Logger$Companion;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-direct {v0, v1}, Lcom/facebook/internal/Logger$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="cov">	new-instance v0, Ljava/util/HashMap;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/HashMap;-><init>()V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/internal/Logger;->stringsToReplace:Ljava/util/HashMap;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public constructor &lt;init&gt;(Lcom/facebook/LoggingBehavior;Ljava/lang/String;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	const-string v0, "behavior"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v0, "tag"</span>
+<span class="cov">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	const/4 v1, 0x3</span>
+<span class="cov">	iput v1, p0, Lcom/facebook/internal/Logger;->priority:I</span>
+<span class="cov">	invoke-static {p2, v0}, Lcom/facebook/internal/Validate;->notNullOrEmpty(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	iput-object p1, p0, Lcom/facebook/internal/Logger;->behavior:Lcom/facebook/LoggingBehavior;</span>
+<span class="cov">	new-instance p1, Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="cov">	const-string v0, "FacebookSDK."</span>
+<span class="cov">	invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	iput-object p1, p0, Lcom/facebook/internal/Logger;->tag:Ljava/lang/String;</span>
+<span class="cov">	new-instance p1, Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lcom/facebook/internal/Logger;->contents:Ljava/lang/StringBuilder;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public static final synthetic access$getStringsToReplace$cp()Ljava/util/HashMap;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/Logger;->stringsToReplace:Ljava/util/HashMap;</span>
+.end method
+
+.method public static final log(Lcom/facebook/LoggingBehavior;ILjava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="">	invoke-virtual {v0, p0, p1, p2, p3}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;ILjava/lang/String;Ljava/lang/String;)V</span>
+.end method
+
+.method public static final varargs log(Lcom/facebook/LoggingBehavior;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+<span class="">	.locals 6</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="">	move-object v1, p0</span>
+<span class="">	move v2, p1</span>
+<span class="">	move-object v3, p2</span>
+<span class="">	move-object v4, p3</span>
+<span class="">	move-object v5, p4</span>
+<span class="">	invoke-virtual/range {v0 .. v5}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;ILjava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+.end method
+
+.method public static final log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="">	invoke-virtual {v0, p0, p1, p2}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V</span>
+.end method
+
+.method public static final varargs log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="">	invoke-virtual {v0, p0, p1, p2, p3}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+.end method
+
+.method public static final declared-synchronized registerAccessToken(Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/internal/Logger;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="">	invoke-virtual {v1, p0}, Lcom/facebook/internal/Logger$Companion;->registerAccessToken(Ljava/lang/String;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+.end method
+
+.method public static final declared-synchronized registerStringToReplace(Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/internal/Logger;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v1, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="">	invoke-virtual {v1, p0, p1}, Lcom/facebook/internal/Logger$Companion;->registerStringToReplace(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+.end method
+
+<span class="cov">.method private final shouldLog()Z</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/internal/Logger;->behavior:Lcom/facebook/LoggingBehavior;</span>
+<span class="exec">	invoke-static {v0}, Lcom/facebook/FacebookSdk;->isLoggingBehaviorEnabled(Lcom/facebook/LoggingBehavior;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="exec">	return v0</span>
+.end method
+
+<span class="cov">.method public final append(Ljava/lang/String;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const-string v0, "string"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="exec">	invoke-direct {p0}, Lcom/facebook/internal/Logger;->shouldLog()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/Logger;->contents:Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public final varargs append(Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	const-string v0, "format"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v0, "args"</span>
+<span class="cov">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="exec">	invoke-direct {p0}, Lcom/facebook/internal/Logger;->shouldLog()Z</span>
+<span class="cov">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/Logger;->contents:Ljava/lang/StringBuilder;</span>
+<span class="">	sget-object v1, Lkotlin/jvm/internal/StringCompanionObject;->INSTANCE:Lkotlin/jvm/internal/StringCompanionObject;</span>
+<span class="">	array-length v1, p2</span>
+<span class="">	invoke-static {p2, v1}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	array-length v1, p2</span>
+<span class="">	invoke-static {p2, v1}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-static {p1, p2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string p2, "java.lang.String.format(format, *args)"</span>
+<span class="">	invoke-static {p1, p2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public final append(Ljava/lang/StringBuilder;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "stringBuilder"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/internal/Logger;->shouldLog()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/internal/Logger;->contents:Ljava/lang/StringBuilder;</span>
+<span class="">	check-cast p1, Ljava/lang/CharSequence;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;</span>
+<span class="">	:cond_0</span>
+.end method
+
+<span class="cov">.method public final appendKeyValue(Ljava/lang/String;Ljava/lang/Object;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	const-string v0, "key"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string/jumbo v0, "value"</span>
+<span class="cov">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const/4 v0, 0x2</span>
+<span class="cov">	new-array v0, v0, [Ljava/lang/Object;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	aput-object p1, v0, v1</span>
+<span class="cov">	const/4 p1, 0x1</span>
+<span class="cov">	aput-object p2, v0, p1</span>
+<span class="cov">	const-string p1, "  %s:\t%s\n"</span>
+<span class="cov">	invoke-virtual {p0, p1, v0}, Lcom/facebook/internal/Logger;->append(Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public final getContents()Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="">	iget-object v1, p0, Lcom/facebook/internal/Logger;->contents:Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "contents.toString()"</span>
+<span class="">	invoke-static {v1, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-static {v0, v1}, Lcom/facebook/internal/Logger$Companion;->access$replaceStrings(Lcom/facebook/internal/Logger$Companion;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public final getPriority()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget v0, p0, Lcom/facebook/internal/Logger;->priority:I</span>
+.end method
+
+<span class="cov">.method public final log()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/facebook/internal/Logger;->contents:Ljava/lang/StringBuilder;</span>
+<span class="exec">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "contents.toString()"</span>
+<span class="cov">	invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-virtual {p0, v0}, Lcom/facebook/internal/Logger;->logString(Ljava/lang/String;)V</span>
+<span class="cov">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="cov">	iput-object v0, p0, Lcom/facebook/internal/Logger;->contents:Ljava/lang/StringBuilder;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public final logString(Ljava/lang/String;)V</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	const-string v0, "string"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="cov">	iget-object v1, p0, Lcom/facebook/internal/Logger;->behavior:Lcom/facebook/LoggingBehavior;</span>
+<span class="cov">	iget v2, p0, Lcom/facebook/internal/Logger;->priority:I</span>
+<span class="cov">	iget-object v3, p0, Lcom/facebook/internal/Logger;->tag:Ljava/lang/String;</span>
+<span class="cov">	invoke-virtual {v0, v1, v2, v3, p1}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;ILjava/lang/String;Ljava/lang/String;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public final setPriority(I)V
+<span class="">	.locals 6</span>
+
+<span class="">	invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x6</span>
+<span class="">	new-array v2, v1, [Ljava/lang/Object;</span>
+<span class="">	const/4 v3, 0x7</span>
+<span class="">	invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	aput-object v3, v2, v4</span>
+<span class="">	const/4 v3, 0x3</span>
+<span class="">	invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	aput-object v4, v2, v5</span>
+<span class="">	invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v4, 0x2</span>
+<span class="">	aput-object v1, v2, v4</span>
+<span class="">	const/4 v1, 0x4</span>
+<span class="">	invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	aput-object v5, v2, v3</span>
+<span class="">	invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	aput-object v3, v2, v1</span>
+<span class="">	const/4 v1, 0x5</span>
+<span class="">	invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	aput-object v3, v2, v1</span>
+<span class="">	const-string/jumbo v1, "value"</span>
+<span class="">	invoke-static {v0, v1, v2}, Lcom/facebook/internal/Validate;->oneOf(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/facebook/internal/Logger;->setPriority(I)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

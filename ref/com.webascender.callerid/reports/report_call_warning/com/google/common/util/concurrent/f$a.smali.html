@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.common.util.concurrent</a></li>
+        <li><i class="ico ico-class"></i> f$a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class final Lcom/google/common/util/concurrent/f$a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+.implements Ljava/util/concurrent/ThreadFactory;
+
+.annotation system Ldalvik/annotation/EnclosingMethod;
+value = Lcom/google/common/util/concurrent/f;->c(Lcom/google/common/util/concurrent/f;)Ljava/util/concurrent/ThreadFactory;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x8
+name = null
+.end annotation
+
+.field final synthetic f:Ljava/util/concurrent/ThreadFactory;
+.field final synthetic g:Ljava/lang/String;
+.field final synthetic h:Ljava/util/concurrent/atomic/AtomicLong;
+.field final synthetic i:Ljava/lang/Boolean;
+.field final synthetic j:Ljava/lang/Integer;
+.field final synthetic k:Ljava/lang/Thread$UncaughtExceptionHandler;
+
+
+.method constructor <init>(Ljava/util/concurrent/ThreadFactory;Ljava/lang/String;Ljava/util/concurrent/atomic/AtomicLong;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Thread$UncaughtExceptionHandler;)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-object p1, p0, Lcom/google/common/util/concurrent/f$a;->f:Ljava/util/concurrent/ThreadFactory;</span>
+<span class="">	iput-object p2, p0, Lcom/google/common/util/concurrent/f$a;->g:Ljava/lang/String;</span>
+<span class="">	iput-object p3, p0, Lcom/google/common/util/concurrent/f$a;->h:Ljava/util/concurrent/atomic/AtomicLong;</span>
+<span class="">	iput-object p4, p0, Lcom/google/common/util/concurrent/f$a;->i:Ljava/lang/Boolean;</span>
+<span class="">	iput-object p5, p0, Lcom/google/common/util/concurrent/f$a;->j:Ljava/lang/Integer;</span>
+<span class="">	iput-object p6, p0, Lcom/google/common/util/concurrent/f$a;->k:Ljava/lang/Thread$UncaughtExceptionHandler;</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;
+<span class="">	.locals 5</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/common/util/concurrent/f$a;->f:Ljava/util/concurrent/ThreadFactory;</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/concurrent/ThreadFactory;->newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/util/concurrent/f$a;->g:Ljava/lang/String;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	iget-object v3, p0, Lcom/google/common/util/concurrent/f$a;->h:Ljava/util/concurrent/atomic/AtomicLong;</span>
+<span class="">	invoke-virtual {v3}, Ljava/util/concurrent/atomic/AtomicLong;->getAndIncrement()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	invoke-static {v3, v4}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	aput-object v3, v1, v2</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/common/util/concurrent/f;->a(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/Thread;->setName(Ljava/lang/String;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/util/concurrent/f$a;->i:Ljava/lang/Boolean;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/Thread;->setDaemon(Z)V</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/util/concurrent/f$a;->j:Ljava/lang/Integer;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/Thread;->setPriority(I)V</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/util/concurrent/f$a;->k:Ljava/lang/Thread$UncaughtExceptionHandler;</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/Thread;->setUncaughtExceptionHandler(Ljava/lang/Thread$UncaughtExceptionHandler;)V</span>
+<span class="">	:cond_3</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

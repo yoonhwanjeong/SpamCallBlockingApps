@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.internal</a></li>
+        <li><i class="ico ico-class"></i> FetchedAppGateKeepersManager.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/internal/FetchedAppGateKeepersManager;
+.super Ljava/lang/Object;
+.source "FetchedAppGateKeepersManager.kt"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lcom/facebook/internal/FetchedAppGateKeepersManager$Callback;
+}
+.end annotation
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+value = "SMAP\nFetchedAppGateKeepersManager.kt\nKotlin\n*S Kotlin\n*F\n+ 1 FetchedAppGateKeepersManager.kt\ncom/facebook/internal/FetchedAppGateKeepersManager\n+ 2 _Collections.kt\nkotlin/collections/CollectionsKt___CollectionsKt\n+ 3 _Maps.kt\nkotlin/collections/MapsKt___MapsKt\n*L\n1#1,271:1\n1849#2,2:272\n125#3:274\n152#3,3:275\n*S KotlinDebug\n*F\n+ 1 FetchedAppGateKeepersManager.kt\ncom/facebook/internal/FetchedAppGateKeepersManager\n*L\n168#1:272,2\n179#1:274\n179#1:275,3\n*E\n"
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000\\\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0008\u0002\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010\t\n\u0002\u0008\n\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010%\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0005\n\u0002\u0010\u000b\n\u0002\u0008\u0003\n\u0002\u0010$\n\u0002\u0008\u0003\n\u0002\u0010\u0002\n\u0002\u0008\n\n\u0002\u0018\u0002\n\u0002\u0008\u0002\u0008\u00c7\u0002\u0018\u00002\u00020\u0001:\u00013B\u0007\u0008\u0002\u00a2\u0006\u0002\u0010\u0002J\u0010\u0010\u001c\u001a\u00020\u00152\u0006\u0010\u001d\u001a\u00020\u0004H\u0002J\"\u0010\u001e\u001a\u00020\u001f2\u0006\u0010 \u001a\u00020\u00042\u0008\u0010\u001d\u001a\u0004\u0018\u00010\u00042\u0006\u0010!\u001a\u00020\u001fH\u0007J\u001c\u0010\"\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u001f0#2\u0008\u0010\u001d\u001a\u0004\u0018\u00010\u0004J\u0017\u0010$\u001a\u00020\u001f2\u0008\u0010\u001a\u001a\u0004\u0018\u00010\u0006H\u0002\u00a2\u0006\u0002\u0010%J\u0006\u0010&\u001a\u00020\'J\u0012\u0010&\u001a\u00020\'2\u0008\u0010(\u001a\u0004\u0018\u00010\u0012H\u0007J\u001f\u0010)\u001a\u00020\u00152\u0006\u0010\u001d\u001a\u00020\u00042\u0008\u0010*\u001a\u0004\u0018\u00010\u0015H\u0001\u00a2\u0006\u0002\u0008+J\u0008\u0010,\u001a\u00020\'H\u0002J\u0018\u0010-\u001a\u00020\u00152\u0006\u0010\u001d\u001a\u00020\u00042\u0006\u0010.\u001a\u00020\u001fH\u0007J\u0008\u0010/\u001a\u00020\'H\u0007J\u001a\u00100\u001a\u00020\'2\u0008\u0008\u0002\u0010\u001d\u001a\u00020\u00042\u0006\u00101\u001a\u000202H\u0007R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0008\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\t\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000b\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000c\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\r\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u000f\u001a\u0004\u0018\u00010\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0010\u001a\u0008\u0012\u0004\u0012\u00020\u00120\u0011X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u001a\u0010\u0013\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00150\u0014X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u0016\u001a\u0004\u0018\u00010\u0017X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0018\u001a\u00020\u0019X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0012\u0010\u001a\u001a\u0004\u0018\u00010\u0006X\u0082\u000e\u00a2\u0006\u0004\n\u0002\u0010\u001b\u00a8\u00064"
+}
+d2 = {
+"Lcom/facebook/internal/FetchedAppGateKeepersManager;",
+"",
+"()V",
+"APPLICATION_FIELDS",
+"",
+"APPLICATION_GATEKEEPER_CACHE_TIMEOUT",
+"",
+"APPLICATION_GATEKEEPER_EDGE",
+"APPLICATION_GATEKEEPER_FIELD",
+"APPLICATION_GRAPH_DATA",
+"APPLICATION_PLATFORM",
+"APPLICATION_SDK_VERSION",
+"APP_GATEKEEPERS_PREFS_KEY_FORMAT",
+"APP_GATEKEEPERS_PREFS_STORE",
+"APP_PLATFORM",
+"TAG",
+"callbacks",
+"Ljava/util/concurrent/ConcurrentLinkedQueue;",
+"Lcom/facebook/internal/FetchedAppGateKeepersManager$Callback;",
+"fetchedAppGateKeepers",
+"",
+"Lorg/json/JSONObject;",
+"gateKeeperRuntimeCache",
+"Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;",
+"isLoading",
+"Ljava/util/concurrent/atomic/AtomicBoolean;",
+"timestamp",
+"Ljava/lang/Long;",
+"getAppGateKeepersQueryResponse",
+"applicationId",
+"getGateKeeperForKey",
+"",
+"name",
+"defaultValue",
+"getGateKeepersForApplication",
+"",
+"isTimestampValid",
+"(Ljava/lang/Long;)Z",
+"loadAppGateKeepersAsync",
+"",
+"callback",
+"parseAppGateKeepersFromJSON",
+"gateKeepersJSON",
+"parseAppGateKeepersFromJSON$facebook_core_release",
+"pollCallbacks",
+"queryAppGateKeepers",
+"forceRequery",
+"resetRuntimeGateKeeperCache",
+"setRuntimeGateKeeper",
+"gateKeeper",
+"Lcom/facebook/internal/gatekeeper/GateKeeper;",
+"Callback",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field private static final APPLICATION_FIELDS:Ljava/lang/String; = "fields"
+.field private static final APPLICATION_GATEKEEPER_CACHE_TIMEOUT:J = 0x36ee80L
+.field private static final APPLICATION_GATEKEEPER_EDGE:Ljava/lang/String; = "mobile_sdk_gk"
+.field private static final APPLICATION_GATEKEEPER_FIELD:Ljava/lang/String; = "gatekeepers"
+.field private static final APPLICATION_GRAPH_DATA:Ljava/lang/String; = "data"
+.field private static final APPLICATION_PLATFORM:Ljava/lang/String; = "platform"
+.field private static final APPLICATION_SDK_VERSION:Ljava/lang/String; = "sdk_version"
+.field private static final APP_GATEKEEPERS_PREFS_KEY_FORMAT:Ljava/lang/String; = "com.facebook.internal.APP_GATEKEEPERS.%s"
+.field private static final APP_GATEKEEPERS_PREFS_STORE:Ljava/lang/String; = "com.facebook.internal.preferences.APP_GATEKEEPERS"
+.field private static final APP_PLATFORM:Ljava/lang/String; = "android"
+.field public static final INSTANCE:Lcom/facebook/internal/FetchedAppGateKeepersManager;
+.field private static final TAG:Ljava/lang/String;
+.field private static final callbacks:Ljava/util/concurrent/ConcurrentLinkedQueue;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/concurrent/ConcurrentLinkedQueue<",
+"Lcom/facebook/internal/FetchedAppGateKeepersManager$Callback;",
+">;"
+}
+.end annotation
+.end field
+.field private static final fetchedAppGateKeepers:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Lorg/json/JSONObject;",
+">;"
+}
+.end annotation
+.end field
+.field private static gateKeeperRuntimeCache:Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;
+.field private static final isLoading:Ljava/util/concurrent/atomic/AtomicBoolean;
+.field private static timestamp:Ljava/lang/Long;
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	new-instance v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/facebook/internal/FetchedAppGateKeepersManager;-><init>()V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->INSTANCE:Lcom/facebook/internal/FetchedAppGateKeepersManager;</span>
+<span class="cov">	const-class v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;</span>
+<span class="exec">	invoke-static {v0}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-interface {v0}, Lkotlin/reflect/KClass;->getSimpleName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sput-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->TAG:Ljava/lang/String;</span>
+<span class="cov">	new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->isLoading:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="cov">	new-instance v0, Ljava/util/concurrent/ConcurrentLinkedQueue;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/concurrent/ConcurrentLinkedQueue;-><init>()V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->callbacks:Ljava/util/concurrent/ConcurrentLinkedQueue;</span>
+<span class="cov">	new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V</span>
+<span class="cov">	check-cast v0, Ljava/util/Map;</span>
+<span class="cov">	sput-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->fetchedAppGateKeepers:Ljava/util/Map;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private constructor &lt;init&gt;()V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static final synthetic access$getAppGateKeepersQueryResponse(Lcom/facebook/internal/FetchedAppGateKeepersManager;Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="">	.locals 0</span>
+
+<span class="exec">	invoke-direct {p0, p1}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->getAppGateKeepersQueryResponse(Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+.method public static final synthetic access$getTimestamp$p(Lcom/facebook/internal/FetchedAppGateKeepersManager;)Ljava/lang/Long;
+<span class="">	.locals 0</span>
+
+<span class="">	sget-object p0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->timestamp:Ljava/lang/Long;</span>
+.end method
+
+<span class="cov">.method public static final synthetic access$isLoading$p(Lcom/facebook/internal/FetchedAppGateKeepersManager;)Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	sget-object p0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->isLoading:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method public static final synthetic access$pollCallbacks(Lcom/facebook/internal/FetchedAppGateKeepersManager;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->pollCallbacks()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static final synthetic access$setTimestamp$p(Lcom/facebook/internal/FetchedAppGateKeepersManager;Ljava/lang/Long;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	sput-object p1, Lcom/facebook/internal/FetchedAppGateKeepersManager;->timestamp:Ljava/lang/Long;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method private final getAppGateKeepersQueryResponse(Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="">	.locals 5</span>
+
+<span class="cov">	new-instance v0, Landroid/os/Bundle;</span>
+<span class="cov">	invoke-direct {v0}, Landroid/os/Bundle;-><init>()V</span>
+<span class="cov">	const-string v1, "platform"</span>
+<span class="cov">	const-string v2, "android"</span>
+<span class="cov">	invoke-virtual {v0, v1, v2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="exec">	invoke-static {}, Lcom/facebook/FacebookSdk;->getSdkVersion()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "sdk_version"</span>
+<span class="cov">	invoke-virtual {v0, v2, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v1, "fields"</span>
+<span class="cov">	const-string v2, "gatekeepers"</span>
+<span class="cov">	invoke-virtual {v0, v1, v2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object v1, Lcom/facebook/GraphRequest;->Companion:Lcom/facebook/GraphRequest$Companion;</span>
+<span class="cov">	sget-object v2, Lkotlin/jvm/internal/StringCompanionObject;->INSTANCE:Lkotlin/jvm/internal/StringCompanionObject;</span>
+<span class="cov">	const/4 v2, 0x2</span>
+<span class="cov">	new-array v3, v2, [Ljava/lang/Object;</span>
+<span class="cov">	const/4 v4, 0x0</span>
+<span class="cov">	aput-object p1, v3, v4</span>
+<span class="cov">	const-string p1, "mobile_sdk_gk"</span>
+<span class="cov">	const/4 v4, 0x1</span>
+<span class="cov">	aput-object p1, v3, v4</span>
+<span class="exec">	invoke-static {v3, v2}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const-string v2, "%s/%s"</span>
+<span class="exec">	invoke-static {v2, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	const-string v2, "java.lang.String.format(format, *args)"</span>
+<span class="cov">	invoke-static {p1, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="exec">	invoke-virtual {v1, v2, p1, v2}, Lcom/facebook/GraphRequest$Companion;->newGraphPathRequest(Lcom/facebook/AccessToken;Ljava/lang/String;Lcom/facebook/GraphRequest$Callback;)Lcom/facebook/GraphRequest;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-virtual {p1, v4}, Lcom/facebook/GraphRequest;->setSkipClientToken(Z)V</span>
+<span class="cov">	invoke-virtual {p1, v0}, Lcom/facebook/GraphRequest;->setParameters(Landroid/os/Bundle;)V</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/facebook/GraphRequest;->executeAndWait()Lcom/facebook/GraphResponse;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/facebook/GraphResponse;->getJsonObject()Lorg/json/JSONObject;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	if-eqz p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {p1}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public static final getGateKeeperForKey(Ljava/lang/String;Ljava/lang/String;Z)Z</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	const-string v0, "name"</span>
+<span class="cov">	invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->INSTANCE:Lcom/facebook/internal/FetchedAppGateKeepersManager;</span>
+<span class="exec">	invoke-virtual {v0, p1}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->getGateKeepersForApplication(Ljava/lang/String;)Ljava/util/Map;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-interface {p1, p0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	if-nez v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-interface {p1, p0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	check-cast p0, Ljava/lang/Boolean;</span>
+<span class="cov">	if-eqz p0, :cond_1</span>
+<span class="exec">	invoke-virtual {p0}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="cov">	move-result p2</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return p2</span>
+.end method
+
+<span class="cov">.method private final isTimestampValid(Ljava/lang/Long;)Z</span>
+<span class="">	.locals 5</span>
+
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	if-nez p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="cov">	move-result-wide v1</span>
+<span class="exec">	invoke-virtual {p1}, Ljava/lang/Long;->longValue()J</span>
+<span class="cov">	move-result-wide v3</span>
+<span class="cov">	sub-long/2addr v1, v3</span>
+<span class="cov">	const-wide/32 v3, 0x36ee80</span>
+<span class="cov">	cmp-long p1, v1, v3</span>
+<span class="cov">	if-gez p1, :cond_1</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	:goto_0</span>
+<span class="exec">	return v0</span>
+.end method
+
+<span class="cov">.method public static final declared-synchronized loadAppGateKeepersAsync(Lcom/facebook/internal/FetchedAppGateKeepersManager$Callback;)V</span>
+<span class="">	.locals 8</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	const-class v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	if-eqz p0, :cond_0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	sget-object v1, Lcom/facebook/internal/FetchedAppGateKeepersManager;->callbacks:Ljava/util/concurrent/ConcurrentLinkedQueue;</span>
+<span class="cov">	invoke-virtual {v1, p0}, Ljava/util/concurrent/ConcurrentLinkedQueue;->add(Ljava/lang/Object;)Z</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationId()Ljava/lang/String;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	sget-object v1, Lcom/facebook/internal/FetchedAppGateKeepersManager;->INSTANCE:Lcom/facebook/internal/FetchedAppGateKeepersManager;</span>
+<span class="cov">	sget-object v2, Lcom/facebook/internal/FetchedAppGateKeepersManager;->timestamp:Ljava/lang/Long;</span>
+<span class="exec">	invoke-direct {v1, v2}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->isTimestampValid(Ljava/lang/Long;)Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_1</span>
+<span class="cov">	sget-object v2, Lcom/facebook/internal/FetchedAppGateKeepersManager;->fetchedAppGateKeepers:Ljava/util/Map;</span>
+<span class="exec">	invoke-interface {v2, p0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_1</span>
+<span class="cov">	invoke-direct {v1}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->pollCallbacks()V</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-void</span>
+<span class="cov">	:try_start_1</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	sget-object v2, Lkotlin/jvm/internal/StringCompanionObject;->INSTANCE:Lkotlin/jvm/internal/StringCompanionObject;</span>
+<span class="cov">	const-string v2, "com.facebook.internal.APP_GATEKEEPERS.%s"</span>
+<span class="cov">	const/4 v3, 0x1</span>
+<span class="cov">	new-array v4, v3, [Ljava/lang/Object;</span>
+<span class="cov">	const/4 v5, 0x0</span>
+<span class="cov">	aput-object p0, v4, v5</span>
+<span class="exec">	invoke-static {v4, v3}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="exec">	invoke-static {v2, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	const-string v4, "java.lang.String.format(format, *args)"</span>
+<span class="cov">	invoke-static {v2, v4}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	if-nez v1, :cond_2</span>
+<span class="">	monitor-exit v0</span>
+<span class="cov">	const-string v4, "com.facebook.internal.preferences.APP_GATEKEEPERS"</span>
+<span class="cov">	:try_start_2</span>
+<span class="cov">	:cond_2</span>
+<span class="exec">	invoke-virtual {v1, v4, v5}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="cov">	const/4 v6, 0x0</span>
+<span class="exec">	invoke-interface {v4, v2, v6}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="exec">	invoke-static {v4}, Lcom/facebook/internal/Utility;->isNullOrEmpty(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result v7</span>
+<span class="cov">	if-nez v7, :cond_3</span>
+<span class="cov">	check-cast v6, Lorg/json/JSONObject;</span>
+<span class="cov">	new-instance v7, Lorg/json/JSONObject;</span>
+<span class="cov">	:try_start_3</span>
+<span class="cov">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="cov">	invoke-direct {v7, v4}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V</span>
+<span class="cov">	move-object v6, v7</span>
+<span class="cov">	:try_end_3</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_3 .. :try_end_3} :catch_0</span>
+<span class="">	.catchall {:try_start_3 .. :try_end_3} :catchall_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	move-exception v4</span>
+<span class="">	:catch_0</span>
+<span class="">	const-string v7, "FacebookSDK"</span>
+<span class="">	:try_start_4</span>
+<span class="">	check-cast v4, Ljava/lang/Exception;</span>
+<span class="">	invoke-static {v7, v4}, Lcom/facebook/internal/Utility;->logd(Ljava/lang/String;Ljava/lang/Exception;)V</span>
+<span class="cov">	if-eqz v6, :cond_3</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	invoke-static {p0, v6}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->parseAppGateKeepersFromJSON$facebook_core_release(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;</span>
+<span class="exec">	invoke-static {}, Lcom/facebook/FacebookSdk;->getExecutor()Ljava/util/concurrent/Executor;</span>
+<span class="cov">	:cond_3</span>
+<span class="cov">	move-result-object v4</span>
+<span class="cov">	if-eqz v4, :cond_5</span>
+<span class="cov">	sget-object v6, Lcom/facebook/internal/FetchedAppGateKeepersManager;->isLoading:Ljava/util/concurrent/atomic/AtomicBoolean;</span>
+<span class="exec">	invoke-virtual {v6, v5, v3}, Ljava/util/concurrent/atomic/AtomicBoolean;->compareAndSet(ZZ)Z</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	if-nez v3, :cond_4</span>
+<span class="cov">	:try_end_4</span>
+<span class="">	.catchall {:try_start_4 .. :try_end_4} :catchall_0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-void</span>
+<span class="cov">	new-instance v3, Lcom/facebook/internal/FetchedAppGateKeepersManager$loadAppGateKeepersAsync$1;</span>
+<span class="cov">	:try_start_5</span>
+<span class="cov">	:cond_4</span>
+<span class="cov">	invoke-direct {v3, p0, v1, v2}, Lcom/facebook/internal/FetchedAppGateKeepersManager$loadAppGateKeepersAsync$1;-><init>(Ljava/lang/String;Landroid/content/Context;Ljava/lang/String;)V</span>
+<span class="cov">	check-cast v3, Ljava/lang/Runnable;</span>
+<span class="cov">	invoke-interface {v4, v3}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="cov">	:try_end_5</span>
+<span class="">	.catchall {:try_start_5 .. :try_end_5} :catchall_0</span>
+<span class="exec">	return-void</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:cond_5</span>
+<span class="">	move-exception p0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	throw p0</span>
+.end method
+
+<span class="cov">.method public static final declared-synchronized parseAppGateKeepersFromJSON$facebook_core_release(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;</span>
+<span class="">	.locals 7</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	const-class v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	const-string v1, "applicationId"</span>
+<span class="cov">	invoke-static {p0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object v1, Lcom/facebook/internal/FetchedAppGateKeepersManager;->fetchedAppGateKeepers:Ljava/util/Map;</span>
+<span class="exec">	invoke-interface {v1, p0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	check-cast v1, Lorg/json/JSONObject;</span>
+<span class="cov">	if-eqz v1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	new-instance v1, Lorg/json/JSONObject;</span>
+<span class="cov">	invoke-direct {v1}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="cov">	if-eqz p1, :cond_1</span>
+<span class="cov">	const-string v3, "data"</span>
+<span class="exec">	invoke-virtual {p1, v3}, Lorg/json/JSONObject;->optJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	if-eqz p1, :cond_1</span>
+<span class="exec">	invoke-virtual {p1, v2}, Lorg/json/JSONArray;->optJSONObject(I)Lorg/json/JSONObject;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	if-eqz p1, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance p1, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {p1}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="cov">	:goto_1</span>
+<span class="cov">	const-string v3, "gatekeepers"</span>
+<span class="exec">	invoke-virtual {p1, v3}, Lorg/json/JSONObject;->optJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	if-eqz p1, :cond_2</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	new-instance p1, Lorg/json/JSONArray;</span>
+<span class="">	invoke-direct {p1}, Lorg/json/JSONArray;-><init>()V</span>
+<span class="cov">	:goto_2</span>
+<span class="exec">	invoke-virtual {p1}, Lorg/json/JSONArray;->length()I</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	:goto_3</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	if-ge v2, v3, :cond_3</span>
+<span class="cov">	:try_start_1</span>
+<span class="exec">	invoke-virtual {p1, v2}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="cov">	const-string v5, "key"</span>
+<span class="exec">	invoke-virtual {v4, v5}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v5</span>
+<span class="cov">	const-string/jumbo v6, "value"</span>
+<span class="exec">	invoke-virtual {v4, v6}, Lorg/json/JSONObject;->getBoolean(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result v4</span>
+<span class="cov">	invoke-virtual {v1, v5, v4}, Lorg/json/JSONObject;->put(Ljava/lang/String;Z)Lorg/json/JSONObject;</span>
+<span class="cov">	:try_end_1</span>
+<span class="">	.catch Lorg/json/JSONException; {:try_start_1 .. :try_end_1} :catch_0</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	goto :goto_4</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception v4</span>
+<span class="">	:try_start_2</span>
+<span class="">	const-string v5, "FacebookSDK"</span>
+<span class="">	check-cast v4, Ljava/lang/Exception;</span>
+<span class="">	invoke-static {v5, v4}, Lcom/facebook/internal/Utility;->logd(Ljava/lang/String;Ljava/lang/Exception;)V</span>
+<span class="cov">	:goto_4</span>
+<span class="cov">	add-int/lit8 v2, v2, 0x1</span>
+<span class="">	goto :goto_3</span>
+<span class="cov">	:cond_3</span>
+<span class="cov">	sget-object p1, Lcom/facebook/internal/FetchedAppGateKeepersManager;->fetchedAppGateKeepers:Ljava/util/Map;</span>
+<span class="cov">	invoke-interface {p1, p0, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-object v1</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p0</span>
+.end method
+
+<span class="cov">.method private final pollCallbacks()V</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	new-instance v0, Landroid/os/Handler;</span>
+<span class="exec">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-direct {v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	sget-object v1, Lcom/facebook/internal/FetchedAppGateKeepersManager;->callbacks:Ljava/util/concurrent/ConcurrentLinkedQueue;</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/util/concurrent/ConcurrentLinkedQueue;->isEmpty()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-nez v2, :cond_1</span>
+<span class="exec">	invoke-virtual {v1}, Ljava/util/concurrent/ConcurrentLinkedQueue;->poll()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	check-cast v1, Lcom/facebook/internal/FetchedAppGateKeepersManager$Callback;</span>
+<span class="cov">	if-eqz v1, :cond_0</span>
+<span class="cov">	new-instance v2, Lcom/facebook/internal/FetchedAppGateKeepersManager$pollCallbacks$1;</span>
+<span class="cov">	invoke-direct {v2, v1}, Lcom/facebook/internal/FetchedAppGateKeepersManager$pollCallbacks$1;-><init>(Lcom/facebook/internal/FetchedAppGateKeepersManager$Callback;)V</span>
+<span class="cov">	check-cast v2, Ljava/lang/Runnable;</span>
+<span class="cov">	invoke-virtual {v0, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public static final queryAppGateKeepers(Ljava/lang/String;Z)Lorg/json/JSONObject;</span>
+<span class="">	.locals 4</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	const-string v0, "applicationId"</span>
+<span class="cov">	invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	if-nez p1, :cond_1</span>
+<span class="">	sget-object p1, Lcom/facebook/internal/FetchedAppGateKeepersManager;->fetchedAppGateKeepers:Ljava/util/Map;</span>
+<span class="">	invoke-interface {p1, p0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-interface {p1, p0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	check-cast p0, Lorg/json/JSONObject;</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p0, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {p0}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="">	:goto_0</span>
+<span class="cov">	sget-object p1, Lcom/facebook/internal/FetchedAppGateKeepersManager;->INSTANCE:Lcom/facebook/internal/FetchedAppGateKeepersManager;</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-direct {p1, p0}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->getAppGateKeepersQueryResponse(Ljava/lang/String;)Lorg/json/JSONObject;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationContext()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sget-object v1, Lkotlin/jvm/internal/StringCompanionObject;->INSTANCE:Lkotlin/jvm/internal/StringCompanionObject;</span>
+<span class="cov">	const/4 v1, 0x1</span>
+<span class="cov">	new-array v2, v1, [Ljava/lang/Object;</span>
+<span class="cov">	const/4 v3, 0x0</span>
+<span class="cov">	aput-object p0, v2, v3</span>
+<span class="exec">	invoke-static {v2, v1}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "com.facebook.internal.APP_GATEKEEPERS.%s"</span>
+<span class="exec">	invoke-static {v2, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "java.lang.String.format(format, *args)"</span>
+<span class="cov">	invoke-static {v1, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string v2, "com.facebook.internal.preferences.APP_GATEKEEPERS"</span>
+<span class="exec">	invoke-virtual {v0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {p1}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V</span>
+<span class="exec">	invoke-static {p0, p1}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->parseAppGateKeepersFromJSON$facebook_core_release(Ljava/lang/String;Lorg/json/JSONObject;)Lorg/json/JSONObject;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+.method public static final resetRuntimeGateKeeperCache()V
+<span class="">	.locals 3</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	sget-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->gateKeeperRuntimeCache:Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-static {v0, v2, v1, v2}, Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;->resetCache$default(Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;Ljava/lang/String;ILjava/lang/Object;)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public static final setRuntimeGateKeeper(Ljava/lang/String;Lcom/facebook/internal/gatekeeper/GateKeeper;)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "applicationId"</span>
+<span class="">	invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "gateKeeper"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	sget-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->gateKeeperRuntimeCache:Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Lcom/facebook/internal/gatekeeper/GateKeeper;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, p0, v1}, Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;->getGateKeeper(Ljava/lang/String;Ljava/lang/String;)Lcom/facebook/internal/gatekeeper/GateKeeper;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	sget-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->gateKeeperRuntimeCache:Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {v0, p0, p1}, Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;->setGateKeeper(Ljava/lang/String;Lcom/facebook/internal/gatekeeper/GateKeeper;)V</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object p0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->TAG:Ljava/lang/String;</span>
+<span class="">	const-string p1, "Missing gatekeeper runtime cache"</span>
+<span class="">	invoke-static {p0, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_2</span>
+<span class="">	:goto_1</span>
+.end method
+
+.method public static synthetic setRuntimeGateKeeper$default(Ljava/lang/String;Lcom/facebook/internal/gatekeeper/GateKeeper;ILjava/lang/Object;)V
+<span class="">	.locals 0</span>
+
+<span class="">	and-int/lit8 p2, p2, 0x1</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getApplicationId()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {p0, p1}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->setRuntimeGateKeeper(Ljava/lang/String;Lcom/facebook/internal/gatekeeper/GateKeeper;)V</span>
+.end method
+
+<span class="cov">.method public final getGateKeepersForApplication(Ljava/lang/String;)Ljava/util/Map;</span>
+<span class="">	.locals 7</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	")",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/Boolean;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	invoke-virtual {p0}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->loadAppGateKeepersAsync()V</span>
+<span class="cov">	if-eqz p1, :cond_8</span>
+<span class="cov">	sget-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->fetchedAppGateKeepers:Ljava/util/Map;</span>
+<span class="exec">	invoke-interface {v0, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	goto/16 :goto_7</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	sget-object v1, Lcom/facebook/internal/FetchedAppGateKeepersManager;->gateKeeperRuntimeCache:Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;</span>
+<span class="cov">	if-eqz v1, :cond_1</span>
+<span class="exec">	invoke-virtual {v1, p1}, Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;->dumpGateKeepers(Ljava/lang/String;)Ljava/util/List;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	if-eqz v1, :cond_3</span>
+<span class="cov">	new-instance p1, Ljava/util/HashMap;</span>
+<span class="cov">	invoke-direct {p1}, Ljava/util/HashMap;-><init>()V</span>
+<span class="cov">	check-cast v1, Ljava/lang/Iterable;</span>
+<span class="exec">	invoke-interface {v1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	:goto_1</span>
+<span class="exec">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	if-eqz v1, :cond_2</span>
+<span class="exec">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	check-cast v1, Lcom/facebook/internal/gatekeeper/GateKeeper;</span>
+<span class="cov">	move-object v2, p1</span>
+<span class="cov">	check-cast v2, Ljava/util/Map;</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/facebook/internal/gatekeeper/GateKeeper;->getName()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/facebook/internal/gatekeeper/GateKeeper;->getValue()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="exec">	invoke-static {v1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-interface {v2, v3, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	goto :goto_1</span>
+<span class="cov">	:cond_2</span>
+<span class="cov">	check-cast p1, Ljava/util/Map;</span>
+<span class="">	goto/16 :goto_6</span>
+<span class="cov">	:cond_3</span>
+<span class="cov">	new-instance v1, Ljava/util/HashMap;</span>
+<span class="cov">	invoke-direct {v1}, Ljava/util/HashMap;-><init>()V</span>
+<span class="cov">	check-cast v1, Ljava/util/Map;</span>
+<span class="exec">	invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	check-cast v0, Lorg/json/JSONObject;</span>
+<span class="cov">	if-eqz v0, :cond_4</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_4</span>
+<span class="">	new-instance v0, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V</span>
+<span class="cov">	:goto_2</span>
+<span class="exec">	invoke-virtual {v0}, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	:goto_3</span>
+<span class="exec">	invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	if-eqz v3, :cond_5</span>
+<span class="exec">	invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	check-cast v3, Ljava/lang/String;</span>
+<span class="cov">	const-string v4, "key"</span>
+<span class="cov">	invoke-static {v3, v4}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="exec">	invoke-virtual {v0, v3}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result v4</span>
+<span class="exec">	invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="cov">	invoke-interface {v1, v3, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	goto :goto_3</span>
+<span class="cov">	:cond_5</span>
+<span class="cov">	sget-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->gateKeeperRuntimeCache:Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;</span>
+<span class="">	if-eqz v0, :cond_6</span>
+<span class="">	goto :goto_4</span>
+<span class="cov">	:cond_6</span>
+<span class="cov">	new-instance v0, Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;-><init>()V</span>
+<span class="cov">	:goto_4</span>
+<span class="cov">	new-instance v2, Ljava/util/ArrayList;</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/Map;->size()I</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	invoke-direct {v2, v3}, Ljava/util/ArrayList;-><init>(I)V</span>
+<span class="cov">	check-cast v2, Ljava/util/Collection;</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/Map;->entrySet()Ljava/util/Set;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="exec">	invoke-interface {v3}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="cov">	:goto_5</span>
+<span class="exec">	invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v4</span>
+<span class="cov">	if-eqz v4, :cond_7</span>
+<span class="exec">	invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="cov">	check-cast v4, Ljava/util/Map$Entry;</span>
+<span class="cov">	new-instance v5, Lcom/facebook/internal/gatekeeper/GateKeeper;</span>
+<span class="exec">	invoke-interface {v4}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v6</span>
+<span class="cov">	check-cast v6, Ljava/lang/String;</span>
+<span class="exec">	invoke-interface {v4}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="cov">	check-cast v4, Ljava/lang/Boolean;</span>
+<span class="exec">	invoke-virtual {v4}, Ljava/lang/Boolean;->booleanValue()Z</span>
+<span class="cov">	move-result v4</span>
+<span class="cov">	invoke-direct {v5, v6, v4}, Lcom/facebook/internal/gatekeeper/GateKeeper;-><init>(Ljava/lang/String;Z)V</span>
+<span class="cov">	invoke-interface {v2, v5}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_5</span>
+<span class="cov">	:cond_7</span>
+<span class="cov">	check-cast v2, Ljava/util/List;</span>
+<span class="cov">	invoke-virtual {v0, p1, v2}, Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;->setGateKeepers(Ljava/lang/String;Ljava/util/List;)V</span>
+<span class="cov">	sput-object v0, Lcom/facebook/internal/FetchedAppGateKeepersManager;->gateKeeperRuntimeCache:Lcom/facebook/internal/gatekeeper/GateKeeperRuntimeCache;</span>
+<span class="cov">	move-object p1, v1</span>
+<span class="cov">	:goto_6</span>
+<span class="exec">	return-object p1</span>
+<span class="">	:goto_7</span>
+<span class="">	:cond_8</span>
+<span class="">	new-instance p1, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {p1}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	check-cast p1, Ljava/util/Map;</span>
+.end method
+
+<span class="cov">.method public final loadAppGateKeepersAsync()V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	invoke-static {v0}, Lcom/facebook/internal/FetchedAppGateKeepersManager;->loadAppGateKeepersAsync(Lcom/facebook/internal/FetchedAppGateKeepersManager$Callback;)V</span>
+<span class="exec">	return-void</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

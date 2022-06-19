@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.androidplot.ui</a></li>
+        <li><i class="ico ico-class"></i> SeriesRenderer.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Lcom/androidplot/ui/SeriesRenderer;
+.super Ljava/lang/Object;
+.source "SeriesRenderer.java"
+
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"<PlotType:",
+"Lcom/androidplot/Plot;",
+"SeriesType::",
+"Lcom/androidplot/Series;",
+"SeriesFormatterType:",
+"Lcom/androidplot/ui/Formatter;",
+">",
+"Ljava/lang/Object;"
+}
+.end annotation
+
+.field private plot:Lcom/androidplot/Plot;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"TPlotType;"
+}
+.end annotation
+.end field
+
+
+<span class="cov">.method public constructor &lt;init&gt;(Lcom/androidplot/Plot;)V</span>
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TPlotType;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object p1, p0, Lcom/androidplot/ui/SeriesRenderer;->plot:Lcom/androidplot/Plot;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method protected abstract doDrawLegendIcon(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/ui/Formatter;)V
+<span class="">	</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/graphics/Canvas;",</span>
+<span class="">	"Landroid/graphics/RectF;",</span>
+<span class="">	"TSeriesFormatterType;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+.method public drawSeriesLegendIcon(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/ui/Formatter;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/graphics/Canvas;",</span>
+<span class="">	"Landroid/graphics/RectF;",</span>
+<span class="">	"TSeriesFormatterType;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I</span>
+<span class="">	sget-object v0, Landroid/graphics/Region$Op;->INTERSECT:Landroid/graphics/Region$Op;</span>
+<span class="">	invoke-virtual {p1, p2, v0}, Landroid/graphics/Canvas;->clipRect(Landroid/graphics/RectF;Landroid/graphics/Region$Op;)Z</span>
+<span class="">	invoke-virtual {p0, p1, p2, p3}, Lcom/androidplot/ui/SeriesRenderer;->doDrawLegendIcon(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/ui/Formatter;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V</span>
+<span class="">	move-exception p2</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V</span>
+<span class="">	throw p2</span>
+.end method
+
+<span class="cov">.method public getFormatter(Lcom/androidplot/Series;)Lcom/androidplot/ui/Formatter;</span>
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TSeriesType;)TSeriesFormatterType;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/ui/SeriesRenderer;->plot:Lcom/androidplot/Plot;</span>
+<span class="exec">	invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v0, p1, v1}, Lcom/androidplot/Plot;->getFormatter(Lcom/androidplot/Series;Ljava/lang/Class;)Lcom/androidplot/ui/Formatter;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="exec">	return-object p1</span>
+.end method
+
+<span class="cov">.method public getPlot()Lcom/androidplot/Plot;</span>
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()TPlotType;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/androidplot/ui/SeriesRenderer;->plot:Lcom/androidplot/Plot;</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public getSeriesAndFormatterList()Ljava/util/List;</span>
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/androidplot/ui/SeriesBundle<",</span>
+<span class="">	"TSeriesType;+TSeriesFormatterType;>;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/androidplot/ui/SeriesRenderer;->getPlot()Lcom/androidplot/Plot;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/androidplot/Plot;->getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/androidplot/SeriesRegistry;->getSeriesAndFormatterList()Ljava/util/List;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_1</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	check-cast v2, Lcom/androidplot/ui/SeriesBundle;</span>
+<span class="exec">	invoke-virtual {v2, p0}, Lcom/androidplot/ui/SeriesBundle;->rendersWith(Lcom/androidplot/ui/SeriesRenderer;)Z</span>
+<span class="cov">	move-result v3</span>
+<span class="cov">	if-eqz v3, :cond_0</span>
+<span class="cov">	invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+.method public getSeriesList()Ljava/util/List;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"TSeriesType;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Lcom/androidplot/ui/SeriesRenderer;->getPlot()Lcom/androidplot/Plot;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/Plot;->getRegistry()Lcom/androidplot/SeriesRegistry;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/androidplot/SeriesRegistry;->getSeriesAndFormatterList()Ljava/util/List;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Lcom/androidplot/ui/SeriesBundle;</span>
+<span class="">	invoke-virtual {v2, p0}, Lcom/androidplot/ui/SeriesBundle;->rendersWith(Lcom/androidplot/ui/SeriesRenderer;)Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	invoke-virtual {v2}, Lcom/androidplot/ui/SeriesBundle;->getSeries()Lcom/androidplot/Series;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method protected abstract onRender(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/Series;Lcom/androidplot/ui/Formatter;Lcom/androidplot/ui/RenderStack;)V
+<span class="">	</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/graphics/Canvas;",</span>
+<span class="">	"Landroid/graphics/RectF;",</span>
+<span class="">	"TSeriesType;TSeriesFormatterType;",</span>
+<span class="">	"Lcom/androidplot/ui/RenderStack;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+.end method
+
+<span class="cov">.method public render(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/ui/SeriesBundle;Lcom/androidplot/ui/RenderStack;)V</span>
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/graphics/Canvas;",</span>
+<span class="">	"Landroid/graphics/RectF;",</span>
+<span class="">	"Lcom/androidplot/ui/SeriesBundle<",</span>
+<span class="">	"TSeriesType;TSeriesFormatterType;>;",</span>
+<span class="">	"Lcom/androidplot/ui/RenderStack;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="exec">	invoke-virtual {p3}, Lcom/androidplot/ui/SeriesBundle;->getSeries()Lcom/androidplot/Series;</span>
+<span class="cov">	move-result-object v3</span>
+<span class="exec">	invoke-virtual {p3}, Lcom/androidplot/ui/SeriesBundle;->getFormatter()Lcom/androidplot/ui/Formatter;</span>
+<span class="cov">	move-result-object v4</span>
+<span class="cov">	move-object v0, p0</span>
+<span class="cov">	move-object v1, p1</span>
+<span class="cov">	move-object v2, p2</span>
+<span class="cov">	move-object v5, p4</span>
+<span class="cov">	invoke-virtual/range {v0 .. v5}, Lcom/androidplot/ui/SeriesRenderer;->onRender(Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidplot/Series;Lcom/androidplot/ui/Formatter;Lcom/androidplot/ui/RenderStack;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method public setPlot(Lcom/androidplot/Plot;)V
+<span class="">	.locals 0</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(TPlotType;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iput-object p1, p0, Lcom/androidplot/ui/SeriesRenderer;->plot:Lcom/androidplot/Plot;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

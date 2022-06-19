@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.preference</a></li>
+        <li><i class="ico ico-class"></i> PreferenceFragmentCompat.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Landroidx/preference/PreferenceFragmentCompat;
+.super Landroidx/fragment/app/Fragment;
+.source "PreferenceFragmentCompat.java"
+.implements Landroidx/preference/PreferenceManager$OnPreferenceTreeClickListener;
+.implements Landroidx/preference/PreferenceManager$OnDisplayPreferenceDialogListener;
+.implements Landroidx/preference/PreferenceManager$OnNavigateToScreenListener;
+.implements Landroidx/preference/DialogPreference$TargetFragment;
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;,
+Landroidx/preference/PreferenceFragmentCompat$ScrollToPreferenceObserver;,
+Landroidx/preference/PreferenceFragmentCompat$OnPreferenceDisplayDialogCallback;,
+Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartScreenCallback;,
+Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartFragmentCallback;
+}
+.end annotation
+
+.field public static final ARG_PREFERENCE_ROOT:Ljava/lang/String; = "androidx.preference.PreferenceFragmentCompat.PREFERENCE_ROOT"
+.field private static final DIALOG_FRAGMENT_TAG:Ljava/lang/String; = "androidx.preference.PreferenceFragment.DIALOG"
+.field private static final MSG_BIND_PREFERENCES:I = 0x1
+.field private static final PREFERENCES_TAG:Ljava/lang/String; = "android:preferences"
+.field private static final TAG:Ljava/lang/String; = "PreferenceFragment"
+.field private final mDividerDecoration:Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;
+.field private mHandler:Landroid/os/Handler;
+.field private mHavePrefs:Z
+.field private mInitDone:Z
+.field private mLayoutResId:I
+.field  mList:Landroidx/recyclerview/widget/RecyclerView;
+.field private mPreferenceManager:Landroidx/preference/PreferenceManager;
+.field private final mRequestFocus:Ljava/lang/Runnable;
+.field private mSelectPreferenceRunnable:Ljava/lang/Runnable;
+
+
+.method public constructor <init>()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/fragment/app/Fragment;-><init>()V</span>
+<span class="">	new-instance v0, Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;-><init>(Landroidx/preference/PreferenceFragmentCompat;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mDividerDecoration:Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;</span>
+<span class="">	sget v0, Landroidx/preference/R$layout;->preference_list_fragment:I</span>
+<span class="">	iput v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mLayoutResId:I</span>
+<span class="">	new-instance v0, Landroidx/preference/PreferenceFragmentCompat$1;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/preference/PreferenceFragmentCompat$1;-><init>(Landroidx/preference/PreferenceFragmentCompat;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mHandler:Landroid/os/Handler;</span>
+<span class="">	new-instance v0, Landroidx/preference/PreferenceFragmentCompat$2;</span>
+<span class="">	invoke-direct {v0, p0}, Landroidx/preference/PreferenceFragmentCompat$2;-><init>(Landroidx/preference/PreferenceFragmentCompat;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mRequestFocus:Ljava/lang/Runnable;</span>
+.end method
+
+.method private postBindPreferences()V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mHandler:Landroid/os/Handler;</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/Handler;->hasMessages(I)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mHandler:Landroid/os/Handler;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/Handler;->obtainMessage(I)Landroid/os/Message;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroid/os/Message;->sendToTarget()V</span>
+.end method
+
+.method private requirePreferenceManager()V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	new-instance v0, Ljava/lang/RuntimeException;</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v1, "This should be called after super.onCreate."</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method private scrollToPreferenceInternal(Landroidx/preference/Preference;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/preference/PreferenceFragmentCompat$3;</span>
+<span class="">	invoke-direct {v0, p0, p1, p2}, Landroidx/preference/PreferenceFragmentCompat$3;-><init>(Landroidx/preference/PreferenceFragmentCompat;Landroidx/preference/Preference;Ljava/lang/String;)V</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mList:Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	iput-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mSelectPreferenceRunnable:Ljava/lang/Runnable;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/lang/Runnable;->run()V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private unbindPreferences()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getListView()Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/RecyclerView;->setAdapter(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getPreferenceScreen()Landroidx/preference/PreferenceScreen;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Landroidx/preference/PreferenceScreen;->onDetached()V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->onUnbindPreferences()V</span>
+.end method
+
+.method public addPreferencesFromResource(I)V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/preference/PreferenceFragmentCompat;->requirePreferenceManager()V</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getPreferenceScreen()Landroidx/preference/PreferenceScreen;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v0, v1, p1, v2}, Landroidx/preference/PreferenceManager;->inflateFromResource(Landroid/content/Context;ILandroidx/preference/PreferenceScreen;)Landroidx/preference/PreferenceScreen;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/preference/PreferenceFragmentCompat;->setPreferenceScreen(Landroidx/preference/PreferenceScreen;)V</span>
+.end method
+
+.method  bindPreferences()V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getPreferenceScreen()Landroidx/preference/PreferenceScreen;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getListView()Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p0, v0}, Landroidx/preference/PreferenceFragmentCompat;->onCreateAdapter(Landroidx/preference/PreferenceScreen;)Landroidx/recyclerview/widget/RecyclerView$Adapter;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v1, v2}, Landroidx/recyclerview/widget/RecyclerView;->setAdapter(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V</span>
+<span class="">	invoke-virtual {v0}, Landroidx/preference/PreferenceScreen;->onAttached()V</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->onBindPreferences()V</span>
+.end method
+
+.method public findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"<T:",</span>
+<span class="">	"Landroidx/preference/Preference;",</span>
+<span class="">	">(",</span>
+<span class="">	"Ljava/lang/CharSequence;",</span>
+<span class="">	")TT;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/preference/PreferenceManager;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public getCallbackFragment()Landroidx/fragment/app/Fragment;
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+.end method
+
+.method public final getListView()Landroidx/recyclerview/widget/RecyclerView;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mList:Landroidx/recyclerview/widget/RecyclerView;</span>
+.end method
+
+.method public getPreferenceManager()Landroidx/preference/PreferenceManager;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+.end method
+
+.method public getPreferenceScreen()Landroidx/preference/PreferenceScreen;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	invoke-virtual {v0}, Landroidx/preference/PreferenceManager;->getPreferenceScreen()Landroidx/preference/PreferenceScreen;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method protected onBindPreferences()V
+<span class="">	.locals 0</span>
+
+.end method
+
+.method public onCreate(Landroid/os/Bundle;)V
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-super {p0, p1}, Landroidx/fragment/app/Fragment;->onCreate(Landroid/os/Bundle;)V</span>
+<span class="">	new-instance v0, Landroid/util/TypedValue;</span>
+<span class="">	invoke-direct {v0}, Landroid/util/TypedValue;-><init>()V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Landroidx/fragment/app/FragmentActivity;->getTheme()Landroid/content/res/Resources$Theme;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	sget v2, Landroidx/preference/R$attr;->preferenceTheme:I</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	invoke-virtual {v1, v2, v0, v3}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z</span>
+<span class="">	iget v0, v0, Landroid/util/TypedValue;->resourceId:I</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	sget v0, Landroidx/preference/R$style;->PreferenceThemeOverlay:I</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Landroidx/fragment/app/FragmentActivity;->getTheme()Landroid/content/res/Resources$Theme;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-virtual {v1, v0, v2}, Landroid/content/res/Resources$Theme;->applyStyle(IZ)V</span>
+<span class="">	new-instance v0, Landroidx/preference/PreferenceManager;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Landroidx/preference/PreferenceManager;-><init>(Landroid/content/Context;)V</span>
+<span class="">	iput-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	invoke-virtual {v0, p0}, Landroidx/preference/PreferenceManager;->setOnNavigateToScreenListener(Landroidx/preference/PreferenceManager$OnNavigateToScreenListener;)V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getArguments()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getArguments()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "androidx.preference.PreferenceFragmentCompat.PREFERENCE_ROOT"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-virtual {p0, p1, v0}, Landroidx/preference/PreferenceFragmentCompat;->onCreatePreferences(Landroid/os/Bundle;Ljava/lang/String;)V</span>
+.end method
+
+.method protected onCreateAdapter(Landroidx/preference/PreferenceScreen;)Landroidx/recyclerview/widget/RecyclerView$Adapter;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Landroidx/preference/PreferenceGroupAdapter;</span>
+<span class="">	invoke-direct {v0, p1}, Landroidx/preference/PreferenceGroupAdapter;-><init>(Landroidx/preference/PreferenceGroup;)V</span>
+.end method
+
+.method public onCreateLayoutManager()Landroidx/recyclerview/widget/RecyclerView$LayoutManager;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Landroidx/recyclerview/widget/LinearLayoutManager;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-direct {v0, v1}, Landroidx/recyclerview/widget/LinearLayoutManager;-><init>(Landroid/content/Context;)V</span>
+.end method
+
+.method public abstract onCreatePreferences(Landroid/os/Bundle;Ljava/lang/String;)V
+<span class="">	</span>
+
+.end method
+
+.method public onCreateRecyclerView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroidx/recyclerview/widget/RecyclerView;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	const-string v0, "android.hardware.type.automotive"</span>
+<span class="">	invoke-virtual {p3, v0}, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z</span>
+<span class="">	move-result p3</span>
+<span class="">	if-eqz p3, :cond_0</span>
+<span class="">	sget p3, Landroidx/preference/R$id;->recycler_view:I</span>
+<span class="">	invoke-virtual {p2, p3}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	check-cast p3, Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	if-eqz p3, :cond_0</span>
+<span class="">	sget p3, Landroidx/preference/R$layout;->preference_recyclerview:I</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p1, p3, p2, v0}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->onCreateLayoutManager()Landroidx/recyclerview/widget/RecyclerView$LayoutManager;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p1, p2}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/RecyclerView$LayoutManager;)V</span>
+<span class="">	new-instance p2, Landroidx/preference/PreferenceRecyclerViewAccessibilityDelegate;</span>
+<span class="">	invoke-direct {p2, p1}, Landroidx/preference/PreferenceRecyclerViewAccessibilityDelegate;-><init>(Landroidx/recyclerview/widget/RecyclerView;)V</span>
+<span class="">	invoke-virtual {p1, p2}, Landroidx/recyclerview/widget/RecyclerView;->setAccessibilityDelegateCompat(Landroidx/recyclerview/widget/RecyclerViewAccessibilityDelegate;)V</span>
+.end method
+
+.method public onCreateView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
+<span class="">	.locals 7</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v1, Landroidx/preference/R$styleable;->PreferenceFragmentCompat:[I</span>
+<span class="">	sget v2, Landroidx/preference/R$attr;->preferenceFragmentCompatStyle:I</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	invoke-virtual {v0, v3, v1, v2, v4}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget v1, Landroidx/preference/R$styleable;->PreferenceFragmentCompat_android_layout:I</span>
+<span class="">	iget v2, p0, Landroidx/preference/PreferenceFragmentCompat;->mLayoutResId:I</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Landroid/content/res/TypedArray;->getResourceId(II)I</span>
+<span class="">	move-result v1</span>
+<span class="">	iput v1, p0, Landroidx/preference/PreferenceFragmentCompat;->mLayoutResId:I</span>
+<span class="">	sget v1, Landroidx/preference/R$styleable;->PreferenceFragmentCompat_android_divider:I</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	sget v2, Landroidx/preference/R$styleable;->PreferenceFragmentCompat_android_dividerHeight:I</span>
+<span class="">	const/4 v3, -0x1</span>
+<span class="">	invoke-virtual {v0, v2, v3}, Landroid/content/res/TypedArray;->getDimensionPixelSize(II)I</span>
+<span class="">	move-result v2</span>
+<span class="">	sget v5, Landroidx/preference/R$styleable;->PreferenceFragmentCompat_allowDividerAfterLastItem:I</span>
+<span class="">	const/4 v6, 0x1</span>
+<span class="">	invoke-virtual {v0, v5, v6}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z</span>
+<span class="">	move-result v5</span>
+<span class="">	invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1, v0}, Landroid/view/LayoutInflater;->cloneInContext(Landroid/content/Context;)Landroid/view/LayoutInflater;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mLayoutResId:I</span>
+<span class="">	invoke-virtual {p1, v0, p2, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const v0, 0x102003f</span>
+<span class="">	invoke-virtual {p2, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v4, v0, Landroid/view/ViewGroup;</span>
+<span class="">	if-eqz v4, :cond_3</span>
+<span class="">	check-cast v0, Landroid/view/ViewGroup;</span>
+<span class="">	invoke-virtual {p0, p1, v0, p3}, Landroidx/preference/PreferenceFragmentCompat;->onCreateRecyclerView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_2</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mList:Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	iget-object p3, p0, Landroidx/preference/PreferenceFragmentCompat;->mDividerDecoration:Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;</span>
+<span class="">	invoke-virtual {p1, p3}, Landroidx/recyclerview/widget/RecyclerView;->addItemDecoration(Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;)V</span>
+<span class="">	invoke-virtual {p0, v1}, Landroidx/preference/PreferenceFragmentCompat;->setDivider(Landroid/graphics/drawable/Drawable;)V</span>
+<span class="">	if-eq v2, v3, :cond_0</span>
+<span class="">	invoke-virtual {p0, v2}, Landroidx/preference/PreferenceFragmentCompat;->setDividerHeight(I)V</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mDividerDecoration:Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;</span>
+<span class="">	invoke-virtual {p1, v5}, Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;->setAllowDividerAfterLastItem(Z)V</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mList:Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	invoke-virtual {p1}, Landroidx/recyclerview/widget/RecyclerView;->getParent()Landroid/view/ViewParent;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-nez p1, :cond_1</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mList:Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mHandler:Landroid/os/Handler;</span>
+<span class="">	iget-object p3, p0, Landroidx/preference/PreferenceFragmentCompat;->mRequestFocus:Ljava/lang/Runnable;</span>
+<span class="">	invoke-virtual {p1, p3}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z</span>
+<span class="">	new-instance p1, Ljava/lang/RuntimeException;</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string p2, "Could not create RecyclerView"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_3</span>
+<span class="">	const-string p2, "Content has view with id attribute \'android.R.id.list_container\' that is not a ViewGroup class"</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public onDestroyView()V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mHandler:Landroid/os/Handler;</span>
+<span class="">	iget-object v1, p0, Landroidx/preference/PreferenceFragmentCompat;->mRequestFocus:Ljava/lang/Runnable;</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mHandler:Landroid/os/Handler;</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V</span>
+<span class="">	iget-boolean v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mHavePrefs:Z</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-direct {p0}, Landroidx/preference/PreferenceFragmentCompat;->unbindPreferences()V</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mList:Landroidx/recyclerview/widget/RecyclerView;</span>
+<span class="">	invoke-super {p0}, Landroidx/fragment/app/Fragment;->onDestroyView()V</span>
+.end method
+
+.method public onDisplayPreferenceDialog(Landroidx/preference/Preference;)V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getCallbackFragment()Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v0, v0, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceDisplayDialogCallback;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getCallbackFragment()Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceDisplayDialogCallback;</span>
+<span class="">	invoke-interface {v0, p0, p1}, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceDisplayDialogCallback;->onPreferenceDisplayDialog(Landroidx/preference/PreferenceFragmentCompat;Landroidx/preference/Preference;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	instance-of v2, v2, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceDisplayDialogCallback;</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceDisplayDialogCallback;</span>
+<span class="">	invoke-interface {v0, p0, p1}, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceDisplayDialogCallback;->onPreferenceDisplayDialog(Landroidx/preference/PreferenceFragmentCompat;Landroidx/preference/Preference;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	:cond_1</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getParentFragmentManager()Landroidx/fragment/app/FragmentManager;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v2, "androidx.preference.PreferenceFragment.DIALOG"</span>
+<span class="">	invoke-virtual {v0, v2}, Landroidx/fragment/app/FragmentManager;->findFragmentByTag(Ljava/lang/String;)Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	instance-of v0, p1, Landroidx/preference/EditTextPreference;</span>
+<span class="">	if-eqz v0, :cond_4</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/Preference;->getKey()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Landroidx/preference/EditTextPreferenceDialogFragmentCompat;->newInstance(Ljava/lang/String;)Landroidx/preference/EditTextPreferenceDialogFragmentCompat;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	instance-of v0, p1, Landroidx/preference/ListPreference;</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/Preference;->getKey()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Landroidx/preference/ListPreferenceDialogFragmentCompat;->newInstance(Ljava/lang/String;)Landroidx/preference/ListPreferenceDialogFragmentCompat;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	instance-of v0, p1, Landroidx/preference/MultiSelectListPreference;</span>
+<span class="">	if-eqz v0, :cond_6</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/Preference;->getKey()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Landroidx/preference/MultiSelectListPreferenceDialogFragmentCompat;->newInstance(Ljava/lang/String;)Landroidx/preference/MultiSelectListPreferenceDialogFragmentCompat;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, p0, v1}, Landroidx/fragment/app/DialogFragment;->setTargetFragment(Landroidx/fragment/app/Fragment;I)V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getParentFragmentManager()Landroidx/fragment/app/FragmentManager;</span>
+<span class="">	:goto_1</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1, v0, v2}, Landroidx/fragment/app/DialogFragment;->show(Landroidx/fragment/app/FragmentManager;Ljava/lang/String;)V</span>
+<span class="">	new-instance v0, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	new-instance v1, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	:cond_6</span>
+<span class="">	const-string v2, "Cannot display dialog for an unknown Preference type: "</span>
+<span class="">	invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, ". Make sure to implement onPreferenceDisplayDialog() to handle displaying a custom dialog for this Preference."</span>
+<span class="">	invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-direct {v0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public onNavigateToScreen(Landroidx/preference/PreferenceScreen;)V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getCallbackFragment()Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v0, v0, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartScreenCallback;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getCallbackFragment()Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartScreenCallback;</span>
+<span class="">	invoke-interface {v0, p0, p1}, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartScreenCallback;->onPreferenceStartScreen(Landroidx/preference/PreferenceFragmentCompat;Landroidx/preference/PreferenceScreen;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v0, v0, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartScreenCallback;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartScreenCallback;</span>
+<span class="">	invoke-interface {v0, p0, p1}, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartScreenCallback;->onPreferenceStartScreen(Landroidx/preference/PreferenceFragmentCompat;Landroidx/preference/PreferenceScreen;)Z</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public onPreferenceTreeClick(Landroidx/preference/Preference;)Z
+<span class="">	.locals 5</span>
+
+<span class="">	invoke-virtual {p1}, Landroidx/preference/Preference;->getFragment()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getCallbackFragment()Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v0, v0, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartFragmentCallback;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getCallbackFragment()Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartFragmentCallback;</span>
+<span class="">	invoke-interface {v0, p0, p1}, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartFragmentCallback;->onPreferenceStartFragment(Landroidx/preference/PreferenceFragmentCompat;Landroidx/preference/Preference;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	instance-of v2, v2, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartFragmentCallback;</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartFragmentCallback;</span>
+<span class="">	invoke-interface {v0, p0, p1}, Landroidx/preference/PreferenceFragmentCompat$OnPreferenceStartFragmentCallback;->onPreferenceStartFragment(Landroidx/preference/PreferenceFragmentCompat;Landroidx/preference/Preference;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	:cond_1</span>
+<span class="">	if-nez v0, :cond_2</span>
+<span class="">	const-string v0, "PreferenceFragment"</span>
+<span class="">	const-string v2, "onPreferenceStartFragment is not implemented in the parent activity - attempting to use a fallback implementation. You should implement this method so that you can configure the new fragment that will be displayed, and set a transition between the fragments."</span>
+<span class="">	invoke-static {v0, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->requireActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Landroidx/fragment/app/FragmentActivity;->getSupportFragmentManager()Landroidx/fragment/app/FragmentManager;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/Preference;->getExtras()Landroid/os/Bundle;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v0}, Landroidx/fragment/app/FragmentManager;->getFragmentFactory()Landroidx/fragment/app/FragmentFactory;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->requireActivity()Landroidx/fragment/app/FragmentActivity;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v4}, Landroidx/fragment/app/FragmentActivity;->getClassLoader()Ljava/lang/ClassLoader;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {p1}, Landroidx/preference/Preference;->getFragment()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v3, v4, p1}, Landroidx/fragment/app/FragmentFactory;->instantiate(Ljava/lang/ClassLoader;Ljava/lang/String;)Landroidx/fragment/app/Fragment;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, v2}, Landroidx/fragment/app/Fragment;->setArguments(Landroid/os/Bundle;)V</span>
+<span class="">	invoke-virtual {p1, p0, v1}, Landroidx/fragment/app/Fragment;->setTargetFragment(Landroidx/fragment/app/Fragment;I)V</span>
+<span class="">	invoke-virtual {v0}, Landroidx/fragment/app/FragmentManager;->beginTransaction()Landroidx/fragment/app/FragmentTransaction;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getView()Landroid/view/View;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Landroid/view/View;->getParent()Landroid/view/ViewParent;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroid/view/View;</span>
+<span class="">	invoke-virtual {v1}, Landroid/view/View;->getId()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0, v1, p1}, Landroidx/fragment/app/FragmentTransaction;->replace(ILandroidx/fragment/app/Fragment;)Landroidx/fragment/app/FragmentTransaction;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-virtual {p1, v0}, Landroidx/fragment/app/FragmentTransaction;->addToBackStack(Ljava/lang/String;)Landroidx/fragment/app/FragmentTransaction;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroidx/fragment/app/FragmentTransaction;->commit()I</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method public onSaveInstanceState(Landroid/os/Bundle;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0, p1}, Landroidx/fragment/app/Fragment;->onSaveInstanceState(Landroid/os/Bundle;)V</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getPreferenceScreen()Landroidx/preference/PreferenceScreen;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	new-instance v1, Landroid/os/Bundle;</span>
+<span class="">	invoke-direct {v1}, Landroid/os/Bundle;-><init>()V</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/preference/PreferenceScreen;->saveHierarchyState(Landroid/os/Bundle;)V</span>
+<span class="">	const-string v0, "android:preferences"</span>
+<span class="">	invoke-virtual {p1, v0, v1}, Landroid/os/Bundle;->putBundle(Ljava/lang/String;Landroid/os/Bundle;)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public onStart()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-super {p0}, Landroidx/fragment/app/Fragment;->onStart()V</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	invoke-virtual {v0, p0}, Landroidx/preference/PreferenceManager;->setOnPreferenceTreeClickListener(Landroidx/preference/PreferenceManager$OnPreferenceTreeClickListener;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	invoke-virtual {v0, p0}, Landroidx/preference/PreferenceManager;->setOnDisplayPreferenceDialogListener(Landroidx/preference/PreferenceManager$OnDisplayPreferenceDialogListener;)V</span>
+.end method
+
+.method public onStop()V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-super {p0}, Landroidx/fragment/app/Fragment;->onStop()V</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/preference/PreferenceManager;->setOnPreferenceTreeClickListener(Landroidx/preference/PreferenceManager$OnPreferenceTreeClickListener;)V</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	invoke-virtual {v0, v1}, Landroidx/preference/PreferenceManager;->setOnDisplayPreferenceDialogListener(Landroidx/preference/PreferenceManager$OnDisplayPreferenceDialogListener;)V</span>
+.end method
+
+.method protected onUnbindPreferences()V
+<span class="">	.locals 0</span>
+
+.end method
+
+.method public onViewCreated(Landroid/view/View;Landroid/os/Bundle;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-super {p0, p1, p2}, Landroidx/fragment/app/Fragment;->onViewCreated(Landroid/view/View;Landroid/os/Bundle;)V</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	const-string p1, "android:preferences"</span>
+<span class="">	invoke-virtual {p2, p1}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getPreferenceScreen()Landroidx/preference/PreferenceScreen;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-virtual {p2, p1}, Landroidx/preference/PreferenceScreen;->restoreHierarchyState(Landroid/os/Bundle;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-boolean p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mHavePrefs:Z</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->bindPreferences()V</span>
+<span class="">	iget-object p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mSelectPreferenceRunnable:Ljava/lang/Runnable;</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/Runnable;->run()V</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iput-object p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mSelectPreferenceRunnable:Ljava/lang/Runnable;</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	iput-boolean p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mInitDone:Z</span>
+.end method
+
+.method public scrollToPreference(Landroidx/preference/Preference;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {p0, p1, v0}, Landroidx/preference/PreferenceFragmentCompat;->scrollToPreferenceInternal(Landroidx/preference/Preference;Ljava/lang/String;)V</span>
+.end method
+
+.method public scrollToPreference(Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {p0, v0, p1}, Landroidx/preference/PreferenceFragmentCompat;->scrollToPreferenceInternal(Landroidx/preference/Preference;Ljava/lang/String;)V</span>
+.end method
+
+.method public setDivider(Landroid/graphics/drawable/Drawable;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mDividerDecoration:Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;->setDivider(Landroid/graphics/drawable/Drawable;)V</span>
+.end method
+
+.method public setDividerHeight(I)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mDividerDecoration:Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/preference/PreferenceFragmentCompat$DividerDecoration;->setDividerHeight(I)V</span>
+.end method
+
+.method public setPreferenceScreen(Landroidx/preference/PreferenceScreen;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	invoke-virtual {v0, p1}, Landroidx/preference/PreferenceManager;->setPreferences(Landroidx/preference/PreferenceScreen;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->onUnbindPreferences()V</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	iput-boolean p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mHavePrefs:Z</span>
+<span class="">	iget-boolean p1, p0, Landroidx/preference/PreferenceFragmentCompat;->mInitDone:Z</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-direct {p0}, Landroidx/preference/PreferenceFragmentCompat;->postBindPreferences()V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public setPreferencesFromResource(ILjava/lang/String;)V
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-direct {p0}, Landroidx/preference/PreferenceFragmentCompat;->requirePreferenceManager()V</span>
+<span class="">	iget-object v0, p0, Landroidx/preference/PreferenceFragmentCompat;->mPreferenceManager:Landroidx/preference/PreferenceManager;</span>
+<span class="">	invoke-virtual {p0}, Landroidx/preference/PreferenceFragmentCompat;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-virtual {v0, v1, p1, v2}, Landroidx/preference/PreferenceManager;->inflateFromResource(Landroid/content/Context;ILandroidx/preference/PreferenceScreen;)Landroidx/preference/PreferenceScreen;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	invoke-virtual {p1, p2}, Landroidx/preference/PreferenceScreen;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	instance-of v0, p1, Landroidx/preference/PreferenceScreen;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalArgumentException;</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "Preference object with key "</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p2, " is not a PreferenceScreen"</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	check-cast p1, Landroidx/preference/PreferenceScreen;</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/preference/PreferenceFragmentCompat;->setPreferenceScreen(Landroidx/preference/PreferenceScreen;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

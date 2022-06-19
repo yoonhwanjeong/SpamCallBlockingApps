@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.messaging</a></li>
+        <li><i class="ico ico-class"></i> g.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public abstract Lcom/google/firebase/messaging/g;
+.super Landroid/app/Service;
+.source "SourceFile"
+
+
+.field private binder:Landroid/os/Binder;
+.field final executor:Ljava/util/concurrent/ExecutorService;
+.field private lastStartId:I
+.field private final lock:Ljava/lang/Object;
+.field private runningTasks:I
+
+
+.method public constructor <init>()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Landroid/app/Service;-><init>()V</span>
+<span class="">	invoke-static {}, Lcom/google/firebase/messaging/h;->c()Ljava/util/concurrent/ExecutorService;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/google/firebase/messaging/g;->executor:Ljava/util/concurrent/ExecutorService;</span>
+<span class="">	new-instance v0, Ljava/lang/Object;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/google/firebase/messaging/g;->lock:Ljava/lang/Object;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Lcom/google/firebase/messaging/g;->runningTasks:I</span>
+.end method
+
+.method static synthetic access$000(Lcom/google/firebase/messaging/g;Landroid/content/Intent;)Lcom/google/android/gms/tasks/g;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/messaging/g;->processIntent(Landroid/content/Intent;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method private finishTask(Landroid/content/Intent;)V
+<span class="">	.locals 1</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-static {p1}, Lcom/google/firebase/iid/z;->b(Landroid/content/Intent;)V</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object p1, p0, Lcom/google/firebase/messaging/g;->lock:Ljava/lang/Object;</span>
+<span class="">	monitor-enter p1</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget v0, p0, Lcom/google/firebase/messaging/g;->runningTasks:I</span>
+<span class="">	add-int/lit8 v0, v0, -0x1</span>
+<span class="">	iput v0, p0, Lcom/google/firebase/messaging/g;->runningTasks:I</span>
+<span class="">	if-nez v0, :cond_1</span>
+<span class="">	iget v0, p0, Lcom/google/firebase/messaging/g;->lastStartId:I</span>
+<span class="">	invoke-virtual {p0, v0}, Lcom/google/firebase/messaging/g;->stopSelfResultHook(I)Z</span>
+<span class="">	:cond_1</span>
+<span class="">	monitor-exit p1</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p1</span>
+<span class="">	throw v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+.end method
+
+.method private processIntent(Landroid/content/Intent;)Lcom/google/android/gms/tasks/g;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Intent;",</span>
+<span class="">	")",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Ljava/lang/Void;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/firebase/messaging/g;->handleIntentOnMainThread(Landroid/content/Intent;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	invoke-static {p1}, Lcom/google/android/gms/tasks/j;->e(Ljava/lang/Object;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance v0, Lcom/google/android/gms/tasks/h;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {v0}, Lcom/google/android/gms/tasks/h;-><init>()V</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/messaging/g;->executor:Ljava/util/concurrent/ExecutorService;</span>
+<span class="">	new-instance v2, Lcom/google/firebase/messaging/d;</span>
+<span class="">	invoke-direct {v2, p0, p1, v0}, Lcom/google/firebase/messaging/d;-><init>(Lcom/google/firebase/messaging/g;Landroid/content/Intent;Lcom/google/android/gms/tasks/h;)V</span>
+<span class="">	invoke-interface {v1, v2}, Ljava/util/concurrent/ExecutorService;->execute(Ljava/lang/Runnable;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/tasks/h;->a()Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method protected abstract getStartCommandIntent(Landroid/content/Intent;)Landroid/content/Intent;
+<span class="">	</span>
+
+.end method
+
+.method public abstract handleIntent(Landroid/content/Intent;)V
+<span class="">	</span>
+
+.end method
+
+.method public abstract handleIntentOnMainThread(Landroid/content/Intent;)Z
+<span class="">	</span>
+
+.end method
+
+.method final synthetic lambda$onStartCommand$1$EnhancedIntentService(Landroid/content/Intent;Lcom/google/android/gms/tasks/g;)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/messaging/g;->finishTask(Landroid/content/Intent;)V</span>
+.end method
+
+.method final synthetic lambda$processIntent$0$EnhancedIntentService(Landroid/content/Intent;Lcom/google/android/gms/tasks/h;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/firebase/messaging/g;->handleIntent(Landroid/content/Intent;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {p2, v0}, Lcom/google/android/gms/tasks/h;->c(Ljava/lang/Object;)V</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {p2, v0}, Lcom/google/android/gms/tasks/h;->c(Ljava/lang/Object;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public final declared-synchronized onBind(Landroid/content/Intent;)Landroid/os/IBinder;
+<span class="">	.locals 1</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	const-string p1, "EnhancedIntentService"</span>
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	invoke-static {p1, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	const-string p1, "EnhancedIntentService"</span>
+<span class="">	const-string v0, "Service received bind request"</span>
+<span class="">	invoke-static {p1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object p1, p0, Lcom/google/firebase/messaging/g;->binder:Landroid/os/Binder;</span>
+<span class="">	if-nez p1, :cond_1</span>
+<span class="">	new-instance p1, Lcom/google/firebase/iid/b0;</span>
+<span class="">	new-instance v0, Lcom/google/firebase/messaging/g$a;</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/google/firebase/messaging/g$a;-><init>(Lcom/google/firebase/messaging/g;)V</span>
+<span class="">	invoke-direct {p1, v0}, Lcom/google/firebase/iid/b0;-><init>(Lcom/google/firebase/iid/b0$a;)V</span>
+<span class="">	iput-object p1, p0, Lcom/google/firebase/messaging/g;->binder:Landroid/os/Binder;</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object p1, p0, Lcom/google/firebase/messaging/g;->binder:Landroid/os/Binder;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public onDestroy()V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/messaging/g;->executor:Ljava/util/concurrent/ExecutorService;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/concurrent/ExecutorService;->shutdown()V</span>
+<span class="">	invoke-super {p0}, Landroid/app/Service;->onDestroy()V</span>
+.end method
+
+.method public final onStartCommand(Landroid/content/Intent;II)I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object p2, p0, Lcom/google/firebase/messaging/g;->lock:Ljava/lang/Object;</span>
+<span class="">	monitor-enter p2</span>
+<span class="">	:try_start_0</span>
+<span class="">	iput p3, p0, Lcom/google/firebase/messaging/g;->lastStartId:I</span>
+<span class="">	iget p3, p0, Lcom/google/firebase/messaging/g;->runningTasks:I</span>
+<span class="">	add-int/lit8 p3, p3, 0x1</span>
+<span class="">	iput p3, p0, Lcom/google/firebase/messaging/g;->runningTasks:I</span>
+<span class="">	monitor-exit p2</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/google/firebase/messaging/g;->getStartCommandIntent(Landroid/content/Intent;)Landroid/content/Intent;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	const/4 p3, 0x2</span>
+<span class="">	if-nez p2, :cond_0</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/messaging/g;->finishTask(Landroid/content/Intent;)V</span>
+<span class="">	invoke-direct {p0, p2}, Lcom/google/firebase/messaging/g;->processIntent(Landroid/content/Intent;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-virtual {p2}, Lcom/google/android/gms/tasks/g;->r()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/messaging/g;->finishTask(Landroid/content/Intent;)V</span>
+<span class="">	sget-object p3, Lcom/google/firebase/messaging/e;->f:Ljava/util/concurrent/Executor;</span>
+<span class="">	new-instance v0, Lcom/google/firebase/messaging/f;</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {v0, p0, p1}, Lcom/google/firebase/messaging/f;-><init>(Lcom/google/firebase/messaging/g;Landroid/content/Intent;)V</span>
+<span class="">	invoke-virtual {p2, p3, v0}, Lcom/google/android/gms/tasks/g;->e(Ljava/util/concurrent/Executor;Lcom/google/android/gms/tasks/c;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	const/4 p1, 0x3</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit p2</span>
+<span class="">	throw p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+.end method
+
+.method  stopSelfResultHook(I)Z
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p1}, Landroid/app/Service;->stopSelfResult(I)Z</span>
+<span class="">	move-result p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.client.callerid.ui.e0</a></li>
+        <li><i class="ico ico-class"></i> a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/hiya/client/callerid/ui/e0/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+
+
+.method public static final a(Landroid/content/Context;)Z
+<span class="">	.locals 6</span>
+
+<span class="">	const-string v0, "failed to disconnect the phone call"</span>
+<span class="">	const-string v1, "$this$disconnect"</span>
+<span class="">	invoke-static {p0, v1}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	sget v1, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	const/16 v4, 0x1c</span>
+<span class="">	if-lt v1, v4, :cond_2</span>
+<span class="">	const-string v0, "telecom"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	instance-of v1, v0, Landroid/telecom/TelecomManager;</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object v2, v0</span>
+<span class="">	:goto_0</span>
+<span class="">	check-cast v2, Landroid/telecom/TelecomManager;</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {v2}, Landroid/telecom/TelecomManager;->endCall()Z</span>
+<span class="">	move-result v3</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto/16 :goto_2</span>
+<span class="">	:catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	new-array v1, v3, [Ljava/lang/Object;</span>
+<span class="">	const-string v2, "Failed to end call."</span>
+<span class="">	invoke-static {p0, v0, v2, v1}, Lcom/hiya/client/support/logging/d;->h(Ljava/lang/Object;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v1, "phone"</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {p0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	instance-of v4, v1, Landroid/telephony/TelephonyManager;</span>
+<span class="">	if-nez v4, :cond_3</span>
+<span class="">	goto :goto_1</span>
+<span class="">	move-object v2, v1</span>
+<span class="">	:cond_3</span>
+<span class="">	check-cast v2, Landroid/telephony/TelephonyManager;</span>
+<span class="">	:goto_1</span>
+<span class="">	if-eqz v2, :cond_5</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;</span>
+<span class="">	:try_start_1</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/Class;->getName()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-static {v1}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v4, "Class.forName(telephony.javaClass.name)"</span>
+<span class="">	invoke-static {v1, v4}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v4, "getITelephony"</span>
+<span class="">	new-array v5, v3, [Ljava/lang/Class;</span>
+<span class="">	invoke-virtual {v1, v4, v5}, Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v4, "m"</span>
+<span class="">	invoke-static {v1, v4}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const/4 v4, 0x1</span>
+<span class="">	invoke-virtual {v1, v4}, Ljava/lang/reflect/Method;->setAccessible(Z)V</span>
+<span class="">	new-array v4, v3, [Ljava/lang/Object;</span>
+<span class="">	invoke-virtual {v1, v2, v4}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_4</span>
+<span class="">	check-cast v1, Lcom/android/internal/telephony/ITelephony;</span>
+<span class="">	invoke-interface {v1}, Lcom/android/internal/telephony/ITelephony;->endCall()Z</span>
+<span class="">	move-result v3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	new-instance v1, Lkotlin/TypeCastException;</span>
+<span class="">	:cond_4</span>
+<span class="">	const-string v2, "null cannot be cast to non-null type com.android.internal.telephony.ITelephony"</span>
+<span class="">	invoke-direct {v1, v2}, Lkotlin/TypeCastException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw v1</span>
+<span class="">	move-exception v1</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catch Ljava/lang/ReflectiveOperationException; {:try_start_1 .. :try_end_1} :catch_4</span>
+<span class="">	.catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_3</span>
+<span class="">	.catch Ljava/lang/SecurityException; {:try_start_1 .. :try_end_1} :catch_2</span>
+<span class="">	.catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1</span>
+<span class="">	:catch_1</span>
+<span class="">	new-array v2, v3, [Ljava/lang/Object;</span>
+<span class="">	invoke-static {p0, v1, v0, v2}, Lcom/hiya/client/support/logging/d;->h(Ljava/lang/Object;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_2</span>
+<span class="">	new-array v1, v3, [Ljava/lang/Object;</span>
+<span class="">	const-string v2, "Failed to disconnect the phone call due to invalid system permission"</span>
+<span class="">	invoke-static {p0, v0, v2, v1}, Lcom/hiya/client/support/logging/d;->h(Ljava/lang/Object;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	move-exception v1</span>
+<span class="">	:catch_3</span>
+<span class="">	new-array v2, v3, [Ljava/lang/Object;</span>
+<span class="">	invoke-static {p0, v1, v0, v2}, Lcom/hiya/client/support/logging/d;->h(Ljava/lang/Object;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	move-exception v1</span>
+<span class="">	:catch_4</span>
+<span class="">	new-array v2, v3, [Ljava/lang/Object;</span>
+<span class="">	invoke-static {p0, v1, v0, v2}, Lcom/hiya/client/support/logging/d;->h(Ljava/lang/Object;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V</span>
+<span class="">	:goto_2</span>
+<span class="">	:cond_5</span>
+.end method
+
+.method public static final b(Landroid/telecom/Call;)Lg/g/b/c/k;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "$this$initialDirection"</span>
+<span class="">	invoke-static {p0, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Landroid/telecom/Call;->getState()I</span>
+<span class="">	move-result p0</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	if-ne p0, v0, :cond_0</span>
+<span class="">	sget-object p0, Lg/g/b/c/k;->INCOMING:Lg/g/b/c/k;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object p0, Lg/g/b/c/k;->OUTGOING:Lg/g/b/c/k;</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public static final c(Landroid/telecom/Call;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "$this$rawPhoneNumber"</span>
+<span class="">	invoke-static {p0, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Landroid/telecom/Call;->getDetails()Landroid/telecom/Call$Details;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "details"</span>
+<span class="">	invoke-static {p0, v0}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Landroid/telecom/Call$Details;->getHandle()Landroid/net/Uri;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroid/net/Uri;->getSchemeSpecificPart()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string p0, ""</span>
+<span class="">	:goto_1</span>
+.end method
+
+.method public static final d(Landroid/telecom/Call;)Lg/g/b/c/t;
+<span class="">	.locals 2</span>
+
+<span class="">	const-string v0, "$this$verificationStatus"</span>
+<span class="">	invoke-static {p0, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x1e</span>
+<span class="">	if-lt v0, v1, :cond_2</span>
+<span class="">	invoke-virtual {p0}, Landroid/telecom/Call;->getDetails()Landroid/telecom/Call$Details;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string v0, "details"</span>
+<span class="">	invoke-static {p0, v0}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Landroid/telecom/Call$Details;->getCallerNumberVerificationStatus()I</span>
+<span class="">	move-result p0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	if-eq p0, v0, :cond_1</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	if-eq p0, v0, :cond_0</span>
+<span class="">	sget-object p0, Lg/g/b/c/t;->NOT_VERIFIED:Lg/g/b/c/t;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object p0, Lg/g/b/c/t;->FAILED:Lg/g/b/c/t;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object p0, Lg/g/b/c/t;->PASSED:Lg/g/b/c/t;</span>
+<span class="">	:goto_0</span>
+<span class="">	sget-object p0, Lg/g/b/c/t;->NOT_VERIFIED:Lg/g/b/c/t;</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method public static final e(Landroid/telecom/Call;)Z
+<span class="">	.locals 3</span>
+
+<span class="">	const-string v0, "$this$isPrivate"</span>
+<span class="">	invoke-static {p0, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Landroid/telecom/Call;->getDetails()Landroid/telecom/Call$Details;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "details"</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0}, Landroid/telecom/Call$Details;->getHandlePresentation()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	if-eq v0, v2, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Landroid/telecom/Call;->getDetails()Landroid/telecom/Call$Details;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0, v1}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Landroid/telecom/Call$Details;->getHandlePresentation()I</span>
+<span class="">	move-result p0</span>
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	if-ne p0, v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+<span class="">	const/4 p0, 0x1</span>
+<span class="">	:goto_1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

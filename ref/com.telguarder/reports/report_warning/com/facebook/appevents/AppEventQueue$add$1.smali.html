@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.appevents</a></li>
+        <li><i class="ico ico-class"></i> AppEventQueue$add$1.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class final Lcom/facebook/appevents/AppEventQueue$add$1;
+.super Ljava/lang/Object;
+.source "AppEventQueue.kt"
+.implements Ljava/lang/Runnable;
+
+.annotation system Ldalvik/annotation/EnclosingMethod;
+value = Lcom/facebook/appevents/AppEventQueue;->add(Lcom/facebook/appevents/AccessTokenAppIdPair;Lcom/facebook/appevents/AppEvent;)V
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x18
+name = null
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000\u0008\n\u0000\n\u0002\u0010\u0002\n\u0000\u0010\u0000\u001a\u00020\u0001H\n\u00a2\u0006\u0002\u0008\u0002"
+}
+d2 = {
+"<anonymous>",
+"",
+"run"
+}
+k = 0x3
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field final synthetic $accessTokenAppId:Lcom/facebook/appevents/AccessTokenAppIdPair;
+.field final synthetic $appEvent:Lcom/facebook/appevents/AppEvent;
+
+
+<span class="cov">.method constructor &lt;init&gt;(Lcom/facebook/appevents/AccessTokenAppIdPair;Lcom/facebook/appevents/AppEvent;)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	iput-object p1, p0, Lcom/facebook/appevents/AppEventQueue$add$1;->$accessTokenAppId:Lcom/facebook/appevents/AccessTokenAppIdPair;</span>
+<span class="cov">	iput-object p2, p0, Lcom/facebook/appevents/AppEventQueue$add$1;->$appEvent:Lcom/facebook/appevents/AppEvent;</span>
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public final run()V</span>
+<span class="">	.locals 6</span>
+
+<span class="exec">	invoke-static {p0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="cov">	sget-object v0, Lcom/facebook/appevents/AppEventQueue;->INSTANCE:Lcom/facebook/appevents/AppEventQueue;</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-static {v0}, Lcom/facebook/appevents/AppEventQueue;->access$getAppEventCollection$p(Lcom/facebook/appevents/AppEventQueue;)Lcom/facebook/appevents/AppEventCollection;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	iget-object v1, p0, Lcom/facebook/appevents/AppEventQueue$add$1;->$accessTokenAppId:Lcom/facebook/appevents/AccessTokenAppIdPair;</span>
+<span class="cov">	iget-object v2, p0, Lcom/facebook/appevents/AppEventQueue$add$1;->$appEvent:Lcom/facebook/appevents/AppEvent;</span>
+<span class="cov">	invoke-virtual {v0, v1, v2}, Lcom/facebook/appevents/AppEventCollection;->addEvent(Lcom/facebook/appevents/AccessTokenAppIdPair;Lcom/facebook/appevents/AppEvent;)V</span>
+<span class="cov">	sget-object v0, Lcom/facebook/appevents/AppEventsLogger;->Companion:Lcom/facebook/appevents/AppEventsLogger$Companion;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/facebook/appevents/AppEventsLogger$Companion;->getFlushBehavior()Lcom/facebook/appevents/AppEventsLogger$FlushBehavior;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	sget-object v1, Lcom/facebook/appevents/AppEventsLogger$FlushBehavior;->EXPLICIT_ONLY:Lcom/facebook/appevents/AppEventsLogger$FlushBehavior;</span>
+<span class="cov">	if-eq v0, v1, :cond_1</span>
+<span class="cov">	sget-object v0, Lcom/facebook/appevents/AppEventQueue;->INSTANCE:Lcom/facebook/appevents/AppEventQueue;</span>
+<span class="exec">	invoke-static {v0}, Lcom/facebook/appevents/AppEventQueue;->access$getAppEventCollection$p(Lcom/facebook/appevents/AppEventQueue;)Lcom/facebook/appevents/AppEventCollection;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/facebook/appevents/AppEventCollection;->getEventCount()I</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	sget-object v1, Lcom/facebook/appevents/AppEventQueue;->INSTANCE:Lcom/facebook/appevents/AppEventQueue;</span>
+<span class="exec">	invoke-static {v1}, Lcom/facebook/appevents/AppEventQueue;->access$getNUM_LOG_EVENTS_TO_TRY_TO_FLUSH_AFTER$p(Lcom/facebook/appevents/AppEventQueue;)I</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-le v0, v1, :cond_1</span>
+<span class="">	sget-object v0, Lcom/facebook/appevents/FlushReason;->EVENT_THRESHOLD:Lcom/facebook/appevents/FlushReason;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/appevents/AppEventQueue;->flushAndWait(Lcom/facebook/appevents/FlushReason;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	sget-object v0, Lcom/facebook/appevents/AppEventQueue;->INSTANCE:Lcom/facebook/appevents/AppEventQueue;</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	invoke-static {v0}, Lcom/facebook/appevents/AppEventQueue;->access$getScheduledFuture$p(Lcom/facebook/appevents/AppEventQueue;)Ljava/util/concurrent/ScheduledFuture;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	if-nez v0, :cond_2</span>
+<span class="cov">	sget-object v0, Lcom/facebook/appevents/AppEventQueue;->INSTANCE:Lcom/facebook/appevents/AppEventQueue;</span>
+<span class="cov">	sget-object v1, Lcom/facebook/appevents/AppEventQueue;->INSTANCE:Lcom/facebook/appevents/AppEventQueue;</span>
+<span class="exec">	invoke-static {v1}, Lcom/facebook/appevents/AppEventQueue;->access$getSingleThreadExecutor$p(Lcom/facebook/appevents/AppEventQueue;)Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	sget-object v2, Lcom/facebook/appevents/AppEventQueue;->INSTANCE:Lcom/facebook/appevents/AppEventQueue;</span>
+<span class="exec">	invoke-static {v2}, Lcom/facebook/appevents/AppEventQueue;->access$getFlushRunnable$p(Lcom/facebook/appevents/AppEventQueue;)Ljava/lang/Runnable;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	const/16 v3, 0xf</span>
+<span class="cov">	int-to-long v3, v3</span>
+<span class="cov">	sget-object v5, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="exec">	invoke-interface {v1, v2, v3, v4, v5}, Ljava/util/concurrent/ScheduledExecutorService;->schedule(Ljava/lang/Runnable;JLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	invoke-static {v0, v1}, Lcom/facebook/appevents/AppEventQueue;->access$setScheduledFuture$p(Lcom/facebook/appevents/AppEventQueue;Ljava/util/concurrent/ScheduledFuture;)V</span>
+<span class="exec">	return-void</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	:cond_2</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-static {v0, p0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">io.didomi.sdk</a></li>
+        <li><i class="ico ico-class"></i> v3.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lio/didomi/sdk/v3;
+.super Landroidx/recyclerview/widget/RecyclerView$Adapter;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/MemberClasses;
+value = {
+Lio/didomi/sdk/v3$a;,
+Lio/didomi/sdk/v3$b;
+}
+.end annotation
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Landroidx/recyclerview/widget/RecyclerView$Adapter<",
+"Lio/didomi/sdk/s4;",
+">;"
+}
+.end annotation
+
+.field private final a:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Lio/didomi/sdk/g4;",
+">;"
+}
+.end annotation
+.end field
+.field private final b:Lio/didomi/sdk/v3$a;
+
+
+.method public constructor <init>(Ljava/util/List;Lio/didomi/sdk/v3$a;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lio/didomi/sdk/g4;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lio/didomi/sdk/v3$a;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "list"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "callback"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0}, Landroidx/recyclerview/widget/RecyclerView$Adapter;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	iput-object p2, p0, Lio/didomi/sdk/v3;->b:Lio/didomi/sdk/v3$a;</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	invoke-virtual {p0, p1}, Landroidx/recyclerview/widget/RecyclerView$Adapter;->setHasStableIds(Z)V</span>
+.end method
+
+.method private final a(I)V
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	const-class v1, Lio/didomi/sdk/i4;</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/collections/CollectionsKt;->filterIsInstance(Ljava/lang/Iterable;Ljava/lang/Class;)Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lkotlin/collections/CollectionsKt;->firstOrNull(Ljava/util/List;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lio/didomi/sdk/i4;</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v1, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v1, v0}, Ljava/util/List;->indexOf(Ljava/lang/Object;)I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0, p1}, Lio/didomi/sdk/i4;->a(I)V</span>
+<span class="">	invoke-virtual {p0, v1, v0}, Landroidx/recyclerview/widget/RecyclerView$Adapter;->notifyItemChanged(ILjava/lang/Object;)V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public a(Landroid/view/ViewGroup;I)Lio/didomi/sdk/s4;
+<span class="">	.locals 3</span>
+
+<span class="">	const-string v0, "parent"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Landroid/view/ViewGroup;->getContext()Landroid/content/Context;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz p2, :cond_5</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	if-eq p2, v2, :cond_4</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	if-eq p2, v2, :cond_3</span>
+<span class="">	const/4 v2, 0x3</span>
+<span class="">	if-eq p2, v2, :cond_2</span>
+<span class="">	const/4 v2, 0x4</span>
+<span class="">	if-eq p2, v2, :cond_1</span>
+<span class="">	const/4 v2, 0x5</span>
+<span class="">	if-ne p2, v2, :cond_0</span>
+<span class="">	new-instance p2, Lio/didomi/sdk/o4;</span>
+<span class="">	sget v2, Lio/didomi/sdk/R$layout;->holder_purpose_footer:I</span>
+<span class="">	invoke-virtual {v0, v2, p1, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "inflater.inflate(R.layou\u2026se_footer, parent, false)"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->b:Lio/didomi/sdk/v3$a;</span>
+<span class="">	invoke-direct {p2, p1, v0}, Lio/didomi/sdk/o4;-><init>(Landroid/view/View;Lio/didomi/sdk/v3$a;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p1, Ljava/lang/Throwable;</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "Unknown viewType ("</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p2, ")"</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-direct {p1, p2}, Ljava/lang/Throwable;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance p2, Lio/didomi/sdk/w3;</span>
+<span class="">	sget v2, Lio/didomi/sdk/R$layout;->holder_purpose_additional_data_processing:I</span>
+<span class="">	invoke-virtual {v0, v2, p1, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "inflater.inflate(R.layou\u2026rocessing, parent, false)"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p2, p1}, Lio/didomi/sdk/w3;-><init>(Landroid/view/View;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	new-instance p2, Lio/didomi/sdk/q4;</span>
+<span class="">	sget v2, Lio/didomi/sdk/R$layout;->holder_purpose_item:I</span>
+<span class="">	invoke-virtual {v0, v2, p1, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "inflater.inflate(R.layou\u2026pose_item, parent, false)"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->b:Lio/didomi/sdk/v3$a;</span>
+<span class="">	invoke-direct {p2, p1, v0}, Lio/didomi/sdk/q4;-><init>(Landroid/view/View;Lio/didomi/sdk/v3$a;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_3</span>
+<span class="">	new-instance p2, Lio/didomi/sdk/x3;</span>
+<span class="">	sget v2, Lio/didomi/sdk/R$layout;->holder_purpose_bulk_action:I</span>
+<span class="">	invoke-virtual {v0, v2, p1, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "inflater.inflate(R.layou\u2026lk_action, parent, false)"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->b:Lio/didomi/sdk/v3$a;</span>
+<span class="">	invoke-direct {p2, p1, v0}, Lio/didomi/sdk/x3;-><init>(Landroid/view/View;Lio/didomi/sdk/v3$a;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_4</span>
+<span class="">	new-instance p2, Lio/didomi/sdk/c4;</span>
+<span class="">	sget v2, Lio/didomi/sdk/R$layout;->holder_purpose_category_header:I</span>
+<span class="">	invoke-virtual {v0, v2, p1, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "inflater.inflate(R.layou\u2026ry_header, parent, false)"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p2, p1}, Lio/didomi/sdk/c4;-><init>(Landroid/view/View;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_5</span>
+<span class="">	new-instance p2, Lio/didomi/sdk/p4;</span>
+<span class="">	sget v2, Lio/didomi/sdk/R$layout;->holder_purpose_header:I</span>
+<span class="">	invoke-virtual {v0, v2, p1, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "inflater.inflate(R.layou\u2026se_header, parent, false)"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p2, p1}, Lio/didomi/sdk/p4;-><init>(Landroid/view/View;)V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public a(Lio/didomi/sdk/s4;I)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "holder"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	instance-of v0, p1, Lio/didomi/sdk/p4;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	check-cast p1, Lio/didomi/sdk/p4;</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p2}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Lio/didomi/sdk/l4;</span>
+<span class="">	invoke-virtual {p1, p2}, Lio/didomi/sdk/p4;->a(Lio/didomi/sdk/l4;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	instance-of v0, p1, Lio/didomi/sdk/c4;</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	check-cast p1, Lio/didomi/sdk/c4;</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p2}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Lio/didomi/sdk/j4;</span>
+<span class="">	invoke-virtual {p1, p2}, Lio/didomi/sdk/c4;->a(Lio/didomi/sdk/j4;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	instance-of v0, p1, Lio/didomi/sdk/x3;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	check-cast p1, Lio/didomi/sdk/x3;</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p2}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Lio/didomi/sdk/i4;</span>
+<span class="">	invoke-virtual {p1, p2}, Lio/didomi/sdk/x3;->a(Lio/didomi/sdk/i4;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	instance-of v0, p1, Lio/didomi/sdk/q4;</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	check-cast p1, Lio/didomi/sdk/q4;</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p2}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Lio/didomi/sdk/m4;</span>
+<span class="">	invoke-virtual {p1, p2}, Lio/didomi/sdk/q4;->a(Lio/didomi/sdk/m4;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_3</span>
+<span class="">	instance-of v0, p1, Lio/didomi/sdk/w3;</span>
+<span class="">	if-eqz v0, :cond_4</span>
+<span class="">	check-cast p1, Lio/didomi/sdk/w3;</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p2}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Lio/didomi/sdk/h4;</span>
+<span class="">	invoke-virtual {p1, p2}, Lio/didomi/sdk/w3;->a(Lio/didomi/sdk/h4;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_4</span>
+<span class="">	instance-of v0, p1, Lio/didomi/sdk/o4;</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	check-cast p1, Lio/didomi/sdk/o4;</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p2}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Lio/didomi/sdk/k4;</span>
+<span class="">	invoke-virtual {p1, p2}, Lio/didomi/sdk/o4;->a(Lio/didomi/sdk/k4;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_5</span>
+.end method
+
+.method public a(Lio/didomi/sdk/s4;ILjava/util/List;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lio/didomi/sdk/s4;",</span>
+<span class="">	"I",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Ljava/lang/Object;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "holder"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "payloads"</span>
+<span class="">	invoke-static {p3, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-interface {p3}, Ljava/util/List;->isEmpty()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-super {p0, p1, p2, p3}, Landroidx/recyclerview/widget/RecyclerView$Adapter;->onBindViewHolder(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;ILjava/util/List;)V</span>
+<span class="">	instance-of v0, p1, Lio/didomi/sdk/q4;</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	check-cast p1, Lio/didomi/sdk/q4;</span>
+<span class="">	invoke-static {p3}, Lkotlin/collections/CollectionsKt;->first(Ljava/util/List;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	check-cast p2, Lio/didomi/sdk/m4;</span>
+<span class="">	invoke-virtual {p1, p2}, Lio/didomi/sdk/q4;->b(Lio/didomi/sdk/m4;)V</span>
+<span class="">	invoke-super {p0, p1, p2, p3}, Landroidx/recyclerview/widget/RecyclerView$Adapter;->onBindViewHolder(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;ILjava/util/List;)V</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public final a(Ljava/lang/String;II)V
+<span class="">	.locals 5</span>
+
+<span class="">	const-string v0, "purposeId"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	const-class v1, Lio/didomi/sdk/m4;</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/collections/CollectionsKt;->filterIsInstance(Ljava/lang/Iterable;Ljava/lang/Class;)Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	move-object v2, v1</span>
+<span class="">	check-cast v2, Lio/didomi/sdk/m4;</span>
+<span class="">	invoke-virtual {v2}, Lio/didomi/sdk/m4;->a()Lio/didomi/sdk/g4$a;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	sget-object v4, Lio/didomi/sdk/g4$a;->c:Lio/didomi/sdk/g4$a;</span>
+<span class="">	if-ne v3, v4, :cond_1</span>
+<span class="">	invoke-virtual {v2}, Lio/didomi/sdk/m4;->b()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2, p1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	check-cast v1, Lio/didomi/sdk/m4;</span>
+<span class="">	if-nez v1, :cond_3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	iget-object p1, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {p1, v1}, Ljava/util/List;->indexOf(Ljava/lang/Object;)I</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {v1, p2}, Lio/didomi/sdk/m4;->a(I)V</span>
+<span class="">	invoke-virtual {p0, p1, v1}, Landroidx/recyclerview/widget/RecyclerView$Adapter;->notifyItemChanged(ILjava/lang/Object;)V</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-direct {p0, p3}, Lio/didomi/sdk/v3;->a(I)V</span>
+.end method
+
+.method public final a(Ljava/util/List;)V
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"+",</span>
+<span class="">	"Lio/didomi/sdk/g4;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "list"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	const-class v1, Lio/didomi/sdk/n4;</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/collections/CollectionsKt;->filterIsInstance(Ljava/lang/Iterable;Ljava/lang/Class;)Ljava/util/List;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/List;->removeAll(Ljava/util/Collection;)Z</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	invoke-interface {v0, v1, p1}, Ljava/util/List;->addAll(ILjava/util/Collection;)Z</span>
+<span class="">	const-class p1, Lio/didomi/sdk/n4;</span>
+<span class="">	invoke-static {v0, p1}, Lkotlin/collections/CollectionsKt;->filterIsInstance(Ljava/lang/Iterable;Ljava/lang/Class;)Ljava/util/List;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lio/didomi/sdk/n4;</span>
+<span class="">	invoke-interface {v0, v1}, Ljava/util/List;->indexOf(Ljava/lang/Object;)I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {p0, v2, v1}, Landroidx/recyclerview/widget/RecyclerView$Adapter;->notifyItemChanged(ILjava/lang/Object;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public final b(Ljava/lang/String;II)V
+<span class="">	.locals 5</span>
+
+<span class="">	const-string v0, "purposeId"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	const-class v1, Lio/didomi/sdk/m4;</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/collections/CollectionsKt;->filterIsInstance(Ljava/lang/Iterable;Ljava/lang/Class;)Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	move-object v2, v1</span>
+<span class="">	check-cast v2, Lio/didomi/sdk/m4;</span>
+<span class="">	invoke-virtual {v2}, Lio/didomi/sdk/m4;->a()Lio/didomi/sdk/g4$a;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	sget-object v4, Lio/didomi/sdk/g4$a;->g:Lio/didomi/sdk/g4$a;</span>
+<span class="">	if-ne v3, v4, :cond_1</span>
+<span class="">	invoke-virtual {v2}, Lio/didomi/sdk/m4;->b()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2, p1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	check-cast v1, Lio/didomi/sdk/m4;</span>
+<span class="">	if-nez v1, :cond_3</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_3</span>
+<span class="">	iget-object p1, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {p1, v1}, Ljava/util/List;->indexOf(Ljava/lang/Object;)I</span>
+<span class="">	move-result p1</span>
+<span class="">	invoke-virtual {v1, p2}, Lio/didomi/sdk/m4;->a(I)V</span>
+<span class="">	invoke-virtual {p0, p1, v1}, Landroidx/recyclerview/widget/RecyclerView$Adapter;->notifyItemChanged(ILjava/lang/Object;)V</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-direct {p0, p3}, Lio/didomi/sdk/v3;->a(I)V</span>
+.end method
+
+.method public getItemCount()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public getItemId(I)J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lio/didomi/sdk/g4;</span>
+<span class="">	invoke-interface {p1}, Lio/didomi/sdk/g4;->getId()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public getItemViewType(I)I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lio/didomi/sdk/v3;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lio/didomi/sdk/g4;</span>
+<span class="">	invoke-interface {p1}, Lio/didomi/sdk/g4;->a()Lio/didomi/sdk/g4$a;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	sget-object v0, Lio/didomi/sdk/v3$b;->a:[I</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Enum;->ordinal()I</span>
+<span class="">	move-result p1</span>
+<span class="">	aget p1, v0, p1</span>
+<span class="">	packed-switch p1, :pswitch_data_0</span>
+<span class="">	new-instance p1, Lkotlin/NoWhenBranchMatchedException;</span>
+<span class="">	invoke-direct {p1}, Lkotlin/NoWhenBranchMatchedException;-><init>()V</span>
+<span class="">	throw p1</span>
+<span class="">	:pswitch_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_1</span>
+<span class="">	const/4 p1, 0x5</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_2</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_3</span>
+<span class="">	const/4 p1, 0x3</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_4</span>
+<span class="">	const/4 p1, 0x2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:pswitch_5</span>
+<span class="">	const/4 p1, 0x4</span>
+<span class="">	:goto_0</span>
+<span class="">	nop</span>
+<span class="">	:pswitch_data_0</span>
+<span class="">	.packed-switch 0x1</span>
+<span class="">	:pswitch_5</span>
+<span class="">	:pswitch_4</span>
+<span class="">	:pswitch_3</span>
+<span class="">	:pswitch_2</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_0</span>
+<span class="">	:pswitch_3</span>
+<span class="">	.end packed-switch</span>
+.end method
+
+.method public bridge synthetic onBindViewHolder(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V
+<span class="">	.locals 0</span>
+
+<span class="">	check-cast p1, Lio/didomi/sdk/s4;</span>
+<span class="">	invoke-virtual {p0, p1, p2}, Lio/didomi/sdk/v3;->a(Lio/didomi/sdk/s4;I)V</span>
+.end method
+
+.method public bridge synthetic onBindViewHolder(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;ILjava/util/List;)V
+<span class="">	.locals 0</span>
+
+<span class="">	check-cast p1, Lio/didomi/sdk/s4;</span>
+<span class="">	invoke-virtual {p0, p1, p2, p3}, Lio/didomi/sdk/v3;->a(Lio/didomi/sdk/s4;ILjava/util/List;)V</span>
+.end method
+
+.method public bridge synthetic onCreateViewHolder(Landroid/view/ViewGroup;I)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-virtual {p0, p1, p2}, Lio/didomi/sdk/v3;->a(Landroid/view/ViewGroup;I)Lio/didomi/sdk/s4;</span>
+<span class="">	move-result-object p1</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../.resources/report.js"></script>
+</body>
+</html>

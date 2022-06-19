@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook</a></li>
+        <li><i class="ico ico-class"></i> ProgressOutputStream.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/ProgressOutputStream;
+.super Ljava/io/FilterOutputStream;
+.source "ProgressOutputStream.kt"
+.implements Lcom/facebook/RequestOutputStream;
+
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000F\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010$\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0002\u0008\n\n\u0002\u0010\u0002\n\u0002\u0008\u0007\n\u0002\u0010\u0012\n\u0000\n\u0002\u0010\u0008\n\u0002\u0008\u0003\u0018\u00002\u00020\u00012\u00020\u0002B1\u0012\u0006\u0010\u0003\u001a\u00020\u0004\u0012\u0006\u0010\u0005\u001a\u00020\u0006\u0012\u0012\u0010\u0007\u001a\u000e\u0012\u0004\u0012\u00020\t\u0012\u0004\u0012\u00020\n0\u0008\u0012\u0006\u0010\u000b\u001a\u00020\u000c\u00a2\u0006\u0002\u0010\rJ\u0010\u0010\u0016\u001a\u00020\u00172\u0006\u0010\u0018\u001a\u00020\u000cH\u0002J\u0008\u0010\u0019\u001a\u00020\u0017H\u0016J\u0008\u0010\u001a\u001a\u00020\u0017H\u0002J\u0012\u0010\u001b\u001a\u00020\u00172\u0008\u0010\u001c\u001a\u0004\u0018\u00010\tH\u0016J\u0010\u0010\u001d\u001a\u00020\u00172\u0006\u0010\u001e\u001a\u00020\u001fH\u0016J \u0010\u001d\u001a\u00020\u00172\u0006\u0010\u001e\u001a\u00020\u001f2\u0006\u0010 \u001a\u00020!2\u0006\u0010\"\u001a\u00020!H\u0016J\u0010\u0010\u001d\u001a\u00020\u00172\u0006\u0010#\u001a\u00020!H\u0016R\u001e\u0010\u000f\u001a\u00020\u000c2\u0006\u0010\u000e\u001a\u00020\u000c@BX\u0086\u000e\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008\u0010\u0010\u0011R\u0010\u0010\u0012\u001a\u0004\u0018\u00010\nX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0013\u001a\u00020\u000cX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0011\u0010\u000b\u001a\u00020\u000c\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008\u0014\u0010\u0011R\u001a\u0010\u0007\u001a\u000e\u0012\u0004\u0012\u00020\t\u0012\u0004\u0012\u00020\n0\u0008X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0015\u001a\u00020\u000cX\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006$"
+}
+d2 = {
+"Lcom/facebook/ProgressOutputStream;",
+"Ljava/io/FilterOutputStream;",
+"Lcom/facebook/RequestOutputStream;",
+"out",
+"Ljava/io/OutputStream;",
+"requests",
+"Lcom/facebook/GraphRequestBatch;",
+"progressMap",
+"",
+"Lcom/facebook/GraphRequest;",
+"Lcom/facebook/RequestProgress;",
+"maxProgress",
+"",
+"(Ljava/io/OutputStream;Lcom/facebook/GraphRequestBatch;Ljava/util/Map;J)V",
+"<set-?>",
+"batchProgress",
+"getBatchProgress",
+"()J",
+"currentRequestProgress",
+"lastReportedProgress",
+"getMaxProgress",
+"threshold",
+"addProgress",
+"",
+"size",
+"close",
+"reportBatchProgress",
+"setCurrentRequest",
+"request",
+"write",
+"buffer",
+"",
+"offset",
+"",
+"length",
+"oneByte",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field private batchProgress:J
+.field private currentRequestProgress:Lcom/facebook/RequestProgress;
+.field private lastReportedProgress:J
+.field private final maxProgress:J
+.field private final progressMap:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Lcom/facebook/GraphRequest;",
+"Lcom/facebook/RequestProgress;",
+">;"
+}
+.end annotation
+.end field
+.field private final requests:Lcom/facebook/GraphRequestBatch;
+.field private final threshold:J
+
+
+.method public constructor <init>(Ljava/io/OutputStream;Lcom/facebook/GraphRequestBatch;Ljava/util/Map;J)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/io/OutputStream;",</span>
+<span class="">	"Lcom/facebook/GraphRequestBatch;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Lcom/facebook/GraphRequest;",</span>
+<span class="">	"Lcom/facebook/RequestProgress;",</span>
+<span class="">	">;J)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "out"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "requests"</span>
+<span class="">	invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "progressMap"</span>
+<span class="">	invoke-static {p3, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0, p1}, Ljava/io/FilterOutputStream;-><init>(Ljava/io/OutputStream;)V</span>
+<span class="">	iput-object p2, p0, Lcom/facebook/ProgressOutputStream;->requests:Lcom/facebook/GraphRequestBatch;</span>
+<span class="">	iput-object p3, p0, Lcom/facebook/ProgressOutputStream;->progressMap:Ljava/util/Map;</span>
+<span class="">	iput-wide p4, p0, Lcom/facebook/ProgressOutputStream;->maxProgress:J</span>
+<span class="">	invoke-static {}, Lcom/facebook/FacebookSdk;->getOnProgressThreshold()J</span>
+<span class="">	move-result-wide p1</span>
+<span class="">	iput-wide p1, p0, Lcom/facebook/ProgressOutputStream;->threshold:J</span>
+.end method
+
+.method public static final synthetic access$getBatchProgress$p(Lcom/facebook/ProgressOutputStream;)J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-wide v0, p0, Lcom/facebook/ProgressOutputStream;->batchProgress:J</span>
+.end method
+
+.method public static final synthetic access$getRequests$p(Lcom/facebook/ProgressOutputStream;)Lcom/facebook/GraphRequestBatch;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/facebook/ProgressOutputStream;->requests:Lcom/facebook/GraphRequestBatch;</span>
+.end method
+
+.method public static final synthetic access$setBatchProgress$p(Lcom/facebook/ProgressOutputStream;J)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput-wide p1, p0, Lcom/facebook/ProgressOutputStream;->batchProgress:J</span>
+.end method
+
+.method private final addProgress(J)V
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/ProgressOutputStream;->currentRequestProgress:Lcom/facebook/RequestProgress;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Lcom/facebook/RequestProgress;->addProgress(J)V</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-wide v0, p0, Lcom/facebook/ProgressOutputStream;->batchProgress:J</span>
+<span class="">	add-long/2addr v0, p1</span>
+<span class="">	iput-wide v0, p0, Lcom/facebook/ProgressOutputStream;->batchProgress:J</span>
+<span class="">	iget-wide p1, p0, Lcom/facebook/ProgressOutputStream;->lastReportedProgress:J</span>
+<span class="">	iget-wide v2, p0, Lcom/facebook/ProgressOutputStream;->threshold:J</span>
+<span class="">	add-long/2addr p1, v2</span>
+<span class="">	cmp-long v2, v0, p1</span>
+<span class="">	if-gez v2, :cond_1</span>
+<span class="">	iget-wide p1, p0, Lcom/facebook/ProgressOutputStream;->maxProgress:J</span>
+<span class="">	cmp-long v2, v0, p1</span>
+<span class="">	if-ltz v2, :cond_2</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/ProgressOutputStream;->reportBatchProgress()V</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method private final reportBatchProgress()V
+<span class="">	.locals 10</span>
+
+<span class="">	iget-wide v0, p0, Lcom/facebook/ProgressOutputStream;->batchProgress:J</span>
+<span class="">	iget-wide v2, p0, Lcom/facebook/ProgressOutputStream;->lastReportedProgress:J</span>
+<span class="">	cmp-long v4, v0, v2</span>
+<span class="">	if-lez v4, :cond_3</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/ProgressOutputStream;->requests:Lcom/facebook/GraphRequestBatch;</span>
+<span class="">	invoke-virtual {v0}, Lcom/facebook/GraphRequestBatch;->getCallbacks()Ljava/util/List;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/facebook/GraphRequestBatch$Callback;</span>
+<span class="">	instance-of v2, v1, Lcom/facebook/GraphRequestBatch$OnProgressCallback;</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	iget-object v2, p0, Lcom/facebook/ProgressOutputStream;->requests:Lcom/facebook/GraphRequestBatch;</span>
+<span class="">	invoke-virtual {v2}, Lcom/facebook/GraphRequestBatch;->getCallbackHandler()Landroid/os/Handler;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	new-instance v3, Lcom/facebook/ProgressOutputStream$reportBatchProgress$1;</span>
+<span class="">	invoke-direct {v3, p0, v1}, Lcom/facebook/ProgressOutputStream$reportBatchProgress$1;-><init>(Lcom/facebook/ProgressOutputStream;Lcom/facebook/GraphRequestBatch$Callback;)V</span>
+<span class="">	check-cast v3, Ljava/lang/Runnable;</span>
+<span class="">	invoke-virtual {v2, v3}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	move-object v4, v1</span>
+<span class="">	check-cast v4, Lcom/facebook/GraphRequestBatch$OnProgressCallback;</span>
+<span class="">	iget-object v5, p0, Lcom/facebook/ProgressOutputStream;->requests:Lcom/facebook/GraphRequestBatch;</span>
+<span class="">	iget-wide v6, p0, Lcom/facebook/ProgressOutputStream;->batchProgress:J</span>
+<span class="">	iget-wide v8, p0, Lcom/facebook/ProgressOutputStream;->maxProgress:J</span>
+<span class="">	invoke-interface/range {v4 .. v9}, Lcom/facebook/GraphRequestBatch$OnProgressCallback;->onBatchProgress(Lcom/facebook/GraphRequestBatch;JJ)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-wide v0, p0, Lcom/facebook/ProgressOutputStream;->batchProgress:J</span>
+<span class="">	iput-wide v0, p0, Lcom/facebook/ProgressOutputStream;->lastReportedProgress:J</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method public close()V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-super {p0}, Ljava/io/FilterOutputStream;->close()V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/ProgressOutputStream;->progressMap:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Map;->values()Ljava/util/Collection;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Lcom/facebook/RequestProgress;</span>
+<span class="">	invoke-virtual {v1}, Lcom/facebook/RequestProgress;->reportProgress()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-direct {p0}, Lcom/facebook/ProgressOutputStream;->reportBatchProgress()V</span>
+.end method
+
+.method public final getBatchProgress()J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-wide v0, p0, Lcom/facebook/ProgressOutputStream;->batchProgress:J</span>
+.end method
+
+.method public final getMaxProgress()J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-wide v0, p0, Lcom/facebook/ProgressOutputStream;->maxProgress:J</span>
+.end method
+
+.method public setCurrentRequest(Lcom/facebook/GraphRequest;)V
+<span class="">	.locals 1</span>
+
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/ProgressOutputStream;->progressMap:Ljava/util/Map;</span>
+<span class="">	invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lcom/facebook/RequestProgress;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	iput-object p1, p0, Lcom/facebook/ProgressOutputStream;->currentRequestProgress:Lcom/facebook/RequestProgress;</span>
+.end method
+
+.method public write(I)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/facebook/ProgressOutputStream;->out:Ljava/io/OutputStream;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/io/OutputStream;->write(I)V</span>
+<span class="">	const-wide/16 v0, 0x1</span>
+<span class="">	invoke-direct {p0, v0, v1}, Lcom/facebook/ProgressOutputStream;->addProgress(J)V</span>
+.end method
+
+.method public write([B)V
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "buffer"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/ProgressOutputStream;->out:Ljava/io/OutputStream;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/io/OutputStream;->write([B)V</span>
+<span class="">	array-length p1, p1</span>
+<span class="">	int-to-long v0, p1</span>
+<span class="">	invoke-direct {p0, v0, v1}, Lcom/facebook/ProgressOutputStream;->addProgress(J)V</span>
+.end method
+
+.method public write([BII)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-string v0, "buffer"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget-object v0, p0, Lcom/facebook/ProgressOutputStream;->out:Ljava/io/OutputStream;</span>
+<span class="">	invoke-virtual {v0, p1, p2, p3}, Ljava/io/OutputStream;->write([BII)V</span>
+<span class="">	int-to-long p1, p3</span>
+<span class="">	invoke-direct {p0, p1, p2}, Lcom/facebook/ProgressOutputStream;->addProgress(J)V</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

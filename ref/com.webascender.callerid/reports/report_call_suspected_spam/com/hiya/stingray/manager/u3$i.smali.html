@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.stingray.manager</a></li>
+        <li><i class="ico ico-class"></i> u3$i.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/hiya/stingray/manager/u3$i;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+value = Lcom/hiya/stingray/manager/u3;
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x19
+name = "i"
+.end annotation
+
+.field private static final g:Ljava/text/DecimalFormat;
+.field private final a:Ljava/lang/String;
+.field private final b:J
+.field private final c:Ljava/lang/String;
+.field private final d:I
+.field private final e:Ljava/lang/String;
+.field private final f:Ljava/lang/Long;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/text/DecimalFormat;</span>
+<span class="">	const-string v1, "#.##"</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/text/DecimalFormat;-><init>(Ljava/lang/String;)V</span>
+<span class="">	sget-object v1, Ljava/math/RoundingMode;->CEILING:Ljava/math/RoundingMode;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/text/DecimalFormat;->setRoundingMode(Ljava/math/RoundingMode;)V</span>
+<span class="">	sput-object v0, Lcom/hiya/stingray/manager/u3$i;->g:Ljava/text/DecimalFormat;</span>
+.end method
+
+.method public constructor <init>(Lcom/android/billingclient/api/SkuDetails;Lcom/hiya/stingray/manager/u3$p;I)V
+<span class="">	.locals 9</span>
+
+<span class="">	const-string v0, "skuDetails"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/android/billingclient/api/SkuDetails;->g()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v0, "skuDetails.price"</span>
+<span class="">	invoke-static {v2, v0}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/android/billingclient/api/SkuDetails;->f()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	invoke-virtual {p1}, Lcom/android/billingclient/api/SkuDetails;->i()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	const-string v0, "skuDetails.priceCurrencyCode"</span>
+<span class="">	invoke-static {v5, v0}, Lkotlin/w/c/k;->c(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	invoke-virtual {p2}, Lcom/hiya/stingray/manager/u3$p;->getHasIntroductoryPrice()Z</span>
+<span class="">	move-result v6</span>
+<span class="">	if-ne v6, v1, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Lcom/android/billingclient/api/SkuDetails;->b()Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	move-object v7, v6</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	move-object v7, v0</span>
+<span class="">	:goto_0</span>
+<span class="">	if-eqz p2, :cond_1</span>
+<span class="">	invoke-virtual {p2}, Lcom/hiya/stingray/manager/u3$p;->getHasIntroductoryPrice()Z</span>
+<span class="">	move-result p2</span>
+<span class="">	if-ne p2, v1, :cond_1</span>
+<span class="">	invoke-virtual {p1}, Lcom/android/billingclient/api/SkuDetails;->c()J</span>
+<span class="">	move-result-wide p1</span>
+<span class="">	invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	move-object v8, p1</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	move-object v8, v0</span>
+<span class="">	:goto_1</span>
+<span class="">	move-object v1, p0</span>
+<span class="">	move v6, p3</span>
+<span class="">	invoke-direct/range {v1 .. v8}, Lcom/hiya/stingray/manager/u3$i;-><init>(Ljava/lang/String;JLjava/lang/String;ILjava/lang/String;Ljava/lang/Long;)V</span>
+.end method
+
+.method public constructor <init>(Ljava/lang/String;JLjava/lang/String;ILjava/lang/String;Ljava/lang/Long;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "price"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "currency"</span>
+<span class="">	invoke-static {p4, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/hiya/stingray/manager/u3$i;->a:Ljava/lang/String;</span>
+<span class="">	iput-wide p2, p0, Lcom/hiya/stingray/manager/u3$i;->b:J</span>
+<span class="">	iput-object p4, p0, Lcom/hiya/stingray/manager/u3$i;->c:Ljava/lang/String;</span>
+<span class="">	iput p5, p0, Lcom/hiya/stingray/manager/u3$i;->d:I</span>
+<span class="">	iput-object p6, p0, Lcom/hiya/stingray/manager/u3$i;->e:Ljava/lang/String;</span>
+<span class="">	iput-object p7, p0, Lcom/hiya/stingray/manager/u3$i;->f:Ljava/lang/Long;</span>
+.end method
+
+.method public final a(Landroid/content/Context;)Ljava/lang/String;
+<span class="">	.locals 7</span>
+
+<span class="">	const-string v0, "context"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget v0, p0, Lcom/hiya/stingray/manager/u3$i;->d:I</span>
+<span class="">	const-string v1, "java.lang.String.format(format, *args)"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x2</span>
+<span class="">	const-string v4, "%s%s"</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	if-eq v0, v5, :cond_1</span>
+<span class="">	const/16 v6, 0xc</span>
+<span class="">	if-eq v0, v6, :cond_0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/hiya/stingray/manager/u3$i;->c(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v0, Lkotlin/w/c/t;->a:Lkotlin/w/c/t;</span>
+<span class="">	new-array v0, v3, [Ljava/lang/Object;</span>
+<span class="">	iget-object v6, p0, Lcom/hiya/stingray/manager/u3$i;->a:Ljava/lang/String;</span>
+<span class="">	aput-object v6, v0, v2</span>
+<span class="">	const v2, 0x7f1102a3</span>
+<span class="">	invoke-virtual {p1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	aput-object p1, v0, v5</span>
+<span class="">	invoke-static {v0, v3}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v4, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1, v1}, Lkotlin/w/c/k;->e(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v0, Lkotlin/w/c/t;->a:Lkotlin/w/c/t;</span>
+<span class="">	new-array v0, v3, [Ljava/lang/Object;</span>
+<span class="">	iget-object v6, p0, Lcom/hiya/stingray/manager/u3$i;->a:Ljava/lang/String;</span>
+<span class="">	aput-object v6, v0, v2</span>
+<span class="">	const v2, 0x7f1102a2</span>
+<span class="">	invoke-virtual {p1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	aput-object p1, v0, v5</span>
+<span class="">	invoke-static {v0, v3}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v4, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1, v1}, Lkotlin/w/c/k;->e(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public final b(Landroid/content/Context;)Ljava/lang/String;
+<span class="">	.locals 7</span>
+
+<span class="">	const-string v0, "context"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	iget v0, p0, Lcom/hiya/stingray/manager/u3$i;->d:I</span>
+<span class="">	const-string v1, "java.lang.String.format(format, *args)"</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	const/4 v3, 0x2</span>
+<span class="">	const-string v4, "%s%s"</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	if-eq v0, v5, :cond_1</span>
+<span class="">	const/16 v6, 0xc</span>
+<span class="">	if-eq v0, v6, :cond_0</span>
+<span class="">	invoke-virtual {p0, p1}, Lcom/hiya/stingray/manager/u3$i;->d(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v0, Lkotlin/w/c/t;->a:Lkotlin/w/c/t;</span>
+<span class="">	new-array v0, v3, [Ljava/lang/Object;</span>
+<span class="">	iget-object v6, p0, Lcom/hiya/stingray/manager/u3$i;->e:Ljava/lang/String;</span>
+<span class="">	aput-object v6, v0, v2</span>
+<span class="">	const v2, 0x7f1102a3</span>
+<span class="">	invoke-virtual {p1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	aput-object p1, v0, v5</span>
+<span class="">	invoke-static {v0, v3}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v4, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1, v1}, Lkotlin/w/c/k;->e(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v0, Lkotlin/w/c/t;->a:Lkotlin/w/c/t;</span>
+<span class="">	new-array v0, v3, [Ljava/lang/Object;</span>
+<span class="">	iget-object v6, p0, Lcom/hiya/stingray/manager/u3$i;->e:Ljava/lang/String;</span>
+<span class="">	aput-object v6, v0, v2</span>
+<span class="">	const v2, 0x7f1102a2</span>
+<span class="">	invoke-virtual {p1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	aput-object p1, v0, v5</span>
+<span class="">	invoke-static {v0, v3}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {v4, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1, v1}, Lkotlin/w/c/k;->e(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public final c(Landroid/content/Context;)Ljava/lang/String;
+<span class="">	.locals 7</span>
+
+<span class="">	const-string v0, "context"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	sget-object v0, Lkotlin/w/c/t;->a:Lkotlin/w/c/t;</span>
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	new-array v1, v0, [Ljava/lang/Object;</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/manager/u3$i;->c:Ljava/lang/String;</span>
+<span class="">	invoke-static {v2}, Lcom/hiya/stingray/util/q;->b(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	aput-object v2, v1, v3</span>
+<span class="">	sget-object v2, Lcom/hiya/stingray/manager/u3$i;->g:Ljava/text/DecimalFormat;</span>
+<span class="">	iget-wide v3, p0, Lcom/hiya/stingray/manager/u3$i;->b:J</span>
+<span class="">	long-to-double v3, v3</span>
+<span class="">	iget v5, p0, Lcom/hiya/stingray/manager/u3$i;->d:I</span>
+<span class="">	int-to-double v5, v5</span>
+<span class="">	div-double/2addr v3, v5</span>
+<span class="">	const-wide v5, 0x412e848000000000L    # 1000000.0</span>
+<span class="">	div-double/2addr v3, v5</span>
+<span class="">	invoke-virtual {v2, v3, v4}, Ljava/text/DecimalFormat;->format(D)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	aput-object v2, v1, v3</span>
+<span class="">	const v2, 0x7f1102a2</span>
+<span class="">	invoke-virtual {p1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	aput-object p1, v1, v2</span>
+<span class="">	invoke-static {v1, v0}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "%s%s%s"</span>
+<span class="">	invoke-static {v0, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "java.lang.String.format(format, *args)"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->e(Ljava/lang/Object;Ljava/lang/String;)V</span>
+.end method
+
+.method public final d(Landroid/content/Context;)Ljava/lang/String;
+<span class="">	.locals 7</span>
+
+<span class="">	const-string v0, "context"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	sget-object v0, Lkotlin/w/c/t;->a:Lkotlin/w/c/t;</span>
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	new-array v1, v0, [Ljava/lang/Object;</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/manager/u3$i;->c:Ljava/lang/String;</span>
+<span class="">	invoke-static {v2}, Lcom/hiya/stingray/util/q;->b(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	aput-object v2, v1, v3</span>
+<span class="">	sget-object v2, Lcom/hiya/stingray/manager/u3$i;->g:Ljava/text/DecimalFormat;</span>
+<span class="">	iget-object v3, p0, Lcom/hiya/stingray/manager/u3$i;->f:Ljava/lang/Long;</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/Long;->longValue()J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	long-to-double v3, v3</span>
+<span class="">	iget v5, p0, Lcom/hiya/stingray/manager/u3$i;->d:I</span>
+<span class="">	int-to-double v5, v5</span>
+<span class="">	div-double/2addr v3, v5</span>
+<span class="">	const-wide v5, 0x412e848000000000L    # 1000000.0</span>
+<span class="">	div-double/2addr v3, v5</span>
+<span class="">	invoke-virtual {v2, v3, v4}, Ljava/text/DecimalFormat;->format(D)Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const/4 v3, 0x1</span>
+<span class="">	aput-object v2, v1, v3</span>
+<span class="">	const/4 v2, 0x2</span>
+<span class="">	const v3, 0x7f1102a2</span>
+<span class="">	invoke-virtual {p1, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	aput-object p1, v1, v2</span>
+<span class="">	invoke-static {v1, v0}, Ljava/util/Arrays;->copyOf([Ljava/lang/Object;I)[Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "%s%s%s"</span>
+<span class="">	invoke-static {v0, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const-string v0, "java.lang.String.format(format, *args)"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->e(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-static {}, Lkotlin/w/c/k;->o()V</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public final e()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/manager/u3$i;->c:Ljava/lang/String;</span>
+.end method
+
+.method public equals(Ljava/lang/Object;)Z
+<span class="">	.locals 5</span>
+
+<span class="">	if-eq p0, p1, :cond_1</span>
+<span class="">	instance-of v0, p1, Lcom/hiya/stingray/manager/u3$i;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	check-cast p1, Lcom/hiya/stingray/manager/u3$i;</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/manager/u3$i;->a:Ljava/lang/String;</span>
+<span class="">	iget-object v1, p1, Lcom/hiya/stingray/manager/u3$i;->a:Ljava/lang/String;</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/w/c/k;->b(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-wide v0, p0, Lcom/hiya/stingray/manager/u3$i;->b:J</span>
+<span class="">	iget-wide v2, p1, Lcom/hiya/stingray/manager/u3$i;->b:J</span>
+<span class="">	cmp-long v4, v0, v2</span>
+<span class="">	if-nez v4, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/manager/u3$i;->c:Ljava/lang/String;</span>
+<span class="">	iget-object v1, p1, Lcom/hiya/stingray/manager/u3$i;->c:Ljava/lang/String;</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/w/c/k;->b(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget v0, p0, Lcom/hiya/stingray/manager/u3$i;->d:I</span>
+<span class="">	iget v1, p1, Lcom/hiya/stingray/manager/u3$i;->d:I</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/manager/u3$i;->e:Ljava/lang/String;</span>
+<span class="">	iget-object v1, p1, Lcom/hiya/stingray/manager/u3$i;->e:Ljava/lang/String;</span>
+<span class="">	invoke-static {v0, v1}, Lkotlin/w/c/k;->b(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/manager/u3$i;->f:Ljava/lang/Long;</span>
+<span class="">	iget-object p1, p1, Lcom/hiya/stingray/manager/u3$i;->f:Ljava/lang/Long;</span>
+<span class="">	invoke-static {v0, p1}, Lkotlin/w/c/k;->b(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public final f()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/manager/u3$i;->e:Ljava/lang/String;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/manager/u3$i;->f:Ljava/lang/Long;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public final g()J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-wide v0, p0, Lcom/hiya/stingray/manager/u3$i;->b:J</span>
+.end method
+
+.method public hashCode()I
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/stingray/manager/u3$i;->a:Ljava/lang/String;</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	mul-int/lit8 v0, v0, 0x1f</span>
+<span class="">	iget-wide v2, p0, Lcom/hiya/stingray/manager/u3$i;->b:J</span>
+<span class="">	invoke-static {v2, v3}, Ld;->a(J)I</span>
+<span class="">	move-result v2</span>
+<span class="">	add-int/2addr v0, v2</span>
+<span class="">	mul-int/lit8 v0, v0, 0x1f</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/manager/u3$i;->c:Ljava/lang/String;</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Object;->hashCode()I</span>
+<span class="">	move-result v2</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_1</span>
+<span class="">	add-int/2addr v0, v2</span>
+<span class="">	mul-int/lit8 v0, v0, 0x1f</span>
+<span class="">	iget v2, p0, Lcom/hiya/stingray/manager/u3$i;->d:I</span>
+<span class="">	add-int/2addr v0, v2</span>
+<span class="">	mul-int/lit8 v0, v0, 0x1f</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/manager/u3$i;->e:Ljava/lang/String;</span>
+<span class="">	if-eqz v2, :cond_2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Object;->hashCode()I</span>
+<span class="">	move-result v2</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_2</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	:goto_2</span>
+<span class="">	add-int/2addr v0, v2</span>
+<span class="">	mul-int/lit8 v0, v0, 0x1f</span>
+<span class="">	iget-object v2, p0, Lcom/hiya/stingray/manager/u3$i;->f:Ljava/lang/Long;</span>
+<span class="">	if-eqz v2, :cond_3</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Object;->hashCode()I</span>
+<span class="">	move-result v1</span>
+<span class="">	:cond_3</span>
+<span class="">	add-int/2addr v0, v1</span>
+.end method
+
+.method public toString()Ljava/lang/String;
+<span class="">	.locals 3</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	const-string v1, "Price(price="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/stingray/manager/u3$i;->a:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, ", units="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-wide v1, p0, Lcom/hiya/stingray/manager/u3$i;->b:J</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, ", currency="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/stingray/manager/u3$i;->c:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, ", perMonths="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget v1, p0, Lcom/hiya/stingray/manager/u3$i;->d:I</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, ", priceIntroductory="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/stingray/manager/u3$i;->e:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, ", unitsIntroductory="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	iget-object v1, p0, Lcom/hiya/stingray/manager/u3$i;->f:Ljava/lang/Long;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, ")"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

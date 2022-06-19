@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.perf.network</a></li>
+        <li><i class="ico ico-class"></i> e.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Lcom/google/firebase/perf/network/e;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private static final f:Lcom/google/firebase/perf/g/a;
+.field private final a:Ljava/net/HttpURLConnection;
+.field private final b:Lcom/google/firebase/perf/f/a;
+.field private c:J
+.field private d:J
+.field private final e:Lcom/google/firebase/perf/i/g;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-static {}, Lcom/google/firebase/perf/g/a;->e()Lcom/google/firebase/perf/g/a;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sput-object v0, Lcom/google/firebase/perf/network/e;->f:Lcom/google/firebase/perf/g/a;</span>
+.end method
+
+.method public constructor <init>(Ljava/net/HttpURLConnection;Lcom/google/firebase/perf/i/g;Lcom/google/firebase/perf/f/a;)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	const-wide/16 v0, -0x1</span>
+<span class="">	iput-wide v0, p0, Lcom/google/firebase/perf/network/e;->c:J</span>
+<span class="">	iput-wide v0, p0, Lcom/google/firebase/perf/network/e;->d:J</span>
+<span class="">	iput-object p1, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	iput-object p3, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iput-object p2, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {p1}, Ljava/net/HttpURLConnection;->getURL()Ljava/net/URL;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Ljava/net/URL;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p3, p1}, Lcom/google/firebase/perf/f/a;->t(Ljava/lang/String;)Lcom/google/firebase/perf/f/a;</span>
+.end method
+
+.method private a0()V
+<span class="">	.locals 5</span>
+
+<span class="">	iget-wide v0, p0, Lcom/google/firebase/perf/network/e;->c:J</span>
+<span class="">	const-wide/16 v2, -0x1</span>
+<span class="">	cmp-long v4, v0, v2</span>
+<span class="">	if-nez v4, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/i/g;->e()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/i/g;->d()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	iput-wide v0, p0, Lcom/google/firebase/perf/network/e;->c:J</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-virtual {v2, v0, v1}, Lcom/google/firebase/perf/f/a;->n(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/firebase/perf/network/e;->F()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-virtual {v1, v0}, Lcom/google/firebase/perf/f/a;->j(Ljava/lang/String;)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/firebase/perf/network/e;->o()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	const-string v1, "POST"</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/f/a;->j(Ljava/lang/String;)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	const-string v1, "GET"</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/f/a;->j(Ljava/lang/String;)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public A()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getInstanceFollowRedirects()Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public B()J
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getLastModified()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public C()Ljava/io/OutputStream;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	new-instance v0, Lcom/google/firebase/perf/network/b;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->getOutputStream()Ljava/io/OutputStream;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v3, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-direct {v0, v1, v2, v3}, Lcom/google/firebase/perf/network/b;-><init>(Ljava/io/OutputStream;Lcom/google/firebase/perf/f/a;Lcom/google/firebase/perf/i/g;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/perf/network/h;->d(Lcom/google/firebase/perf/f/a;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public D()Ljava/security/Permission;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getPermission()Ljava/security/Permission;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/perf/network/h;->d(Lcom/google/firebase/perf/f/a;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public E()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getReadTimeout()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public F()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getRequestMethod()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public G()Ljava/util/Map;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getRequestProperties()Ljava/util/Map;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public H(Ljava/lang/String;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->getRequestProperty(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public I()I
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-wide v0, p0, Lcom/google/firebase/perf/network/e;->d:J</span>
+<span class="">	const-wide/16 v2, -0x1</span>
+<span class="">	cmp-long v4, v0, v2</span>
+<span class="">	if-nez v4, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	iput-wide v0, p0, Lcom/google/firebase/perf/network/e;->d:J</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-virtual {v2, v0, v1}, Lcom/google/firebase/perf/f/a;->s(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getResponseCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-virtual {v1, v0}, Lcom/google/firebase/perf/f/a;->k(I)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/perf/network/h;->d(Lcom/google/firebase/perf/f/a;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public J()Ljava/lang/String;
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-wide v0, p0, Lcom/google/firebase/perf/network/e;->d:J</span>
+<span class="">	const-wide/16 v2, -0x1</span>
+<span class="">	cmp-long v4, v0, v2</span>
+<span class="">	if-nez v4, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	iput-wide v0, p0, Lcom/google/firebase/perf/network/e;->d:J</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-virtual {v2, v0, v1}, Lcom/google/firebase/perf/f/a;->s(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getResponseMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v2}, Ljava/net/HttpURLConnection;->getResponseCode()I</span>
+<span class="">	move-result v2</span>
+<span class="">	invoke-virtual {v1, v2}, Lcom/google/firebase/perf/f/a;->k(I)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/perf/network/h;->d(Lcom/google/firebase/perf/f/a;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public K()Ljava/net/URL;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getURL()Ljava/net/URL;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public L()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getUseCaches()Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public M(Z)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setAllowUserInteraction(Z)V</span>
+.end method
+
+.method public N(I)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setChunkedStreamingMode(I)V</span>
+.end method
+
+.method public O(I)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setConnectTimeout(I)V</span>
+.end method
+
+.method public P(Z)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setDefaultUseCaches(Z)V</span>
+.end method
+
+.method public Q(Z)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setDoInput(Z)V</span>
+.end method
+
+.method public R(Z)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setDoOutput(Z)V</span>
+.end method
+
+.method public S(I)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setFixedLengthStreamingMode(I)V</span>
+.end method
+
+.method public T(J)V
+<span class="">	.locals 2</span>
+
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x13</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Ljava/net/HttpURLConnection;->setFixedLengthStreamingMode(J)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public U(J)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Ljava/net/HttpURLConnection;->setIfModifiedSince(J)V</span>
+.end method
+
+.method public V(Z)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setInstanceFollowRedirects(Z)V</span>
+.end method
+
+.method public W(I)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setReadTimeout(I)V</span>
+.end method
+
+.method public X(Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/net/ProtocolException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V</span>
+.end method
+
+.method public Y(Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "User-Agent"</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-virtual {v0, p2}, Lcom/google/firebase/perf/f/a;->u(Ljava/lang/String;)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V</span>
+.end method
+
+.method public Z(Z)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->setUseCaches(Z)V</span>
+.end method
+
+.method public a(Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Ljava/net/HttpURLConnection;->addRequestProperty(Ljava/lang/String;Ljava/lang/String;)V</span>
+.end method
+
+.method public b()V
+<span class="">	.locals 5</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-wide v0, p0, Lcom/google/firebase/perf/network/e;->c:J</span>
+<span class="">	const-wide/16 v2, -0x1</span>
+<span class="">	cmp-long v4, v0, v2</span>
+<span class="">	if-nez v4, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/i/g;->e()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/i/g;->d()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	iput-wide v0, p0, Lcom/google/firebase/perf/network/e;->c:J</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-virtual {v2, v0, v1}, Lcom/google/firebase/perf/f/a;->n(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->connect()V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/perf/network/h;->d(Lcom/google/firebase/perf/f/a;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public b0()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->usingProxy()Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public c()V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/f/a;->b()Lcom/google/firebase/perf/j/h;</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+.end method
+
+.method public d()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getAllowUserInteraction()Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public e()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getConnectTimeout()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public equals(Ljava/lang/Object;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public f()Ljava/lang/Object;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->getResponseCode()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/f/a;->k(I)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getContent()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	instance-of v1, v0, Ljava/io/InputStream;</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v2}, Ljava/net/HttpURLConnection;->getContentType()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v1, v2}, Lcom/google/firebase/perf/f/a;->o(Ljava/lang/String;)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	new-instance v1, Lcom/google/firebase/perf/network/a;</span>
+<span class="">	check-cast v0, Ljava/io/InputStream;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v3, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-direct {v1, v0, v2, v3}, Lcom/google/firebase/perf/network/a;-><init>(Ljava/io/InputStream;Lcom/google/firebase/perf/f/a;Lcom/google/firebase/perf/i/g;)V</span>
+<span class="">	move-object v0, v1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v2}, Ljava/net/HttpURLConnection;->getContentType()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v1, v2}, Lcom/google/firebase/perf/f/a;->o(Ljava/lang/String;)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v2}, Ljava/net/HttpURLConnection;->getContentLength()I</span>
+<span class="">	move-result v2</span>
+<span class="">	int-to-long v2, v2</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Lcom/google/firebase/perf/f/a;->p(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/f/a;->b()Lcom/google/firebase/perf/j/h;</span>
+<span class="">	:goto_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/perf/network/h;->d(Lcom/google/firebase/perf/f/a;)V</span>
+<span class="">	throw v0</span>
+.end method
+
+.method public g([Ljava/lang/Class;)Ljava/lang/Object;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->getResponseCode()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/f/a;->k(I)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->getContent([Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	instance-of v0, p1, Ljava/io/InputStream;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->getContentType()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/f/a;->o(Ljava/lang/String;)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	new-instance v0, Lcom/google/firebase/perf/network/a;</span>
+<span class="">	check-cast p1, Ljava/io/InputStream;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-direct {v0, p1, v1, v2}, Lcom/google/firebase/perf/network/a;-><init>(Ljava/io/InputStream;Lcom/google/firebase/perf/f/a;Lcom/google/firebase/perf/i/g;)V</span>
+<span class="">	move-object p1, v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->getContentType()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/f/a;->o(Ljava/lang/String;)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->getContentLength()I</span>
+<span class="">	move-result v1</span>
+<span class="">	int-to-long v1, v1</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lcom/google/firebase/perf/f/a;->p(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/perf/f/a;->b()Lcom/google/firebase/perf/j/h;</span>
+<span class="">	:goto_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v1</span>
+<span class="">	invoke-virtual {v0, v1, v2}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-static {v0}, Lcom/google/firebase/perf/network/h;->d(Lcom/google/firebase/perf/f/a;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public h()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getContentEncoding()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public hashCode()I
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public i()I
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getContentLength()I</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public j()J
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x18</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getContentLengthLong()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public k()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getContentType()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public l()J
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getDate()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public m()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getDefaultUseCaches()Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public n()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getDoInput()Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public o()Z
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getDoOutput()Z</span>
+<span class="">	move-result v0</span>
+.end method
+
+.method public p()Ljava/io/InputStream;
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->getResponseCode()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/f/a;->k(I)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:catch_0</span>
+<span class="">	sget-object v0, Lcom/google/firebase/perf/network/e;->f:Lcom/google/firebase/perf/g/a;</span>
+<span class="">	const-string v1, "IOException thrown trying to obtain the response code"</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/g/a;->a(Ljava/lang/String;)V</span>
+<span class="">	:goto_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getErrorStream()Ljava/io/InputStream;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	new-instance v1, Lcom/google/firebase/perf/network/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v3, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-direct {v1, v0, v2, v3}, Lcom/google/firebase/perf/network/a;-><init>(Ljava/io/InputStream;Lcom/google/firebase/perf/f/a;Lcom/google/firebase/perf/i/g;)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public q()J
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getExpiration()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public r(I)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->getHeaderField(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public s(Ljava/lang/String;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->getHeaderField(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public t(Ljava/lang/String;J)J
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1, p2, p3}, Ljava/net/HttpURLConnection;->getHeaderFieldDate(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide p1</span>
+.end method
+
+.method public toString()Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public u(Ljava/lang/String;I)I
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Ljava/net/HttpURLConnection;->getHeaderFieldInt(Ljava/lang/String;I)I</span>
+<span class="">	move-result p1</span>
+.end method
+
+.method public v(I)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/net/HttpURLConnection;->getHeaderFieldKey(I)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method public w(Ljava/lang/String;J)J
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 v1, 0x18</span>
+<span class="">	if-lt v0, v1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0, p1, p2, p3}, Ljava/net/HttpURLConnection;->getHeaderFieldLong(Ljava/lang/String;J)J</span>
+<span class="">	move-result-wide p1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const-wide/16 p1, 0x0</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public x()Ljava/util/Map;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;>;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getHeaderFields()Ljava/util/Map;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+.method public y()J
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getIfModifiedSince()J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public z()Ljava/io/InputStream;
+<span class="">	.locals 4</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Ljava/io/IOException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/perf/network/e;->a0()V</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->getResponseCode()I</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/f/a;->k(I)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->getContentType()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Lcom/google/firebase/perf/f/a;->o(Ljava/lang/String;)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/perf/network/e;->a:Ljava/net/HttpURLConnection;</span>
+<span class="">	invoke-virtual {v0}, Ljava/net/HttpURLConnection;->getInputStream()Ljava/io/InputStream;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Lcom/google/firebase/perf/network/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v3, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-direct {v1, v0, v2, v3}, Lcom/google/firebase/perf/network/a;-><init>(Ljava/io/InputStream;Lcom/google/firebase/perf/f/a;Lcom/google/firebase/perf/i/g;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	:catch_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/perf/network/e;->e:Lcom/google/firebase/perf/i/g;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/perf/i/g;->b()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	invoke-virtual {v1, v2, v3}, Lcom/google/firebase/perf/f/a;->r(J)Lcom/google/firebase/perf/f/a;</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/perf/network/e;->b:Lcom/google/firebase/perf/f/a;</span>
+<span class="">	invoke-static {v1}, Lcom/google/firebase/perf/network/h;->d(Lcom/google/firebase/perf/f/a;)V</span>
+<span class="">	throw v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

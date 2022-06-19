@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.appsflyer</a></li>
+        <li><i class="ico ico-class"></i> AFValidateInAppPurchase.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/appsflyer/AFValidateInAppPurchase;
+.super Ljava/lang/Object;
+.source "SourceFile"
+.implements Ljava/lang/Runnable;
+
+
+.field private static ı:Ljava/lang/String; = null
+.field private static Ι:Ljava/lang/String; = "https://%ssdk-services.%s/validate-android-signature"
+.field private Ɩ:Ljava/lang/String;
+.field private ǃ:Ljava/lang/ref/WeakReference;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/lang/ref/WeakReference<",
+"Landroid/content/Context;",
+">;"
+}
+.end annotation
+.end field
+.field private ɨ:Ljava/util/Map;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Map<",
+"Ljava/lang/String;",
+"Ljava/lang/String;",
+">;"
+}
+.end annotation
+.end field
+.field private ɩ:Ljava/lang/String;
+.field private ɹ:Ljava/lang/String;
+.field private final ι:Landroid/content/Intent;
+.field private І:Ljava/lang/String;
+.field private і:Ljava/lang/String;
+.field private Ӏ:Ljava/lang/String;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "https://%svalidate.%s/api/v"</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	sget-object v1, Lcom/appsflyer/AppsFlyerLibCore;->ι:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "/androidevent?buildnumber=6.0.0&app_id="</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sput-object v0, Lcom/appsflyer/AFValidateInAppPurchase;->ı:Ljava/lang/String;</span>
+.end method
+
+.method constructor <init>(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Landroid/content/Intent;)V
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Landroid/content/Context;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;",</span>
+<span class="">	"Landroid/content/Intent;",</span>
+<span class="">	")V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	new-instance v0, Ljava/lang/ref/WeakReference;</span>
+<span class="">	invoke-direct {v0, p1}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V</span>
+<span class="">	iput-object v0, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ǃ:Ljava/lang/ref/WeakReference;</span>
+<span class="">	iput-object p2, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɩ:Ljava/lang/String;</span>
+<span class="">	iput-object p3, p0, Lcom/appsflyer/AFValidateInAppPurchase;->і:Ljava/lang/String;</span>
+<span class="">	iput-object p5, p0, Lcom/appsflyer/AFValidateInAppPurchase;->Ӏ:Ljava/lang/String;</span>
+<span class="">	iput-object p6, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɹ:Ljava/lang/String;</span>
+<span class="">	iput-object p7, p0, Lcom/appsflyer/AFValidateInAppPurchase;->І:Ljava/lang/String;</span>
+<span class="">	iput-object p8, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɨ:Ljava/util/Map;</span>
+<span class="">	iput-object p4, p0, Lcom/appsflyer/AFValidateInAppPurchase;->Ɩ:Ljava/lang/String;</span>
+<span class="">	iput-object p9, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ι:Landroid/content/Intent;</span>
+.end method
+
+.method public static setUrl(Ljava/util/Map;)V
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Ljava/util/Map<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-interface {p0}, Ljava/util/Map;->entrySet()Ljava/util/Set;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/util/Map$Entry;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Ljava/lang/String;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Ljava/lang/String;</span>
+<span class="">	const/4 v2, -0x1</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I</span>
+<span class="">	move-result v3</span>
+<span class="">	const v4, -0x54b6e6ea</span>
+<span class="">	const/4 v5, 0x1</span>
+<span class="">	if-eq v3, v4, :cond_1</span>
+<span class="">	const v4, 0x1b11f891</span>
+<span class="">	if-eq v3, v4, :cond_0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	const-string v3, "sdk-services"</span>
+<span class="">	invoke-virtual {v0, v3}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_1</span>
+<span class="">	const-string v3, "validate"</span>
+<span class="">	invoke-virtual {v0, v3}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	if-eqz v2, :cond_4</span>
+<span class="">	if-eq v2, v5, :cond_3</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_3</span>
+<span class="">	sput-object v1, Lcom/appsflyer/AFValidateInAppPurchase;->ı:Ljava/lang/String;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_4</span>
+<span class="">	sput-object v1, Lcom/appsflyer/AFValidateInAppPurchase;->Ι:Ljava/lang/String;</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_5</span>
+.end method
+
+.method static synthetic ı(Lcom/appsflyer/AFValidateInAppPurchase;)Ljava/util/Map;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɨ:Ljava/util/Map;</span>
+.end method
+
+.method private static ı(ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+<span class="">	.locals 2</span>
+
+<span class="">	sget-object v0, Lcom/appsflyer/AppsFlyerLibCore;->Ι:Lcom/appsflyer/AppsFlyerInAppPurchaseValidatorListener;</span>
+<span class="">	if-eqz v0, :cond_2</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "Validate callback parameters: "</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, " "</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	invoke-static {p4}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string p1, "Validate in app purchase success: "</span>
+<span class="">	invoke-virtual {p1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	sget-object p0, Lcom/appsflyer/AppsFlyerLibCore;->Ι:Lcom/appsflyer/AppsFlyerInAppPurchaseValidatorListener;</span>
+<span class="">	invoke-interface {p0}, Lcom/appsflyer/AppsFlyerInAppPurchaseValidatorListener;->onValidateInApp()V</span>
+<span class="">	invoke-static {p4}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	:cond_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const-string p1, "Validate in app purchase failed: "</span>
+<span class="">	invoke-virtual {p1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {p0}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	sget-object p0, Lcom/appsflyer/AppsFlyerLibCore;->Ι:Lcom/appsflyer/AppsFlyerInAppPurchaseValidatorListener;</span>
+<span class="">	if-nez p4, :cond_1</span>
+<span class="">	const-string p4, "Failed validating"</span>
+<span class="">	invoke-interface {p0, p4}, Lcom/appsflyer/AppsFlyerInAppPurchaseValidatorListener;->onValidateInAppFailure(Ljava/lang/String;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	:cond_2</span>
+.end method
+
+.method static synthetic Ι(Lcom/appsflyer/AFValidateInAppPurchase;)Ljava/lang/ref/WeakReference;
+<span class="">	.locals 0</span>
+
+<span class="">	iget-object p0, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ǃ:Ljava/lang/ref/WeakReference;</span>
+.end method
+
+.method private static ι(Lcom/appsflyer/internal/model/event/Purchase;)Ljava/net/HttpURLConnection;
+<span class="">	.locals 2</span>
+
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v1, "Calling "</span>
+<span class="">	invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p0}, Lcom/appsflyer/AFEvent;->urlString()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afDebugLog(Ljava/lang/String;)V</span>
+<span class="">	new-instance v0, Lcom/appsflyer/internal/w;</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLib;->getInstance()Lcom/appsflyer/AppsFlyerLib;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/appsflyer/AppsFlyerLib;->isStopped()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	invoke-virtual {p0, v1}, Lcom/appsflyer/internal/model/event/BackgroundEvent;->trackingStopped(Z)Lcom/appsflyer/internal/model/event/BackgroundEvent;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-direct {v0, p0}, Lcom/appsflyer/internal/w;-><init>(Lcom/appsflyer/internal/model/event/BackgroundEvent;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/appsflyer/internal/w;->ι()Ljava/net/HttpURLConnection;</span>
+<span class="">	move-result-object p0</span>
+.end method
+
+.method static synthetic ι(Lcom/appsflyer/AFValidateInAppPurchase;Ljava/util/Map;Ljava/util/Map;Ljava/lang/ref/WeakReference;)V
+<span class="">	.locals 6</span>
+
+<span class="">	invoke-virtual {p3}, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	sget-object v1, Lcom/appsflyer/AFValidateInAppPurchase;->ı:Ljava/lang/String;</span>
+<span class="">	invoke-static {v1}, Lcom/appsflyer/ServerConfigHandler;->getUrl(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroid/content/Context;</span>
+<span class="">	invoke-virtual {v1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroid/content/Context;</span>
+<span class="">	invoke-static {v1}, Lcom/appsflyer/AppsFlyerLibCore;->getSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "referrer"</span>
+<span class="">	const-string v3, ""</span>
+<span class="">	invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	new-instance v2, Lcom/appsflyer/internal/model/event/Validate;</span>
+<span class="">	invoke-virtual {p3}, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	check-cast p3, Landroid/content/Context;</span>
+<span class="">	invoke-direct {v2, p3}, Lcom/appsflyer/internal/model/event/Validate;-><init>(Landroid/content/Context;)V</span>
+<span class="">	iget-object p3, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɩ:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v2, p3}, Lcom/appsflyer/AFEvent;->key(Ljava/lang/String;)Lcom/appsflyer/AFEvent;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	iput-object v1, p3, Lcom/appsflyer/AFEvent;->і:Ljava/lang/String;</span>
+<span class="">	iget-object v1, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ι:Landroid/content/Intent;</span>
+<span class="">	iput-object v1, p3, Lcom/appsflyer/AFEvent;->ı:Landroid/content/Intent;</span>
+<span class="">	check-cast p3, Lcom/appsflyer/internal/model/event/Validate;</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->getInstance()Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1, p3}, Lcom/appsflyer/AppsFlyerLibCore;->ι(Lcom/appsflyer/AFEvent;)Ljava/util/Map;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	iget-object v2, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɹ:Ljava/lang/String;</span>
+<span class="">	const-string v3, "price"</span>
+<span class="">	invoke-interface {v1, v3, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	iget-object p0, p0, Lcom/appsflyer/AFValidateInAppPurchase;->І:Ljava/lang/String;</span>
+<span class="">	const-string v2, "currency"</span>
+<span class="">	invoke-interface {v1, v2, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string p0, "receipt_data"</span>
+<span class="">	invoke-interface {v1, p0, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	if-eqz p2, :cond_0</span>
+<span class="">	const-string p0, "extra_prms"</span>
+<span class="">	invoke-interface {v1, p0, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance p0, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {p0, v1}, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V</span>
+<span class="">	invoke-virtual {p0}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/internal/af;->Ι()Lcom/appsflyer/internal/af;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/4 p2, 0x1</span>
+<span class="">	new-array v2, p2, [Ljava/lang/String;</span>
+<span class="">	const/4 v3, 0x0</span>
+<span class="">	aput-object p0, v2, v3</span>
+<span class="">	const-string p0, "server_request"</span>
+<span class="">	invoke-virtual {p1, p0, v0, v2}, Lcom/appsflyer/internal/af;->ı(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V</span>
+<span class="">	const/4 p0, 0x0</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {p3, v1}, Lcom/appsflyer/AFEvent;->params(Ljava/util/Map;)Lcom/appsflyer/AFEvent;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1, v0}, Lcom/appsflyer/AFEvent;->urlString(Ljava/lang/String;)Lcom/appsflyer/AFEvent;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	check-cast p1, Lcom/appsflyer/internal/model/event/Purchase;</span>
+<span class="">	invoke-static {p1}, Lcom/appsflyer/AFValidateInAppPurchase;->ι(Lcom/appsflyer/internal/model/event/Purchase;)Ljava/net/HttpURLConnection;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	const/4 p1, -0x1</span>
+<span class="">	if-eqz p0, :cond_1</span>
+<span class="">	invoke-virtual {p0}, Ljava/net/HttpURLConnection;->getResponseCode()I</span>
+<span class="">	move-result p1</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->getInstance()Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-virtual {p3, p0}, Lcom/appsflyer/AppsFlyerLibCore;->ǃ(Ljava/net/HttpURLConnection;)Ljava/lang/String;</span>
+<span class="">	move-result-object p3</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/internal/af;->Ι()Lcom/appsflyer/internal/af;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "server_response"</span>
+<span class="">	const/4 v4, 0x2</span>
+<span class="">	new-array v4, v4, [Ljava/lang/String;</span>
+<span class="">	invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	aput-object v5, v4, v3</span>
+<span class="">	aput-object p3, v4, p2</span>
+<span class="">	invoke-virtual {v1, v2, v0, v4}, Lcom/appsflyer/internal/af;->ı(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V</span>
+<span class="">	new-instance p2, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v0, "Validate-WH response - "</span>
+<span class="">	invoke-direct {p2, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p2, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string p1, ": "</span>
+<span class="">	invoke-virtual {p2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	new-instance p1, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {p1, p3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {p2}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	if-eqz p0, :cond_3</span>
+<span class="">	invoke-virtual {p0}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-virtual {p1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;</span>
+<span class="">	:try_start_1</span>
+<span class="">	move-result-object p2</span>
+<span class="">	invoke-static {p2, p1}, Lcom/appsflyer/AFLogger;->afErrorLog(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	if-eqz p0, :cond_3</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_1</span>
+<span class="">	invoke-virtual {p0}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	move-exception p1</span>
+<span class="">	if-eqz p0, :cond_2</span>
+<span class="">	:catchall_1</span>
+<span class="">	invoke-virtual {p0}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_2</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method public run()V
+<span class="">	.locals 10</span>
+
+<span class="">	const-string v0, "advertiserId"</span>
+<span class="">	iget-object v1, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɩ:Ljava/lang/String;</span>
+<span class="">	if-eqz v1, :cond_8</span>
+<span class="">	invoke-virtual {v1}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v1</span>
+<span class="">	if-nez v1, :cond_0</span>
+<span class="">	goto/16 :goto_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLib;->getInstance()Lcom/appsflyer/AppsFlyerLib;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/appsflyer/AppsFlyerLib;->isStopped()Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	iget-object v3, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ǃ:Ljava/lang/ref/WeakReference;</span>
+<span class="">	:try_start_0</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Landroid/content/Context;</span>
+<span class="">	if-nez v3, :cond_2</span>
+<span class="">	new-instance v4, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v4}, Ljava/util/HashMap;-><init>()V</span>
+<span class="">	:cond_2</span>
+<span class="">	const-string v5, "public-key"</span>
+<span class="">	iget-object v6, p0, Lcom/appsflyer/AFValidateInAppPurchase;->і:Ljava/lang/String;</span>
+<span class="">	invoke-interface {v4, v5, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v5, "sig-data"</span>
+<span class="">	iget-object v6, p0, Lcom/appsflyer/AFValidateInAppPurchase;->Ӏ:Ljava/lang/String;</span>
+<span class="">	invoke-interface {v4, v5, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v5, "signature"</span>
+<span class="">	iget-object v6, p0, Lcom/appsflyer/AFValidateInAppPurchase;->Ɩ:Ljava/lang/String;</span>
+<span class="">	invoke-interface {v4, v5, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	new-instance v5, Ljava/util/HashMap;</span>
+<span class="">	invoke-direct {v5, v4}, Ljava/util/HashMap;-><init>(Ljava/util/Map;)V</span>
+<span class="">	new-instance v6, Ljava/lang/Thread;</span>
+<span class="">	new-instance v7, Lcom/appsflyer/AFValidateInAppPurchase$5;</span>
+<span class="">	invoke-direct {v7, p0, v5}, Lcom/appsflyer/AFValidateInAppPurchase$5;-><init>(Lcom/appsflyer/AFValidateInAppPurchase;Ljava/util/Map;)V</span>
+<span class="">	invoke-direct {v6, v7}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V</span>
+<span class="">	invoke-virtual {v6}, Ljava/lang/Thread;->start()V</span>
+<span class="">	const-string v5, "dev_key"</span>
+<span class="">	iget-object v6, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɩ:Ljava/lang/String;</span>
+<span class="">	invoke-interface {v4, v5, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v5, "app_id"</span>
+<span class="">	invoke-virtual {v3}, Landroid/content/Context;->getPackageName()Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-interface {v4, v5, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	const-string v5, "uid"</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLib;->getInstance()Lcom/appsflyer/AppsFlyerLib;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-virtual {v6, v3}, Lcom/appsflyer/AppsFlyerLib;->getAppsFlyerUID(Landroid/content/Context;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-interface {v4, v5, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerProperties;->getInstance()Lcom/appsflyer/AppsFlyerProperties;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v3, v0}, Lcom/appsflyer/AppsFlyerProperties;->getString(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-interface {v4, v0, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span>
+<span class="">	new-instance v0, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v0, v4}, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V</span>
+<span class="">	invoke-virtual {v0}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v3, Lcom/appsflyer/AFValidateInAppPurchase;->Ι:Ljava/lang/String;</span>
+<span class="">	invoke-static {v3}, Lcom/appsflyer/ServerConfigHandler;->getUrl(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/internal/af;->Ι()Lcom/appsflyer/internal/af;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	const-string v6, "server_request"</span>
+<span class="">	const/4 v7, 0x1</span>
+<span class="">	new-array v8, v7, [Ljava/lang/String;</span>
+<span class="">	aput-object v0, v8, v2</span>
+<span class="">	invoke-virtual {v5, v6, v3, v8}, Lcom/appsflyer/internal/af;->ı(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V</span>
+<span class="">	new-instance v0, Lcom/appsflyer/internal/model/event/SdkServices;</span>
+<span class="">	invoke-direct {v0}, Lcom/appsflyer/internal/model/event/SdkServices;-><init>()V</span>
+<span class="">	invoke-virtual {v0, v4}, Lcom/appsflyer/AFEvent;->params(Ljava/util/Map;)Lcom/appsflyer/AFEvent;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v3}, Lcom/appsflyer/AFEvent;->urlString(Ljava/lang/String;)Lcom/appsflyer/AFEvent;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/appsflyer/internal/model/event/Purchase;</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFValidateInAppPurchase;->ι(Lcom/appsflyer/internal/model/event/Purchase;)Ljava/net/HttpURLConnection;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/4 v0, -0x1</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->getResponseCode()I</span>
+<span class="">	move-result v0</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/AppsFlyerLibCore;->getInstance()Lcom/appsflyer/AppsFlyerLibCore;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-virtual {v4, v1}, Lcom/appsflyer/AppsFlyerLibCore;->ǃ(Ljava/net/HttpURLConnection;)Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-static {}, Lcom/appsflyer/internal/af;->Ι()Lcom/appsflyer/internal/af;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	const-string v6, "server_response"</span>
+<span class="">	const/4 v8, 0x2</span>
+<span class="">	new-array v8, v8, [Ljava/lang/String;</span>
+<span class="">	invoke-static {v0}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;</span>
+<span class="">	move-result-object v9</span>
+<span class="">	aput-object v9, v8, v2</span>
+<span class="">	aput-object v4, v8, v7</span>
+<span class="">	invoke-virtual {v5, v6, v3, v8}, Lcom/appsflyer/internal/af;->ı(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V</span>
+<span class="">	new-instance v3, Lorg/json/JSONObject;</span>
+<span class="">	invoke-direct {v3, v4}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V</span>
+<span class="">	const-string v4, "code"</span>
+<span class="">	invoke-virtual {v3, v4, v0}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;</span>
+<span class="">	const/16 v4, 0xc8</span>
+<span class="">	if-ne v0, v4, :cond_4</span>
+<span class="">	new-instance v0, Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v4, "Validate response 200 ok: "</span>
+<span class="">	invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v3}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "result"</span>
+<span class="">	invoke-virtual {v3, v0}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	iget-object v4, p0, Lcom/appsflyer/AFValidateInAppPurchase;->Ӏ:Ljava/lang/String;</span>
+<span class="">	iget-object v5, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɹ:Ljava/lang/String;</span>
+<span class="">	iget-object v6, p0, Lcom/appsflyer/AFValidateInAppPurchase;->І:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v3}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {v0, v4, v5, v6, v3}, Lcom/appsflyer/AFValidateInAppPurchase;->ı(ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	const-string v0, "Failed Validate request"</span>
+<span class="">	invoke-static {v0}, Lcom/appsflyer/AFLogger;->afInfoLog(Ljava/lang/String;)V</span>
+<span class="">	:cond_4</span>
+<span class="">	iget-object v0, p0, Lcom/appsflyer/AFValidateInAppPurchase;->Ӏ:Ljava/lang/String;</span>
+<span class="">	iget-object v4, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɹ:Ljava/lang/String;</span>
+<span class="">	iget-object v5, p0, Lcom/appsflyer/AFValidateInAppPurchase;->І:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v3}, Lorg/json/JSONObject;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-static {v2, v0, v4, v5, v3}, Lcom/appsflyer/AFValidateInAppPurchase;->ı(ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	if-eqz v1, :cond_6</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	:goto_0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	sget-object v3, Lcom/appsflyer/AppsFlyerLibCore;->Ι:Lcom/appsflyer/AppsFlyerInAppPurchaseValidatorListener;</span>
+<span class="">	if-eqz v3, :cond_5</span>
+<span class="">	:catchall_0</span>
+<span class="">	const-string v3, "Failed Validate request + ex"</span>
+<span class="">	:try_start_1</span>
+<span class="">	invoke-static {v3, v0}, Lcom/appsflyer/AFLogger;->afErrorLog(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	iget-object v3, p0, Lcom/appsflyer/AFValidateInAppPurchase;->Ӏ:Ljava/lang/String;</span>
+<span class="">	iget-object v4, p0, Lcom/appsflyer/AFValidateInAppPurchase;->ɹ:Ljava/lang/String;</span>
+<span class="">	iget-object v5, p0, Lcom/appsflyer/AFValidateInAppPurchase;->І:Ljava/lang/String;</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v6</span>
+<span class="">	invoke-static {v2, v3, v4, v5, v6}, Lcom/appsflyer/AFValidateInAppPurchase;->ı(ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-static {v2, v0}, Lcom/appsflyer/AFLogger;->afErrorLog(Ljava/lang/String;Ljava/lang/Throwable;)V</span>
+<span class="">	:cond_5</span>
+<span class="">	if-eqz v1, :cond_6</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	move-exception v0</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_1</span>
+<span class="">	if-eqz v1, :cond_7</span>
+<span class="">	invoke-virtual {v1}, Ljava/net/HttpURLConnection;->disconnect()V</span>
+<span class="">	:cond_6</span>
+<span class="">	throw v0</span>
+<span class="">	:catchall_1</span>
+<span class="">	:cond_7</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_8</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.installations</a></li>
+        <li><i class="ico ico-class"></i> f.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/firebase/installations/f;
+.super Ljava/lang/Object;
+.source "SourceFile"
+.implements Lcom/google/firebase/installations/g;
+
+
+.field private static final m:Ljava/lang/Object;
+.field private static final n:Ljava/util/concurrent/ThreadFactory;
+.field private final a:Lcom/google/firebase/c;
+.field private final b:Lcom/google/firebase/installations/q/c;
+.field private final c:Lcom/google/firebase/installations/p/c;
+.field private final d:Lcom/google/firebase/installations/n;
+.field private final e:Lcom/google/firebase/installations/p/b;
+.field private final f:Lcom/google/firebase/installations/l;
+.field private final g:Ljava/lang/Object;
+.field private final h:Ljava/util/concurrent/ExecutorService;
+.field private final i:Ljava/util/concurrent/ExecutorService;
+.field private j:Ljava/lang/String;
+.field private k:Ljava/util/Set;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/Set<",
+"Lcom/google/firebase/installations/o/a;",
+">;"
+}
+.end annotation
+.end field
+.field private final l:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Lcom/google/firebase/installations/m;",
+">;"
+}
+.end annotation
+.end field
+
+
+<span class="cov">.method static constructor &lt;clinit&gt;()V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	new-instance v0, Ljava/lang/Object;</span>
+<span class="cov">	invoke-direct {v0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	sput-object v0, Lcom/google/firebase/installations/f;->m:Ljava/lang/Object;</span>
+<span class="cov">	new-instance v0, Lcom/google/firebase/installations/f$a;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/google/firebase/installations/f$a;-><init>()V</span>
+<span class="cov">	sput-object v0, Lcom/google/firebase/installations/f;->n:Ljava/util/concurrent/ThreadFactory;</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method constructor &lt;init&gt;(Lcom/google/firebase/c;Lcom/google/firebase/m/b;Lcom/google/firebase/m/b;)V</span>
+<span class="">	.locals 9</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(",</span>
+<span class="">	"Lcom/google/firebase/c;",</span>
+<span class="">	"Lcom/google/firebase/m/b<",</span>
+<span class="">	"Lcom/google/firebase/o/i;",</span>
+<span class="">	">;",</span>
+<span class="">	"Lcom/google/firebase/m/b<",</span>
+<span class="">	"Lcom/google/firebase/l/f;",</span>
+<span class="">	">;)V"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	new-instance v8, Ljava/util/concurrent/ThreadPoolExecutor;</span>
+<span class="cov">	sget-object v5, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="cov">	new-instance v6, Ljava/util/concurrent/LinkedBlockingQueue;</span>
+<span class="cov">	invoke-direct {v6}, Ljava/util/concurrent/LinkedBlockingQueue;-><init>()V</span>
+<span class="cov">	sget-object v7, Lcom/google/firebase/installations/f;->n:Ljava/util/concurrent/ThreadFactory;</span>
+<span class="cov">	const/4 v1, 0x0</span>
+<span class="cov">	const/4 v2, 0x1</span>
+<span class="cov">	const-wide/16 v3, 0x1e</span>
+<span class="cov">	move-object v0, v8</span>
+<span class="cov">	invoke-direct/range {v0 .. v7}, Ljava/util/concurrent/ThreadPoolExecutor;-><init>(IIJLjava/util/concurrent/TimeUnit;Ljava/util/concurrent/BlockingQueue;Ljava/util/concurrent/ThreadFactory;)V</span>
+<span class="cov">	new-instance v3, Lcom/google/firebase/installations/q/c;</span>
+<span class="exec">	invoke-virtual {p1}, Lcom/google/firebase/c;->h()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	invoke-direct {v3, v0, p2, p3}, Lcom/google/firebase/installations/q/c;-><init>(Landroid/content/Context;Lcom/google/firebase/m/b;Lcom/google/firebase/m/b;)V</span>
+<span class="cov">	new-instance v4, Lcom/google/firebase/installations/p/c;</span>
+<span class="cov">	invoke-direct {v4, p1}, Lcom/google/firebase/installations/p/c;-><init>(Lcom/google/firebase/c;)V</span>
+<span class="exec">	invoke-static {}, Lcom/google/firebase/installations/n;->c()Lcom/google/firebase/installations/n;</span>
+<span class="cov">	move-result-object v5</span>
+<span class="cov">	new-instance v6, Lcom/google/firebase/installations/p/b;</span>
+<span class="cov">	invoke-direct {v6, p1}, Lcom/google/firebase/installations/p/b;-><init>(Lcom/google/firebase/c;)V</span>
+<span class="cov">	new-instance v7, Lcom/google/firebase/installations/l;</span>
+<span class="cov">	invoke-direct {v7}, Lcom/google/firebase/installations/l;-><init>()V</span>
+<span class="cov">	move-object v0, p0</span>
+<span class="cov">	move-object v1, v8</span>
+<span class="cov">	move-object v2, p1</span>
+<span class="cov">	invoke-direct/range {v0 .. v7}, Lcom/google/firebase/installations/f;-><init>(Ljava/util/concurrent/ExecutorService;Lcom/google/firebase/c;Lcom/google/firebase/installations/q/c;Lcom/google/firebase/installations/p/c;Lcom/google/firebase/installations/n;Lcom/google/firebase/installations/p/b;Lcom/google/firebase/installations/l;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method constructor &lt;init&gt;(Ljava/util/concurrent/ExecutorService;Lcom/google/firebase/c;Lcom/google/firebase/installations/q/c;Lcom/google/firebase/installations/p/c;Lcom/google/firebase/installations/n;Lcom/google/firebase/installations/p/b;Lcom/google/firebase/installations/l;)V</span>
+<span class="">	.locals 10</span>
+
+<span class="cov">	move-object v0, p0</span>
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	new-instance v1, Ljava/lang/Object;</span>
+<span class="cov">	invoke-direct {v1}, Ljava/lang/Object;-><init>()V</span>
+<span class="cov">	iput-object v1, v0, Lcom/google/firebase/installations/f;->g:Ljava/lang/Object;</span>
+<span class="cov">	new-instance v1, Ljava/util/HashSet;</span>
+<span class="cov">	invoke-direct {v1}, Ljava/util/HashSet;-><init>()V</span>
+<span class="cov">	iput-object v1, v0, Lcom/google/firebase/installations/f;->k:Ljava/util/Set;</span>
+<span class="cov">	new-instance v1, Ljava/util/ArrayList;</span>
+<span class="cov">	invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="cov">	iput-object v1, v0, Lcom/google/firebase/installations/f;->l:Ljava/util/List;</span>
+<span class="cov">	move-object v1, p2</span>
+<span class="cov">	iput-object v1, v0, Lcom/google/firebase/installations/f;->a:Lcom/google/firebase/c;</span>
+<span class="cov">	move-object v1, p3</span>
+<span class="cov">	iput-object v1, v0, Lcom/google/firebase/installations/f;->b:Lcom/google/firebase/installations/q/c;</span>
+<span class="cov">	move-object v1, p4</span>
+<span class="cov">	iput-object v1, v0, Lcom/google/firebase/installations/f;->c:Lcom/google/firebase/installations/p/c;</span>
+<span class="cov">	move-object v1, p5</span>
+<span class="cov">	iput-object v1, v0, Lcom/google/firebase/installations/f;->d:Lcom/google/firebase/installations/n;</span>
+<span class="cov">	move-object/from16 v1, p6</span>
+<span class="cov">	iput-object v1, v0, Lcom/google/firebase/installations/f;->e:Lcom/google/firebase/installations/p/b;</span>
+<span class="cov">	move-object/from16 v1, p7</span>
+<span class="cov">	iput-object v1, v0, Lcom/google/firebase/installations/f;->f:Lcom/google/firebase/installations/l;</span>
+<span class="cov">	move-object v1, p1</span>
+<span class="cov">	iput-object v1, v0, Lcom/google/firebase/installations/f;->h:Ljava/util/concurrent/ExecutorService;</span>
+<span class="cov">	new-instance v9, Ljava/util/concurrent/ThreadPoolExecutor;</span>
+<span class="cov">	sget-object v6, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="cov">	new-instance v7, Ljava/util/concurrent/LinkedBlockingQueue;</span>
+<span class="cov">	invoke-direct {v7}, Ljava/util/concurrent/LinkedBlockingQueue;-><init>()V</span>
+<span class="cov">	sget-object v8, Lcom/google/firebase/installations/f;->n:Ljava/util/concurrent/ThreadFactory;</span>
+<span class="cov">	const/4 v2, 0x0</span>
+<span class="cov">	const/4 v3, 0x1</span>
+<span class="cov">	const-wide/16 v4, 0x1e</span>
+<span class="cov">	move-object v1, v9</span>
+<span class="cov">	invoke-direct/range {v1 .. v8}, Ljava/util/concurrent/ThreadPoolExecutor;-><init>(IIJLjava/util/concurrent/TimeUnit;Ljava/util/concurrent/BlockingQueue;Ljava/util/concurrent/ThreadFactory;)V</span>
+<span class="cov">	iput-object v9, v0, Lcom/google/firebase/installations/f;->i:Ljava/util/concurrent/ExecutorService;</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private b()Lcom/google/android/gms/tasks/g;
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Lcom/google/firebase/installations/k;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	new-instance v0, Lcom/google/android/gms/tasks/h;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/android/gms/tasks/h;-><init>()V</span>
+<span class="">	new-instance v1, Lcom/google/firebase/installations/i;</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/installations/f;->d:Lcom/google/firebase/installations/n;</span>
+<span class="">	invoke-direct {v1, v2, v0}, Lcom/google/firebase/installations/i;-><init>(Lcom/google/firebase/installations/n;Lcom/google/android/gms/tasks/h;)V</span>
+<span class="">	invoke-direct {p0, v1}, Lcom/google/firebase/installations/f;->d(Lcom/google/firebase/installations/m;)V</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/android/gms/tasks/h;->a()Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object v0</span>
+.end method
+
+<span class="cov">.method private c()Lcom/google/android/gms/tasks/g;</span>
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	new-instance v0, Lcom/google/android/gms/tasks/h;</span>
+<span class="cov">	invoke-direct {v0}, Lcom/google/android/gms/tasks/h;-><init>()V</span>
+<span class="cov">	new-instance v1, Lcom/google/firebase/installations/j;</span>
+<span class="cov">	invoke-direct {v1, v0}, Lcom/google/firebase/installations/j;-><init>(Lcom/google/android/gms/tasks/h;)V</span>
+<span class="cov">	invoke-direct {p0, v1}, Lcom/google/firebase/installations/f;->d(Lcom/google/firebase/installations/m;)V</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/android/gms/tasks/h;->a()Lcom/google/android/gms/tasks/g;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method private d(Lcom/google/firebase/installations/m;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/installations/f;->g:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	iget-object v1, p0, Lcom/google/firebase/installations/f;->l:Ljava/util/List;</span>
+<span class="cov">	invoke-interface {v1, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-void</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw p1</span>
+.end method
+
+<span class="cov">.method private e(Z)V</span>
+<span class="">	.locals 2</span>
+
+<span class="exec">	invoke-direct {p0}, Lcom/google/firebase/installations/f;->m()Lcom/google/firebase/installations/p/d;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/installations/p/d;->i()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="cov">	if-nez v1, :cond_3</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/installations/p/d;->l()Z</span>
+<span class="cov">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	goto :goto_1</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	if-nez p1, :cond_2</span>
+<span class="cov">	iget-object p1, p0, Lcom/google/firebase/installations/f;->d:Lcom/google/firebase/installations/n;</span>
+<span class="exec">	invoke-virtual {p1, v0}, Lcom/google/firebase/installations/n;->f(Lcom/google/firebase/installations/p/d;)Z</span>
+<span class="cov">	move-result p1</span>
+<span class="">	if-eqz p1, :cond_1</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="exec">	return-void</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/installations/f;->g(Lcom/google/firebase/installations/p/d;)Lcom/google/firebase/installations/p/d;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:goto_1</span>
+<span class="">	:cond_3</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/installations/f;->v(Lcom/google/firebase/installations/p/d;)Lcom/google/firebase/installations/p/d;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_2</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catch Lcom/google/firebase/installations/FirebaseInstallationsException; {:try_start_0 .. :try_end_0} :catch_0</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/installations/f;->p(Lcom/google/firebase/installations/p/d;)V</span>
+<span class="">	invoke-direct {p0, v0, p1}, Lcom/google/firebase/installations/f;->z(Lcom/google/firebase/installations/p/d;Lcom/google/firebase/installations/p/d;)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->k()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_4</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/installations/f;->y(Ljava/lang/String;)V</span>
+<span class="">	:cond_4</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->i()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_5</span>
+<span class="">	new-instance p1, Lcom/google/firebase/installations/FirebaseInstallationsException;</span>
+<span class="">	sget-object v0, Lcom/google/firebase/installations/FirebaseInstallationsException$a;->BAD_CONFIG:Lcom/google/firebase/installations/FirebaseInstallationsException$a;</span>
+<span class="">	invoke-direct {p1, v0}, Lcom/google/firebase/installations/FirebaseInstallationsException;-><init>(Lcom/google/firebase/installations/FirebaseInstallationsException$a;)V</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/installations/f;->w(Ljava/lang/Exception;)V</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_5</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->j()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_6</span>
+<span class="">	new-instance p1, Ljava/io/IOException;</span>
+<span class="">	const-string v0, "Installation ID could not be validated with the Firebase servers (maybe it was deleted). Firebase Installations will need to create a new Installation ID and auth token. Please retry your last request."</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/installations/f;->w(Ljava/lang/Exception;)V</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_6</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/installations/f;->x(Lcom/google/firebase/installations/p/d;)V</span>
+<span class="">	:goto_3</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catch_0</span>
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/installations/f;->w(Ljava/lang/Exception;)V</span>
+.end method
+
+<span class="cov">.method private final f(Z)V</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-direct {p0}, Lcom/google/firebase/installations/f;->n()Lcom/google/firebase/installations/p/d;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="">	if-eqz p1, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/p/d;->p()Lcom/google/firebase/installations/p/d;</span>
+<span class="">	move-result-object v0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	invoke-direct {p0, v0}, Lcom/google/firebase/installations/f;->x(Lcom/google/firebase/installations/p/d;)V</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/installations/f;->i:Ljava/util/concurrent/ExecutorService;</span>
+<span class="exec">	invoke-static {p0, p1}, Lcom/google/firebase/installations/e;->a(Lcom/google/firebase/installations/f;Z)Ljava/lang/Runnable;</span>
+<span class="cov">	move-result-object p1</span>
+<span class="cov">	invoke-interface {v0, p1}, Ljava/util/concurrent/ExecutorService;->execute(Ljava/lang/Runnable;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private g(Lcom/google/firebase/installations/p/d;)Lcom/google/firebase/installations/p/d;
+<span class="">	.locals 6</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Lcom/google/firebase/installations/FirebaseInstallationsException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/installations/f;->b:Lcom/google/firebase/installations/q/c;</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/firebase/installations/f;->h()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/firebase/installations/f;->o()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->f()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {v0, v1, v2, v3, v4}, Lcom/google/firebase/installations/q/c;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/google/firebase/installations/q/f;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v1, Lcom/google/firebase/installations/f$b;->b:[I</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/q/f;->b()Lcom/google/firebase/installations/q/f$b;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Enum;->ordinal()I</span>
+<span class="">	move-result v2</span>
+<span class="">	aget v1, v1, v2</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	if-eq v1, v2, :cond_2</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	if-eq v1, v0, :cond_1</span>
+<span class="">	const/4 v0, 0x3</span>
+<span class="">	if-ne v1, v0, :cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	invoke-direct {p0, v0}, Lcom/google/firebase/installations/f;->y(Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->r()Lcom/google/firebase/installations/p/d;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p1, Lcom/google/firebase/installations/FirebaseInstallationsException;</span>
+<span class="">	:cond_0</span>
+<span class="">	sget-object v0, Lcom/google/firebase/installations/FirebaseInstallationsException$a;->UNAVAILABLE:Lcom/google/firebase/installations/FirebaseInstallationsException$a;</span>
+<span class="">	const-string v1, "Firebase Installations Service is unavailable. Please try again later."</span>
+<span class="">	invoke-direct {p1, v1, v0}, Lcom/google/firebase/installations/FirebaseInstallationsException;-><init>(Ljava/lang/String;Lcom/google/firebase/installations/FirebaseInstallationsException$a;)V</span>
+<span class="">	throw p1</span>
+<span class="">	const-string v0, "BAD CONFIG"</span>
+<span class="">	:cond_1</span>
+<span class="">	invoke-virtual {p1, v0}, Lcom/google/firebase/installations/p/d;->q(Ljava/lang/String;)Lcom/google/firebase/installations/p/d;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/q/f;->c()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/q/f;->d()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/installations/f;->d:Lcom/google/firebase/installations/n;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/n;->b()J</span>
+<span class="">	move-result-wide v4</span>
+<span class="">	move-object v0, p1</span>
+<span class="">	invoke-virtual/range {v0 .. v5}, Lcom/google/firebase/installations/p/d;->o(Ljava/lang/String;JJ)Lcom/google/firebase/installations/p/d;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+<span class="cov">.method private declared-synchronized j()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	monitor-enter p0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/installations/f;->j:Ljava/lang/String;</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="cov">	monitor-exit p0</span>
+<span class="exec">	return-object v0</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw v0</span>
+.end method
+
+<span class="cov">.method public static k()Lcom/google/firebase/installations/f;</span>
+<span class="">	.locals 1</span>
+
+<span class="exec">	invoke-static {}, Lcom/google/firebase/c;->i()Lcom/google/firebase/c;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-static {v0}, Lcom/google/firebase/installations/f;->l(Lcom/google/firebase/c;)Lcom/google/firebase/installations/f;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method public static l(Lcom/google/firebase/c;)Lcom/google/firebase/installations/f;</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	if-eqz p0, :cond_0</span>
+<span class="cov">	const/4 v0, 0x1</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	const-string v1, "Null is not a valid value of FirebaseApp."</span>
+<span class="cov">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/r;->b(ZLjava/lang/Object;)V</span>
+<span class="cov">	const-class v0, Lcom/google/firebase/installations/g;</span>
+<span class="exec">	invoke-virtual {p0, v0}, Lcom/google/firebase/c;->f(Ljava/lang/Class;)Ljava/lang/Object;</span>
+<span class="cov">	move-result-object p0</span>
+<span class="cov">	check-cast p0, Lcom/google/firebase/installations/f;</span>
+<span class="exec">	return-object p0</span>
+.end method
+
+<span class="cov">.method private m()Lcom/google/firebase/installations/p/d;</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	sget-object v0, Lcom/google/firebase/installations/f;->m:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	iget-object v1, p0, Lcom/google/firebase/installations/f;->a:Lcom/google/firebase/c;</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/c;->h()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "generatefid.lock"</span>
+<span class="exec">	invoke-static {v1, v2}, Lcom/google/firebase/installations/b;->a(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/installations/b;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	:try_start_1</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_1</span>
+<span class="cov">	iget-object v2, p0, Lcom/google/firebase/installations/f;->c:Lcom/google/firebase/installations/p/c;</span>
+<span class="exec">	invoke-virtual {v2}, Lcom/google/firebase/installations/p/c;->c()Lcom/google/firebase/installations/p/d;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="cov">	if-eqz v1, :cond_0</span>
+<span class="cov">	:try_start_2</span>
+<span class="cov">	invoke-virtual {v1}, Lcom/google/firebase/installations/b;->b()V</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-object v2</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v2</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/installations/b;->b()V</span>
+<span class="">	:cond_1</span>
+<span class="">	throw v2</span>
+<span class="">	:catchall_1</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_1</span>
+<span class="">	throw v1</span>
+.end method
+
+<span class="cov">.method private n()Lcom/google/firebase/installations/p/d;</span>
+<span class="">	.locals 5</span>
+
+<span class="cov">	sget-object v0, Lcom/google/firebase/installations/f;->m:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	iget-object v1, p0, Lcom/google/firebase/installations/f;->a:Lcom/google/firebase/c;</span>
+<span class="exec">	invoke-virtual {v1}, Lcom/google/firebase/c;->h()Landroid/content/Context;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "generatefid.lock"</span>
+<span class="exec">	invoke-static {v1, v2}, Lcom/google/firebase/installations/b;->a(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/installations/b;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	:try_start_1</span>
+<span class="cov">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_1</span>
+<span class="cov">	iget-object v2, p0, Lcom/google/firebase/installations/f;->c:Lcom/google/firebase/installations/p/c;</span>
+<span class="exec">	invoke-virtual {v2}, Lcom/google/firebase/installations/p/c;->c()Lcom/google/firebase/installations/p/d;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="exec">	invoke-virtual {v2}, Lcom/google/firebase/installations/p/d;->j()Z</span>
+<span class="cov">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	invoke-direct {p0, v2}, Lcom/google/firebase/installations/f;->u(Lcom/google/firebase/installations/p/d;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	iget-object v4, p0, Lcom/google/firebase/installations/f;->c:Lcom/google/firebase/installations/p/c;</span>
+<span class="">	invoke-virtual {v2, v3}, Lcom/google/firebase/installations/p/d;->t(Ljava/lang/String;)Lcom/google/firebase/installations/p/d;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v4, v2}, Lcom/google/firebase/installations/p/c;->a(Lcom/google/firebase/installations/p/d;)Lcom/google/firebase/installations/p/d;</span>
+<span class="cov">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	if-eqz v1, :cond_1</span>
+<span class="cov">	:try_start_2</span>
+<span class="cov">	invoke-virtual {v1}, Lcom/google/firebase/installations/b;->b()V</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-object v2</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception v2</span>
+<span class="">	if-eqz v1, :cond_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/installations/b;->b()V</span>
+<span class="">	:cond_2</span>
+<span class="">	throw v2</span>
+<span class="">	:catchall_1</span>
+<span class="">	move-exception v1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_1</span>
+<span class="">	throw v1</span>
+.end method
+
+.method private p(Lcom/google/firebase/installations/p/d;)V
+<span class="">	.locals 3</span>
+
+<span class="">	sget-object v0, Lcom/google/firebase/installations/f;->m:Ljava/lang/Object;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/installations/f;->a:Lcom/google/firebase/c;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/c;->h()Landroid/content/Context;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const-string v2, "generatefid.lock"</span>
+<span class="">	invoke-static {v1, v2}, Lcom/google/firebase/installations/b;->a(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/installations/b;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:try_start_1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_1</span>
+<span class="">	iget-object v2, p0, Lcom/google/firebase/installations/f;->c:Lcom/google/firebase/installations/p/c;</span>
+<span class="">	invoke-virtual {v2, p1}, Lcom/google/firebase/installations/p/c;->a(Lcom/google/firebase/installations/p/d;)Lcom/google/firebase/installations/p/d;</span>
+<span class="">	:try_end_1</span>
+<span class="">	.catchall {:try_start_1 .. :try_end_1} :catchall_0</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	:try_start_2</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/installations/b;->b()V</span>
+<span class="">	:cond_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	if-eqz v1, :cond_1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/installations/b;->b()V</span>
+<span class="">	throw p1</span>
+<span class="">	:cond_1</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p1</span>
+<span class="">	:try_end_2</span>
+<span class="">	.catchall {:try_start_2 .. :try_end_2} :catchall_1</span>
+.end method
+
+<span class="cov">.method static synthetic q(Lcom/google/firebase/installations/f;Z)V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0, p1}, Lcom/google/firebase/installations/f;->e(Z)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method static synthetic r(Lcom/google/firebase/installations/f;)V</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	const/4 v0, 0x0</span>
+<span class="cov">	invoke-direct {p0, v0}, Lcom/google/firebase/installations/f;->f(Z)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method static synthetic s(Lcom/google/firebase/installations/f;Z)V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0, p1}, Lcom/google/firebase/installations/f;->f(Z)V</span>
+.end method
+
+<span class="cov">.method private t()V</span>
+<span class="">	.locals 3</span>
+
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/installations/f;->i()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "Please set your Application ID. A valid Firebase App ID is required to communicate with Firebase server APIs: It identifies your application with Firebase.Please refer to https://firebase.google.com/support/privacy/init-options."</span>
+<span class="cov">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/r;->h(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/installations/f;->o()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v2, "Please set your Project ID. A valid Firebase Project ID is required to communicate with Firebase server APIs: It identifies your application with Firebase.Please refer to https://firebase.google.com/support/privacy/init-options."</span>
+<span class="cov">	invoke-static {v0, v2}, Lcom/google/android/gms/common/internal/r;->h(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/installations/f;->h()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v2, "Please set a valid API key. A Firebase API key is required to communicate with Firebase server APIs: It authenticates your project with Google.Please refer to https://firebase.google.com/support/privacy/init-options."</span>
+<span class="cov">	invoke-static {v0, v2}, Lcom/google/android/gms/common/internal/r;->h(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/installations/f;->i()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-static {v0}, Lcom/google/firebase/installations/n;->h(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/r;->b(ZLjava/lang/Object;)V</span>
+<span class="exec">	invoke-virtual {p0}, Lcom/google/firebase/installations/f;->h()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-static {v0}, Lcom/google/firebase/installations/n;->g(Ljava/lang/String;)Z</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	invoke-static {v0, v2}, Lcom/google/android/gms/common/internal/r;->b(ZLjava/lang/Object;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+.method private u(Lcom/google/firebase/installations/p/d;)Ljava/lang/String;
+<span class="">	.locals 2</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/installations/f;->a:Lcom/google/firebase/c;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/c;->k()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "CHIME_ANDROID_SDK"</span>
+<span class="">	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-nez v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/installations/f;->a:Lcom/google/firebase/c;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/c;->s()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->m()Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_2</span>
+<span class="">	:cond_1</span>
+<span class="">	iget-object p1, p0, Lcom/google/firebase/installations/f;->f:Lcom/google/firebase/installations/l;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/l;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	iget-object p1, p0, Lcom/google/firebase/installations/f;->e:Lcom/google/firebase/installations/p/b;</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/b;->f()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_3</span>
+<span class="">	iget-object p1, p0, Lcom/google/firebase/installations/f;->f:Lcom/google/firebase/installations/l;</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/l;->a()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method private v(Lcom/google/firebase/installations/p/d;)Lcom/google/firebase/installations/p/d;
+<span class="">	.locals 10</span>
+<span class="">	.annotation system Ldalvik/annotation/Throws;</span>
+<span class="">	value = {</span>
+<span class="">	Lcom/google/firebase/installations/FirebaseInstallationsException;</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Ljava/lang/String;->length()I</span>
+<span class="">	move-result v0</span>
+<span class="">	const/16 v1, 0xb</span>
+<span class="">	if-ne v0, v1, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/installations/f;->e:Lcom/google/firebase/installations/p/b;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/p/b;->i()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	move-object v6, v0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/installations/f;->b:Lcom/google/firebase/installations/q/c;</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/firebase/installations/f;->h()Ljava/lang/String;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/firebase/installations/f;->o()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	invoke-virtual {p0}, Lcom/google/firebase/installations/f;->i()Ljava/lang/String;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	invoke-virtual/range {v1 .. v6}, Lcom/google/firebase/installations/q/c;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/google/firebase/installations/q/d;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sget-object v1, Lcom/google/firebase/installations/f$b;->a:[I</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/q/d;->e()Lcom/google/firebase/installations/q/d$b;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	invoke-virtual {v2}, Ljava/lang/Enum;->ordinal()I</span>
+<span class="">	move-result v2</span>
+<span class="">	aget v1, v1, v2</span>
+<span class="">	const/4 v2, 0x1</span>
+<span class="">	if-eq v1, v2, :cond_2</span>
+<span class="">	const/4 v0, 0x2</span>
+<span class="">	if-ne v1, v0, :cond_1</span>
+<span class="">	const-string v0, "BAD CONFIG"</span>
+<span class="">	invoke-virtual {p1, v0}, Lcom/google/firebase/installations/p/d;->q(Ljava/lang/String;)Lcom/google/firebase/installations/p/d;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-instance p1, Lcom/google/firebase/installations/FirebaseInstallationsException;</span>
+<span class="">	:cond_1</span>
+<span class="">	sget-object v0, Lcom/google/firebase/installations/FirebaseInstallationsException$a;->UNAVAILABLE:Lcom/google/firebase/installations/FirebaseInstallationsException$a;</span>
+<span class="">	const-string v1, "Firebase Installations Service is unavailable. Please try again later."</span>
+<span class="">	invoke-direct {p1, v1, v0}, Lcom/google/firebase/installations/FirebaseInstallationsException;-><init>(Ljava/lang/String;Lcom/google/firebase/installations/FirebaseInstallationsException$a;)V</span>
+<span class="">	throw p1</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/q/d;->c()Ljava/lang/String;</span>
+<span class="">	:cond_2</span>
+<span class="">	move-result-object v3</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/q/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v4</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/installations/f;->d:Lcom/google/firebase/installations/n;</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/installations/n;->b()J</span>
+<span class="">	move-result-wide v5</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/q/d;->b()Lcom/google/firebase/installations/q/f;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/google/firebase/installations/q/f;->c()Ljava/lang/String;</span>
+<span class="">	move-result-object v7</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/q/d;->b()Lcom/google/firebase/installations/q/f;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/firebase/installations/q/f;->d()J</span>
+<span class="">	move-result-wide v8</span>
+<span class="">	move-object v2, p1</span>
+<span class="">	invoke-virtual/range {v2 .. v9}, Lcom/google/firebase/installations/p/d;->s(Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;J)Lcom/google/firebase/installations/p/d;</span>
+<span class="">	move-result-object p1</span>
+.end method
+
+.method private w(Ljava/lang/Exception;)V
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/installations/f;->g:Ljava/lang/Object;</span>
+<span class="">	monitor-enter v0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/installations/f;->l:Ljava/util/List;</span>
+<span class="">	invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Lcom/google/firebase/installations/m;</span>
+<span class="">	invoke-interface {v2, p1}, Lcom/google/firebase/installations/m;->a(Ljava/lang/Exception;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->remove()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	throw p1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+.end method
+
+<span class="cov">.method private x(Lcom/google/firebase/installations/p/d;)V</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/installations/f;->g:Ljava/lang/Object;</span>
+<span class="cov">	monitor-enter v0</span>
+<span class="cov">	:try_start_0</span>
+<span class="cov">	iget-object v1, p0, Lcom/google/firebase/installations/f;->l:Ljava/util/List;</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	:goto_0</span>
+<span class="cov">	:cond_0</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_1</span>
+<span class="exec">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	check-cast v2, Lcom/google/firebase/installations/m;</span>
+<span class="exec">	invoke-interface {v2, p1}, Lcom/google/firebase/installations/m;->b(Lcom/google/firebase/installations/p/d;)Z</span>
+<span class="cov">	move-result v2</span>
+<span class="cov">	if-eqz v2, :cond_0</span>
+<span class="cov">	invoke-interface {v1}, Ljava/util/Iterator;->remove()V</span>
+<span class="">	goto :goto_0</span>
+<span class="cov">	:cond_1</span>
+<span class="cov">	monitor-exit v0</span>
+<span class="exec">	return-void</span>
+<span class="">	:catchall_0</span>
+<span class="">	move-exception p1</span>
+<span class="">	monitor-exit v0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method private declared-synchronized y(Ljava/lang/String;)V
+<span class="">	.locals 0</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iput-object p1, p0, Lcom/google/firebase/installations/f;->j:Ljava/lang/String;</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method private declared-synchronized z(Lcom/google/firebase/installations/p/d;Lcom/google/firebase/installations/p/d;)V
+<span class="">	.locals 2</span>
+
+<span class="">	monitor-enter p0</span>
+<span class="">	:try_start_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/firebase/installations/f;->k:Ljava/util/Set;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Set;->size()I</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Lcom/google/firebase/installations/p/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p2}, Lcom/google/firebase/installations/p/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z</span>
+<span class="">	move-result p1</span>
+<span class="">	if-nez p1, :cond_0</span>
+<span class="">	iget-object p1, p0, Lcom/google/firebase/installations/f;->k:Ljava/util/Set;</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Lcom/google/firebase/installations/o/a;</span>
+<span class="">	invoke-virtual {p2}, Lcom/google/firebase/installations/p/d;->d()Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-interface {v0, v1}, Lcom/google/firebase/installations/o/a;->a(Ljava/lang/String;)V</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	move-exception p1</span>
+<span class="">	:catchall_0</span>
+<span class="">	monitor-exit p0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public a(Z)Lcom/google/android/gms/tasks/g;
+<span class="">	.locals 2</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"(Z)",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Lcom/google/firebase/installations/k;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/installations/f;->t()V</span>
+<span class="">	invoke-direct {p0}, Lcom/google/firebase/installations/f;->b()Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/installations/f;->h:Ljava/util/concurrent/ExecutorService;</span>
+<span class="">	invoke-static {p0, p1}, Lcom/google/firebase/installations/d;->a(Lcom/google/firebase/installations/f;Z)Ljava/lang/Runnable;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {v1, p1}, Ljava/util/concurrent/ExecutorService;->execute(Ljava/lang/Runnable;)V</span>
+.end method
+
+<span class="cov">.method public getId()Lcom/google/android/gms/tasks/g;</span>
+<span class="">	.locals 3</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Lcom/google/android/gms/tasks/g<",</span>
+<span class="">	"Ljava/lang/String;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="cov">	invoke-direct {p0}, Lcom/google/firebase/installations/f;->t()V</span>
+<span class="exec">	invoke-direct {p0}, Lcom/google/firebase/installations/f;->j()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-static {v0}, Lcom/google/android/gms/tasks/j;->e(Ljava/lang/Object;)Lcom/google/android/gms/tasks/g;</span>
+<span class="">	move-result-object v0</span>
+<span class="exec">	invoke-direct {p0}, Lcom/google/firebase/installations/f;->c()Lcom/google/android/gms/tasks/g;</span>
+<span class="cov">	:cond_0</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	iget-object v1, p0, Lcom/google/firebase/installations/f;->h:Ljava/util/concurrent/ExecutorService;</span>
+<span class="exec">	invoke-static {p0}, Lcom/google/firebase/installations/c;->a(Lcom/google/firebase/installations/f;)Ljava/lang/Runnable;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	invoke-interface {v1, v2}, Ljava/util/concurrent/ExecutorService;->execute(Ljava/lang/Runnable;)V</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  h()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/installations/f;->a:Lcom/google/firebase/c;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/c;->l()Lcom/google/firebase/i;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/i;->b()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  i()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/installations/f;->a:Lcom/google/firebase/c;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/c;->l()Lcom/google/firebase/i;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/i;->c()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method
+
+<span class="cov">.method  o()Ljava/lang/String;</span>
+<span class="">	.locals 1</span>
+
+<span class="cov">	iget-object v0, p0, Lcom/google/firebase/installations/f;->a:Lcom/google/firebase/c;</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/c;->l()Lcom/google/firebase/i;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	invoke-virtual {v0}, Lcom/google/firebase/i;->e()Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="exec">	return-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

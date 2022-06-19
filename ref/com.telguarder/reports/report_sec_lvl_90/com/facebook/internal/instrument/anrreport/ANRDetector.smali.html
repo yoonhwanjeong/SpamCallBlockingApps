@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.internal.instrument.anrreport</a></li>
+        <li><i class="ico ico-class"></i> ANRDetector.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/internal/instrument/anrreport/ANRDetector;
+.super Ljava/lang/Object;
+.source "ANRDetector.kt"
+
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+value = "SMAP\nANRDetector.kt\nKotlin\n*S Kotlin\n*F\n+ 1 ANRDetector.kt\ncom/facebook/internal/instrument/anrreport/ANRDetector\n+ 2 _Collections.kt\nkotlin/collections/CollectionsKt___CollectionsKt\n*L\n1#1,79:1\n1849#2,2:80\n*S KotlinDebug\n*F\n+ 1 ANRDetector.kt\ncom/facebook/internal/instrument/anrreport/ANRDetector\n*L\n57#1:80,2\n*E\n"
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u00006\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\u0008\u0002\n\u0002\u0010\u0008\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\u0008\u00c7\u0002\u0018\u00002\u00020\u0001B\u0007\u0008\u0002\u00a2\u0006\u0002\u0010\u0002J\u0012\u0010\r\u001a\u00020\u000e2\u0008\u0010\u000f\u001a\u0004\u0018\u00010\u0010H\u0007J\u0008\u0010\u0011\u001a\u00020\u000eH\u0007R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u0008\u001a\u0004\u0018\u00010\tX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0016\u0010\n\u001a\n \u000c*\u0004\u0018\u00010\u000b0\u000bX\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u0012"
+}
+d2 = {
+"Lcom/facebook/internal/instrument/anrreport/ANRDetector;",
+"",
+"()V",
+"DETECTION_INTERVAL_IN_MS",
+"",
+"anrDetectorRunnable",
+"Ljava/lang/Runnable;",
+"myUid",
+"previousStackTrace",
+"",
+"scheduledExecutorService",
+"Ljava/util/concurrent/ScheduledExecutorService;",
+"kotlin.jvm.PlatformType",
+"checkProcessError",
+"",
+"am",
+"Landroid/app/ActivityManager;",
+"start",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+.field private static final DETECTION_INTERVAL_IN_MS:I = 0x1f4
+.field public static final INSTANCE:Lcom/facebook/internal/instrument/anrreport/ANRDetector;
+.field private static final anrDetectorRunnable:Ljava/lang/Runnable;
+.field private static final myUid:I
+.field private static previousStackTrace:Ljava/lang/String;
+.field private static final scheduledExecutorService:Ljava/util/concurrent/ScheduledExecutorService;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/facebook/internal/instrument/anrreport/ANRDetector;</span>
+<span class="">	invoke-direct {v0}, Lcom/facebook/internal/instrument/anrreport/ANRDetector;-><init>()V</span>
+<span class="">	sput-object v0, Lcom/facebook/internal/instrument/anrreport/ANRDetector;->INSTANCE:Lcom/facebook/internal/instrument/anrreport/ANRDetector;</span>
+<span class="">	invoke-static {}, Landroid/os/Process;->myUid()I</span>
+<span class="">	move-result v0</span>
+<span class="">	sput v0, Lcom/facebook/internal/instrument/anrreport/ANRDetector;->myUid:I</span>
+<span class="">	invoke-static {}, Ljava/util/concurrent/Executors;->newSingleThreadScheduledExecutor()Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sput-object v0, Lcom/facebook/internal/instrument/anrreport/ANRDetector;->scheduledExecutorService:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	const-string v0, ""</span>
+<span class="">	sput-object v0, Lcom/facebook/internal/instrument/anrreport/ANRDetector;->previousStackTrace:Ljava/lang/String;</span>
+<span class="">	sget-object v0, Lcom/facebook/internal/instrument/anrreport/ANRDetector$anrDetectorRunnable$1;->INSTANCE:Lcom/facebook/internal/instrument/anrreport/ANRDetector$anrDetectorRunnable$1;</span>
+<span class="">	check-cast v0, Ljava/lang/Runnable;</span>
+<span class="">	sput-object v0, Lcom/facebook/internal/instrument/anrreport/ANRDetector;->anrDetectorRunnable:Ljava/lang/Runnable;</span>
+.end method
+
+.method private constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+.end method
+
+.method public static final checkProcessError(Landroid/app/ActivityManager;)V
+<span class="">	.locals 5</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/internal/instrument/anrreport/ANRDetector;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	if-eqz p0, :cond_3</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {p0}, Landroid/app/ActivityManager;->getProcessesInErrorState()Ljava/util/List;</span>
+<span class="">	:try_start_0</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_3</span>
+<span class="">	check-cast p0, Ljava/lang/Iterable;</span>
+<span class="">	invoke-interface {p0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_3</span>
+<span class="">	invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	check-cast v1, Landroid/app/ActivityManager$ProcessErrorStateInfo;</span>
+<span class="">	iget v2, v1, Landroid/app/ActivityManager$ProcessErrorStateInfo;->condition:I</span>
+<span class="">	const/4 v3, 0x2</span>
+<span class="">	if-ne v2, v3, :cond_1</span>
+<span class="">	iget v2, v1, Landroid/app/ActivityManager$ProcessErrorStateInfo;->uid:I</span>
+<span class="">	sget v3, Lcom/facebook/internal/instrument/anrreport/ANRDetector;->myUid:I</span>
+<span class="">	if-ne v2, v3, :cond_1</span>
+<span class="">	invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "Looper.getMainLooper()"</span>
+<span class="">	invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-virtual {v2}, Landroid/os/Looper;->getThread()Ljava/lang/Thread;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	const-string v3, "Looper.getMainLooper().thread"</span>
+<span class="">	invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-static {v2}, Lcom/facebook/internal/instrument/InstrumentUtility;->getStackTrace(Ljava/lang/Thread;)Ljava/lang/String;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	sget-object v4, Lcom/facebook/internal/instrument/anrreport/ANRDetector;->previousStackTrace:Ljava/lang/String;</span>
+<span class="">	invoke-static {v3, v4}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z</span>
+<span class="">	move-result v4</span>
+<span class="">	if-nez v4, :cond_1</span>
+<span class="">	invoke-static {v2}, Lcom/facebook/internal/instrument/InstrumentUtility;->isSDKRelatedThread(Ljava/lang/Thread;)Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-nez v2, :cond_2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	sput-object v3, Lcom/facebook/internal/instrument/anrreport/ANRDetector;->previousStackTrace:Ljava/lang/String;</span>
+<span class="">	:cond_2</span>
+<span class="">	iget-object v1, v1, Landroid/app/ActivityManager$ProcessErrorStateInfo;->shortMsg:Ljava/lang/String;</span>
+<span class="">	invoke-static {v1, v3}, Lcom/facebook/internal/instrument/InstrumentData$Builder;->build(Ljava/lang/String;Ljava/lang/String;)Lcom/facebook/internal/instrument/InstrumentData;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v1}, Lcom/facebook/internal/instrument/InstrumentData;->save()V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	move-exception p0</span>
+<span class="">	:catchall_0</span>
+<span class="">	invoke-static {p0, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:cond_3</span>
+.end method
+
+.method public static final start()V
+<span class="">	.locals 9</span>
+<span class="">	.annotation runtime Lkotlin/jvm/JvmStatic;</span>
+<span class="">	.end annotation</span>
+
+<span class="">	const-class v0, Lcom/facebook/internal/instrument/anrreport/ANRDetector;</span>
+<span class="">	invoke-static {v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->isObjectCrashing(Ljava/lang/Object;)Z</span>
+<span class="">	move-result v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	sget-object v2, Lcom/facebook/internal/instrument/anrreport/ANRDetector;->scheduledExecutorService:Ljava/util/concurrent/ScheduledExecutorService;</span>
+<span class="">	:cond_0</span>
+<span class="">	:try_start_0</span>
+<span class="">	sget-object v3, Lcom/facebook/internal/instrument/anrreport/ANRDetector;->anrDetectorRunnable:Ljava/lang/Runnable;</span>
+<span class="">	const-wide/16 v4, 0x0</span>
+<span class="">	const/16 v1, 0x1f4</span>
+<span class="">	int-to-long v6, v1</span>
+<span class="">	sget-object v8, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-interface/range {v2 .. v8}, Ljava/util/concurrent/ScheduledExecutorService;->scheduleAtFixedRate(Ljava/lang/Runnable;JJLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;</span>
+<span class="">	move-exception v1</span>
+<span class="">	:try_end_0</span>
+<span class="">	.catchall {:try_start_0 .. :try_end_0} :catchall_0</span>
+<span class="">	invoke-static {v1, v0}, Lcom/facebook/internal/instrument/crashshield/CrashShieldHandler;->handleThrowable(Ljava/lang/Throwable;Ljava/lang/Object;)V</span>
+<span class="">	:catchall_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

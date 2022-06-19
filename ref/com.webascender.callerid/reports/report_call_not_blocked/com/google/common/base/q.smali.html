@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.common.base</a></li>
+        <li><i class="ico ico-class"></i> q.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/google/common/base/q;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private final a:Lcom/google/common/base/u;
+.field private b:Z
+.field private c:J
+.field private d:J
+
+
+.method constructor <init>()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	invoke-static {}, Lcom/google/common/base/u;->b()Lcom/google/common/base/u;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	iput-object v0, p0, Lcom/google/common/base/q;->a:Lcom/google/common/base/u;</span>
+.end method
+
+.method private static a(Ljava/util/concurrent/TimeUnit;)Ljava/lang/String;
+<span class="">	.locals 1</span>
+
+<span class="">	sget-object v0, Lcom/google/common/base/q$a;->a:[I</span>
+<span class="">	invoke-virtual {p0}, Ljava/util/concurrent/TimeUnit;->ordinal()I</span>
+<span class="">	move-result p0</span>
+<span class="">	aget p0, v0, p0</span>
+<span class="">	packed-switch p0, :pswitch_data_0</span>
+<span class="">	new-instance p0, Ljava/lang/AssertionError;</span>
+<span class="">	invoke-direct {p0}, Ljava/lang/AssertionError;-><init>()V</span>
+<span class="">	throw p0</span>
+<span class="">	:pswitch_0</span>
+<span class="">	const-string p0, "d"</span>
+<span class="">	const-string p0, "h"</span>
+<span class="">	:pswitch_1</span>
+<span class="">	const-string p0, "min"</span>
+<span class="">	const-string p0, "s"</span>
+<span class="">	:pswitch_2</span>
+<span class="">	const-string p0, "ms"</span>
+<span class="">	const-string p0, "\u03bcs"</span>
+<span class="">	:pswitch_3</span>
+<span class="">	const-string p0, "ns"</span>
+<span class="">	:pswitch_4</span>
+<span class="">	:pswitch_5</span>
+<span class="">	:pswitch_6</span>
+<span class="">	:pswitch_data_0</span>
+<span class="">	.packed-switch 0x1</span>
+<span class="">	:pswitch_6</span>
+<span class="">	:pswitch_5</span>
+<span class="">	:pswitch_4</span>
+<span class="">	:pswitch_3</span>
+<span class="">	:pswitch_2</span>
+<span class="">	:pswitch_1</span>
+<span class="">	:pswitch_0</span>
+<span class="">	.end packed-switch</span>
+.end method
+
+.method private static b(J)Ljava/util/concurrent/TimeUnit;
+<span class="">	.locals 7</span>
+
+<span class="">	sget-object v0, Ljava/util/concurrent/TimeUnit;->DAYS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	sget-object v1, Ljava/util/concurrent/TimeUnit;->NANOSECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-virtual {v0, p0, p1, v1}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	const-wide/16 v4, 0x0</span>
+<span class="">	cmp-long v6, v2, v4</span>
+<span class="">	if-lez v6, :cond_0</span>
+<span class="">	sget-object v0, Ljava/util/concurrent/TimeUnit;->HOURS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0, p0, p1, v1}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	cmp-long v6, v2, v4</span>
+<span class="">	if-lez v6, :cond_1</span>
+<span class="">	sget-object v0, Ljava/util/concurrent/TimeUnit;->MINUTES:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-virtual {v0, p0, p1, v1}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J</span>
+<span class="">	:cond_1</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	cmp-long v6, v2, v4</span>
+<span class="">	if-lez v6, :cond_2</span>
+<span class="">	sget-object v0, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-virtual {v0, p0, p1, v1}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	:cond_2</span>
+<span class="">	cmp-long v6, v2, v4</span>
+<span class="">	if-lez v6, :cond_3</span>
+<span class="">	sget-object v0, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-virtual {v0, p0, p1, v1}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	cmp-long v6, v2, v4</span>
+<span class="">	:cond_3</span>
+<span class="">	if-lez v6, :cond_4</span>
+<span class="">	sget-object v0, Ljava/util/concurrent/TimeUnit;->MICROSECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-virtual {v0, p0, p1, v1}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J</span>
+<span class="">	move-result-wide p0</span>
+<span class="">	cmp-long v2, p0, v4</span>
+<span class="">	if-lez v2, :cond_5</span>
+<span class="">	:cond_4</span>
+<span class="">	:cond_5</span>
+.end method
+
+.method public static c()Lcom/google/common/base/q;
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/google/common/base/q;</span>
+<span class="">	invoke-direct {v0}, Lcom/google/common/base/q;-><init>()V</span>
+.end method
+
+.method private e()J
+<span class="">	.locals 4</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/google/common/base/q;->b:Z</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/base/q;->a:Lcom/google/common/base/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/common/base/u;->a()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	iget-wide v2, p0, Lcom/google/common/base/q;->d:J</span>
+<span class="">	sub-long/2addr v0, v2</span>
+<span class="">	iget-wide v2, p0, Lcom/google/common/base/q;->c:J</span>
+<span class="">	add-long/2addr v0, v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	iget-wide v0, p0, Lcom/google/common/base/q;->c:J</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method public d(Ljava/util/concurrent/TimeUnit;)J
+<span class="">	.locals 3</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/common/base/q;->e()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	sget-object v2, Ljava/util/concurrent/TimeUnit;->NANOSECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	invoke-virtual {p1, v0, v1, v2}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J</span>
+<span class="">	move-result-wide v0</span>
+.end method
+
+.method public f()Lcom/google/common/base/q;
+<span class="">	.locals 2</span>
+
+<span class="">	const-wide/16 v0, 0x0</span>
+<span class="">	iput-wide v0, p0, Lcom/google/common/base/q;->c:J</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput-boolean v0, p0, Lcom/google/common/base/q;->b:Z</span>
+.end method
+
+.method public g()Lcom/google/common/base/q;
+<span class="">	.locals 3</span>
+
+<span class="">	iget-boolean v0, p0, Lcom/google/common/base/q;->b:Z</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	xor-int/2addr v0, v1</span>
+<span class="">	const-string v2, "This stopwatch is already running."</span>
+<span class="">	invoke-static {v0, v2}, Lcom/google/common/base/m;->v(ZLjava/lang/Object;)V</span>
+<span class="">	iput-boolean v1, p0, Lcom/google/common/base/q;->b:Z</span>
+<span class="">	iget-object v0, p0, Lcom/google/common/base/q;->a:Lcom/google/common/base/u;</span>
+<span class="">	invoke-virtual {v0}, Lcom/google/common/base/u;->a()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	iput-wide v0, p0, Lcom/google/common/base/q;->d:J</span>
+.end method
+
+.method public toString()Ljava/lang/String;
+<span class="">	.locals 6</span>
+
+<span class="">	invoke-direct {p0}, Lcom/google/common/base/q;->e()J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/common/base/q;->b(J)Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	long-to-double v0, v0</span>
+<span class="">	sget-object v3, Ljava/util/concurrent/TimeUnit;->NANOSECONDS:Ljava/util/concurrent/TimeUnit;</span>
+<span class="">	const-wide/16 v4, 0x1</span>
+<span class="">	invoke-virtual {v3, v4, v5, v2}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J</span>
+<span class="">	move-result-wide v3</span>
+<span class="">	long-to-double v3, v3</span>
+<span class="">	div-double/2addr v0, v3</span>
+<span class="">	new-instance v3, Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V</span>
+<span class="">	invoke-static {v0, v1}, Lcom/google/common/base/l;->b(D)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	const-string v0, " "</span>
+<span class="">	invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-static {v2}, Lcom/google/common/base/q;->a(Ljava/util/concurrent/TimeUnit;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+<span class="">	invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.google.firebase.inappmessaging.display.internal.layout.b</a></li>
+        <li><i class="ico ico-class"></i> c.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private a:Ljava/util/List;
+.annotation system Ldalvik/annotation/Signature;
+value = {
+"Ljava/util/List<",
+"Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;",
+">;"
+}
+.end annotation
+.end field
+.field private b:I
+.field private c:I
+
+
+.method public constructor <init>()V
+<span class="">	.locals 1</span>
+
+<span class="">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object v0, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->a:Ljava/util/List;</span>
+<span class="">	const/4 v0, 0x0</span>
+<span class="">	iput v0, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->b:I</span>
+<span class="">	iput v0, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->c:I</span>
+.end method
+
+.method public a(Landroid/view/View;Z)V
+<span class="">	.locals 1</span>
+
+<span class="">	new-instance v0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;</span>
+<span class="">	invoke-direct {v0, p1, p2}, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;-><init>(Landroid/view/View;Z)V</span>
+<span class="">	iget p1, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->b:I</span>
+<span class="">	iget p2, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->c:I</span>
+<span class="">	invoke-virtual {v0, p1, p2}, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;->f(II)V</span>
+<span class="">	iget-object p1, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {p1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+.end method
+
+.method public b(I)V
+<span class="">	.locals 9</span>
+
+<span class="">	new-instance v0, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iget-object v1, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;->d()Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_0</span>
+<span class="">	invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+<span class="">	new-instance v1, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c$a;</span>
+<span class="">	invoke-direct {v1, p0}, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c$a;-><init>(Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;)V</span>
+<span class="">	invoke-static {v0, v1}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	:goto_1</span>
+<span class="">	invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-eqz v3, :cond_2</span>
+<span class="">	invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v3</span>
+<span class="">	check-cast v3, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;</span>
+<span class="">	invoke-virtual {v3}, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;->a()I</span>
+<span class="">	move-result v3</span>
+<span class="">	add-int/2addr v1, v3</span>
+<span class="">	goto :goto_1</span>
+<span class="">	:cond_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->size()I</span>
+<span class="">	move-result v2</span>
+<span class="">	const/4 v3, 0x6</span>
+<span class="">	if-ge v2, v3, :cond_6</span>
+<span class="">	const v3, 0x3e4ccccd    # 0.2f</span>
+<span class="">	const/high16 v4, 0x3f800000    # 1.0f</span>
+<span class="">	add-int/lit8 v2, v2, -0x1</span>
+<span class="">	int-to-float v2, v2</span>
+<span class="">	mul-float v2, v2, v3</span>
+<span class="">	sub-float/2addr v4, v2</span>
+<span class="">	const-string v2, "VVGM (minFrac, maxFrac)"</span>
+<span class="">	invoke-static {v2, v3, v4}, Lcom/google/firebase/inappmessaging/display/internal/k;->d(Ljava/lang/String;FF)V</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	:goto_2</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v5</span>
+<span class="">	if-eqz v5, :cond_5</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v5</span>
+<span class="">	check-cast v5, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;</span>
+<span class="">	invoke-virtual {v5}, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;->a()I</span>
+<span class="">	move-result v6</span>
+<span class="">	int-to-float v6, v6</span>
+<span class="">	int-to-float v7, v1</span>
+<span class="">	div-float/2addr v6, v7</span>
+<span class="">	cmpl-float v7, v6, v4</span>
+<span class="">	if-lez v7, :cond_3</span>
+<span class="">	sub-float v7, v6, v4</span>
+<span class="">	add-float/2addr v2, v7</span>
+<span class="">	move v7, v4</span>
+<span class="">	goto :goto_3</span>
+<span class="">	:cond_3</span>
+<span class="">	move v7, v6</span>
+<span class="">	:goto_3</span>
+<span class="">	cmpg-float v8, v6, v3</span>
+<span class="">	if-gez v8, :cond_4</span>
+<span class="">	sub-float v7, v3, v6</span>
+<span class="">	invoke-static {v7, v2}, Ljava/lang/Math;->min(FF)F</span>
+<span class="">	move-result v7</span>
+<span class="">	add-float v8, v6, v7</span>
+<span class="">	sub-float/2addr v2, v7</span>
+<span class="">	move v7, v8</span>
+<span class="">	:cond_4</span>
+<span class="">	const-string v8, "\t(desired, granted)"</span>
+<span class="">	invoke-static {v8, v6, v7}, Lcom/google/firebase/inappmessaging/display/internal/k;->d(Ljava/lang/String;FF)V</span>
+<span class="">	int-to-float v6, p1</span>
+<span class="">	mul-float v7, v7, v6</span>
+<span class="">	float-to-int v6, v7</span>
+<span class="">	iget v7, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->b:I</span>
+<span class="">	invoke-virtual {v5, v7, v6}, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;->f(II)V</span>
+<span class="">	goto :goto_2</span>
+<span class="">	:cond_5</span>
+<span class="">	new-instance p1, Ljava/lang/IllegalStateException;</span>
+<span class="">	:cond_6</span>
+<span class="">	const-string v0, "VerticalViewGroupMeasure only supports up to 5 children"</span>
+<span class="">	invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public c()I
+<span class="">	.locals 4</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_1</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;->d()Z</span>
+<span class="">	move-result v3</span>
+<span class="">	if-nez v3, :cond_0</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;->a()I</span>
+<span class="">	move-result v2</span>
+<span class="">	add-int/2addr v1, v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_1</span>
+.end method
+
+.method public d()I
+<span class="">	.locals 3</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->a:Ljava/util/List;</span>
+<span class="">	invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	:goto_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z</span>
+<span class="">	move-result v2</span>
+<span class="">	if-eqz v2, :cond_0</span>
+<span class="">	invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;</span>
+<span class="">	move-result-object v2</span>
+<span class="">	check-cast v2, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;</span>
+<span class="">	invoke-virtual {v2}, Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;->a()I</span>
+<span class="">	move-result v2</span>
+<span class="">	add-int/2addr v1, v2</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public e()Ljava/util/List;
+<span class="">	.locals 1</span>
+<span class="">	.annotation system Ldalvik/annotation/Signature;</span>
+<span class="">	value = {</span>
+<span class="">	"()",</span>
+<span class="">	"Ljava/util/List<",</span>
+<span class="">	"Lcom/google/firebase/inappmessaging/display/internal/layout/b/d;",</span>
+<span class="">	">;"</span>
+<span class="">	}</span>
+<span class="">	.end annotation</span>
+
+<span class="">	iget-object v0, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->a:Ljava/util/List;</span>
+.end method
+
+.method public f(II)V
+<span class="">	.locals 0</span>
+
+<span class="">	iput p1, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->b:I</span>
+<span class="">	iput p2, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->c:I</span>
+<span class="">	new-instance p1, Ljava/util/ArrayList;</span>
+<span class="">	invoke-direct {p1}, Ljava/util/ArrayList;-><init>()V</span>
+<span class="">	iput-object p1, p0, Lcom/google/firebase/inappmessaging/display/internal/layout/b/c;->a:Ljava/util/List;</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../../../.resources/report.js"></script>
+</body>
+</html>

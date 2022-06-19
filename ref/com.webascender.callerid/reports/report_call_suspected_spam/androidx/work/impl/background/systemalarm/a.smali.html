@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">androidx.work.impl.background.systemalarm</a></li>
+        <li><i class="ico ico-class"></i> a.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class  Landroidx/work/impl/background/systemalarm/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+.field private static final a:Ljava/lang/String;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "Alarms"</span>
+<span class="">	invoke-static {v0}, Landroidx/work/m;->f(Ljava/lang/String;)Ljava/lang/String;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	sput-object v0, Landroidx/work/impl/background/systemalarm/a;->a:Ljava/lang/String;</span>
+.end method
+
+.method public static a(Landroid/content/Context;Landroidx/work/impl/j;Ljava/lang/String;)V
+<span class="">	.locals 4</span>
+
+<span class="">	invoke-virtual {p1}, Landroidx/work/impl/j;->v()Landroidx/work/impl/WorkDatabase;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroidx/work/impl/WorkDatabase;->y()Landroidx/work/impl/n/h;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-interface {p1, p2}, Landroidx/work/impl/n/h;->c(Ljava/lang/String;)Landroidx/work/impl/n/g;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	iget v0, v0, Landroidx/work/impl/n/g;->b:I</span>
+<span class="">	invoke-static {p0, p2, v0}, Landroidx/work/impl/background/systemalarm/a;->b(Landroid/content/Context;Ljava/lang/String;I)V</span>
+<span class="">	invoke-static {}, Landroidx/work/m;->c()Landroidx/work/m;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	sget-object v0, Landroidx/work/impl/background/systemalarm/a;->a:Ljava/lang/String;</span>
+<span class="">	const/4 v1, 0x1</span>
+<span class="">	new-array v1, v1, [Ljava/lang/Object;</span>
+<span class="">	const/4 v2, 0x0</span>
+<span class="">	aput-object p2, v1, v2</span>
+<span class="">	const-string v3, "Removing SystemIdInfo for workSpecId (%s)"</span>
+<span class="">	invoke-static {v3, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	new-array v2, v2, [Ljava/lang/Throwable;</span>
+<span class="">	invoke-virtual {p0, v0, v1, v2}, Landroidx/work/m;->a(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Throwable;)V</span>
+<span class="">	invoke-interface {p1, p2}, Landroidx/work/impl/n/h;->d(Ljava/lang/String;)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method private static b(Landroid/content/Context;Ljava/lang/String;I)V
+<span class="">	.locals 5</span>
+
+<span class="">	const-string v0, "alarm"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroid/app/AlarmManager;</span>
+<span class="">	invoke-static {p0, p1}, Landroidx/work/impl/background/systemalarm/b;->b(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	const/high16 v2, 0x20000000</span>
+<span class="">	invoke-static {p0, p2, v1, v2}, Landroid/app/PendingIntent;->getService(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz p0, :cond_0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-static {}, Landroidx/work/m;->c()Landroidx/work/m;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	sget-object v2, Landroidx/work/impl/background/systemalarm/a;->a:Ljava/lang/String;</span>
+<span class="">	const/4 v3, 0x2</span>
+<span class="">	new-array v3, v3, [Ljava/lang/Object;</span>
+<span class="">	const/4 v4, 0x0</span>
+<span class="">	aput-object p1, v3, v4</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;</span>
+<span class="">	move-result-object p2</span>
+<span class="">	aput-object p2, v3, p1</span>
+<span class="">	const-string p1, "Cancelling existing alarm with (workSpecId, systemId) (%s, %s)"</span>
+<span class="">	invoke-static {p1, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	new-array p2, v4, [Ljava/lang/Throwable;</span>
+<span class="">	invoke-virtual {v1, v2, p1, p2}, Landroidx/work/m;->a(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Throwable;)V</span>
+<span class="">	invoke-virtual {v0, p0}, Landroid/app/AlarmManager;->cancel(Landroid/app/PendingIntent;)V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public static c(Landroid/content/Context;Landroidx/work/impl/j;Ljava/lang/String;J)V
+<span class="">	.locals 2</span>
+
+<span class="">	invoke-virtual {p1}, Landroidx/work/impl/j;->v()Landroidx/work/impl/WorkDatabase;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	invoke-virtual {p1}, Landroidx/work/impl/WorkDatabase;->y()Landroidx/work/impl/n/h;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0, p2}, Landroidx/work/impl/n/h;->c(Ljava/lang/String;)Landroidx/work/impl/n/g;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	if-eqz v1, :cond_0</span>
+<span class="">	iget p1, v1, Landroidx/work/impl/n/g;->b:I</span>
+<span class="">	invoke-static {p0, p2, p1}, Landroidx/work/impl/background/systemalarm/a;->b(Landroid/content/Context;Ljava/lang/String;I)V</span>
+<span class="">	iget p1, v1, Landroidx/work/impl/n/g;->b:I</span>
+<span class="">	invoke-static {p0, p2, p1, p3, p4}, Landroidx/work/impl/background/systemalarm/a;->d(Landroid/content/Context;Ljava/lang/String;IJ)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	new-instance v1, Landroidx/work/impl/utils/c;</span>
+<span class="">	invoke-direct {v1, p1}, Landroidx/work/impl/utils/c;-><init>(Landroidx/work/impl/WorkDatabase;)V</span>
+<span class="">	invoke-virtual {v1}, Landroidx/work/impl/utils/c;->b()I</span>
+<span class="">	move-result p1</span>
+<span class="">	new-instance v1, Landroidx/work/impl/n/g;</span>
+<span class="">	invoke-direct {v1, p2, p1}, Landroidx/work/impl/n/g;-><init>(Ljava/lang/String;I)V</span>
+<span class="">	invoke-interface {v0, v1}, Landroidx/work/impl/n/h;->b(Landroidx/work/impl/n/g;)V</span>
+<span class="">	invoke-static {p0, p2, p1, p3, p4}, Landroidx/work/impl/background/systemalarm/a;->d(Landroid/content/Context;Ljava/lang/String;IJ)V</span>
+<span class="">	:goto_0</span>
+.end method
+
+.method private static d(Landroid/content/Context;Ljava/lang/String;IJ)V
+<span class="">	.locals 2</span>
+
+<span class="">	const-string v0, "alarm"</span>
+<span class="">	invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	check-cast v0, Landroid/app/AlarmManager;</span>
+<span class="">	invoke-static {p0, p1}, Landroidx/work/impl/background/systemalarm/b;->b(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;</span>
+<span class="">	move-result-object p1</span>
+<span class="">	const/high16 v1, 0x8000000</span>
+<span class="">	invoke-static {p0, p2, p1, v1}, Landroid/app/PendingIntent;->getService(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;</span>
+<span class="">	move-result-object p0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	sget p1, Landroid/os/Build$VERSION;->SDK_INT:I</span>
+<span class="">	const/16 p2, 0x13</span>
+<span class="">	const/4 v1, 0x0</span>
+<span class="">	if-lt p1, p2, :cond_0</span>
+<span class="">	invoke-virtual {v0, v1, p3, p4, p0}, Landroid/app/AlarmManager;->setExact(IJLandroid/app/PendingIntent;)V</span>
+<span class="">	goto :goto_0</span>
+<span class="">	:cond_0</span>
+<span class="">	invoke-virtual {v0, v1, p3, p4, p0}, Landroid/app/AlarmManager;->set(IJLandroid/app/PendingIntent;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	:goto_0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../.resources/report.js"></script>
+</body>
+</html>

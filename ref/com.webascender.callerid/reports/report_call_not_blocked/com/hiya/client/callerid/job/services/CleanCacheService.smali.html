@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../../../index.html">com.webascender.callerid</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.hiya.client.callerid.job.services</a></li>
+        <li><i class="ico ico-class"></i> CleanCacheService.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/hiya/client/callerid/job/services/CleanCacheService;
+.super Landroid/app/job/JobService;
+.source "SourceFile"
+
+
+.field public f:Lcom/hiya/client/callerid/dao/c;
+.field private g:Li/c/b0/g/c;
+
+
+.method static constructor <clinit>()V
+<span class="">	.locals 0</span>
+
+.end method
+
+.method public constructor <init>()V
+<span class="">	.locals 0</span>
+
+<span class="">	invoke-direct {p0}, Landroid/app/job/JobService;-><init>()V</span>
+.end method
+
+.method private final a()V
+<span class="">	.locals 1</span>
+
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/job/services/CleanCacheService;->g:Li/c/b0/g/c;</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {v0}, Li/c/b0/g/c;->dispose()V</span>
+<span class="">	:cond_0</span>
+.end method
+
+.method public onStartJob(Landroid/app/job/JobParameters;)Z
+<span class="">	.locals 5</span>
+
+<span class="">	const-string v0, "params"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	const-string v0, "HiyaJob"</span>
+<span class="">	const-string v1, "onStartJob called for clean cache service"</span>
+<span class="">	invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I</span>
+<span class="">	sget-object v0, Lg/g/b/a/i/c/d;->a:Lg/g/b/a/i/c/d$a;</span>
+<span class="">	invoke-virtual {v0, p0}, Lg/g/b/a/i/c/d$a;->a(Landroid/content/Context;)Lg/g/b/a/i/c/d;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-interface {v0, p0}, Lg/g/b/a/i/c/d;->b(Lcom/hiya/client/callerid/job/services/CleanCacheService;)V</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/job/JobParameters;->getExtras()Landroid/os/PersistableBundle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	const-string v1, "clean_cache_last_scheduled_time"</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/PersistableBundle;->containsKey(Ljava/lang/String;)Z</span>
+<span class="">	move-result v0</span>
+<span class="">	if-eqz v0, :cond_0</span>
+<span class="">	invoke-virtual {p1}, Landroid/app/job/JobParameters;->getExtras()Landroid/os/PersistableBundle;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-virtual {v0, v1}, Landroid/os/PersistableBundle;->getLong(Ljava/lang/String;)J</span>
+<span class="">	move-result-wide v0</span>
+<span class="">	const-wide/16 v2, 0x1388</span>
+<span class="">	add-long/2addr v0, v2</span>
+<span class="">	invoke-static {}, Ljava/lang/System;->currentTimeMillis()J</span>
+<span class="">	move-result-wide v2</span>
+<span class="">	cmp-long v4, v0, v2</span>
+<span class="">	if-lez v4, :cond_0</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	iget-object v0, p0, Lcom/hiya/client/callerid/job/services/CleanCacheService;->f:Lcom/hiya/client/callerid/dao/c;</span>
+<span class="">	:cond_0</span>
+<span class="">	if-eqz v0, :cond_1</span>
+<span class="">	invoke-interface {v0}, Lcom/hiya/client/callerid/dao/c;->i()Li/c/b0/b/e;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	invoke-static {}, Li/c/b0/j/a;->b()Li/c/b0/b/d0;</span>
+<span class="">	move-result-object v1</span>
+<span class="">	invoke-virtual {v0, v1}, Li/c/b0/b/e;->G(Li/c/b0/b/d0;)Li/c/b0/b/e;</span>
+<span class="">	move-result-object v0</span>
+<span class="">	new-instance v1, Lcom/hiya/client/callerid/job/services/CleanCacheService$a;</span>
+<span class="">	invoke-direct {v1, p0, p1}, Lcom/hiya/client/callerid/job/services/CleanCacheService$a;-><init>(Lcom/hiya/client/callerid/job/services/CleanCacheService;Landroid/app/job/JobParameters;)V</span>
+<span class="">	invoke-virtual {v0, v1}, Li/c/b0/b/e;->H(Li/c/b0/b/g;)Li/c/b0/b/g;</span>
+<span class="">	check-cast v1, Li/c/b0/g/c;</span>
+<span class="">	iput-object v1, p0, Lcom/hiya/client/callerid/job/services/CleanCacheService;->g:Li/c/b0/g/c;</span>
+<span class="">	const/4 p1, 0x1</span>
+<span class="">	const-string p1, "callerIdDao"</span>
+<span class="">	invoke-static {p1}, Lkotlin/w/c/k;->u(Ljava/lang/String;)V</span>
+<span class="">	:cond_1</span>
+<span class="">	const/4 p1, 0x0</span>
+<span class="">	throw p1</span>
+.end method
+
+.method public onStopJob(Landroid/app/job/JobParameters;)Z
+<span class="">	.locals 1</span>
+
+<span class="">	const-string v0, "params"</span>
+<span class="">	invoke-static {p1, v0}, Lkotlin/w/c/k;->g(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="">	invoke-direct {p0}, Lcom/hiya/client/callerid/job/services/CleanCacheService;->a()V</span>
+<span class="">	const/4 p1, 0x0</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../../../.resources/report.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="../../../../.resources/highlight/styles/default.css" />
+	<link rel="stylesheet" href="../../../../.resources/report.css" />
+</head>
+<body>
+    <ul class="breadcrumb">
+		<li><i class="ico ico-android"></i><a href="../../../../index.html">com.telguarder</a></li>
+		<li><i class="ico ico-package"></i><a href="index.html">com.facebook.appevents.internal</a></li>
+        <li><i class="ico ico-class"></i> ActivityLifecycleTracker$startTracking$2.smali</li>
+    </ul>
+    <p class="left-margin">granularity level: instruction</p>
+	<pre class="source lang-smali" id='source'>
+		<code>.class public final Lcom/facebook/appevents/internal/ActivityLifecycleTracker$startTracking$2;
+.super Ljava/lang/Object;
+.source "ActivityLifecycleTracker.kt"
+.implements Landroid/app/Application$ActivityLifecycleCallbacks;
+
+.annotation system Ldalvik/annotation/EnclosingMethod;
+value = Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->startTracking(Landroid/app/Application;Ljava/lang/String;)V
+.end annotation
+.annotation system Ldalvik/annotation/InnerClass;
+accessFlags = 0x19
+name = null
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+d1 = {
+"\u0000\u001f\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0008*\u0001\u0000\u0008\n\u0018\u00002\u00020\u0001J\u001a\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0008\u0010\u0006\u001a\u0004\u0018\u00010\u0007H\u0016J\u0010\u0010\u0008\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u0016J\u0010\u0010\t\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u0016J\u0010\u0010\n\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u0016J\u0018\u0010\u000b\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u000c\u001a\u00020\u0007H\u0016J\u0010\u0010\r\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u0016J\u0010\u0010\u000e\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u0016\u00a8\u0006\u000f"
+}
+d2 = {
+"com/facebook/appevents/internal/ActivityLifecycleTracker$startTracking$2",
+"Landroid/app/Application$ActivityLifecycleCallbacks;",
+"onActivityCreated",
+"",
+"activity",
+"Landroid/app/Activity;",
+"savedInstanceState",
+"Landroid/os/Bundle;",
+"onActivityDestroyed",
+"onActivityPaused",
+"onActivityResumed",
+"onActivitySaveInstanceState",
+"outState",
+"onActivityStarted",
+"onActivityStopped",
+"facebook-core_release"
+}
+k = 0x1
+mv = {
+0x1,
+0x5,
+0x1
+}
+.end annotation
+
+
+
+<span class="cov">.method constructor &lt;init&gt;()V</span>
+<span class="">	.locals 0</span>
+
+<span class="cov">	invoke-direct {p0}, Ljava/lang/Object;-><init>()V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public onActivityCreated(Landroid/app/Activity;Landroid/os/Bundle;)V</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	const-string p2, "activity"</span>
+<span class="cov">	invoke-static {p1, p2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object p2, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="cov">	sget-object v0, Lcom/facebook/LoggingBehavior;->APP_EVENTS:Lcom/facebook/LoggingBehavior;</span>
+<span class="cov">	sget-object v1, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="exec">	invoke-static {v1}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$getTAG$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "onActivityCreated"</span>
+<span class="cov">	invoke-virtual {p2, v0, v1, v2}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-static {}, Lcom/facebook/appevents/internal/AppEventUtility;->assertIsMainThread()V</span>
+<span class="cov">	invoke-static {p1}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->onActivityCreated(Landroid/app/Activity;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public onActivityDestroyed(Landroid/app/Activity;)V</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	const-string v0, "activity"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="cov">	sget-object v1, Lcom/facebook/LoggingBehavior;->APP_EVENTS:Lcom/facebook/LoggingBehavior;</span>
+<span class="cov">	sget-object v2, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="exec">	invoke-static {v2}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$getTAG$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	const-string v3, "onActivityDestroyed"</span>
+<span class="cov">	invoke-virtual {v0, v1, v2, v3}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object v0, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="cov">	invoke-static {v0, p1}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$onActivityDestroyed(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;Landroid/app/Activity;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public onActivityPaused(Landroid/app/Activity;)V</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	const-string v0, "activity"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="cov">	sget-object v1, Lcom/facebook/LoggingBehavior;->APP_EVENTS:Lcom/facebook/LoggingBehavior;</span>
+<span class="cov">	sget-object v2, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="exec">	invoke-static {v2}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$getTAG$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	const-string v3, "onActivityPaused"</span>
+<span class="cov">	invoke-virtual {v0, v1, v2, v3}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-static {}, Lcom/facebook/appevents/internal/AppEventUtility;->assertIsMainThread()V</span>
+<span class="cov">	sget-object v0, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="cov">	invoke-static {v0, p1}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$onActivityPaused(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;Landroid/app/Activity;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public onActivityResumed(Landroid/app/Activity;)V</span>
+<span class="">	.locals 4</span>
+
+<span class="cov">	const-string v0, "activity"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object v0, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="cov">	sget-object v1, Lcom/facebook/LoggingBehavior;->APP_EVENTS:Lcom/facebook/LoggingBehavior;</span>
+<span class="cov">	sget-object v2, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="exec">	invoke-static {v2}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$getTAG$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v2</span>
+<span class="cov">	const-string v3, "onActivityResumed"</span>
+<span class="cov">	invoke-virtual {v0, v1, v2, v3}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	invoke-static {}, Lcom/facebook/appevents/internal/AppEventUtility;->assertIsMainThread()V</span>
+<span class="cov">	invoke-static {p1}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->onActivityResumed(Landroid/app/Activity;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public onActivitySaveInstanceState(Landroid/app/Activity;Landroid/os/Bundle;)V</span>
+<span class="">	.locals 2</span>
+
+<span class="cov">	const-string v0, "activity"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	const-string p1, "outState"</span>
+<span class="cov">	invoke-static {p2, p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object p1, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="cov">	sget-object p2, Lcom/facebook/LoggingBehavior;->APP_EVENTS:Lcom/facebook/LoggingBehavior;</span>
+<span class="cov">	sget-object v0, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="exec">	invoke-static {v0}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$getTAG$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v0</span>
+<span class="cov">	const-string v1, "onActivitySaveInstanceState"</span>
+<span class="cov">	invoke-virtual {p1, p2, v0, v1}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public onActivityStarted(Landroid/app/Activity;)V</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	const-string v0, "activity"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object p1, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="exec">	invoke-static {p1}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$getActivityReferences$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;)I</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	add-int/lit8 v0, v0, 0x1</span>
+<span class="cov">	invoke-static {p1, v0}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$setActivityReferences$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;I)V</span>
+<span class="cov">	sget-object p1, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="cov">	sget-object v0, Lcom/facebook/LoggingBehavior;->APP_EVENTS:Lcom/facebook/LoggingBehavior;</span>
+<span class="cov">	sget-object v1, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="exec">	invoke-static {v1}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$getTAG$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "onActivityStarted"</span>
+<span class="cov">	invoke-virtual {p1, v0, v1, v2}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="exec">	return-void</span>
+.end method
+
+<span class="cov">.method public onActivityStopped(Landroid/app/Activity;)V</span>
+<span class="">	.locals 3</span>
+
+<span class="cov">	const-string v0, "activity"</span>
+<span class="cov">	invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object p1, Lcom/facebook/internal/Logger;->Companion:Lcom/facebook/internal/Logger$Companion;</span>
+<span class="cov">	sget-object v0, Lcom/facebook/LoggingBehavior;->APP_EVENTS:Lcom/facebook/LoggingBehavior;</span>
+<span class="cov">	sget-object v1, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="exec">	invoke-static {v1}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$getTAG$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;)Ljava/lang/String;</span>
+<span class="cov">	move-result-object v1</span>
+<span class="cov">	const-string v2, "onActivityStopped"</span>
+<span class="cov">	invoke-virtual {p1, v0, v1, v2}, Lcom/facebook/internal/Logger$Companion;->log(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V</span>
+<span class="cov">	sget-object p1, Lcom/facebook/appevents/AppEventsLogger;->Companion:Lcom/facebook/appevents/AppEventsLogger$Companion;</span>
+<span class="cov">	invoke-virtual {p1}, Lcom/facebook/appevents/AppEventsLogger$Companion;->onContextStop()V</span>
+<span class="cov">	sget-object p1, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->INSTANCE:Lcom/facebook/appevents/internal/ActivityLifecycleTracker;</span>
+<span class="exec">	invoke-static {p1}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$getActivityReferences$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;)I</span>
+<span class="cov">	move-result v0</span>
+<span class="cov">	add-int/lit8 v0, v0, -0x1</span>
+<span class="cov">	invoke-static {p1, v0}, Lcom/facebook/appevents/internal/ActivityLifecycleTracker;->access$setActivityReferences$p(Lcom/facebook/appevents/internal/ActivityLifecycleTracker;I)V</span>
+<span class="exec">	return-void</span>
+.end method</code>
+	</pre>
+    <div class="footer"><span class="right">Created with <a href="https://github.com/pilgun/acvtool">ACVTool</a> 0.1</span></div>
+
+	<script type="text/javascript" src="../../../../.resources/highlight/highlight.pack.js"></script>
+	<script type="text/javascript" src="../../../../.resources/report.js"></script>
+</body>
+</html>
